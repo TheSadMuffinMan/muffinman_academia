@@ -8,27 +8,22 @@ All about the variables
 using namespace std;
 
 int main() {
-    int num1;
-    int num2;
-    int total;
+    string string_first;
+    string string_last;
+    string string_full_name;
 
-    cout << "Please enter a value whole number: ";
-    cin >> num1;
+    
+    
+    // cout << "Please enter your first name: ";
+    // cin >> string_first;
 
-    cout << "The value of num1 is :" << num1 << endl;
+    // cout << "Please enter your last name: " << string_last;
+    // cin >> string_last;
 
-    cout << "Please enter another number: " << num1 << endl;
-    cin >> num2;
+    // string_full_name = string_first + " " + string_last;
+    // // num1 + num2 = total IS THE WRONG WAY
 
-    cout << "The value of num2 is: " << num2 << endl;
-
-    total = num1 + num2;
-    // num1 + num2 = total IS THE WRONG WAY
-
-    cout << "The numbers added together are: " << total << endl;
-
-
-
+    // cout << "Welcome " << string_full_name << endl;
 
     // int number1;
 
