@@ -42,18 +42,3 @@ int main()
     return 0; //exit program by returning 0 status to the system
 }
 Footer
-© 2023 GitHub, Inc.
-Footer navigation
-
-    Terms
-    Privacy
-    Security
-    Status
-    Docs
-    Contact GitHub
-    Pricing
-    API
-    Training
-    Blog
-    About
-

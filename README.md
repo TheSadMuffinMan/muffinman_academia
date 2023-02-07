@@ -1,3 +1,6 @@
 # CS1-acstreich
-This is a new line
-This is a second line
+Lab #1
+Name: std IO lab
+Date: 02/07/23
+Progress: in progress
+Self-grade: 0
