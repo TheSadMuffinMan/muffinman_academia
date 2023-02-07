@@ -20,13 +20,13 @@ using namespace std; //resolve cout, cin, and endl names
 int main()
 {
     //FIXME3: declare a variable to store name FIXED
-    string full_name;
+    string (full_name);
     //FIXME4: prompt user to enter their name and store the value in variable
-    cout << "Hello, and welcome to my program. Please input your full name, seperated by a space: " << \n;
-    getline >> full_name;
+    cout << "Hello, and welcome to my program. Please input your full name, seperated by a space: " << endl;
+    cin >> full_name;
     
     //FIXME5: greet the name using the variable as the following output
-    cout << "Nice meeting you, " << full_name << \n;
+    cout << "Nice meeting you, " << full_name << endl;
     //must output: Nice meeting you, <name>!
 
     // cout << "Hope you like my Tom & Jerry ASCII art...\n\n";
@@ -45,4 +45,4 @@ int main()
 
     return 0; //exit program by returning 0 status to the system
 }
-Footer
+// Footer
