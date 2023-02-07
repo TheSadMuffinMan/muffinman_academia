@@ -8,11 +8,23 @@ All about the variables
 using namespace std;
 
 int main() {
-    string string_first;
-    string string_last;
-    string string_full_name;
+    int input_seconds;
+    int num_hours, num_minutes, num_seconds;
 
+    cout << "How many seconds are there: " << \n;
+    cin >> input_seconds;
+
+    num_hours = input_seconds/3600;
+    num_minutes = (input_seconds/60)%60;
+    num_seconds = input_seconds%60;
+
+    cout << "From " << input_seconds << " you have " << num_hours << " : " << num_seconds << \n;
     
+
+
+    // string string_first;
+    // string string_last;
+    // string string_full_name;
     
     // cout << "Please enter your first name: ";
     // cin >> string_first;
