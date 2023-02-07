@@ -3,7 +3,7 @@
     ASCII Art - using literals and variables
     
     Updated By: Anthony Streich #FIXME1 fixed
-    Date: ... #FIXME2
+    Date: 7 February 23 #FIXME2 fixed
     
     This program produces an ASCII art on the console.
     Algorithm steps: 
@@ -19,25 +19,29 @@ using namespace std; //resolve cout, cin, and endl names
 //main entry point of the program
 int main()
 {
-    //FIXME3: declare a variable to store name
+    //FIXME3: declare a variable to store name FIXED
+    string full_name;
     //FIXME4: prompt user to enter their name and store the value in variable
+    cout << "Hello, and welcome to my program. Please input your full name, seperated by a space: " << \n;
+    getline >> full_name;
     
     //FIXME5: greet the name using the variable as the following output
+    cout << "Nice meeting you, " << full_name << \n;
     //must output: Nice meeting you, <name>!
 
-    cout << "Hope you like my Tom & Jerry ASCII art...\n\n";
+    // cout << "Hope you like my Tom & Jerry ASCII art...\n\n";
 
-    string line1 = "  |\\_/|   **********************    (\\_/)\n";
-    cout << line1;
+    // string line1 = "  |\\_/|   **********************    (\\_/)\n";
+    // cout << line1;
 
-    //FIXME6: use variable to print the second line line of the graphic
-    //FIXME7: print the third line of the graphics
-    //FIXME8: use variable to print the fourth line
-    //FIXME9: use variable to print the fifth line
-    //Note: You can add more lines or print more ASCII arts of your choice if you'd like...
+    // //FIXME6: use variable to print the second line line of the graphic
+    // //FIXME7: print the third line of the graphics
+    // //FIXME8: use variable to print the fourth line
+    // //FIXME9: use variable to print the fifth line
+    // //Note: You can add more lines or print more ASCII arts of your choice if you'd like...
 
-    cout << "\nGood bye... hit enter to exit the program: " << '\n';
-    //FIXME10: make the console wait for user input
+    // cout << "\nGood bye... hit enter to exit the program: " << '\n';
+    // //FIXME10: make the console wait for user input
 
     return 0; //exit program by returning 0 status to the system
 }
