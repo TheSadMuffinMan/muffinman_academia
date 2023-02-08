@@ -22,10 +22,10 @@ int main()
     //FIXME3: declare a variable to store name FIXED
     string full_name;
     //FIXME4: prompt user to enter their name and store the value in variable
-    cout << "Hello, and welcome to my program. Please input your full name: ";
+    cout << "Hello, and welcome to my program. Please input your name: ";
     cin >> full_name;
     
-    //FIXME5: greet the name using the variable as the following output
+    //FIXME5: KINDA FIXED greet the name using the variable as the following output
     cout << "Nice meeting you, " << full_name << "! \n " << endl;
     //must output: Nice meeting you, <name>!
 
@@ -34,8 +34,8 @@ int main()
     string line1 = "  |\\_/|   **********************    (\\_/)\n ";
     cout << line1;
 
-    //FIXME6: use variable to print the second line line of the graphic
-    string line2 = "  /@ @\\ 	*       ASCII Lab     *  	  (='.'=) \n ";
+    //FIXME6:  FIXED use variable to print the second line line of the graphic
+    string line2 = "/ @ @ \\  *     ASCII Lab      *   (='.'=) \n ";
     cout << line2;
     // //FIXME7: print the third line of the graphics
     // //FIXME8: use variable to print the fourth line
