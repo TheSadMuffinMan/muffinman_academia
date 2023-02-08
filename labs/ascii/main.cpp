@@ -20,7 +20,7 @@ using namespace std; //resolve cout, cin, and endl names
 int main()
 {
     //FIXME3: declare a variable to store name FIXED
-    string (full_name);
+    string full_name;
     //FIXME4: prompt user to enter their name and store the value in variable
     cout << "Hello, and welcome to my program. Please input your full name: ";
     cin >> full_name;
@@ -31,10 +31,11 @@ int main()
 
     cout << "Hope you like my Tom & Jerry ASCII art...\n\n";
 
-    // string line1 = "  |\\_/|   **********************    (\\_/)\n";
-    // cout << line1;
+    string line1 = "  |\\_/|   **********************    (\\_/)\n";
+    cout << line1;
 
-    // //FIXME6: use variable to print the second line line of the graphic
+    //FIXME6: use variable to print the second line line of the graphic
+    string line2 = " x"
     // //FIXME7: print the third line of the graphics
     // //FIXME8: use variable to print the fourth line
     // //FIXME9: use variable to print the fifth line
