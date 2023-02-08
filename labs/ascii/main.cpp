@@ -22,8 +22,8 @@ int main()
     //FIXME3: declare a variable to store name FIXED
     string (full_name);
     //FIXME4: prompt user to enter their name and store the value in variable
-    cout << "Hello, and welcome to my program. Please input your full name, seperated by a space: " << endl;
-    cin >> getline(full_name);
+    cout << "Hello, and welcome to my program. Please input your full name: ";
+    cin >> full_name;
     
     //FIXME5: greet the name using the variable as the following output
     cout << "Nice meeting you, " << full_name << "! \n " << endl;
