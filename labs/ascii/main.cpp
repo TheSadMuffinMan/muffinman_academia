@@ -26,10 +26,10 @@ int main()
     cin >> full_name;
     
     //FIXME5: greet the name using the variable as the following output
-    cout << "Nice meeting you, " << full_name << endl;
+    cout << "Nice meeting you, " << full_name << " \n " << endl;
     //must output: Nice meeting you, <name>!
 
-    // cout << "Hope you like my Tom & Jerry ASCII art...\n\n";
+    cout << "Hope you like my Tom & Jerry ASCII art...\n\n";
 
     // string line1 = "  |\\_/|   **********************    (\\_/)\n";
     // cout << line1;
