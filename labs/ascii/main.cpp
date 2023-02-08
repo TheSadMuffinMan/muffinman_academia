@@ -50,11 +50,10 @@ int main()
     string line5 = "  /  O  \\  ********************** \n";
     cout << line5;
 
+    //Note: You can add more lines or print more ASCII arts of your choice if you'd like...
 
-    // //Note: You can add more lines or print more ASCII arts of your choice if you'd like...
-
-    // cout << "\nGood bye... hit enter to exit the program: " << '\n';
-    // //FIXME10: make the console wait for user input
+    cout << "\nGood bye... hit enter to exit the program: " << '\n';
+    //FIXME10: make the console wait for user input
 
     return 0; //exit program by returning 0 status to the system
 }

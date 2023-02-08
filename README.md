@@ -17,7 +17,7 @@
 | Name | 1 - Std IO Lab |
 | Description | Lab covering standard input and output |
 | Due Date | 10-Feb-23 |
-| Status | in-progress |
+| Status | 90% complete |
 | Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/labs/ascii |
-| Self Grade | - |
-| Notes | typed the given code stub; need to fix all the fixmes |
+| Self Grade | 90 |
+| Notes | Have everything complete, except for FIXME5. I'm running into getline problems when trying to pull the entire string |
