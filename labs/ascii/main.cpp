@@ -26,7 +26,7 @@ int main()
     cin >> getline(full_name);
     
     //FIXME5: greet the name using the variable as the following output
-    cout << "Nice meeting you, " << full_name << " \n " << endl;
+    cout << "Nice meeting you, " << full_name << "! \n " << endl;
     //must output: Nice meeting you, <name>!
 
     cout << "Hope you like my Tom & Jerry ASCII art...\n\n";
