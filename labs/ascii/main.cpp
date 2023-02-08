@@ -2,8 +2,8 @@
     StdIO Lab
     ASCII Art - using literals and variables
     
-    Updated By: Anthony Streich #FIXME1 fixed
-    Date: 7 February 23 #FIXME2 fixed
+    Updated By: Anthony Streich #FIXME1 FIXED
+    Date: 8 February 23 #FIXME2 FIXED
     
     This program produces an ASCII art on the console.
     Algorithm steps: 
@@ -19,9 +19,9 @@ using namespace std; //resolve cout, cin, and endl names
 //main entry point of the program
 int main()
 {
-    //FIXME3: declare a variable to store name FIXED
+    //FIXME3: FIXED declare a variable to store name
     string full_name;
-    //FIXME4: prompt user to enter their name and store the value in variable
+    //FIXME4: FIXED prompt user to enter their name and store the value in variable
     cout << "Hello, and welcome to my program. Please input your name: ";
     cin >> full_name;
     
@@ -42,9 +42,11 @@ int main()
     string line3 = "( > 0 < ) * By: Anthony Streich* ( \" )_\( \" ) \n";
     cout << line3;
 
-    //FIXME8: use variable to print the fourth line
+    //FIXME8: FIXED use variable to print the fourth line
+    string line4 = "   >>x<<   *      CSCI 111      * \n";
+    cout << line4;
 
-    string line4 = "x"
+
     // //FIXME9: use variable to print the fifth line
     // //Note: You can add more lines or print more ASCII arts of your choice if you'd like...
 
