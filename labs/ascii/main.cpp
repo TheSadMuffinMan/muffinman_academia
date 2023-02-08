@@ -46,8 +46,11 @@ int main()
     string line4 = "   >>x<<   *      CSCI 111      * \n";
     cout << line4;
 
+    //FIXME9: FIXED use variable to print the fifth line
+    string line5 = "  /  O  \\  ********************** \n";
+    cout << line5;
 
-    // //FIXME9: use variable to print the fifth line
+
     // //Note: You can add more lines or print more ASCII arts of your choice if you'd like...
 
     // cout << "\nGood bye... hit enter to exit the program: " << '\n';
