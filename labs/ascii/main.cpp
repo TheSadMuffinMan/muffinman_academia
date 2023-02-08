@@ -31,14 +31,20 @@ int main()
 
     cout << "Hope you like my Tom & Jerry ASCII art...\n\n";
 
-    string line1 = "  |\\_/|   **********************    (\\_/)\n ";
+    string line1 = "   |\\_/|   **********************    (\\_/)\n ";
     cout << line1;
 
     //FIXME6:  FIXED use variable to print the second line line of the graphic
-    string line2 = "/ @ @ \\  *     ASCII Lab      *   (='.'=) \n ";
+    string line2 = " / @ @ \\  *     ASCII Lab      *   (='.'=) \n ";
     cout << line2;
-    // //FIXME7: print the third line of the graphics
-    // //FIXME8: use variable to print the fourth line
+
+//FIXME7: FIXED print the third line of the graphics
+    string line3 = "( > 0 < ) * By: Anthony Streich* ( \" )_\( \" ) \n";
+    cout << line3;
+
+    //FIXME8: use variable to print the fourth line
+
+    string line4 = "x"
     // //FIXME9: use variable to print the fifth line
     // //Note: You can add more lines or print more ASCII arts of your choice if you'd like...
 
