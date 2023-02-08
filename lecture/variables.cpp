@@ -8,8 +8,10 @@ All about the variables
 using namespace std;
 
 int main() {
-    int input_seconds;
-    int num_hours, num_minutes, num_seconds;
+
+    // CLOCK STUFF :D
+    unsigned int input_seconds;
+    unsigned int num_hours, num_minutes, num_seconds;
 
     cout << "How many seconds are there: " << \n;
     cin >> input_seconds;
@@ -18,7 +20,7 @@ int main() {
     num_minutes = (input_seconds/60)%60;
     num_seconds = input_seconds%60;
 
-    cout << "From " << input_seconds << " you have " << num_hours << " : " << num_seconds << \n;
+    cout << "From " << input_seconds << " you have " << num_hours << " : " << num_seconds << endl;
     
 
 
