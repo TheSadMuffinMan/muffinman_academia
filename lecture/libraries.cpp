@@ -5,7 +5,9 @@ Libraries
 */
 
 #include <iostream>
-#include <cmath> // this is "importing" the cmath library
+// #include <cstdio>
+// #include <iomanip>
+// #include <cmath> // this is "importing" the cmath library
 
 using namespace std;
 
@@ -15,6 +17,37 @@ using namespace std;
 int main() {
 
 
+    // GETLINE
+    // string full_name;
+
+    // cout << "Please enter your name: ";
+    // getlin(cin, full_name);
+
+    // cout << "Welcome, " << full_name << endl;
+    
+
+    // int num1, num2;
+
+    // cout << "Please enter two numbers seperated by a space: ";
+    // cin >> num1 >> num2;
+
+    // cout << num1 << " + " << num2 << " = " << num1 + num2 << endl;
+    // printf("%d + %d = %d \n", num1, num2, num1+num2); //This is how they displayed to console in the old C days
+    // % is the escape character, . is the precision character, anything following is the specified decimal placement.
+    // EXAMPLE %.4d will escape the int, and display to 4 decimal places.
+
+    // this is lining stuff up with <iomanip>
+    // float num1, num2;
+
+    // cout << "Please enter two numbers seperated by a space: ";
+    // cin >> num1 >> num2;
+
+    // cout << setw(20) << "Num1" << setw(20) << "Num2" << endl;
+
+    // cout << setfill('-');
+    // cout << setw(40) << "" << endl;
+    // cout << setfill(' ') setprecision(9); // setprecision just changes the output
+    // cout << setw(20) << num1 << setw(20) << num2;
 
     // EXPONENTS
 
