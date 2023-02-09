@@ -21,7 +21,7 @@ int main() {
     // string full_name;
 
     // cout << "Please enter your name: ";
-    // getlin(cin, full_name);
+    // getline(cin, full_name); //You have to have the action and then store it in something, in this case, the variable.
 
     // cout << "Welcome, " << full_name << endl;
     
