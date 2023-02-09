@@ -2,8 +2,8 @@
     StdIO Lab
     ASCII Art - using literals and variables
     
-    Updated By: Anthony Streich #FIXME1 FIXED
-    Date: 8 February 23 #FIXME2 FIXED
+    Updated By: Anthony Streich #FIXME1
+    Date: 8 February 23 #FIXME2
     
     This program produces an ASCII art on the console.
     Algorithm steps: 
@@ -19,13 +19,13 @@ using namespace std; //resolve cout, cin, and endl names
 //main entry point of the program
 int main()
 {
-    //FIXME3: FIXED declare a variable to store name
+    //FIXME3: declare a variable to store name #fixed#
     string full_name;
-    //FIXME4: FIXED prompt user to enter their name and store the value in variable
+    //FIXME4: prompt user to enter their name and store the value in variable #fixed#
     cout << "Hello, and welcome to my program. Please input your name: ";
     getline(cin, full_name);
     
-    //FIXME5: KINDA FIXED greet the name using the variable as the following output
+    //FIXME5: greet the name using the variable as the following output #fixed#
     cout << "Nice meeting you, " << full_name << "! \n " << endl;
     //must output: Nice meeting you, <name>!
 
@@ -34,19 +34,19 @@ int main()
     string line1 = "   |\\_/|   **********************    (\\_/)\n ";
     cout << line1;
 
-    //FIXME6:  FIXED use variable to print the second line line of the graphic
+    //FIXME6: use variable to print the second line line of the graphic #fixed#
     string line2 = " / @ @ \\  *     ASCII Lab      *   (='.'=) \n ";
     cout << line2;
 
-//FIXME7: FIXED print the third line of the graphics
+    //FIXME7: print the third line of the graphics #fixed#
     string line3 = "( > 0 < ) * By: Anthony Streich* ( \" )_\( \" ) \n";
     cout << line3;
 
-    //FIXME8: FIXED use variable to print the fourth line
+    //FIXME8: use variable to print the fourth line #fixed#
     string line4 = "   >>x<<   *      CSCI 111      * \n";
     cout << line4;
 
-    //FIXME9: FIXED use variable to print the fifth line
+    //FIXME9: use variable to print the fifth line #fixed#
     string line5 = "  /  O  \\  ********************** \n";
     cout << line5;
 
