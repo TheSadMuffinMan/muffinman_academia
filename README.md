@@ -17,7 +17,7 @@
 | Name | 1 - Std IO Lab |
 | Description | Lab covering standard input and output |
 | Due Date | 10-Feb-23 |
-| Status | 99% complete |
+| Status | 100% complete |
 | Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/labs/ascii |
-| Self Grade | 95 |
-| Notes | Just need the enter to exit part |
+| Self Grade | 100 |
+| Notes | Good to go. Student aid helped! |
