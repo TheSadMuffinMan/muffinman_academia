@@ -6,9 +6,9 @@
 | Description | ASCII Art |
 | Due Date | 13-Feb-23 |
 | Status | In Progress |
-| Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/labs/ascii |
-| Self Grade | 100/100 |
-| Notes | completed all the requirements and tested program many times; solution accepted by kattis; screenshot found in the same location |
+| Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/assignments/stdio |
+| Self Grade | 100 |
+| Notes | Actual code is all written |
 
 ### Lab #1
 
