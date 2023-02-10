@@ -52,9 +52,10 @@ int main()
 
     //Note: You can add more lines or print more ASCII arts of your choice if you'd like...
 
-    cout << "\nGood bye... hit enter to exit the program: " << '\n';
+    char input;
+    cout << "\nGood bye... hit any key to exit the program: ";
+    cin.get(input); // HAD TO HAVE STUDENT AID HELP
     //FIXME10: make the console wait for user input
-
     return 0; //exit program by returning 0 status to the system
 }
 // Footer
