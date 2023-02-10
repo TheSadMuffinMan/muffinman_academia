@@ -21,18 +21,16 @@ int main() {
     cout << "This is what various stages of the hangman game will look like… \n \n";
 
 
-    string stage0 = "
-|----------------- 						
-|/        	| 
-| 	
-|
-| 	
-|
-| 				              
- ===========	";
+    string line_1 = "|----------------- ";
+    string line_2 = "|/        	|  ";
+    string line_3 = "|";
+    string line_4 = "|";
+    string line_5 = "|";
+    string line_6 = "|";
+    string line_7 = "|";
+    string line_8 = "|";
+    string line_9 = " ===========";
  
-    getline(cout, stage0);
-    cout << stage0;
 
 
 
