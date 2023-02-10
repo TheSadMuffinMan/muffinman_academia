@@ -32,6 +32,8 @@ int main() {
     string line_8 = " |\n";
     string line_9 = "  ===========\n";
  
+
+    cout << "This is Stage 1.\n";
     cout << line_1 << line_2 << line_3 << line_4 << line_5 << line_6 << line_7 << line_8 << line_9;
 
 
