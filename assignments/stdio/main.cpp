@@ -30,21 +30,29 @@ int main() {
     string line_6 = " |\n";
     string line_7 = " |\n";
     string line_8 = " |\n";
-    string line_9 = "  ===========\n";
+    string line_9 = "  ===========\n\n";
 
-    string line_3_dead = " |             O\n";
-    string line_4_dead = " |             |\n";
-    string line_4_dead_left = " |            /|\n";
-    string line_4_dead_right = " |            /|\\ \n";
-    string line_5_dead = " |\n";
-    string line_6_dead = " |\n";
+    string line_3_dead = " |              O\n";
+    string line_4_body = " |              |\n";
+    string line_4_dead_left = " |             /|\n";
+    string line_4_dead_full = " |             /|\\ \n";
+    string line_5_dead_left = " |             /\n";
+    string line_5_dead_full = " |             / \\ \n";
  
-
-    cout << "This is Stage 0.\n";
+    // STAGE 0, no body parts
+    cout << "This is Stage 0:\n";
     cout << line_1 << line_2 << line_3 << line_4 << line_5 << line_6 << line_7 << line_8 << line_9;
 
+    // STAGE 1, just the head
+    cout << "This is Stage 1:\n";
+    cout << line_1 << line_2 << line_3_dead << line_4 << line_5 << line_6 << line_7 << line_8 << line_9;
+
+    // STAGE 2, head + body
+    cout << "This is Stage 2:\n";
+    cout << line_1 << line_2 << line_3_dead << line_4_body << line_5 << line_6 << line_7 << line_8 << line_9;
+
     cout << "This is Stage 5.\n";
-    cout << line_1 << line_2 << line_3_dead << line_4_dead << line_4_dead_left << line_4_dead_right;
+    cout << line_1 << line_2 << line_3_dead << line_4_dead_full << line_5_dead_full << line_6 << line_9;
 
     return 0;
 }
