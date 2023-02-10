@@ -10,7 +10,7 @@ CXX = g++
 CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
-# THIS IS THE INPUT FILE
+# This is what the program will be named
 PROGRAM = ascii.exe
 
 # list all .cpp files separated by space
