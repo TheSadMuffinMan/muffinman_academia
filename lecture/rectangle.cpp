@@ -37,7 +37,7 @@ int promptSides() {
     cin >> rectangleSide;
     return rectangleSide;
 }
-
+// This will do the exact same thing as below, just with different data TYPES (float, int, string, etc).
 int calcArea(int s1, int s2) {
     cout << "Inside int calcArea" << endl;
     int area;
@@ -45,6 +45,7 @@ int calcArea(int s1, int s2) {
     return area;
 }
 
+// See above
 float calcArea(float s1, float s2) {
     cout << "Inside float calcArea" << endl;
     float area;
