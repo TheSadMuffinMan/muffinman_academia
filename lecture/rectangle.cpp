@@ -18,53 +18,12 @@ Step 6: print name and perim
 
 using namespace std;
 
-string promptName() {
-    string personName;
-    
-    cout << "Please enter your name: ";
-    getline(cin, personName);
+string promptName();
+void greetPerson();
+int promptSides();
+int calcArea();
+int calcPerim();
 
-    return personName;
-}
-
-void greetPerson(string playerName) {
-    cout << "Welcome " << playerName << " to my rectangle calculator" << endl;
-}
-
-int promptSides() {
-    int rectangleSide;
-    cout << "Please enter the a side of the rectangle: ";
-    cin >> rectangleSide;
-    return rectangleSide;
-}
-// This will do the exact same thing as below, just with different data TYPES (float, int, string, etc).
-int calcArea(int s1, int s2) {
-    cout << "Inside int calcArea" << endl;
-    int area;
-    area = s1 * s2;
-    return area;
-}
-
-// See above
-float calcArea(float s1, float s2) {
-    cout << "Inside float calcArea" << endl;
-    float area;
-    area = s1 * s2;
-    return area;
-}
-
-float calcArea(string s1, string s2) {
-    cout << "Inside string calcArea" << endl;
-    float area;
-    area = atof(s1.c_str()) * atof(s2.c_str());
-    return area;
-}
-
-int calcPerim(int s1, int s2) {
-    int perimeter;
-    perimeter = (2 * s1) + (2 * s2);
-    return perimeter;
-}
 
 void printVals(int area, int perim, int s1, int s2) {
     printf("The rectangle with sides %d and %d\nhas an area of %d and a perimeter of %d\n", s1, s2, area, perim);
@@ -108,3 +67,53 @@ int main() {
 
     return 0;
 }
+
+void greetPerson(string playerName) {
+    cout << "Welcome " << playerName << " to my rectangle calculator" << endl;
+}
+
+string promptName() {
+    string personName;
+    
+    cout << "Please enter your name: ";
+    getline(cin, personName);
+
+    return personName;
+}
+
+int promptSides() {
+    int rectangleSide;
+    cout << "Please enter the a side of the rectangle: ";
+    cin >> rectangleSide;
+    return rectangleSide;
+}
+
+int calcArea(int s1, int s2) {
+    cout << "Inside float calcArea" << endl;
+    float area;
+    area = s1 * s2;
+    return area;
+}
+
+int calcPerim(int s1, int s2) {
+    int perimeter;
+    perimeter = (2 * s1) + (2 * s2);
+    return perimeter;
+}
+
+
+// This will do the exact same thing as below, just with different data TYPES (float, int, string, etc).
+// int calcArea(int s1, int s2) {
+//     cout << "Inside int calcArea" << endl;
+//     int area;
+//     area = s1 * s2;
+//     return area;
+// }
+
+
+// float calcArea(string s1, string s2) {
+//     cout << "Inside string calcArea" << endl;
+//     float area;
+//     area = atof(s1.c_str()) * atof(s2.c_str());
+//     return area;
+// }
