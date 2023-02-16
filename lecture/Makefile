@@ -11,10 +11,10 @@ CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
 # This is what the program will be named
-PROGRAM = ascii.exe
+PROGRAM = function_reference.exe
 
 # list all .cpp files separated by space
-CPPFILES = main.cpp
+CPPFILES = function_reference.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
