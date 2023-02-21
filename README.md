@@ -18,7 +18,7 @@
 | Description | Lab covering standard input and output |
 | Due Date | 10-Feb-23 |
 | Status | 100% complete |
-| Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/labs/ascii |
+| Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/labs/labs/ascii |
 | Self Grade | 100 |
 | Notes | Good to go. Student aid helped! |
 
@@ -30,6 +30,6 @@
 | Description | Write a C++ program that calculates area and circumference of a circle whose radius is entered by the user when prompted. |
 | Due Date | 21-Feb-23 |
 | Status | Not complete |
-| Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/labs/ascii/circle |
+| Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/labs/labs/circle |
 | Self Grade |  |
 | Notes | Still working on it. |
