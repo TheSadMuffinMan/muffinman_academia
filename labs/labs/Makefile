@@ -11,10 +11,10 @@ CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
 # THIS IS THE INPUT FILE
-PROGRAM = ASCIIArt.exe
+PROGRAM = circle.exe
 
 # list all .cpp files separated by space
-CPPFILES = ASCIIArt.cpp
+CPPFILES = circle.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
