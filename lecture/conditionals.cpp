@@ -15,6 +15,7 @@ int main() {
 
     // This is vitally important for variables that will be true/false as it defines your variable
     bool answer;
+    bool answer2;
 
     /* Variables for program under this
     num1 = 10;
@@ -44,6 +45,11 @@ int main() {
     cout << "num1 is greater than or equal to num2" << endl;
    }
 
+    answer2 = (num1 > num2);
+    if(answer2) {
+        cout << "num1 is not greater than or equal to num2" << endl;
+    }
+
    cout << "Outside of if" << endl;
 
 
@@ -51,6 +57,5 @@ int main() {
 }
 
 void say_hello() {
-    int some_number;
     cout << "Hello from the function" << endl;
 }
