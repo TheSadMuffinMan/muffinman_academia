@@ -29,7 +29,7 @@
 | Name | Circle - Maths and Std IO Lab |
 | Description | Write a C++ program that calculates area and circumference of a circle whose radius is entered by the user when prompted. |
 | Due Date | 21-Feb-23 |
-| Status | Not complete |
+| Status | Complete |
 | Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/labs/labs/circle |
-| Self Grade |  |
+| Self Grade | 100 |
 | Notes | Still working on it. |
