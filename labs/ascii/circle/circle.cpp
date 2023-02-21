@@ -1,8 +1,8 @@
 /*  
  Circle Lab
- By: FIXME1
+ By: Anthony Streich #fixed#
  CSCI 111
- Date: FIXME2
+ Date: 21 Feb 2023 #fixed#
  
  This program prompts the user to enter the radius of a circle.
  It then calculates and displays its area and circumference.
@@ -30,6 +30,7 @@ int main() //main entry function that returns 0
 	string name = "Anonymous"; // variable to store user's name
 	cout << "Hi there, what's your full name? ";
 	// FIXME3: use getline to read user's fullname and store it into name variable
+    getline(cin, name);
 
 	cout << "Nice meeting you, " << name << "!" << endl;
 
