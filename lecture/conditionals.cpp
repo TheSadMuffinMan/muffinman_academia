@@ -11,10 +11,27 @@ using namespace std;
 
 
 int main() {
-    int num1;
+    int num1, num2;
 
-    cout << "Please enter a number: " << endl;
-    cin >> num1;
+    cout << "Please enter a selection of two numbers seperated by a space: " << endl;
+    cin >> num1 >> num2;
+
+
+    // && means 'and'
+    // || means 'or', you can also use 'or'
+    // symbols are better because they transfer over to C better
+    if(num1 > 0 && num2 > 0) {
+        cout << "Both numbers are positive" << endl;
+    } else if (num1 > 0 && num2 < 0) {
+        cout << "Num1 is postive, num2 is negative" << endl;
+    } else if (num1 < 0 && num2 < 0) {
+        cout << "Both numbers are negative" << endl;
+    } else {
+        cout << "You have a zero" << endl;
+    }
+
+    // If the original var is a char, you can use this to reference the ASCII table.
+    // cout << "You entered " << int(num1) << "." << endl;
 
     // This is vitally important for variables that will be true/false as it defines your variable
     // bool answer;
@@ -41,25 +58,29 @@ int main() {
     }
     */
 
+   /*
    // A switch basically does the same thing as else if, but allows a little more flexibility
    // You have to include the break; or else the comp treats it like it is part of the previous case
    //   EACH CASE HAS TO HAVE A BREAK
    // default will always be at the end
-   switch(num1)%2 {
+   switch(num1) {
      case 0:
         if (num1 == 0) {
             cout << "num1 is zero" << endl;
-        } else {
-            cout << "num1 is even" << endl;
-        }
-        break;
+            break; }
     case 1:
+        if (num1 = 0) {
+            cout << "num1 is even" << endl;
+        break; }
+    case 2:
         cout << "num1 is odd" << endl;
         break;
     default:
         cout << "How did we get here with numbers?" << endl;
    }
+   */
 
+    /*
     // This is how to determine an int is even, odd, or zero
     // Else if will continue down the list until a condition is true
     // Should always end with an 'else' as a generic catch all/caboose
@@ -74,6 +95,7 @@ int main() {
    } else { 
     cout << "Uh oh, this means something broke :(" << endl;
    }
+   */
 
     // The conditionals will always be evaluated from top to bottom
     // Meaning that the order in which the calculations happen is important
