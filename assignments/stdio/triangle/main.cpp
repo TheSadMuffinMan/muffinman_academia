@@ -42,8 +42,10 @@ int main() {
     cout << "The perimeter of your triangle is: " << perimeter << endl;
     
     // Calculate the area using Heron's Formula
-    // ABC = √[s × (s – a) × (s – b) × (s – c)].
-    area = (sqrt())
+    // Heron's Fomula = √[s × (s – a) × (s – b) × (s – c)].
+    s = ((perimeter)*0.5);
+    area = (sqrt(s * (s - side_1) * (s - side_2) * (s - side_3)));
+    cout << "The area of your triangle is: " << area << endl;
 
     return 0;
 }
