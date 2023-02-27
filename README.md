@@ -1,7 +1,6 @@
 ### Assignment #1
 
 | Name | Anthony Sterich |
-| :--- | :--- |
 | Name | Homework 1 |
 | Description | ASCII Art |
 | Due Date | 13-Feb-23 |
@@ -10,10 +9,20 @@
 | Self Grade | 100 |
 | Notes | Actual code is all written |
 
+### Assignment #2
+
+| Name | Anthony Sterich |
+| Name | Homework 2 |
+| Description | Calculating area and perimeter of a triangle |
+| Due Date | 27-Feb-23 |
+| Status | Complete |
+| Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/assignments/stdio/triangle |
+| Self Grade | 100 |
+| Notes | All criteria met, except for checking if it is a triangle. Working on it |
+
 ### Lab #1
 
 | Name | Anthony Streich |
-| :--- | :--- |
 | Name | 1 - Std IO Lab |
 | Description | Lab covering standard input and output |
 | Due Date | 10-Feb-23 |
@@ -25,7 +34,6 @@
 ### Lab #2
 
 | Name | Anthony Streich |
-| :--- | :--- |
 | Name | Circle - Maths and Std IO Lab |
 | Description | Write a C++ program that calculates area and circumference of a circle whose radius is entered by the user when prompted. |
 | Due Date | 21-Feb-23 |
