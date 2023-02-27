@@ -6,6 +6,7 @@ Area & perimeter of a triangle
 
 #include <iostream>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -15,6 +16,10 @@ int main() {
     int side_1;
     int side_2;
     int side_3;
+    int perimeter;
+    // This is the semiperimeter used in Heron's Fomula
+    float s;
+    float area;
 
     // Have the user input the different sides
     cout << "Please enter the first side of your triangle: " << endl;
@@ -31,6 +36,14 @@ int main() {
     cout << "Side 1: " << side_1 << endl;
     cout << "Side 2: " << side_2 << endl;
     cout << "Side 3: " << side_3 << endl;
+
+    // Calculate the perimeter
+    perimeter = (side_1 + side_2 + side_3);
+    cout << "The perimeter of your triangle is: " << perimeter << endl;
+    
+    // Calculate the area using Heron's Formula
+    // ABC = √[s × (s – a) × (s – b) × (s – c)].
+    area = (sqrt())
 
     return 0;
 }
