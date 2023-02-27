@@ -47,6 +47,9 @@ int main() {
     area = (sqrt(s * (s - side_1) * (s - side_2) * (s - side_3)));
     cout << "The area of your triangle is: " << area << endl;
 
+    // Checking whether or not the input forms a triangle
+    // If the area is greater than 0, a triangle has been formed
+    // If the area is 0 or something else erroneous, then the input does not form a triangle
     if (area > 0) {
         cout << "Congrats! Your input forms a triangle!" << endl;
     } else {
