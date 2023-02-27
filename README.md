@@ -17,8 +17,8 @@
 | Due Date | 27-Feb-23 |
 | Status | Complete |
 | Location | https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/assignments/stdio/triangle |
-| Self Grade | 100 |
-| Notes | All criteria met, except for checking if it is a triangle. Working on it |
+| Self Grade | 110 |
+| Notes | All criteria met, including checking whether or not the input forms a triangle |
 
 ### Lab #1
 
