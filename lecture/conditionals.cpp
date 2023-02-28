@@ -19,6 +19,7 @@ int main() {
 
     // && means 'and'
     // || means 'or', you can also use 'or'
+    // ! means 'not'
     // symbols are better because they transfer over to C better
     if(num1 > 0 && num2 > 0) {
         cout << "Both numbers are positive" << endl;
