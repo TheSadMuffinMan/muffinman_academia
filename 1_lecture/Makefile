@@ -11,10 +11,10 @@ CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
 # This is what the program will be named
-PROGRAM = lunch_decision.exe
+PROGRAM = skellyCode.exe
 
 # list all .cpp files separated by space
-CPPFILES = 6_lunch_decision.cpp
+CPPFILES = 0_skelly_code.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file

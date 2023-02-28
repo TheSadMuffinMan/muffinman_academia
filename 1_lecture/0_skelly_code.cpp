@@ -1,6 +1,7 @@
 /*
 Name: Anthony Streich
-Functions pass-by-reference/pass-by-value
+Date: 
+NAME/FUNCTION OF PROGRAM
 */
 
 #include <iostream>
@@ -8,13 +9,24 @@ Functions pass-by-reference/pass-by-value
 
 using namespace std;
 
-void greetUser(string name);
+void userInput(string&);
+void greetUser(string userName);
 
 int main() {
+    string userName;
+
+    userInput(userName);
+    greetUser(userName);
+
     return 0;
 }
 
-void greetUser(string name) {
-    cout << "Welcome " << name << " to my program!" << endl;
+void userInput(string &userName) {
+    cout << "Please enter your name, and then press enter.\n" << endl;
+    getline(cin, userName);
+}
+
+void greetUser(string userName) {
+    cout << "Welcome " << userName << " to my program!" << endl;
 }
     
