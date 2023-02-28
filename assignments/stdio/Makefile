@@ -11,10 +11,10 @@ CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
 # THIS IS THE INPUT FILE
-PROGRAM = HangmanDemo.exe
+PROGRAM = lunch_decision.exe
 
 # list all .cpp files separated by space
-CPPFILES = main.cpp
+CPPFILES = lunch_decision.CPP
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
