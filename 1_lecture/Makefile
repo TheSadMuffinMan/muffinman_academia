@@ -14,7 +14,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 PROGRAM = lunch_decision.exe
 
 # list all .cpp files separated by space
-CPPFILES = lunch_decision.cpp
+CPPFILES = 6_lunch_decision.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
