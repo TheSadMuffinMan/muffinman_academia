@@ -41,3 +41,14 @@
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/circle |
 | Self Grade: 100 |
 | Notes: Complete |
+
+### Lab #3
+
+| Name: Anthony Streich |
+| Name of Assignment: Point Distance |
+| Description: Program prompts the user to enter two points in the form (x1, y1) and (x2, y2) and finds the distance between the two points using a function. |
+| Due Date: 06-Mar-23 |
+| Status: Incomplete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/labe_3 |
+| Self Grade: 0 |
+| Notes: In progress |
