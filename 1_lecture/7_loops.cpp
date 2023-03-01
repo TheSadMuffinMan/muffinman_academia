@@ -1,7 +1,7 @@
 /*
 Name: Anthony Streich
-Date: 
-NAME/FUNCTION OF PROGRAM
+Date: 1 March 23
+Loops!
 */
 
 #include <iostream>
