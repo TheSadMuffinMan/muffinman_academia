@@ -21,11 +21,11 @@ int main() {
 }
 
 void userInput(string &userName) {
-    cout << "Please enter your name, and then press enter.\n" << endl;
+    cout << "\nPlease enter your name, and then press enter." << endl;
     getline(cin, userName);
 }
 
 void greetUser(string userName) {
-    cout << "Welcome " << userName << " to my program!" << endl;
+    cout << "Welcome " << userName << " to my program!\n" << endl;
 }
     
