@@ -17,6 +17,8 @@ int main() {
     userInput(userName);
     greetUser(userName);
 
+    int j = 0;
+
 // First exposure to for loops
 /*
     for (int something = 0; something < 10; something++) {
@@ -25,14 +27,29 @@ int main() {
     */
 
 // The i++ is signifying that each number will go up by one
+// The i's are temporary variables, and the initial part (int i = 0) is intializing the variable
+// Typically use i, j, k, m, or n as temp variables in the for loops
 // Can be shown as... Also works with "-"
 // i++;
 // i = 1 + 1;
 // i += 1;
 // ++i;
-   for (int i = 0; i < 10; i++) {
-        cout << "i: " << i << endl;
+
+    for (int i = 0; i > 0; i--) {
+        j = j + 1;
+        cout << i << ": Hello world" << endl;
+        cout << "j: " << j << endl;
     }
+
+/* This prints out..
+0: Hello world!
+1: Hello world!
+2: Hello world! etc
+
+   for (int i = 0; i < 10; i++) {
+        cout << i << ": Hello world!" << endl;
+    }
+    */
 
     return 0;
 }
