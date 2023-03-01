@@ -57,11 +57,14 @@ int main()
         cout << "Program calculates distance between 2 points on a 2D coordinate." << endl;
         cout << "Enter a point in the form (x, y): ";
         // parse the input stream
-        cin >> ch >> x1 >> ch >> y1 >> ch; // value stored in ch is ignored
+        // Had to input another ch so that the actual format it requests could be followed
+        cin >> ch >> x1 >> ch >> >> ch >> y1 >> ch; // value stored in ch is ignored
         printf("(x1, y1) = (%d, %d)\n", x1, y1);
 
         cout << "Enter a second point in the form (x, y): ";
         //FIXME3 - Read/parse the second point and store data into variables x2 and y2
+        cin >> ch >> x2 >> ch >> ch >> y2 >> ch >> endl;
+        cout << "**DEBUG** You entered " << "(" << x2 << "," << y2 << " )" << endl;
         //FIXME4 - Call test function
 
         //FIXME5 - call findDistance function passing proper arguments
