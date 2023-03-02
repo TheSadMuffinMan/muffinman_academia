@@ -33,5 +33,8 @@ clean:
 run:
 	./$(PROGRAM)
 
+test:
+	./$(PROGRAM) test
+
 # make all
 # make run

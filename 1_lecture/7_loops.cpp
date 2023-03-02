@@ -17,6 +17,33 @@ int main() {
     userInput(userName);
     greetUser(userName);
 
+
+/*
+    // You can run into issues becuase this program does NOT have to run
+    // You have to have a do loop, see below
+    char inputChar = " ";
+    while (inputChar == "y") {
+        cout << "Please enter y to quit: ";
+        cint >> inputChar;
+    }
+*/
+
+/*
+    // This is saying that while this is true, it will incriment by one up to 10
+    // We use for loops when we know how many times we need to loop things
+    // We use while loops when we don't know how many times we need to run things
+    // Most purposeful infinite loops are while loops
+    int counter = 0;
+    while(counter < 10) {
+        cout << counter << ": Hello world" << endl;
+        counter++;
+    }
+    // This is the exact same as this for loop:
+    for (int i = 0; i < 10; i++) {
+        cout << i << ": Hello world" << endl;
+    }
+*/
+
 /*
 // First exposure to for loops
 // The first part is called the initialization/declaration
@@ -71,12 +98,14 @@ This prints out..
     }
 */
 
+/*
     // This is called nesting a for loop (including a loop inside a loop)
     for (int i = 0; i < 10; i++) {
         for (int j = 9; j > 0; j--) {
             cout << "i: " << i << " j: " << j << endl;
         }
     }
+*/
 
     return 0;
 }
