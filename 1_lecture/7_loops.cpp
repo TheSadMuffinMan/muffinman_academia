@@ -25,7 +25,7 @@ int main() {
     for (int something = 0; something < 10; something++) {
         cout << "i: " << something << endl;
     }
-    */
+*/
 
 /*
 // The i++ is signifying that each number will go up by one
@@ -53,7 +53,8 @@ int main() {
     }
 */
 
-/* This prints out..
+/*
+This prints out..
 0: Hello world!
 1: Hello world!
 2: Hello world! etc
