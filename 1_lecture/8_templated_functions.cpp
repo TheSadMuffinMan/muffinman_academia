@@ -18,7 +18,6 @@ T1 addNums(T1, T2);
 
 void tests();
 
-// 
 int main(int argc, char *argv[]) {
 
     cout << "argc: " << argc << endl;
@@ -61,5 +60,4 @@ void userInput(string &userName) {
 
 void greetUser(string userName) {
     cout << "Welcome " << userName << " to my program!\n" << endl;
-}
-    
+} 

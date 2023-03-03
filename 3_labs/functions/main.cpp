@@ -25,7 +25,7 @@ using namespace std;
 
 const float epsilon = 1e-5; // 0.00001 accuracy upto 5 decimal points; error of margin
 
-// function prototypes
+// Function prototypes
 
 // Function that calculates the distance between two points
 // x1, y1 and x2, y2 and returns the calculated value
@@ -45,10 +45,9 @@ void clearScreen() {
     #endif
 }
 
-int main()
-{
+int main() {
     int x1, y1, x2, y2; // variables to store two points (x1, y1) and (x2, y2)
-    char ch;
+    char ch1, ch2, ch3, ch4; // These variables will be ignored
 
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit
     // the loop will execute the following block of code
@@ -58,16 +57,18 @@ int main()
         cout << "Enter a point in the form (x, y): ";
         // parse the input stream
         // Had to input another ch so that the actual format it requests could be followed
-        cin >> ch >> x1 >> ch >> >> ch >> y1 >> ch; // value stored in ch is ignored
+        cin >> ch1 >> x1 >> ch2 >> ch3 >> y1 >> ch4; // value stored in ch is ignored
         printf("(x1, y1) = (%d, %d)\n", x1, y1);
 
         cout << "Enter a second point in the form (x, y): ";
         //FIXME3 - Read/parse the second point and store data into variables x2 and y2
-        cin >> ch >> x2 >> ch >> ch >> y2 >> ch >> endl;
+        cin >> ch1 >> x2 >> ch2 >> ch3 >> y2 >> ch4;
         cout << "**DEBUG** You entered " << "(" << x2 << "," << y2 << " )" << endl;
-        //FIXME4 - Call test function
+        //FIXME4 - Call test function #fixed#
+        test();
 
         //FIXME5 - call findDistance function passing proper arguments
+        findDistance();
         //FIXME6 – Using printf function display the returned distance with proper description
     }
 
@@ -78,19 +79,21 @@ int main()
     return 0;
 }
 
-double findDistance(int x1, int y1, int x2, int y2)
-{
+double findDistance(int x1, int y1, int x2, int y2) {
     // FIXME7 - Find the distance between (x1, y1) and (x2, y2)
+    // √((x2-x1)^2 + (y2-y1)^2)
+    float totalDistance;
+    totalDistance = (sqrt((pow((x2 - x1), 2)) + ((pow(y2 - y1), 2)))
     // following the algorithm in step 1
     // return the calculated distance
     return 0.000000;
 }
 
 // test function that test findDistance function with 3 test cases
-void test()
-{
+void test() {
     float result =  findDistance(4, 3, 5, 1);
     float expected = 2.236067f;
     assert( fabs(result - expected) <= epsilon); //accept the result if it's less than the error of margin
     // FIXME8 - add at least two more test cases
     cerr << "all tests passed..." << endl;
+}
