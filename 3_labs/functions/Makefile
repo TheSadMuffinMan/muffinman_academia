@@ -11,7 +11,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
 # This is what the program will be named
-PROGRAM = lab3.exe
+PROGRAM = functions.exe
 
 # list all .cpp files separated by space
 CPPFILES = main.cpp
