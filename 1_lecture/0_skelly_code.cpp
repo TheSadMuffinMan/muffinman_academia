@@ -12,7 +12,7 @@ using namespace std;
 void userInput(string&);
 void greetUser(string userName);
 
-int main() {
+int main(int argc, char *argv[]) {
     string userName;
     userInput(userName);
     greetUser(userName);
@@ -20,12 +20,14 @@ int main() {
     return 0;
 }
 
-void userInput(string &userName) {
+void userInput(string& userName) {
     cout << "\nPlease enter your name, and then press enter." << endl;
     getline(cin, userName);
 }
 
 void greetUser(string userName) {
+    // Choose between the two
+    printf("Welcome %s to our multiplication table printer!\n", userName.c_str());
     cout << "Welcome " << userName << " to my program!\n" << endl;
 }
     
