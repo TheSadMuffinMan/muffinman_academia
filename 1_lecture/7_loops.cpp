@@ -22,7 +22,13 @@ int main() {
     // You can run into issues becuase this program does NOT have to run
     // You have to have a do loop, see below
     char inputChar = " ";
-    while (inputChar == "y") {
+    do {
+        cout << "Please enter y to quit: ";
+        getline.(cin, inputChar);
+        
+    while (inputChar != 'y' && inputChar != 'Y') {
+        // Can also code it like this:
+        // while (inputChar == 'y' || inputChar == 'Y');
         cout << "Please enter y to quit: ";
         cint >> inputChar;
     }
