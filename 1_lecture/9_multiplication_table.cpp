@@ -19,17 +19,18 @@ using namespace std;
 void userInput(string&);
 void greetUser(string userName);
 void printTable(height, width);
-void promptSize(int, int);
+void promptSize(int&, int&);
 
 int main(int argc, char *argv[]) {
     string userName;
-    int height, width;
+    int height = 0;
+    int width = 0;
 
     userInput(userName);
     greetUser(userName);
-    printTable(height, width);
-
     promptSize(height, width);
+
+    printTable(height, width);
 
     return 0;
 }
@@ -42,7 +43,7 @@ void promptSize(int& height, int& width) {
     cin >> width;
 }
 
-void printTable(int height, int width) {
+void printTable(int& height, int& width) {
     for(int i=1; i<= height; i++) {
         // Can also use (int j=1; j<11; j++), they're functionally the same
         for(int j=1; j<= width; j++) {

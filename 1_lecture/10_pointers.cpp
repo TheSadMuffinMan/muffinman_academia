@@ -1,7 +1,7 @@
 /*
 Name: Anthony Streich
-Date: 
-NAME/FUNCTION OF PROGRAM
+Date: 7 March 23
+First intro to pointers
 */
 
 #include <iostream>
