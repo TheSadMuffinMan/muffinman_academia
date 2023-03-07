@@ -13,9 +13,9 @@ void userInput(string&);
 void greetUser(string userName);
 
 int main(int argc, char *argv[]) {
-    string userName;
-    userInput(userName);
-    greetUser(userName);
+    // string userName;
+    // userInput(userName);
+    // greetUser(userName);
 
     return 0;
 }
