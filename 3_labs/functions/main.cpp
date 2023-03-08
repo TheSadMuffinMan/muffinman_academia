@@ -51,8 +51,8 @@ int main() {
 
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit #fixed?#
     char inputChar = 0; // This is the variable that will let you exit the program
-    while (inputChar != 'y' || inputChar != 'Y') {
-        cout << "Please enter y to quit: ";
+    if (inputChar != 'y' || inputChar != 'Y') {
+        cout << "Please enter \"y\" to quit: ";
         cin >> inputChar;
             // the loop will execute the following block of code
             clearScreen();
@@ -71,13 +71,11 @@ int main() {
             test();
 
             //FIXME5 - call findDistance function passing proper arguments
-            findDistance();
+            findDistance(x1, x2, y1, y2);
             //FIXME6 – Using printf function display the returned distance with proper description
-        else (inputChar == 'y' && inputChar == 'Y') {
-        cout << "Please enter y to quit: ";
-        cin >> inputChar;
-        }
-    }
+            } else {
+                return 0;
+            }
     return 0;
 }
 
@@ -85,7 +83,7 @@ double findDistance(int& x1, int& y1, int& x2, int& y2) {
     // FIXME7 - Find the distance between (x1, y1) and (x2, y2)
     // √((x2-x1)^2 + (y2-y1)^2)
     float totalDistance;
-    totalDistance = (sqrt((pow((x2 - x1), 2)) + ((pow(y2 - y1), 2))))
+    totalDistance = (sqrt((pow((x2 - x1), 2)) + ((pow(y2 - y1), 2))));
     // following the algorithm in step 1
     // return the calculated distance
     return 0.000000;
