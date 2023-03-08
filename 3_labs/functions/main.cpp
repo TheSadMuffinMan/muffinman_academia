@@ -78,7 +78,7 @@ int main() {
             findDistance(static_cast<int>(x1), static_cast<int>(x2), static_cast<int>(y1), static_cast<int>(y2));
 
             //FIXME6 – Using printf function display the returned distance with proper description
-            printf("The distance between your points is %d", totalDistance);
+            printf("The distance between your points is %d", x1);
 
 
             cout << "The program is complete. Please enter y to exit. " << endl;
