@@ -24,13 +24,13 @@ int main() {
     char inputChar = " ";
     do {
         cout << "Please enter y to quit: ";
-        getline.(cin, inputChar);
+        getline(cin, inputChar);
         
     while (inputChar != 'y' && inputChar != 'Y') {
         // Can also code it like this:
         // while (inputChar == 'y' || inputChar == 'Y');
         cout << "Please enter y to quit: ";
-        cint >> inputChar;
+        cin >> inputChar;
     }
 */
 

@@ -47,14 +47,14 @@ void clearScreen() {
 
 int main() {
     int x1, y1, x2, y2; // variables to store two points (x1, y1) and (x2, y2)
-    char ch1, ch2, ch3, ch4; // These variables will be ignored
+    string ch1, ch2, ch3, ch4; // These variables will be ignored
 
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit #fixed?#
-    char inputChar; // This is the variable that will let you exit the program
-    do {
-        cout << "Upon completion, press y to quit: ";
-        getline(cin, inputChar);
-    // the loop will execute the following block of code
+    char inputChar = 0; // This is the variable that will let you exit the program
+    while (inputChar != 'y' || inputChar != 'Y') {
+        cout << "Please enter y to quit: ";
+        cin >> inputChar;
+            // the loop will execute the following block of code
             clearScreen();
             cout << "Program calculates distance between 2 points on a 2D coordinate." << endl;
             cout << "Enter a point in the form (x, y): ";
@@ -72,25 +72,20 @@ int main() {
 
             //FIXME5 - call findDistance function passing proper arguments
             findDistance();
-        //FIXME6 – Using printf function display the returned distance with proper description
-        while (inputChar != 'y' && inputChar != 'Y') {
+            //FIXME6 – Using printf function display the returned distance with proper description
+        else (inputChar == 'y' && inputChar == 'Y') {
         cout << "Please enter y to quit: ";
         cin >> inputChar;
         }
     }
-
-    cin.ignore(1000, '\n');
-    cout << "Enter to quit the program: ";
-    cin.get();
-    cout << "Good bye..." << endl;
     return 0;
 }
 
-double findDistance(int x1, int y1, int x2, int y2) {
+double findDistance(int& x1, int& y1, int& x2, int& y2) {
     // FIXME7 - Find the distance between (x1, y1) and (x2, y2)
     // √((x2-x1)^2 + (y2-y1)^2)
     float totalDistance;
-    totalDistance = (sqrt((pow((x2 - x1), 2)) + ((pow(y2 - y1), 2)))
+    totalDistance = (sqrt((pow((x2 - x1), 2)) + ((pow(y2 - y1), 2))))
     // following the algorithm in step 1
     // return the calculated distance
     return 0.000000;
