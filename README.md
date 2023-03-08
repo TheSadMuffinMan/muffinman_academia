@@ -49,6 +49,6 @@
 | Description: Program prompts the user to enter two points in the form (x1, y1) and (x2, y2) and finds the distance between the two points using a function. |
 | Due Date: 06-Mar-23 |
 | Status: Incomplete |
-| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/labe_3 |
-| Self Grade: 0 |
-| Notes: In progress |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/functions |
+| Self Grade: 80 |
+| Notes: In progress.. The way that we are coding this is NOT the way I would do it T_T |

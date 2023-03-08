@@ -53,14 +53,14 @@ int main() {
     char inputChar = 0; // This is the variable that will let you exit the program
     if (inputChar != 'y' || inputChar != 'Y') {
         cout << "Please enter \"y\" to quit: ";
+        // The loop will execute the following block of code
         cin >> inputChar;
-            // the loop will execute the following block of code
             clearScreen();
             cout << "Program calculates distance between 2 points on a 2D coordinate." << endl;
             cout << "Enter a point in the form (x, y): ";
             // parse the input stream
             // Had to input another ch so that the actual format it requests could be followed
-            cin >> ch1 >> x1 >> ch2 >> ch3 >> y1 >> ch4; // value stored in ch is ignored
+            cin >> ch1 >> x1 >> ch2 >> ch3 >> y1 >> ch4; // value stored in all ch's are ignored
             printf("(x1, y1) = (%d, %d)\n", x1, y1);
 
             cout << "Enter a second point in the form (x, y): ";
@@ -70,9 +70,18 @@ int main() {
             //FIXME4 - Call test function #fixed#
             test();
 
-            //FIXME5 - call findDistance function passing proper arguments
-            findDistance(x1, x2, y1, y2);
+            //FIXME5 - call findDistance function passing proper arguments #FIXED#
+            // findDistance(int*(x1), int*(x2), int*(y1), int*(y2));
+
+            // The line below is from OpenAI.com. I couldn't figure out how to caste the floats to ints so that it would accept
+            // the data types. See above for my attempt at fixing it the "correct" way.
+            findDistance(static_cast<int>(x1), static_cast<int>(x2), static_cast<int>(y1), static_cast<int>(y2));
+
             //FIXME6 – Using printf function display the returned distance with proper description
+            printf("The distance between your points is %d", totalDistance);
+
+
+            cout << "The program is complete. Please enter y to exit. " << endl;
             } else {
                 return 0;
             }
@@ -83,10 +92,16 @@ double findDistance(int& x1, int& y1, int& x2, int& y2) {
     // FIXME7 - Find the distance between (x1, y1) and (x2, y2)
     // √((x2-x1)^2 + (y2-y1)^2)
     float totalDistance;
-    totalDistance = (sqrt((pow((x2 - x1), 2)) + ((pow(y2 - y1), 2))));
+
+    float xPoints;
+    float yPoints;
+    xPoints = (x2 - x1);
+    yPoints = (y2 - y1);
+
+    totalDistance = (sqrt((pow(xPoints, 2)) + (pow(yPoints, 2))));
     // following the algorithm in step 1
     // return the calculated distance
-    return 0.000000;
+    return totalDistance;
 }
 
 // test function that test findDistance function with 3 test cases
