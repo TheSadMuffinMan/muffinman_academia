@@ -51,14 +51,14 @@ int main() {
     int results;
 
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit #fixed#
-    char inputChar = 0; // This is the variable that will let you exit the program
-    if (inputChar != 'y' || inputChar != 'Y') {
-        cout << "Please enter \"y\" to quit: ";
+    char inputChar; // This is the variable that will let you exit the program
+    if (inputChar != 'e' && inputChar != 'E') {
+        cout << "Please enter \"e\" to enter... ";
         // The loop will execute the following block of code
         cin >> inputChar;
             clearScreen();
-            cout << "Program calculates distance between 2 points on a 2D coordinate." << endl;
-            cout << "Enter a point in the form (x, y): ";
+            cout << "Hello, and welcome to my program. This program calculates distance between 2 points on a 2D coordinate.\n" << endl;
+            cout << "Please enter a point in the form (x, y): ";
             
             // parse the input stream
             cin >> ch1 >> x1 >> ch2 >> ch3 >> y1 >> ch4; // value stored in all ch's are ignored
