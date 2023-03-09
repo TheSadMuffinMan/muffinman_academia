@@ -83,6 +83,9 @@ int main(int argc, char *argv[]) {
     return 0;
 }
 
+// Inside the parentheses are the function parameters, must match above, see below
+// int addNums(int*, int*);
+// Also addNums(int*, int&);
 int addNums(int *num1, int *num2) {
     return *num1 + *num2;
 }

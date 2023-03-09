@@ -29,7 +29,7 @@ const float epsilon = 1e-5; // 0.00001 accuracy upto 5 decimal points; error of 
 
 // Function that calculates the distance between two points
 // x1, y1 and x2, y2 and returns the calculated value
-double findDistance(int, int, int, int);
+double findDistance(int&, int&, int&, int&);
 
 // test function that runs automated testing
 void test();
@@ -48,8 +48,9 @@ void clearScreen() {
 int main() {
     int x1, y1, x2, y2; // variables to store two points (x1, y1) and (x2, y2)
     string ch1, ch2, ch3, ch4; // These variables will be ignored
+    float results;
 
-    //FIXME-bonus - 10 bonus points - add loop until user wants to quit #fixed?#
+    //FIXME-bonus - 10 bonus points - add loop until user wants to quit #fixed#
     char inputChar = 0; // This is the variable that will let you exit the program
     if (inputChar != 'y' || inputChar != 'Y') {
         cout << "Please enter \"y\" to quit: ";
@@ -64,22 +65,17 @@ int main() {
             printf("(x1, y1) = (%d, %d)\n", x1, y1);
 
             cout << "Enter a second point in the form (x, y): ";
-            //FIXME3 - Read/parse the second point and store data into variables x2 and y2
+            //FIXME3 - Read/parse the second point and store data into variables x2 and y2 #fixed#
             cin >> ch1 >> x2 >> ch2 >> ch3 >> y2 >> ch4;
             cout << "**DEBUG** You entered " << "(" << x2 << "," << y2 << " )" << endl;
             //FIXME4 - Call test function #fixed#
             test();
 
             //FIXME5 - call findDistance function passing proper arguments #FIXED#
-            // findDistance(int*(x1), int*(x2), int*(y1), int*(y2));
-
-            // The line below is from OpenAI.com. I couldn't figure out how to caste the floats to ints so that it would accept
-            // the data types. See above for my attempt at fixing it the "correct" way.
-            findDistance(static_cast<int>(x1), static_cast<int>(x2), static_cast<int>(y1), static_cast<int>(y2));
+            results = findDistance(x1, x2, y1, y2);
 
             //FIXME6 – Using printf function display the returned distance with proper description
-            printf("The distance between your points is %d", x1);
-
+            printf("The distance between your points is %f", results);
 
             cout << "The program is complete. Please enter y to exit. " << endl;
             } else {
