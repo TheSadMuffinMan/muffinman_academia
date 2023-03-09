@@ -29,7 +29,7 @@ const float epsilon = 1e-5; // 0.00001 accuracy upto 5 decimal points; error of 
 
 // Function that calculates the distance between two points
 // x1, y1 and x2, y2 and returns the calculated value
-double findDistance(int&, int&, int&, int&);
+double findDistance(int, int, int, int);
 
 // test function that runs automated testing
 void test();
@@ -48,7 +48,7 @@ void clearScreen() {
 int main() {
     int x1, y1, x2, y2; // variables to store two points (x1, y1) and (x2, y2)
     string ch1, ch2, ch3, ch4; // These variables will be ignored
-    float results;
+    int results;
 
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit #fixed#
     char inputChar = 0; // This is the variable that will let you exit the program
@@ -59,8 +59,8 @@ int main() {
             clearScreen();
             cout << "Program calculates distance between 2 points on a 2D coordinate." << endl;
             cout << "Enter a point in the form (x, y): ";
+            
             // parse the input stream
-            // Had to input another ch so that the actual format it requests could be followed
             cin >> ch1 >> x1 >> ch2 >> ch3 >> y1 >> ch4; // value stored in all ch's are ignored
             printf("(x1, y1) = (%d, %d)\n", x1, y1);
 
@@ -75,7 +75,7 @@ int main() {
             results = findDistance(x1, x2, y1, y2);
 
             //FIXME6 – Using printf function display the returned distance with proper description
-            printf("The distance between your points is %f", results);
+            printf("The distance between your points is %i", results);
 
             cout << "The program is complete. Please enter y to exit. " << endl;
             } else {
@@ -84,7 +84,7 @@ int main() {
     return 0;
 }
 
-double findDistance(int& x1, int& y1, int& x2, int& y2) {
+double findDistance(int x1, int y1, int x2, int y2) {
     // FIXME7 - Find the distance between (x1, y1) and (x2, y2)
     // √((x2-x1)^2 + (y2-y1)^2)
     float totalDistance;
