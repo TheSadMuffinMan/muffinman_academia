@@ -29,7 +29,7 @@
 | Status: Almost Complete |
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/functions_homework3 |
 | Self Grade: 90 |
-| Notes: Test functions are kicking my butt |
+| Notes: Complete EXCEPT for the test functions |
 
 ### Lab #1
 
