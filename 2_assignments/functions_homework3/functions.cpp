@@ -90,7 +90,7 @@ void largerNums(float userNum1, float userNum2) {
     } else if (userNum1 == userNum2) {
         cout << "You entered the same numbers!" << endl;
     } else {
-        cout << "Uh oh, we shouldn't have gotten here... " << endl;
+        cout << "***BUG*** Uh oh, we shouldn't have gotten here... " << endl;
     }
 }
 
