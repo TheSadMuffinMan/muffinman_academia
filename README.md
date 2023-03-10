@@ -1,6 +1,6 @@
-### Assignment #1
+### Homework 1
 
-| Name: Anthony Sterich |
+| Name: Anthony Streich |
 | Name of Assignment: Homework 1 |
 | Description: ASCII Art |
 | Due Date: 13-Feb-23 |
@@ -9,9 +9,9 @@
 | Self Grade: 100 |
 | Notes: Complete |
 
-### Assignment #2
+### Homework 2
 
-| Name: Anthony Sterich |
+| Name: Anthony Streich |
 | Name of Assignment: Homework 2 |
 | Description: Calculating area and perimeter of a triangle |
 | Due Date: 27-Feb-23 |
@@ -19,6 +19,17 @@
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/triangle |
 | Self Grade: 110 |
 | Notes: All criteria met, including checking whether or not the input forms a triangle |
+
+### Homework 3
+
+| Name: Anthony Streich |
+| Name of Assignment: Homework 3 |
+| Description: A Basic Calculator using Functions and Automated Unit Testing |
+| Due Date: 10-Mar-23 |
+| Status: Almost Complete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/functions_homework3 |
+| Self Grade: 90 |
+| Notes: Test functions are kicking my butt |
 
 ### Lab #1
 

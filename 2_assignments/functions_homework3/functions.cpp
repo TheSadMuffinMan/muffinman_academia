@@ -19,6 +19,8 @@ void divideNums(float, float);
 void subtNums(float, float);
 void modNums(float, float);
 void powerNums(float, float);
+void sqrtNums(float);
+void largerNums(float, float);
 
 int main(int argc, char *argv[]) {
     // string userName;
@@ -33,8 +35,10 @@ int main(int argc, char *argv[]) {
     multNums(userNum1, userNum2);
     divideNums(userNum1, userNum2);
     subtNums(userNum1, userNum2);
-    modNums(userNum1, userNum2); // Comin back to this one
-    powerNums(userNum1, userNum2);
+    modNums(userNum1, userNum2); // If floats are used, this will not be accurate
+    powerNums(userNum1, userNum2); // Ditto ^
+    sqrtNums(userNum1);
+    largerNums(userNum1, userNum2);
 
     return 0;
 }
@@ -43,7 +47,7 @@ void addNums(float userNum1, float userNum2) {
     // cout << "Please enter two numbers that you want to add together seperated by a space: " << endl;
     // cin >> userNum1 >> userNum2;
     float addition = userNum1 + userNum2;
-    cout << userNum1 << " + " << userNum2 << " = " << addition << endl;
+    cout << "\n" << userNum1 << " + " << userNum2 << " = " << addition << endl;
 }
 
 void multNums(float userNum1, float userNum2) {
@@ -70,8 +74,24 @@ void modNums(float userNum1, float userNum2) {
 void powerNums(float userNum1, float userNum2) {
     float exponent = pow((int)userNum1, (int)userNum2);
     cout << "\nC++ can only do exponents with ints, so if you input a float this one will not be accurate... :( " << endl;
-    cout << userNum1 << " to the power of " << userNum2 << " = " << exponent << endl;
+    cout << userNum1 << " to the power of " << userNum2 << " = " << exponent << "\n" << endl;
+}
 
+void sqrtNums(float userNum1) {
+    float squareRoot = sqrt(userNum1);
+    cout << "The square root of the first number, " << userNum1 << ", is " << squareRoot << "." << endl;
+}
+
+void largerNums(float userNum1, float userNum2) {
+    if (userNum1 > userNum2) {
+        cout << "Of the two numbers, " << userNum1 << " is larger!" << endl;
+    } else if (userNum1 < userNum2) {
+        cout << "Of the two numbers, " << userNum2 << " is larger!" << endl;
+    } else if (userNum1 == userNum2) {
+        cout << "You entered the same numbers!" << endl;
+    } else {
+        cout << "Uh oh, we shouldn't have gotten here... " << endl;
+    }
 }
 
 void userInput(string& userName) {
