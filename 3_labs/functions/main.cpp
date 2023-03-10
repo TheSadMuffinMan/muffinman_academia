@@ -25,8 +25,6 @@ using namespace std;
 
 const float epsilon = 1e-5; // 0.00001 accuracy upto 5 decimal points; error of margin
 
-// Function prototypes
-
 // Function that calculates the distance between two points
 // x1, y1 and x2, y2 and returns the calculated value
 double findDistance(int, int, int, int);
@@ -51,7 +49,7 @@ int main() {
     int results;
 
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit #fixed#
-    char inputChar; // This is the variable that will let you exit the program
+    char inputChar; // This is the variable that will let you enter the program
     cout << "Please enter \"e\" to enter... " << endl;
     cin >> inputChar;
 
@@ -61,7 +59,7 @@ int main() {
             cout << "Hello, and welcome to my program. This program calculates distance between 2 points on a 2D coordinate.\n" << endl;
             cout << "Please enter a point in the form (x , y): ";
             // parse the input stream
-            cin >> ch1 >> x1 >> ch2 >> y1 >> ch3; // value stored in all ch's are ignored
+            cin >> ch1 >> x1 >> ch2 >> y1 >> ch3; // values stored in all ch's are ignored
 
             printf("You entered: (%d, %d)\n", x1, y1);
 
@@ -72,10 +70,10 @@ int main() {
             //FIXME4 - Call test function #fixed#
             test();
 
-            //FIXME5 - call findDistance function passing proper arguments #FIXED#
+            //FIXME5 - call findDistance function passing proper arguments #fixed#
             results = findDistance(x1, x2, y1, y2);
 
-            //FIXME6 – Using printf function display the returned distance with proper description
+            //FIXME6 – Using printf function display the returned distance with proper description #fixed#
             printf("The distance between your points is %i\n", results);
             } else {
                 return 0;
@@ -104,6 +102,6 @@ void test() {
     float result =  findDistance(4, 3, 5, 1);
     float expected = 2.236067f;
     assert( fabs(result - expected) <= epsilon); //accept the result if it's less than the error of margin
-    // FIXME8 - add at least two more test cases
+    // FIXME8 - add at least two more test cases #not fixed#
     cerr << "All tests passed...\n" << endl;
 }
