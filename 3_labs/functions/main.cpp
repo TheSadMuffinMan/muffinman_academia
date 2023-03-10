@@ -76,7 +76,7 @@ int main() {
             results = findDistance(x1, x2, y1, y2);
 
             //FIXME6 – Using printf function display the returned distance with proper description
-            printf("The distance between your points is %i", results);
+            printf("The distance between your points is %i\n", results);
             } else {
                 return 0;
             }

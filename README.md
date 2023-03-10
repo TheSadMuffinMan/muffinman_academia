@@ -51,4 +51,4 @@
 | Status: Incomplete |
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/functions |
 | Self Grade: 80 |
-| Notes: In progress.. The way that we are coding this is NOT the way I would do it T_T |
+| Notes: Almost complete |
