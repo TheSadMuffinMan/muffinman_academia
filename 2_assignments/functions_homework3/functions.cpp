@@ -6,29 +6,33 @@ A Basic Calculator using Functions and Automated Unit Testing
 
 #include <iostream>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
 void userInput(string&);
 void greetUser(string userName);
+
 void addNums(float, float);
 
-
 int main(int argc, char *argv[]) {
-    // string userName;
-    // userInput(userName);
-    // greetUser(userName);
+    string userName;
+    userInput(userName);
+    greetUser(userName);
 
-    void addNums();
+    float userNum1 = 0;
+    float userNum2 = 0;
+
+    addNums(userNum1, userNum2);
 
     return 0;
 }
 
-void addNums(float, float){
-    float unum1, unum2;
+void addNums(float userNum1, float userNum2) {
     cout << "Please enter two numbers that you want to add together seperated by a space: " << endl;
-    cin >> unum1, unum2;
-    return unum1 + unum2;
+    cin >> userNum1 >> userNum2;
+    float addition = userNum1 + userNum2;
+    cout << userNum1 << " + " << userNum2 << " = " << addition << endl;
 }
 
 void userInput(string& userName) {
@@ -37,7 +41,6 @@ void userInput(string& userName) {
 }
 
 void greetUser(string userName) {
-    // Choose between the two
     // printf("Welcome %s to our multiplication table printer!\n", userName.c_str());
     cout << "Welcome " << userName << " to my program!\n" << endl;
 }
