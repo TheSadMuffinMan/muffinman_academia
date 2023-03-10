@@ -15,6 +15,9 @@ void greetUser(string userName);
 
 void addNums(float, float);
 void multNums(float, float);
+void divideNums(float, float);
+void subtNums(float, float);
+void modNums(float, float);
 
 int main(int argc, char *argv[]) {
     // string userName;
@@ -27,6 +30,9 @@ int main(int argc, char *argv[]) {
 
     addNums(userNum1, userNum2);
     multNums(userNum1, userNum2);
+    divideNums(userNum1, userNum2);
+    subtNums(userNum1, userNum2);
+    // modNums(userNum1, userNum2); // Comin back to this one
 
     return 0;
 }
@@ -41,6 +47,21 @@ void addNums(float userNum1, float userNum2) {
 void multNums(float userNum1, float userNum2) {
     float multiplication = userNum2 * userNum1;
     cout << userNum1 << " x " << userNum2 << " = " << multiplication << endl;
+}
+
+void divideNums(float userNum1, float userNum2) {
+    float division = userNum1 / userNum2;
+    cout << userNum1 << " / " << userNum2 << " = " << division << endl;
+}
+
+void subtNums(float userNum1, float userNum2) {
+    float subtraction = userNum1 - userNum2;
+    cout << userNum1 << " - " << userNum2 << " = " << subtraction << endl;
+}
+
+void modNums(float userNum1, float userNum2) {
+    float modulus = userNum1 % userNum2;
+    cout << userNum1 << " % " << userNum2 << " = " << modulus << endl;
 }
 
 void userInput(string& userName) {
