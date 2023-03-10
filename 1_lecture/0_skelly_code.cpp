@@ -30,4 +30,3 @@ void greetUser(string userName) {
     // printf("Welcome %s to our multiplication table printer!\n", userName.c_str());
     cout << "Welcome " << userName << " to my program!\n" << endl;
 }
-    
