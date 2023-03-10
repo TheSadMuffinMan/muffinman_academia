@@ -47,27 +47,28 @@ void clearScreen() {
 
 int main() {
     int x1, y1, x2, y2; // variables to store two points (x1, y1) and (x2, y2)
-    string ch1, ch2, ch3, ch4; // These variables will be ignored
+    char ch1, ch2, ch3; // These variables will be ignored
     int results;
 
     //FIXME-bonus - 10 bonus points - add loop until user wants to quit #fixed#
     char inputChar; // This is the variable that will let you exit the program
-    if (inputChar != 'e' && inputChar != 'E') {
-        cout << "Please enter \"e\" to enter... ";
+    cout << "Please enter \"e\" to enter... " << endl;
+    cin >> inputChar;
+
+    if (inputChar == 'e' || inputChar == 'E') {
         // The loop will execute the following block of code
-        cin >> inputChar;
             clearScreen();
             cout << "Hello, and welcome to my program. This program calculates distance between 2 points on a 2D coordinate.\n" << endl;
-            cout << "Please enter a point in the form (x, y): ";
-            
+            cout << "Please enter a point in the form (x , y): ";
             // parse the input stream
-            cin >> ch1 >> x1 >> ch2 >> ch3 >> y1 >> ch4; // value stored in all ch's are ignored
-            printf("(x1, y1) = (%d, %d)\n", x1, y1);
+            cin >> ch1 >> x1 >> ch2 >> y1 >> ch3; // value stored in all ch's are ignored
+
+            printf("You entered: (%d, %d)\n", x1, y1);
 
             cout << "Enter a second point in the form (x, y): ";
             //FIXME3 - Read/parse the second point and store data into variables x2 and y2 #fixed#
-            cin >> ch1 >> x2 >> ch2 >> ch3 >> y2 >> ch4;
-            cout << "**DEBUG** You entered " << "(" << x2 << "," << y2 << " )" << endl;
+            cin >> ch1 >> x2 >> ch2 >> y2 >> ch3;
+            printf("The second point you enetered is: (%d, %d)\n", x2, y2);
             //FIXME4 - Call test function #fixed#
             test();
 
@@ -76,8 +77,6 @@ int main() {
 
             //FIXME6 – Using printf function display the returned distance with proper description
             printf("The distance between your points is %i", results);
-
-            cout << "The program is complete. Please enter y to exit. " << endl;
             } else {
                 return 0;
             }
@@ -106,5 +105,5 @@ void test() {
     float expected = 2.236067f;
     assert( fabs(result - expected) <= epsilon); //accept the result if it's less than the error of margin
     // FIXME8 - add at least two more test cases
-    cerr << "all tests passed..." << endl;
+    cerr << "All tests passed...\n" << endl;
 }
