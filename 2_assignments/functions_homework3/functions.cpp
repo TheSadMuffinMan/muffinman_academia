@@ -18,6 +18,7 @@ void multNums(float, float);
 void divideNums(float, float);
 void subtNums(float, float);
 void modNums(float, float);
+void powerNums(float, float);
 
 int main(int argc, char *argv[]) {
     // string userName;
@@ -32,7 +33,8 @@ int main(int argc, char *argv[]) {
     multNums(userNum1, userNum2);
     divideNums(userNum1, userNum2);
     subtNums(userNum1, userNum2);
-    // modNums(userNum1, userNum2); // Comin back to this one
+    modNums(userNum1, userNum2); // Comin back to this one
+    powerNums(userNum1, userNum2);
 
     return 0;
 }
@@ -60,8 +62,16 @@ void subtNums(float userNum1, float userNum2) {
 }
 
 void modNums(float userNum1, float userNum2) {
-    float modulus = userNum1 % userNum2;
+    float modulus = (int)userNum1 % (int)userNum2;
+    cout << "\nC++ can only mod with ints, so if you input a float this one will not be accurate... :( " << endl;
     cout << userNum1 << " % " << userNum2 << " = " << modulus << endl;
+}
+
+void powerNums(float userNum1, float userNum2) {
+    float exponent = pow((int)userNum1, (int)userNum2);
+    cout << "\nC++ can only do exponents with ints, so if you input a float this one will not be accurate... :( " << endl;
+    cout << userNum1 << " to the power of " << userNum2 << " = " << exponent << endl;
+
 }
 
 void userInput(string& userName) {
