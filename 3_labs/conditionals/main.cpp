@@ -107,13 +107,13 @@ double findSum(const double &n1, const double &n2) {
 }
 
 double findDifference(const double &n1, const double &n2) {
-    //FIXME3 - subtract n2 from n1 and return the difference
+    //FIXME3 - subtract n2 from n1 and return the difference #fixed#
     return (n1 - n2);
 }
 
 double findProduct(const double &n1, const double &n2) {
-    //FIXME4 - multiply n1 by n2 and return the product
-    return 0;
+    //FIXME4 - multiply n1 by n2 and return the product #fixed#
+    return (n1 * n2);
 }
 
 void findAverage(const double &n1, const double &n2, double &avg) {
