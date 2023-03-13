@@ -108,7 +108,7 @@ double findSum(const double &n1, const double &n2) {
 
 double findDifference(const double &n1, const double &n2) {
     //FIXME3 - subtract n2 from n1 and return the difference
-    return 0;
+    return (n1 - n2);
 }
 
 double findProduct(const double &n1, const double &n2) {
