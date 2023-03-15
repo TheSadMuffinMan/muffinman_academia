@@ -17,6 +17,8 @@ int main(int argc, char *argv[]) {
     // userInput(userName);
     // greetUser(userName);
 
+    cout << "Press enter to quit: ";
+    cin.get();
     return 0;
 }
 
