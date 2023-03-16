@@ -1,7 +1,7 @@
 /*
 Conditional Lab
 Name: Anthony Streich
-Date: 13 Feb 23
+Date: 16 Feb 23
 FIXME1: Write programmer information #fixed#
 FIXME2: Today's Date #fixed#
 Program finds statistical values of two given numbers using user-defined functions.
@@ -117,10 +117,10 @@ double findProduct(const double &n1, const double &n2) {
 }
 
 void findAverage(const double &n1, const double &n2, double &avg) {
-    //FIXME5 - find the average of n1 and n2 and update avg
-    //FIXME6 - Must call findSum function to find the sum of n1 and n2
-    // Note: this void function doesn't return a value but
-    // the average will be stored in avg
+    //FIXME5 - find the average of n1 and n2 and update avg #fixed#
+    //FIXME6 - Must call findSum function to find the sum of n1 and n2 #fixed#
+    double average = ((findSum(n1, n2))/2);
+    // Note: this void function doesn't return a value but the average will be stored in avg
 }   
 
 double findLarger(const double &n1, const double &n2) {
@@ -131,12 +131,13 @@ double findLarger(const double &n1, const double &n2) {
 
 double findSmaller(const double &n1, const double &n2) {
     //FIXME7 - find the smaller of n1 and n2 and return it
-    return 0;
+    double smaller = (n1 <= n2) ? n1 : n2;
+    return smaller;
 }
 
 double findQuotient(const double &n1, const double &n2) {
     //FIXME8 - divide n1 by n2 and return the quotient
-    return 0;
+    return (n1 / n2);
 }
 
 // functions to run automated testing for various user-defined functions
@@ -147,8 +148,12 @@ void test() {
     assert(findSum(-5, 10.5) == 5.5); // test case 2
 
     // FIXME9 – Using assert function write at least 2 test cases for each of the following functions
-    // findDifference(), findProduct(), findLarger(),
-    // findSmaller(), findQuotient(), findAverage()
+    // findDifference(), findProduct(), findLarger(), findSmaller(), findQuotient(), findAverage()
+    
+    answer = findDifference(10, 5);
+    assert(answer == expected);
+    assert(findDifference(10, 5) == 5);
+
     printf("%s\n", "all test cases passed...");
 }
 
@@ -187,15 +192,28 @@ bool program() {
         case 2:
         {
             //FIXME10: call getTwoNumbers function
+            getTwoNumbers(num1, num2);
             //FIXME11: call findDifference function and print the result
+            double difference = findDifference(num1, num2);
+            cout << num1 << " - " << num2 << " = " << difference << endl;
             break;
         }
         case 3:
         {
             //FIXME12: get two numbers and find their product using functions
+            getTwoNumbers(num1, num2);
+            double product = findProduct(num1, num2);
+            cout << num1 << " x " << num2 << " = " << product << endl;
             break;
         }
         // FIXME13: complete the rest of the cases 4, 6, and 7
+        case 4: // Average
+        {
+            double dud = 0;
+            getTwoNumbers(num1, num2);
+            double averageInFunction = findAverage(num1, num2, dud);
+            cout << "The average between " << num1 << " and " << num2 << " is " << averageInFunction << endl;
+        }
         case 5:
         {
             // get two numbers
@@ -205,6 +223,18 @@ bool program() {
             // print the result
             printf("larger between %.2f & %.2f is %.2f\n", num1, num2, max);
             break;
+        }
+        case 6: // Smaller
+        {
+            getTwoNumbers(num1, num2);
+            double min = findSmaller(num1, num2);
+            cout << "The smaller of the two numbers is " << min << endl;
+        }
+        case 7: // Division
+        {
+            getTwoNumbers(num1, num2);
+            double quotient = findQuotient(num1, num2);
+            cout << num1 << " / " << num2 << " = " << quotient << endl;
         }
         case 8:
         default: // must be option 8
