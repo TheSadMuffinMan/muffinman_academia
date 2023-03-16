@@ -64,5 +64,6 @@
 | Due Date: 06-Mar-23 |
 | Status: As complete as it will get |
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/functions |
-| Self Grade: 80 |
-| Notes: Late, and FIXME8 is not complete |
+| Self Grade: 70 |
+| Notes: Late, and FIXME8 is not complete. Will work on over spring break but it's so late that I have to turn in what I have.
+| I have gone to the education center and scheduled time for a tutor. |
