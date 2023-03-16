@@ -1,4 +1,4 @@
-/* Notes
+/* Notes that I keep referencing
 CALLING FUNCTIONS NOTES
     return_type function_name(parameter_list) {
         Body of function

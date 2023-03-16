@@ -14,7 +14,7 @@ using namespace std;
 void userInput(string&);
 void greetUser(string userName);
 
-void addNums(float, float);
+float addNums(float, float);
 void multNums(float, float);
 void divideNums(float, float);
 void subtNums(float, float);
@@ -23,7 +23,7 @@ void powerNums(float, float);
 void sqrtNums(float);
 void largerNums(float, float);
 
-void tests();
+void tests(float, float);
 
 int main(int argc, char *argv[]) {
     // string userName;
@@ -43,16 +43,17 @@ int main(int argc, char *argv[]) {
     sqrtNums(userNum1);
     largerNums(userNum1, userNum2);
 
-    tests();
+    tests(userNum1, userNum2);
 
     return 0;
 }
 
-void addNums(float userNum1, float userNum2) {
+float addNums(float userNum1, float userNum2) {
     // cout << "Please enter two numbers that you want to add together seperated by a space: " << endl;
     // cin >> userNum1 >> userNum2;
     float addition = userNum1 + userNum2;
     cout << "\n" << userNum1 << " + " << userNum2 << " = " << addition << endl;
+    return addition;
 }
 
 void multNums(float userNum1, float userNum2) {
@@ -100,8 +101,8 @@ void largerNums(float userNum1, float userNum2) {
 }
 
 void tests() {
-    double answer = addNums(10, 12);
-    double expected = 22;
+    float answer = addNums(10, 12);
+    float expected = 22;
     assert(answer == expected); // test case 1
     assert(addNums(-5, 10) == 5); // test case 2
     cout << "All test cases passed." << endl;
