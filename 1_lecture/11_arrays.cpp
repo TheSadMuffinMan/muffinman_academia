@@ -15,11 +15,12 @@ void populateArray(char[], size_t);
 */
 
 int main(int argc, char *argv[]) {
-    long largeNums[100];
-    cout << "The size of largeNums is: " << sizeof(largeNums) << endl;
 
-    cout << "Press enter to quit: ";
-    cin.get();
+    // long largeNums[100];
+    // cout << "The size of largeNums is: " << sizeof(largeNums) << endl;
+
+    // cout << "Press enter to quit: ";
+    // cin.get();
 
     /*
     size_t arrSize = 10;
