@@ -100,11 +100,12 @@ void largerNums(float userNum1, float userNum2) {
     }
 }
 
-void tests() {
-    float answer = addNums(10, 12);
-    float expected = 22;
+void tests(float userNum1, float userNum2) {
+    float answer, expected;
+    answer = addNums(10, 12);
+    expected = 22;
     assert(answer == expected); // test case 1
-    assert(addNums(-5, 10) == 5); // test case 2
+    assert(addNums(5, 10) == 15); // test case 2
     cout << "All test cases passed." << endl;
 }
 

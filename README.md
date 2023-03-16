@@ -5,7 +5,7 @@
 | Description: ASCII Art |
 | Due Date: 13-Feb-23 |
 | Status: Complete |
-| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/hangman_basic |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/1_hangman_basic |
 | Self Grade: 100 |
 | Notes: Complete |
 
@@ -16,7 +16,7 @@
 | Description: Calculating area and perimeter of a triangle |
 | Due Date: 27-Feb-23 |
 | Status: Complete |
-| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/triangle |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/2_triangle |
 | Self Grade: 110 |
 | Notes: All criteria met, including checking whether or not the input forms a triangle |
 
@@ -26,10 +26,10 @@
 | Name of Assignment: Homework 3 |
 | Description: A Basic Calculator using Functions and Automated Unit Testing |
 | Due Date: 10-Mar-23 |
-| Status: Almost Complete |
-| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/functions_homework3 |
+| Status: Complete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_assignments/3_functions |
 | Self Grade: 90 |
-| Notes: Complete EXCEPT for the test functions |
+| Notes: Complete with extra credit, but its late |
 
 
 
