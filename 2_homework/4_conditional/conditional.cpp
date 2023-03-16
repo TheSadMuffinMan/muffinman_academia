@@ -1,8 +1,8 @@
 /*
 Name: Anthony Streich
-Date: 
-NAME/FUNCTION OF PROGRAM
-CURRENT ISSUES: 
+Date: 16 March 23
+Homework 4
+CURRENT ISSUES:
 */
 
 #include <iostream>
