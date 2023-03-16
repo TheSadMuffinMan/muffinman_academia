@@ -28,7 +28,15 @@
 | Self Grade: 90 |
 | Notes: Complete with extra credit, but its late |
 
-
+### Homework 4
+| Name: Anthony Streich |
+| Name of Assignment: Homework 4 |
+| Description: Write a command line interface (CLI) based menu-driven C++ program that computes certain values such as sum, product, max, min, average, oddity of any 5 given numbers along with the following requirements. |
+| Due Date: 27-Mar-23 |
+| Status: Incomplete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_homework/4_conditional |
+| Self Grade: - |
+| Notes: Only in the beginning stages |
 
 
 ### Lab #1

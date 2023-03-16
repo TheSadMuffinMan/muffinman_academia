@@ -8,6 +8,9 @@ Program finds statistical values of two given numbers using user-defined functio
 A menu-driven program that demonstrates user-defined functions, automated testing conditional statements and loop.
 */
 
+// CURRENT ISSUES:
+// Line 214 with the input. Why tf does findAverage (line 122) have a third parameter??
+
 #include <iostream>
 #include <cstdio>
 #include <string>
