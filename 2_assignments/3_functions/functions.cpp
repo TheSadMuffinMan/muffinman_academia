@@ -7,6 +7,7 @@ A Basic Calculator using Functions and Automated Unit Testing
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <cassert>
 
 using namespace std;
 
@@ -21,6 +22,8 @@ void modNums(float, float);
 void powerNums(float, float);
 void sqrtNums(float);
 void largerNums(float, float);
+
+void tests();
 
 int main(int argc, char *argv[]) {
     // string userName;
@@ -39,6 +42,8 @@ int main(int argc, char *argv[]) {
     powerNums(userNum1, userNum2); // Ditto ^
     sqrtNums(userNum1);
     largerNums(userNum1, userNum2);
+
+    tests();
 
     return 0;
 }
@@ -92,6 +97,14 @@ void largerNums(float userNum1, float userNum2) {
     } else {
         cout << "***BUG*** Uh oh, we shouldn't have gotten here... " << endl;
     }
+}
+
+void tests() {
+    double answer = addNums(10, 12);
+    double expected = 22;
+    assert(answer == expected); // test case 1
+    assert(addNums(-5, 10) == 5); // test case 2
+    cout << "All test cases passed." << endl;
 }
 
 void userInput(string& userName) {
