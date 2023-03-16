@@ -1,5 +1,4 @@
 ### Homework 1
-
 | Name: Anthony Streich |
 | Name of Assignment: Homework 1 |
 | Description: ASCII Art |
@@ -10,7 +9,6 @@
 | Notes: Complete |
 
 ### Homework 2
-
 | Name: Anthony Streich |
 | Name of Assignment: Homework 2 |
 | Description: Calculating area and perimeter of a triangle |
@@ -21,7 +19,6 @@
 | Notes: All criteria met, including checking whether or not the input forms a triangle |
 
 ### Homework 3
-
 | Name: Anthony Streich |
 | Name of Assignment: Homework 3 |
 | Description: A Basic Calculator using Functions and Automated Unit Testing |
@@ -35,35 +32,42 @@
 
 
 ### Lab #1
-
 | Name: Anthony Streich |
 | Name of Assignment: 1 - Std IO Lab |
 | Description: Lab covering standard input and output |
 | Due Date: 10-Feb-23 |
 | Status: 100% complete |
-| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/ascii |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/1_ascii |
 | Self Grade: 100 |
 | Notes: Good to go. Student aid helped! |
 
 ### Lab #2
-
 | Name: Anthony Streich |
 | Name of Assignment: Circle - Maths and Std IO Lab |
 | Description: Write a C++ program that calculates area and circumference of a circle whose radius is entered by the user when prompted. |
 | Due Date: 21-Feb-23 |
 | Status: Complete |
-| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/circle |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/2_circle |
 | Self Grade: 100 |
 | Notes: Complete |
 
 ### Lab #3
-
 | Name: Anthony Streich |
 | Name of Assignment: Point Distance |
 | Description: Program prompts the user to enter two points in the form (x1, y1) and (x2, y2) and finds the distance between the two points using a function. |
 | Due Date: 06-Mar-23 |
 | Status: As complete as it will get without help from tutors |
-| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/functions |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/3_functions |
 | Self Grade: 70 |
 | Notes: Late, and FIXME8 is not complete. Will work on over spring break but it's so late that I have to turn in what I have.
 | I have gone to the education center and scheduled time for a tutor. |
+
+### Lab #4
+| Name: Anthony Streich |
+| Name of Assignment: Conditional Lab |
+| Description: Write a C++ menu driven program that finds various statistical values of any two given numbers. The program must use functions to do the operations. The lab also demonstrates switch and conditional statements, loops, macros etc. |
+| Due Date: 15-Mar-23 |
+| Status: Nearing completion |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/4_conditionals |
+| Self Grade: - |
+| Notes: Working through a few issues, but nothing too crazy |
