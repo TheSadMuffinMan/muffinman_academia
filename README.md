@@ -75,7 +75,7 @@
 | Name of Assignment: Conditional Lab |
 | Description: Write a C++ menu driven program that finds various statistical values of any two given numbers. The program must use functions to do the operations. The lab also demonstrates switch and conditional statements, loops, macros etc. |
 | Due Date: 15-Mar-23 |
-| Status: Nearing completion |
+| Status: Complete |
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/4_conditionals |
-| Self Grade: - |
-| Notes: Working through a few issues, but nothing too crazy |
+| Self Grade: 90 |
+| Notes: Fully complete, but late. |

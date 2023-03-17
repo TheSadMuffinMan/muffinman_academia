@@ -131,13 +131,13 @@ double findLarger(const double &n1, const double &n2) {
 }
 
 double findSmaller(const double &n1, const double &n2) {
-    //FIXME7 - find the smaller of n1 and n2 and return it
+    //FIXME7 - find the smaller of n1 and n2 and return it #fixed#
     double smaller = (n1 <= n2) ? n1 : n2;
     return smaller;
 }
 
 double findQuotient(const double &n1, const double &n2) {
-    //FIXME8 - divide n1 by n2 and return the quotient
+    //FIXME8 - divide n1 by n2 and return the quotient #fixed#
     return (n1 / n2);
 }
 
@@ -148,7 +148,7 @@ void test() {
     assert(answer == expected); // test case 1
     assert(findSum(-5, 10.5) == 5.5); // test case 2
 
-    // FIXME9 – Using assert function write at least 2 test cases for each of the following functions
+    // FIXME9 – Using assert function write at least 2 test cases for each of the following functions #fixed#
     // findDifference(), findProduct(), findLarger(), findSmaller(), findQuotient(), findAverage()
     
     assert(findDifference(10, 5) == 5);
@@ -166,7 +166,6 @@ void test() {
     assert(findQuotient(10, 5) == 2);
     assert(findQuotient(40, 10) == 4);
 
-
     double expectedAnswer;
     findAverage(0, 0, expectedAnswer);
     assert(expectedAnswer == 0);
@@ -174,7 +173,7 @@ void test() {
     findAverage(5, 10, expectedAnswer);
     assert(expectedAnswer == 7.5);  
 
-    printf("%s\n", "all test cases passed...");
+    printf("%s\n", "All test cases passed!");
 }
 
 // the crux of the program that uses all the defined functions
@@ -211,22 +210,22 @@ bool program() {
         }
         case 2:
         {
-            //FIXME10: call getTwoNumbers function
+            //FIXME10: call getTwoNumbers function #fixed#
             getTwoNumbers(num1, num2);
-            //FIXME11: call findDifference function and print the result
+            //FIXME11: call findDifference function and print the result #fixed#
             double difference = findDifference(num1, num2);
             cout << num1 << " - " << num2 << " = " << difference << endl;
             break;
         }
         case 3:
         {
-            //FIXME12: get two numbers and find their product using functions
+            //FIXME12: get two numbers and find their product using functions #fixed#
             getTwoNumbers(num1, num2);
             double product = findProduct(num1, num2);
             cout << num1 << " x " << num2 << " = " << product << endl;
             break;
         }
-        // FIXME13: complete the rest of the cases 4, 6, and 7
+        // FIXME13: complete the rest of the cases 4, 6, and 7 #fixed#
         case 4: // Division
         {
             getTwoNumbers(num1, num2);
