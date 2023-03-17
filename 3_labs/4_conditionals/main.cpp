@@ -215,6 +215,7 @@ bool program() {
             getTwoNumbers(num1, num2);
             double quotient = findQuotient(num1, num2);
             cout << num1 << " / " << num2 << " = " << quotient << endl;
+            break;
         }
         case 5:
         {
@@ -223,7 +224,7 @@ bool program() {
             // find the larger of the two numbers
             double max = findLarger(num1, num2);
             // print the result
-            printf("larger between %.2f & %.2f is %.2f\n", num1, num2, max);
+            printf("The larger of the two numbers %.2f & %.2f is %.2f\n", num1, num2, max);
             break;
         }
         case 6: // Smaller
@@ -231,6 +232,7 @@ bool program() {
             getTwoNumbers(num1, num2);
             double min = findSmaller(num1, num2);
             cout << "The smaller of the two numbers is " << min << endl;
+            break;
         }
         case 7: // Average
         {
@@ -238,6 +240,7 @@ bool program() {
             getTwoNumbers(num1, num2);
             findAverage(num1, num2, dud);
             cout << "The average between " << num1 << " and " << num2 << " is " << dud << endl;
+            break;
         }
         case 8:
         default: // must be option 8
