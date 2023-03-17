@@ -122,7 +122,7 @@ double findProduct(const double &n1, const double &n2) {
 void findAverage(const double &n1, const double &n2, double &avg) {
     //FIXME5 - find the average of n1 and n2 and update avg #fixed#
     //FIXME6 - Must call findSum function to find the sum of n1 and n2 #fixed#
-    double average = ((findSum(n1, n2))/2);
+    avg = ((findSum(n1, n2))/2);
     // Note: this void function doesn't return a value but the average will be stored in avg
 }   
 
@@ -210,12 +210,11 @@ bool program() {
             break;
         }
         // FIXME13: complete the rest of the cases 4, 6, and 7
-        case 4: // Average
+        case 4: // Division
         {
-            double dud = 0;
             getTwoNumbers(num1, num2);
-            double averageInFunction = findAverage(num1, num2, dud);
-            cout << "The average between " << num1 << " and " << num2 << " is " << averageInFunction << endl;
+            double quotient = findQuotient(num1, num2);
+            cout << num1 << " / " << num2 << " = " << quotient << endl;
         }
         case 5:
         {
@@ -233,11 +232,12 @@ bool program() {
             double min = findSmaller(num1, num2);
             cout << "The smaller of the two numbers is " << min << endl;
         }
-        case 7: // Division
+        case 7: // Average
         {
+            double dud;
             getTwoNumbers(num1, num2);
-            double quotient = findQuotient(num1, num2);
-            cout << num1 << " / " << num2 << " = " << quotient << endl;
+            findAverage(num1, num2, dud);
+            cout << "The average between " << num1 << " and " << num2 << " is " << dud << endl;
         }
         case 8:
         default: // must be option 8
