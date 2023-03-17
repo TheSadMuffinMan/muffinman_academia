@@ -16,6 +16,8 @@ CALLING FUNCTIONS NOTES
 
         The reason you have to put the function before main is because the function has to be pre-defined.
 
+PASS BY REFERENCE
+    Pass by reference requires a variable unless it is a const variable.
 
 
 

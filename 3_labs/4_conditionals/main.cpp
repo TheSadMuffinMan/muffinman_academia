@@ -1,15 +1,12 @@
 /*
 Conditional Lab
 Name: Anthony Streich
-Date: 16 Feb 23
+Date: 17 Feb 23
 FIXME1: Write programmer information #fixed#
 FIXME2: Today's Date #fixed#
 Program finds statistical values of two given numbers using user-defined functions.
 A menu-driven program that demonstrates user-defined functions, automated testing conditional statements and loop.
 */
-
-// CURRENT ISSUES:
-// Line 214 with the input. Why tf does findAverage (line 122) have a third parameter??
 
 #include <iostream>
 #include <cstdio>
@@ -119,6 +116,7 @@ double findProduct(const double &n1, const double &n2) {
     return (n1 * n2);
 }
 
+// There are three parameters here because it is a void, and this allows us to actually pull things out of the function.
 void findAverage(const double &n1, const double &n2, double &avg) {
     //FIXME5 - find the average of n1 and n2 and update avg #fixed#
     //FIXME6 - Must call findSum function to find the sum of n1 and n2 #fixed#
@@ -153,9 +151,28 @@ void test() {
     // FIXME9 – Using assert function write at least 2 test cases for each of the following functions
     // findDifference(), findProduct(), findLarger(), findSmaller(), findQuotient(), findAverage()
     
-    answer = findDifference(10, 5);
-    assert(answer == expected);
     assert(findDifference(10, 5) == 5);
+    assert(findDifference(10, 6) == 4);
+
+    assert(findProduct(10, 5) == 50);
+    assert(findProduct(8, 4) == 32);
+
+    assert(findLarger(5, 4) == 5);
+    assert(findLarger(10, 4) == 10);
+
+    assert(findSmaller(5, 4) == 4);
+    assert(findSmaller(10, 4) == 4);
+
+    assert(findQuotient(10, 5) == 2);
+    assert(findQuotient(40, 10) == 4);
+
+
+    double expectedAnswer;
+    findAverage(0, 0, expectedAnswer);
+    assert(expectedAnswer == 0);
+
+    findAverage(5, 10, expectedAnswer);
+    assert(expectedAnswer == 7.5);  
 
     printf("%s\n", "all test cases passed...");
 }
