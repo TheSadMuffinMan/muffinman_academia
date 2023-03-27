@@ -13,6 +13,8 @@ using namespace std;
 
 void userInput(string&);
 void greetUser(string userName);
+
+int promptNums(int, int, int, int, int);
 int totalSum(int, int, int, int, int);
 
 int main(int argc, char *argv[]) {
@@ -20,8 +22,13 @@ int main(int argc, char *argv[]) {
     userInput(userName);
     greetUser(userName);
 
-    cout << "Press enter to quit: ";
+    int num1, num2, num3, num4, num5;
+
+    promptNums(num1, num2, num3, num4, num5);
+
+    cout << "Press enter to quit: \n";
     cin.get();
+
     return 0;
 }
 
@@ -36,6 +43,11 @@ void greetUser(string userName) {
     cout << "Welcome " << userName << " to my program!\n" << endl;
 }
 
-int totalSum(int num1, int num2, int num3, int num4, int num5){
-    
+int promptNums(int num1, int num2, int num3, int num4, int num5){
+    cout << "Please enter 5 numbers, seperated by hitting enter: " << endl;
+    cin >> num1 >> num2 >> num3 >> num4 >> num5;
+}
+
+int totalSum(int &num1, int &num2, int &num3, int &num4, int &num5){
+    return num1 + num2 + num3 + num4 + num5;
 }
