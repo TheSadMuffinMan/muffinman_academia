@@ -15,6 +15,8 @@ void userInput(string&);
 void greetUser(string userName);
 
 void getNums(float&, float&, float&, float&, float&);
+void printMenu(int);
+
 float totalSum(float&, float&, float&, float&, float&);
 float totalMult(float&, float&, float&, float&, float&);
 float average(float&, float&, float&, float&, float&);
@@ -30,8 +32,11 @@ int main(int argc, char *argv[]) {
     float num1, num2, num3, num4, num5;
     getNums(num1, num2, num3, num4, num5);
 
+    int userChoice;
+    printMenu(userChoice);
+
     // SUM
-    cout << "\nThe sum of your numbers is " << totalSum(num1, num2, num3, num4, num5) << endl;
+    cout << "\n\nThe sum of your numbers is " << totalSum(num1, num2, num3, num4, num5) << endl;
 
     // MULTIPLICATION
     cout << "The product of all your numbers is " << totalMult(num1, num2, num3, num4, num5) << endl;
@@ -46,7 +51,7 @@ int main(int argc, char *argv[]) {
     cout << "The smallest number of the input numbers is " << smallestValue(num1, num2, num3, num4, num5) << endl;
 
     // FLOOR (add all nums, round DOWN to nearest int, find if odd or even)
-    cout << "The floor of the sums is... " << floorFunction(num1, num2, num3, num4, num5) << endl;
+    cout << "The floor of the sums is " << floorFunction(num1, num2, num3, num4, num5) << "." << endl;
 
     return 0;
 }
@@ -63,8 +68,20 @@ void greetUser(string userName) {
 }
 
 void getNums(float &num1, float &num2, float &num3, float &num4, float &num5){
-    cout << "Please enter 5 numbers, seperated by hitting enter: \n" << endl;
+    cout << "Please enter 5 numbers, seperated by a space or by hitting enter after each number: \n" << endl;
     cin >> num1 >> num2 >> num3 >> num4 >> num5;
+}
+
+void printMenu(int userChoice){
+    cout << "Menu options:\n";
+    cout << "[1] Finds the sum of input numbers\n";
+    cout << "[2] Finds the product of input numbers\n";
+    cout << "[3] Finds the average of input numbers\n";
+    cout << "[4] Finds the largest of the input numbers\n";
+    cout << "[5] Finds the smallest of the input numbers\n";
+    cout << "[6] Finds the floor of the sum, and tells you if it's even or odd\n";
+    cout << "[7] Quit the program\n";
+    cout << "Enter one of the menu options [1-7]: ";
 }
 
 float totalSum(float &num1, float &num2, float &num3, float &num4, float &num5){
