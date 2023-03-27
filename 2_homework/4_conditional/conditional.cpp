@@ -16,6 +16,8 @@ void greetUser(string userName);
 
 void getNums(float&, float&, float&, float&, float&);
 float totalSum(float&, float&, float&, float&, float&);
+float totalMult(float&, float&, float&, float&, float&);
+float average(float&, float&, float&, float&, float&);
 
 int main(int argc, char *argv[]) {
     string userName;
@@ -25,8 +27,14 @@ int main(int argc, char *argv[]) {
     float num1, num2, num3, num4, num5;
     getNums(num1, num2, num3, num4, num5);
 
-    float sum = totalSum(num1, num2, num3, num4, num5);
-    cout << "The sum of your numbers is " << sum << endl;
+    // SUM
+    cout << "The sum of your numbers is " << totalSum(num1, num2, num3, num4, num5) << endl;
+
+    // MULTIPLICATION
+    cout << "The product of all your numbers is " << totalMult(num1, num2, num3, num4, num5) << endl;
+
+    // AVERAGE
+    cout << "The average number between the 5 you entered is " << average(num1, num2, num3, num4, num5) << endl;
 
     return 0;
 }
@@ -49,4 +57,12 @@ void getNums(float &num1, float &num2, float &num3, float &num4, float &num5){
 
 float totalSum(float &num1, float &num2, float &num3, float &num4, float &num5){
     return (num1 + num2 + num3 + num4 + num5);
+}
+
+float totalMult(float &num1, float &num2, float &num3, float &num4, float &num5){
+    return (num1 * num2 * num3 * num4 * num5);
+}
+
+float average(float &num1, float &num2, float &num3, float &num4, float &num5){
+    return (totalSum(num1, num2, num3, num4, num5) / 5);
 }
