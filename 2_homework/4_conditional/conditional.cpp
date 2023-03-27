@@ -2,7 +2,7 @@
 Name: Anthony Streich
 Date: 27 March 23
 Homework 4
-CURRENT ISSUES:
+CURRENT ISSUES: I can't seem to get the numbers to work. They keep coming up as random numbers.
 */
 
 #include <iostream>
@@ -19,12 +19,12 @@ void printMenu(void);
 
 bool mainProgram(int);
 
-float totalSum(float&, float&, float&, float&, float&);
-float totalMult(float&, float&, float&, float&, float&);
-float average(float&, float&, float&, float&, float&);
-float largestValue(float&, float&, float&, float&, float&);
-float smallestValue(float&, float&, float&, float&, float&);
-string floorFunction(float&, float&, float&, float&, float&);
+float totalSum(float, float, float, float, float);
+float totalMult(float, float, float, float, float);
+float average(float, float, float, float, float);
+float largestValue(float, float, float, float, float);
+float smallestValue(float, float, float, float, float);
+string floorFunction(float, float, float, float, float);
 
 int main(int argc, char *argv[]) {
     string userName;
@@ -75,7 +75,6 @@ bool mainProgram(int){
     float num1, num2, num3, num4, num5;
     do {
         if (cin >> userChoice && userChoice >= 1 && userChoice <= 7) {
-            //input is valid, break loop
             break;
         }
         else {
@@ -91,27 +90,27 @@ bool mainProgram(int){
             }
 
             case 2: { // MULTIPLICATION
-                cout << "The product of all your numbers is " << totalMult(num1, num2, num3, num4, num5) << endl;
+                cout << "\nThe product of all your numbers is " << totalMult(num1, num2, num3, num4, num5) << endl;
                 break;
             }
 
             case 3: { // AVERAGE
-                cout << "The average number between the 5 you entered is " << average(num1, num2, num3, num4, num5) << endl;
+                cout << "\nThe average number between the 5 you entered is " << average(num1, num2, num3, num4, num5) << endl;
                 break;
             }
 
             case 4: { // LARGEST NUMBER
-                cout << "The largest number of the numbers input is " << largestValue(num1, num2, num3, num4, num5) << endl;
+                cout << "\nThe largest number of the numbers input is " << largestValue(num1, num2, num3, num4, num5) << endl;
                 break;
             }
 
             case 5: { // SMALLEST NUMBER
-                cout << "The smallest number of the input numbers is " << smallestValue(num1, num2, num3, num4, num5) << endl;
+                cout << "\nThe smallest number of the input numbers is " << smallestValue(num1, num2, num3, num4, num5) << endl;
                 break;
             }
 
             case 6: { // FLOOR
-                cout << "The floor of the sums is " << floorFunction(num1, num2, num3, num4, num5) << "." << endl;
+                cout << "\nThe floor of the sums is " << floorFunction(num1, num2, num3, num4, num5) << "." << endl;
                 break;
             }
 
@@ -123,19 +122,19 @@ bool mainProgram(int){
     return 0;
 }
 
-float totalSum(float &num1, float &num2, float &num3, float &num4, float &num5){
+float totalSum(float num1, float num2, float num3, float num4, float num5){
     return (num1 + num2 + num3 + num4 + num5);
 }
 
-float totalMult(float &num1, float &num2, float &num3, float &num4, float &num5){
+float totalMult(float num1, float num2, float num3, float num4, float num5){
     return (num1 * num2 * num3 * num4 * num5);
 }
 
-float average(float &num1, float &num2, float &num3, float &num4, float &num5){
+float average(float num1, float num2, float num3, float num4, float num5){
     return (totalSum(num1, num2, num3, num4, num5) / 5);
 }
 
-float largestValue(float &num1, float &num2, float &num3, float &num4, float &num5){
+float largestValue(float num1, float num2, float num3, float num4, float num5){
     float highestNum = 0;
     if (num1 >= num2) {
         highestNum = num1;
@@ -161,7 +160,7 @@ float largestValue(float &num1, float &num2, float &num3, float &num4, float &nu
     return highestNum;
 }
 
-float smallestValue(float &num1, float &num2, float &num3, float &num4, float &num5){
+float smallestValue(float num1, float num2, float num3, float num4, float num5){
     float smallestNum = 0;
     if (num1 <= num2) {
         smallestNum = num1;
@@ -187,7 +186,7 @@ float smallestValue(float &num1, float &num2, float &num3, float &num4, float &n
     return smallestNum;
 }
 
-string floorFunction(float &num1, float &num2, float &num3, float &num4, float &num5){
+string floorFunction(float num1, float num2, float num3, float num4, float num5){
     float firstSum = totalSum(num1, num2, num3, num4, num5);
     int secondSum = floor(firstSum);
     int finalFloor = (secondSum % 2);
