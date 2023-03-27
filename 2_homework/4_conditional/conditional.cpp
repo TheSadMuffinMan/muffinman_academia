@@ -18,6 +18,7 @@ void getNums(float&, float&, float&, float&, float&);
 float totalSum(float&, float&, float&, float&, float&);
 float totalMult(float&, float&, float&, float&, float&);
 float average(float&, float&, float&, float&, float&);
+float largestValue(float&, float&, float&, float&, float&);
 
 int main(int argc, char *argv[]) {
     string userName;
@@ -36,6 +37,8 @@ int main(int argc, char *argv[]) {
     // AVERAGE
     cout << "The average number between the 5 you entered is " << average(num1, num2, num3, num4, num5) << endl;
 
+    // LARGEST VALUE
+    cout << "The largest number of the numbers input is " << largestValue(num1, num2, num3, num4, num5) << endl;
     return 0;
 }
 
@@ -65,4 +68,30 @@ float totalMult(float &num1, float &num2, float &num3, float &num4, float &num5)
 
 float average(float &num1, float &num2, float &num3, float &num4, float &num5){
     return (totalSum(num1, num2, num3, num4, num5) / 5);
+}
+
+float largestValue(float &num1, float &num2, float &num3, float &num4, float &num5){
+    float highestNum = 0;
+    if (num1 >= num2) {
+        highestNum = num1;
+    } else {
+        highestNum = num2;
+    }
+
+    if (highestNum < num3) {
+        highestNum = num3;
+    } else {
+    }
+
+    if (highestNum < num4) {
+        highestNum = num4;
+    } else {
+    }
+
+    if (highestNum < num5) {
+        highestNum = num5;
+    } else {
+    }
+
+    return highestNum;
 }
