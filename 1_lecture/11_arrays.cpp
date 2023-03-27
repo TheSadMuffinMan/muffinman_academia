@@ -16,6 +16,26 @@ void populateArray(char[], size_t);
 
 int main(int argc, char *argv[]) {
 
+/*
+    // This is how to create an array on the heap.
+    string *myWords; // Can also be string *myWords = new string[x];
+    myWords = new string[10];
+    delete[] myWords;
+*/
+
+    /*
+    This is just fun with argument counters and argv stuff...
+
+    cout << "argc: " << argc << endl;
+    for (int i=0; i<argc; i++) {
+        cout << "argv[" << i << << "]: " << argv[i] << endl;
+    }
+
+    if ((string)argv[1] == "test" && argc >= 2) {
+        cout << "We are running tests." << endl;
+    }
+    */
+
     // long largeNums[100];
     // cout << "The size of largeNums is: " << sizeof(largeNums) << endl;
 
