@@ -31,5 +31,5 @@ void userInput(string& userName) {
 void greetUser(string userName) {
     // Choose between the two
     // printf("Welcome %s to my program!\n", userName.c_str());
-    cout << "Welcome " << userName << " to my program!\n" << endl;
+    cout << "\nWelcome " << userName << " to my program!\n" << endl;
 }

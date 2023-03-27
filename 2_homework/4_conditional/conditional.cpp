@@ -22,8 +22,10 @@ int main(int argc, char *argv[]) {
     userInput(userName);
     greetUser(userName);
 
-    int n1, n2, n3, n4, n5;
-    getNums(n1, n2, n3, n4, n5);
+    int num1, num2, num3, num4, num5;
+    getNums(num1, num2, num3, num4, num5);
+
+    totalSum(num1, num2, num3, num4, num5);
 
     return 0;
 }
@@ -36,7 +38,7 @@ void userInput(string& userName) {
 void greetUser(string userName) {
     // Choose between the two
     // printf("Welcome %s to my program!\n", userName.c_str());
-    cout << "Welcome " << userName << " to my program!\n" << endl;
+    cout << "\nWelcome " << userName << " to my program!\n" << endl;
 }
 
 void getNums(int n1, int n2, int n3, int n4, int n5){
@@ -45,5 +47,6 @@ void getNums(int n1, int n2, int n3, int n4, int n5){
 }
 
 int totalSum(int num1, int num2, int num3, int num4, int num5){
-    return num1 + num2 + num3 + num4 + num5;
+    int sum = num1 + num2 + num3 + num4 + num5;
+    return sum;
 }
