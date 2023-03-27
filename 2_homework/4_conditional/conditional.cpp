@@ -19,6 +19,8 @@ float totalSum(float&, float&, float&, float&, float&);
 float totalMult(float&, float&, float&, float&, float&);
 float average(float&, float&, float&, float&, float&);
 float largestValue(float&, float&, float&, float&, float&);
+float smallestValue(float&, float&, float&, float&, float&);
+string floorFunction(float&, float&, float&, float&, float&);
 
 int main(int argc, char *argv[]) {
     string userName;
@@ -29,7 +31,7 @@ int main(int argc, char *argv[]) {
     getNums(num1, num2, num3, num4, num5);
 
     // SUM
-    cout << "The sum of your numbers is " << totalSum(num1, num2, num3, num4, num5) << endl;
+    cout << "\nThe sum of your numbers is " << totalSum(num1, num2, num3, num4, num5) << endl;
 
     // MULTIPLICATION
     cout << "The product of all your numbers is " << totalMult(num1, num2, num3, num4, num5) << endl;
@@ -39,6 +41,13 @@ int main(int argc, char *argv[]) {
 
     // LARGEST VALUE
     cout << "The largest number of the numbers input is " << largestValue(num1, num2, num3, num4, num5) << endl;
+
+    // SMALLEST VALUE
+    cout << "The smallest number of the input numbers is " << smallestValue(num1, num2, num3, num4, num5) << endl;
+
+    // FLOOR (add all nums, round DOWN to nearest int, find if odd or even)
+    cout << "The floor of the sums is... " << floorFunction(num1, num2, num3, num4, num5) << endl;
+
     return 0;
 }
 
@@ -94,4 +103,41 @@ float largestValue(float &num1, float &num2, float &num3, float &num4, float &nu
     }
 
     return highestNum;
+}
+
+float smallestValue(float &num1, float &num2, float &num3, float &num4, float &num5){
+    float smallestNum = 0;
+    if (num1 <= num2) {
+        smallestNum = num1;
+    } else {
+        smallestNum = num2;
+    }
+
+    if (smallestNum > num3) {
+        smallestNum = num3;
+    } else {
+    }
+
+    if (smallestNum > num4) {
+        smallestNum = num4;
+    } else {
+    }
+
+    if (smallestNum > num5) {
+        smallestNum = num5;
+    } else {
+    }
+
+    return smallestNum;
+}
+
+string floorFunction(float &num1, float &num2, float &num3, float &num4, float &num5){
+    float firstSum = totalSum(num1, num2, num3, num4, num5);
+    int secondSum = floor(firstSum);
+    int finalFloor = (secondSum % 2);
+    if (finalFloor == 1) {
+        return "odd";
+    } else {
+        return "even";
+    }
 }
