@@ -15,6 +15,9 @@ CALLING FUNCTIONS NOTES
         Parameter_list: the values that the function itself will be using.
 
         The reason you have to put the function before main is because the function has to be pre-defined.
+        f(x) is another way to represent functions (in your mind).
+            Voids will almost always stand alone in a single line.
+
 
 PASS BY REFERENCE
     Pass by reference requires a variable unless it is a const variable.

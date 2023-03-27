@@ -1,12 +1,13 @@
 /*
 Name: Anthony Streich
-Date: 16 March 23
+Date: 17 March 23
 Homework 4
 CURRENT ISSUES:
 */
 
 #include <iostream>
 #include <string>
+#include <cmath>
 
 using namespace std;
 
@@ -14,9 +15,9 @@ void userInput(string&);
 void greetUser(string userName);
 
 int main(int argc, char *argv[]) {
-    // string userName;
-    // userInput(userName);
-    // greetUser(userName);
+    string userName;
+    userInput(userName);
+    greetUser(userName);
 
     cout << "Press enter to quit: ";
     cin.get();
