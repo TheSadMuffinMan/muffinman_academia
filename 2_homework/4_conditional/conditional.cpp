@@ -14,18 +14,19 @@ using namespace std;
 void userInput(string&);
 void greetUser(string userName);
 
-void getNums(int, int, int, int, int);
-int totalSum(int, int, int, int, int);
+void getNums(float&, float&, float&, float&, float&);
+float totalSum(float&, float&, float&, float&, float&);
 
 int main(int argc, char *argv[]) {
     string userName;
     userInput(userName);
     greetUser(userName);
 
-    int num1, num2, num3, num4, num5;
+    float num1, num2, num3, num4, num5;
     getNums(num1, num2, num3, num4, num5);
 
-    totalSum(num1, num2, num3, num4, num5);
+    float sum = totalSum(num1, num2, num3, num4, num5);
+    cout << "The sum of your numbers is " << sum << endl;
 
     return 0;
 }
@@ -41,12 +42,11 @@ void greetUser(string userName) {
     cout << "\nWelcome " << userName << " to my program!\n" << endl;
 }
 
-void getNums(int n1, int n2, int n3, int n4, int n5){
-    cout << "Please enter 5 numbers, seperated by hitting enter: " << endl;
-    cin >> n1 >> n2 >> n3 >> n4 >> n5;
+void getNums(float &num1, float &num2, float &num3, float &num4, float &num5){
+    cout << "Please enter 5 numbers, seperated by hitting enter: \n" << endl;
+    cin >> num1 >> num2 >> num3 >> num4 >> num5;
 }
 
-int totalSum(int num1, int num2, int num3, int num4, int num5){
-    int sum = num1 + num2 + num3 + num4 + num5;
-    return sum;
+float totalSum(float &num1, float &num2, float &num3, float &num4, float &num5){
+    return (num1 + num2 + num3 + num4 + num5);
 }
