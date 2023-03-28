@@ -33,10 +33,10 @@
 | Name of Assignment: Homework 4 |
 | Description: Write a command line interface (CLI) based menu-driven C++ program that computes certain values such as sum, product, max, min, average, oddity of any 5 given numbers along with the following requirements. |
 | Due Date: 27-Mar-23 |
-| Status: Mostly complete |
+| Status: Almost complete |
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_homework/4_conditional |
-| Self Grade: 70 |
-| Notes: Mostly complete, but I'm running into issues with the input numbers assigning random values |
+| Self Grade: 80 |
+| Notes: Late, but just needs test cases |
 
 
 ### Lab #1
