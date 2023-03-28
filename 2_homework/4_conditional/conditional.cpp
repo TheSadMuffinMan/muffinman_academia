@@ -31,9 +31,6 @@ int main(int argc, char *argv[]) {
     userInput(userName);
     greetUser(userName);
 
-    float num1, num2, num3, num4, num5;
-    getNums(num1, num2, num3, num4, num5);
-
     printMenu();
 
     int userChoice = 0;
@@ -48,8 +45,6 @@ void userInput(string& userName) {
 }
 
 void greetUser(string userName) {
-    // Choose between the two
-    // printf("Welcome %s to my program!\n", userName.c_str());
     cout << "\nWelcome " << userName << " to my program!\n" << endl;
 }
 
@@ -83,6 +78,7 @@ bool mainProgram(int){
             cout << "Invalid option, please enter a value between 1 and 7" << endl;
         }
     } while (true);
+        getNums(num1, num2, num3, num4, num5);
         switch(userChoice) {
             case 1: { // SUM
                 cout << "\n\nThe sum of your numbers is " << totalSum(num1, num2, num3, num4, num5) << endl;
@@ -144,17 +140,14 @@ float largestValue(float num1, float num2, float num3, float num4, float num5){
 
     if (highestNum < num3) {
         highestNum = num3;
-    } else {
     }
 
     if (highestNum < num4) {
         highestNum = num4;
-    } else {
     }
 
     if (highestNum < num5) {
         highestNum = num5;
-    } else {
     }
 
     return highestNum;
