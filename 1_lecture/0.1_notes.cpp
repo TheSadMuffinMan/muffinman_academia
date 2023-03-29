@@ -23,5 +23,10 @@ PASS BY REFERENCE
     Pass by reference requires a variable unless it is a const variable.
 
 
-
+variable.at()
+    This is how to make sure that your array's do not access anything that is outside of their parameters.
+    cout << "The length of your string is: " << fullName.length() << endl;
+    for(size_t i = 0; i < fullName.length()+1; i++){
+        cout << "fullName[" << i << "]: " << fullName[i] << endl;
+        cout << "fullName.at(" << i << "):" << fullName.at(i) << endl;
 */

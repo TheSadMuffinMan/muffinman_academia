@@ -83,7 +83,7 @@ bool mainProgram(int){
         getNums(num1, num2, num3, num4, num5);
         switch(userChoice) {
             case 1: { // SUM
-                cout << "\n\nThe sum of your numbers is " << totalSum(num1, num2, num3, num4, num5) << endl;
+                cout << "\nThe sum of your numbers is " << totalSum(num1, num2, num3, num4, num5) << endl;
                 break;
             }
 
@@ -93,7 +93,7 @@ bool mainProgram(int){
             }
 
             case 3: { // AVERAGE
-                cout << "\nThe average number between the 5 you entered is " << average(num1, num2, num3, num4, num5) << endl;
+                cout << "\nThe average number of the input numbers is " << average(num1, num2, num3, num4, num5) << endl;
                 break;
             }
 
@@ -108,7 +108,7 @@ bool mainProgram(int){
             }
 
             case 6: { // FLOOR
-                cout << "\nThe floor of the sums is " << floorFunction(num1, num2, num3, num4, num5) << "." << endl;
+                cout << "\nThe floor of the sums is " << floorFunction(num1, num2, num3, num4, num5) << endl;
                 break;
             }
 
@@ -165,17 +165,14 @@ float smallestValue(float num1, float num2, float num3, float num4, float num5){
 
     if (smallestNum > num3) {
         smallestNum = num3;
-    } else {
     }
 
     if (smallestNum > num4) {
         smallestNum = num4;
-    } else {
     }
 
     if (smallestNum > num5) {
         smallestNum = num5;
-    } else {
     }
 
     return smallestNum;
@@ -193,8 +190,14 @@ string floorFunction(float num1, float num2, float num3, float num4, float num5)
 }
 
 void test(float, float, float, float, float){
-    float testNum1, testNum2, dudNum1, dudNum2, dudNum3;
+    float testNum1, testNum2, testNum3, testNum4, testNum5;
     testNum1 = 1;
     testNum2 = 2;
-    assert(totalSum(testNum1, testNum2, dudNum1, dudNum2, dudNum3) == 6);
+    testNum3 = 3;
+    testNum4 = 4;
+    testNum5 = 5;
+
+    assert(totalSum(testNum1, testNum2, testNum3, testNum4, testNum5) == 15);
+    assert(totalSum(2, 4, 6, 8, 10) == 30);
+    assert(totalSum(1, 3, 5, 7, 9) == 25);
 }
