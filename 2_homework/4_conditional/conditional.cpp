@@ -26,7 +26,7 @@ float average(float, float, float, float, float);
 float largestValue(float, float, float, float, float);
 float smallestValue(float, float, float, float, float);
 string floorFunction(float, float, float, float, float);
-void test(float, float, float, float, float);
+void test();
 
 int main(int argc, char *argv[]) {
     string userName;
@@ -37,6 +37,8 @@ int main(int argc, char *argv[]) {
 
     int userChoice = 0;
     mainProgram(userChoice);
+
+    test();
 
     return 0;
 }
@@ -189,7 +191,7 @@ string floorFunction(float num1, float num2, float num3, float num4, float num5)
     }
 }
 
-void test(float, float, float, float, float){
+void test(){
     float testNum1, testNum2, testNum3, testNum4, testNum5;
     testNum1 = 1;
     testNum2 = 2;
@@ -200,4 +202,25 @@ void test(float, float, float, float, float){
     assert(totalSum(testNum1, testNum2, testNum3, testNum4, testNum5) == 15);
     assert(totalSum(2, 4, 6, 8, 10) == 30);
     assert(totalSum(1, 3, 5, 7, 9) == 25);
+
+    assert(totalMult(testNum1, testNum2, testNum3, testNum4, testNum5) == 120);
+    assert(totalMult(2, 4, 6, 8, 10) == 3840);
+    assert(totalMult(1, 3, 5, 7, 9) == 945);
+
+    assert(average(testNum1, testNum2, testNum3, testNum4, testNum5) == 3);
+    assert(average(2, 4, 6, 8, 10) == 6);
+    assert(average(1, 3, 5, 7, 9) == 5);
+
+    assert(largestValue(testNum1, testNum2, testNum3, testNum4, testNum5) == 5);
+    assert(largestValue(2, 4, 6, 8, 10) == 10);
+    assert(largestValue(1, 3, 5, 7, 9) == 9);
+
+    assert(smallestValue(testNum1, testNum2, testNum3, testNum4, testNum5) == 1);
+    assert(smallestValue(2, 4, 6, 8, 10) == 2);
+    assert(smallestValue(1, 3, 5, 7, 9) == 1);
+
+    assert(floorFunction(testNum1, testNum2, testNum3, testNum4, testNum5) == "odd");
+    assert(floorFunction(2, 4, 6, 8, 10) == "even");
+    assert(floorFunction(1, 3, 5, 7, 9) == "odd");
+
 }
