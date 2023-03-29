@@ -10,7 +10,9 @@ NAME/FUNCTION OF PROGRAM
 using namespace std;
 
 void printArray(int[], size_t);
-void bubbleSort(int[], size_t);
+
+template <class T1>
+void bubbleSort(T1[], size_t);
 //                 char **argv
 int main(int argc, char *argv[]) {
     // size_t arrSize1, arrSize2, arrSize3;
@@ -39,17 +41,16 @@ int main(int argc, char *argv[]) {
     cout << "Start:\t";
     printArray(nums, arrSize);
 
-    bubbleSort(nums, arrSize);
+    bubbleSort<int>(nums, arrSize);
 
     cout << "End:\t";
     printArray(nums, arrSize);
 
-
-
     return 0;
 }
 
-void bubbleSort(int nums[], size_t arrSize) {
+template <class T1>
+void bubbleSort(T1 nums[], size_t arrSize) {
     // int numIterations = 0;
     for(size_t j = 0; j < arrSize; j++) {
         // numIterations = 0;
@@ -58,7 +59,7 @@ void bubbleSort(int nums[], size_t arrSize) {
             if(nums[i] >= nums[i+1]) {
                 swapped = true;
                 //swap values
-                int tmpNum = nums[i];
+                T1 tmpNum = nums[i];
                 nums[i] = nums[i+1];
                 nums[i+1] = tmpNum;
             }
@@ -75,7 +76,7 @@ void bubbleSort(int nums[], size_t arrSize) {
     }
 }
 
-void printArray(int numbers[], size_t arrSize) {
+void printArray<float>(int numbers[], size_t arrSize) {
     for (size_t i = 0; i < arrSize; i++) {
         // cout << "numbers[" << i << "]: " << numbers[i] << endl;
         cout << numbers[i] << " ";
