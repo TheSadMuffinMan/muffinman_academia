@@ -12,21 +12,7 @@
 
 using namespace std;
 
-
-void printTriangle(int height) {
-    //Function takes height as an argument to print the triangle
-    //of that height with *
-    int row = 1;
-    // row
-    while (row <= height) {
-        // column
-        for(int col = 1; col<=row; col++)
-            cout << "* ";
-        row += 1;
-        cout << endl;
-    }
-}
-
+void printTriangle(int);
 
 void printFlippedTriangle(int height) {
     /* 
@@ -92,4 +78,19 @@ int main(int argc, char* argv[]) {
     // Use conditional statements to break the loop or continue the loop
 
     return 0;
+}
+
+
+void printTriangle(int height) {
+    //Function takes height as an argument to print the triangle
+    //of that height with *
+    int row = 1;
+    // row
+    while (row <= height) {
+        // column
+        for(int col = 1; col<=row; col++)
+            cout << "* ";
+        row += 1;
+        cout << endl;
+    }
 }

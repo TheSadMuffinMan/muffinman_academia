@@ -14,7 +14,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 PROGRAM = lecture.exe
 
 # list all .cpp files separated by space
-CPPFILES = 12_strings.cpp
+CPPFILES = 0.3_playground.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
