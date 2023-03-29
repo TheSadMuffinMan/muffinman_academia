@@ -5,20 +5,22 @@
 
 using namespace std;
 
-void printFlippedTriangle(int);
+void squareStuff(int);
 
 int main(int argc, char *argv[]) {
-    printFlippedTriangle(5);
+    int height;
+    cout << "Enter height: " << endl;
+    cin >> height;
+
+    squareStuff(height);
     return 0;
 }
 
-void printFlippedTriangle(int height) {
-    int row = 1;
-    while (row <= height) {
-        // column
-        for(int col = height; col>=row; col--)
+void squareStuff(int height){
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < height; j++){
             cout << "* ";
-        row += 1;
-        cout << endl;
     }
+    cout << endl; // THIS TOOK ME SO FKING LONG TO FIGURE OUT
+}
 }

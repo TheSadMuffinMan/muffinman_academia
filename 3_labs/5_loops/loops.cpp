@@ -14,19 +14,7 @@ using namespace std;
 
 void printTriangle(int);
 void printFlippedTriangle(int);
-
-
-/*  
-FIXME4
-Design and implement a function that takes an integer as height and
-prints square of the given height with *.
-Square of height 5, e.g., would look like the following.
-*  *  *  *  *  
-*  *  *  *  *   
-*  *  *  *  *   
-*  *  *  *  *   
-*  *  *  *  *   
-*/
+void squareStuff(int);
 
 // function clears the screen system call
 // NOTE: system call is not a security best pracice!
@@ -104,3 +92,23 @@ void printFlippedTriangle(int height) {
         cout << endl;
     }
 }
+
+void squareStuff(int height){
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < height; j++){
+            cout << "* ";
+        }
+        cout << endl; // THIS TOOK ME SO FKING LONG TO FIGURE OUT
+    }
+}
+/*  
+FIXME4
+Design and implement a function that takes an integer as height and
+prints square of the given height with *.
+Square of height 5, e.g., would look like the following.
+*  *  *  *  *  
+*  *  *  *  *   
+*  *  *  *  *   
+*  *  *  *  *   
+*  *  *  *  *   
+*/
