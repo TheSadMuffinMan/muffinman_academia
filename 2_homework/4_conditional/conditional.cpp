@@ -58,7 +58,7 @@ void getNums(float &num1, float &num2, float &num3, float &num4, float &num5){
 }
 
 void printMenu(void){
-    cout << "\nPlease select an option, seen below.\n";
+    cout << "Please select an option, seen below.\n";
     cout << "[1] Finds the sum of input numbers\n";
     cout << "[2] Finds the product of input numbers\n";
     cout << "[3] Finds the average of input numbers\n";
