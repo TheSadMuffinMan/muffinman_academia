@@ -5,21 +5,18 @@
 
 using namespace std;
 
-void printTriangle(int);
+void printFlippedTriangle(int);
 
 int main(int argc, char *argv[]) {
-    printTriangle(10);
+    printFlippedTriangle(5);
     return 0;
 }
 
-void printTriangle(int height) {
-    //Function takes height as an argument to print the triangle
-    //of that height with *
+void printFlippedTriangle(int height) {
     int row = 1;
-    // row
     while (row <= height) {
         // column
-        for(int col = 1; col<=row; col++)
+        for(int col = height; col>=row; col--)
             cout << "* ";
         row += 1;
         cout << endl;

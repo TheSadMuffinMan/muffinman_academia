@@ -13,21 +13,7 @@
 using namespace std;
 
 void printTriangle(int);
-
-void printFlippedTriangle(int height) {
-    /* 
-    Implement the function that takes height as an argument
-    and prints a triangle with * of given height.
-    Triangle of height 5, e.g., should look like the following.
-    * * * * *
-    * * * *
-    * * *
-    * *
-    *
-    
-    */
-    // FIXME3 ...
-}
+void printFlippedTriangle(int);
 
 
 /*  
@@ -89,6 +75,30 @@ void printTriangle(int height) {
     while (row <= height) {
         // column
         for(int col = 1; col<=row; col++)
+            cout << "* ";
+        row += 1;
+        cout << endl;
+    }
+}
+
+void printFlippedTriangle(int height) {
+    /* 
+    Implement the function that takes height as an argument
+    and prints a triangle with * of given height.
+    Triangle of height 5, e.g., should look like the following.
+    * * * * *
+    * * * *
+    * * *
+    * *
+    *
+    
+    */
+
+    // FIXME3 #fixed#
+    int row = 1;
+    while (row <= height) {
+        // column
+        for(int col = height; col>=row; col--)
             cout << "* ";
         row += 1;
         cout << endl;
