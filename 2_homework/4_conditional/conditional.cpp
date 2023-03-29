@@ -8,6 +8,7 @@ CURRENT ISSUES: I can't seem to get the numbers to work. They keep coming up as 
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <cassert>
 
 using namespace std;
 
@@ -25,6 +26,7 @@ float average(float, float, float, float, float);
 float largestValue(float, float, float, float, float);
 float smallestValue(float, float, float, float, float);
 string floorFunction(float, float, float, float, float);
+void test(float, float, float, float, float);
 
 int main(int argc, char *argv[]) {
     string userName;
@@ -188,4 +190,11 @@ string floorFunction(float num1, float num2, float num3, float num4, float num5)
     } else {
         return "even";
     }
+}
+
+void test(float, float, float, float, float){
+    float testNum1, testNum2, dudNum1, dudNum2, dudNum3;
+    testNum1 = 1;
+    testNum2 = 2;
+    assert(totalSum(testNum1, testNum2, dudNum1, dudNum2, dudNum3) == 6);
 }

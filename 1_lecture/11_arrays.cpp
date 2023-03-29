@@ -9,12 +9,94 @@ NAME/FUNCTION OF PROGRAM
 
 using namespace std;
 
-/*
-void getArraySize(size_t&);
-void populateArray(char[], size_t);
-*/
-
+void printArray(int[], size_t);
+void bubbleSort(int[], size_t);
+//                 char **argv
 int main(int argc, char *argv[]) {
+    // size_t arrSize1, arrSize2, arrSize3;
+    // arrSize1 = 5;
+    // arrSize2 = 10;
+    // arrSize3 = 5;
+
+    // int nums[arrSize1][arrSize2][arrSize3];
+    size_t arrSize = 5;
+
+    cout << "How many numbers do you want? ";
+    cin >> arrSize;
+
+    int nums[arrSize];
+
+    // nums[0] = 42;
+    // nums[1] = 15;
+    // nums[2] = 23;
+    // nums[3] = 9000;
+    // nums[4] = -15;
+    for (int i = 0; i < arrSize; i++) {
+        cout << "Please enter a whole number: ";
+        cin >> nums[i];
+    }
+
+    cout << "Start:\t";
+    printArray(nums, arrSize);
+
+    bubbleSort(nums, arrSize);
+
+    cout << "End:\t";
+    printArray(nums, arrSize);
+
+
+
+    return 0;
+}
+
+void bubbleSort(int nums[], size_t arrSize) {
+    // int numIterations = 0;
+    for(size_t j = 0; j < arrSize; j++) {
+        // numIterations = 0;
+        bool swapped = false;
+        for(size_t i = 0; i < arrSize-1-j; i++) {
+            if(nums[i] >= nums[i+1]) {
+                swapped = true;
+                //swap values
+                int tmpNum = nums[i];
+                nums[i] = nums[i+1];
+                nums[i+1] = tmpNum;
+            }
+            // numIterations++;
+        }
+        // cout << "We did " << numIterations << " iterations." << endl;
+        // if we are done, break
+        if(!swapped) {
+            break;
+        }
+
+        // cout << j+1 << ":\t";
+        // printArray(nums, arrSize);
+    }
+}
+
+void printArray(int numbers[], size_t arrSize) {
+    for (size_t i = 0; i < arrSize; i++) {
+        // cout << "numbers[" << i << "]: " << numbers[i] << endl;
+        cout << numbers[i] << " ";
+    }
+    cout << endl;
+}
+
+
+/*
+void getArraySize(size_t& arrSize) {
+    cout << "Please enter how many elements you want in your array: ";
+    cin >> arrSize;
+}
+
+void populateArray(char characters[], size_t arrSize) {
+    for(int i = 0; i < arrSize; i++) {
+        cout << "Please enter a character: ";
+        cin >> characters[i];
+    }
+}
+*/
 
 /*
     // This is how to create an array on the heap.
@@ -96,20 +178,3 @@ int main(int argc, char *argv[]) {
     cout << "nums[3]: " << nums[3] << endl;
     cout << "nums[4]: " << nums[4] << endl;
     */
-
-    return 0;
-}
-
-/*
-void getArraySize(size_t& arrSize) {
-    cout << "Please enter how many elements you want in your array: ";
-    cin >> arrSize;
-}
-
-void populateArray(char characters[], size_t arrSize) {
-    for(int i = 0; i < arrSize; i++) {
-        cout << "Please enter a character: ";
-        cin >> characters[i];
-    }
-}
-*/
