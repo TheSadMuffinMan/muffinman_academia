@@ -117,6 +117,8 @@ Square of height 5, e.g., would look like the following.
 bool keepRunning(char &quitChar){
     bool running = true;
     while(running == true){
-        // THIS IS WHERE I LEFT OFF
+        if(running != 'y'){
+            // LEFT OFF HERE
+        }
     }
 }
