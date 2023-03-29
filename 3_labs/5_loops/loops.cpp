@@ -15,6 +15,7 @@ using namespace std;
 void printTriangle(int);
 void printFlippedTriangle(int);
 void squareStuff(int);
+bool keepRunning(char&);
 
 // function clears the screen system call
 // NOTE: system call is not a security best pracice!
@@ -102,7 +103,7 @@ void squareStuff(int height){
     }
 }
 /*  
-FIXME4
+FIXME4 #fixed#
 Design and implement a function that takes an integer as height and
 prints square of the given height with *.
 Square of height 5, e.g., would look like the following.
@@ -112,3 +113,10 @@ Square of height 5, e.g., would look like the following.
 *  *  *  *  *   
 *  *  *  *  *   
 */
+
+bool keepRunning(char &quitChar){
+    bool running = true;
+    while(running == true){
+        // THIS IS WHERE I LEFT OFF
+    }
+}
