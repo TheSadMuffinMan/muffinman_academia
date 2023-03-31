@@ -5,22 +5,18 @@
 
 using namespace std;
 
-void squareStuff(int);
+bool keepRunning(char&);
 
 int main(int argc, char *argv[]) {
-    int height;
-    cout << "Enter height: " << endl;
-    cin >> height;
-
-    squareStuff(height);
+    char quitChar = 0;
+    keepRunning(quitChar);
     return 0;
 }
-
-void squareStuff(int height){
-    for(int i = 0; i < height; i++){
-        for(int j = 0; j < height; j++){
-            cout << "* ";
-    }
-    cout << endl; // THIS TOOK ME SO FKING LONG TO FIGURE OUT
-}
+bool keepRunning(char &quitChar){
+    bool running = true;
+    while(running == true){
+        if(quitChar != 'y'){
+            return false;
+        }
+    } return true;
 }

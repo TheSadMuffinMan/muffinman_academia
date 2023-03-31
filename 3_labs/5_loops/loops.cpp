@@ -16,6 +16,7 @@ void printTriangle(int);
 void printFlippedTriangle(int);
 void squareStuff(int);
 bool keepRunning(char&);
+void runningMain(int);
 
 // function clears the screen system call
 // NOTE: system call is not a security best pracice!
@@ -31,20 +32,12 @@ void clearScreen() {
 int main(int argc, char* argv[]) {
     // FIXME5 add a loop to make the program to continue to run until the user wants to quit
     // FIXME6 call clearScreen function to clear the screen for each round of the loop
-    int height;
-    cout << "Program prints geometric shapes of given height with *\n";
-    cout << "Please enter the height of the shape: ";
-    cin >> height;
-    // call printTriangle function passing user entered height
-    printTriangle(height);
+    char quitChar = 0;
+    bool runAgain;
 
-    // FIXME7
-    // Call printFlippedTriangle passing proper argument
-    // Manually test the function
-
-    // FIXME6
-    // Call the function defined in FIXME4 passing proper argument
-    // Manually test the function
+    do {
+    runAgain = keepRunning(quitChar);
+    } while (runAgain);
 
     // FIXME9
     // prompt user to enter y/Y to continue anything else to quit
@@ -60,6 +53,7 @@ void printTriangle(int height) {
     //Function takes height as an argument to print the triangle
     //of that height with *
     int row = 1;
+    cout << "\nHere's your triangle!\n";
     // row
     while (row <= height) {
         // column
@@ -85,6 +79,7 @@ void printFlippedTriangle(int height) {
 
     // FIXME3 #fixed#
     int row = 1;
+    cout << "\nHere's the flipped triangle!\n";
     while (row <= height) {
         // column
         for(int col = height; col>=row; col--)
@@ -95,6 +90,7 @@ void printFlippedTriangle(int height) {
 }
 
 void squareStuff(int height){
+    cout << "\nHere's a square with those parameters!\n";
     for(int i = 0; i < height; i++){
         for(int j = 0; j < height; j++){
             cout << "* ";
@@ -114,11 +110,32 @@ Square of height 5, e.g., would look like the following.
 *  *  *  *  *   
 */
 
+
 bool keepRunning(char &quitChar){
-    bool running = true;
-    while(running == true){
-        if(running != 'y'){
-            // LEFT OFF HERE
-        }
+    cout << "If you would like to quit, input y: ";
+    cin >> quitChar;
+    if(quitChar != 'y'){
+        return false;
     }
+    return true;
+}
+
+void runningMain(int){
+    int height;
+    cout << "Program prints geometric shapes of given height with *\n";
+    cout << "Please enter the height of the shape: ";
+    cin >> height;
+    // call printTriangle function passing user entered height
+    printTriangle(height);
+
+    // FIXME7 #fixed#
+    // Call printFlippedTriangle passing proper argument
+    // Manually test the function
+    printFlippedTriangle(height);
+
+    // FIXME6 #fixed#
+    // Call the function defined in FIXME4 passing proper argument
+    // Manually test the function
+    squareStuff(height);
+
 }
