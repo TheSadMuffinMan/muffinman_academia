@@ -62,6 +62,12 @@ int randomNumber(int& actualRandomVar){
 int readNumber(int& userGuess) {
     cout << "\nTake a guess." << endl;
     cin >> userGuess;
+
+    // Checks to see if input is between 1 and 20
+    while (userGuess < 0 || userGuess > 21) {
+        cout << "Invalid input. Please enter a number between 1 and 20. \n" << endl;
+        cin >> userGuess;
+    }
     return userGuess;
 }
 
