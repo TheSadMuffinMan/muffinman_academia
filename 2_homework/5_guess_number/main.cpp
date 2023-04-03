@@ -17,19 +17,25 @@ void greetUser(string userName);
 int randomNumber(int&);
 int readNumber(int&);
 int checkGuess(int, int);
-void game();
+void game(string);
 
 
 int main(int argc, char *argv[]) {
     string userName;
-    int actualRandomVar;
-    int userGuess;
 
     // Introduction stuff
     userInput(userName);
     greetUser(userName);
 
-    game();
+    char quitChar = 'a';
+
+    do {
+    // Where the actual game is played
+    game(userName);
+    cout << "Would you like to play again? Enter [y/Y] to play again, and anything else to quit. " << endl;
+    cin >> quitChar;
+    quitChar = tolower(quitChar);
+    } while (quitChar == 'y');
 
     return 0;
 }
@@ -41,7 +47,7 @@ void userInput(string& userName) {
 }
 
 void greetUser(string userName) {
-    cout << "\nHello, " << userName << ". I am thinking of a number between 1 and 20." << endl;
+    cout << "\nHello, " << userName << ". I am thinking of a number between 1 and 20. ";
     cout << "You get 6 tries to guess the number.\n";
 }
 
@@ -62,25 +68,26 @@ int readNumber(int& userGuess) {
 // Compares two numbers
 int checkGuess(int num1, int num2){
     if (num1 == num2) {
-        cout << "Your nums are equal\n";
         return 0;
     } else if (num1 < num2) {
-        cout << "The random value is smaller\n";
+        // Your guess is too high
         return -1;
     } else if (num1 > num2) {
-        cout << "The random value is larger\n";
+        // Your guess is too low
         return 2;
     } else {
         cout << "***ERROR***" << endl;
     }
 }
 
-void game(){
+// Where the actual game is played
+void game(string userName){
     int actualRandomVar;
     int userGuess;
     int numberOfGuesses = 0;
     int maxGuesses = 6;
     int numChecker;
+    bool userWin = false;
 
     // Generates the random number
     actualRandomVar = randomNumber(actualRandomVar);
@@ -89,12 +96,27 @@ void game(){
         numberOfGuesses++;
         // Takes in user's guess
         readNumber(userGuess);
-        cout << "You have guessed " << numberOfGuesses << " times. " << (6 - numberOfGuesses) << " guess(es) remaining." << endl;
+        cout << (6 - numberOfGuesses) << " guess(es) remaining." << endl;
 
         // Compares two numbers
         numChecker = checkGuess(actualRandomVar, userGuess);
+
+
         if (numChecker == 0) {
+            userWin = true;
             break;
+        } else if (numChecker == -1) {
+            cout << "Your guess is too high!" << endl;
+        } else if (numChecker == 2) {
+            cout << "Your guess is too low!" << endl;
+        } else {
+        cout << "***BUG***";
         }
+    }
+
+    if (userWin == true) {
+        cout << "Congratulations " << userName << ", YOU WIN! You guessed my number in " << numberOfGuesses  << " guesses.\n" << endl;
+    } else {
+        cout << "You did not guess the number, which was " << actualRandomVar << ".\n" << endl;
     }
 }
