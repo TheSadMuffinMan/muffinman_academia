@@ -43,10 +43,10 @@
 | Name of Assignment: Homework 5, Guess the Number |
 | Description: Design and implement the “Guess the Number” game |
 | Due Date: 29-Mar-23 |
-| Status: Complete |
+| Status: Only one question |
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_homework/5_guess_number |
-| Self Grade: - |
-| Notes: Late, but nearing completion |
+| Self Grade: 85 |
+| Notes: Late, but complete except the random number portion |
 
 
 ### Lab #1
