@@ -79,3 +79,13 @@
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/4_conditionals |
 | Self Grade: 90 |
 | Notes: Fully complete, but late. |
+
+### Lab #5
+| Name: Anthony Streich |
+| Name of Assignment: Loops Lab |
+| Description: The following lab demonstrates the use of loop structures in C++ by drawing various geometric shapes with ASCII characters. |
+| Due Date: 29-Mar-23 |
+| Status: Complete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/5_loops |
+| Self Grade: 90 |
+| Notes: Fully complete, but late. |
