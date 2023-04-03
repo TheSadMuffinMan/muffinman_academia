@@ -7,23 +7,32 @@ CURRENT ISSUES:
 
 #include <iostream>
 #include <string>
+#include <cassert>
 #include <cstdlib>
 
 using namespace std;
 
 void userInput(string&);
 void greetUser(string userName);
-void randomNumber(int);
+void randomNumber(int&);
+int readNumber(int&);
 
 
 int main(int argc, char *argv[]) {
     string userName;
+    int temp = 0;
     int actualRandomVar;
-    int tempVar = actualRandomVar;
+    int userGuess;
+
+    // Introduction stuff
     userInput(userName);
     greetUser(userName);
 
+    // Generates the random number
     randomNumber(actualRandomVar);
+
+    // Takes in user's guess
+    readNumber(temp);
 
     return 0;
 }
@@ -36,10 +45,19 @@ void userInput(string& userName) {
 
 void greetUser(string userName) {
     cout << "\nHello, " << userName << ". I am thinking of a number between 1 and 20." << endl;
-    cout << "You get 6 tries to guess the number. Take a guess.\n" << endl;
+    cout << "You get 6 tries to guess the number.\n";
 }
 
-void randomNumber(int tempVar){
-    int randomNumber = (rand() % 20);
-    cout << "DEBUG rand num is: " << randomNumber << endl;
+// Generates the random number
+void randomNumber(int& actualRandomVar){
+    actualRandomVar = (rand() % 20);
+    cout << "***DEBUG*** rand num is: " << actualRandomVar << endl;
+}
+
+// Takes in user's guess
+int readNumber(int& userGuess) {
+    cout << "\nTake a guess.\n" << endl;
+    cin >> userGuess;
+    cout << "You guessed: " << userGuess << endl;
+    return userGuess;
 }
