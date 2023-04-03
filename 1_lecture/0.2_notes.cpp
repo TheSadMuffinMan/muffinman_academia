@@ -30,3 +30,8 @@ variable.at()
         cout << "fullName[" << i << "]: " << fullName[i] << endl;
         cout << "fullName.at(" << i << "):" << fullName.at(i) << endl;
 */
+
+/*
+Loops
+Do/While will happen one or more times
+*/
