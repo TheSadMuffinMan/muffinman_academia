@@ -2,7 +2,7 @@
     Loops Lab
     Updated By: Anthony Streich FIXME1 #fixed#
     CSCI 111
-    Date: 29 March 23 FIXME2 #fixed#
+    Date: 3 April 23 FIXME2 #fixed#
     Program prints geometric shapes of given height with * using loops
 */
 
@@ -80,20 +80,20 @@ void printTriangle(int height) {
     }
 }
 
-void printFlippedTriangle(int height) {
-    /* 
-    Implement the function that takes height as an argument
-    and prints a triangle with * of given height.
-    Triangle of height 5, e.g., should look like the following.
-    * * * * *
-    * * * *
-    * * *
-    * *
-    *
-    
-    */
+/* 
+Implement the function that takes height as an argument and prints a triangle with * of given height.
+Triangle of height 5, e.g., should look like the following.
+* * * * *
+* * * *
+* * *
+* *
+*
 
-    // FIXME3 #fixed#
+*/
+
+// FIXME3 #fixed#
+
+void printFlippedTriangle(int height) {
     int row = 1;
     cout << "\nHere's the flipped triangle!\n";
     while (row <= height) {
@@ -105,15 +105,6 @@ void printFlippedTriangle(int height) {
     }
 }
 
-void squareStuff(int height){
-    cout << "\nHere's a square with those parameters!\n";
-    for(int i = 0; i < height; i++){
-        for(int j = 0; j < height; j++){
-            cout << "* ";
-        }
-        cout << endl; // THIS TOOK ME SO FKING LONG TO FIGURE OUT
-    }
-}
 /*  
 FIXME4 #fixed#
 Design and implement a function that takes an integer as height and
@@ -125,3 +116,12 @@ Square of height 5, e.g., would look like the following.
 *  *  *  *  *   
 *  *  *  *  *   
 */
+void squareStuff(int height){
+    cout << "\nHere's a square with those parameters!\n";
+    for(int i = 0; i < height; i++){
+        for(int j = 0; j < height; j++){
+            cout << "* ";
+        }
+        cout << endl; // THIS TOOK ME SO FKING LONG TO FIGURE OUT
+    }
+}
