@@ -14,7 +14,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 PROGRAM = loops.exe
 
 # list all .cpp files separated by space
-CPPFILES = loops_but_better.cpp
+CPPFILES = loops.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file

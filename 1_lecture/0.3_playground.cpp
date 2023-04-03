@@ -5,18 +5,29 @@
 
 using namespace std;
 
-bool keepRunning(char&);
+void printTriangle(int);
 
 int main(int argc, char *argv[]) {
-    char quitChar = 0;
-    keepRunning(quitChar);
+    int height;
+    cout << "Enter height: ";
+    cin >> height;
+
+    printTriangle(height);
+
+    // printTriangle(height);
     return 0;
 }
-bool keepRunning(char &quitChar){
-    bool running = true;
-    while(running == true){
-        if(quitChar != 'y'){
-            return false;
-        }
-    } return true;
+
+void printTriangle(int height) {
+    //Function takes height as an argument to print the triangle
+    //of that height with *
+    int row = 1;
+    // row
+    while (row <= height) {
+        // column
+        for(int col = 1; col<=row; col++)
+            cout << "* ";
+        row += 1;
+        cout << endl;
+    }
 }
