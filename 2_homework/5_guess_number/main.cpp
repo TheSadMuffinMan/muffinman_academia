@@ -18,6 +18,7 @@ int randomNumber(int&);
 int readNumber(int&);
 int checkGuess(int, int);
 void game(string);
+void test();
 
 
 int main(int argc, char *argv[]) {
@@ -97,6 +98,7 @@ void game(string userName){
 
     // Generates the random number
     actualRandomVar = randomNumber(actualRandomVar);
+    test();
 
     for (int i = 0; i < maxGuesses; i++) {
         numberOfGuesses++;
@@ -125,4 +127,12 @@ void game(string userName){
     } else {
         cout << "You did not guess the number, which was " << actualRandomVar << ".\n" << endl;
     }
+}
+
+void test(){
+    int testNum1 = 1;
+    int testNum2 = 2;
+    assert(checkGuess(testNum1, testNum2) == -1);
+    assert(checkGuess(testNum2, testNum1) == 2);
+    assert(checkGuess(testNum1, testNum1) == 0);
 }
