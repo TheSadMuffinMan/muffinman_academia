@@ -14,14 +14,14 @@ using namespace std;
 
 void userInput(string&);
 void greetUser(string userName);
-void randomNumber(int&);
+int randomNumber(int&);
 int readNumber(int&);
 int checkGuess(int, int);
+void game();
 
 
 int main(int argc, char *argv[]) {
     string userName;
-    int temp = 0;
     int actualRandomVar;
     int userGuess;
 
@@ -30,10 +30,13 @@ int main(int argc, char *argv[]) {
     greetUser(userName);
 
     // Generates the random number
-    randomNumber(actualRandomVar);
+    actualRandomVar = randomNumber(actualRandomVar);
 
     // Takes in user's guess
-    readNumber(temp);
+    readNumber(userGuess);
+
+    // Compares two numbers
+    checkGuess(actualRandomVar, userGuess);
 
     return 0;
 }
@@ -50,9 +53,10 @@ void greetUser(string userName) {
 }
 
 // Generates the random number
-void randomNumber(int& actualRandomVar){
+int randomNumber(int& actualRandomVar){
     actualRandomVar = (rand() % 20);
-    cout << "***DEBUG*** rand num is: " << actualRandomVar << endl;
+    cout << "***DEBUG*** actualRandomVar is: " << actualRandomVar << endl;
+    return actualRandomVar;
 }
 
 // Takes in user's guess
@@ -63,12 +67,23 @@ int readNumber(int& userGuess) {
     return userGuess;
 }
 
+// Compares two numbers
 int checkGuess(int num1, int num2){
+    cout << "num1: " << num1 << " and num2: " << num2 << endl;
     if (num1 == num2) {
+        cout << "Your nums are equal\n";
         return 0;
     } else if (num1 < num2) {
+        cout << "actualRandomVar is smaller\n";
         return -1;
-    } else {
+    } else if (num1 > num2) {
+        cout << "actualRandomVar is larger\n";
         return 2;
+    } else {
+        cout << "***ERROR***" << endl;
     }
+}
+
+void game(){
+    cout << "."
 }
