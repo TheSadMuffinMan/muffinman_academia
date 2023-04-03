@@ -38,6 +38,16 @@
 | Self Grade: 90 |
 | Notes: Late :( |
 
+### Homework 5
+| Name: Anthony Streich |
+| Name of Assignment: Homework 5, Guess the Number |
+| Description: Design and implement the “Guess the Number” game |
+| Due Date: 29-Mar-23 |
+| Status: Complete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_homework/5_guess_number |
+| Self Grade: - |
+| Notes: Late, but nearing completion |
+
 
 ### Lab #1
 | Name: Anthony Streich |
