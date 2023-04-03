@@ -16,6 +16,7 @@ void userInput(string&);
 void greetUser(string userName);
 void randomNumber(int&);
 int readNumber(int&);
+int checkGuess(int, int);
 
 
 int main(int argc, char *argv[]) {
@@ -60,4 +61,14 @@ int readNumber(int& userGuess) {
     cin >> userGuess;
     cout << "You guessed: " << userGuess << endl;
     return userGuess;
+}
+
+int checkGuess(int num1, int num2){
+    if (num1 == num2) {
+        return 0;
+    } else if (num1 < num2) {
+        return -1;
+    } else {
+        return 2;
+    }
 }
