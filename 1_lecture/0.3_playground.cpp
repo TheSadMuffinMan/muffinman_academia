@@ -1,33 +1,18 @@
 // PLAYGROUND
 
 #include <iostream>
-#include <string>
+#include <cstdlib> // for rand() and srand() 
+#include <ctime> // for time() 
+using namespace std; 
 
-using namespace std;
+ int main () { 
 
-void printTriangle(int);
+   // Initialize the random number generator 
+   // srand(time(0)); 
 
-int main(int argc, char *argv[]) {
-    int height;
-    cout << "Enter height: ";
-    cin >> height;
+   // Generate a random number between 1 and 20       
+   int r = (rand() % 20) + 1; 
 
-    printTriangle(height);
+   cout << "Random number: " << r << endl;
 
-    // printTriangle(height);
-    return 0;
-}
-
-void printTriangle(int height) {
-    //Function takes height as an argument to print the triangle
-    //of that height with *
-    int row = 1;
-    // row
-    while (row <= height) {
-        // column
-        for(int col = 1; col<=row; col++)
-            cout << "* ";
-        row += 1;
-        cout << endl;
-    }
-}
+    return 0;    }
