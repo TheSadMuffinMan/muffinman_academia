@@ -9,6 +9,7 @@ CURRENT ISSUES:
 #include <string>
 #include <cassert>
 #include <cstdlib>
+#include <random>
 
 using namespace std;
 
@@ -27,9 +28,10 @@ int main(int argc, char *argv[]) {
     // Introduction stuff
     userInput(userName);
     greetUser(userName);
+    srand(time(0));
+
 
     char quitChar = 'a';
-
     do {
     // Where the actual game is played
     game(userName);
