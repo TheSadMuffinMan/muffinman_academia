@@ -57,7 +57,7 @@ void greetUser(string userName) {
 // Generates the random number
 int randomNumber(int& actualRandomVar){
     actualRandomVar = (rand() % 20);
-    cout << "***DEBUG*** actualRandomVar is: " << actualRandomVar << endl;
+    // cout << "***DEBUG*** actualRandomVar is: " << actualRandomVar << endl; // This will show the random number
     return actualRandomVar;
 }
 
