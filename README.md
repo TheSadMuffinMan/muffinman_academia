@@ -99,3 +99,13 @@
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/5_loops |
 | Self Grade: 90 |
 | Notes: Fully complete, but late. |
+
+### Lab #6
+| Name: Anthony Streich |
+| Name of Assignment: Pointers and Namespace |
+| Description: The following lab demonstrates the usage of pointers, enum type and use-defined namespace |
+| Due Date: 31-Mar-23 |
+| Status: In Progress |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/5_loops |
+| Self Grade: - |
+| Notes: |

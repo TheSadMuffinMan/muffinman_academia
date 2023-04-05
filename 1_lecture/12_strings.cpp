@@ -115,4 +115,3 @@ int main(int argc, char *argv[]) {
 
 //     string tmpStr = fullName.substr(3, 9);
 //     cout << "tmpStr: " << tmpStr << endl;
-
