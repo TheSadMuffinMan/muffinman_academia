@@ -30,6 +30,8 @@ int main(int argc, char *argv[]) {
     greetUser(userName);
     srand(time(0));
 
+    // The test sequence
+    test();
 
     char quitChar = 'a';
     do {
@@ -86,6 +88,7 @@ int checkGuess(int num1, int num2){
         return 2;
     } else {
         cout << "***ERROR***" << endl;
+        return 1;
     }
 }
 
@@ -100,7 +103,6 @@ void game(string userName){
 
     // Generates the random number
     actualRandomVar = randomNumber(actualRandomVar);
-    test();
 
     for (int i = 0; i < maxGuesses; i++) {
         numberOfGuesses++;
