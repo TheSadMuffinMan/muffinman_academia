@@ -1,6 +1,6 @@
 //  Pointers, enum type and namespace lab
-//  Updated by: Anthony Streich FIXME1 #fixed#
-//  Date: 5 April 23
+//  Updated by: Anthony Streich FIXME1
+//  Date: 7 April 23 FIXME2
 //  Program demonstrates the use of preprocessor directive, namespace, enum type, and pointers.
 
 #include <cstdio>
@@ -45,12 +45,16 @@ int main(int argc, char* argv[]) {
     large_int *sum = new large_int; //declare sum as a dynamic variable
     large_int *prod = new large_int;
     // FIXME3 - declare dynamic variables to store difference and larger values
+    large_int *diff = new large_int;
+    large_int *largerInt = new large_int;
     // Must use these variables to store the returned values from functions
 
     OPERATION oper;
     
     //FIXME4: Add do... while loop to continue the program until the user wants to quit
     //FIXME5: call clear function defined above to clear the screen
+    clear();
+    
     showMenu();
     cin >> input;
     oper = getOperation(input);
