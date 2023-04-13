@@ -1,73 +1,142 @@
 /*
 Name: Anthony Streich
-Date: 
-NAME/FUNCTION OF PROGRAM
-CURRENT ISSUES: 
+Structures
 */
-
 #include <iostream>
 #include <string>
 #include <cmath>
+#include <vector>
 
 using namespace std;
 
+template <class T1, class T2>
 struct Rectangle {
-    float side1, side2;
-    float area;
-    float perimeter;
+    T1 side1 = 0;
+    T1 side2 = 0;
+    T2 area = 0;
+    T2 perimeter = 0;
 };
 
-void getSides(Rectangle&);
-void calcArea(Rectangle&);
-void calcPerimeter(Rectangle&);
-void printValues(Rectangle&);
+struct Point {
+    int x;
+    int y;
+};
+
+template <class T1, class T2>
+void getSides(Rectangle<T1, T2>*);
+
+template <class T1, class T2>
+void calcArea(Rectangle<T1, T2>*);
+
+template <class T1, class T2>
+void calcPerimeter(Rectangle<T1, T2>*);
+
+template <class T1, class T2>
+void printValues(Rectangle<T1, T2>*);
 
 int main(int argc, char *argv[]) {
-    // This will create a struct of arrays
-    Rectangle rectangles[5];
+    Rectangle<int, float> *rect1 = new Rectangle<int, float>({5, 100, 2});
+    Rectangle<double, double> *rect2 = new Rectangle<double, double>();
+    Rectangle<string, string> *rect3 = new Rectangle<string, string>();
+    
 
-    for(int i = 0; i < 5; i++) {
-        getSides(rectangles[i]);
-        calcArea(rectangles[i]);
-        calcPerimeter(rectangles[i]);
-    }
+    Point point1 = {0, 0};
 
-    cout << endl << endl << "Our calculated rectangles are: " << endl;
-    for (int i = 0; i < 5; i++){
-        printValues(rectangles[i]);
-    }
+    // getSides(rect1);
+    // calcArea(rect1);
+    // calcPerimeter(rect1);
+    // printValues(rect1);
+    // rect1->side1 = 42;
+    // rect1->side2 = 10;
+    // rect1->area = rect1->side1 * rect1->side2;
+    // rect1->perimeter = 2*rect1->side1 + 2*rect1->side2;
 
+    // cout << "Your rectangle with sides " << rect1->side1 << " and " << rect1->side2
+    //      << " has an area of " << rect1->area
+    //      << " and a perimeter of " << rect1->perimeter << endl;
+
+
+    delete rect1;
     // Rectangle rect1;
+    // Point point1;
+
+    // Rectangle *ptr1;
+    // Point *ptr2;
+
+    // ptr1 = &rect1;
+
+    // getSides(*ptr1);
+    // calcArea(*ptr1);
+    // calcPerimeter(*ptr1);
+    // // printValues(*ptr1);
+
+    // ptr1->side1;
+    // cout << "Your rectangle with sides " << ptr1->side1 << " and " << ptr1->side2
+    //      << " has an area of " << ptr1->area
+    //      << " and a perimeter of " << ptr1->perimeter << endl;
+
+
+    // // Rectangle rectangles[5];
+    // vector<Rectangle> rectangles;
+
+    // for(int i = 0; i < 5; i++) {
+    //     Rectangle rect1;
+    //     getSides(rect1);
+    //     calcArea(rect1);
+    //     calcPerimeter(rect1);
+    //     rectangles.push_back(rect1);
+    //     // getSides(rectangles.at(i));
+    //     // calcArea(rectangles.at(i));
+    //     // calcPerimeter(rectangles.at(i));
+    // }
+
+    // cout << endl << endl << "Our calculated rectangles are: " << endl;
+    // for(int i = 0; i < 5; i++) {
+    //     printValues(rectangles.at(i));
+    // }
+    // Rectangle rect1;
+    // Rectangle rect2;
+
     // getSides(rect1);
     // calcArea(rect1);
     // calcPerimeter(rect1);
     // printValues(rect1);
 
+    // getSides(rect2);
+    // calcArea(rect2);
+    // calcPerimeter(rect2);
+    // printValues(rect2);
+
     return 0;
 }
 
-void getSides(Rectangle& rect){
-    cout << "Please enter side 1: ";
-    cin >> rect.side1;
+template <class T1, class T2>
+void getSides(Rectangle<T1, T2>* rect) {
+    cout << "Please enter side1: ";
+    cin >> rect->side1;
 
-    cout << "Please enter side 2: ";
-    cin >> rect.side2;
-
+    cout << "Please enter side2: ";
+    cin >> rect->side2;
 }
 
-void calcArea(Rectangle& rect){
-    rect.area = rect.side1 * rect.side2;
+template <class T1, class T2>
+void calcArea(Rectangle<T1, T2>* rect) {
+    rect->area = rect->side1 * rect->side2;
 }
 
-void calcPerimeter(Rectangle& rect){
-    rect.perimeter = (2 * rect.side1) + (2 * rect.side2);
+template <class T1, class T2>
+void calcPerimeter(Rectangle<T1, T2>* rect) {
+    rect->perimeter = (2 * rect->side1) + (2 * rect->side2);
 }
 
-void printValues(Rectangle& rect){
-    cout << "Your rectangle with sides " << rect.side1 << " and " << rect.side2 << endl;
-    cout << "has an area of " << rect.area << " and a perimeter of " << rect.perimeter << "." << endl;
-
+template <class T1, class T2>
+void printValues(Rectangle<T1, T2>* rect) {
+    cout << "Your rectangle with sides " << rect->side1 << " and " << rect->side2
+         << " has an area of " << rect->area
+         << " and a perimeter of " << rect->perimeter << endl;
 }
+
+
 
 
 /*
