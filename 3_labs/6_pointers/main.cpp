@@ -44,48 +44,70 @@ int main(int argc, char* argv[]) {
     big_int *num2 = new big_int; //declare num2 as a dynamic variable
     large_int *sum = new large_int; //declare sum as a dynamic variable
     large_int *prod = new large_int;
-    // FIXME3 - declare dynamic variables to store difference and larger values
+    // FIXME3 - declare dynamic variables to store difference and larger values #fixed#
     large_int *diff = new large_int;
     large_int *largerInt = new large_int;
     // Must use these variables to store the returned values from functions
 
     OPERATION oper;
     
-    //FIXME4: Add do... while loop to continue the program until the user wants to quit
-    //FIXME5: call clear function defined above to clear the screen
-    clear();
-    
-    showMenu();
-    cin >> input;
-    oper = getOperation(input);
-    switch (oper) {
-        case ADD:
-            cout << "Enter two whole numbers separated by space: ";
-            // store the data by dereferencing pointers
-            cin >> *num1 >> *num2;
-            // passing pointers to findSum function
-            *sum = MyFunctions::findSum(num1, num2);
-            printf("%lld + %lld = %lld\n", *num1, *num2, *sum);
+    //FIXME4: Add do... while loop to continue the program until the user wants to quit #fixed#
+    char quitChar = 'a';
+    do {
+        //FIXME5: call clear function defined above to clear the screen #fixed#
+        clear();
+        
+        showMenu();
+        cin >> input;
+        oper = getOperation(input);
+        switch (oper) {
+            case ADD:
+                cout << "Enter two whole numbers separated by space: ";
+                // store the data by dereferencing pointers
+                cin >> *num1 >> *num2;
+                // passing pointers to findSum function
+                *sum = MyFunctions::findSum(num1, num2);
+                printf("%lld + %lld = %lld\n", *num1, *num2, *sum);
+                break;
+                // FIXME6: complete the rest of the cases to perform other operations #fixed#
+            case MULTIPLY:
+                cout << "Enter two whole numbers separated by space: ";
+                // store the data by dereferencing pointers
+                cin >> *num1 >> *num2;
+                // passing pointers to findSum function
+                *prod = MyFunctions::findProduct(*num1, *num2);
+                printf("%lld * %lld = %lld\n", *num1, *num2, *prod);
+                break;
+            case SUBTRACT:
+                cout << "Enter two whole numbers seperated by a space: ";
+                cin >> *num1 >> *num2;
+                *diff = MyFunctions::findProduct(num1, num2);
+                printf("%lld + %lld = %lld\n", *num1, *num2, *diff);
+                break;
+            case LARGER:
+                cout << "Enter two whole numbers seperated by a space: ";
+                cin >> *num1 >> *num2;
+                *largerInt = MyFunctions::findLarger(num1, num2);
+                break;
+            case QUIT:
+                break;
+            default:
+                break;
+        }
+        delete num1;
+        delete num2;
+        delete sum;
+        delete prod;
+        delete diff;
+        delete largerInt;
+        cin.ignore(1000, '\n');
+        cout << "Good bye! Enter Y/y to exit the program...";
+        cin >> quitChar;
+        char tempQuitChar = tolower(quitChar);
+        if (quitChar == 'y'){
             break;
-            // FIXME6: complete the rest of the cases to perform other operations
-        case MULTIPLY:
-            cout << "Enter two whole numbers separated by space: ";
-            // store the data by dereferencing pointers
-            cin >> *num1 >> *num2;
-            // passing pointers to findSum function
-            *prod = MyFunctions::findProduct(*num1, *num2);
-            printf("%lld * %lld = %lld\n", *num1, *num2, *prod);
-            break;
-        default:
-            break;
+        }
     }
-    delete num1;
-    delete num2;
-    delete sum;
-    delete prod;
-    cin.ignore(1000, '\n');
-    cout << "Good bye! Enter to exit the program...";
-    cin.get();
     return 0;
 }
 
@@ -112,7 +134,10 @@ OPERATION getOperation(char choice) {
         case '3':
             op = SUBTRACT;
             break;
-        // FIXME7 - add case for LARGER
+        // FIXME7 - add case for LARGER #fixed#
+        case '4':
+            op = LARGER;
+            break;
         default:
             op = QUIT;
     }
@@ -125,8 +150,22 @@ big_int MyFunctions::findSum(const big_int *n1, const big_int *n2) {
     return (*n1) + (*n2);
 }
 
-// FIXME8: define findLarger function declared inside MyFunctions namespace
-// function returns the larger of the two given values
+// FIXME8: define findLarger function declared inside MyFunctions namespace #fixed#
+// Function returns the larger of the two given values
+big_int MyFunctions::findLarger(const big_int *n1, const big_int *n2){
+    if (n1 > n2){
+        return (*n1);
+    } if else {
+        return (*n2);
+    }
+}
+
+/*
+    big_int findSum(const big_int *, const big_int *);
+    big_int findLarger(const big_int *, const big_int *);
+    large_int findProduct(const large_int &, const large_int &);
+    large_int findDifference(const large_int &, const large_int &);
+*/
 
 large_int MyFunctions::findProduct(const large_int &n1, const large_int &n2) {
     return n1 * n2;
