@@ -1,6 +1,6 @@
 //  Pointers, enum type and namespace lab
 //  Updated by: Anthony Streich FIXME1
-//  Date: 7 April 23 FIXME2
+//  Date: 19 April 23 FIXME2
 //  Program demonstrates the use of preprocessor directive, namespace, enum type, and pointers.
 
 #include <cstdio>
@@ -81,7 +81,7 @@ int main(int argc, char* argv[]) {
             case SUBTRACT:
                 cout << "Enter two whole numbers seperated by a space: ";
                 cin >> *num1 >> *num2;
-                *diff = MyFunctions::findProduct(*num1, *num2);
+                *diff = MyFunctions::findDifference(*num1, *num2);
                 printf("%lld + %lld = %lld\n", *num1, *num2, *diff);
                 break;
             case LARGER:
@@ -101,7 +101,7 @@ int main(int argc, char* argv[]) {
         delete largerInt;
         }
         cin.ignore(1000, '\n');
-        cout << "Good bye! Enter Y/y to exit the program...";
+        cout << "Thank you for stopping by! If you would like to do this again, enter Y/y.\nOtherwise, any key will terminate the program. ";
         cin >> quitChar;
         quitChar = tolower(quitChar);
         } while (quitChar == 'y');
@@ -115,7 +115,7 @@ void showMenu(void) {
     cout << "[3] Subtract one integer from another\n";
     cout << "[4] Determine which integer is larger than the other\n";
     cout << "[5] Quit the program\n";
-    cout << "Enter your choice [1-4]: ";
+    cout << "Please enter your choice [1-5]: ";
 }
 
 // function returns OPERATION type given character choice
@@ -152,8 +152,10 @@ big_int MyFunctions::findSum(const big_int *n1, const big_int *n2) {
 // Function returns the larger of the two given values
 big_int MyFunctions::findLarger(const big_int *n1, const big_int *n2){
     if (n1 > n2){
+        cout << "The larger integer is " << *n1 << "." << endl;
         return (*n1);
     }  else {
+        cout << "The larger integer is " << *n2 << "." << endl;
         return (*n2);
     }
 }

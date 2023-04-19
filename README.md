@@ -105,7 +105,7 @@
 | Name of Assignment: Pointers and Namespace |
 | Description: The following lab demonstrates the usage of pointers, enum type and use-defined namespace |
 | Due Date: 31-Mar-23 |
-| Status: In Progress |
-| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/5_loops |
-| Self Grade: - |
-| Notes: |
+| Status: Complete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/6_pointers |
+| Self Grade: 90 |
+| Notes: Kinda a huge roundabout way to accomplish things, but I understand why the lab was constructed the way it was. |
