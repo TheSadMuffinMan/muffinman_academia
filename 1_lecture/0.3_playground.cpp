@@ -1,18 +1,48 @@
 // PLAYGROUND
 
 #include <iostream>
-#include <cstdlib> // for rand() and srand() 
-#include <ctime> // for time() 
+#include <string>
+
 using namespace std; 
 
- int main () { 
+void sortArray(int[], int);
+void printArray(int[], int);
 
-   // Initialize the random number generator 
-   // srand(time(0)); 
+int main () {
+  int numPieces;
+  cout << "Num of pieces: \n";
+  cin >> numPieces;
 
-   // Generate a random number between 1 and 20       
-   int r = (rand() % 20) + 1; 
+  int userArray[numPieces];
 
-   cout << "Random number: " << r << endl;
+  sortArray(userArray, numPieces);
 
-    return 0;    }
+  printArray(userArray, numPieces);
+
+  return 0;
+}
+
+void sortArray(int userArray[], int numPieces) {
+    for(int j = 0; j < numPieces; j++) {
+        bool swapped = false;
+        for(int i = 0; i < numPieces-1-j; i++) {
+            if(userArray[i] >= userArray[i+1]) {
+                swapped = true;
+                //swap values
+                int tmpNum = userArray[i];
+                userArray[i] = userArray[i+1];
+                userArray[i+1] = tmpNum;
+            }
+        }
+        // if we are done, break
+        if(!swapped) {
+            break;
+        }
+    }
+}
+
+void printArray(int userArray[], int numPieces){
+    for (int i = 0; i < numPieces; i++){
+        cout << userArray[i] << endl;
+    }
+}
