@@ -1,12 +1,13 @@
 /*
 Name: Anthony Streich
-Date: 21 April 23
+Date: 24 April 23
 Falling Apart Kattis
-CURRENT ISSUES: 
+CURRENT ISSUES: None!
 */
 
 #include <iostream>
 #include <string>
+#include <cassert>
 
 using namespace std;
 
@@ -14,28 +15,31 @@ void arrayCreation(int, int[]);
 void sortArray(int[], int);
 void printArray(int[], int);
 void picker(int&, int&, int&, int[]);
+void test(int, int, int&);
 
 int main(int argc, char *argv[]) {
     int numPieces;
-    cout << "Number of pieces: ";
+    // cout << "Number of pieces: ";
     cin >> numPieces;
 
     int userArray[numPieces];
 
     arrayCreation(numPieces, userArray);
-    
     sortArray(userArray, numPieces);
-
-    printArray(userArray, numPieces);
-
+    // printArray(userArray, numPieces);
 
     int alice, bob;
     alice = 0;
     bob = 0;
 
     picker(alice, bob, numPieces, userArray);
-    cout << "\nAlice: " << alice << endl;
-    cout << "Bob: " << bob << endl;
+    // Kattis specific return type
+    cout << alice << " " << bob << endl;
+    // cout << "\nAlice: " << alice << endl;
+    // cout << "Bob: " << bob << endl;
+    
+    int tempAlice, tempBob;
+    test(tempAlice, tempBob, numPieces);
 
     return 0;
 }
@@ -65,9 +69,9 @@ void sortArray(int userArray[], int numPieces) {
     }
 }
 
-void printArray( int userArray[], int numPieces){
+void printArray(int userArray[], int numPieces){
     for (int i = 0; i < numPieces; i++){
-        cout << "DEBUG " << userArray[i];
+        cout << userArray[i];
     }
 }
 
@@ -82,4 +86,15 @@ void picker(int& alice, int& bob, int& numPieces, int userArray[]){
         } 
         // i++; // This is the case when you are incrementing the loop by 1 (i++)
     }
+}
+
+void test(int tempAlice, int tempBob, int& numPieces){
+    tempAlice = 0;
+    tempBob = 0;
+    int tempUserArray[5] = {1, 2, 3, 4, 5};
+
+    picker(tempAlice, tempBob, numPieces, tempUserArray);
+
+    assert(tempAlice == 9);
+    assert(tempBob == 6);
 }
