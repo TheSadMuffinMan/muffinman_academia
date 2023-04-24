@@ -48,6 +48,16 @@
 | Self Grade: 90 |
 | Notes: Late |
 
+### Homework 6
+| Name: Anthony Streich |
+| Name of Assignment: Homework 6, Kattis Apaxiaaans! |
+| Description: Creates an array that shortens strings that have repeating characters |
+| Due Date: 10-April-23 |
+| Status: Complete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_homework/6_apaxiaaans |
+| Self Grade: 90 |
+| Notes: Late |
+
 
 ### Lab #1
 | Name: Anthony Streich |
