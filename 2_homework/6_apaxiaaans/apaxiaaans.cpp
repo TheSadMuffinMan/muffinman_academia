@@ -13,8 +13,8 @@ using namespace std;
 int main(int argc, char *argv[]) {
     char activeComparisonChar;
     string userString;
-    cout << "Program start, welcome to my Apaxiaaans Program.\n";
-    cout << "Please enter the string you'd like shortened: ";
+    // cout << "Program start, welcome to my Apaxiaaans Program.\n";
+    // cout << "Please enter the string you'd like shortened: ";
     getline(cin,userString);
 
     // cout << "**DEBUG** userString: " << userString << endl;
@@ -25,9 +25,11 @@ int main(int argc, char *argv[]) {
         if (activeComparisonChar == userString[i+1]) {
             userString.erase(i,1);
             i--;
-            cout << "**DEBUG**" << userString << endl;
+            // cout << userString << endl;
         }
     }
+
+    cout << userString << endl;
     
     return 0;
 }
