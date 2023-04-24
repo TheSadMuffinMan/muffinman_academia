@@ -26,7 +26,7 @@ void sortArray(int userArray[], int numPieces) {
     for(int j = 0; j < numPieces; j++) {
         bool swapped = false;
         for(int i = 0; i < numPieces-1-j; i++) {
-            if(userArray[i] >= userArray[i+1]) {
+            if(userArray[i] <= userArray[i+1]) {
                 swapped = true;
                 //swap values
                 int tmpNum = userArray[i];
