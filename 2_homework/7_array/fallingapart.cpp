@@ -98,6 +98,10 @@ void test(int tempAlice, int tempBob, int tempNumPieces){
     assert(tempAlice == 9);
     assert(tempBob == 6);
 
+    // Mr Bergen help
+    picker(tempAlice, tempBob, 3, {7, 6, 2});
+    assert(tempAlice == 9);
+    assert(tempBob == 6);
     // tempNumPieces = 3;
     // int secondTempUserArray[tempNumPieces] = {7, 6, 2};
     // picker(tempAlice, tempBob, tempNumPieces, secondTempUserArray);

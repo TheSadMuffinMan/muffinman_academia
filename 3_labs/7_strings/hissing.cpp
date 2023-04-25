@@ -39,10 +39,12 @@ string answer(const string &line) {
         hissTrue = true;
     }
 
-    if (hissTrue == true) {
-        return "hiss"
+    if (hissTrue == true) { // True is the same thing as returning 1, 0 is false.
+        return "hiss";
+    } else {
+        return "no hiss";
     }
-    return "no hiss"
+
 }
 
 // unit testing answer()
