@@ -15,7 +15,7 @@ void arrayCreation(int, int[]);
 void sortArray(int[], int);
 void printArray(int[], int);
 void picker(int&, int&, int&, int[]);
-void test(int, int, int&);
+void test(int, int, int);
 
 int main(int argc, char *argv[]) {
     int numPieces;
@@ -88,13 +88,19 @@ void picker(int& alice, int& bob, int& numPieces, int userArray[]){
     }
 }
 
-void test(int tempAlice, int tempBob, int& numPieces){
+void test(int tempAlice, int tempBob, int tempNumPieces){
     tempAlice = 0;
     tempBob = 0;
-    int tempUserArray[5] = {1, 2, 3, 4, 5};
 
-    picker(tempAlice, tempBob, numPieces, tempUserArray);
-
+    tempNumPieces = 5;
+    int tempUserArray[tempNumPieces] = {5, 4, 3, 2, 1};
+    picker(tempAlice, tempBob, tempNumPieces, tempUserArray);
     assert(tempAlice == 9);
     assert(tempBob == 6);
+
+    // tempNumPieces = 3;
+    // int secondTempUserArray[tempNumPieces] = {7, 6, 2};
+    // picker(tempAlice, tempBob, tempNumPieces, secondTempUserArray);
+    // assert(tempAlice == 9);
+    // assert(tempBob == 6);
 }
