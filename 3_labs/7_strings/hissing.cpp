@@ -1,7 +1,7 @@
 /*
 Kattis - Hissing Microphone Problem
-By: FIXME1
-Date: FIXME2
+By: Anthony Streich
+Date: 25 April 23
 Hissing Microphone Problem Statement: https://open.kattis.com/problems/hissingmicrophone
 Algorithm steps:
 1. Read string
@@ -33,7 +33,16 @@ string answer(const string &line) {
     // implment algorithm step 2
     // return "hiss" if ss is found in line
     // otherwise, return "no hiss"
-    return "hiss";
+    bool hissTrue = false;
+
+    if (line.find("ss")) {
+        hissTrue = true;
+    }
+
+    if (hissTrue == true) {
+        return "hiss"
+    }
+    return "no hiss"
 }
 
 // unit testing answer()
