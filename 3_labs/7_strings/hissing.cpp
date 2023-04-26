@@ -33,32 +33,56 @@ string answer(const string &line) {
     // implment algorithm step 2
     // return "hiss" if ss is found in line
     // otherwise, return "no hiss"
-    bool hissTrue = false;
+    int counter = 0;
 
-    if (line.find("ss")) {
-        hissTrue = true;
+    for (int i = 0; i < line.length(); i++) {
+        if (line[i] == 's') {
+            counter++;
+        }
     }
 
-    if (hissTrue == true) { // True is the same thing as returning 1, 0 is false.
+    if (counter >= 2) {
         return "hiss";
     } else {
         return "no hiss";
     }
-
 }
+
+/* I can't seem to get this dumbass function to work, and I don't know why it won't work, so I'm gonna do it differently.
+string answer(const string &line) {
+    // FIXME3
+    // implment algorithm step 2
+    // return "hiss" if ss is found in line
+    // otherwise, return "no hiss"
+
+    if (line.find("ss", 0, line.length()) == string::npos) {
+        return "no hiss";
+    } else {
+        return "hiss";
+    }
+}
+*/
 
 // unit testing answer()
 void testAnswer() {
-    // FIXME4
+    // FIXME4 #fixed#
     // write at least two test cases to test answer()
+    assert(answer("mississippi") == "hiss");
+    assert(answer("ireland") == "no hiss");
+
     cerr << "All test cases passed!\n";
 }
 
 // solving the problem for kattis
 void solve() {
     string line;
-    // string consists of only lowercase letters (no spaces) upto 30 chars
+    cin >> line;
+    for (int i = 0; i < line.length(); i++) {
+        line[i] = tolower(line[i]);
+    }
+    // string consists of only lowercase letters (no spaces) up to 30 chars
     // FIXME5
     // read string into line
+
     cout << answer(line) << endl;
 }
