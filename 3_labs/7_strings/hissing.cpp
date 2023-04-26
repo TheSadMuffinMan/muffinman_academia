@@ -16,7 +16,6 @@ Algorithm steps:
 
 using namespace std;
 
-// function prototypes
 string answer(const string &line);
 void testAnswer();
 void solve();
@@ -28,13 +27,10 @@ int main(int argc, char* argv[]) {
         solve();
 }
 
-string answer(const string &line) {
-    // FIXME3
-    // implment algorithm step 2
-    // return "hiss" if ss is found in line
-    // otherwise, return "no hiss"
-    int counter = 0;
+/* Dang, I thought I was being SO clever with this, but it won't work becuase the function increments at every instance of 's'.
+   So, for example, the word "octopuses" will still result in a return of "hiss" even though it shouldn't.
 
+    int counter = 0;
     for (int i = 0; i < line.length(); i++) {
         if (line[i] == 's') {
             counter++;
@@ -47,23 +43,25 @@ string answer(const string &line) {
         return "no hiss";
     }
 }
+*/
 
-/* I can't seem to get this dumbass function to work, and I don't know why it won't work, so I'm gonna do it differently.
+// I can't seem to get this dumbass function to work, and I don't know why it won't work, so I'm gonna do it differently.
+// string answer(const string &line) {
+//     if (line.find("ss", 0, line.length()) == string::npos) {
+//         return "no hiss";
+//     } else {
+//         return "hiss";
+//     }
+// }
+
 string answer(const string &line) {
-    // FIXME3
-    // implment algorithm step 2
-    // return "hiss" if ss is found in line
-    // otherwise, return "no hiss"
-
     if (line.find("ss", 0, line.length()) == string::npos) {
         return "no hiss";
     } else {
         return "hiss";
     }
 }
-*/
 
-// unit testing answer()
 void testAnswer() {
     // FIXME4 #fixed#
     // write at least two test cases to test answer()
@@ -77,6 +75,8 @@ void testAnswer() {
 void solve() {
     string line;
     cin >> line;
+
+    // This adds modularity to my code
     for (int i = 0; i < line.length(); i++) {
         line[i] = tolower(line[i]);
     }

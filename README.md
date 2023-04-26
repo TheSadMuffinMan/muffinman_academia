@@ -58,6 +58,16 @@
 | Self Grade: 90 |
 | Notes: Late |
 
+### Homework 7
+| Name: Anthony Streich |
+| Name of Assignment: Homework 7, Kattis Falling Apart |
+| Description: Program takes in an array of ints, then distributes them to Alice and Bob |
+| Due Date: 10-April-23 |
+| Status: Complete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/2_homework/7_array |
+| Self Grade: 90 |
+| Notes: Late |
+
 
 ### Lab #1
 | Name: Anthony Streich |
@@ -118,4 +128,14 @@
 | Status: Complete |
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/6_pointers |
 | Self Grade: 90 |
-| Notes: Kinda a huge roundabout way to accomplish things, but I understand why the lab was constructed the way it was. |
+| Notes: Late. Kinda a huge roundabout way to accomplish things, but I understand why the lab was constructed the way it was. |
+
+### Lab #7
+| Name: Anthony Streich |
+| Name of Assignment: Hissing Microphone |
+| Description: If the input string contains two consecutive occurrences of the letter s, then output hiss. Otherwise, outputs no hiss. |
+| Due Date: 6-Apr-23 |
+| Status: Complete |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/7_strings |
+| Self Grade: 90 |
+| Notes: Late, but complete |
