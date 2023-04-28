@@ -52,8 +52,7 @@ string answer(const string &line) {
     //                     line.length()
     if (line.find("ss", 0) != string::npos) {
         return "hiss";
-    }
-    if (line.find("ss", 0) == string::npos) {
+    } else {
         return "no hiss";
     }
 }
@@ -73,7 +72,8 @@ void solve() {
     cin >> line;
 
     // This adds modularity to my code
-    for (int i = 0; i < line.length(); i++) {
+    // Add long unsigned before int because that is what the legnth function returns.
+    for (long unsigned int i = 0; i < line.length(); i++) {
         line[i] = tolower(line[i]);
     }
     // string consists of only lowercase letters (no spaces) up to 30 chars
