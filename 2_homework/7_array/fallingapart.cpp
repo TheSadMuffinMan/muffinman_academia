@@ -77,12 +77,12 @@ void printArray(int userArray[], int numPieces){
 
 void picker(int& alice, int& bob, int& numPieces, int userArray[]){
     // The incrementation was taught to me by my tutor
-    // REMEMBER, i is the same thing as counter
-    // Every instance of counter can be replaced with i
-    for (int counter = 0; counter < numPieces; counter+=2) {
-        alice += userArray[counter];
-        if ((counter+1) < numPieces) {
-            bob += userArray[counter+1];
+    // REMEMBER, i is the same thing as index
+    // Every instance of index can be replaced with i
+    for (int index = 0; index < numPieces; index+=2) {
+        alice += userArray[index];
+        if ((index+1) < numPieces) {
+            bob += userArray[index+1];
         } 
         // i++; // This is the case when you are incrementing the loop by 1 (i++)
     }
