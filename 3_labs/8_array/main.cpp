@@ -54,7 +54,7 @@ void program() {
     int max, min;
     readData(nums, size); // read the data into nums array
     printf("Done reading %zu data numbers.\n", size);
-    printArray(nums, size);//print the array to check if the values are there
+    printArray(nums, size);// print the array to check if the values are there
     findMaxAndMin(nums, size, max, min);
     printf("Max = %u\n", max);
     //FIXME2: print Min value
@@ -67,8 +67,7 @@ void program() {
 }
 
 //read data from a file and store it in into given nums array.
-void readData(int nums[], int size)
-{
+void readData(int nums[], int size) {
 	cout << "You've asked to enter " << size << " integers.\n";
 	for(int i = 0; i < size; i++) {
 		cout << "Enter an integer: ";
@@ -76,16 +75,14 @@ void readData(int nums[], int size)
 	}
 }
 
-void printArray(int nums[], int len)
-{
+void printArray(int nums[], int len) {
 	cout << "[ ";
 	for (int i = 0; i < len; i++)
 		cout << nums[i] << " ";
 	cout << "]" << endl;
 }
 
-void findMaxAndMin(int nums[], int len, int &max, int &min)
-{
+void findMaxAndMin(int nums[], int len, int &max, int &min) {
 	max = nums[0]; //say, max is the first element
 	min = nums[0]; //say, min is the first element
 	for (int i = 0; i < len; i++) {
@@ -97,8 +94,7 @@ void findMaxAndMin(int nums[], int len, int &max, int &min)
 }
 
 //Implements bubble sort
-void bubbleSort(int nums[], int len)
-{
+void bubbleSort(int nums[], int len) {
 	int i, j, temp;
 	bool sorted = false;
 	for (i = 0; i < len; i++) {
@@ -115,8 +111,7 @@ void bubbleSort(int nums[], int len)
 	}
 }
 
-big_int findSum(int nums[], int len)
-{
+big_int findSum(int nums[], int len) {
 	big_int sum = 0;
 	//FIXME6: iterate through nums array and add each element to sum
 	return sum;
