@@ -1,7 +1,7 @@
 /*
 Array manipulation practice
 By: Anthony Streich
-Date: 27 April 23
+Date: 28 April 23
 FIXME1: Include program and programmer information, date, etc. #fixed#
 The lab demostrates the use of array and some operations on array.
 */
@@ -130,3 +130,4 @@ big_int findSum(int nums[], int len) {
 	}
 	return sum;
 }
+// COMPLETE
