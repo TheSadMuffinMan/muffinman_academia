@@ -45,9 +45,9 @@ int main(int argc, char* argv[]) {
 }
 */
 
-// I can't seem to get this dumbass function to work, and I don't know why it won't work, so I'm gonna do it differently.
+// I can't seem to get this dumb function to work, and I don't know why it won't work, so I'm gonna do it differently.
 // So I thought that this was a bust, but here I am >:(
-// Turns out I'm just a dumbass. The find function does NOT take 3 parameters *sighing emoji*
+// Turns out I'm just a dumb. The find function does NOT take 3 parameters *sighing emoji*
 string answer(const string &line) {
     //                     line.length()
     if (line.find("ss", 0) != string::npos) {

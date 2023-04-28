@@ -88,8 +88,9 @@ void findMaxAndMin(int nums[], int len, int &max, int &min) {
 	for (int i = 0; i < len; i++) {
 		if (max < nums[i]) //compare max with each element and update max if necessary
 			max = nums[i];
-
-		//FIXEME4: compare min with each element and update min
+		//FIXEME4: compare min with each element and update min  #fixed#
+		if (min > nums[i]) //compare min with each element and update min if necessary
+			min = nums[i];
 	}
 }
 
