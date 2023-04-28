@@ -102,6 +102,8 @@ void bubbleSort(int nums[], int len) {
     	sorted = true;
 		for (j = 0; j < len-i-1; j++) {
 			// if two adjacent numbers are not in order, swap 'em
+			// Technically this is not a bubble sort, this is a brick sort.
+			// This is because we are moving the "heaviest"/largest object to the back/bottom.
 			if (nums[j] > nums[j+1]) {
 				//FIXME5: swap the values of nums[j] and nums[j+1] #fixed#
 				// can use built-in swap or implement your own swap
@@ -117,6 +119,9 @@ void bubbleSort(int nums[], int len) {
 
 big_int findSum(int nums[], int len) {
 	big_int sum = 0;
-	//FIXME6: iterate through nums array and add each element to sum
+	//FIXME6: iterate through nums array and add each element to sum #fixed#
+	for (int i = 0; i < len; i++) {
+		sum += nums[i];
+	}
 	return sum;
 }
