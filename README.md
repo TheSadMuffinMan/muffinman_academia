@@ -139,3 +139,13 @@
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/7_strings |
 | Self Grade: 90 |
 | Notes: Late, but complete |
+
+### Lab #8
+| Name: Anthony Streich |
+| Name of Assignment: Array Lab |
+| Description: Array manipulation practice |
+| Due Date: 14-Apr-23 |
+| Status: In Progress |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/8_array |
+| Self Grade: - |
+| Notes: In progress |
