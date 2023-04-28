@@ -17,15 +17,15 @@ using namespace std;
 using big_int = long long int;
 
 //function that reads numbers
-void readData(int *, int);
+void readData(int[], int);
 //function that finds max & min numbers from given array of numbers
-void findMaxAndMin(int *, int, int&, int&);
+void findMaxAndMin(int[], int, int&, int&);
 //function that finds the sum of the numbers in a given array
-big_int findSum(int *, int);
+big_int findSum(int[], int);
 //function that sorts the numbes into ascending order
-void bubbleSort(int *, int);
+void bubbleSort(int[], int);
 //function that prints each element in the array
-void printArray(int *, int);
+void printArray(int[], int);
 // crux of the program is done in this function
 void program();
 
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 void program() {
     size_t size;
     cout << "This program finds statistical values of some integers entered by the user.\n";
-    cout << "How many nubers would like to enter? ";
+    cout << "How many numbers would like to enter? ";
     cin >> size;
     int *nums = new int[size]; //declare a dynamic int array of size 
     int max, min;
@@ -57,16 +57,21 @@ void program() {
     printArray(nums, size);// print the array to check if the values are there
     findMaxAndMin(nums, size, max, min);
     printf("Max = %u\n", max);
-    //FIXME2: print Min value
+    //FIXME2: print Min value #fixed#
+	printf("Min = %u\n", min);
     printf("Sum = %lld\n",findSum(nums, size));
     cout << "Sorted list in ascending order:\n";
     bubbleSort(nums, size);
-    //FIXME3: print sorted array
+    //FIXME3: print sorted array #fixed#
+	printArray(nums, size);
 
     delete [] nums;
 }
 
 //read data from a file and store it in into given nums array.
+// For the variable declaring size, it is important to note that in the program() function, we are using size_t.
+// This means that the expected number will be an unsigned long rather than an int.
+// This is happening in all of these functions.
 void readData(int nums[], int size) {
 	cout << "You've asked to enter " << size << " integers.\n";
 	for(int i = 0; i < size; i++) {
