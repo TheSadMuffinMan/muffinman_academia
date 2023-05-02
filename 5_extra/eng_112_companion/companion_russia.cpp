@@ -7,13 +7,14 @@ CURRENT ISSUES:
 
 #include <iostream>
 #include <string>
+#include <random>
 
 using namespace std;
 
 using money_int = long long int; /* This creates a new type of variable that can hold really large values. This is needed because
 a regular variable type of int cannot hold data that large, and the oligarchs have A LOT of money. */
 
-// #define clear() system("clear") // This line defines the clear function so that it can be used in the terminal.
+#define clear() system("clear") // This line defines the clear function so that it can be used in the terminal.
 
 struct Character {
     string name;
@@ -22,6 +23,7 @@ struct Character {
     int age;
     string occupation;
     string familyMembers;
+    string status;
 };
 
 void userInput(string&);
@@ -29,8 +31,9 @@ void gameInfo(string);
 void populateInfo(Character&);
 int populateGood();
 int populateBad();
-void printToons(Character);
-// void game();
+void printToonFull(Character);
+void printStatus(Character);
+// void storyStageOne();
 
 int main(int argc, char *argv[]) {
     string userName;
@@ -43,9 +46,9 @@ int main(int argc, char *argv[]) {
     populateInfo(oligarch); // Function that creates all the characters
     populateGood(); // Function that populates the "good" array
     populateBad(); // Function that populates the "bad" array
-    printToons(oligarch); // Populates the toon info with struct information
+    printToonFull(oligarch); // Populates the toon info with struct information
 
-    //game(); // Where the actual story is played
+    //storyStageOne(); // Where the actual story is played
     //results(); // Prints out player results.
 
     return 0;
@@ -72,6 +75,7 @@ void populateInfo(Character &oligarch) {
     oligarch.age = 50;
     oligarch.occupation = "Oil Tycoon";
     oligarch.familyMembers = "Wife, two sons, one daughter";
+    oligarch.status = "Slightly overweight, happy, loyal to government.";
 }
 
 int populateGood() {
@@ -100,14 +104,14 @@ int populateBad() {
     return 0;
 }
 
-
-void printToons(Character oligarch) {
+void printToonFull(Character oligarch) {
     cout << "\t\tCHARACTER ONE, RUSSIAN OLIGARCH" << endl;
     cout << "\tName: " << oligarch.name << endl;
     cout << "\tHealth: " << oligarch.health << endl;
     cout << "\tAge: " << oligarch.age << endl;
     cout << "\tOccupation: " << oligarch.occupation << endl;
-    cout << "\tFamily Members: "<< oligarch.familyMembers << endl; // This line is the first seperating line
+    cout << "\tFamily Members: "<< oligarch.familyMembers << endl;
+    cout << "\tCurrent Status: " << oligarch.status << endl; // This line is the first seperating line
 
 // Finish this later
     // cout << "\t\tCHARACTER TWO" << endl;
@@ -121,4 +125,16 @@ void printToons(Character oligarch) {
     // cout << "\tAge: " << endl;
     // cout << "\tOccupation: " << endl;
     // cout << "\tFamily Members: " << endl;
+}
+
+void printStatus(Character oligarch) {
+    cout << "\tName: " << oligarch.name << endl;
+    cout << "\tCurrent Health: " << oligarch.health << endl;
+    cout << "\tCurrent Money: " << oligarch.money << endl;
+    cout << "\tCurrent Status: " << oligarch.status << endl;
+}
+
+void storyStageOne() {
+    cout << "\t***STAGE ONE***\n";
+    cout << "You are BOB, a Russian Oil Tycoon and a friend of the regime. ***CONTINUE STORY***" << endl;
 }
