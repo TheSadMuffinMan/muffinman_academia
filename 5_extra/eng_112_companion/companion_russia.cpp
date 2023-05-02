@@ -23,8 +23,8 @@ struct Character {
 
 void userInput(string&);
 void gameInfo(string userName);
-void populateInfo();
-void printToons();
+void populateInfo(Character&);
+void printToons(Character);
 
 int main(int argc, char *argv[]) {
     string userName;
@@ -33,7 +33,9 @@ int main(int argc, char *argv[]) {
     // clear(); // Clears the screen
     userInput(userName); // Takes user name
     gameInfo(userName); // Prints general game info
-    printToons(); // Populates the toon info with struct information
+
+    populateInfo(oligarch); // Function that creates all the characters
+    printToons(oligarch); // Populates the toon info with struct information
 
     return 0;
 }
@@ -51,16 +53,21 @@ void gameInfo(string userName) {
     cout << " .\n .\n .\n .\n \nGood luck, and stay alive.\n\n" << endl;
 }
 
-void populateInfo() {
-    cout << "x" << endl;
+void populateInfo(Character &oligarch) {
+    oligarch.name = "Bob";
+    oligarch.health = 100;
+    oligarch.age = 50;
+    oligarch.occupation = "Oil Tycoon";
+    oligarch.familyMembers = "Wife, two sons, one daughter";
 }
 
-void printToons() {
+void printToons(Character oligarch) {
     cout << "\t\tCHARACTER ONE, RUSSIAN OLIGARCH" << endl;
-    cout << "\tName: " << Character.oligarch.name << endl;
-    cout << "\tAge: " << Character.oligarch.age << endl;
-    cout << "\tOccupation: " << Character.oligarch.occupation << endl;
-    cout << "\tFamily Members: "<< Character.oligarch.familyMembers << endl; // This line is the first seperating line
+    cout << "\tName: " << oligarch.name << endl;
+    cout << "\tHealth: " << oligarch.health << endl;
+    cout << "\tAge: " << oligarch.age << endl;
+    cout << "\tOccupation: " << oligarch.occupation << endl;
+    cout << "\tFamily Members: "<< oligarch.familyMembers << endl; // This line is the first seperating line
 
 // Finish this later
     // cout << "\t\tCHARACTER TWO" << endl;
