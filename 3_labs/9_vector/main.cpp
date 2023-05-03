@@ -21,11 +21,13 @@ using llu = unsigned long long int;
 // System specific macro function sysclear that 
 // clears console text
 // NOTE: system call is not security best practice!
+/* TEMP COMMENT OUT
 #ifdef _WIN32
 #define clearScreen() system ("cls") // not secure!
 #else
 #define clearScreen() system ("clear") // not secure!
 #endif
+*/
 
 // converts decimal number to binary representation
 string decToBin(llu);
@@ -48,7 +50,7 @@ int main()
     int choice;
     string octalNum, binary;
     do {
-        clearScreen();
+        // clearScreen();
         cout << "Program converts decimal number into binary and vice versa.\n";
         choice = menuOption();
         switch(choice) {
