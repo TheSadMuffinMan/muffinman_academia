@@ -33,11 +33,14 @@ int populateGood();
 int populateBad();
 void printToonFull(Character);
 void printStatus(Character);
-// void storyStageOne();
+void storyStageOne(string[], string[]);
 
 int main(int argc, char *argv[]) {
     string userName;
     Character oligarch;
+    srand(time(0)); // This initializes the random value by marking the exact time, which will create a unique seed.
+    string goodActions[5];
+    string badActions[11];
 
     // clear(); // Clears the screen
     userInput(userName); // Takes user name
@@ -48,7 +51,7 @@ int main(int argc, char *argv[]) {
     populateBad(); // Function that populates the "bad" array
     printToonFull(oligarch); // Populates the toon info with struct information
 
-    //storyStageOne(); // Where the actual story is played
+    storyStageOne(goodActions[5], badActions[11]);
     //results(); // Prints out player results.
 
     return 0;
@@ -79,7 +82,7 @@ void populateInfo(Character &oligarch) {
 }
 
 int populateGood() {
-    string goodActions[10];
+    string goodActions[5];
     goodActions[0] = "Money Increase";
     goodActions[1] = "Help Someone Else";
     goodActions[2] = "Quality time with Family";
@@ -89,7 +92,7 @@ int populateGood() {
 }
 
 int populateBad() {
-    string badActions[10];
+    string badActions[11];
     badActions[0] = "Draft Notice";
     badActions[1] = "State Abduction";
     badActions[2] = "Health Failing";
@@ -134,7 +137,10 @@ void printStatus(Character oligarch) {
     cout << "\tCurrent Status: " << oligarch.status << endl;
 }
 
-void storyStageOne() {
+void storyStageOne(string goodActions[], string badActions[]) {
     cout << "\t***STAGE ONE***\n";
     cout << "You are BOB, a Russian Oil Tycoon and a friend of the regime. ***CONTINUE STORY***" << endl;
+    cout << "***ACTION***\n";
+    int actionNumber;
+    cout << "DEBUG printing goodActions[" << actionNumber << "]: " << goodActions[actionNumber] << endl;
 }
