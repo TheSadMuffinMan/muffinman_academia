@@ -145,7 +145,17 @@
 | Name of Assignment: Array Lab |
 | Description: Array manipulation practice |
 | Due Date: 14-Apr-23 |
-| Status: In Progress |
+| Status: Complete |
 | Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/8_array |
+| Self Grade: 90 |
+| Notes: Late |
+
+### Lab #9
+| Name: Anthony Streich |
+| Name of Assignment: Vector Lab |
+| Description: The program converts decimal to binary and binary to decimal number system. Lab demonstrates the vector application.  |
+| Due Date: 21-Apr-23 |
+| Status: In Progress |
+| Location: https://github.com/TheSadMuffinMan/CS1-acstreich/tree/main/3_labs/9_vector |
 | Self Grade: - |
-| Notes: In progress |
+| Notes: In Progress |
