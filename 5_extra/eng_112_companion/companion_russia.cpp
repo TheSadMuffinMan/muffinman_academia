@@ -29,8 +29,8 @@ struct Character {
 void userInput(string&);
 void gameInfo(string);
 void populateInfo(Character&);
-int populateGood();
-int populateBad();
+string populateGood();
+string populateBad();
 void printToonFull(Character);
 void printStatus(Character);
 void storyStageOne(string[], string[]);
@@ -81,17 +81,17 @@ void populateInfo(Character &oligarch) {
     oligarch.status = "Slightly overweight, happy, loyal to government.";
 }
 
-int populateGood() {
+string populateGood() {
     string goodActions[5];
     goodActions[0] = "Money Increase";
     goodActions[1] = "Help Someone Else";
     goodActions[2] = "Quality time with Family";
     goodActions[3] = "STORY DEBUG1";
     goodActions[4] = "STORY DEBUG2";
-    return 0;
+    return "DEBUG";
 }
 
-int populateBad() {
+string populateBad() {
     string badActions[11];
     badActions[0] = "Draft Notice";
     badActions[1] = "State Abduction";
@@ -104,7 +104,7 @@ int populateBad() {
     badActions[8] = "Severe Injury";
     badActions[9] = "Fight";
     badActions[10] = "Transportation Loss";
-    return 0;
+    return "DEBUG";
 }
 
 void printToonFull(Character oligarch) {
@@ -141,6 +141,40 @@ void storyStageOne(string goodActions[], string badActions[]) {
     cout << "\t***STAGE ONE***\n";
     cout << "You are BOB, a Russian Oil Tycoon and a friend of the regime. ***CONTINUE STORY***" << endl;
     cout << "***ACTION***\n";
-    int actionNumber;
-    cout << "DEBUG printing goodActions[" << actionNumber << "]: " << goodActions[actionNumber] << endl;
+    int choice;
+    do {
+        switch (choice){
+            case 1:
+                cout << badActions[0];
+                cout << "DEBUG";
+                break;
+            case 2:
+                cout << badActions[1];
+                cout << "DEBUG";
+                break;
+            case 3:
+                cout << "DEBUG";
+                break;
+            case 4:
+                cout << "DEBUG";
+                break;
+            case 5:
+                cout << "DEBUG";
+                break;
+            case 6:
+                cout << "DEBUG";
+                break;
+            case 7:
+                cout << "DEBUG";
+                break;
+            case 8:
+                cout << "DEBUG";
+                break;
+            case 9:
+                cout << "DEBUG";
+                break;
+        }
+    } while {
+
+    }
 }
