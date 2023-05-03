@@ -51,7 +51,7 @@ int main(int argc, char *argv[]) {
     populateBad(); // Function that populates the "bad" array
     printToonFull(oligarch); // Populates the toon info with struct information
 
-    storyStageOne(goodActions[5], badActions[11]);
+    storyStageOne(goodActions[], badActions[]);
     //results(); // Prints out player results.
 
     return 0;
@@ -142,8 +142,9 @@ void storyStageOne(string goodActions[], string badActions[]) {
     cout << "You are BOB, a Russian Oil Tycoon and a friend of the regime. ***CONTINUE STORY***" << endl;
     cout << "***ACTION***\n";
     int choice;
+    bool goodAction = false;
     do {
-        switch (choice){
+        switch (choice) {
             case 1:
                 cout << badActions[0];
                 cout << "DEBUG";
@@ -174,7 +175,5 @@ void storyStageOne(string goodActions[], string badActions[]) {
                 cout << "DEBUG";
                 break;
         }
-    } while {
-
-    }
+    } while (goodAction == false);  
 }
