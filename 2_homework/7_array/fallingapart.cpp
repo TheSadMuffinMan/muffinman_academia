@@ -99,6 +99,7 @@ void test(int tempAlice, int tempBob, int tempNumPieces){
     assert(tempBob == 6);
 
     // Mr Bergen help
+    tempNumPieces = 3;
     picker(tempAlice, tempBob, 3, {7, 6, 2});
     assert(tempAlice == 9);
     assert(tempBob == 6);
