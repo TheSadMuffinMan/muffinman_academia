@@ -85,7 +85,7 @@ void picker(int& alice, int& bob, int& numPieces, int userArray[]){
             bob += userArray[index+1];
         } 
         // i++; // This is the case when you are incrementing the loop by 1 (i++)
-    }
+    }   
 }
 
 void test(int tempAlice, int tempBob, int tempNumPieces){
@@ -100,7 +100,8 @@ void test(int tempAlice, int tempBob, int tempNumPieces){
 
     // Mr Bergen help
     tempNumPieces = 3;
-    picker(tempAlice, tempBob, 3, {7, 6, 2});
+    int tempArray[3] = {7, 6, 2};
+    picker(tempAlice, tempBob, tempNumPieces, tempArray);
     assert(tempAlice == 9);
     assert(tempBob == 6);
     // tempNumPieces = 3;
