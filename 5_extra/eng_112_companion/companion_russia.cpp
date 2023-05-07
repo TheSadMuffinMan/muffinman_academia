@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
     printToonFull(playerCharacter); // Populates the toon info with struct information
 
     int counter = 0;
-    while (statusChecker(playerCharacter) == true && counter < 3) {
+    while (statusChecker(playerCharacter) == true && counter < 2) {
         cin.get();
         actionStage(goodActions, badActions, playerCharacter);
         printToonFull(playerCharacter);
