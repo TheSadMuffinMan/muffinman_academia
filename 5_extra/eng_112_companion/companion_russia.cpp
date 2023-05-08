@@ -1,6 +1,6 @@
 /*
 Name: Anthony Streich
-Date: 2 May 23
+Date: 8 May 23
 English 112 Companion Piece
 CURRENT ISSUES: 
 */
@@ -35,6 +35,7 @@ int characterSelection();
 string populateGood(string[]);
 string populateBad(string[]);
 void printToonFull(Character);
+void printAllToons(Character);
 void printStatus(Character);
 void actionStage(string[], string[], Character&);
 bool statusChecker(Character);
@@ -105,14 +106,25 @@ void populateInfo(Character &playerCharacter, int characterSelectionInt) {
         playerCharacter.status = "Slightly overweight, happy, loyal to government.";
     } else if (characterSelectionInt == 2) {
         playerCharacter.type = 2; // Regular person
-        playerCharacter.name = "Heather";
+        playerCharacter.name = "Dimitri";
         playerCharacter.health = 100;
         playerCharacter.money = 500;
         playerCharacter.age = 20;
         playerCharacter.occupation = "Regular person";
-        playerCharacter.familyMembers = "DEBUG";
-        playerCharacter.status = "DEBUG";
+        playerCharacter.familyMembers = "Unknown";
+        playerCharacter.status = "No medical issues";
     }
+}
+
+void printAllToons(Character playerCharacter) {
+    cout << "CHARACTER ONE\n"; // Oligarch
+    cout << playerCharacter.name;
+    cout << playerCharacter.health;
+    cout << playerCharacter.money;
+    cout << playerCharacter.age;
+    cout << playerCharacter.occupation;
+    cout << playerCharacter.familyMembers;
+    cout << playerCharacter.status;
 }
 
 string populateGood(string goodActions[]) {
@@ -178,13 +190,13 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
     cout << "***ACTION***\n";
 
     int choice;
-    // choice = ((rand()%10));
+    // choice = ((rand()%15));
     choice = 0;
     cout << "DEBUG: choice: " << choice << endl;
 
     switch (choice) {
-        case 0:
-            cout << badActions[0]; // Draft notice
+        case 0: // Draft notice
+            cout << badActions[0]; 
             cout << "Story stuff";
             if (playerCharacter.type == 1) {
                 playerCharacter.money = (playerCharacter.money - 50000);
@@ -196,8 +208,12 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
             }
             break;
         case 1: // State abduction
-            cout << badActions[1]; 
-            cout << "DEBUG";
+            cout << badActions[1]; // This action results in the loss of the game no matter who you are playing as.
+            playerCharacter.money = 0;
+            playerCharacter.status = "In captivity";
+            cout << "You have been abducted by the Russian Police. All of your assets have been seized.\n";
+            cout << "No one is ever released from captivity.\n";
+            playerCharacter.alive = false;
             break;
         case 2: // Health failing
             cout << "DEBUG"; 
@@ -230,7 +246,7 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
             cout << "Money increase" << endl;
             break;
         case 12: // Help someone else
-            cout << "Help someone else"
+            cout << "Help someone else";
             break;
         case 13: // Quality time with family
             cout << "Quality time with family" << endl;
@@ -253,3 +269,7 @@ bool statusChecker(Character playerCharacter) {
         return true;
     }
 }
+
+/*
+I wanted to thank my tutor DJ so much for his help with the logic of this game. His guidance made this game possible!
+*/
