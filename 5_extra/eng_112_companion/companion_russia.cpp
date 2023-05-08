@@ -189,34 +189,56 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
             if (playerCharacter.type == 1) {
                 playerCharacter.money = (playerCharacter.money - 50000);
                 cout << "Dodge the draft";
+            } else if (playerCharacter.type == 2) {
+                cout << "You have been notified that of your summons to the Russian Army." << endl;
+                cout << "This will result in a -50 hp penalty." << endl;
+                playerCharacter.health = (playerCharacter.health - 50);
             }
             break;
-        case 1:
-            cout << badActions[1];
+        case 1: // State abduction
+            cout << badActions[1]; 
             cout << "DEBUG";
             break;
-        case 2:
+        case 2: // Health failing
+            cout << "DEBUG"; 
+            break;
+        case 3: // Mugging
+            cout << "DEBUG"; 
+            break;
+        case 4: // Inclement weather
+            cout << "DEBUG"; 
+            break;
+        case 5: // Job Loss
             cout << "DEBUG";
             break;
-        case 3:
+        case 6: // Food Loss
             cout << "DEBUG";
             break;
-        case 4:
+        case 7: // Loss of family member
             cout << "DEBUG";
             break;
-        case 5:
+        case 8: // Severe injury
             cout << "DEBUG";
             break;
-        case 6:
+         case 9: // Fight
             cout << "DEBUG";
             break;
-        case 7:
+        case 10: // Transportation loss
+            cout << "Transportation loss" << endl;
+            break;
+        case 11: // Money Increase
+            cout << "Money increase" << endl;
+            break;
+        case 12: // Help someone else
+            cout << "Help someone else"
+            break;
+        case 13: // Quality time with family
+            cout << "Quality time with family" << endl;
+            break;
+        case 14: // DEBUG POSITIVE
             cout << "DEBUG";
             break;
-        case 8:
-            cout << "DEBUG";
-            break;
-         case 9:
+        case 15: // DEBUG POSITIVE
             cout << "DEBUG";
             break;
     }

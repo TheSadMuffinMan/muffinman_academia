@@ -69,13 +69,13 @@ void sortArray(int userArray[], int numPieces) {
     }
 }
 
-void printArray(int userArray[], int numPieces){
+void printArray(int userArray[], int numPieces) {
     for (int i = 0; i < numPieces; i++){
         cout << userArray[i];
     }
 }
 
-void picker(int& alice, int& bob, int& numPieces, int userArray[]){
+void picker(int& alice, int& bob, int& numPieces, int userArray[]) {
     // The incrementation was taught to me by my tutor
     // REMEMBER, i is the same thing as index
     // Every instance of index can be replaced with i
