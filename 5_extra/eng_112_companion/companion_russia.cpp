@@ -81,9 +81,8 @@ void gameInfo(string userName) {
     cout << "\nWelcome " << userName << " to my companion piece." << endl;
     cout << "This program is designed to tell a story that follows the lives of different people currently living in Russia." << endl;
     cout << "Hopefully these stories are able to bring better perspective to the ongoing conditions in Russia." << endl;
-    cout << "The only input you will need is the numpad for character choice selections." << endl;
-    cout << "It is important to note that this game is NOT fair, and every decision will have consequences." << endl;
-    cout << " .\n .\n .\n .\n \nGood luck, and stay alive.\n\n" << endl;
+    cout << "It is important to note that this game is NOT fair, mostly because I'm a terrible coder, but also because \nit is indicative of real life." << endl;
+    cout << " \n \n \n \nGood luck, and stay alive.\n\n" << endl;
 }
 
 int characterSelection() {
@@ -113,7 +112,7 @@ void populateInfo(Character &playerCharacter, int userSelection) {
         playerCharacter.type = 2; // Regular person
         playerCharacter.name = "Dimitri";
         cout << "\n\n\tName: " << playerCharacter.name << "\n";
-        playerCharacter.health = 75;
+        playerCharacter.health = 80;
         cout << "\tHealth: " << playerCharacter.health << "\n";
         playerCharacter.money = 2500;
         cout << "\tMoney: " << playerCharacter.money << "\n";
@@ -170,15 +169,14 @@ void printStatus(Character playerCharacter) {
 
 void actionStage(string goodActions[], string badActions[], Character &playerCharacter) {
     int choice;
-    // cout << "***Manuel Mode ON***\n";
+    // cout << "***Manual Mode ON***\n";
     // cin >> choice;
 
     choice = ((rand()%5));
-    cout << "DEBUG: choice: " << choice << endl;
+    cout << "DEBUG: choice: " << choice << "\n" << endl;
 
     switch (choice) {
         case 0: // Draft notice
-            // cout << "\n" << badActions[0] << endl;
             if (playerCharacter.type == 1) {
                 playerCharacter.money = (playerCharacter.money - 50000);
                 cout << "Although you have been summoned for the draft, you are influential.\n";
@@ -192,6 +190,7 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
         case 1: // State abduction. This action results in the loss of the game no matter who you are playing as.
             playerCharacter.money = 0;
             playerCharacter.status = "In captivity\n";
+            playerCharacter.occupation = "In captivity\n";
             cout << "You have been abducted by the Russian Police. All of your assets have been seized.\n";
             cout << "No one is ever released from captivity.\n";
             playerCharacter.alive = false;
