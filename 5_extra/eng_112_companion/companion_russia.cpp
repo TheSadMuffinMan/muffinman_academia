@@ -23,19 +23,19 @@ struct Character {
     money_int money;
     int age;
     string occupation;
-    string familyMembers;
+    // string familyMembers;
     string status;
     bool alive = true;
 };
 
 void userInput(string&);
 void gameInfo(string);
-void populateInfo(Character&, int);
+void populateInfo(Character&);
 int characterSelection();
 string populateGood(string[]);
 string populateBad(string[]);
 void printToonFull(Character);
-void printAllToons(Character);
+// void printAllToons(Character);
 void printStatus(Character);
 void actionStage(string[], string[], Character&);
 bool statusChecker(Character);
@@ -51,13 +51,10 @@ int main(int argc, char *argv[]) {
     userInput(userName); // Takes user name
     gameInfo(userName); // Prints general game info
 
-    // printAllToons(playerCharacter); // all character stats
-    populateInfo(playerCharacter, characterSelection()); // Function that creates, displays, and selects all the characters
+    populateInfo(playerCharacter); // Function that creates and displays both characters
 
-    int characterSelectionInt = characterSelection();
     populateGood(goodActions); // Function that populates the "good" array
     populateBad(badActions); // Function that populates the "bad" array
-    // printToonFull(playerCharacter); // Populates the toon info with struct information
 
     int counter = 0;
     while (statusChecker(playerCharacter) == true && counter < 2) {
@@ -87,6 +84,7 @@ void gameInfo(string userName) {
     cout << "The only input you will need is the numpad for character choice selections." << endl;
     cout << "It is important to note that this game is NOT fair, and every decision will have consequences." << endl;
     cout << " .\n .\n .\n .\n \nGood luck, and stay alive.\n\n" << endl;
+    cout << "Which character would you like to play as?" << endl;
 }
 
 int characterSelection() {
@@ -96,55 +94,37 @@ int characterSelection() {
     return userSelection;
 }
 
-void populateInfo(Character &playerCharacter, int characterSelectionInt) {
-    if (characterSelectionInt == 1) {
+void populateInfo(Character &playerCharacter) {
+    int userSelection = 1;
+    if (userSelection == 1) {
         playerCharacter.type = 1; // Oligarch
         playerCharacter.name = "Bob";
-        cout << playerCharacter.name << "\n";
+        cout << "\tName: " << playerCharacter.name << "\n";
         playerCharacter.health = 100;
-        cout << playerCharacter.health << "\n";
+        cout << "\tHealth: " << playerCharacter.health << "\n";
         playerCharacter.money = 50001;
-        cout << playerCharacter.money << "\n";
+        cout << "\tMoney: " << playerCharacter.money << "\n";
         playerCharacter.age = 50;
-        cout << playerCharacter.age << "\n";
+        cout << "\tAge: " << playerCharacter.age << "\n";
         playerCharacter.occupation = "Oil Tycoon";
-        cout << playerCharacter.occupation << "\n";
-        playerCharacter.familyMembers = "Wife, two sons, one daughter";
-        cout << playerCharacter.familyMembers << "\n";
+        cout << "\tOccupation: " << playerCharacter.occupation << "\n";
         playerCharacter.status = "No medical issues";
-        cout << playerCharacter.status << "\n";
-    } else if (characterSelectionInt == 2) {
+        cout << "\t Status: " << playerCharacter.status << "\n";
+    } else if (userSelection == 2) {
         playerCharacter.type = 2; // Regular person
         playerCharacter.name = "Dimitri";
-        playerCharacter.health = 100;
-        playerCharacter.money = 500;
-        playerCharacter.age = 20;
-        playerCharacter.occupation = "Regular person";
-        playerCharacter.familyMembers = "Unknown";
+        cout << "Name: " << playerCharacter.name << "\n";
+        playerCharacter.health = 75;
+        cout << "Health: " << playerCharacter.health << "\n";
+        playerCharacter.money = 3200;
+        cout << "Money: " << playerCharacter.money << "\n";
+        playerCharacter.age = 25;
+        cout << "Age: " << playerCharacter.age << "\n";
+        playerCharacter.occupation = "University Student";
+        cout << "Occupation: " << playerCharacter.occupation << "\n";
         playerCharacter.status = "No medical issues";
+        cout << "Status: " << playerCharacter.status << "\n";
     }
-}
-
-void printAllToons(Character playerCharacter) {
-    playerCharacter.type = 1;
-    cout << "CHARACTER ONE\n"; // Oligarch
-    cout << playerCharacter.name;
-    cout << playerCharacter.health;
-    cout << playerCharacter.money;
-    cout << playerCharacter.age;
-    cout << playerCharacter.occupation;
-    cout << playerCharacter.familyMembers;
-    cout << playerCharacter.status;
-
-    playerCharacter.type = 2;
-    cout << "CHARACTER ONE\n"; // Dimitri
-    cout << playerCharacter.name;
-    cout << playerCharacter.health;
-    cout << playerCharacter.money;
-    cout << playerCharacter.age;
-    cout << playerCharacter.occupation;
-    cout << playerCharacter.familyMembers;
-    cout << playerCharacter.status;
 }
 
 string populateGood(string goodActions[]) {
@@ -178,7 +158,6 @@ void printToonFull(Character playerCharacter) {
     cout << "\tMoney: " << playerCharacter.money << endl;   
     cout << "\tAge: " << playerCharacter.age << endl;
     cout << "\tOccupation: " << playerCharacter.occupation << endl;
-    cout << "\tFamily Members: "<< playerCharacter.familyMembers << endl;
     cout << "\tCurrent Status: " << playerCharacter.status << endl; // This line is the first seperating line
     cout << "\tAlive Status: "<< playerCharacter.alive << endl;
 
@@ -188,13 +167,11 @@ void printToonFull(Character playerCharacter) {
     // cout << "\tName: " << endl;
     // cout << "\tAge: " << endl;
     // cout << "\tOccupation: " << endl;
-    // cout << "\tFamily Members: " << endl; // This line is the second seperating line
 
     // cout << "\t\tCHARACTER THREE" << endl;
     // cout << "\tName: " << endl;
     // cout << "\tAge: " << endl;
     // cout << "\tOccupation: " << endl;
-    // cout << "\tFamily Members: " << endl;
 }
 
 void printStatus(Character playerCharacter) {
