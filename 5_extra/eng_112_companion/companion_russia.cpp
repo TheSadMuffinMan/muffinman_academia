@@ -51,11 +51,13 @@ int main(int argc, char *argv[]) {
     userInput(userName); // Takes user name
     gameInfo(userName); // Prints general game info
 
+    // printAllToons(playerCharacter); // all character stats
+    populateInfo(playerCharacter, characterSelection()); // Function that creates, displays, and selects all the characters
+
     int characterSelectionInt = characterSelection();
-    populateInfo(playerCharacter, characterSelectionInt); // Function that creates all the characters
     populateGood(goodActions); // Function that populates the "good" array
     populateBad(badActions); // Function that populates the "bad" array
-    printToonFull(playerCharacter); // Populates the toon info with struct information
+    // printToonFull(playerCharacter); // Populates the toon info with struct information
 
     int counter = 0;
     while (statusChecker(playerCharacter) == true && counter < 2) {
@@ -89,7 +91,7 @@ void gameInfo(string userName) {
 
 int characterSelection() {
     int userSelection;
-    cout << "Which character would you like to play as? 1-3 " << endl;
+    cout << "\n\nWhich character would you like to play as? 1-3 " << endl;
     cin >> userSelection;
     return userSelection;
 }
@@ -98,12 +100,19 @@ void populateInfo(Character &playerCharacter, int characterSelectionInt) {
     if (characterSelectionInt == 1) {
         playerCharacter.type = 1; // Oligarch
         playerCharacter.name = "Bob";
+        cout << playerCharacter.name << "\n";
         playerCharacter.health = 100;
+        cout << playerCharacter.health << "\n";
         playerCharacter.money = 50001;
+        cout << playerCharacter.money << "\n";
         playerCharacter.age = 50;
+        cout << playerCharacter.age << "\n";
         playerCharacter.occupation = "Oil Tycoon";
+        cout << playerCharacter.occupation << "\n";
         playerCharacter.familyMembers = "Wife, two sons, one daughter";
-        playerCharacter.status = "Slightly overweight, happy, loyal to government.";
+        cout << playerCharacter.familyMembers << "\n";
+        playerCharacter.status = "No medical issues";
+        cout << playerCharacter.status << "\n";
     } else if (characterSelectionInt == 2) {
         playerCharacter.type = 2; // Regular person
         playerCharacter.name = "Dimitri";
@@ -117,7 +126,18 @@ void populateInfo(Character &playerCharacter, int characterSelectionInt) {
 }
 
 void printAllToons(Character playerCharacter) {
+    playerCharacter.type = 1;
     cout << "CHARACTER ONE\n"; // Oligarch
+    cout << playerCharacter.name;
+    cout << playerCharacter.health;
+    cout << playerCharacter.money;
+    cout << playerCharacter.age;
+    cout << playerCharacter.occupation;
+    cout << playerCharacter.familyMembers;
+    cout << playerCharacter.status;
+
+    playerCharacter.type = 2;
+    cout << "CHARACTER ONE\n"; // Dimitri
     cout << playerCharacter.name;
     cout << playerCharacter.health;
     cout << playerCharacter.money;
@@ -133,7 +153,7 @@ string populateGood(string goodActions[]) {
     goodActions[2] = "Quality time with Family";
     goodActions[3] = "STORY DEBUG1";
     goodActions[4] = "STORY DEBUG2";
-    return "DEBUG";
+    return "Populate good DEBUG";
 }
 
 string populateBad(string badActions[]) {
@@ -148,11 +168,11 @@ string populateBad(string badActions[]) {
     badActions[8] = "Severe Injury";
     badActions[9] = "Fight";
     badActions[10] = "Transportation Loss";
-    return "DEBUG";
+    return "Populate bad DEBUG";
 }
 
 void printToonFull(Character playerCharacter) {
-    cout << "\t\tCHARACTER ONE, RUSSIAN playerCharacter" << endl;
+    cout << "\t\tCHARACTER ONE" << endl;
     cout << "\tName: " << playerCharacter.name << endl;
     cout << "\tHealth: " << playerCharacter.health << endl;
     cout << "\tMoney: " << playerCharacter.money << endl;   
@@ -185,10 +205,6 @@ void printStatus(Character playerCharacter) {
 }
 
 void actionStage(string goodActions[], string badActions[], Character &playerCharacter) {
-    cout << "\t***STAGE ONE***\n";
-    cout << "You are BOB, a Russian Oil Tycoon and a friend of the regime. ***CONTINUE STORY***" << endl;
-    cout << "***ACTION***\n";
-
     int choice;
     // choice = ((rand()%15));
     choice = 0;
@@ -196,11 +212,11 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
 
     switch (choice) {
         case 0: // Draft notice
-            cout << badActions[0]; 
-            cout << "Story stuff";
+            cout << "\n" << badActions[0] << endl;
             if (playerCharacter.type == 1) {
                 playerCharacter.money = (playerCharacter.money - 50000);
-                cout << "Dodge the draft";
+                cout << "Although you have been summoned for the draft, you are influential.\n";
+                cout << "This will cost you some money, but you are fine otherwise.\n" << endl;
             } else if (playerCharacter.type == 2) {
                 cout << "You have been notified that of your summons to the Russian Army." << endl;
                 cout << "This will result in a -50 hp penalty." << endl;
@@ -208,9 +224,9 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
             }
             break;
         case 1: // State abduction
-            cout << badActions[1]; // This action results in the loss of the game no matter who you are playing as.
+            cout << badActions[1] << endl; // This action results in the loss of the game no matter who you are playing as.
             playerCharacter.money = 0;
-            playerCharacter.status = "In captivity";
+            playerCharacter.status = "In captivity\n";
             cout << "You have been abducted by the Russian Police. All of your assets have been seized.\n";
             cout << "No one is ever released from captivity.\n";
             playerCharacter.alive = false;
@@ -261,7 +277,7 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
 }
 
 bool statusChecker(Character playerCharacter) {
-    if (playerCharacter.health == 0) {
+    if (playerCharacter.health <= 0) {
         return false;
     } else if (playerCharacter.money <= 0){
         return false;
