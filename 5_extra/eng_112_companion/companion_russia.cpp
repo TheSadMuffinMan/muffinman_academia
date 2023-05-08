@@ -82,12 +82,12 @@ void gameInfo(string userName) {
     cout << "This program is designed to tell a story that follows the lives of different people currently living in Russia." << endl;
     cout << "Hopefully these stories are able to bring better perspective to the ongoing conditions in Russia." << endl;
     cout << "It is important to note that this game is NOT fair, mostly because I'm a terrible coder, but also because \nit is indicative of real life." << endl;
-    cout << " \n \n \n \nGood luck, and stay alive.\n\n" << endl;
+    cout << " \n \n \nGood luck, and stay alive.\n\n" << endl;
 }
 
 int characterSelection() {
     int userSelection;
-    cout << "\n\nWhich character would you like to play as? 1 or 2? " << endl;
+    cout << "Which character would you like to play as? 1 or 2? " << endl;
     cin >> userSelection;
     return userSelection;
 }
@@ -150,6 +150,8 @@ string populateBad(string badActions[]) {
 }
 
 void printToonFull(Character playerCharacter) {
+    // string nameUpper;
+    // nameUpper = toupper(playerCharacter.name);
     cout << "\n\t\tCHARACTER ONE" << endl;
     cout << "\tName: " << playerCharacter.name << endl;
     cout << "\tHealth: " << playerCharacter.health << endl;
@@ -169,18 +171,18 @@ void printStatus(Character playerCharacter) {
 
 void actionStage(string goodActions[], string badActions[], Character &playerCharacter) {
     int choice;
-    // cout << "***Manual Mode ON***\n";
-    // cin >> choice;
+    cout << "***Manual Mode ON*** Which option would you like? 1-5 \n" << endl;
+    cin >> choice;
 
-    choice = ((rand()%5));
-    cout << "DEBUG: choice: " << choice << "\n" << endl;
+    // choice = ((rand()%5));
+    // cout << "DEBUG: choice: " << choice << "\n" << endl;
 
     switch (choice) {
         case 0: // Draft notice
             if (playerCharacter.type == 1) {
                 playerCharacter.money = (playerCharacter.money - 50000);
                 cout << "Although you have been summoned for the draft, you are influential.\n";
-                cout << "This will cost you some money, but you are fine otherwise.\n" << endl;
+                cout << "This will cost you some $50,000, but you are fine otherwise.\n" << endl;
             } else if (playerCharacter.type == 2) {
                 cout << "You have been notified that of your summons to the Russian Army." << endl;
                 cout << "This will result in a -50 hp penalty." << endl;
@@ -197,7 +199,7 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
             break;
         case 2: // Health failing
             if (playerCharacter.type == 1) {
-                playerCharacter.money = (playerCharacter.money - 50000);
+                playerCharacter.money = (playerCharacter.money - 100000);
                 playerCharacter.health = (playerCharacter.health - 25);
                 cout << "Although your health is decreasing, you are can travel to other countries for better care.\n";
                 cout << "This will cost you some money and health, but you are fine otherwise.\n" << endl;
@@ -215,7 +217,7 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
                 cout << "While out on a stroll outside your estate, you are mugged.\n";
                 cout << "This will cost you a small bit of money, but the perp is caught and thrown in the gulag.\n" << endl;
             } else if (playerCharacter.type == 2) {
-                cout << "You have no means to prevent the mugging." << endl;
+                cout << "You have been mugged, and have no means to prevent it from happening." << endl;
                 cout << "This will result in -500 money, but you live to tell the tale." << endl;
                 playerCharacter.money = (playerCharacter.money - 500);
             }
