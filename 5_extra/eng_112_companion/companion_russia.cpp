@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
     string goodActions[5];
     string badActions[11];
 
-    // clear(); // Clears the screen
+    clear(); // Clears the screen
     userInput(userName); // Takes user name
     gameInfo(userName); // Prints general game info
 
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 }
 
 void userInput(string& userName) {
-    cout << "\nPlease enter your name, and then press enter. " << endl;
+    cout << "Please enter your name, and then press enter. " << endl;
     getline(cin, userName);
 }
 
@@ -140,7 +140,7 @@ string populateBad(string badActions[]) {
     badActions[2] = "Health Failing";
     badActions[3] = "Mugging";
     badActions[4] = "Inclement Weather";
-    badActions[5] = "Job Loss";
+    badActions[5] = "Bankruptcy";
     badActions[6] = "Food Loss";
     badActions[7] = "Loss of Family";
     badActions[8] = "Severe Injury";
@@ -171,10 +171,10 @@ void printStatus(Character playerCharacter) {
 
 void actionStage(string goodActions[], string badActions[], Character &playerCharacter) {
     int choice;
-    cout << "***Manual Mode ON*** Which option would you like? 1-5 \n" << endl;
+    cout << "***Manual Mode ON*** Which option would you like? 0-6 \n" << endl;
     cin >> choice;
 
-    // choice = ((rand()%5));
+    // choice = ((rand()%6));
     // cout << "DEBUG: choice: " << choice << "\n" << endl;
 
     switch (choice) {
@@ -233,8 +233,19 @@ void actionStage(string goodActions[], string badActions[], Character &playerCha
                 playerCharacter.health = (playerCharacter.health - 15);
             }
             break;
-        case 5: // Job Loss
-            cout << "DEBUG";
+        case 5: // Bankruptcy
+            if (playerCharacter.type == 1) {
+                playerCharacter.money = 0;
+                cout << "Your rights to the oil sites your family has controlled over the last century have been revoked.\n";
+                cout << "You no longer have any money, and this means that your status as an oligarch is no more." << endl;
+                playerCharacter.status = "DEAD";
+                playerCharacter.alive = false;
+            } else if (playerCharacter.type == 2) {
+                cout << "You've lost all of your money.." << endl;
+                playerCharacter.money = 0;
+                playerCharacter.status = "DEAD";
+                playerCharacter.alive = false;
+            }
             break;
         case 6: // Food Loss
             cout << "DEBUG";
