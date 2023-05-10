@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
     string goodActions[5];
     string badActions[11];
 
-    clear(); // Clears the screen
+    // clear(); // Clears the screen after each iteration
     userInput(userName); // Takes user name
     gameInfo(userName); // Prints general game info
 
@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     while (statusChecker(playerCharacter) == true && counter < 2) {
         cin.get();
         actionStage(goodActions, badActions, playerCharacter);
-        printToonFull(playerCharacter);
+        printStatus(playerCharacter);
         counter++;
     }
 
@@ -73,7 +73,7 @@ int main(int argc, char *argv[]) {
 }
 
 void userInput(string& userName) {
-    cout << "Please enter your name, and then press enter. " << endl;
+    cout << "Please enter your name, and press enter. " << endl;
     getline(cin, userName);
 }
 
@@ -120,7 +120,7 @@ void populateInfo(Character &playerCharacter, int userSelection) {
         cout << "\tAge: " << playerCharacter.age << "\n";
         playerCharacter.occupation = "University Student";
         cout << "\tOccupation: " << playerCharacter.occupation << "\n";
-        playerCharacter.status = "No medical issues";
+        playerCharacter.status = "No medical issues\n";
         cout << "\tStatus: " << playerCharacter.status << "\n";
     }
 }
@@ -152,13 +152,13 @@ string populateBad(string badActions[]) {
 void printToonFull(Character playerCharacter) {
     // string nameUpper;
     // nameUpper = toupper(playerCharacter.name);
-    cout << "\n\t\tCHARACTER ONE" << endl;
+    cout << "\n\t\tCURRENT PLAYER CHARACTER" << endl;
     cout << "\tName: " << playerCharacter.name << endl;
     cout << "\tHealth: " << playerCharacter.health << endl;
     cout << "\tMoney: " << playerCharacter.money << endl;   
     cout << "\tAge: " << playerCharacter.age << endl;
     cout << "\tOccupation: " << playerCharacter.occupation << endl;
-    cout << "\tCurrent Status: " << playerCharacter.status << endl; // This line is the first seperating line
+    cout << "\tCurrent Status: " << playerCharacter.status << endl;
     cout << "\tAlive Status: "<< playerCharacter.alive << endl;
 }
 
@@ -171,7 +171,7 @@ void printStatus(Character playerCharacter) {
 
 void actionStage(string goodActions[], string badActions[], Character &playerCharacter) {
     int choice;
-    cout << "***Manual Mode ON*** Which option would you like? 0-6 \n" << endl;
+    cout << "\n***Manual Mode ON*** Which option would you like? 0-6" << endl;
     cin >> choice;
 
     // choice = ((rand()%6));
