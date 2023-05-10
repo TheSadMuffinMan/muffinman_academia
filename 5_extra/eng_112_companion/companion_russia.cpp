@@ -163,10 +163,11 @@ void printToonFull(Character playerCharacter) {
 }
 
 void printStatus(Character playerCharacter) {
+    cout << "\n\t\tPLAYER CHARACTER" << endl;
     cout << "\tName: " << playerCharacter.name << endl;
     cout << "\tCurrent Health: " << playerCharacter.health << endl;
     cout << "\tCurrent Money: " << playerCharacter.money << endl;
-    cout << "\tCurrent Status: " << playerCharacter.status << endl;
+    cout << "\tCurrent Status: " << playerCharacter.status;
 }
 
 void actionStage(string goodActions[], string badActions[], Character &playerCharacter) {
