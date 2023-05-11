@@ -1,7 +1,7 @@
 /*
     CS1 - Vector Lab
     Updated by: Anthony Streich FIXME1
-    Date: 3 May 23 FIXME2
+    Date: 11 May 23 FIXME2
     Program: Number system converter  
     The program converts decimal to binary and binary to decimal number system.
     Lab demonstrates the vector application. 
@@ -55,12 +55,20 @@ int main()
         choice = menuOption();
         switch(choice) {
             case 1:
-                // FIXME3
-                cout << "FIXME\n";
+                // FIXME3 #fixed?#
+                cout << "Converts decimal number to binary representation\n\n";
+                cout << "Enter a positive decimal number: ";
+                cin >> decimalNum;
+                decimalNum = decToBin(decimalNum);
+                printf("(%llu) base 10 = (%s) base 8\n", decimalNum, octalNum.c_str());
                 break;
             case 2:
-                // FIXME4
-                cout << "FIXME\n";
+                // FIXME4 #fixed?#
+                cout << "Converts binary number to decimal representation\n";
+                cout << "Enter a positive binary number: ";
+                cin >> binary;
+                binary = binToDec(binary);
+                cout << binary << " Base 8 = " << decimalNum << ".";
                 break;
             case 3:
                 cout << "Enter a positive decimal number: ";
