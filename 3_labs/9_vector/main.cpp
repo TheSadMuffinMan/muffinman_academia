@@ -56,7 +56,7 @@ int main()
         switch(choice) {
             case 1:
                 // FIXME3 #fixed?#
-                cout << "Converts decimal number to binary representation\n\n";
+                cout << "Converts decimal number to binary representation\n";
                 cout << "Enter a positive decimal number: ";
                 cin >> decimalNum;
                 decimalNum = decToBin(decimalNum);
