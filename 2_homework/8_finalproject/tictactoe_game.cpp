@@ -8,8 +8,6 @@ CURRENT ISSUES:
 #include <iostream>
 #include <string>
 
-enum Status { EMPTY, XINBOX, OINBOX };
-
 using namespace std;
 
 // struct box {
@@ -17,20 +15,23 @@ using namespace std;
 // };
 
 void userXorO(bool&);
-void printBoard(int[]);
+void printBoard(char[]);
+void promptMove(bool, char[]);
 
 int main(int argc, char *argv[]) {
-    int board[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+    char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
 
     bool userIsX = false;
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
+    promptMove(userIsX, board);
+    printBoard(board);
 
     return 0;
 }
 
-void printBoard(int board[]) {
-    cout << " _____ _____ _____" << endl;
+void printBoard(char board[]) {
+    cout << " \n _____ _____ _____" << endl;
     cout << "|1    |2    |3    |" << endl;
     cout << "|  " << board[0] << "  |  " << board[1] << "  |  " << board[2] << "  |" << endl;
     cout << "|_____|_____|_____|" << endl;
@@ -57,5 +58,18 @@ void userXorO(bool &userIsX) {
         userIsX = true;
         cout << "DEBUG userisX = " << userIsX << endl;
     }
+}
+
+void promptMove(bool userIsX, char board[]) {
+    int userSelection;
+    cout << "Where would you like to move? " << endl;
+    cin >> userSelection;
+
+    if (userIsX == true) {
+        board[userSelection - 1] = 'X';
+    } else {
+        board[userSelection - 1] = 'O';
+    }
+    cout << "DEBUG board[userSelection - 1]= " << board[userSelection - 1];
 
 }
