@@ -16,22 +16,15 @@ using namespace std;
 //     int stuff;
 // };
 
+void userXorO(bool&);
 void printBoard(int[]);
 
 int main(int argc, char *argv[]) {
-    int board[8];
-    board[0] = 0;
-    board[1] = 0;
-    board[2] = 0;
-    board[3] = 0;
-    board[4] = 0;
-    board[5] = 0;
-    board[6] = 0;
-    board[7] = 0;
-    board[8] = 0;
+    int board[9] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
+    bool userIsX = false;
+    userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
-    
 
     return 0;
 }
@@ -53,5 +46,16 @@ void printBoard(int board[]) {
     cout << "|7    |8    |9    |" << endl;
     cout << "|  " << board[6] << "  |  " << board[7] << "  |  " << board[8] << "  |" << endl;
     cout << "|_____|_____|_____|" << endl;
+}
+
+void userXorO(bool &userIsX) {
+    cout << "REMEMBER, X always goes first." << endl;
+    cout << "X or O? " << endl;
+    string tempUserInput;
+    cin >> tempUserInput;
+    if (tempUserInput == "X" || tempUserInput == "x") {
+        userIsX = true;
+        cout << "DEBUG userisX = " << userIsX << endl;
+    }
 
 }
