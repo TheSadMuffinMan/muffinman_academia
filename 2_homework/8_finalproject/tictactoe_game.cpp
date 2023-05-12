@@ -10,15 +10,11 @@ CURRENT ISSUES:
 
 using namespace std;
 
-// struct box {
-//     int stuff;
-// };
-
 void userXorO(bool&);
 void printBoard(char[]);
 void promptMove(bool, char[]);
 void compMove(bool, char[]);
-void checkWin(char[]);
+int checkWin(char[]);
 
 int main(int argc, char *argv[]) {
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
@@ -27,10 +23,9 @@ int main(int argc, char *argv[]) {
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
 
-    promptMove(userIsX, board);
-    printBoard(board);
+    promptMove(userIsX, board); // Prompts the user for a move
+    printBoard(board); // Prints the board
 
-    // promptMove(!userIsX, board);
     compMove(userIsX, board);
     printBoard(board);
 
@@ -92,7 +87,7 @@ void promptMove(bool userIsX, char board[]) {
     } else {
         board[userSelection - 1] = 'O';
     }
-    cout << "DEBUG board[userSelection - 1]= " << board[userSelection - 1];
+    // cout << "DEBUG board[userSelection - 1]= " << board[userSelection - 1];
 }
 
 void compMove(bool userIsX, char board[]) {
@@ -105,18 +100,67 @@ void compMove(bool userIsX, char board[]) {
     } else {
         board[userSelection - 1] = 'X';
     }
-    cout << "DEBUG board[userSelection - 1] = " << board[userSelection - 1];
+    // cout << "DEBUG board[userSelection - 1] = " << board[userSelection - 1];
 }
 
 int checkWin(char board[]) {
-    if ((board[0] == board[1]) && (board[1] == board[2])) {
+    if ((board[0] == board[1]) && (board[1] == board[2])) { // TOP ROW WIN
         if (board[0] == 'X') {
-            cout << "X Win" << endl;
+            cout << "X WIN DETECTED" << endl;
             return 1;
-        } else if {
-            cout << "O Win" << endl;
-            return 2;
-        }
-    } else if ((board[4] == board[5]) && )
+        } else {
+            cout << "O WIN DETECTED" << endl;
+            return 2; }
+    } else if ((board[3] == board[4]) && (board[4] == board[5])) { // MIDDLE ROW WIN
+        if (board[4] == 'X') {
+            cout << "X WIN DETECTED" << endl;
+            return 1;
+        } else {
+            cout << "O WIN DETECTED" << endl;
+            return 2; }
+    } else if ((board[6] == board[7]) && (board[7] == board[8])) { // BOTTOM ROW WIN
+        if (board[6] == 'X') {
+            cout << "X WIN DETECTED" << endl;
+            return 1;
+        } else {
+            cout << "O WIN DETECTED" << endl;
+            return 2; }
+    } else if ((board[0] == board[3]) && (board[3] == board[6])) { // LEFT COLUMN WIN
+        if (board[0] == 'X') {
+            cout << "X WIN DETECTED" << endl;
+            return 1;
+        } else {
+            cout << "O WIN DETECTED" << endl;
+            return 2; }
+    } else if ((board[1] == board[4]) && (board[4] == board[7])) { // MIDDLE COLUMN WIN
+        if (board[1] == 'X') {
+            cout << "X WIN DETECTED" << endl;
+            return 1;
+        } else {
+            cout << "O WIN DETECTED" << endl;
+            return 2; }
+    } else if ((board[2] == board[5]) && (board[5] == board[8])) { // RIGHT COLUMN WIN
+        if (board[2] == 'X') {
+            cout << "X WIN DETECTED" << endl;
+            return 1;
+        } else {
+            cout << "O WIN DETECTED" << endl;
+            return 2; }
+    } else if ((board[0] == board[4]) && (board[4] == board[8])) { // \ DIAGONAL WIN
+        if (board[0] == 'X') {
+            cout << "X WIN DETECTED" << endl;
+            return 1;
+        } else {
+            cout << "O WIN DETECTED" << endl;
+            return 2; }
+    } else if ((board[2] == board[4]) && (board[4] == board[6])) { // / DIAGONAL WIN
+        if (board[2] == 'X') {
+            cout << "X WIN DETECTED" << endl;
+            return 1;
+        } else {
+            cout << "O WIN DETECTED" << endl;
+            return 2; }
+    }
+
     return 0; // No one won
 }
