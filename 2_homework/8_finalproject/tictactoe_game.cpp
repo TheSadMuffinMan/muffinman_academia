@@ -14,15 +14,20 @@ void userXorO(bool&);
 void printBoard(char[]);
 void promptMove(bool, char[]);
 void compMove(bool, char[]);
+void game(bool, char[], int&);
 int checkWin(char[]);
 
 int main(int argc, char *argv[]) {
+    int counter = 0;
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
 
     bool userIsX = false;
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
 
+    game(userIsX, board, counter);
+
+/* Old (but working) manual way of doing things
     promptMove(userIsX, board); // Prompts the user for a move
     printBoard(board); // Prints the board
 
@@ -42,28 +47,25 @@ int main(int argc, char *argv[]) {
     compMove(userIsX, board);
     printBoard(board);
     checkWin(board);
-
-
+*/
     return 0;
 }
 
 void printBoard(char board[]) {
-    cout << " \n _____ _____ _____" << endl;
-    cout << "|1    |2    |3    |" << endl;
-    cout << "|  " << board[0] << "  |  " << board[1] << "  |  " << board[2] << "  |" << endl;
-    cout << "|_____|_____|_____|" << endl;
+    cout << " \n _______ _______ _______" << endl;
+    cout << "|1      |2      |3      |" << endl;
+    cout << "|   " << board[0] << "   |   " << board[1] << "   |   " << board[2] << "   |" << endl;
+    cout << "|_______|_______|_______|" << endl;
 
     // Second row
-    cout << " _____ _____ _____" << endl;
-    cout << "|4    |5    |6    |" << endl;
-    cout << "|  " << board[3] << "  |  " << board[4] << "  |  " << board[5] << "  |" << endl;
-    cout << "|_____|_____|_____|" << endl;
+    cout << "|4      |5      |6      |" << endl;
+    cout << "|   " << board[3] << "   |   " << board[4] << "   |   " << board[5] << "   |" << endl;
+    cout << "|_______|_______|_______|" << endl;
 
     // Second three
-    cout << " _____ _____ _____" << endl;
-    cout << "|7    |8    |9    |" << endl;
-    cout << "|  " << board[6] << "  |  " << board[7] << "  |  " << board[8] << "  |" << endl;
-    cout << "|_____|_____|_____|\n" << endl;
+    cout << "|7      |8      |9      |" << endl;
+    cout << "|   " << board[6] << "   |   " << board[7] << "   |   " << board[8] << "   |" << endl;
+    cout << "|_______|_______|_______|\n" << endl;
 }
 
 void userXorO(bool &userIsX) {
@@ -73,7 +75,7 @@ void userXorO(bool &userIsX) {
     cin >> tempUserInput;
     if (tempUserInput == "X" || tempUserInput == "x") {
         userIsX = true;
-        cout << "DEBUG userisX = " << userIsX << endl;
+        // cout << "DEBUG userIsX = " << userIsX << endl;
     }
 }
 
@@ -161,6 +163,30 @@ int checkWin(char board[]) {
             cout << "O WIN DETECTED" << endl;
             return 2; }
     }
-
     return 0; // No one won
+}
+
+void game(bool userIsX, char board[], int &counter) {
+    if (userIsX == true) {
+        do {
+            promptMove(userIsX, board); // Prompts the user for a move
+            printBoard(board); // Prints the board
+            counter++;
+
+            compMove(userIsX, board);
+            printBoard(board);
+            counter++;
+        } while (counter <= 4); /* This only lets the program run 5 times, which is the minimum amount of times you have to play
+        before the checker is needed */
+    } else {
+        do {
+            promptMove(userIsX, board); // Prompts the user for a move
+            printBoard(board); // Prints the board
+            counter++;
+
+            compMove(userIsX, board);
+            printBoard(board);
+            counter++;
+        } while (counter <= 4); // Same as above
+    }
 }
