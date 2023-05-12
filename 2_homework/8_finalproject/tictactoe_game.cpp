@@ -106,56 +106,56 @@ void compMove(bool userIsX, char board[]) {
 }
 
 int checkWin(char board[]) {
-    if ((board[0] == board[1]) && (board[1] == board[2])) { // TOP ROW WIN
+    if ((board[0] != ' ') && (board[0] == board[1]) && (board[1] == board[2])) { // TOP ROW WIN
         if (board[0] == 'X') {
             cout << "X WIN DETECTED" << endl;
             return 1;
         } else {
             cout << "O WIN DETECTED" << endl;
             return 2; }
-    } else if ((board[3] == board[4]) && (board[4] == board[5])) { // MIDDLE ROW WIN
+    } else if ((board[3] != ' ') && (board[3] == board[4]) && (board[4] == board[5])) { // MIDDLE ROW WIN
         if (board[4] == 'X') {
             cout << "X WIN DETECTED" << endl;
             return 1;
         } else {
             cout << "O WIN DETECTED" << endl;
             return 2; }
-    } else if ((board[6] == board[7]) && (board[7] == board[8])) { // BOTTOM ROW WIN
+    } else if ((board[6] != ' ') && (board[6] == board[7]) && (board[7] == board[8])) { // BOTTOM ROW WIN
         if (board[6] == 'X') {
             cout << "X WIN DETECTED" << endl;
             return 1;
         } else {
             cout << "O WIN DETECTED" << endl;
             return 2; }
-    } else if ((board[0] == board[3]) && (board[3] == board[6])) { // LEFT COLUMN WIN
+    } else if ((board[0] != ' ') && (board[0] == board[3]) && (board[3] == board[6])) { // LEFT COLUMN WIN
         if (board[0] == 'X') {
             cout << "X WIN DETECTED" << endl;
             return 1;
         } else {
             cout << "O WIN DETECTED" << endl;
             return 2; }
-    } else if ((board[1] == board[4]) && (board[4] == board[7])) { // MIDDLE COLUMN WIN
+    } else if ((board[1] != ' ') && (board[1] == board[4]) && (board[4] == board[7])) { // MIDDLE COLUMN WIN
         if (board[1] == 'X') {
             cout << "X WIN DETECTED" << endl;
             return 1;
         } else {
             cout << "O WIN DETECTED" << endl;
             return 2; }
-    } else if ((board[2] == board[5]) && (board[5] == board[8])) { // RIGHT COLUMN WIN
+    } else if ((board[2] != ' ') && (board[2] == board[5]) && (board[5] == board[8])) { // RIGHT COLUMN WIN
         if (board[2] == 'X') {
             cout << "X WIN DETECTED" << endl;
             return 1;
         } else {
             cout << "O WIN DETECTED" << endl;
             return 2; }
-    } else if ((board[0] == board[4]) && (board[4] == board[8])) { // \ DIAGONAL WIN
+    } else if ((board[0] != ' ') && (board[0] == board[4]) && (board[4] == board[8])) { // \ DIAGONAL WIN
         if (board[0] == 'X') {
             cout << "X WIN DETECTED" << endl;
             return 1;
         } else {
             cout << "O WIN DETECTED" << endl;
             return 2; }
-    } else if ((board[2] == board[4]) && (board[4] == board[6])) { // / DIAGONAL WIN
+    } else if ((board[2] != ' ') && (board[2] == board[4]) && (board[4] == board[6])) { // / DIAGONAL WIN
         if (board[2] == 'X') {
             cout << "X WIN DETECTED" << endl;
             return 1;
@@ -171,22 +171,26 @@ void game(bool userIsX, char board[], int &counter) {
         do {
             promptMove(userIsX, board); // Prompts the user for a move
             printBoard(board); // Prints the board
-            counter++;
+            checkWin(board);
 
             compMove(userIsX, board);
             printBoard(board);
+            checkWin(board);
             counter++;
-        } while (counter <= 4); /* This only lets the program run 5 times, which is the minimum amount of times you have to play
+        } while (counter <= 3); /* This only lets the program run 5 times, which is the minimum amount of times you have to play
         before the checker is needed */
     } else {
         do {
             promptMove(userIsX, board); // Prompts the user for a move
             printBoard(board); // Prints the board
-            counter++;
+            checkWin(board);
+
 
             compMove(userIsX, board);
             printBoard(board);
+            checkWin(board);
+
             counter++;
-        } while (counter <= 4); // Same as above
+        } while (counter <= 3); // Same as above
     }
 }
