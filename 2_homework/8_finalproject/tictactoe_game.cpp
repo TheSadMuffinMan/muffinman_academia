@@ -12,10 +12,10 @@ using namespace std;
 
 void printBoard(char[]);
 void userXorO(bool&);
-bool isValidMove(char[], int);
+bool notValidMove(char[], int);
 void promptMove(bool, char[], int&);
 void compMove(bool, char[], int&);
-void game(bool, char[], int&);
+void game(bool, char[], int&, int);
 int checkWin(char[]);
 
 int main(int argc, char *argv[]) {
@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
 
-    game(userIsX, board, counter);
+    game(userIsX, board, counter, userSelection);
 
 /* Old (but working) manual way of doing things
     promptMove(userIsX, board); // Prompts the user for a move
@@ -81,27 +81,33 @@ void userXorO(bool &userIsX) {
     }
 }
 
-bool isValidMove(char board[], int userSelection) {
-    if (board[userSelection - 1] == 'X' || 'O') {
-        cout << "Invalid move!" << endl;
-        return false;
-    } else {
+bool notValidMove(char board[], int userSelection) { /* This is the function that checks input */
+    if ((board[userSelection - 1] == 'X') || (board[userSelection - 1] == 'O')) {
+        cout << "There is already a character there. Please input a different box.\n";
         return true;
+    } else if ((userSelection >= 9) || (userSelection <= 1)) {
+        cout << "Your selection is not within 1 to 9. Please try again.\n";
+        return true;
+    } else {
+        cout << "***DEBUG***Input accepted.\n";
+        return false;
     }
 }
-
 
 void promptMove(bool userIsX, char board[], int &userSelection) {
     cout << "Where would you like to move? " << endl;
     cin >> userSelection;
-
+    
+    while (notValidMove(board, userSelection) == true) {
+        cin >> userSelection;
+    }
+        
     if (userIsX == true) {
         board[userSelection - 1] = 'X';
     } else {
-        board[userSelection - 1] = 'O';
-    }
-    // cout << "DEBUG board[userSelection - 1] = " << board[userSelection - 1];
+        board[userSelection - 1] = 'O'; }
 }
+    // cout << "DEBUG board[userSelection - 1] = " << board[userSelection - 1];
 
 void compMove(bool userIsX, char board[], int &userSelection) {
     cout << "**DEBUG***Where would you like the \"computer\" to move? " << endl;
@@ -177,10 +183,10 @@ int checkWin(char board[]) {
     return 0; // No one won
 }
 
-void game(bool userIsX, char board[], int &counter) {
+void game(bool userIsX, char board[], int &counter, int userSelection) {
     if (userIsX == true) {
         while (checkWin(board) != '0' || '1' || '2') {
-            promptMove(userIsX, board); // Prompts the user for a move
+            promptMove(userIsX, board, userSelection); // Prompts the user for a move
             printBoard(board); // Prints the board
             checkWin(board);
 
@@ -189,7 +195,7 @@ void game(bool userIsX, char board[], int &counter) {
                 break;
             }
 
-            compMove(userIsX, board);
+            compMove(userIsX, board, userSelection);
             printBoard(board);
             checkWin(board);
 
@@ -199,7 +205,7 @@ void game(bool userIsX, char board[], int &counter) {
 
     } else { // All of this code is just a copy of the code above, except for O's
         while (checkWin(board) != '0' || '1' || '2') {
-            promptMove(userIsX, board);
+            promptMove(userIsX, board, userSelection);
             printBoard(board);
             checkWin(board);
 
@@ -208,7 +214,7 @@ void game(bool userIsX, char board[], int &counter) {
                 break;
             }
 
-            compMove(userIsX, board);
+            compMove(userIsX, board, userSelection);
             printBoard(board);
             checkWin(board);
 
