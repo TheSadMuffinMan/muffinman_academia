@@ -81,11 +81,13 @@ void userXorO(bool &userIsX) {
     }
 }
 
+// NEED TO ADD CASE TO ENSURE INPUT IS AN INT
 bool notValidMove(char board[], int userSelection) { /* This is the function that checks input */
-    if ((board[userSelection - 1] == 'X') || (board[userSelection - 1] == 'O')) {
+    if ((board[userSelection - 1] == 'X') || (board[userSelection - 1] == 'O')) { /* Checks to see if anything has already been
+    put there */
         cout << "There is already a character there. Please input a different box.\n";
         return true;
-    } else if ((userSelection >= 9) || (userSelection <= 1)) {
+    } else if ((userSelection >= 9) || (userSelection <= 0)) { /* Checks to see if input is between 1-9 */
         cout << "Your selection is not within 1 to 9. Please try again.\n";
         return true;
     } else {
@@ -112,6 +114,10 @@ void promptMove(bool userIsX, char board[], int &userSelection) {
 void compMove(bool userIsX, char board[], int &userSelection) {
     cout << "**DEBUG***Where would you like the \"computer\" to move? " << endl;
     cin >> userSelection;
+
+    while (notValidMove(board, userSelection) == true) {
+        cin >> userSelection;
+    }
 
     if (userIsX == true) {
         board[userSelection - 1] = 'O';
