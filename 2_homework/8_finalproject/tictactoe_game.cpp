@@ -10,15 +10,17 @@ CURRENT ISSUES:
 
 using namespace std;
 
-void userXorO(bool&);
 void printBoard(char[]);
-void promptMove(bool, char[]);
-void compMove(bool, char[]);
+void userXorO(bool&);
+bool isValidMove(char[], int);
+void promptMove(bool, char[], int&);
+void compMove(bool, char[], int&);
 void game(bool, char[], int&);
 int checkWin(char[]);
 
 int main(int argc, char *argv[]) {
     int counter = 0;
+    int userSelection;
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
 
     bool userIsX = false;
@@ -79,8 +81,17 @@ void userXorO(bool &userIsX) {
     }
 }
 
-void promptMove(bool userIsX, char board[]) {
-    int userSelection;
+bool isValidMove(char board[], int userSelection) {
+    if (board[userSelection - 1] == 'X' || 'O') {
+        cout << "Invalid move!" << endl;
+        return false;
+    } else {
+        return true;
+    }
+}
+
+
+void promptMove(bool userIsX, char board[], int &userSelection) {
     cout << "Where would you like to move? " << endl;
     cin >> userSelection;
 
@@ -89,11 +100,10 @@ void promptMove(bool userIsX, char board[]) {
     } else {
         board[userSelection - 1] = 'O';
     }
-    // cout << "DEBUG board[userSelection - 1]= " << board[userSelection - 1];
+    // cout << "DEBUG board[userSelection - 1] = " << board[userSelection - 1];
 }
 
-void compMove(bool userIsX, char board[]) {
-    int userSelection;
+void compMove(bool userIsX, char board[], int &userSelection) {
     cout << "**DEBUG***Where would you like the \"computer\" to move? " << endl;
     cin >> userSelection;
 
@@ -104,6 +114,7 @@ void compMove(bool userIsX, char board[]) {
     }
     // cout << "DEBUG board[userSelection - 1] = " << board[userSelection - 1];
 }
+
 
 int checkWin(char board[]) {
     if ((board[0] != ' ') && (board[0] == board[1]) && (board[1] == board[2])) { // TOP ROW WIN
@@ -168,29 +179,41 @@ int checkWin(char board[]) {
 
 void game(bool userIsX, char board[], int &counter) {
     if (userIsX == true) {
-        do {
+        while (checkWin(board) != '0' || '1' || '2') {
             promptMove(userIsX, board); // Prompts the user for a move
             printBoard(board); // Prints the board
             checkWin(board);
 
-            compMove(userIsX, board);
-            printBoard(board);
-            checkWin(board);
             counter++;
-        } while (counter <= 3); /* This only lets the program run 5 times, which is the minimum amount of times you have to play
-        before the checker is needed */
-    } else {
-        do {
-            promptMove(userIsX, board); // Prompts the user for a move
-            printBoard(board); // Prints the board
-            checkWin(board);
-
+            if (counter >= 8) { // Ensures that the loop does not exceed 9 iterations
+                break;
+            }
 
             compMove(userIsX, board);
             printBoard(board);
             checkWin(board);
 
             counter++;
-        } while (counter <= 3); // Same as above
+            cout << "\n***DEBUG*** counter: " << counter << endl;
+        }
+
+    } else { // All of this code is just a copy of the code above, except for O's
+        while (checkWin(board) != '0' || '1' || '2') {
+            promptMove(userIsX, board);
+            printBoard(board);
+            checkWin(board);
+
+            counter++;
+            if (counter >= 8) {
+                break;
+            }
+
+            compMove(userIsX, board);
+            printBoard(board);
+            checkWin(board);
+
+            counter++;
+            cout << "\n***DEBUG*** counter: " << counter << endl;
+        }
     }
 }
