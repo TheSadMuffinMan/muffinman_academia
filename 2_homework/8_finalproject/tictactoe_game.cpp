@@ -24,21 +24,19 @@ void writeData(fstream&, string, int, int, int, int);
 void clearBoard(char[], int&);
 
 int main(int argc, char *argv[]) {
-    int counter = 0;
-    string userName;
     srand(time(0)); // This initializes the random value by marking the exact time, which will create a unique seed.
 
+    int counter = 0;
+    string userName;
     int userSelection;
     int gameStatus = 0;
     int draw = 0;
     int win = 0;
     int lose = 0;
     int numberPlayed = 0;
-
-
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
-
     bool userIsX = false;
+
     userNameInput(userName);
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
@@ -58,16 +56,17 @@ int main(int argc, char *argv[]) {
         cout << "Would you like to play again? [Y/N] " << endl;
         cin >> quitChar;
         quitChar = toupper(quitChar);
-
-        clearBoard(board, gameStatus);
-        printBoard(board);
+        if (quitChar == 'Y') {
+            clearBoard(board, gameStatus);
+            printBoard(board);
+        }
     } while (quitChar == 'Y');
 
     // If I had more time, I would make this a struct with the file i/o, which would allow me to keep track of your stats
     // over the course of time, rather than instance based stats.
 
     fstream fs;
-    fs.open("files/fstemp.txt", fstream::in | fstream::out | fstream::app);
+    fs.open("files/playerStats.txt", fstream::in | fstream::out | fstream::app);
     fs.seekg(0);
     writeData(fs, userName, gameStatus, draw, win, lose);
     fs.close();
@@ -161,7 +160,6 @@ void compMove(bool userIsX, char board[], int &userSelection) {
         board[userSelection - 1] = 'X';
     }
 }
-
 
 int checkWin(char board[]) {
     if ((board[0] != ' ') && (board[0] == board[1]) && (board[1] == board[2])) { // TOP ROW WIN
@@ -271,7 +269,7 @@ int game(bool userIsX, char board[], int &counter, int userSelection) {
                 //     cout << "No winner, draw\n";
                 //     break;
 
-            cout << "\n***DEBUG*** counter: " << counter << endl;
+            // cout << "\n***DEBUG*** counter: " << counter << endl;
         }
 
     } else { // All of this code is just a copy of the code above, except for O's
