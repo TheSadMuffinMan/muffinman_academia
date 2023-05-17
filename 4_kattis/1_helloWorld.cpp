@@ -1,3 +1,7 @@
+/*
+Prints "Hello World!"
+*/
+
 #include <iostream>
 
 using namespace std;
