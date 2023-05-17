@@ -1,5 +1,5 @@
 /*
-Prints "Hello World!"
+Takes in input and prints the 2nd input.
 */
 
 #include <iostream>
