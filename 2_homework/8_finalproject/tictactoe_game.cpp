@@ -7,6 +7,7 @@ CURRENT ISSUES:
 
 #include <iostream>
 #include <string>
+#include <fstream>
 #include <random>
 
 using namespace std;
@@ -18,7 +19,7 @@ void promptMove(bool, char[], int&);
 void compMove(bool, char[], int&);
 void game(bool, char[], int&, int);
 int checkWin(char[]);
-void writeData(fstream&, string[]);
+void writeData(fstream&, char[], int);
 
 int main(int argc, char *argv[]) {
     int counter = 0;
@@ -41,7 +42,7 @@ int main(int argc, char *argv[]) {
     fstream fs;
     fs.open("files/fstemp.txt", fstream::in | fstream::out | fstream::app);
     fs.seekg(0);
-
+    writeData(fs, board, counter);
     fs.close();
 
 /* Old (but working) manual way of doing things
@@ -297,9 +298,8 @@ void game(bool userIsX, char board[], int &counter, int userSelection) {
     }
 }
 
-void writeData(fstream& fout, string board[]) {
-    // cout << "DEBUG: lineCounter: " << lineCounter << endl;
-    for(int i = 0; i < lineCounter; i++) {
-        fout << "nums[" << i << "]: " << nums[i] << endl;
+void writeData(fstream& fout, char board[], int counter) {
+    for(int i = 0; i < counter; i++) {
+        cout << "board[" << i << "]: " << board[i] << endl;
     }
 }
