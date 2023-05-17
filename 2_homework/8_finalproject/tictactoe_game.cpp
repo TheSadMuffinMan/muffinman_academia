@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 
     int counter = 0;
     string userName;
-    int userSelection;
+    int userSelection = 0;
     int gameStatus = 0;
     int draw = 0;
     int win = 0;
@@ -36,13 +36,16 @@ int main(int argc, char *argv[]) {
     int numberPlayed = 0;
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
     bool userIsX = false;
+    // time_t now = ctime(now); // THIS IS CODE FROM THE INTERNET
+    // char* dt = ctime(now); // Same with this, it's a shame I couldn't get it to work
 
     userNameInput(userName);
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
 
-    char quitChar = 'Y';
+    char quitChar = 'y';
     do {
+        clearBoard(board, gameStatus);
         gameStatus = game(userIsX, board, counter, userSelection);
         numberPlayed++;
         if (gameStatus == 1) {
@@ -55,12 +58,8 @@ int main(int argc, char *argv[]) {
 
         cout << "Would you like to play again? [Y/N] " << endl;
         cin >> quitChar;
-        quitChar = toupper(quitChar);
-        if (quitChar == 'Y') {
-            clearBoard(board, gameStatus);
-            printBoard(board);
-        }
-    } while (quitChar == 'Y');
+        quitChar = tolower(quitChar);
+    } while (quitChar == 'y');
 
     // If I had more time, I would make this a struct with the file i/o, which would allow me to keep track of your stats
     // over the course of time, rather than instance based stats.
@@ -164,59 +163,59 @@ void compMove(bool userIsX, char board[], int &userSelection) {
 int checkWin(char board[]) {
     if ((board[0] != ' ') && (board[0] == board[1]) && (board[1] == board[2])) { // TOP ROW WIN
         if (board[0] == 'X') {
-            cout << "***DEBUG*** X TOP ROW WIN DETECTED" << endl;
+            cout << "X TOP ROW WIN DETECTED" << endl;
             return 1;
         } else {
-            cout << "***DEBUG*** O TOP ROW WIN DETECCTED" << endl;
+            cout << "O TOP ROW WIN DETECCTED" << endl;
             return 2; }
     } else if ((board[3] != ' ') && (board[3] == board[4]) && (board[4] == board[5])) { // MIDDLE ROW WIN
         if (board[4] == 'X') {
-            cout << "***DEBUG*** X MIDDLE ROW WIN DETECTED" << endl;
+            cout << "X MIDDLE ROW WIN DETECTED" << endl;
             return 1;
         } else {
-            cout << "***DEBUG*** O MIDDLE ROW WIN DETECTED" << endl;
+            cout << "O MIDDLE ROW WIN DETECTED" << endl;
             return 2; }
     } else if ((board[6] != ' ') && (board[6] == board[7]) && (board[7] == board[8])) { // BOTTOM ROW WIN
         if (board[6] == 'X') {
-            cout << "***DEBUG*** X BOTTOM ROW WIN DETECTED" << endl;
+            cout << "X BOTTOM ROW WIN DETECTED" << endl;
             return 1;
         } else {
-            cout << "***DEBUG*** O BOTTOM ROW WIN DETECTED" << endl;
+            cout << "O BOTTOM ROW WIN DETECTED" << endl;
             return 2; }
     } else if ((board[0] != ' ') && (board[0] == board[3]) && (board[3] == board[6])) { // LEFT COLUMN WIN
         if (board[0] == 'X') {
-            cout << "***DEBUG*** X LEFT COLUMN WIN DETECTED" << endl;
+            cout << "X LEFT COLUMN WIN DETECTED" << endl;
             return 1;
         } else {
-            cout << "***DEBUG*** O LEFT COLUMN WIN DETECTED" << endl;
+            cout << "O LEFT COLUMN WIN DETECTED" << endl;
             return 2; }
     } else if ((board[1] != ' ') && (board[1] == board[4]) && (board[4] == board[7])) { // MIDDLE COLUMN WIN
         if (board[1] == 'X') {
-            cout << "***DEBUG*** X MIDDLE COLUMN WIN DETECTED" << endl;
+            cout << "X MIDDLE COLUMN WIN DETECTED" << endl;
             return 1;
         } else {
-            cout << "***DEBUG*** O MIDDLE COLUMN WIN DETECTED" << endl;
+            cout << "O MIDDLE COLUMN WIN DETECTED" << endl;
             return 2; }
     } else if ((board[2] != ' ') && (board[2] == board[5]) && (board[5] == board[8])) { // RIGHT COLUMN WIN
         if (board[2] == 'X') {
-            cout << "***DEBUG*** X RIGHT COLUMN WIN DETECTED" << endl;
+            cout << "X RIGHT COLUMN WIN DETECTED" << endl;
             return 1;
         } else {
-            cout << "***DEBUG*** O RIGHT COLUMN WIN DETECTED" << endl;
+            cout << "O RIGHT COLUMN WIN DETECTED" << endl;
             return 2; }
     } else if ((board[0] != ' ') && (board[0] == board[4]) && (board[4] == board[8])) { // \ DIAGONAL WIN
         if (board[0] == 'X') {
-            cout << "***DEBUG*** X LTR DIAGONAL WIN DETECTED" << endl;
+            cout << "X LTR DIAGONAL WIN DETECTED" << endl;
             return 1;
         } else {
-            cout << "***DEBUG*** O LTR DIAGONAL WIN DETECTED" << endl;
+            cout << "O LTR DIAGONAL WIN DETECTED" << endl;
             return 2; }
     } else if ((board[2] != ' ') && (board[2] == board[4]) && (board[4] == board[6])) { // / DIAGONAL WIN
         if (board[2] == 'X') {
-            cout << "***DEBUG*** X / DIAGONAL WIN DETECTED" << endl;
+            cout << "X / DIAGONAL WIN DETECTED" << endl;
             return 1;
         } else {
-            cout << "***DEBUG*** O / DIAGONAL WIN DETECTED" << endl;
+            cout << "O / DIAGONAL WIN DETECTED" << endl;
             return 2;
         } 
     } return 0; // No one won
@@ -320,7 +319,7 @@ int game(bool userIsX, char board[], int &counter, int userSelection) {
 }
 
 void writeData(fstream& fout, string userName, int gameStatus, int draw, int win, int lose) {
-    fout << userName << " has " << win << " wins, " << lose << " losses, and " << draw << " draws. " << endl;
+    fout << userName << " has " << win << " wins, " << lose << " losses, and " << draw << " draws." << endl;
 }
 
 void clearBoard(char board[], int& gameStatus) {
