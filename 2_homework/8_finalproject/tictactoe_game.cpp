@@ -18,6 +18,7 @@ void promptMove(bool, char[], int&);
 void compMove(bool, char[], int&);
 void game(bool, char[], int&, int);
 int checkWin(char[]);
+void writeData(fstream&, string[]);
 
 int main(int argc, char *argv[]) {
     int counter = 0;
@@ -36,6 +37,12 @@ int main(int argc, char *argv[]) {
     printBoard(board); // Prints the board
 
     game(userIsX, board, counter, userSelection);
+
+    fstream fs;
+    fs.open("files/fstemp.txt", fstream::in | fstream::out | fstream::app);
+    fs.seekg(0);
+
+    fs.close();
 
 /* Old (but working) manual way of doing things
     promptMove(userIsX, board); // Prompts the user for a move
@@ -287,5 +294,12 @@ void game(bool userIsX, char board[], int &counter, int userSelection) {
             cout << "\n***DEBUG*** counter: " << counter << endl;
         }
 
+    }
+}
+
+void writeData(fstream& fout, string board[]) {
+    // cout << "DEBUG: lineCounter: " << lineCounter << endl;
+    for(int i = 0; i < lineCounter; i++) {
+        fout << "nums[" << i << "]: " << nums[i] << endl;
     }
 }
