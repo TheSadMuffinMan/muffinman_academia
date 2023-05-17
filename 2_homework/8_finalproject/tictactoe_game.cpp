@@ -2,11 +2,12 @@
 Name: Anthony Streich
 Date: 12 May 23
 Tic-Tac-Toe!
-CURRENT ISSUES: Working on getting the draw functionality to work
+CURRENT ISSUES: 
 */
 
 #include <iostream>
 #include <string>
+#include <random>
 
 using namespace std;
 
@@ -20,6 +21,7 @@ int checkWin(char[]);
 
 int main(int argc, char *argv[]) {
     int counter = 0;
+    srand(time(0)); // This initializes the random value by marking the exact time, which will create a unique seed.
 
     // int numberGames = 0;
     // int numberPlayerWin = 0;
@@ -117,8 +119,11 @@ void promptMove(bool userIsX, char board[], int &userSelection) {
     // cout << "DEBUG board[userSelection - 1] = " << board[userSelection - 1];
 
 void compMove(bool userIsX, char board[], int &userSelection) {
-    cout << "**DEBUG***Where would you like the \"computer\" to move? " << endl;
-    cin >> userSelection;
+    // cout << "**DEBUG***Where would you like the \"computer\" to move? " << endl;
+    // cin >> userSelection;
+
+    userSelection = ((rand()%9));
+    cout << "***DEBUG*** userSelection: " << userSelection << endl;
 
     while (notValidMove(board, userSelection) == true) {
         cin >> userSelection;
