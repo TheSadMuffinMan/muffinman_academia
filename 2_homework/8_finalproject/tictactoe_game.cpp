@@ -18,22 +18,18 @@ void userXorO(bool&);
 bool notValidMove(char[], int);
 void promptMove(bool, char[], int&);
 void compMove(bool, char[], int&);
-void game(bool, char[], int&, int, int);
-int checkWin(char[], int&);
-void writeData(fstream&, char[], string, int);
+int game(bool, char[], int&, int);
+int checkWin(char[]);
+void writeData(fstream&, string, int, int, int, int, int);
 
 int main(int argc, char *argv[]) {
     int counter = 0;
     string userName;
     srand(time(0)); // This initializes the random value by marking the exact time, which will create a unique seed.
 
-    // int numberGames = 0;
-    // int numberPlayerWin = 0;
-    // int numberCompWin = 0;
-    // int numberDraws = 0;
-
     int userSelection;
     int gameStatus = 0;
+
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
 
     bool userIsX = false;
@@ -41,12 +37,24 @@ int main(int argc, char *argv[]) {
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
 
-    game(userIsX, board, counter, userSelection, gameStatus);
+    char quitChar = ' ';
+    do {
+        gameStatus = game(userIsX, board, counter, userSelection);
+        cout << "Would you like to play again? [Y/N] " << endl;
+        cin >> quitChar;
+        quitChar = toupper(quitChar);
+    } while (quitChar == 'Y');
+
+
+    int draw = 0;
+    int win = 0;
+    int lose = 0;
+    int numberPlayed = 0;
 
     fstream fs;
     fs.open("files/fstemp.txt", fstream::in | fstream::out | fstream::app);
     fs.seekg(0);
-    writeData(fs, board, userName, counter);
+    writeData(fs, userName, gameStatus, draw, win, lose, numberPlayed);
     fs.close();
 
     return 0;
@@ -141,7 +149,7 @@ void compMove(bool userIsX, char board[], int &userSelection) {
 }
 
 
-int checkWin(char board[], int& gameStatus) {
+int checkWin(char board[]) {
     if ((board[0] != ' ') && (board[0] == board[1]) && (board[1] == board[2])) { // TOP ROW WIN
         if (board[0] == 'X') {
             cout << "***DEBUG*** X TOP ROW WIN DETECTED" << endl;
@@ -202,41 +210,47 @@ int checkWin(char board[], int& gameStatus) {
     } return 0; // No one won
 }
 
-void game(bool userIsX, char board[], int &counter, int userSelection, int gameStatus) {
+int game(bool userIsX, char board[], int &counter, int userSelection) {
     if (userIsX == true) {
-        while ((checkWin(board, gameStatus) != '0') && (checkWin(board, gameStatus) != '1') && (checkWin(board, gameStatus) != '2')) {
+        while ((checkWin(board) != '0') && (checkWin(board) != '1') && (checkWin(board) != '2')) {
             promptMove(userIsX, board, userSelection); // Prompts the user for a move
             printBoard(board); // Prints the board
             counter++;
 
             if (counter >= 9) { // Ensures that the loop does not exceed 9 iterations
                 break;
-            } else if (checkWin(board, gameStatus) == 1) { // Ensures the loop breaks if a draw is detected
+            } else if (checkWin(board) == 1) { // Ensures the loop breaks if a draw is detected
                 cout << "X Win\n";
+                return 1;
                 break;
-            } else if (checkWin(board, gameStatus) == 2) { // Ensures the loops breaks if an X win is detected
+            } else if (checkWin(board) == 2) { // Ensures the loops breaks if an X win is detected
                 cout << "O win\n";
+                return 2;
                 break;
             } else if (counter == 8) {
                 cout << "Draw\n";
+                return 3;
                 break;
             }
 
             compMove(userIsX, board, userSelection);
             printBoard(board);
-            checkWin(board, gameStatus);
+            checkWin(board);
 
             counter++;
             if (counter >= 9) { // Ensures that the loop does not exceed 9 iterations
                 break;
-            } else if (checkWin(board, gameStatus) == 1) { // Ensures the loop breaks if a draw is detected
+            } else if (checkWin(board) == 1) { // Ensures the loop breaks if a draw is detected
                 cout << "X Win\n";
+                return 1;
                 break;
-            } else if (checkWin(board, gameStatus) == 2) { // Ensures the loops breaks if an X win is detected
+            } else if (checkWin(board) == 2) { // Ensures the loops breaks if an X win is detected
                 cout << "O win\n";
+                return 2;
                 break;
             } else if (counter == 8) {
                 cout << "Draw\n";
+                return 3;
                 break;
             }
                 // } else if (checkWin(board) == 0) { // Ensures the loop breaks if an O win is detected
@@ -247,49 +261,63 @@ void game(bool userIsX, char board[], int &counter, int userSelection, int gameS
         }
 
     } else { // All of this code is just a copy of the code above, except for O's
-        while ((checkWin(board, gameStatus) != '0') && (checkWin(board, gameStatus) != '1') && (checkWin(board, gameStatus) != '2')) {
+        while ((checkWin(board) != '0') && (checkWin(board) != '1') && (checkWin(board) != '2')) {
             promptMove(userIsX, board, userSelection); // Prompts the user for a move
             printBoard(board); // Prints the board
-            checkWin(board, gameStatus);
+            checkWin(board);
 
             counter++;
             if (counter <= 8) { // Ensures that the loop does not exceed 9 iterations
                 break;
-            } else if (checkWin(board, gameStatus) == 0) {
+            } else if (checkWin(board) == 0) {
                 cout << "Draw\n";
+                return 3;
                 break;
-            } else if (checkWin(board, gameStatus) == 1) {
+            } else if (checkWin(board) == 1) {
                 cout << "X win\n";
+                return 1;
                 break;
-            } else if (checkWin(board, gameStatus) == 2) {
+            } else if (checkWin(board) == 2) {
                 cout << "O win\n";
+                return 2;
                 break;
             }
 
             compMove(userIsX, board, userSelection);
             printBoard(board);
-            checkWin(board, gameStatus);
+            checkWin(board);
 
             counter++;
             if (counter <= 9) { // Ensures that the loop does not exceed 9 iterations
                 break;
-            } else if (checkWin(board, gameStatus) == 0) { // If the loop returns 0, it's a draw
+            } else if (checkWin(board) == 0) { // If the loop returns 0, it's a draw
                 cout << "Draw\n";
+                return 3;
                 break;
-            } else if (checkWin(board, gameStatus) == 1) { // If the loop returns 1, it's an X win
+            } else if (checkWin(board) == 1) { // If the loop returns 1, it's an X win
                 cout << "X win\n";
+                return 1;
                 break;
-            } else if (checkWin(board, gameStatus) == 2) { // If the loop returns 2, it's an O win
+            } else if (checkWin(board) == 2) { // If the loop returns 2, it's an O win
                 cout << "O win\n";
+                return 2;
                 break;
             }
-
-            cout << "\n***DEBUG*** counter: " << counter << endl;
         }
-
     }
 }
 
-void writeData(fstream& fout, char board[], string userName, int counter) {
-    fout << userName << " completed the game in " << counter << " moves. " << endl;
+void writeData(fstream& fout, string userName, int gameStatus, int draw, int win, int lose, int numberPlayed) {
+    if (gameStatus == 1) {
+        numberPlayed++;
+        win++;
+    } else if (gameStatus == 2) {
+        numberPlayed++;
+        lose++;
+    } else if (gameStatus == 3) {
+        numberPlayed++;
+        draw++;
+    }
+
+    fout << userName << " has " << win << " wins, " << lose << " losses, and " << draw << " draws. " << endl;
 }
