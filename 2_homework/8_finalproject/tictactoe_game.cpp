@@ -1,6 +1,6 @@
 /*
 Name: Anthony Streich
-Date: 12 May 23
+Date: 17 May 23
 Tic-Tac-Toe!
 CURRENT ISSUES: 
 */
@@ -20,7 +20,8 @@ void promptMove(bool, char[], int&);
 void compMove(bool, char[], int&);
 int game(bool, char[], int&, int);
 int checkWin(char[]);
-void writeData(fstream&, string, int, int, int, int, int);
+void writeData(fstream&, string, int, int, int, int);
+void clearBoard(char[], int&);
 
 int main(int argc, char *argv[]) {
     int counter = 0;
@@ -29,6 +30,11 @@ int main(int argc, char *argv[]) {
 
     int userSelection;
     int gameStatus = 0;
+    int draw = 0;
+    int win = 0;
+    int lose = 0;
+    int numberPlayed = 0;
+
 
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
 
@@ -37,24 +43,33 @@ int main(int argc, char *argv[]) {
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
 
-    char quitChar = ' ';
+    char quitChar = 'Y';
     do {
         gameStatus = game(userIsX, board, counter, userSelection);
+        numberPlayed++;
+        if (gameStatus == 1) {
+            win++;
+        } else if (gameStatus == 2) {
+            lose++;
+        } else if (gameStatus == 3) {
+            draw++;
+        }
+
         cout << "Would you like to play again? [Y/N] " << endl;
         cin >> quitChar;
         quitChar = toupper(quitChar);
+
+        clearBoard(board, gameStatus);
+        printBoard(board);
     } while (quitChar == 'Y');
 
-
-    int draw = 0;
-    int win = 0;
-    int lose = 0;
-    int numberPlayed = 0;
+    // If I had more time, I would make this a struct with the file i/o, which would allow me to keep track of your stats
+    // over the course of time, rather than instance based stats.
 
     fstream fs;
     fs.open("files/fstemp.txt", fstream::in | fstream::out | fstream::app);
     fs.seekg(0);
-    writeData(fs, userName, gameStatus, draw, win, lose, numberPlayed);
+    writeData(fs, userName, gameStatus, draw, win, lose);
     fs.close();
 
     return 0;
@@ -133,7 +148,7 @@ void compMove(bool userIsX, char board[], int &userSelection) {
         userSelection = ((rand()%9)+1);
     } while (notValidMove(board, userSelection) == true);
 
-    cout << "***DEBUG*** Computer Move: " << userSelection << endl;
+    cout << "Computer Move: " << userSelection << endl;
 
     // This is the case when you are manually inputting changes to the moves.
     // while (notValidMove(board, userSelection) == true) {
@@ -145,7 +160,6 @@ void compMove(bool userIsX, char board[], int &userSelection) {
     } else {
         board[userSelection - 1] = 'X';
     }
-    // cout << "DEBUG board[userSelection - 1] = " << board[userSelection - 1];
 }
 
 
@@ -307,17 +321,13 @@ int game(bool userIsX, char board[], int &counter, int userSelection) {
     }
 }
 
-void writeData(fstream& fout, string userName, int gameStatus, int draw, int win, int lose, int numberPlayed) {
-    if (gameStatus == 1) {
-        numberPlayed++;
-        win++;
-    } else if (gameStatus == 2) {
-        numberPlayed++;
-        lose++;
-    } else if (gameStatus == 3) {
-        numberPlayed++;
-        draw++;
-    }
-
+void writeData(fstream& fout, string userName, int gameStatus, int draw, int win, int lose) {
     fout << userName << " has " << win << " wins, " << lose << " losses, and " << draw << " draws. " << endl;
+}
+
+void clearBoard(char board[], int& gameStatus) {
+    for (int i = 0; i < 9; i++) {
+        board[i] = ' ';
+    }
+    gameStatus = 0;
 }

@@ -1,9 +1,8 @@
-Anthony completed the game in 8 moves. 
-\Anthony completed the game in 8 moves. 
-anthony completed the game in 8 moves. 
-Anthony completed the game in 7 moves. 
-Anthony has 1 wins, 533021808 losses, and 7 draws. 
-anthony completed the game in 8 moves. 
-anthony has 0 wins, 0 losses, and 1 draws. 
-anthony has 0 wins, 1 losses, and 0 draws. 
+
+Anthony has 1 wins, 0 losses, and 0 draws. 
+Anthony has 0 wins, 0 losses, and 0 draws. 
+Anthony has 0 wins, 0 losses, and 1 draws. 
+A has 0 wins, 0 losses, and 1 draws. 
+a has 0 wins, 0 losses, and 1 draws. 
+a has 0 wins, 1 losses, and 0 draws. 
 Anthony has 0 wins, 0 losses, and 1 draws. 
