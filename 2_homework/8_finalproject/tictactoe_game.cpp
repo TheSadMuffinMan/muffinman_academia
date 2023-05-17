@@ -12,6 +12,7 @@ CURRENT ISSUES:
 
 using namespace std;
 
+void userNameInput(string&);
 void printBoard(char[]);
 void userXorO(bool&);
 bool notValidMove(char[], int);
@@ -19,10 +20,11 @@ void promptMove(bool, char[], int&);
 void compMove(bool, char[], int&);
 void game(bool, char[], int&, int, int);
 int checkWin(char[], int&);
-void writeData(fstream&, char[], int);
+void writeData(fstream&, char[], string, int);
 
 int main(int argc, char *argv[]) {
     int counter = 0;
+    string userName;
     srand(time(0)); // This initializes the random value by marking the exact time, which will create a unique seed.
 
     // int numberGames = 0;
@@ -35,6 +37,7 @@ int main(int argc, char *argv[]) {
     char board[9] = {' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}; // This is setting every char to a blank space
 
     bool userIsX = false;
+    userNameInput(userName);
     userXorO(userIsX); // Determines if the user is X or O 
     printBoard(board); // Prints the board
 
@@ -43,32 +46,17 @@ int main(int argc, char *argv[]) {
     fstream fs;
     fs.open("files/fstemp.txt", fstream::in | fstream::out | fstream::app);
     fs.seekg(0);
-    writeData(fs, board, counter);
+    writeData(fs, board, userName, counter);
     fs.close();
 
-/* Old (but working) manual way of doing things
-    promptMove(userIsX, board); // Prompts the user for a move
-    printBoard(board); // Prints the board
-
-    compMove(userIsX, board);
-    printBoard(board);
-
-    promptMove(userIsX, board);
-    printBoard(board);
-
-    compMove(userIsX, board);
-    printBoard(board);
-
-    promptMove(userIsX, board);
-    printBoard(board);
-    checkWin(board);
-
-    compMove(userIsX, board);
-    printBoard(board);
-    checkWin(board);
-*/
     return 0;
 }
+
+void userNameInput(string& userName) {
+    cout << "\nPlease enter your name, and then press enter." << endl;
+    getline(cin, userName);
+}
+
 
 void printBoard(char board[]) {
     cout << " \n _______ _______ _______" << endl;
@@ -88,7 +76,7 @@ void printBoard(char board[]) {
 }
 
 void userXorO(bool &userIsX) {
-    cout << "REMEMBER, X always goes first." << endl;
+    cout << "\nThe user will always go first." << endl;
     cout << "X or O? " << endl;
     string tempUserInput;
     cin >> tempUserInput;
@@ -302,8 +290,6 @@ void game(bool userIsX, char board[], int &counter, int userSelection, int gameS
     }
 }
 
-void writeData(fstream& fout, char board[], int counter) {
-    for(int i = 0; i < counter; i++) {
-        fout << "board[" << i << "]: " << board[i] << endl;
-    }
+void writeData(fstream& fout, char board[], string userName, int counter) {
+    fout << userName << " completed the game in " << counter << " moves. " << endl;
 }
