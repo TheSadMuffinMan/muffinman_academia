@@ -7,12 +7,12 @@ Takes in array, mults two elements, adds em up
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    int arraySize;
+    int loopSize;
     float qol, numYears, qaly, temp;
-    cin >> arraySize;
+    cin >> loopSize;
 
     qaly = 0;
-    for (int i = 0; i < arraySize; i++) {
+    for (int i = 0; i < loopSize; i++) {
         // cout << "qol[" << i << "]: " << endl;
         // cout << "numYears[" << i << "]: " << endl;
         cin >> qol >> numYears;
