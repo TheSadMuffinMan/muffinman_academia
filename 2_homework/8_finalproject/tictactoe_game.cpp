@@ -78,7 +78,6 @@ void userNameInput(string& userName) {
     getline(cin, userName);
 }
 
-
 void printBoard(char board[]) {
     cout << " \n _______ _______ _______" << endl;
     cout << "|1      |2      |3      |" << endl;
