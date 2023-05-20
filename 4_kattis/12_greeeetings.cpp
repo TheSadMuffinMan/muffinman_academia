@@ -1,7 +1,7 @@
 /*
 12_greeeetings.cpp
-Takes in a phrase and doubles the number of 'e's inside it.
-Explores the string.insert() function and loop functionality
+Takes in a phrase and doubles the number of 'e's inside it, and does so in dumbest way possible
+Does NOT Explore the string.insert() function and loop functionality
 */
 
 #include <iostream>
