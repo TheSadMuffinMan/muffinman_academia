@@ -1,5 +1,7 @@
 /*
 Searches a string up until a char, then takes away anything preceeding it.
+IMPORTANT LEARNING LESSON: This is how to use the substr() function appropriately
+string.substr(startIndex, length)
 */
 
 #include <iostream>
@@ -12,10 +14,8 @@ int main(int argc, char *argv[]) {
     cin >> input;
 
     size_t pos = input.find(findChar);
-    for (auto i = pos; i < input.length(); i++) {
-        cout << i;
-    }
-    
-    cout << endl;
+    unsigned long temp = (input.length() - pos); // This matches the data type that pos is so that the compiler doesn't bitch
+    cout << input.substr(pos, temp) << endl;
+
     return 0;
 }
