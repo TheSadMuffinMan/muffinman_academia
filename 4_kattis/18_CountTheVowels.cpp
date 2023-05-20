@@ -10,16 +10,17 @@ IMPORTANT LEARNING LESSON: toupper() and tolower() ONLY work on chars, so you ha
 
 using namespace std;
 
+void cleanInput(string&);
+
 int main(int argc, char *argv[]) {
-    string input, cleanedInput;
+    string input;
     int counter = 0;
-    getline(cin, input); // works
+    getline(cin, input);
 
-    cleanedInput = input; // This "cleans" the input so that the conditional will like it
-    cout << "DEBUG cleanedInput: " << cleanedInput << endl;
+    cleanInput(input); // cleans the input for the upcoming conditional
 
-    for (size_t i = 0; i < cleanedInput.length(); i++) {
-        if ((cleanedInput[i] == 'a') || (cleanedInput[i] == 'e') || (cleanedInput[i] == 'i') || (cleanedInput[i] == 'o') || (cleanedInput[i] == 'u')) {
+    for (size_t i = 0; i < input.length(); i++) { // Performs the logic to "detect" vowels
+        if ((input[i] == 'a') || (input[i] == 'e') || (input[i] == 'i') || (input[i] == 'o') || (input[i] == 'u')) {
             counter++;
         }
     }
@@ -27,4 +28,10 @@ int main(int argc, char *argv[]) {
     cout << counter << endl;
 
     return 0;
+}
+
+void cleanInput(string& input) {  // This "cleans" the input so that the conditional will like it
+    for (size_t i = 0; i < input.length(); i++) {
+        input[i] = tolower(input[i]);
+    }
 }
