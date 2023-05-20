@@ -1,5 +1,6 @@
 /*
 Uses ratios to break apart floats
+https://open.kattis.com/problems/betting
 OPTION ONE- 1 : 1.25
 OPTION TWO- 1 : 5
 */
