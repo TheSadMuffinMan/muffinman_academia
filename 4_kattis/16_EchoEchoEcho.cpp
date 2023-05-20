@@ -12,6 +12,13 @@ int main(int argc, char *argv[]) {
     string input;
     getline(cin, input);
 
-    cout << input << " " << input << " " << input << endl;
+    // cout << input << " " << input << " " << input << endl;
+
+    // This way is more modular
+    for (int i = 0; i < 3; i++) {
+        cout << input << " ";
+    }
+
+    cout << endl;
     return 0;
 }
