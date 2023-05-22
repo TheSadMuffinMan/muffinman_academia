@@ -1,5 +1,6 @@
 /*
 Creates an array, populates the array, and then find the average of all values (more or less)
+Program uses floating numbers inside an array
 https://open.kattis.com/problems/batterup
 */
 
@@ -19,9 +20,10 @@ int main(int argc, char *argv[]) {
         cin >> inputs[i];
         runningNum = (runningNum + inputs[i]);
     }
+    cout << "DEBGUG runningNum: " << runningNum << endl;
 
     float displayNum = runningNum/arraySize;
-    cout << displayNum; 
+    cout << displayNum << endl; 
 
     return 0;
 }
