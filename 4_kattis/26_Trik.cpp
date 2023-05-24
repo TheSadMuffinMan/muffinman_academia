@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     string dirtyUserInput;
     cin >> dirtyUserInput;
 
-    int ballPosition = 0;
+    int ballPosition = 1;
     size_t size = dirtyUserInput.length(); // Sets the size of the array based off user input
 
     // Takes everything inside the string, and plops it inside an array made of chars
@@ -33,16 +33,20 @@ int main(int argc, char *argv[]) {
     //     cout << "***DEBUG***cleanUserInput[" << i << "]: " << cleanUserInput[i] << endl;
     // }
 
-    // Tabulates where the ball is, based off cleaned input
+    // Tabulates where the ball is, based off cleaned input, dependent on if the ball is there or not
     for (size_t i = 0; i < size; i++) {
-        if (cleanUserInput[i] == 'A') {
+        if ((cleanUserInput[i] == 'A') && (ballPosition == 1)) {
             ballPosition = 2;
-        } else if (cleanUserInput[i] == 'B') {
-            ballPosition = 3;
-        } else if (cleanUserInput[i] == 'C') {
+        } else if ((cleanUserInput[i] == 'A') && (ballPosition == 2)) {
             ballPosition = 1;
-        } else {
-            cout << "LOOP ERROR\n";
+        } else if ((cleanUserInput[i] == 'B') && (ballPosition == 2)) {
+            ballPosition = 3;
+        } else if ((cleanUserInput[i] == 'B') && (ballPosition == 3)) {
+            ballPosition = 2;
+        } else if ((cleanUserInput[i] == 'C') && (ballPosition == 1)) {
+            ballPosition = 3;
+        } else if ((cleanUserInput[i] == 'C') && (ballPosition == 3)) {
+            ballPosition = 1;
         }
     }
 
