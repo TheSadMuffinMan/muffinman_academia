@@ -14,7 +14,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 PROGRAM = kattisProblem.exe
 
 # list all .cpp files separated by space
-CPPFILES = 27_TriangleArea.cpp
+CPPFILES = 28_Tarifa.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
