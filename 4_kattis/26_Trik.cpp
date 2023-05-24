@@ -19,21 +19,31 @@ int main(int argc, char *argv[]) {
     int ballPosition = 0;
 
     cin >> size;
-    char userMove[size];
-    cin >> userMove[size];
+    string dirtyUserInput;
+    cin >> dirtyUserInput;
 
-    cout << "userMove[0]: " << userMove[0] << endl;
-    cout << "userMove[1]: " << userMove[1] << endl;
+    // Takes everything inside the string, and plops it inside an array made of chars
+    // Also "cleans" the input
+    char cleanUserInput[size];
+    for (size_t i = 0; i < size; i++) {
+        cleanUserInput[i] = toupper(dirtyUserInput.at(i));
+    }
 
-    for (size_t i = 0; i <= size; i++) {
-        if (userMove[i] == 'A') {
+    // Used for debugging to ensure the above code is populating the array
+    for (size_t i = 0; i < size; i++) {
+        cout << "***DEBUG***cleanUserInput[" << i << "]: " << cleanUserInput[i] << endl;
+    }
+
+    // Tabulates where the ball is, based off cleaned input
+    for (size_t i = 0; i < size; i++) {
+        if (cleanUserInput[i] == 'A') {
             ballPosition = 1;
-        } else if (userMove[i] == 'B') {
+        } else if (cleanUserInput[i] == 'B') {
             ballPosition = 2;
-        } else if (userMove[i] == 'C') {
+        } else if (cleanUserInput[i] == 'C') {
             ballPosition = 0;
         } else {
-            cout << "E\n";
+            cout << "LOOP ERROR\n";
         }
     }
 
