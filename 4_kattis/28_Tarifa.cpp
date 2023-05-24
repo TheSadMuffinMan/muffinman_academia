@@ -1,5 +1,6 @@
 /*
 Program takes in ints and manipulates them (nothing crazy)
+https://open.kattis.com/problems/tarifa
 */
 
 #include <iostream>
