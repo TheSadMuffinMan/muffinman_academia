@@ -1,5 +1,5 @@
 /*
-Creates an array, populates the array, and then find the average of all values (more or less)
+Creates an array, populates the array, and then find the average of all values (with a conditional)
 Program uses floating numbers inside an array
 https://open.kattis.com/problems/batterup
 */
@@ -15,14 +15,20 @@ int main(int argc, char *argv[]) {
 
     float inputs[arraySize];
     float runningNum = 0;
+    float runningSize = 0;
 
     for (int i = 0; i < arraySize; i++) {
         cin >> inputs[i];
-        runningNum = (runningNum + inputs[i]);
+        if (inputs[i] >= 0) {
+            runningNum = (runningNum + inputs[i]);
+            runningSize++;
+        }
     }
-    cout << "DEBGUG runningNum: " << runningNum << endl;
+    // cout << "DEBGUG runningNum: " << runningNum << endl;
 
-    float displayNum = runningNum/arraySize;
+    // cout << "DEBUG runningNum: " << runningNum << endl;
+    // cout << "DEBUG runningSize: " << runningSize << endl;
+    float displayNum = runningNum/runningSize;
     cout << displayNum << endl; 
 
     return 0;
