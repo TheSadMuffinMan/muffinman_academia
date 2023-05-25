@@ -13,10 +13,10 @@ void cleanFirst(bool, int, int&);
 int main(int argc, char *argv[]) {
     int usern1, usern2, uUsern1, uUsern2;
     bool flipped = false;
-    cin >> usern1 >> usern2; // now subtract 45 min from 24hr time
+    cin >> usern1 >> usern2; // Takes in user input
 
-    cleanSecond(usern2, uUsern2, flipped);
-    cleanFirst(flipped, usern1, uUsern1);
+    cleanSecond(usern2, uUsern2, flipped); // "cleans" the minutes portion
+    cleanFirst(flipped, usern1, uUsern1); // "cleans" the hours portion
 
     cout << uUsern1 << " " << uUsern2 << endl;
 

@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
         calcTime(userArray, size, runningTime);
         cout << runningTime << endl;
     } else {
-        for (size_t i = 0; i < size; i++) {
+        for (size_t i = 0; i < size; i++) { // This loop is only here so that Kattis can input nums, the input doesn't do anything
             cin >> temp;
         }
         cout << "still running" << endl;
@@ -37,8 +37,7 @@ void fillInput(int userArray[], size_t size) {
         cin >> userArray[i];
     }
 
-    // This is the debug loop
-    // for (size_t i = 0; i < size; i++) {
+    // for (size_t i = 0; i < size; i++) { // This is the debug loop
     //     cout << "***DEBUG*** userArray[" << i << "]: " << userArray[i] << endl;
     // }
 }
