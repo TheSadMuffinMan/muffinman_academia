@@ -1,4 +1,4 @@
-This is my collection of knowledge with regards to Computer Science 1 knowledge.
+This is my collection of knowledge with regards to Computer Science 1.
 
 Kattis Problems Complete: 29
 
