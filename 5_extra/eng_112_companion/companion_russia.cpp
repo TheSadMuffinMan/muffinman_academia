@@ -2,7 +2,8 @@
 Name: Anthony Streich
 Date: 8 May 23
 English 112 Companion Piece
-CURRENT ISSUES: 
+CURRENT ISSUES: Lacks narrative. Lacks complete story. Make it all connect. Add documentation.
+Utilize the clear function to make mmore visually appearing. Add HUD.
 */
 
 #include <iostream>

@@ -18,10 +18,9 @@ int main(int argc, char *argv[]) {
     // cout << "DEBUG pos: " << pos << endl;
 
     // Checks to see if position is not returning noPosition, (checks if sequence "555" chars is in string at all)
-    // Then checks to see if "5" is at the start of string,
     // Then checks if position is at 0 (the first chacter)
     // So, it ONLY returns 1 if all of these conditions are true
-    if ((pos != string::npos) && (input.find("5", 0, 1) != string::npos) && (pos == 0)) {
+    if ((pos != string::npos) && (pos == 0)) {
         cout << "1\n";
     } else {
         cout << "0\n";

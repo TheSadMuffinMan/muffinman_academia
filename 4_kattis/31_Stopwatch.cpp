@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     int runningTime = 0;
     int userArray[size];
 
-    if ((buttonPresses % 2) == 0) {
+    if ((buttonPresses % 2) == 0) { // Not best practice, should be validating the input inside the function
         fillInput(userArray, size);
         calcTime(userArray, size, runningTime);
         cout << runningTime << endl;
