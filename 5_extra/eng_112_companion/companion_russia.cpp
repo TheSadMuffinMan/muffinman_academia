@@ -6,29 +6,11 @@ CURRENT ISSUES: Lacks narrative. Lacks complete story. Make it all connect. Add 
 Utilize the clear function to make more visually appearing. Add HUD.
 */
 
-#include <iostream>
-#include <string>
-#include <random>
-#include "companion_files/test.h"
+// This is my own library of functions that I have built. It also includes <iostream>, <string>, and <random>.
+#include "companion_files/companion_functions.h"
 
+// The only reason I am using namespace std is because it makes the code in the main file look more pretty.
 using namespace std;
-
-using money_int = long long int; /* This creates a new type of variable that can hold really large values. This is needed because
-a regular variable type of int cannot hold data that large, and the playerCharacters have A LOT of money. */
-
-#define clear() system("clear") // This line defines the clear function so that it can be used in the terminal.
-
-struct Character {
-    int type;
-    string name;
-    int health;
-    money_int money;
-    int age;
-    string occupation;
-    // string familyMembers;
-    string status;
-    bool alive = true;
-};
 
 void userInput(string&);
 void gameInfo(string);
