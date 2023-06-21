@@ -44,9 +44,11 @@ void userInput(std::string& userName) {
 
 void gameInfo() {
     std::cout << "This program is designed to tell a story that follows the lives of different people currently living in Russia." << std::endl;
-    std::cout << "Hopefully these stories are able to bring better perspective to the ongoing conditions in Russia." << std::endl;
+    std::cout << "Hopefully these stories are able to bring better perspective to the ongoing living conditions in Russia." << std::endl;
     std::cout << "It is important to note that this game is NOT fair, mostly because I'm a terrible coder, but also because \nit is indicative of real life." << std::endl;
-    std::cout << " \n\nGood luck, and stay alive.\n\n" << std::endl;
+    std::cout << "Good luck, and stay alive.\n" << std::endl;
+    std::cout << "Press any button to return to the main menu. " << std::endl;
+    std::cin.get();
 }
 
 int characterSelection() {
