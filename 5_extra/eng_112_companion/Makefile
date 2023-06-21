@@ -14,7 +14,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 PROGRAM = companion_russia.exe
 
 # list all .cpp files separated by space
-CPPFILES = companion_files/test.h companion_russia.cpp
+CPPFILES = companion_files/companion_functions.h companion_russia.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
