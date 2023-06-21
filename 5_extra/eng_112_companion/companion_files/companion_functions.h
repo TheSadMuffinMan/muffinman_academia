@@ -23,29 +23,30 @@ struct Character {
 
 // These are my own defined functions
 void userInput(std::string&);
-void gameInfo(std::string);
+void gameInfo();
 void populateInfo(Character&, int);
 int characterSelection();
 std::string populateGood(std::string[]);
 std::string populateBad(std::string[]);
 void printToonFull(Character);
 // void printAllToons(Character);
-void printStatus(Character);
+void printStatus(Character, std::string);
 void actionStage(std::string[], std::string[], Character&);
 bool statusChecker(Character);
+void printMenu();
 
 
 void userInput(std::string& userName) {
-    std::cout << "Please enter your name, and press enter. " << std::endl;
+    std::cout << "\tPlease enter your name, and press enter. " << std::endl;
     getline(std::cin, userName);
+    clear();
 }
 
-void gameInfo(std::string userName) {
-    std::cout << "\nWelcome " << userName << " to my companion piece." << std::endl;
+void gameInfo() {
     std::cout << "This program is designed to tell a story that follows the lives of different people currently living in Russia." << std::endl;
     std::cout << "Hopefully these stories are able to bring better perspective to the ongoing conditions in Russia." << std::endl;
     std::cout << "It is important to note that this game is NOT fair, mostly because I'm a terrible coder, but also because \nit is indicative of real life." << std::endl;
-    std::cout << " \n \n \nGood luck, and stay alive.\n\n" << std::endl;
+    std::cout << " \n\nGood luck, and stay alive.\n\n" << std::endl;
 }
 
 int characterSelection() {
@@ -125,12 +126,12 @@ void printToonFull(Character playerCharacter) {
     std::cout << "\tAlive Status: "<< playerCharacter.alive << std::endl;
 }
 
-void printStatus(Character playerCharacter) {
-    std::cout << "\n\t\tPLAYER CHARACTER" << std::endl;
+void printStatus(Character playerCharacter, std::string userName) {
+    std::cout << "User: " << userName << std::endl;
     std::cout << "\tName: " << playerCharacter.name << std::endl;
     std::cout << "\tCurrent Health: " << playerCharacter.health << std::endl;
     std::cout << "\tCurrent Money: " << playerCharacter.money << std::endl;
-    std::cout << "\tCurrent Status: " << playerCharacter.status;
+    std::cout << "\tCurrent Status: " << playerCharacter.status << std::endl;
 }
 
 void actionStage(std::string goodActions[], std::string badActions[], Character &playerCharacter) {
@@ -252,4 +253,12 @@ bool statusChecker(Character playerCharacter) {
     } else {
         return true;
     }
+}
+
+void printMenu() {
+    clear();
+
+    std::cout << "\t\t***** MAIN MENU *****" << std::endl;
+    std::cout << "\n\n\t[1] Game Start" << std::endl;
+    std::cout << "\n\t[2] Game Rules\n" << std::endl;
 }

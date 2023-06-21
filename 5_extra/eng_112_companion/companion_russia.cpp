@@ -3,7 +3,8 @@ Name: Anthony Streich
 Date: 21 June 23
 English 112 Companion Piece
 CURRENT ISSUES: Lacks narrative. Lacks complete story. Make it all connect. Add documentation.
-Utilize the clear function to make more visually appearing. Add HUD.
+Utilize the clear function to make more visually appearing.
+CURRENTLY WORKING ON: HUD / Character Bar
 */
 
 // This is my own library of functions that I have built. It also includes <iostream>, <string>, and <random>.
@@ -20,9 +21,20 @@ int main(int argc, char *argv[]) {
     string goodActions[5];
     string badActions[11];
 
-    // clear(); // Clears the screen after each iteration
+    clear(); // Clears the screen at the start of the program
     userInput(userName); // Takes user name
-    gameInfo(userName); // Prints general game info
+
+    printMenu(); // Clears the screen, and then prints the menu options
+    cout << "Navigation choice: " << endl; 
+ 
+    int userMenuSelection = 0;
+    cin >> userMenuSelection;
+
+    if (userMenuSelection == 1) {
+        
+    }
+
+    gameInfo(); // Prints general game info
 
     populateInfo(playerCharacter, characterSelection()); // Function that creates and displays both characters
 
@@ -32,9 +44,10 @@ int main(int argc, char *argv[]) {
     int counter = 0;
     while (statusChecker(playerCharacter) == true && counter < 2) {
         cin.get();
+        printStatus(playerCharacter, userName);
         actionStage(goodActions, badActions, playerCharacter);
-        printStatus(playerCharacter);
         counter++;
+        clear();
     }
 
     if (statusChecker(playerCharacter) == true) {
@@ -47,5 +60,5 @@ int main(int argc, char *argv[]) {
 }
 
 /*
-I wanted to thank my tutor DJ so much for his help with this game. His guidance made this game possible!
+I wanted to thank my tutor DJ so much for his help with this game. His guidance made this program possible!
 */
