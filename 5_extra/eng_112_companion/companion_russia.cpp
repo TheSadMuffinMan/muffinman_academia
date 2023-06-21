@@ -17,9 +17,11 @@ using namespace std;
 int main(int argc, char *argv[]) {
     string userName;
     Character playerCharacter;
-    srand(time(0)); // This initializes the random value by marking the exact time, which will create a unique seed.
+    srand(time(0)); // This initializes a random value by marking the exact time, which will create a unique seed.
     string goodActions[5];
     string badActions[11];
+    populateGood(goodActions); // Function that populates the "good" array
+    populateBad(badActions); // Function that populates the "bad" array
 
     clear(); // Clears the screen at the start of the program
     userInput(userName); // Takes user name
@@ -31,29 +33,25 @@ int main(int argc, char *argv[]) {
     cin >> userMenuSelection;
 
     if (userMenuSelection == 1) {
-        
-    }
+        populateInfo(playerCharacter, characterSelection()); // Function that creates your character
+        int counter = 0;
+        while (statusChecker(playerCharacter) == true && counter < 2) {
+            cin.get();
+            printStatus(playerCharacter, userName);
+            actionStage(goodActions, badActions, playerCharacter);
+            counter++;
+            clear();
+        }
 
-    gameInfo(); // Prints general game info
-
-    populateInfo(playerCharacter, characterSelection()); // Function that creates and displays both characters
-
-    populateGood(goodActions); // Function that populates the "good" array
-    populateBad(badActions); // Function that populates the "bad" array
-
-    int counter = 0;
-    while (statusChecker(playerCharacter) == true && counter < 2) {
-        cin.get();
-        printStatus(playerCharacter, userName);
-        actionStage(goodActions, badActions, playerCharacter);
-        counter++;
-        clear();
-    }
-
-    if (statusChecker(playerCharacter) == true) {
-        cout << "\nCongrats! You win!" << endl;
+        if (statusChecker(playerCharacter) == true) {
+            cout << "\nCongrats! You win!" << endl;
+        } else {
+            cout << "\nUh oh, you died." << endl;
+        }
+    } else if (userMenuSelection == 2) {
+        gameInfo(); // Prints general game info
     } else {
-        cout << "\nUh oh, you died." << endl;
+        cout << "*****ERROR******" << endl;
     }
 
     return 0;
