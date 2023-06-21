@@ -1,3 +1,5 @@
 #include <iostream>
 
-void test();
+void test() {
+    std::cout << "Header file success!" << std::endl;
+}
