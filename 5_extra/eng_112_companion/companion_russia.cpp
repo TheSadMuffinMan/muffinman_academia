@@ -3,12 +3,13 @@ Name: Anthony Streich
 Date: 21 June 23
 English 112 Companion Piece
 CURRENT ISSUES: Lacks narrative. Lacks complete story. Make it all connect. Add documentation.
-Utilize the clear function to make mmore visually appearing. Add HUD.
+Utilize the clear function to make more visually appearing. Add HUD.
 */
 
 #include <iostream>
 #include <string>
 #include <random>
+#include "companion_files/test.h"
 
 using namespace std;
 
@@ -70,6 +71,8 @@ int main(int argc, char *argv[]) {
     } else {
         cout << "\nUh oh, you died." << endl;
     }
+
+    test();
     return 0;
 }
 
