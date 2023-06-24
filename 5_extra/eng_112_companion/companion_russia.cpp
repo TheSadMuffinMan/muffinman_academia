@@ -10,7 +10,7 @@ CURRENTLY WORKING ON: Menu Operability
 // This is my own library of functions that I have built. It also includes <iostream>, <string>, and <random>.
 #include "companion_files/companion_functions.h"
 
-// The only reason I am using namespace std is because it makes the code in the main file look more pretty.
+// The only reason I am using the std namespace is because it makes the code in the main file look more pretty.
 using namespace std;
 
 
