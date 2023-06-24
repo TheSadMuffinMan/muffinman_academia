@@ -13,13 +13,12 @@ CURRENTLY WORKING ON: Menu Operability
 // The only reason I am using the std namespace is because it makes the code in the main file look more pretty.
 using namespace std;
 
-
 int main(int argc, char *argv[]) {
     string userName;
     Character playerCharacter;
     srand(time(0)); // This initializes a random value by marking the exact time, which will create a unique seed.
-    string goodActions[5];
-    string badActions[11];
+    string goodActions[5]; // Creates the array of "good" actions
+    string badActions[11]; // Creates the array of "bad" actions
     populateGood(goodActions); // Function that populates the "good" array
     populateBad(badActions); // Function that populates the "bad" array
     clear(); // Clears the screen, and displays the "CTRL C" message
