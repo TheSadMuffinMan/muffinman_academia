@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     string badActions[11];
     populateGood(goodActions); // Function that populates the "good" array
     populateBad(badActions); // Function that populates the "bad" array
-    clear(); // Clears the screen at the start of the program
+    clear(); // Clears the screen, and displays the "CTRL C" message
 
     // ***** PROGRAM START ******
 
