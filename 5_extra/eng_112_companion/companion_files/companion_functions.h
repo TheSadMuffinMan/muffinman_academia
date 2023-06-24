@@ -49,7 +49,6 @@ void printMenu();
 //     populateBad(badActions); // Function that populates the "bad" array
 
 void userInput(std::string& userName) {
-    // std::cout << "***** At any point, pressing \"CTRL\" + \"C\" will terminate the program. *****" << std::endl;
     std::cout << "\tPlease enter your name, and press enter. " << std::endl;
     getline(std::cin, userName);
     clear();
