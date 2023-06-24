@@ -22,12 +22,14 @@ int main(int argc, char *argv[]) {
     string badActions[11];
     populateGood(goodActions); // Function that populates the "good" array
     populateBad(badActions); // Function that populates the "bad" array
-
     clear(); // Clears the screen at the start of the program
+
+    // ***** PROGRAM START ******
+
     userInput(userName); // Takes user name
 
     printMenu(); // Clears the screen, and then prints the menu options
-    cout << "Navigation choice: " << endl; 
+    cout << "Navigation choice: "; 
  
     int userMenuSelection = 0;
     cin >> userMenuSelection;

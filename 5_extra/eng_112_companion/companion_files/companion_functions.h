@@ -7,7 +7,9 @@
 using money_int = long long int; /* This creates a new type of variable that can hold really large values. This is needed because
 a regular variable type of int cannot hold data that large, and the playerCharacters have A LOT of money. */
 
-#define clear() (system("clear")) // This line defines the clear function so that it can be used in the terminal.
+// This definition is different from (#include)s because it is defining a function to be used by the operating system, not Ubuntu.
+// This line defines the clear function so that it can be used in the terminal.
+#define clear() (system("clear"), std::cout << "***** At any point, pressing \"CTRL\" + \"C\" will terminate the program. *****\n")
 
 struct Character {
     int type;
@@ -35,8 +37,18 @@ void actionStage(std::string[], std::string[], Character&);
 bool statusChecker(Character);
 void printMenu();
 
+// void prerequisiteDeclarations(std::string& userName, Character& playerCharacter, std::string goodActions[5], std::string badActions[11]) {
+//     std::string userName;
+//     Character playerCharacter;
+//     // ******* I'm not sure if this is initialized or not ************ RANDOM MIGHT NOT BE WORKING
+//     srand(time(0)); // This initializes a random value by marking the exact time, which will create a unique seed.
+//     std::string goodActions[5];
+//     std::string badActions[11];
+//     populateGood(goodActions); // Function that populates the "good" array
+//     populateBad(badActions); // Function that populates the "bad" array
 
 void userInput(std::string& userName) {
+    // std::cout << "***** At any point, pressing \"CTRL\" + \"C\" will terminate the program. *****" << std::endl;
     std::cout << "\tPlease enter your name, and press enter. " << std::endl;
     getline(std::cin, userName);
     clear();
