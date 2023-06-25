@@ -12,6 +12,7 @@ a regular variable type of int cannot hold data that large, and the playerCharac
 // The internet has informed me that this is NOT a best security practice (mixing macros with c++ commands).
 #define clear() (system("clear"), std::cout << "***** At any point, pressing \"CTRL\" + \"C\" will terminate the program. *****\n")
 
+// This struct defines the parameters of what a Character is.
 struct Character {
     int type;
     bool alive = true;
@@ -24,29 +25,38 @@ struct Character {
     std::string status;
 };
 
-// These are my own defined functions
+// Function takes in user input, and then stores that information in the variable of userName.
 void userInput(std::string&);
-void gameInfo();
-void populateInfo(Character&, int);
-int characterSelection();
-std::string populateGood(std::string[]);
-std::string populateBad(std::string[]);
-void printToonFull(Character);
-// void printAllToons(Character);
-void printStatus(Character, std::string);
-void actionStage(std::string[], std::string[], Character&);
-bool statusChecker(Character);
-void printMenu();
 
-// void prerequisiteDeclarations(std::string& userName, Character& playerCharacter, std::string goodActions[5], std::string badActions[11]) {
-//     std::string userName;
-//     Character playerCharacter;
-//     // ******* I'm not sure if this is initialized or not ************ RANDOM MIGHT NOT BE WORKING
-//     srand(time(0)); // This initializes a random value by marking the exact time, which will create a unique seed.
-//     std::string goodActions[5];
-//     std::string badActions[11];
-//     populateGood(goodActions); // Function that populates the "good" array
-//     populateBad(badActions); // Function that populates the "bad" array
+// Function displays general game information.
+void gameInfo();
+
+// Function populates a struct named "Character" and stores that information as playerCharacter. 
+void populateInfo(Character&, int);
+
+// Function takes in user input and stores selection in userSelection.
+int characterSelection();
+
+// Function creates an array of 5 (hard coded) elements. Array is named goodActions[].
+std::string populateGood(std::string[]);
+
+// Functon creates an array of 11 (hard codeded) elements. Array is named badActions[].
+std::string populateBad(std::string[]);
+
+// Function displays current Character information populated by playerCharacter information.
+void printToonFull(Character);
+
+// Function prints the status of a few elements of current Character.
+void printStatus(Character, std::string);
+
+// Function contains all switch cases of what can happen to playerCharacter.
+void actionStage(std::string[], std::string[], Character&);
+
+// Function checks if playerCharacter.health or playerCharacter.money is < 0. If health or money is < 0, the function returns true.
+bool statusChecker(Character);
+
+// Function clears the screen, and then prints the main menu.
+void printMenu();
 
 void userInput(std::string& userName) {
     std::cout << "\tPlease enter your name, and press enter. " << std::endl;
@@ -274,5 +284,7 @@ void printMenu() {
 
     std::cout << "\t\t***** MAIN MENU *****" << std::endl;
     std::cout << "\n\n\t[1] Game Start" << std::endl;
-    std::cout << "\n\t[2] Game Rules\n" << std::endl;
+    std::cout << "\n\t[2] Game Rules" << std::endl;
+    std::cout << "\n\t[3] Documentation" << std::endl;
+    std::cout << "\n\t[4] Quit\n" << std::endl;
 }

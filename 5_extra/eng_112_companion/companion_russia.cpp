@@ -24,6 +24,7 @@ int main(int argc, char *argv[]) {
     clear(); // Clears the screen, and displays the "CTRL C" message
 
     // ***** PROGRAM START ******
+    char runChar = 'a';
 
     userInput(userName); // Takes user name
 
