@@ -2,8 +2,7 @@
 Name: Anthony Streich
 Date: 24 June 23
 English 112 Companion Piece
-CURRENT ISSUES: Lacks narrative. Lacks complete story. Make it all connect. Add documentation.
-Utilize the clear function to make more visually appealing. Add character HUD.
+CURRENT ISSUES: Lacks narrative. Lacks complete story. Make it all connect. Add character HUD.
 CURRENTLY WORKING ON: Menu Operability
 */
 
@@ -21,21 +20,22 @@ int main(int argc, char *argv[]) {
     string badActions[11]; // Creates the array of "bad" actions
     populateGood(goodActions); // Function that populates the "good" array
     populateBad(badActions); // Function that populates the "bad" array
-    clear(); // Clears the screen, and displays the "CTRL C" message
 
     // ***** PROGRAM START ******
-    char runChar = 'a';
+    clear(); // Clears the screen, and displays the "CTRL C" message
 
-    userInput(userName); // Takes user name
+    int menuInt = '0';
+    userInput(menuInt, userName); // I plan on using this info to create "save files" and stuff.
 
-    printMenu(); // Clears the screen, and then prints the menu options
-    cout << "Navigation choice: "; 
- 
-    int userMenuSelection = 0;
-    cin >> userMenuSelection;
+    while (menuInt == '0') {
+        printMenu(); // Clears the screen, and then prints the menu options
+        cout << "Navigation choice: ";
+        cin >> menuInt;
+    }
 
-    if (userMenuSelection == 1) {
+    while (menuInt == '1') {
         populateInfo(playerCharacter, characterSelection()); // Function that creates your character
+
         int counter = 0;
         while (statusChecker(playerCharacter) == true && counter < 2) {
             cin.get();
@@ -43,6 +43,7 @@ int main(int argc, char *argv[]) {
             actionStage(goodActions, badActions, playerCharacter);
             counter++;
             clear();
+            menuInt = 0;
         }
 
         if (statusChecker(playerCharacter) == true) {
@@ -50,10 +51,6 @@ int main(int argc, char *argv[]) {
         } else {
             cout << "\nUh oh, you died." << endl;
         }
-    } else if (userMenuSelection == 2) {
-        gameInfo(); // Prints general game info
-    } else {
-        cout << "*****ERROR******" << endl;
     }
 
     return 0;
