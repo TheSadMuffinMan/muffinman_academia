@@ -10,7 +10,7 @@ a regular variable type of int cannot hold data that large, and the playerCharac
 // This definition is different from (#include)s because it is defining a function to be used by the operating system, not Ubuntu.
 // This line defines the clear function so that it can be used in the terminal.
 // The internet has informed me that this is NOT a best security practice (mixing macros with c++ commands).
-#define clear() (system("clear"), std::cout << "***** At any point, pressing \"CTRL\" + \"C\" will terminate the program. *****\n")
+#define clear() (system("clear"), std::cout << "***** At any point, pressing \"CTRL\" + \"C\" will terminate the program. *****\n\n")
 
 // This struct defines the parameters of what a Character is.
 struct Character {
