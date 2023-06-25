@@ -15,7 +15,7 @@ using namespace std;
 int main(int argc, char *argv[]) {
     string userName;
     Character playerCharacter;
-    srand(time(0)); // This initializes a random value by marking the exact time, which will create a unique seed.
+    srand(time(0)); // This initializes a random value by marking the exact time, which will create a unique "seed".
     string goodActions[5]; // Creates the array of "good" actions
     string badActions[11]; // Creates the array of "bad" actions
     populateGood(goodActions); // Function that populates the "good" array
@@ -27,12 +27,28 @@ int main(int argc, char *argv[]) {
     int menuInt = '0';
     userInput(menuInt, userName); // I plan on using this info to create "save files" and stuff.
 
+    // This is the loop that displays the main menu.
     while (menuInt == '0') {
+        int tempUserChoice = 0;
         printMenu(); // Clears the screen, and then prints the menu options
         cout << "Navigation choice: ";
-        cin >> menuInt;
+        cin >> tempUserChoice;
+        if (tempUserChoice == '1') {
+            // Program moves to "[1] Start Game"
+            menuInt = 1;
+        } else if (tempUserChoice == '2') {
+            // Program moves to "[2] Game Rules".
+            menuInt = 2;
+        } else if (tempUserChoice == '3') {
+            // Program moves to "[3] Documentation".
+            menuInt = 3;
+        } else if (tempUserChoice == '4') {
+            // Program moves to "[4] Quit".
+            menuInt = 4;
+        }
     }
 
+    // This is the loop that plays the actual game.
     while (menuInt == '1') {
         populateInfo(playerCharacter, characterSelection()); // Function that creates your character
 
@@ -48,8 +64,14 @@ int main(int argc, char *argv[]) {
 
         if (statusChecker(playerCharacter) == true) {
             cout << "\nCongrats! You win!" << endl;
+            cout << "Press any key to return to the main menu. " << endl;
+            cin.get();
+            menuInt = 0;
         } else {
             cout << "\nUh oh, you died." << endl;
+            cout << "Press any key to return to the main menu. " << endl;
+            cin.get();
+            menuInt = 0;            
         }
     }
 
