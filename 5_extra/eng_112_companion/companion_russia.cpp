@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
     populateBad(badActions); // Function that populates the "bad" array
 
     // ***** PROGRAM START ******
-    // ***** SEE HERE, THIS NEEDS TO BE UNCOMMENTED IN OPERATION MODE ************
+    // ***** SEE HERE, THIS NEEDS TO BE UNCOMMENTED IN "OPERATION" MODE ************
     // clear(); // Clears the screen, and displays the "CTRL C" message
 
     int menuInt = 0;
@@ -61,7 +61,11 @@ int main(int argc, char *argv[]) {
         
         } else if (menuInt == 2) {
             // Program moves to "[2] Game Rules".
+            clear();
+            cout << "Game rules are as follows... *** UNFINISHED ***\n" << endl;
+            cout << "Pressing any key will return you to the main menu.\n" << endl;
             menuInt = 0;
+            cin.get();
         } else if (menuInt == 3) {
             // Program moves to "[3] Documentation".
             menuInt = 0;
