@@ -24,7 +24,7 @@ int main(int argc, char *argv[]) {
     // ***** PROGRAM START ******
     clear(); // Clears the screen, and displays the "CTRL C" message
 
-    int menuInt = '0';
+    int menuInt = 0;
     userInput(menuInt, userName); // I plan on using this info to create "save files" and stuff.
 
     // This is the loop that displays the main menu.
