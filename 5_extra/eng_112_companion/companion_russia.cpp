@@ -22,60 +22,57 @@ int main(int argc, char *argv[]) {
     populateBad(badActions); // Function that populates the "bad" array
 
     // ***** PROGRAM START ******
-    clear(); // Clears the screen, and displays the "CTRL C" message
+    // ***** SEE HERE, THIS NEEDS TO BE UNCOMMENTED IN OPERATION MODE ************
+    // clear(); // Clears the screen, and displays the "CTRL C" message
 
     int menuInt = 0;
-    userInput(menuInt, userName); // I plan on using this info to create "save files" and stuff.
+    userInput(userName); // I plan on using this info to create "save files" and stuff.
 
     // This is the loop that displays the main menu.
-    while (menuInt == '0') {
-        int tempUserChoice = 0;
+    while (menuInt == 0) {
         printMenu(); // Clears the screen, and then prints the menu options
         cout << "Navigation choice: ";
-        cin >> tempUserChoice;
-        if (tempUserChoice == '1') {
+        cin >> menuInt;
+        if (menuInt == 1) {
             // Program moves to "[1] Start Game"
-            menuInt = 1;
-        } else if (tempUserChoice == '2') {
+            populateInfo(playerCharacter, characterSelection()); // Function that creates your character
+
+            int counter = 0;
+            while (statusChecker(playerCharacter) == true && counter < 2) {
+                cin.get();
+                printStatus(playerCharacter, userName);
+                actionStage(goodActions, badActions, playerCharacter);
+                counter++;
+                clear();
+                menuInt = 0;
+            }
+
+            if (statusChecker(playerCharacter) == true) {
+                cout << "\nCongrats! You win!" << endl;
+                cout << "Press any key to return to the main menu. " << endl;
+                cin.get();
+                menuInt = 0;
+            } else {
+                cout << "\nUh oh, you died." << endl;
+                cout << "Press any key to return to the main menu. " << endl;
+                cin.get();
+                menuInt = 0;            
+            }
+        
+        } else if (menuInt == 2) {
             // Program moves to "[2] Game Rules".
-            menuInt = 2;
-        } else if (tempUserChoice == '3') {
-            // Program moves to "[3] Documentation".
-            menuInt = 3;
-        } else if (tempUserChoice == '4') {
-            // Program moves to "[4] Quit".
-            menuInt = 4;
-        }
-    }
-
-    // This is the loop that plays the actual game.
-    while (menuInt == '1') {
-        populateInfo(playerCharacter, characterSelection()); // Function that creates your character
-
-        int counter = 0;
-        while (statusChecker(playerCharacter) == true && counter < 2) {
-            cin.get();
-            printStatus(playerCharacter, userName);
-            actionStage(goodActions, badActions, playerCharacter);
-            counter++;
-            clear();
             menuInt = 0;
-        }
-
-        if (statusChecker(playerCharacter) == true) {
-            cout << "\nCongrats! You win!" << endl;
-            cout << "Press any key to return to the main menu. " << endl;
-            cin.get();
+        } else if (menuInt == 3) {
+            // Program moves to "[3] Documentation".
+            menuInt = 0;
+        } else if (menuInt == 4) {
+            // Program moves to "[4] Quit".
             menuInt = 0;
         } else {
-            cout << "\nUh oh, you died." << endl;
-            cout << "Press any key to return to the main menu. " << endl;
-            cin.get();
-            menuInt = 0;            
+            cout << "*****ERROR******";
         }
+        return 0;
     }
-
-    return 0;
 }
 
 /*

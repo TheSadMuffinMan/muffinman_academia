@@ -26,7 +26,7 @@ struct Character {
 };
 
 // Function takes in user input, and then stores that information in the variable of userName.
-void userInput(int&, std::string&);
+void userInput(std::string&);
 
 // Function displays general game information.
 void gameInfo();
@@ -58,11 +58,10 @@ bool statusChecker(Character);
 // Function clears the screen, and then prints the main menu.
 void printMenu();
 
-void userInput(int& menuInt, std::string& userName) {
+void userInput(std::string& userName) {
     std::cout << "\tPlease enter your name, and press enter. " << std::endl;
     getline(std::cin, userName);
     clear();
-    menuInt = '0';
 }
 
 void gameInfo() {
