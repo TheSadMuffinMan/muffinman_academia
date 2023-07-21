@@ -28,12 +28,16 @@ int main(int argc, char *argv[]) {
     int menuInt = 0;
     userInput(userName); // I plan on using this info to create "save files" and stuff.
 
-    // This is the loop that displays the main menu.
-    while (menuInt == 0) {
+    // Program start
+    do {
         printMenu(); // Clears the screen, and then prints the menu options
         cout << "Navigation choice: ";
         cin >> menuInt;
-        if (menuInt == 1) {
+        if (menuInt == 0) {
+            printMenu();
+            cout << "Navigation choice: ";
+            cin >> menuInt;
+        } else if (menuInt == 1) {
             // Program moves to "[1] Start Game"
             populateInfo(playerCharacter, characterSelection()); // Function that creates your character
 
@@ -61,22 +65,25 @@ int main(int argc, char *argv[]) {
         
         } else if (menuInt == 2) {
             // Program moves to "[2] Game Rules".
-            clear();
+            // clear();
+            int temp;
             cout << "Game rules are as follows... *** UNFINISHED ***\n" << endl;
             cout << "Pressing any key will return you to the main menu.\n" << endl;
+            cin >> temp;
             menuInt = 0;
-            cin.get();
         } else if (menuInt == 3) {
             // Program moves to "[3] Documentation".
             menuInt = 0;
         } else if (menuInt == 4) {
             // Program moves to "[4] Quit".
-            menuInt = 0;
+            break;
         } else {
             cout << "*****ERROR******";
-        }
-        return 0;
-    }
+        } // while (menuInt == 0);
+    } 
+    while (menuInt == 0);
+
+    return 0;
 }
 
 /*
