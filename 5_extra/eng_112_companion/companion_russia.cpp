@@ -1,9 +1,9 @@
 /*
 Name: Anthony Streich
-Date: 24 June 23
+Date: 21 July 23
 English 112 Companion Piece
 CURRENT ISSUES: Lacks narrative. Lacks complete story. Make it all connect. Add character HUD.
-CURRENTLY WORKING ON: Menu Operability
+CURRENTLY WORKING ON: General Operability, HUD needs work
 */
 
 // This is my own library of functions that I have built. It also includes <iostream>, <string>, and <random>.
@@ -22,8 +22,7 @@ int main(int argc, char *argv[]) {
     populateBad(badActions); // Function that populates the "bad" array
 
     // ***** PROGRAM START ******
-    // ***** SEE HERE, THIS NEEDS TO BE UNCOMMENTED IN "OPERATION" MODE ************
-    // clear(); // Clears the screen, and displays the "CTRL C" message
+    clear(); // Clears the screen, and displays the "CTRL C" message
 
     int menuInt = 0;
     userInput(userName); // I plan on using this info to create "save files" and stuff.
@@ -65,24 +64,28 @@ int main(int argc, char *argv[]) {
         
         } else if (menuInt == 2) {
             // Program moves to "[2] Game Rules".
-            // clear();
-            int temp;
+            clear();
             cout << "Game rules are as follows... *** UNFINISHED ***\n" << endl;
             cout << "Pressing any key will return you to the main menu.\n" << endl;
-            cin >> temp;
+            cin.ignore();
+            cin.get();
             menuInt = 0;
         } else if (menuInt == 3) {
             // Program moves to "[3] Documentation".
+            clear();
+            cout << "Nothing here yet, but I'm getting there!" << endl;
+            cout << "\nPress any key to continue." << endl;
+            cin.ignore();
+            cin.get();
             menuInt = 0;
         } else if (menuInt == 4) {
             // Program moves to "[4] Quit".
             break;
         } else {
             cout << "*****ERROR******";
-        } // while (menuInt == 0);
+        }
     } 
     while (menuInt == 0);
-
     return 0;
 }
 
