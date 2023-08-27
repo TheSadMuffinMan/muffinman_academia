@@ -43,5 +43,7 @@ int main()
     which specific Circle we are printing in the console. */
     cout << "\nA circle with a radius of: " << circle2.radius << " will result in an area of: " << circle2.getArea() << endl;
 
-    return 0; // Just do this before you forget.
+    Circle noArgCircle(); // This is known as the NO-ARG CONSTRUCTOR.
+
+    return 0;
 }
