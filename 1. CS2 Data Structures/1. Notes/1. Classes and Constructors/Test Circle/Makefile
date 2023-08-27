@@ -11,10 +11,10 @@ CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
 # This is what the program will be named
-PROGRAM = lecture.exe
+PROGRAM = testCircle.exe
 
 # list all .cpp files separated by space
-CPPFILES = classesAndConstructors.cpp
+CPPFILES = testCircle.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
