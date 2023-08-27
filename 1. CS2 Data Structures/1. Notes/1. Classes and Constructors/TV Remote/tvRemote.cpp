@@ -27,7 +27,7 @@ public:
     on = false;
   }
 
-  void setChannel(int newChannel)
+  void setChannel(int newChannel) // Note that the below functions only work if the TV is on
   {
     if (on && newChannel >= 1 && newChannel <= 120)
       channel = newChannel;
