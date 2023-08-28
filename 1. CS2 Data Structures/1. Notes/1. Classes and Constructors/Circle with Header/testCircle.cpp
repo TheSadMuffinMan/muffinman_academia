@@ -12,6 +12,8 @@ int main()
 
     cout << "The area of the circle of radius " << circle2.radius << " is " << circle2.getArea() << endl;
 
+    circle2.radius = 100;
+    cout << "The new area of the circle of radius " << circle2.radius << " is " << circle2.getArea() << endl;
 
     return 0;
 }
