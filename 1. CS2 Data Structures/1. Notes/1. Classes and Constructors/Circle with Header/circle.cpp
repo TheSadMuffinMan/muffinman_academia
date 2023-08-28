@@ -14,5 +14,5 @@ Circle::Circle(double newRadius)
 
 double Circle::getArea()
 {
-    radius * radius * 3.14159;
+    return radius * radius * 3.14159;
 }
