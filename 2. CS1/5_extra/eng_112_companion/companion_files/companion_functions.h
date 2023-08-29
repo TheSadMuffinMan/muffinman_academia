@@ -13,7 +13,8 @@ a regular variable type of int cannot hold data that large, and the playerCharac
 #define clear() (system("clear"), std::cout << "***** At any point, pressing \"CTRL\" + \"C\" will terminate the program. *****\n\n")
 
 // This struct defines the parameters of what a Character is.
-struct Character {
+struct Character
+{
     int type;
     bool alive = true;
     std::string name;
