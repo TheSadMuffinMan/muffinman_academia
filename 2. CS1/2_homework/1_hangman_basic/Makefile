@@ -1,5 +1,5 @@
 # compiler name
-CXX = g++
+CXX = clang++
 
 # C++ compiler flags
 # -c : just do preprocess; compile and assemble into object files
@@ -11,10 +11,10 @@ CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
 # THIS IS THE INPUT FILE
-PROGRAM = lunch_decision.exe
+PROGRAM = main.exe
 
 # list all .cpp files separated by space
-CPPFILES = lunch_decision.CPP
+CPPFILES = main.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
