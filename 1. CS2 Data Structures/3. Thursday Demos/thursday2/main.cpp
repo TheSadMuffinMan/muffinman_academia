@@ -26,9 +26,6 @@ struct song
 
 int main(int argc, char *argv[])
 {
-    // song testSong;
-    // cout << "Size of song is: " << sizeof(testSong) << endl;
-
     char fname[64], comment [29], ch;
     fstream fs;
     size_t fileLength;
