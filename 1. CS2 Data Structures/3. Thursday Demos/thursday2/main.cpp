@@ -41,9 +41,9 @@ int main(int argc, char *argv[])
         cerr << "File does not end with an .mp3 extension... Terminating." << endl;
         exit(1);
     }
-    
+
     fs.open(fname, ios::in | ios::out | ios::binary);
-    if(!fs.open())
+    if(!fs.is_open())
     {
         cerr << "File could not be opened... Terminating" << endl;
         exit(2);
