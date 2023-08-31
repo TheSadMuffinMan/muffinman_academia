@@ -21,8 +21,8 @@ struct song
     char genre[1];
 };
 
-int main(int argc, char *argv[]) {
-    
+int main(int argc, char *argv[])
+{
     song testSong;
     cout << "Size of song is: " << sizeof(testSong) << endl;
 
