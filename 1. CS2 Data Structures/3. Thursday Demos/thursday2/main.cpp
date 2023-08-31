@@ -1,8 +1,8 @@
 /*
 Name: Anthony Streich
-Date: 
-NAME/FUNCTION OF PROGRAM
-CURRENT ISSUES: 
+Date: 31 August 23
+Practicum 2
+CURRENT ISSUES: Streams
 */
 
 #include <iostream>
