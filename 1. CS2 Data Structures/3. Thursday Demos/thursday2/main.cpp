@@ -50,6 +50,7 @@ int main(int argc, char *argv[])
 
     cout << "The file is " << fileLength << " bytes long." << endl;
     fs.seekg(-128, ios::end);
+    cout << "Current read position: " << fs.tellg() << endl;
 
     return 0;
 }
