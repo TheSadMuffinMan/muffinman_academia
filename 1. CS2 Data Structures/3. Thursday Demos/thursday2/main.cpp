@@ -12,6 +12,8 @@ CURRENT ISSUES: Streams
 
 using namespace std;
 
+void printValues(struct song);
+
 struct song
 { // This is ensuring the data fits in our struct by sizing the struct to the standard.
     char header[3];
@@ -48,14 +50,24 @@ int main(int argc, char *argv[])
     fs.seekg(0, ios::end);
     fileLength = fs.tellg();
 
-    cout << "The file is " << fileLength << " bytes long." << endl;
+    // cout << "The file is " << fileLength << " bytes long." << endl;
     fs.seekg(-128, ios::end);
-    cout << "Current read position: " << fs.tellg() << endl;
+    // cout << "Current read position: " << fs.tellg() << endl;
 
     song currentSong; // Creates an instance of the Struct song, and names it currentSong.
 
     fs.read(currentSong.header, 3); // This reads the fs stream and stores 3 chars into currentSong.header
-    cout << "\ncurrentSong.header : " << currentSong.header << endl;
+    // Now the program must use strncomp to ensure that we have "TAG" at the start of our metadata
+    if (strncmp(currentSong.header, "TAG", 3) == 0)
+    {
+        cout << "\"TAG\" located, continuing program. " << endl;
+    } else
+    {
+        cout << "Error, TAG not located. Terminating..." << endl;
+        exit(3);
+    }
+
+    // cout << "\ncurrentSong.header : " << currentSong.header << endl;
 
     fs.read(currentSong.songTitle, 30); // This reads the song title into currentSong.songTitle
     fs.read(currentSong.artist, 30);
@@ -65,6 +77,19 @@ int main(int argc, char *argv[])
     fs.read(currentSong.trackNumber, 1);
     fs.read(currentSong.genre, 1); // At this point, we have all the data "in" our struct
 
+    printValues(currentSong);
+
 
     return 0;
+}
+
+void printValues(song currentSong)
+{
+    cout << "Title: " << currentSong.songTitle << endl;
+    cout << "Artist: " << currentSong.artist << endl;
+    cout << "Album: " << currentSong.album << endl;
+    cout << "Year: " << currentSong.year << endl;
+    cout << "Comment: " << currentSong.comment << endl;
+    cout << "Track Number: " << currentSong.trackNumber << endl;
+    cout << "Genre: " << currentSong.genre << endl;
 }
