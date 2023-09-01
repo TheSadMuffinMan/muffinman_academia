@@ -52,5 +52,19 @@ int main(int argc, char *argv[])
     fs.seekg(-128, ios::end);
     cout << "Current read position: " << fs.tellg() << endl;
 
+    song currentSong; // Creates an instance of the Struct song, and names it currentSong.
+
+    fs.read(currentSong.header, 3); // This reads the fs stream and stores 3 chars into currentSong.header
+    cout << "\ncurrentSong.header : " << currentSong.header << endl;
+
+    fs.read(currentSong.songTitle, 30); // This reads the song title into currentSong.songTitle
+    fs.read(currentSong.artist, 30);
+    fs.read(currentSong.album, 30);
+    fs.read(currentSong.year, 4);
+    fs.read(currentSong.comment, 29);
+    fs.read(currentSong.trackNumber, 1);
+    fs.read(currentSong.genre, 1); // At this point, we have all the data "in" our struct
+
+
     return 0;
 }
