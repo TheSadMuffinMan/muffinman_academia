@@ -4,8 +4,7 @@
 
 /* This accomplishes the same thing as #pragma once
 #ifndef LOAN_H
-#define LOAN_H
-// Needs #endif at the very end of program
+#define LOAN_H // Needs #endif at the very end of program
 */
 
 
