@@ -49,13 +49,13 @@ int main()
     int userInt = 16;
     EvenNumber testNumber(userInt);
 
-    // std::cout << "\nYour even number: " << testNumber.getVal() << "\n" << std::endl;
-    // std::cout << "The even number preceeding yours is: " << testNumber.getPrevious() << "\n" << std::endl;
-    // std::cout << "The even number after yours is: " << testNumber.getNext() << "\n" << std::endl;
+    std::cout << "\nYour number: " << testNumber.getVal() << "\n" << std::endl;
+    std::cout << "The even number preceeding yours is: " << testNumber.getPrevious() << "\n" << std::endl;
+    std::cout << "The even number after yours is: " << testNumber.getNext() << "\n" << std::endl;
 
-    std::cout << testNumber.getVal() << std::endl;
-    std::cout << testNumber.getNext() << std::endl;
-    std::cout << testNumber.getPrevious() << std::endl;
+    // std::cout << testNumber.getVal() << std::endl;
+    // std::cout << testNumber.getNext() << std::endl;
+    // std::cout << testNumber.getPrevious() << std::endl;
 
     return 0;
 }
