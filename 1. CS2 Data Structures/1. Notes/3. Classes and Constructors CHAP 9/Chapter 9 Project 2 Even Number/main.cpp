@@ -46,7 +46,10 @@ int EvenNumber::getPrevious()
 
 int main()
 {
-    int userInt = 16;
+    int userInt;
+    std::cout << "Please input an integer: ";
+    std::cin >> userInt;
+
     EvenNumber testNumber(userInt);
 
     std::cout << "\nYour number: " << testNumber.getVal() << "\n" << std::endl;
