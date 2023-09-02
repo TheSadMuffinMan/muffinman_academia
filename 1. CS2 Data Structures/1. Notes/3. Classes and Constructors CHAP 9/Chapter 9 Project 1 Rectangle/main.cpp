@@ -68,7 +68,6 @@ double Rectangle::getPerimeter()
 }
 
 int main() {
-  // Write the test code here
   double userWidth, userHeight;
 
   userWidth = 4;
