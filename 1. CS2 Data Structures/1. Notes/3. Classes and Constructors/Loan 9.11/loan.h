@@ -1,3 +1,5 @@
+// THIS IS WHERE YOU DEFINE THE CLASS
+
 #ifndef LOAN_H
 #define LOAN_H
 
