@@ -16,7 +16,7 @@ public: // This is our "public interface". The user has access to all of this fu
     Loan(double rate, int years, double amount); // Constructs a Loan with user defined values
     double getAnnualInterestRate(); // Getter
     int getNumberOfYears(); // Getter
-    double getLoanAmount(); // getter
+    double getLoanAmount(); // Getter
     void setAnnualInterestRate(double rate); // Setter, function protype
     void setNumberOfYears(int years); // Setter, function prototype. Function is defined in source file loan.cpp
     void setLoanAmount(double amount); // Setter, function prototype. Function is defined in source file loan.cpp
