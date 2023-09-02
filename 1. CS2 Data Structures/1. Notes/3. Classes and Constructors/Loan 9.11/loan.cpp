@@ -4,7 +4,7 @@
 #include "loan.h"
 #include <cmath>
 
-Loan::Loan() // This is defining our standard Loan, which is outlined in the .h file
+Loan::Loan() // This is constructing our standard Loan, which is outlined in the .h file
 {
     annualInterestRate = 9.5;
     numberOfYears = 30;
@@ -26,7 +26,7 @@ double Loan::getAnnualInterestRate() // Prototype found in loan.h
     return annualInterestRate;
 }
 
-void Loan::setAnnualInterestRate() // Prototype found in loan.h
+void Loan::setAnnualInterestRate(double rate) // Prototype found in loan.h
 {
     annualInterestRate = rate;
 }
