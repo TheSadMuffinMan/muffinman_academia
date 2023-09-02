@@ -1,4 +1,6 @@
 // This file isn't broken up because it has to be monolithic to turn in lol
+// Accepted! 100%
+
 #include <iostream> // Exercise09_01
 using namespace std;
 
