@@ -13,7 +13,7 @@ public:
     int getNext(); // Getter for next value
     int getPrevious(); // Getter for previous value
 
-    // Program does not require setter functions..?
+    // Program does not require setter functions
 private:
     int classVal;
 };
