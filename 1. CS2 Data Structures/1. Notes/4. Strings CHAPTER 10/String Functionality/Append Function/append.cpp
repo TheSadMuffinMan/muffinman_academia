@@ -21,6 +21,10 @@ int main(int argc, char *argv[]) {
     string s4("Welcome");
     s4.append(4, 'G'); // Appends "GGGG" to s4
     cout << s4 << endl; // s4 now becomes WelcomeGGGG
+
+    string teststring("abc");
+    teststring.append("welcome", 3);
+    cout << teststring << endl;
     
     return 0;
 }
