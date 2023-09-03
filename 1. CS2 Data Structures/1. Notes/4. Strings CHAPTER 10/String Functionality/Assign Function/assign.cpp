@@ -19,6 +19,5 @@ int main(int argc, char *argv[]) {
     stringObject.assign(4, 'G'); // Assigns "GGGG" to stringObject
     cout << stringObject << endl; // stringObject now becomes "GGGG"
 
-
     return 0;
 }
