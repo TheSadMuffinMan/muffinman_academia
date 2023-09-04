@@ -30,5 +30,11 @@ int main(int argc, char *argv[])
     cout << (s1 < s2) << endl; // Displays 1 (true)
     cout << (s1 <= s2) << endl; // Displays 1 (true)
 
+    // string s1("abc");
+    // s1[0] = 'R';
+    // string s2("abcD");
+    // s1 += s2;
+    // cout << s1 << endl;
+
     return 0;
 }
