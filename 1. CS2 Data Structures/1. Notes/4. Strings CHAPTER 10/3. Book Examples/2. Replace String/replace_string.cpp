@@ -1,10 +1,13 @@
+// LiveExample 10.2
+// Use input below:
+// abcdabab ab AAA
+
 #include <iostream>
 #include <string>
 using namespace std;
 
 // Replace oldSubStr in s with newSubStr
-bool replaceString(string& s, const string& oldSubStr, 
-  const string& newSubStr);
+bool replaceString(string& s, const string& oldSubStr, const string& newSubStr);
 
 int main()
 {
@@ -23,8 +26,7 @@ int main()
   return 0;
 }
 
-bool replaceString(string& s, const string& oldSubStr, 
-  const string& newSubStr)
+bool replaceString(string& s, const string& oldSubStr, const string& newSubStr)
 {
   bool isReplaced = false;
   int currentPosition = 0;
