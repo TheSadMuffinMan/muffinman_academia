@@ -1,3 +1,4 @@
+// As defined in 9.9 in the book
 #include "Headers/CircleWithPrivateDataFields.h"
 
 // Construct a default circle object
