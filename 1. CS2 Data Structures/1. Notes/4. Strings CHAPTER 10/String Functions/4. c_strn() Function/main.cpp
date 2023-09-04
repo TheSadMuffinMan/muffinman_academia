@@ -1,4 +1,4 @@
-// <string> .at() .erase() .empty()
+// <string> length() size() capacity()
 
 #include <iostream>
 #include <string>

@@ -1,4 +1,4 @@
-// <string> compare
+// <string> compare()
 
 #include <iostream>
 #include <string>
@@ -7,14 +7,14 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
     string s1("Welcome");
-    cout << s1.length() << endl; // Length is 7
-    cout << s1.size() << endl; // Size is 7
-    cout << s1.capacity() << endl; // Capacity is 15
+    string s2("Welcomg");
 
-    s1.erase(1, 2);
-    cout << s1.length() << endl; // Length is now 5
-    cout << s1.size() << endl; // Size is now 5
-    cout << s1.capacity() << endl; // Capacity is still 15
+    cout << s1.compare(s2) << endl; // Returns -1
+    cout << s2.compare(s1) << endl; // Returns 1
+    cout << s1.compare("Welcome") << endl; // Returns 0
+
+    string s("abcdefg");
+    cout << s.compare("abb") << endl;
 
     return 0;
 }
