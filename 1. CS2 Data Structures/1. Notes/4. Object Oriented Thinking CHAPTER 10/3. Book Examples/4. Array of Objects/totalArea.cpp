@@ -35,7 +35,7 @@ void printCircleArray(Circle circleArray[], int size)
 
 int main()
 {
-  const int SIZE;
+  int SIZE;
   cout << "Please input a SIZE: ";
   cin >> SIZE;
 
