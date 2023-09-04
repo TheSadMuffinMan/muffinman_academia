@@ -5,7 +5,8 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     string s1("Welcome");
     cout << s1.at(3) << endl; // s1.at(3) returns 'c'
     cout << s1.erase(2,3) << endl; // s1 is now "Weme"

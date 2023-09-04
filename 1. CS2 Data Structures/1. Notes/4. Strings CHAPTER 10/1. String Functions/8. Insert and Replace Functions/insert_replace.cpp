@@ -5,7 +5,8 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     string s1("Welcome to HTML");
     s1.insert(11, "C++ and ");
     cout << s1 << endl; // s1 becomes "Welcome to C++ and HTML"

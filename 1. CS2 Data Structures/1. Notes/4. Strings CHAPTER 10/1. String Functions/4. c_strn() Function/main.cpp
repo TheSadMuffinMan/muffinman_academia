@@ -5,7 +5,8 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     string s1("Welcome");
     cout << s1.length() << endl; // Length is 7
     cout << s1.size() << endl; // Size is 7

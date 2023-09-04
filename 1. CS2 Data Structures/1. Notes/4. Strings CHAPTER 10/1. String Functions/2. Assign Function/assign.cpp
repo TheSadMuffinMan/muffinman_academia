@@ -5,7 +5,8 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     string stringObject("Welcome");
     stringObject.assign("Dallas"); // Assigns "Dallas" to stringObject
     cout << stringObject << endl; // stringObject now becomes "Dallas"

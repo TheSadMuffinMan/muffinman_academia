@@ -5,7 +5,8 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     string s1("Welcome to HTML");
 
     cout << s1.find("co") << endl; // Returns 3

@@ -5,7 +5,8 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     string s1("Welcome");
 
     cout << s1.substr(0, 1) << endl; // Returns 'W'

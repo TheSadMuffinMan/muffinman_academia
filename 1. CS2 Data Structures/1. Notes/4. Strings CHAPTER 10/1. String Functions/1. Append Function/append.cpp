@@ -5,7 +5,8 @@
 
 using namespace std;
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
     string s1("Welcome");
     s1.append(" to C++"); // Appends " to C++" to s1
     cout << s1 << endl; // s1 now becomes "Welcome to C++"
