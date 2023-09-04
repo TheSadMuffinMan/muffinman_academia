@@ -22,7 +22,7 @@ double sum(Circle circleArray[], int size)
 }
 
 // Print an array of circles and their total area
-void printCircleArray(Circle circleArray[], int size)
+void printCircleArray(Circle circleArray[], int size) // Each Circle is initialized using Circle's no-arg constructor
 {
   cout << setw(35) << left << "Radius" << setw(8) << "Area" << endl;
   for (int i = 0; i < size; i++)
@@ -45,7 +45,7 @@ int main()
   // Create a Circle object with radius 1
   Circle circleArray[SIZE];
 
-  for (int i = 0; i < SIZE; i++)
+  for (int i = 0; i < SIZE; i++) // This is setting a new radius for each Circle object
   {
     circleArray[i].setRadius(i + 1);
   }
