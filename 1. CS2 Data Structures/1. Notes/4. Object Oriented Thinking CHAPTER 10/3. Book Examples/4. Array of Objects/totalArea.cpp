@@ -1,3 +1,5 @@
+// Program outputs the area of a circle of each n radius, up to n ints.
+
 #include <iostream>
 #include <iomanip>
 #include "Headers/CircleWithPrivateDataFields.h"
