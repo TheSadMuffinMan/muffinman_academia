@@ -11,8 +11,10 @@ public:
 
     void setRadius(double);
 
+    static int getNumberOfObjects();
+
 private:
     double radius;
 
-    static int numberOfObjects; //
+    static int numberOfObjects; // This is how we declare a static variable
 }
