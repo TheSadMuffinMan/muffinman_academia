@@ -88,7 +88,6 @@ void Elevator::DirectionSelect(int floorNum, int direction)
 {
    
 // handle rider request inside elevator
-
-
+}
 
 
