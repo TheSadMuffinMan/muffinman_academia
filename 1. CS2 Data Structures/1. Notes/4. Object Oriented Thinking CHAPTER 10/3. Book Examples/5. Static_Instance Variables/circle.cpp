@@ -1,6 +1,6 @@
 #include "circle.h"
 
-int Circle::getNumberOfObjects = 0; // This is how we instantiate a static variable
+int Circle::numberOfObjects = 0; // This is how we instantiate a static variable
 
 Circle::Circle()
 {
