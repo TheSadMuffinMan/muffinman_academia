@@ -14,7 +14,7 @@ Circle::Circle(double userRadius)
     numberOfObjects++; // This will incriment numberOfObjects by 1 every time a "custom" Circle is made
 }
 
-Circle::getArea()
+double Circle::getArea()
 {
     return (radius * radius * 3.14159);
 }
