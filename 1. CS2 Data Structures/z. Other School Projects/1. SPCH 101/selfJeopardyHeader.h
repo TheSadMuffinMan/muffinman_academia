@@ -1,9 +1,12 @@
 #pragma once
 
-class JeopardyPanel
-{
-public:
-    JeopardyPanel();
-    JeopardyPanel(int);
-    
-}
+#define clear() system("clear")
+
+
+// class JeopardyPanel
+// {
+// public:
+//     JeopardyPanel();
+//     JeopardyPanel(int);
+
+// }
