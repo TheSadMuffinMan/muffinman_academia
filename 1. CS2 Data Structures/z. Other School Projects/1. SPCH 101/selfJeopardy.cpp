@@ -2,7 +2,7 @@
 Name: Anthony Streich
 Date: 5 September 2023
 SELF JEOPARDY, the stupid version
-CURRENT ISSUES:
+CURRENT ISSUES: Lines 32-35 POINTERS AHHHHHHHHHHHH
 */
 
 #include "selfJeopardyHeader.h"
