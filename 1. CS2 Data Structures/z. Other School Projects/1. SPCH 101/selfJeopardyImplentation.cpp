@@ -38,12 +38,33 @@ void SurveyObject::setSurveyAnalysis(std::string userSurveyAnalysis)
     surveyAnalysis = userSurveyAnalysis;
 }
 
+void welcome()
+{
+    std::cout << "Welcome to. . ." << std::endl;
+    std::cout << " _____ _____ _     ______     ___ _____ ___________  ___  ______________   __" << std::endl;
+    std::cout << "/  ___|  ___| |    |  ___|   |_  |  ___|  _  | ___ \\/ _ \\ | ___ \\  _  \\ \\ / /" << std::endl;
+    std::cout << "\\ `--.| |__ | |    | |_        | | |__ | | | | |_/ / /_\\ \\| |_/ / | | |\\ V / "<< std::endl;
+    std::cout << " `--. \\  __|| |    |  _|       | |  __|| | | |  __/|  _  ||    /| | | | \\ /" << std::endl;
+    std::cout << "/\\__/ / |___| |____| |     /\\__/ / |___\\ \\_/ / |   | | | || |\\ \\| |/ /  | |  " << std::endl;
+    std::cout << "\\____/\\____/\\_____/\\_|     \\____/\\____/ \\___/\\_|   \\_| |_/\\_| \\_|___/   \\_/" << std::endl;
+    std::cout << "\nPress any key to continue. . ." << std::endl;
+
+}
 
 void printMenu()
 {
     std::cout << "\n\n\t\tMAIN MENU" << std::endl;
     std::cout << "\n\t1. Play game" << std::endl;
     std::cout << "\n\t2. Quit game" << std::endl;
+    // std::cout << "\n\n\tPlease enter your selection: " << std::endl;
+}
+
+int menuNavigation()
+{
+    int navigationChoice;
+    std::cout << "\n\tPlease enter your choice: " << std::endl;
+    std::cin >> navigationChoice;
+    return navigationChoice;
 }
 
 void printBoard()

@@ -14,26 +14,34 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     string tempVariable;
-    clear();
     cout << "Program is ready to proceed. Press any key to continue. . ." << endl;
     getline(cin, tempVariable);
-
     clear();
-    cout << "Welcome to. . ." << endl;
-    cout << " _____ _____ _     ______     ___ _____ ___________  ___  ______________   __" << endl;
-    cout << "/  ___|  ___| |    |  ___|   |_  |  ___|  _  | ___ \\/ _ \\ | ___ \\  _  \\ \\ / /" << endl;
-    cout << "\\ `--.| |__ | |    | |_        | | |__ | | | | |_/ / /_\\ \\| |_/ / | | |\\ V / "<< endl;
-    cout << " `--. \\  __|| |    |  _|       | |  __|| | | |  __/|  _  ||    /| | | | \\ /" << endl;
-    cout << "/\\__/ / |___| |____| |     /\\__/ / |___\\ \\_/ / |   | | | || |\\ \\| |/ /  | |  " << endl;
-    cout << "\\____/\\____/\\_____/\\_|     \\____/\\____/ \\___/\\_|   \\_| |_/\\_| \\_|___/   \\_/" << endl;
-    cout << "\nPress any key to continue. . ." << endl;
+
+    welcome();
+
     getline(cin, tempVariable);
     clear();
 
     printMenu();
+    int userChoice = menuNavigation();
 
-    printBoard();
+    while (userChoice == 1) // This starts the game and instantiates our object
+    {
+        printBoard();
+        std::cout << "Which tile would you like to reveal? ";
+        int panelChoice;
+        std::cin >> panelChoice;
+        
+    }
 
+    if (userChoice == 2) // If the user wishes to exit the game
+    {
+        clear();
+        std::cout << "Thank you for playing! The game will now exit. " << std::endl;
+        getline(std::cin, tempVariable);
+        exit(2);
+    }
 
     return 0;
 }

@@ -3,8 +3,10 @@
 #include <iostream>
 #include <string>
 
+void welcome();
 void printMenu();
 void printBoard();
+int menuNavigation();
 
 class SurveyObject
 {
