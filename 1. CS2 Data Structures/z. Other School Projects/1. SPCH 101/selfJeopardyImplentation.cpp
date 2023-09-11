@@ -48,5 +48,26 @@ void printMenu()
 
 void printBoard()
 {
-    //
+    std::cout << "\t ___________ ____________ ___________ ___________" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|     1     |     2      |     3     |     4     |" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|___________|____________|___________|___________|" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|     5     |     6      |     7     |     8     |" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|___________|____________|___________|___________|" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|     9     |     10     |     11    |     12    |" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|___________|____________|___________|___________|" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|    13     |     14     |     15    |     16    |" << std::endl;
+    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|___________|____________|___________|___________|" << std::endl;
+
 }

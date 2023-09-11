@@ -5,7 +5,6 @@ SELF JEOPARDY, the stupid version
 CURRENT ISSUES: 
 */
 
-#include <iostream>
 #include "selfJeopardyHeader.h"
 
 #define clear() system("clear")
@@ -32,6 +31,8 @@ int main(int argc, char *argv[])
     clear();
 
     printMenu();
+
+    printBoard();
 
 
     return 0;
