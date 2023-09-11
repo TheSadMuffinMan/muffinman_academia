@@ -26,19 +26,22 @@ int main(int argc, char *argv[])
     printMenu();
     int userChoice = menuNavigation();
 
-    while (userChoice == 1) // This starts the game and instantiates our object
+    while (userChoice == 1) // This starts the game and instantiates our objects
     {
         printBoard();
         std::cout << "Which tile would you like to reveal? ";
         int panelChoice;
         std::cin >> panelChoice;
+
+        std::cout << "Enter \"1\" if you would like to play again, and \"2\" to exit. ";
+        std::cin >> userChoice;
         
     }
 
     if (userChoice == 2) // If the user wishes to exit the game
     {
         clear();
-        std::cout << "Thank you for playing! The game will now exit. " << std::endl;
+        std::cout << "\nThank you for playing! The game will now exit. \n" << std::endl;
         getline(std::cin, tempVariable);
         exit(2);
     }

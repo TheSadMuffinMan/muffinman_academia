@@ -3,7 +3,7 @@
 #include <iostream>
 #include <string>
 
-void welcome();
+void welcome(); // Prints the ASCII art
 void printMenu();
 void printBoard();
 int menuNavigation();
