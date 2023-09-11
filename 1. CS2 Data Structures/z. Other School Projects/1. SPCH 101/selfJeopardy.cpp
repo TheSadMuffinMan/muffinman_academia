@@ -26,6 +26,8 @@ int main(int argc, char *argv[])
     printMenu();
     int userChoice = menuNavigation();
 
+    SurveyObject noArgSurvey;
+
     while (userChoice == 1) // This starts the game and instantiates our objects
     {
         printBoard();

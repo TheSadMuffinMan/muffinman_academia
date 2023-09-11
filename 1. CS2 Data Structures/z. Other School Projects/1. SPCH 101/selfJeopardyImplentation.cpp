@@ -1,28 +1,39 @@
 #include "selfJeopardyHeader.h"
 
-// Default constructor, sets everything to 0 essentially
+// Default constructor, sets everything to "NULL"
 SurveyObject::SurveyObject()
 {
-    position = 0;
     surveyName = "NULL";
     surveyInformation = "NULL";
     surveyAnalysis = "NULL";
 }
 
 // Constructor for user made Survey
-SurveyObject::SurveyObject(int userPosition, std::string userSurveyName, std::string userSurveyInformation, std::string userSurveyAnalysis)
+SurveyObject::SurveyObject(std::string userSurveyName, std::string userSurveyInformation, std::string userSurveyAnalysis)
 {
-    position = userPosition;
     surveyName = userSurveyName;
     surveyInformation = userSurveyInformation;
     surveyAnalysis = userSurveyAnalysis;
 }
 
-void SurveyObject::setPosition(int userPosition)
+// Getters
+std::string SurveyObject::getSurveyName()
 {
-    position = userPosition;
+    return surveyName;
 }
 
+std::string SurveyObject::getSurveyInformation()
+{
+    return surveyInformation;
+}
+
+std::string SurveyObject::getSurveyAnalysis()
+{
+    return surveyAnalysis;
+}
+
+
+// Setters
 void SurveyObject::setSurveyName(std::string userSurveyName)
 {
     surveyName = userSurveyName;
@@ -36,6 +47,14 @@ void SurveyObject::setSurveyInformation(std::string userSurveyInformation)
 void SurveyObject::setSurveyAnalysis(std::string userSurveyAnalysis)
 {
     surveyAnalysis = userSurveyAnalysis;
+}
+
+void SurveyObject::printObject()
+{
+    // Not working :(
+    // std::cout << "Survey Name: " << SurveyObject.getSurveyName(); << std::endl;
+    // std::cout << "Survey Information: " << SurveyObject.getSurveyInformation(); << std::endl;
+    // std::cout << "Survey Analysis: " << SurveyObject.getSurveyAnalysis(); << std::endl;
 }
 
 void welcome()
