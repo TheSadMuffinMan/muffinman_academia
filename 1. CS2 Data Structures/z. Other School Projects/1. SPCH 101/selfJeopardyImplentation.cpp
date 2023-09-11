@@ -69,5 +69,4 @@ void printBoard()
     std::cout << "\t|    13     |     14     |     15    |     16    |" << std::endl;
     std::cout << "\t|           |            |           |           |" << std::endl;
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
-
 }
