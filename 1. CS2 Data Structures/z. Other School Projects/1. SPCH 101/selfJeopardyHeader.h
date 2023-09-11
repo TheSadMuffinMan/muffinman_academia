@@ -1,12 +1,13 @@
 #pragma once
 
-#define clear() system("clear")
+void printMenu();
 
+class JeopardyPanel
+{
+public:
+    JeopardyPanel();
+    void setPosition(int);
 
-// class JeopardyPanel
-// {
-// public:
-//     JeopardyPanel();
-//     JeopardyPanel(int);
-
-// }
+private:
+    int position;
+};
