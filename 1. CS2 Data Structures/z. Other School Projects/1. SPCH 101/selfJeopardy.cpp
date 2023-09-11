@@ -13,7 +13,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    string tempVariable;
+    string tempVariable = "nothing";
     cout << "Program is ready to proceed. Press any key to continue. . ." << endl;
     getline(cin, tempVariable);
     clear();

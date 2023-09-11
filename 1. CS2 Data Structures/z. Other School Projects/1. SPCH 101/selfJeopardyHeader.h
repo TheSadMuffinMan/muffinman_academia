@@ -4,9 +4,9 @@
 #include <string>
 
 void welcome(); // Prints the ASCII art
-void printMenu();
-void printBoard();
-int menuNavigation();
+void printMenu(); // Prints the menu
+void printBoard(); // Prints the game board
+int menuNavigation(); // Returns the user's navigation choice for the menu
 
 class SurveyObject
 {
