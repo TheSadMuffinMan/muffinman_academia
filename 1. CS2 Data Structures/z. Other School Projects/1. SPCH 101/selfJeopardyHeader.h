@@ -1,13 +1,23 @@
 #pragma once
 
-void printMenu();
+#include <iostream>
+#include <string>
 
-class JeopardyPanel
+void printMenu();
+void printBoard();
+
+class SurveyObject
 {
 public:
-    JeopardyPanel();
+    SurveyObject();
+    SurveyObject(int, std::string, std::string, std::string);
+
     void setPosition(int);
+    void setSurveyName(std::string);
+    void setSurveyInformation(std::string);
+    void setSurveyAnalysis(std::string);
 
 private:
     int position;
+    std::string surveyName, surveyInformation, surveyAnalysis;
 };
