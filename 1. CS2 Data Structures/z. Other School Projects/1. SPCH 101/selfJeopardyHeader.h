@@ -13,6 +13,7 @@ class SurveyObject
 public:
     SurveyObject();
     SurveyObject(std::string, std::string, std::string);
+    ~SurveyObject();
 
     void printObject();
 

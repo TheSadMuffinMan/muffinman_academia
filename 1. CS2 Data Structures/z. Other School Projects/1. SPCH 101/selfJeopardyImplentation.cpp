@@ -16,6 +16,11 @@ SurveyObject::SurveyObject(std::string userSurveyName, std::string userSurveyInf
     surveyAnalysis = userSurveyAnalysis;
 }
 
+SurveyObject::~SurveyObject()
+{
+    //
+}
+
 // Getters
 std::string SurveyObject::getSurveyName()
 {
@@ -66,7 +71,7 @@ void welcome()
     std::cout << " `--. \\  __|| |    |  _|       | |  __|| | | |  __/|  _  ||    /| | | | \\ /" << std::endl;
     std::cout << "/\\__/ / |___| |____| |     /\\__/ / |___\\ \\_/ / |   | | | || |\\ \\| |/ /  | |  " << std::endl;
     std::cout << "\\____/\\____/\\_____/\\_|     \\____/\\____/ \\___/\\_|   \\_| |_/\\_| \\_|___/   \\_/" << std::endl;
-    std::cout << "\nPress any key to continue. . ." << std::endl;
+    std::cout << "\nPress ENTER to continue. . .";
 
 }
 
@@ -81,7 +86,7 @@ void printMenu()
 int menuNavigation()
 {
     int navigationChoice;
-    std::cout << "\n\tPlease enter your choice: " << std::endl;
+    std::cout << "\n\tPlease enter your choice: ";
     std::cin >> navigationChoice;
     return navigationChoice;
 }
