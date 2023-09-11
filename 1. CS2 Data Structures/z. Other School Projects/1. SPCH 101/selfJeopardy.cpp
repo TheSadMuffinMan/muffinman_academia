@@ -29,9 +29,10 @@ int main(int argc, char *argv[])
     while (userChoice == 1) // This starts the game and instantiates our objects
     {
         clear();
-        int *objectAdresses[3][3];
-        new SurveyObject noArgObject();
-        objectAdresses[0][0] = noArgObject();
+        SurveyObject *objectAdresses[3][3];
+        SurveyObject noArgObject;
+        *noArgObject -> objectAddresses[0][0];
+        // objectAdresses[0][0] -> noArgObject;
 
         printBoard();
         std::cout << "Which tile would you like to reveal? ";
@@ -51,6 +52,5 @@ int main(int argc, char *argv[])
         exit(2);
     }
 
-    delete noArgObject();
     return 0;
 }
