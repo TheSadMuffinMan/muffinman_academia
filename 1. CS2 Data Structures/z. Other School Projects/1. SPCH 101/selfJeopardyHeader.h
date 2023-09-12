@@ -15,15 +15,12 @@ public:
     SurveyObject(std::string, std::string, std::string);
     ~SurveyObject();
 
-    void printObject();
-
     // Getters
     std::string getSurveyName();
     std::string getSurveyInformation();
     std::string getSurveyAnalysis();
 
     // Setters
-    // void setPosition(int); // I don't think I need this one
     void setSurveyName(std::string);
     void setSurveyInformation(std::string);
     void setSurveyAnalysis(std::string);

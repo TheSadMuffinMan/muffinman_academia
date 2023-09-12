@@ -1,8 +1,8 @@
 /*
 Name: Anthony Streich
-Date: 5 September 2023
-SELF JEOPARDY, the stupid version
-CURRENT ISSUES: Lines 32-35 POINTERS AHHHHHHHHHHHH
+Date: 11 September 2023
+SELF JEOPARDY
+CURRENT ISSUES: Game functionality
 */
 
 #include "selfJeopardyHeader.h"
@@ -26,24 +26,97 @@ int main(int argc, char *argv[])
     printMenu();
     int userChoice = menuNavigation();
 
-    SurveyObject *objectAddresses[3][3];
+    SurveyObject *objectAddresses[3][3]; // Creates our 4x4 array of pointers to *type* SurveyObjects
 
-    SurveyObject surveyObject1("data", "data", "data");
-    objectAddresses[0][0] = &surveyObject1;
+    SurveyObject surveyObject1("Name data", "Information data", "Analysis data"); // Creates our first object
+    objectAddresses[0][0] = &surveyObject1; // Gives our object a home
+
+    SurveyObject surveyObject2("Diff Name Data", "Some info", "Critical Analysis");
+    objectAddresses[0][1] = &surveyObject2;
 
 
     while (userChoice == 1) // This starts the game
     {
         clear();
 
-        cout << objectAddresses[0][0];
-
-        /*                                     *****COMMENTED OUT WHILE TESTING, ADD BACK LATER*****
         printBoard();
         cout << "Which tile would you like to reveal? ";
         int panelChoice;
         cin >> panelChoice;
-        */
+        
+        if (panelChoice == 1)
+        {
+            cout << objectAddresses[0][0]->getSurveyName() << endl;
+            cout << objectAddresses[0][0]->getSurveyInformation() << endl;
+            cout << objectAddresses[0][0]->getSurveyAnalysis() << endl;
+        }
+        else if (panelChoice == 2)
+        {
+            cout << objectAddresses[0][1]->getSurveyName() << endl;
+            cout << objectAddresses[0][1]->getSurveyInformation() << endl;
+            cout << objectAddresses[0][1]->getSurveyAnalysis() << endl;
+        }
+        else if (panelChoice == 3)
+        {
+            //
+        }
+        else if (panelChoice == 4)
+        {
+            //
+        }
+        else if (panelChoice == 5)
+        {
+            //
+        }
+        else if (panelChoice == 6)
+        {
+            //
+        }
+        else if (panelChoice == 7)
+        {
+            //
+        }
+        else if (panelChoice == 8)
+        {
+            //
+        }
+        else if (panelChoice == 9)
+        {
+            //
+        }
+        else if (panelChoice == 10)
+        {
+            //
+        }
+        else if (panelChoice == 11)
+        {
+            //
+        }
+        else if (panelChoice == 12)
+        {
+            //
+        }
+        else if (panelChoice == 13)
+        {
+            //
+        }
+        else if (panelChoice == 14)
+        {
+            //
+        }
+        else if (panelChoice == 15)
+        {
+            //
+        }
+        else if (panelChoice == 16)
+        {
+            //
+        }
+        else
+        {
+            cout << "*****Program has goofed in panelChoice area D: *****" << endl;
+        }
+
 
         cout << "\nEnter \"1\" if you would like to play again, and \"2\" to exit. ";
         cin >> userChoice;
@@ -54,7 +127,7 @@ int main(int argc, char *argv[])
         clear();
         cout << "\nThank you for playing! The game will now exit. \n" << endl;
         getline(cin, tempVariable);
-        exit(2);
+        exit(0);
     }
 
     return 0;

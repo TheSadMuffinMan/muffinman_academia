@@ -54,13 +54,6 @@ void SurveyObject::setSurveyAnalysis(std::string userSurveyAnalysis)
     surveyAnalysis = userSurveyAnalysis;
 }
 
-void SurveyObject::printObject()
-{
-    // Not working :(
-    // std::cout << "Survey Name: " << SurveyObject.getSurveyName(); << std::endl;
-    // std::cout << "Survey Information: " << SurveyObject.getSurveyInformation(); << std::endl;
-    // std::cout << "Survey Analysis: " << SurveyObject.getSurveyAnalysis(); << std::endl;
-}
 
 void welcome()
 {
