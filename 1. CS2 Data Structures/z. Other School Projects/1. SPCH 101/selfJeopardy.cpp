@@ -25,13 +25,10 @@ int main(int argc, char *argv[])
 
     printMenu();
     int userChoice = menuNavigation();
-    string strOne = "data";
-    string strTwo = "moreData";
-    string strThree = "derp";
-
 
     SurveyObject *objectAddresses[3][3];
-    SurveyObject surveyObject1(strOne, strTwo, strThree);
+
+    SurveyObject surveyObject1("data", "data", "data");
     objectAddresses[0][0] = &surveyObject1;
 
 
@@ -48,7 +45,7 @@ int main(int argc, char *argv[])
         cin >> panelChoice;
         */
 
-        cout << "Enter \"1\" if you would like to play again, and \"2\" to exit. ";
+        cout << "\nEnter \"1\" if you would like to play again, and \"2\" to exit. ";
         cin >> userChoice;
     }
 

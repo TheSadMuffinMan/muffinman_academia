@@ -1,5 +1,3 @@
-// THIS IS WHERE YOU DEFINE THE CLASS
-
 #pragma once
 
 /* This accomplishes the same thing as #pragma once
