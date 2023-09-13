@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     clear();
     welcome();
 
-    getline(cin,tempVariable);
+    getline(cin, tempVariable);
     clear();
 
     printMenu();
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
         clear();
 
         printBoard();
-        cout << "Which tile would you like to reveal? ";
+        cout << "\nWhich tile would you like to reveal? ";
         int panelChoice;
         cin >> panelChoice;
         
@@ -102,21 +102,30 @@ int main(int argc, char *argv[])
         }
         else if (panelChoice == 14)
         {
-            //
+            cout << "This panel is blank, homie. Pick a different panel. " << endl;
         }
         else if (panelChoice == 15)
         {
-            //
+            cout << "This panel is blank, nerd. Pick a different panel. " << endl;
         }
         else if (panelChoice == 16)
         {
-            //
+            clear();
+            cout << "Are you sure you're ready for panel 16?";
+            cin >> tempVariable;
+
+            clear();
+            cout << "You asked for it. . ." << endl;
+            cin >> tempVariable;
+
+            cout << "\n\t /\\_/\\" << endl;
+            cout << "\t(='_' )" << endl;
+            cout << "\t(,(\")(\")" << endl;
         }
         else
         {
-            cout << "*****Program has goofed in panelChoice area D: *****" << endl;
+            cout << "***** Program has goofed in panelChoice area D: *****" << endl;
         }
-
 
         cout << "\nEnter \"1\" if you would like to play again, and \"2\" to exit. ";
         cin >> userChoice;

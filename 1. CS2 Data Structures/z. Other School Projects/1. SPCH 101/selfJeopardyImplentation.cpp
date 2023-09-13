@@ -88,23 +88,23 @@ void printBoard()
 {
     std::cout << "\t ___________ ____________ ___________ ___________" << std::endl;
     std::cout << "\t|           |            |           |           |" << std::endl;
-    std::cout << "\t|           |            |           |           |" << std::endl;
-    std::cout << "\t|     1     |     2      |     3     |     4     |" << std::endl;
-    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|     1     |      2     |     3     |     4     |" << std::endl;
+    std::cout << "\t|    Big    |    Which   |  First-   |   AMBI    |" << std::endl;
+    std::cout << "\t|    Five   |  Character |   Born    | (Big one) |" << std::endl;
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
-    std::cout << "\t|           |            |           |           |" << std::endl;
     std::cout << "\t|           |            |           |           |" << std::endl;
     std::cout << "\t|     5     |     6      |     7     |     8     |" << std::endl;
-    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|Personality| Enneagram  |  Zodiac   | Woodworth |" << std::endl;
+    std::cout << "\t|   Type    |   Scale    |   Sign    |  Psycho   |" << std::endl;
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
-    std::cout << "\t|           |            |           |           |" << std::endl;
     std::cout << "\t|           |            |           |           |" << std::endl;
     std::cout << "\t|     9     |     10     |     11    |     12    |" << std::endl;
-    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|Short Dark |    Nerd    |    DISC   | Cattell's |" << std::endl;
+    std::cout << "\t|   Triad   |    Test    | Assess..  |  Factors  |" << std::endl;
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
     std::cout << "\t|           |            |           |           |" << std::endl;
-    std::cout << "\t|           |            |           |           |" << std::endl;
     std::cout << "\t|    13     |     14     |     15    |     16    |" << std::endl;
-    std::cout << "\t|           |            |           |           |" << std::endl;
+    std::cout << "\t|  Nature   |   BLANK    |   BLANK   |  OPEN FOR |   Input \"17\" for" << std::endl;
+    std::cout << "\t|Relatedness|            |           |  SURPRISE |  a random tile :D" << std::endl;
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
 }
