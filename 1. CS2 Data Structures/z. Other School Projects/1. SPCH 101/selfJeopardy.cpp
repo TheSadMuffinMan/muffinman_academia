@@ -162,11 +162,11 @@ int main(int argc, char *argv[])
         }
         else if (panelChoice == 14)
         {
-            cout << "This panel is blank, homie." << endl;
+            cout << "\nThis panel is blank, nerd." << endl;
         }
         else if (panelChoice == 15)
         {
-            cout << "This panel is blank, nerd." << endl;
+            cout << "\nAHHHHHHHHHH I DON'T HAVE THE RANDOM FEATURE CODED YET" << endl;
         }
         else if (panelChoice == 16)
         {
