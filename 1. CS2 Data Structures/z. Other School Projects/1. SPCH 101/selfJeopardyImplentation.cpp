@@ -18,7 +18,7 @@ SurveyObject::SurveyObject(std::string userSurveyName, std::string userSurveyInf
 
 SurveyObject::~SurveyObject()
 {
-    std::cout << "DESTRUCTOR has done something";
+    std::cout << "\n***Ignore this line*** DESTRUCTOR has done something" << std::endl;
 }
 
 // Getters
