@@ -104,7 +104,7 @@ void printBoard()
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
     std::cout << "\t|           |            |           |           |" << std::endl;
     std::cout << "\t|    13     |     14     |     15    |     16    |" << std::endl;
-    std::cout << "\t|  Nature   |   BLANK    |   BLANK   |  OPEN FOR |   Input \"17\" for" << std::endl;
-    std::cout << "\t|Relatedness|            |           |  SURPRISE |  a random tile :D" << std::endl;
+    std::cout << "\t|  Nature   |   BLANK    |   RANDOM  |  OPEN FOR |" << std::endl;
+    std::cout << "\t|Relatedness|            | SELECTION |  SURPRISE |" << std::endl;
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
 }
