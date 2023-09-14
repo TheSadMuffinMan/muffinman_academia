@@ -1,8 +1,8 @@
 /*
 Name: Anthony Streich
-Date: 11 September 2023
+Date: 13 September 2023
 SELF JEOPARDY
-CURRENT ISSUES: Game functionality
+CURRENT ISSUES:
 */
 
 #include "selfJeopardyHeader.h"
