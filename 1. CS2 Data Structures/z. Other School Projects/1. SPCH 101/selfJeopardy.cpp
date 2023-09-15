@@ -1,8 +1,9 @@
 /*
 Name: Anthony Streich
-Date: 13 September 2023
+Date: 15 September 2023
 SELF JEOPARDY
-CURRENT ISSUES:
+CURRENT ISSUES:'
+
 */
 
 #include "selfJeopardyHeader.h"
