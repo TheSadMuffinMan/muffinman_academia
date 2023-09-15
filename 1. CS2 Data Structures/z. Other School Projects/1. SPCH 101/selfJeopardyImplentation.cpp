@@ -103,8 +103,8 @@ void printBoard()
     std::cout << "\t|   Triad   |    Test    | Assess..  |  Factors  |" << std::endl;
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
     std::cout << "\t|           |            |           |           |" << std::endl;
-    std::cout << "\t|    13     |     14     |     15    |     16    |" << std::endl;
-    std::cout << "\t|  Nature   |   BLANK    |   RANDOM  |  OPEN FOR |" << std::endl;
-    std::cout << "\t|Relatedness|            | SELECTION |  SURPRISE |" << std::endl;
+    std::cout << "\t|    13     |     14     |    15     |     16    |" << std::endl;
+    std::cout << "\t|  Nature   |   BLANK    |   BLANK   |  OPEN FOR |" << std::endl;
+    std::cout << "\t|Relatedness|            |           |  SURPRISE |" << std::endl;
     std::cout << "\t|___________|____________|___________|___________|" << std::endl;
 }
