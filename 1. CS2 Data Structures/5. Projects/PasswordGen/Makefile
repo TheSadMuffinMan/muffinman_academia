@@ -14,7 +14,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 PROGRAM = passwordGennyMain.exe
 
 # list all .cpp files separated by space
-CPPFILES = passwordGenny.cpp
+CPPFILES = passwordGenny.cpp passwordGennyImplem.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
