@@ -8,13 +8,12 @@ int main(int argc, char *argv[])
     cout << "\t! $ ( ) . / : ; ? @" << endl;
 
     int pwSize = 1;
+    cleanedPWSize(pwSize); // Checks user input and doesn't allow user to continue unless input is good
 
-    cleanedPWSize(pwSize);
-
-    srand(time(0));
+    srand(time(0)); // Initializes random seed to current time
 
     char pwArray[pwSize];
-    cout << "pwArray[] size: " << sizeof(pwArray) << endl;
+    // cout << "pwArray[] size: " << sizeof(pwArray) << endl;
 
     cout << "\n\nEnd of program." << endl;
     return 0;
