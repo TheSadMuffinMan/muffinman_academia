@@ -32,9 +32,10 @@ int cleanASCIIVal()
 
     while (localVal <= 32 || (localVal >= 34 && localVal <= 35) || (localVal >= 37 && localVal <= 39) ||
         (localVal >= 42 && localVal <= 45) || (localVal >= 60 && localVal <= 62) ||
-        (localVal >= 91 && localVal <= 96) || (localVal == 73) || (localVal == 108)) // Compares to undesired ASCII values
+        (localVal >= 91 && localVal <= 96) || (localVal == 73) || (localVal == 108) ||
+        (localVal == 79)) // Compares to undesired ASCII values
     {
-        std::cout << "Rerolling" << std::endl;
+        // std::cout << "Rerolling" << std::endl;
         localVal = std::rand()%123;
     }
     return localVal;
