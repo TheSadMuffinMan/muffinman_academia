@@ -5,7 +5,7 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     cout << "Hello. No theoretical limit to #chars. Allowed chars:" << endl;
-    cout << "\t! $ ( ) . / : ; ? @" << endl;
+    cout << "\t! $ ( ) / : ; ? @" << endl;
 
     int pwSize = 1;
 
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
     pwVector.shrink_to_fit(); // Makes it so that our vector's size is appropriate
     // cout << "Size of pwVector: " << pwVector.size();
 
-    for (int i = 0; i < pwVector.size(); i++) // Casting each value to an ASCII char
+    for (int i = 0; i < pwVector.size(); i++) // Casting each value to an ASCII char and then printing it
     {
         cout << (char)pwVector.at(i);
     }
