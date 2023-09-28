@@ -19,7 +19,7 @@ int cleanedPWSize(int &pwSize)
         }
         else
         {
-            std::cout << "Invalid size. Try again: ";
+            std::cout << "Invalid size. Try again. ";
         }
     }
     return pwSize;
