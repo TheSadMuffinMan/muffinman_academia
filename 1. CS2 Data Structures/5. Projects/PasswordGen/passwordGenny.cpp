@@ -31,6 +31,6 @@ int main(int argc, char *argv[])
         cout << (char)pwVector.at(i);
     }
 
-    cout << "\n\nEnd of program." << endl;
+    cout << "\n\nEnd of program..." << endl;
     return 0;
 }
