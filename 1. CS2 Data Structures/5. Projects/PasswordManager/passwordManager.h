@@ -19,5 +19,5 @@ public:
     void setPasswordName(std::string);
 
 private:
-    std::string actualPassword;
+    std::string actualPassword, actualUserName;
 };

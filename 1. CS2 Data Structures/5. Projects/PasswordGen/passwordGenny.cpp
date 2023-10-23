@@ -1,4 +1,4 @@
-#include "passwordGennyHeader.h"
+#include "passwordGenny.h"
 
 using namespace std;
 

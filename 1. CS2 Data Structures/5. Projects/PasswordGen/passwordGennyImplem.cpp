@@ -1,4 +1,4 @@
-#include "passwordGennyHeader.h"
+#include "passwordGenny.h"
 
 int cleanedPWSize(int &pwSize)
 {
@@ -39,4 +39,10 @@ int cleanASCIIVal()
         localVal = std::rand()%123;
     }
     return localVal;
+}
+
+// Default constructor
+passwordObject::passwordObject()
+{
+
 }
