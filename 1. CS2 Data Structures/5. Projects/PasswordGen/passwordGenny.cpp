@@ -4,7 +4,7 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    cout << "Hello. No theoretical limit to #chars. Allowed chars:" << endl;
+    cout << "Hello. No theoretical limit to # chars. Allowed chars:" << endl;
     cout << "\t! $ ( ) / : ; ? @" << endl;
 
     int pwSize = 1;
