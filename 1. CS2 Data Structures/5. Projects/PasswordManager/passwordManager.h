@@ -25,3 +25,6 @@ public:
 private:
     std::string actualUsername, actualPassword, actualComment;
 };
+
+void programMenu();
+int menuChoiceCleaner(int);
