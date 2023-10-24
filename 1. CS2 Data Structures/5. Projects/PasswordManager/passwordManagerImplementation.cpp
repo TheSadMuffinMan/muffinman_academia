@@ -64,12 +64,20 @@ void programMenu()
     std::cout << "\n\t2. Input New Password" << std::endl;
 }
 
-int menuChoiceCleaner(int userInput)
+int menuChoiceChecker(int userInput)
 {
-    
-    while (userInput != 1 || userInput != 2)
+    while (true)
     {
-        std::cout << "Invalid input. Please enter either 1 or 2. " << std::endl;
+        if (userInput == 1)
+        {
+            break;
+        }
+        else if (userInput == 2)
+        {
+            break;
+        }
+        std::cout << "Invalid input. Try again: " << std::endl;
+        std::cin >> userInput;
     }
     return userInput;
 }

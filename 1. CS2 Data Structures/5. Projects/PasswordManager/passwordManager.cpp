@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     programMenu();
     int menuChoice = 0;
     cout << "Navigation choice: " << endl;
-    menuChoiceCleaner(menuChoice);
+    menuChoiceChecker(menuChoice);
 
     cout << "\nProgram has ended" << endl;
     return 0;

@@ -27,4 +27,4 @@ private:
 };
 
 void programMenu();
-int menuChoiceCleaner(int);
+int menuChoiceChecker(int);
