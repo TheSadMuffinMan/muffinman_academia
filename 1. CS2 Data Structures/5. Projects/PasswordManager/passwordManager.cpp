@@ -10,6 +10,6 @@ int main(int argc, char *argv[])
     getline(cin, tempVar);
 
 
-    cout << "Program has ended." << endl;
+    cout << "Program has ended" << endl;
     return 0;
 }
