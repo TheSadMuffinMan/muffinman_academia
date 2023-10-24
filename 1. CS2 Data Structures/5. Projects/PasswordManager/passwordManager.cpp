@@ -13,9 +13,9 @@ int main(int argc, char *argv[])
     programMenu();
 
     int menuChoice = 0;
-    cout << "Navigation choice: " << endl;
-    cout << "menuChoiceChecker: " << menuChoiceChecker(menuChoice); // ONLY WORKS WITH 1 OR 2
-    // cout << "menuChoiceChecker return value: " << menuChoice << endl;
+    // cout << "Navigation choice: " << endl;
+    cout << "Selection Choice: ";
+    menuChoiceChecker(menuChoice); // ONLY WORKS WITH 1 OR 2
 
 
     // while (true) // Starts the loop so that the program won't end without breaking
