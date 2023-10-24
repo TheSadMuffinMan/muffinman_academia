@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include <random>
+#include <fstream>
 
 /// @brief The password object class, composed of a username, password, and comment
 class passwordObject
@@ -32,5 +32,5 @@ void programMenu();
 
 /// @brief Menu Choice Checker
 /// @param int
-/// @return Returns the appropriate menu choice
+/// @return Returns the "checked" menu choice
 int menuChoiceChecker(int);
