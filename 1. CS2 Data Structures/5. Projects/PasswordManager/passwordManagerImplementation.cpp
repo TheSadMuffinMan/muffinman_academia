@@ -3,8 +3,8 @@
 // Default constructor
 passwordObject::passwordObject()
 {
-    actualUsername = NULL;
-    actualPassword = NULL;
+    actualUsername = "DEFAULT";
+    actualPassword = "DEFAULT";
 }
 
 // Destructor
