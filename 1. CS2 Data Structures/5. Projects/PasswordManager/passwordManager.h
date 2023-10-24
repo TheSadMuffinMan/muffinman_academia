@@ -23,5 +23,5 @@ public:
     void setComment(std::string);
 
 private:
-    std::string actualUserName, actualPassword, actualComment;
+    std::string actualUsername, actualPassword, actualComment;
 };

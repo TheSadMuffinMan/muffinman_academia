@@ -3,7 +3,7 @@
 // Default constructor
 passwordObject::passwordObject()
 {
-    actualUserName = NULL;
+    actualUsername = NULL;
     actualPassword = NULL;
 }
 
@@ -13,9 +13,9 @@ passwordObject::~passwordObject()
     std::cout << "\nDESTRUCTOR has destructed something :D" << std::endl;
 }
 
-passwordObject::passwordObject(std::string inputUserName, std::string inputUserPassword, std::string inputComment)
+passwordObject::passwordObject(std::string inputUsername, std::string inputUserPassword, std::string inputComment)
 {
-    actualUserName = inputUserName;
+    actualUsername = inputUsername;
     actualPassword = inputUserPassword;
     actualComment = inputComment;
 }
@@ -23,7 +23,7 @@ passwordObject::passwordObject(std::string inputUserName, std::string inputUserP
 // Username getter
 std::string passwordObject::getUserName()
 {
-    return actualUserName;
+    return actualUsername;
 }
 
 // Password getter
@@ -36,4 +36,22 @@ std::string passwordObject::getPassword()
 std::string passwordObject::getComment()
 {
     return actualComment;
+}
+
+// Username setter
+void passwordObject::setUserName(std::string userNameInput)
+{
+    actualUsername = userNameInput;
+}
+
+// Password setter
+void passwordObject::setPassword(std::string userPasswordInput)
+{
+    actualPassword = userPasswordInput;
+}
+
+// Comment setter
+void passwordObject::setComment(std::string userComment)
+{
+    actualComment = userComment;
 }
