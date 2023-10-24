@@ -12,9 +12,10 @@ int main(int argc, char *argv[])
 
     // Prints the main menu
     programMenu();
+    
     int menuChoice = 0;
     cout << "Navigation choice: " << endl;
-    menuChoiceChecker(menuChoice);
+    menuChoiceChecker(menuChoice); // ONLY WORKS WITH 1 OR 2
 
     cout << "\nProgram has ended" << endl;
     return 0;

@@ -68,6 +68,7 @@ int menuChoiceChecker(int userInput)
 {
     while (true)
     {
+        std::cin >> userInput;
         if (userInput == 1)
         {
             break;
@@ -76,8 +77,7 @@ int menuChoiceChecker(int userInput)
         {
             break;
         }
-        std::cout << "Invalid input. Try again: " << std::endl;
-        std::cin >> userInput;
+        std::cout << "Invalid input, try again: ";
     }
     return userInput;
 }
