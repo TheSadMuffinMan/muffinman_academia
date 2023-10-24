@@ -31,6 +31,6 @@ private:
 void programMenu();
 
 /// @brief Menu Choice Checker
-/// @param  int
+/// @param int
 /// @return Returns the appropriate menu choice
 int menuChoiceChecker(int);
