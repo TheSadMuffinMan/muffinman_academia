@@ -23,6 +23,6 @@ int main(int argc, char *argv[])
     //     //
     // }
 
-    cout << "\nProgram has ended" << endl;
+    cout << "\nProgram has ended." << endl;
     return 0;
 }
