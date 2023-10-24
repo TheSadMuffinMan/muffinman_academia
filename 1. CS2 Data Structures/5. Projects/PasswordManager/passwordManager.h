@@ -9,15 +9,19 @@ class passwordObject
 {
 public:
     passwordObject(); // Default constructor
-    passwordObject(std::string); // Builds our password object
-    ~passwordObject();
+    ~passwordObject(); // Destructor
+    passwordObject(std::string, std::string, std::string); // Builds our password object
 
     // Getters
-    std::string getPasswordName();
+    std::string getPassword();
+    std::string getUserName();
+    std::string getComment();
 
     // Setters
-    void setPasswordName(std::string);
+    void setPassword(std::string);
+    void setUserName(std::string);
+    void setComment(std::string);
 
 private:
-    std::string actualPassword, actualUserName;
+    std::string actualUserName, actualPassword, actualComment;
 };
