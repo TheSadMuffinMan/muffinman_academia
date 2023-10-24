@@ -5,6 +5,7 @@
 #include <string>
 #include <random>
 
+/// @brief The password object class, composed of a username, password, and comment
 class passwordObject
 {
 public:
@@ -26,5 +27,10 @@ private:
     std::string actualUsername, actualPassword, actualComment;
 };
 
+/// @brief Prints the main menu of the program
 void programMenu();
+
+/// @brief Menu Choice Checker
+/// @param  int
+/// @return Returns the appropriate menu choice
 int menuChoiceChecker(int);
