@@ -3,8 +3,10 @@
 // Default constructor
 passwordObject::passwordObject()
 {
+    actualLabel = "DEFAULT";
     actualUsername = "DEFAULT";
     actualPassword = "DEFAULT";
+    actualComment = "DEFAULT";
 }
 
 // Destructor
@@ -19,6 +21,13 @@ passwordObject::passwordObject(std::string inputUsername, std::string inputUserP
     actualPassword = inputUserPassword;
     actualComment = inputComment;
 }
+
+// Label getter
+std::string passwordObject::getLabel()
+{
+    return actualLabel;
+}
+
 
 // Username getter
 std::string passwordObject::getUserName()
@@ -36,6 +45,12 @@ std::string passwordObject::getPassword()
 std::string passwordObject::getComment()
 {
     return actualComment;
+}
+
+// Label setter
+void passwordObject::setLabel(std::string userLabel)
+{
+    actualLabel = userLabel;
 }
 
 // Username setter
@@ -81,3 +96,9 @@ int menuChoiceChecker(int userInput)
     }
     return userInput;
 }
+
+// void printPasswordObject(passwordObject)
+// {
+//     std::string displayPassword;
+//     displayPassword = passwordObject::getPassword();
+// }

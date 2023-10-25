@@ -3,29 +3,6 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    string tempLine = "NO VALUE HERE";
-    int numLines = 0;
-
-    // Opens the f(ile) stream
-    ifstream passwordFile("pwData.csv");
-
-    // Checks to see if the file is open
-    if (!passwordFile.is_open())
-    {
-        cout << "ERROR: File is open" << endl;
-    }
-
-    // Counts the total number of lines
-    while (passwordFile.peek() != EOF)
-    {
-        getline(passwordFile, tempLine);
-        numLines++; // Works as intended
-    }
-    passwordFile.close();
-
-    int numObjects = 0;
-    numObjects = numLines - 2; // MINUS TEST VALUES
-
     // Program introduction
     cout << "\t\tPASSWORD MANAGER" << endl;
     cout << "\tBy the muffinman" << endl;
@@ -42,7 +19,37 @@ int main(int argc, char *argv[])
 
     while (cleanedUserMenuChoice == 1) // "While in Menu Option 1"
     {
-        cout << "Hey, we're in option 1!" << endl;
+        system("clear");
+        cout << "\tPASSWORD MENU" << endl;
+        
+        passwordObject(); // Creates our basic object
+
+        string tempLine = "NO VALUE HERE";
+        int numLines = 0;
+
+        // Opens the f(ile) stream
+        ifstream passwordFile("pwData.csv"); // *******HAVE QUESTIONS******
+
+        // Checks to see if the file is open
+        if (!passwordFile.is_open())
+        {
+            cout << "ERROR: File is open" << endl;
+        }
+
+        // Counts the total number of lines
+        while (passwordFile.peek() != EOF)
+        {
+            getline(passwordFile, tempLine);
+            numLines++; // Works as intended
+        }
+
+        // passwordFile >> passwordObject::passwordObject->setLabel();
+
+        passwordFile.close();
+
+        int numObjects = 0;
+        numObjects = numLines - 2; // MINUS TEST VALUES
+
         break;
     }
 
