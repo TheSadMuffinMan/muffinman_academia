@@ -22,30 +22,43 @@ int main(int argc, char *argv[])
         system("clear");
         cout << "\tPASSWORD MENU" << endl;
         
-        passwordObject(); // Creates our basic object
+        // passwordObject tempPassword = passwordObject(); // Creates our basic object
+        // tempPassword.setLabel();
 
-        string tempLine = "NO VALUE HERE";
         int numLines = 0;
 
+        ifstream inputFile;
+        // ofstream outputFile; // This creates our output stream
+
+        inputFile.open("pwData.csv");
+        string tempInput;
+        getline(inputFile, tempInput);
+
+        cout << "tempInput: " << tempInput << endl;
+
+        inputFile.close();
+
+/*
         // Opens the f(ile) stream
-        ifstream passwordFile("pwData.csv"); // *******HAVE QUESTIONS******
+        // ifstream passwordFile("pwData.csv"); // This is shorthand notation
 
         // Checks to see if the file is open
-        if (!passwordFile.is_open())
-        {
-            cout << "ERROR: File is open" << endl;
-        }
+        // if (!passwordFile.is_open())
+        // {
+        //     cout << "ERROR: File is open" << endl;
+        // }
 
-        // Counts the total number of lines
-        while (passwordFile.peek() != EOF)
-        {
-            getline(passwordFile, tempLine);
-            numLines++; // Works as intended
-        }
+        // // Counts the total number of lines
+        // while (passwordFile.peek() != EOF)
+        // {
+        //     getline(passwordFile, tempLine);
+        //     numLines++; // Works as intended
+        // }
 
         // passwordFile >> passwordObject::passwordObject->setLabel();
 
         passwordFile.close();
+*/
 
         int numObjects = 0;
         numObjects = numLines - 2; // MINUS TEST VALUES

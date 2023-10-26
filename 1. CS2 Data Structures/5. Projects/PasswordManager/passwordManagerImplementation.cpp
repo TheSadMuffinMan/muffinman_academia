@@ -97,8 +97,11 @@ int menuChoiceChecker(int userInput)
     return userInput;
 }
 
-// void printPasswordObject(passwordObject)
-// {
-//     std::string displayPassword;
-//     displayPassword = passwordObject::getPassword();
-// }
+/* DO NOT DELETE, NEED FOR NEXT TUTORING SESSION.
+Give a man a fish, you feed him, teach a man to fish, and he'll be fed for a lifetime
+void printPasswordObject(passwordObject)
+{
+    std::string displayPassword;
+    displayPassword = passwordObject::getPassword();
+}
+*/
