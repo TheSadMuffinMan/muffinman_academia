@@ -22,46 +22,46 @@ int main(int argc, char *argv[])
         system("clear");
         cout << "\tPASSWORD MENU" << endl;
         
-        // passwordObject tempPassword = passwordObject(); // Creates our basic object
-        // tempPassword.setLabel();
+        ifstream inputStream; // Creates our input stream named inputStream
+        // ofstream outputStream; // This creates our output stream named outputStream
 
-        int numLines = 0;
+        inputStream.open("pwData.csv"); // Opens the pwData.csv file
+        string fullLine; // Variable to store the entire line of data into
 
-        ifstream inputFile;
-        // ofstream outputFile; // This creates our output stream
+        string tempLabel = "NULL";
+        string tempUsername = "NULL";
+        string tempPassword = "NULL";
+        string tempComment = "NULL";
+        size_t tempIndexChar = 0;
+        size_t nextTempIndexChar = 0;
+        int numObjectsCounter = 0;
 
-        inputFile.open("pwData.csv");
-        string tempInput;
-        getline(inputFile, tempInput);
+        getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
 
-        cout << "tempInput: " << tempInput << endl;
+        tempIndexChar = fullLine.find(','); // Locates the first position of a ','
+        tempLabel = fullLine.substr(0, tempIndexChar);
+        cout << "tempLabel: " << tempLabel << endl;
 
-        inputFile.close();
+        nextTempIndexChar = fullLine.find(',', tempIndexChar);
+        size_t strLength = 0;
+        strLength = (nextTempIndexChar - tempIndexChar);
+        cout << "nextTempIndexChar: " << nextTempIndexChar << endl;
+        cout << "tempIndexChar: " << tempIndexChar << endl;
+        cout << "strLength: " << strLength << endl;
+        tempUsername = fullLine.substr(tempIndexChar, strLength);
+        cout << "tempUsername: " << tempUsername << endl;
+
 
 /*
-        // Opens the f(ile) stream
-        // ifstream passwordFile("pwData.csv"); // This is shorthand notation
-
-        // Checks to see if the file is open
-        // if (!passwordFile.is_open())
-        // {
-        //     cout << "ERROR: File is open" << endl;
-        // }
-
-        // // Counts the total number of lines
-        // while (passwordFile.peek() != EOF)
-        // {
-        //     getline(passwordFile, tempLine);
-        //     numLines++; // Works as intended
-        // }
-
-        // passwordFile >> passwordObject::passwordObject->setLabel();
-
-        passwordFile.close();
+        while (inputStream.peek() != EOF)
+        {
+            getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
+            tempIndexChar = fullLine.find(','); // Locates the first position of a ','
+            tempLabel = fullLine.substr(0, tempIndexChar);
+        }
 */
 
-        int numObjects = 0;
-        numObjects = numLines - 2; // MINUS TEST VALUES
+        inputStream.close(); // Closes the file
 
         break;
     }
@@ -69,3 +69,27 @@ int main(int argc, char *argv[])
     cout << "\nProgram has ended." << endl;
     return 0;
 }
+
+// This section is old code that doesn't work
+
+/*
+    // Opens the f(ile) stream
+    // ifstream passwordFile("pwData.csv"); // This is shorthand notation
+
+    // Checks to see if the file is open
+    // if (!passwordFile.is_open())
+    // {
+    //     cout << "ERROR: File is open" << endl;
+    // }
+
+    // // Counts the total number of lines
+    // while (passwordFile.peek() != EOF)
+    // {
+    //     getline(passwordFile, tempLine);
+    //     numLines++; // Works as intended
+    // }
+
+    // passwordFile >> passwordObject::passwordObject->setLabel();
+
+    passwordFile.close();
+*/
