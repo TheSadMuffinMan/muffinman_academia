@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
         inputStream.open("pwData.csv"); // Opens the pwData.csv file
         string fullLine; // Variable to store the entire line of data into
 
+        // Initializing all of our temporary variables
         string tempLabel = "NULL";
         string tempUsername = "NULL";
         string tempPassword = "NULL";
@@ -38,28 +39,31 @@ int main(int argc, char *argv[])
 
         getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
 
+        // LABEL STUFF
         tempIndexChar = fullLine.find(','); // Locates the first position of a ','
-        tempLabel = fullLine.substr(0, tempIndexChar);
-        cout << "tempLabel: " << tempLabel << endl;
+        tempLabel = fullLine.substr(0, tempIndexChar); // Assigns the first "set" of data to tempLabel
+        cout << "tempLabel: " << tempLabel << endl; // ***TESTING LINE***
 
-        nextTempIndexChar = fullLine.find(',', tempIndexChar);
+        // USERNAME STUFF
+        nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
         size_t strLength = 0;
-        strLength = (nextTempIndexChar - tempIndexChar);
-        cout << "nextTempIndexChar: " << nextTempIndexChar << endl;
-        cout << "tempIndexChar: " << tempIndexChar << endl;
-        cout << "strLength: " << strLength << endl;
-        tempUsername = fullLine.substr(tempIndexChar, strLength);
+        strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
+        tempUsername = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempUsername
         cout << "tempUsername: " << tempUsername << endl;
 
+        // PASSWORD STUFF
+        tempIndexChar = fullLine.find(',', nextTempIndexChar + 1);
+        strLength = (tempIndexChar - nextTempIndexChar); // This is determining our substring "size" in a roundabout way
+        tempPassword = fullLine.substr(nextTempIndexChar + 1, strLength - 1); // Assigns tempUsername
+        cout << "tempPassword: " << tempPassword << endl;
 
-/*
-        while (inputStream.peek() != EOF)
-        {
-            getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
-            tempIndexChar = fullLine.find(','); // Locates the first position of a ','
-            tempLabel = fullLine.substr(0, tempIndexChar);
-        }
-*/
+        // COMMENT STUFF
+        nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
+        strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
+        tempComment = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempUsername
+        cout << "tempComment: " << tempComment << endl;
+
+
 
         inputStream.close(); // Closes the file
 
