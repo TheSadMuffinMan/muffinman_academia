@@ -61,10 +61,15 @@ int main(int argc, char *argv[])
             strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
             tempComment = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempComment
 
-            passwordObject tempObject(tempLabel, tempUsername, tempPassword, tempComment);
-            cout << "tempObject Label: " << tempObject.getLabel() << endl;
-            numObjectsCounter++;
+            string passwordObjectName;
 
+            passwordObject tempObject(tempLabel, tempUsername, tempPassword, tempComment);
+            // cout << "tempObject Label: " << tempObject.getLabel() << endl;
+            // cout << "temp UN: " << tempObject.getUserName() << endl;
+            // cout << "temp PW: " << tempObject.getPassword() << endl;
+            // cout << "temp Comment: " << tempObject.getComment() << endl;
+            numObjectsCounter++;
+            // std::string uniqueName = tempLabel + std::to_string(instanceCounter);
         }
 
 
