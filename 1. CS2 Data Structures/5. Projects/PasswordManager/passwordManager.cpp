@@ -35,9 +35,22 @@ int main(int argc, char *argv[])
         string tempComment = "NULL";
         size_t tempIndexChar = 0;
         size_t nextTempIndexChar = 0;
-        int numObjectsCounter = 0;
+        size_t numLinesInFile = 0;
 
-        while (inputStream.peek() != EOF) // This loop repeats equal to number of lines of data in pwData.csv
+        // Get's the number of lines in the csv file
+        while (inputStream.peek() != EOF)
+        {
+            getline(inputStream, tempVar);
+            numLinesInFile++;
+        }
+        inputStream.close(); // Closes the file
+        cout << "numLinesInFile: " << numLinesInFile << endl;
+
+        inputStream.open("pwData.csv"); // Re-opens the pwData.csv file
+
+        passwordObject objectArray[numLinesInFile]; // Creates an array of passwordObjects, size numLinesInFile
+
+        for (size_t i = 0; i < numLinesInFile; i++) // This loop repeats equal to number of lines of data in pwData.csv
         {
             getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
 
@@ -61,17 +74,15 @@ int main(int argc, char *argv[])
             strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
             tempComment = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempComment
 
-            string passwordObjectName;
+            // objectArray[i] = passwordObject tempObject(tempLabel, tempUsername, tempPassword, tempComment);
 
-            passwordObject tempObject(tempLabel, tempUsername, tempPassword, tempComment);
+            // cout << "ObjectArray[" << i << "]: " << objectArray[i] << endl;
+
             // cout << "tempObject Label: " << tempObject.getLabel() << endl;
             // cout << "temp UN: " << tempObject.getUserName() << endl;
             // cout << "temp PW: " << tempObject.getPassword() << endl;
             // cout << "temp Comment: " << tempObject.getComment() << endl;
-            numObjectsCounter++;
-            // std::string uniqueName = tempLabel + std::to_string(instanceCounter);
         }
-
 
         inputStream.close(); // Closes the file
 
@@ -81,6 +92,39 @@ int main(int argc, char *argv[])
     cout << "\nProgram has ended." << endl;
     return 0;
 }
+
+/*
+while (inputStream.peek() != EOF) // This loop repeats equal to number of lines of data in pwData.csv
+{
+    getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
+
+    // TEMPORARY LABEL STUFF
+    tempIndexChar = fullLine.find(','); // Locates the first position of a ','
+    tempLabel = fullLine.substr(0, tempIndexChar); // Assigns the first "set" of data to tempLabel
+
+    // TEMPORARY USERNAME STUFF
+    nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
+    size_t strLength = 0;
+    strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
+    tempUsername = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempUsername
+
+    // TEMPORARY PASSWORD STUFF
+    tempIndexChar = fullLine.find(',', nextTempIndexChar + 1);
+    strLength = (tempIndexChar - nextTempIndexChar); // This is determining our substring "size" in a roundabout way
+    tempPassword = fullLine.substr(nextTempIndexChar + 1, strLength - 1); // Assigns tempPassword
+
+    // TEMPORARY COMMENT STUFF
+    nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
+    strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
+    tempComment = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempComment
+
+    passwordObject tempObject(tempLabel, tempUsername, tempPassword, tempComment);
+    cout << "tempObject Label: " << tempObject.getLabel() << endl;
+    cout << "temp UN: " << tempObject.getUserName() << endl;
+    cout << "temp PW: " << tempObject.getPassword() << endl;
+    cout << "temp Comment: " << tempObject.getComment() << endl;
+}
+*/
 
 // This section is old code that doesn't work
 
