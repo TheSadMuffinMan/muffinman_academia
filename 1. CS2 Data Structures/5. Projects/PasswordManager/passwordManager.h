@@ -11,7 +11,7 @@ class passwordObject
 public:
     passwordObject(); // Default constructor
     ~passwordObject(); // Destructor
-    passwordObject(std::string, std::string, std::string); // Builds our password object
+    passwordObject(std::string, std::string, std::string, std::string); // Builds our password object
 
     // Getters
     std::string getLabel();

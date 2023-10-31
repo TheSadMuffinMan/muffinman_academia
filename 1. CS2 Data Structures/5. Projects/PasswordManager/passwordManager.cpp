@@ -37,32 +37,35 @@ int main(int argc, char *argv[])
         size_t nextTempIndexChar = 0;
         int numObjectsCounter = 0;
 
-        getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
+        while (inputStream.peek() != EOF) // This loop repeats equal to number of lines of data in pwData.csv
+        {
+            getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
 
-        // LABEL STUFF
-        tempIndexChar = fullLine.find(','); // Locates the first position of a ','
-        tempLabel = fullLine.substr(0, tempIndexChar); // Assigns the first "set" of data to tempLabel
-        cout << "tempLabel: " << tempLabel << endl; // ***TESTING LINE***
+            // TEMPORARY LABEL STUFF
+            tempIndexChar = fullLine.find(','); // Locates the first position of a ','
+            tempLabel = fullLine.substr(0, tempIndexChar); // Assigns the first "set" of data to tempLabel
 
-        // USERNAME STUFF
-        nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
-        size_t strLength = 0;
-        strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
-        tempUsername = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempUsername
-        cout << "tempUsername: " << tempUsername << endl;
+            // TEMPORARY USERNAME STUFF
+            nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
+            size_t strLength = 0;
+            strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
+            tempUsername = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempUsername
 
-        // PASSWORD STUFF
-        tempIndexChar = fullLine.find(',', nextTempIndexChar + 1);
-        strLength = (tempIndexChar - nextTempIndexChar); // This is determining our substring "size" in a roundabout way
-        tempPassword = fullLine.substr(nextTempIndexChar + 1, strLength - 1); // Assigns tempUsername
-        cout << "tempPassword: " << tempPassword << endl;
+            // TEMPORARY PASSWORD STUFF
+            tempIndexChar = fullLine.find(',', nextTempIndexChar + 1);
+            strLength = (tempIndexChar - nextTempIndexChar); // This is determining our substring "size" in a roundabout way
+            tempPassword = fullLine.substr(nextTempIndexChar + 1, strLength - 1); // Assigns tempPassword
 
-        // COMMENT STUFF
-        nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
-        strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
-        tempComment = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempUsername
-        cout << "tempComment: " << tempComment << endl;
+            // TEMPORARY COMMENT STUFF
+            nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
+            strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
+            tempComment = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempComment
 
+            passwordObject tempObject(tempLabel, tempUsername, tempPassword, tempComment);
+            cout << "tempObject Label: " << tempObject.getLabel() << endl;
+            numObjectsCounter++;
+
+        }
 
 
         inputStream.close(); // Closes the file
