@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 
         passwordObject* objectArray = new passwordObject[numLinesInFile]; // Create an array of passwordObjects on the heap
 
-        for (size_t i = 0; i < numLinesInFile; i++) // Loop repeats equal to number of lines of data in pwData.csv
+        for (size_t i = 0; i < numLinesInFile; i++) // Loop populates all of the object values
         {
             getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
 
@@ -76,21 +76,19 @@ int main(int argc, char *argv[])
 
             passwordObject(tempLabel, tempUsername, tempPassword, tempComment); // Initializes our object
 
+            // Assigns all the values
             objectArray[i].setLabel(tempLabel);
             objectArray[i].setUserName(tempUsername);
-
-
-            // cout << "ObjectArray[" << i << "]: " << objectArray[i] << endl;
-
-            // cout << "tempObject Label: " << tempObject.getLabel() << endl;
-            // cout << "temp UN: " << tempObject.getUserName() << endl;
-            // cout << "temp PW: " << tempObject.getPassword() << endl;
-            // cout << "temp Comment: " << tempObject.getComment() << endl;
+            objectArray[i].setPassword(tempPassword);
+            objectArray[i].setComment(tempComment);
         }
-        cout << "objectArray[1].label: " << objectArray[1].getLabel() << endl;
+        size_t secondMenuOption = 0;
+        cout << "which password would you like to view? ";
+        getline(cin, secondMenuOption);
+
+
         inputStream.close(); // Closes the file
         delete[] objectArray;
-
         break;
     }
     cout << "\nProgram has ended." << endl;
