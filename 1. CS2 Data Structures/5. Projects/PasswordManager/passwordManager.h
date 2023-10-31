@@ -5,7 +5,7 @@
 #include <string>
 #include <fstream>
 
-/// @brief The password object class, composed of a username, password, and comment
+/// @brief The password object class, composed of a label, username, password, and comment
 class passwordObject
 {
 public:

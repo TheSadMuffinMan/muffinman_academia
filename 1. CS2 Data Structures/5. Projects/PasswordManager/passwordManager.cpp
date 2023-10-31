@@ -48,9 +48,9 @@ int main(int argc, char *argv[])
 
         inputStream.open("pwData.csv"); // Re-opens the pwData.csv file
 
-        passwordObject objectArray[numLinesInFile]; // Creates an array of passwordObjects, size numLinesInFile
+        passwordObject* objectArray = new passwordObject[numLinesInFile]; // Create an array of passwordObjects on the heap
 
-        for (size_t i = 0; i < numLinesInFile; i++) // This loop repeats equal to number of lines of data in pwData.csv
+        for (size_t i = 0; i < numLinesInFile; i++) // Loop repeats equal to number of lines of data in pwData.csv
         {
             getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
 
@@ -66,15 +66,19 @@ int main(int argc, char *argv[])
 
             // TEMPORARY PASSWORD STUFF
             tempIndexChar = fullLine.find(',', nextTempIndexChar + 1);
-            strLength = (tempIndexChar - nextTempIndexChar); // This is determining our substring "size" in a roundabout way
-            tempPassword = fullLine.substr(nextTempIndexChar + 1, strLength - 1); // Assigns tempPassword
+            strLength = (tempIndexChar - nextTempIndexChar);
+            tempPassword = fullLine.substr(nextTempIndexChar + 1, strLength - 1);
 
             // TEMPORARY COMMENT STUFF
-            nextTempIndexChar = fullLine.find(',', tempIndexChar + 1); // Finds the next comma's position
-            strLength = (nextTempIndexChar - tempIndexChar); // This is determining our substring "size" in a roundabout way
-            tempComment = fullLine.substr(tempIndexChar + 1, strLength - 1); // Assigns tempComment
+            nextTempIndexChar = fullLine.find(',', tempIndexChar + 1);
+            strLength = (nextTempIndexChar - tempIndexChar);
+            tempComment = fullLine.substr(tempIndexChar + 1, strLength - 1);
 
-            // objectArray[i] = passwordObject tempObject(tempLabel, tempUsername, tempPassword, tempComment);
+            passwordObject(tempLabel, tempUsername, tempPassword, tempComment); // Initializes our object
+
+            objectArray[i].setLabel(tempLabel);
+            objectArray[i].setUserName(tempUsername);
+
 
             // cout << "ObjectArray[" << i << "]: " << objectArray[i] << endl;
 
@@ -83,12 +87,12 @@ int main(int argc, char *argv[])
             // cout << "temp PW: " << tempObject.getPassword() << endl;
             // cout << "temp Comment: " << tempObject.getComment() << endl;
         }
-
+        cout << "objectArray[1].label: " << objectArray[1].getLabel() << endl;
         inputStream.close(); // Closes the file
+        delete[] objectArray;
 
         break;
     }
-
     cout << "\nProgram has ended." << endl;
     return 0;
 }
