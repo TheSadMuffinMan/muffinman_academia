@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     while (cleanedUserMenuChoice == 1) // "While in Menu Option 1"
     {
         system("clear");
-        cout << "\tPASSWORD MENU" << endl;
+        cout << "\tPASSWORD MENU\n" << endl;
         
         ifstream inputStream; // Creates our input stream named inputStream
         // ofstream outputStream; // This creates our output stream named outputStream
@@ -83,14 +83,23 @@ int main(int argc, char *argv[])
             objectArray[i].setComment(tempComment);
         }
 
+        // Prints out all password labels
         for (int i = 0; i < numLinesInFile; i++)
         {
             cout << i+1 << ". " << objectArray[i].getLabel() << endl;
         }
 
         size_t secondMenuOption = 0;
-        cout << "which password would you like to view? ";
+        cout << "Which password would you like to view? ";
         cin >> secondMenuOption;
+        secondMenuOption = secondMenuOption - 1; // ***THIS IS A TEMP LINE***
+
+        system("clear");
+        cout << "\tPASSWORD MENU\n" << endl;
+        cout << "Label: " << objectArray[secondMenuOption].getLabel() << endl;
+        cout << "Username: " << objectArray[secondMenuOption].getUserName() << endl;
+        cout << "Password: " << objectArray[secondMenuOption].getPassword() << endl;
+        cout << "Comment: " << objectArray[secondMenuOption].getComment() << endl;
 
 
         inputStream.close(); // Closes the file
