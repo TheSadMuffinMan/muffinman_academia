@@ -12,7 +12,7 @@ passwordObject::passwordObject()
 // Destructor
 passwordObject::~passwordObject()
 {
-    std::cout << "\nDESTRUCTOR has destructed something :D" << std::endl;
+    // std::cout << "\nDESTRUCTOR has destructed something :D" << std::endl;
 }
 
 passwordObject::passwordObject(std::string inputLabel, std::string inputUsername, std::string inputUserPassword, std::string inputComment)

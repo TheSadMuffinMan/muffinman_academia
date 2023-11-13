@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
             numLinesInFile++;
         }
         inputStream.close(); // Closes the file
-        cout << "numLinesInFile: " << numLinesInFile << endl;
+        // cout << "numLinesInFile: " << numLinesInFile << endl;
 
         inputStream.open("pwData.csv"); // Re-opens the pwData.csv file
 
@@ -82,9 +82,15 @@ int main(int argc, char *argv[])
             objectArray[i].setPassword(tempPassword);
             objectArray[i].setComment(tempComment);
         }
+
+        for (int i = 0; i < numLinesInFile; i++)
+        {
+            cout << i+1 << ". " << objectArray[i].getLabel() << endl;
+        }
+
         size_t secondMenuOption = 0;
         cout << "which password would you like to view? ";
-        getline(cin, secondMenuOption);
+        cin >> secondMenuOption;
 
 
         inputStream.close(); // Closes the file
