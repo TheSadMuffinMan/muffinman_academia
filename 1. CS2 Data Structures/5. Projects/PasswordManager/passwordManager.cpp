@@ -119,7 +119,7 @@ int main(int argc, char *argv[])
             {
                 cout << "Please enter which portion you would like to update..." << endl;
                 cout << "1. Update Label" << endl;
-                cout << "2. Uppate Username" << endl;
+                cout << "2. Update Username" << endl;
                 cout << "3. Update Password" << endl;
                 cout << "4. Update Comment" << endl;
                 size_t editMenuOption = 0;
@@ -169,6 +169,10 @@ int main(int argc, char *argv[])
                     cin.ignore();
                     getline(cin, tempComment);
                     objectArray[secondMenuOption].setComment(tempComment);
+                }
+                else
+                {
+                    break;
                 }
             }
         }
