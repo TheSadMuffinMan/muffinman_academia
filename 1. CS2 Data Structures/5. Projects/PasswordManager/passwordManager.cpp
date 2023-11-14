@@ -50,7 +50,8 @@ int main(int argc, char *argv[])
 
         passwordObject* objectArray = new passwordObject[numLinesInFile]; // Create an array of passwordObjects on the heap
 
-        for (size_t i = 0; i < numLinesInFile; i++) // Loop populates all of the object values
+        // Loop populates all of the object values
+        for (size_t i = 0; i < numLinesInFile; i++)
         {
             getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
 
@@ -85,6 +86,9 @@ int main(int argc, char *argv[])
 
         while (true)
         {
+            system("clear");
+            cout << "\tPASSWORD MENU" << endl;
+
             // Prints out all password labels
             for (size_t i = 0; i < numLinesInFile; i++)
             {
@@ -92,7 +96,7 @@ int main(int argc, char *argv[])
             }
 
             size_t secondMenuOption = 0;
-            cout << "Which password would you like to view? ";
+            cout << "\nWhich password would you like to view? ";
             cin >> secondMenuOption;
             secondMenuOption = secondMenuOption - 1; // ***THIS IS A TEMP LINE***
 
@@ -110,14 +114,8 @@ int main(int argc, char *argv[])
             size_t thirdMenuOption = 0;
             cin >> thirdMenuOption;
 
-            if (thirdMenuOption == '1')
-            {
-                system("clear");
-                cout << "\tPASSWORD MENU\n" << endl;
-                break;
-            }
             // This is if you are editing the selected password
-            else if (thirdMenuOption == '2')
+            if (thirdMenuOption == 2)
             {
                 cout << "Please enter which portion you would like to update..." << endl;
                 cout << "1. Update Label" << endl;
@@ -127,18 +125,52 @@ int main(int argc, char *argv[])
                 size_t editMenuOption = 0;
                 cin >> editMenuOption;
 
-                if (editMenuOption == '1')
+                if (editMenuOption == 1)
                 {
+                    system("clear");
+                    cout << "\tPASSWORD MENU" << endl;
                     cout << "Update Label" << endl;
                     cout << "Current Label: " << objectArray[secondMenuOption].getLabel() << endl;
                     cout << "What would you like the label to change to? ";
-                    string tempLabel = "NULL";
+                    string tempLabel;
+                    cin.ignore();
                     getline(cin, tempLabel);
                     objectArray[secondMenuOption].setLabel(tempLabel);
-                    cout << "Updated Label: " << objectArray[secondMenuOption].getLabel() << endl;
+                }
+                else if (editMenuOption == 2)
+                {
+                    system("clear");
+                    cout << "\tPASSWORD MENU" << endl;
+                    cout << "Update Username" << endl;
+                    cout << "Current Username: " << objectArray[secondMenuOption].getUserName() << endl;
+                    cout << "What would you like the username to change to? ";
+                    cin.ignore();
+                    getline(cin, tempUsername);
+                    objectArray[secondMenuOption].setUserName(tempUsername);
+                }
+                else if (editMenuOption == 3)
+                {
+                    system("clear");
+                    cout << "\tPASSWORD MENU" << endl;
+                    cout << "Update Password" << endl;
+                    cout << "Current Password: " << objectArray[secondMenuOption].getPassword() << endl;
+                    cout << "What would you like the password to change to? ";
+                    cin.ignore();
+                    getline(cin, tempPassword);
+                    objectArray[secondMenuOption].setPassword(tempPassword);
+                }
+                else if (editMenuOption == 4)
+                {
+                    system("clear");
+                    cout << "\tPASSWORD MENU" << endl;
+                    cout << "Update Comment" << endl;
+                    cout << "Current Comment: " << objectArray[secondMenuOption].getComment() << endl;
+                    cout << "What would you like the comment to change to? ";
+                    cin.ignore();
+                    getline(cin, tempComment);
+                    objectArray[secondMenuOption].setComment(tempComment);
                 }
             }
-
         }
 
 
