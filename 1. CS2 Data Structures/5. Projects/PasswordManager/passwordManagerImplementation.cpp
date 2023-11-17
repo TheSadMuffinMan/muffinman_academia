@@ -77,7 +77,8 @@ void programMenu()
     system("clear");
     std::cout << "\n\t\t MAIN MENU" << std::endl;
     std::cout << "\n\t1. View Passwords" << std::endl;
-    std::cout << "\n\t2. Input New Password" << std::endl;
+    std::cout << "\n\t2. Input New Password (***NOT YET CODED***)" << std::endl;
+    std::cout << "\n\t3. Quit Program" << std::endl;
 }
 
 int menuChoiceChecker(int userInput)

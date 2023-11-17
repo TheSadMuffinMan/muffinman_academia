@@ -14,10 +14,14 @@ int main(int argc, char *argv[])
 
     int userMenuChoice = 0;
     cout << "Selection Choice: ";
+    cin >> userMenuChoice;
+
+    /* Will be coming back to this section. Planning on adding user input validation.
     int cleanedUserMenuChoice = 0;
     cleanedUserMenuChoice = menuChoiceChecker(userMenuChoice); // ONLY WORKS WITH 1 OR 2
+    */
 
-    while (cleanedUserMenuChoice == 1) // "While in Menu Option 1"
+    while (userMenuChoice == 1) // "View Passwords" Section
     {
         system("clear");
         cout << "\tPASSWORD MENU\n" << endl;
@@ -37,8 +41,7 @@ int main(int argc, char *argv[])
         size_t nextTempIndexChar = 0;
         size_t numLinesInFile = 0;
 
-        // Get's the number of lines in the csv file
-        while (inputStream.peek() != EOF)
+        while (inputStream.peek() != EOF) // Gets the number of lines in the csv file
         {
             getline(inputStream, tempVar);
             numLinesInFile++;
@@ -50,8 +53,7 @@ int main(int argc, char *argv[])
 
         passwordObject* objectArray = new passwordObject[numLinesInFile]; // Create an array of passwordObjects on the heap
 
-        // Loop populates all of the object values
-        for (size_t i = 0; i < numLinesInFile; i++)
+        for (size_t i = 0; i < numLinesInFile; i++) // Loop populates all of the object data values
         {
             getline(inputStream, fullLine); // Pulls the entire line of data and stores it into inputStream
 
@@ -84,13 +86,14 @@ int main(int argc, char *argv[])
             objectArray[i].setComment(tempComment);
         }
 
-        while (true)
+        inputStream.close(); // Closes the file
+
+        while (true) // Loop that represents the second menu tier: "View Passwords"
         {
             system("clear");
-            cout << "\tPASSWORD MENU" << endl;
+            cout << "\tPASSWORD MENU\n" << endl;
 
-            // Prints out all password labels
-            for (size_t i = 0; i < numLinesInFile; i++)
+            for (size_t i = 0; i < numLinesInFile; i++) // Prints out all password labels
             {
                 cout << i+1 << ". " << objectArray[i].getLabel() << endl;
             }
@@ -98,7 +101,7 @@ int main(int argc, char *argv[])
             size_t secondMenuOption = 0;
             cout << "\nWhich password would you like to view? ";
             cin >> secondMenuOption;
-            secondMenuOption = secondMenuOption - 1; // ***THIS IS A TEMP LINE***
+            secondMenuOption = secondMenuOption - 1; // Zero index correction
 
             system("clear");
             cout << "\tPASSWORD MENU\n" << endl;
@@ -114,8 +117,11 @@ int main(int argc, char *argv[])
             size_t thirdMenuOption = 0;
             cin >> thirdMenuOption;
 
-            // This is if you are editing the selected password
-            if (thirdMenuOption == 2)
+            // if (thirdMenuOption == 1) // Takes you back to the main menu
+            // {
+            //     break;
+            // }
+            if (thirdMenuOption == 2) // This is if you are editing the selected password
             {
                 cout << "Please enter which portion you would like to update..." << endl;
                 cout << "1. Update Label" << endl;
@@ -125,7 +131,7 @@ int main(int argc, char *argv[])
                 size_t editMenuOption = 0;
                 cin >> editMenuOption;
 
-                if (editMenuOption == 1)
+                if (editMenuOption == 1) // Editing the label of selected password
                 {
                     system("clear");
                     cout << "\tPASSWORD MENU" << endl;
@@ -137,7 +143,7 @@ int main(int argc, char *argv[])
                     getline(cin, tempLabel);
                     objectArray[secondMenuOption].setLabel(tempLabel);
                 }
-                else if (editMenuOption == 2)
+                else if (editMenuOption == 2) // Editing the username of selected password
                 {
                     system("clear");
                     cout << "\tPASSWORD MENU" << endl;
@@ -148,7 +154,7 @@ int main(int argc, char *argv[])
                     getline(cin, tempUsername);
                     objectArray[secondMenuOption].setUserName(tempUsername);
                 }
-                else if (editMenuOption == 3)
+                else if (editMenuOption == 3) // Editing the password of selected password
                 {
                     system("clear");
                     cout << "\tPASSWORD MENU" << endl;
@@ -159,7 +165,7 @@ int main(int argc, char *argv[])
                     getline(cin, tempPassword);
                     objectArray[secondMenuOption].setPassword(tempPassword);
                 }
-                else if (editMenuOption == 4)
+                else if (editMenuOption == 4) // Editing the comment of selected password
                 {
                     system("clear");
                     cout << "\tPASSWORD MENU" << endl;
@@ -172,18 +178,22 @@ int main(int argc, char *argv[])
                 }
                 else
                 {
+                    cout << "Uh oh, SOMETHING BROKE. See thirdMenuOption if/else" << endl;
                     break;
                 }
             }
         }
-
-
-        inputStream.close(); // Closes the file
         delete[] objectArray;
         break;
     }
+
     cout << "\nProgram has ended." << endl;
     return 0;
+}
+
+///TODO: xyz 
+void dumpFile(){
+    cout << "dumpFile Reached";
 }
 
 /*
