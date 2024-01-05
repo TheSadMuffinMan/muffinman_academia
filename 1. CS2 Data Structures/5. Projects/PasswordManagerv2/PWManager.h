@@ -1,5 +1,5 @@
 #pragma once
-// #include "PWObject.h"
+#include "PWObject.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -7,5 +7,6 @@
 #include <string>
 
 void welcomeFunction();
-void populateArray();
+passwordObject populateArray();
 void printAllLabels();
+size_t menuNavigation(size_t&);
