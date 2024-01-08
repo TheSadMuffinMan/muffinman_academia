@@ -1,4 +1,5 @@
 #include "PWObject.h"
+#include "PWManager.h"
 
 // Default constructor
 passwordObject::passwordObject()
@@ -22,6 +23,7 @@ passwordObject::passwordObject(std::string inputLabel, std::string inputUsername
     actualPassword = inputUserPassword;
     actualComment = inputComment;
 }
+
 
 // Label getter
 std::string passwordObject::getLabel()

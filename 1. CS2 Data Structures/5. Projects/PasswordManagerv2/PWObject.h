@@ -1,11 +1,13 @@
 #pragma once
 #include "PWManager.h"
+#include <string>
 
 class passwordObject
 {
 public:
     passwordObject(); // Default constructor
     ~passwordObject(); // Destructor
+
     passwordObject(std::string, std::string, std::string, std::string); // Builds our password object
 
     // Getters

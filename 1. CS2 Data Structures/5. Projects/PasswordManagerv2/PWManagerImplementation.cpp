@@ -11,13 +11,6 @@ void welcomeFunction()
     getline(std::cin, tempVar);
 }
 
-// Function that pulls all the data from our csv data file and populates the pwObject Array
-passwordObject populateArray()
-{
-    ifstream inputStream; // Creates the inputFileStream
-    inputStream.open("pwData.csv");
-}
-
 void printAllLabels()
 {
     // Loops through populated object array and prints out the labels
@@ -36,4 +29,14 @@ size_t menuNavigation(size_t &menuChoice)
     std::cout << "Choice: ";
     std::cin >> menuChoice;
     return menuChoice;
+}
+
+passwordObject populateArray()
+{
+    std::ifstream inputStream;
+    inputStream.open("pwData.csv");
+
+    inputStream.close();
+    passwordObject tempObject;
+    return tempObject;
 }

@@ -7,6 +7,6 @@
 #include <string>
 
 void welcomeFunction();
-passwordObject populateArray();
 void printAllLabels();
 size_t menuNavigation(size_t&);
+passwordObject populateArray();

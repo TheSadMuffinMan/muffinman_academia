@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         // View loop
         while(menuChoice == 1)
         {
-            system("clear");
+            // system("clear");
             cout << "***INSIDE VIEW LOOP***" << endl;
             // Print object function
 
@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
         // Edit loop
         while(menuChoice == 2)
         {
-            system("clear");
+            // system("clear");
             cout << "***INSIDE EDIT LOOP***" << endl;
             // Manipulate setters
             // Print object function
@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
         // New pw loop
         while(menuChoice == 3)
         {
-            system("clear");
+            // system("clear");
             cout << "***INSIDE NEW PW LOOP***" << endl;
             // Create new object
             // Print object function
