@@ -1,5 +1,4 @@
 #pragma once
-#include "PWManager.h"
 #include <string>
 
 class passwordObject
