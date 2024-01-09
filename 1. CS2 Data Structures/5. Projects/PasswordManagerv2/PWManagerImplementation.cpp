@@ -1,10 +1,11 @@
 #include "PWManager.h"
+#include <string>
 
 // Starts the program and displays preliminary information
 void welcomeFunction()
 {
-    std::string tempVar;
     system("clear");
+    std::string tempVar;
     std::cout << "Program start" << std::endl;
     std::cout << "\n\nWelcome to the Muffin Man's Password Manager" << std::endl;
     std::cout << "Please press \"Enter\" to continue." << std::endl;
@@ -35,6 +36,9 @@ passwordObject populateArray()
 {
     std::ifstream inputStream;
     inputStream.open("pwData.csv");
+    std::string tempString;
+    getline(std::cin, tempString, ',');
+    std::cout << "tempString: " << tempString << std::endl;
 
     inputStream.close();
     passwordObject tempObject;
