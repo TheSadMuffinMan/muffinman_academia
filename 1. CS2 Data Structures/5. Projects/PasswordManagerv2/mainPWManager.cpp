@@ -5,9 +5,9 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    string tempVar = "yeet";
     welcomeFunction();
     populateArray();
+    string tempVar2 = "yeet";
 
     // Main program loop
     while(true)
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
             // Print object function
 
             cout << "Press enter to return back to main menu." << endl;
-            cin >> tempVar;
+            cin >> tempVar2;
             menuChoice = 0;
             break;
         }
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
             // Print object function
 
             cout << "Press enter to return back to main menu." << endl;
-            cin >> tempVar;
+            cin >> tempVar2;
             menuChoice = 0;
             break;
         }
@@ -56,7 +56,7 @@ int main(int argc, char *argv[])
             // Append object on end of array of objects
 
             cout << "Press enter to return back to main menu." << endl;
-            cin >> tempVar;
+            cin >> tempVar2;
             menuChoice = 0;
             break;
         }

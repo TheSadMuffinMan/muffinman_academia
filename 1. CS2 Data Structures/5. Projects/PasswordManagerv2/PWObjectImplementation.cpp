@@ -1,5 +1,4 @@
 #include "PWObject.h"
-#include "PWManager.h"
 
 // Default constructor
 passwordObject::passwordObject()

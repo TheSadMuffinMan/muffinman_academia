@@ -1,5 +1,7 @@
 #include "PWManager.h"
+#include "PWObject.h"
 #include <string>
+#include <fstream>
 
 // Starts the program and displays preliminary information
 void welcomeFunction()
@@ -9,13 +11,14 @@ void welcomeFunction()
     std::cout << "Program start" << std::endl;
     std::cout << "\n\nWelcome to the Muffin Man's Password Manager" << std::endl;
     std::cout << "Please press \"Enter\" to continue." << std::endl;
+    // std::cin.ignore(256, '\n');
     getline(std::cin, tempVar);
 }
 
 void printAllLabels()
 {
     // Loops through populated object array and prints out the labels
-    system("clear");
+    // system("clear");
     std::cout << "***EXAMPLE OBJECT***" << std::endl;
     std::cout << "***EXAMPLE OBJECT2***" << std::endl;
 }
@@ -34,10 +37,16 @@ size_t menuNavigation(size_t &menuChoice)
 
 passwordObject populateArray()
 {
+    std::cout << "***Inside populateArray() loop***" << std::endl;
     std::ifstream inputStream;
     inputStream.open("pwData.csv");
     std::string tempString;
-    getline(std::cin, tempString, ',');
+    size_t streamLocation = 0;
+    while (inputStream.peek() != EOF)
+    {
+        getline(inputStream, tempString, ',');
+        streamLocation = sizeof(tempString);
+    }
     std::cout << "tempString: " << tempString << std::endl;
 
     inputStream.close();
