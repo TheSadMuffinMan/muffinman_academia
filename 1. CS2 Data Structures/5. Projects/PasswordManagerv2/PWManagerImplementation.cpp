@@ -6,7 +6,7 @@
 // Starts the program and displays preliminary information
 void welcomeFunction()
 {
-    system("clear");
+    // system("clear");
     std::string tempVar;
     std::cout << "Program start" << std::endl;
     std::cout << "\n\nWelcome to the Muffin Man's Password Manager" << std::endl;
@@ -40,14 +40,27 @@ passwordObject populateArray()
     std::cout << "***Inside populateArray() loop***" << std::endl;
     std::ifstream inputStream;
     inputStream.open("pwData.csv");
+
     std::string tempString;
-    size_t streamLocation = 0;
     while (inputStream.peek() != EOF)
     {
-        getline(inputStream, tempString, ',');
-        streamLocation = sizeof(tempString);
+        getline(inputStream, tempString, '\n');
+        // std::size_t startPosition = 0;
+        std::size_t position = 0;
+        std::size_t position2 = 0;
+
+        while(tempString.find(',') != std::string::npos)
+        {
+            position = tempString.find(',');
+            std::cout << "position: " << position << std::endl;
+            break;
+
+            // std::cout << "Updated startPosition: " << startPosition << std::endl;
+            // std::string tempLabel tempUsername, tempPassword, tempComment;
+            // tempLabel = tempString.substr(startPosition, stringLength);
+        }
+
     }
-    std::cout << "tempString: " << tempString << std::endl;
 
     inputStream.close();
     passwordObject tempObject;
