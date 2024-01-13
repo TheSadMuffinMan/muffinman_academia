@@ -45,20 +45,30 @@ passwordObject populateArray()
     while (inputStream.peek() != EOF)
     {
         getline(inputStream, tempString, '\n');
-        // std::size_t startPosition = 0;
-        std::size_t position = 0;
-        std::size_t position2 = 0;
+        // new passwordObject 
+        std::cout << "tempString: " << tempString << std::endl;
+        std::size_t startVariable = 0;
+        std::size_t endVariable = 0;
+        std::string tempLabel;
+        std::string tempData[3];
 
-        while(tempString.find(',') != std::string::npos)
+        std::size_t counter = 0;
+        while(tempString.find(',', startVariable) != std::string::npos) // will always find first comma
         {
-            position = tempString.find(',');
-            std::cout << "position: " << position << std::endl;
-            break;
-
-            // std::cout << "Updated startPosition: " << startPosition << std::endl;
-            // std::string tempLabel tempUsername, tempPassword, tempComment;
-            // tempLabel = tempString.substr(startPosition, stringLength);
+            endVariable = tempString.find(',');
+            tempData[counter] = tempString.substr(startVariable, (endVariable - startVariable));
+            // std::cout << "tempLabel: " << tempLabel << std::endl;
+            startVariable = (endVariable + 1);
+            counter++;
+            
+            if (counter <= 4)
+            {
+                break;
+            }
         }
+        std::cout << "tempData[" << counter << "]: " << tempData[0] << std::endl;
+        std::cout << "tempData[" << counter << "]: " << tempData[1] << std::endl;
+        std::cout << "tempData[" << counter << "]: " << tempData[2] << std::endl;
 
     }
 

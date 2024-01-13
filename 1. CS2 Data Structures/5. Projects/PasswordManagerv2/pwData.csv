@@ -1,4 +1,6 @@
 TEST PASSWORD LABEL,TEST PASSWORD USERNAME,TEST PASSWORD PASSWORD,TEST PASSWORD COMMENT
 Sample Label,Username123,Password!,This is not a secure password config
-TEST3
+TEST3,,,
+Test4,
+Test5
 EOF
