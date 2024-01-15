@@ -21,6 +21,9 @@ public:
     void setUserName(std::string);
     void setComment(std::string);
 
+    // Prints all information inside object
+    void printAllInfo();
+
 private:
     std::string actualLabel, actualUsername, actualPassword, actualComment;
 };

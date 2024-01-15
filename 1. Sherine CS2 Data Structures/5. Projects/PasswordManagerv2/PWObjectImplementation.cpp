@@ -1,4 +1,5 @@
 #include "PWObject.h"
+#include <iostream>
 
 // Default constructor
 passwordObject::passwordObject()
@@ -71,4 +72,18 @@ void passwordObject::setPassword(std::string userPasswordInput)
 void passwordObject::setComment(std::string userComment)
 {
     actualComment = userComment;
+}
+
+// Print Functions
+void passwordObject::printAllInfo()
+{
+    std::string label, un, pw, comment;
+    label = passwordObject::getLabel();
+    un = passwordObject::getUserName();
+    pw = passwordObject::getPassword();
+    comment = passwordObject::getComment();
+    std::cout << "Label: " << label << std::endl;
+    std::cout << "Username: " << un << std::endl;
+    std::cout << "Password: " << pw << std::endl;
+    std::cout << "Comment: " << comment << std::endl;
 }

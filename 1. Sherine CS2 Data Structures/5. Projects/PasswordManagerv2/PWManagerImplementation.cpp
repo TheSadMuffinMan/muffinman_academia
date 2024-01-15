@@ -45,9 +45,9 @@ passwordObject populateArray()
     while (inputStream.peek() != EOF)
     {
         std::string tempString;
+        passwordObject tempObject;
+
         getline(inputStream, tempString, '\n');
-        new passwordObject::passwordObject();
-        std::cout << "tempString: " << tempString << std::endl;
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
         std::string tempLabel;
@@ -57,13 +57,12 @@ passwordObject populateArray()
         while(true)
         {
             endVariable = tempString.find(',', startVariable);
-            tempLabel = tempString.substr(startVariable, (endVariable - startVariable));
-            tempData[counter] = tempLabel;
+            tempData[counter] = tempString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
-            std::cout << "counter: " << counter << std::endl;
-            std::cout << "startVariable: " << startVariable << std::endl;
-            std::cout << "tempLabel: " << tempLabel << std::endl;
-            std::cout << "tempData[" << counter << "]: " << tempData[counter] << std::endl;
+            // std::cout << "counter: " << counter << std::endl;
+            // std::cout << "startVariable: " << startVariable << std::endl;
+            // std::cout << "tempLabel: " << tempLabel << std::endl;
+            // std::cout << "tempData[" << counter << "]: " << tempData[counter] << std::endl;
             counter++;
             if (tempString.find(',', startVariable) == std::string::npos)
             {
@@ -71,8 +70,13 @@ passwordObject populateArray()
             }
         }
 
+        tempObject.setLabel(tempData[0]);
+        tempObject.setUserName(tempData[1]);
+        tempObject.setPassword(tempData[2]);
+        tempObject.setComment(tempData[3]);
+        tempObject.printAllInfo();
+
         inputStream.close();
-        passwordObject tempObject;
         return tempObject;
     }
 }
