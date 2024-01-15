@@ -3,10 +3,10 @@
 // Default constructor
 passwordObject::passwordObject()
 {
-    actualLabel = "DEFAULT";
-    actualUsername = "DEFAULT";
-    actualPassword = "DEFAULT";
-    actualComment = "DEFAULT";
+    actualLabel = "NULL";
+    actualUsername = "NULL";
+    actualPassword = "NULL";
+    actualComment = "NULL";
 }
 
 // Destructor

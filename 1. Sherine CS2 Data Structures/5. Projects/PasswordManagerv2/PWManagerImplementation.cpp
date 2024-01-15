@@ -41,38 +41,38 @@ passwordObject populateArray()
     std::ifstream inputStream;
     inputStream.open("pwData.csv");
 
-    std::string tempString;
+
     while (inputStream.peek() != EOF)
     {
+        std::string tempString;
         getline(inputStream, tempString, '\n');
-        // new passwordObject 
+        new passwordObject::passwordObject();
         std::cout << "tempString: " << tempString << std::endl;
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
         std::string tempLabel;
-        std::string tempData[3];
-
+        std::string tempData[4];
         std::size_t counter = 0;
-        while(tempString.find(',', startVariable) != std::string::npos) // will always find first comma
+
+        while(true)
         {
-            endVariable = tempString.find(',');
-            tempData[counter] = tempString.substr(startVariable, (endVariable - startVariable));
-            // std::cout << "tempLabel: " << tempLabel << std::endl;
+            endVariable = tempString.find(',', startVariable);
+            tempLabel = tempString.substr(startVariable, (endVariable - startVariable));
+            tempData[counter] = tempLabel;
             startVariable = (endVariable + 1);
+            std::cout << "counter: " << counter << std::endl;
+            std::cout << "startVariable: " << startVariable << std::endl;
+            std::cout << "tempLabel: " << tempLabel << std::endl;
+            std::cout << "tempData[" << counter << "]: " << tempData[counter] << std::endl;
             counter++;
-            
-            if (counter <= 4)
+            if (tempString.find(',', startVariable) == std::string::npos)
             {
                 break;
             }
         }
-        std::cout << "tempData[" << counter << "]: " << tempData[0] << std::endl;
-        std::cout << "tempData[" << counter << "]: " << tempData[1] << std::endl;
-        std::cout << "tempData[" << counter << "]: " << tempData[2] << std::endl;
 
+        inputStream.close();
+        passwordObject tempObject;
+        return tempObject;
     }
-
-    inputStream.close();
-    passwordObject tempObject;
-    return tempObject;
 }
