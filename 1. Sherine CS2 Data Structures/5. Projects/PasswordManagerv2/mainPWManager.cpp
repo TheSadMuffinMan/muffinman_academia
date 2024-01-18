@@ -6,8 +6,13 @@ using namespace std;
 int main(int argc, char *argv[])
 {
     welcomeFunction();
-    populateArray();
-    string tempVar2 = "yeet";
+
+    // Main array that contains the Password Objects
+    passwordObject *objectArray = new passwordObject[10];
+
+    populateArray(objectArray[10]);
+    
+    string tempVar2 = "yeet"; // Garb variable
 
     // Main program loop
     while(true)

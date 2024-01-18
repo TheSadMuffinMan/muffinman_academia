@@ -19,8 +19,7 @@ void printAllLabels()
 {
     // Loops through populated object array and prints out the labels
     // system("clear");
-    std::cout << "***EXAMPLE OBJECT***" << std::endl;
-    std::cout << "***EXAMPLE OBJECT2***" << std::endl;
+    std::cout << "*****All Labels*****" << std::endl;
 }
 
 size_t menuNavigation(size_t &menuChoice)
@@ -35,36 +34,32 @@ size_t menuNavigation(size_t &menuChoice)
     return menuChoice;
 }
 
-passwordObject populateArray()
+passwordObject populateArray(passwordObject* objectArray[10])
 {
     std::cout << "***Inside populateArray() loop***" << std::endl;
     std::ifstream inputStream;
     inputStream.open("pwData.csv");
 
-
     while (inputStream.peek() != EOF)
     {
-        std::string tempString;
+        std::string inputString;
         passwordObject tempObject;
 
-        getline(inputStream, tempString, '\n');
+        getline(inputStream, inputString, '\n');
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
         std::string tempLabel;
-        std::string tempData[4];
+        std::string tempData[3];
         std::size_t counter = 0;
 
         while(true)
         {
-            endVariable = tempString.find(',', startVariable);
-            tempData[counter] = tempString.substr(startVariable, (endVariable - startVariable));
+            std::size_t tempCounter = 0;
+            endVariable = inputString.find(',', startVariable);
+            tempData[tempCounter] = inputString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
-            // std::cout << "counter: " << counter << std::endl;
-            // std::cout << "startVariable: " << startVariable << std::endl;
-            // std::cout << "tempLabel: " << tempLabel << std::endl;
-            // std::cout << "tempData[" << counter << "]: " << tempData[counter] << std::endl;
-            counter++;
-            if (tempString.find(',', startVariable) == std::string::npos)
+            tempCounter++;
+            if (inputString.find(',', startVariable)) // inputString.find(',', startVariable) // (endVariable == std::string::npos)
             {
                 break;
             }
@@ -74,9 +69,14 @@ passwordObject populateArray()
         tempObject.setUserName(tempData[1]);
         tempObject.setPassword(tempData[2]);
         tempObject.setComment(tempData[3]);
-        tempObject.printAllInfo();
+        // tempObject.printAllInfo();
 
-        inputStream.close();
-        return tempObject;
+        *objectArray[counter] = tempObject;
+        std::cout << "objectArray[" << counter << "]: \n";
+        objectArray[counter]->printAllInfo();
+        counter++;
     }
+
+    inputStream.close();
+    return *objectArray[10];
 }
