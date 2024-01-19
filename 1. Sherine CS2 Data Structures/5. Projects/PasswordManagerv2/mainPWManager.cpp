@@ -28,16 +28,17 @@ int main(int argc, char *argv[])
         // View loop
         while (menuChoice == 1)
         {
-            // system("clear");
             size_t passwordSelection = 0;
             cout << "Which password would you like to view? ";
             cin >> passwordSelection;
+            system("clear");
+            
             passwordSelection = passwordSelection - 1; // Fixing off by one error
 
             objectArray[passwordSelection].printAllInfo();
 
-            cout << "Press enter to return back to main menu." << endl;
             cin.ignore(1000,'\n');
+            cout << "Press enter to return back to main menu." << endl;
             getline(cin, tempVar2);
             menuChoice = 0;
             break;
@@ -69,6 +70,30 @@ int main(int argc, char *argv[])
                 getline(cin, updatedString);
                 objectArray[passwordSelection].editLabel(updatedString);
                 editSelection = 0;
+            } else if (editSelection == 2) // Edit username section
+            {
+                cout << "Desired update: ";
+                cin.ignore(1000,'\n');
+                getline(cin, updatedString);
+                objectArray[passwordSelection].editUsername(updatedString);
+                editSelection = 0;
+            } else if (editSelection == 3) // Edit username section
+            {
+                cout << "Desired update: ";
+                cin.ignore(1000,'\n');
+                getline(cin, updatedString);
+                objectArray[passwordSelection].editPassword(updatedString);
+                editSelection = 0;
+            } else if (editSelection == 4) // Edit username section
+            {
+                cout << "Desired update: ";
+                cin.ignore(1000,'\n');
+                getline(cin, updatedString);
+                objectArray[passwordSelection].editComment(updatedString);
+                editSelection = 0;
+            } else
+            {
+                cout << "Oh uh, something broke in edit loop" << endl;
             }
 
             cin.ignore(1000,'\n');
@@ -87,8 +112,8 @@ int main(int argc, char *argv[])
             // Print object function
             // Append object on end of array of objects
 
-            cout << "Press enter to return back to main menu." << endl;
             cin.ignore(1000,'\n');
+            cout << "Press enter to return back to main menu." << endl;
             getline(cin, tempVar2);
             menuChoice = 0;
             break;
@@ -100,8 +125,8 @@ int main(int argc, char *argv[])
             cout << "***INSIDE NEW PW LOOP***" << endl;
             // Deletes a password
             
-            cout << "Press enter to return back to main menu." << endl;
             cin.ignore(1000,'\n');
+            cout << "Press enter to return back to main menu." << endl;
             getline(cin, tempVar2);
             menuChoice = 0;
             break;

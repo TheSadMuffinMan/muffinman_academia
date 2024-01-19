@@ -88,7 +88,7 @@ passwordObject* populateArray(std::size_t totalNumObjects)
         }
 
         tempObject.setLabel(tempData[0]);
-        tempObject.setUserName(tempData[1]);
+        tempObject.setUsername(tempData[1]);
         tempObject.setPassword(tempData[2]);
         tempObject.setComment(tempData[3]);
 

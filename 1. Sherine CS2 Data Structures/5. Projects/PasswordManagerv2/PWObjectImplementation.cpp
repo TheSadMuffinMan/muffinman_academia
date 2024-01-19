@@ -66,7 +66,7 @@ void passwordObject::setLabel(std::string userLabel)
     actualLabel = userLabel;
 }
 
-void passwordObject::setUserName(std::string usernameInput)
+void passwordObject::setUsername(std::string usernameInput)
 {
     actualUsername = usernameInput;
 }
@@ -107,10 +107,38 @@ void passwordObject::printLabel()
 }
 
 // "Editor" Functions
+// Edit label function
 void passwordObject::editLabel(std::string updatedString)
 {
     std::string temp = "NULL";
     passwordObject::setLabel(updatedString);
     temp = passwordObject::getLabel();
     std::cout << "Updated Label: " << temp << std::endl;
+}
+
+// Edit username function
+void passwordObject::editUsername(std::string updatedString)
+{
+    std::string temp = "NULL";
+    passwordObject::setUsername(updatedString);
+    temp = passwordObject::getUsername();
+    std::cout << "Updated Username: " << temp << std::endl;
+}
+
+// Edit password function
+void passwordObject::editPassword(std::string updatedString)
+{
+    std::string temp = "NULL";
+    passwordObject::setPassword(updatedString);
+    temp = passwordObject::getPassword();
+    std::cout << "Updated Password: " << temp << std::endl;
+}
+
+// Edit comment function
+void passwordObject::editComment(std::string updatedString)
+{
+    std::string temp = "NULL";
+    passwordObject::setComment(updatedString);
+    temp = passwordObject::getComment();
+    std::cout << "Updated Comment: " << temp << std::endl;
 }

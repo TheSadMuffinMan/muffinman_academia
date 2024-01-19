@@ -18,7 +18,7 @@ public:
     // Setters
     void setAllInfo(std::string, std::string, std::string, std::string);
     void setLabel(std::string);
-    void setUserName(std::string);
+    void setUsername(std::string);
     void setPassword(std::string);
     void setComment(std::string);
 
@@ -28,6 +28,9 @@ public:
 
     // "Editors"
     void editLabel(std::string);
+    void editUsername(std::string);
+    void editPassword(std::string);
+    void editComment(std::string);
 
 private:
     std::string actualLabel, actualUsername, actualPassword, actualComment;
