@@ -9,4 +9,4 @@
 void welcomeFunction();
 void printAllLabels();
 size_t menuNavigation(size_t&);
-passwordObject populateArray();
+passwordObject* populateArray();

@@ -34,13 +34,13 @@ size_t menuNavigation(size_t &menuChoice)
     return menuChoice;
 }
 
-passwordObject populateArray()
+passwordObject* populateArray()
 {
     std::cout << "***Inside populateArray() loop***" << std::endl;
     std::ifstream inputStream;
     inputStream.open("pwData.csv");
     passwordObject *objectArray = new passwordObject[10];
-
+    std::size_t counter = 0;
 
     while (inputStream.peek() != EOF)
     {
@@ -52,22 +52,21 @@ passwordObject populateArray()
         std::size_t endVariable = 0;
         std::string tempLabel;
         std::string tempData[3];
-        std::size_t counter = 0;
+        std::size_t tempCounter = 0;
 
-        while(true)
+        while(inputString.find(',', startVariable) != std::string::npos)
         {
-            std::size_t tempCounter = 0;
             endVariable = inputString.find(',', startVariable);
             tempData[tempCounter] = inputString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
             tempCounter++;
-            if (inputString.find(',', endVariable) == std::string::npos) // inputString.find(',', startVariable) // (endVariable == std::string::npos)
-            {
-                break;
-            } else if (tempCounter >= 4)
-            {
-                break;
-            }
+            // if () // inputString.find(',', startVariable) // (endVariable == std::string::npos)
+            // {
+            //     break;
+            // } else if (tempCounter >= 4)
+            // {
+            //     break;
+            // }
         }
 
         tempObject.setLabel(tempData[0]);
@@ -76,7 +75,7 @@ passwordObject populateArray()
         tempObject.setComment(tempData[3]);
         tempObject.printAllInfo();
 
-        // objectArray[counter].setAllInfo(tempData[0], tempData[1], tempData[2], tempData[3]);
+        objectArray[counter].setAllInfo(tempData[0], tempData[1], tempData[2], tempData[3]);
 
         counter++;
     }
@@ -88,5 +87,5 @@ passwordObject populateArray()
 
     // delete[] objectArray;
     inputStream.close();
-    return *objectArray;
+    return objectArray;
 }
