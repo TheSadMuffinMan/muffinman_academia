@@ -23,6 +23,7 @@ public:
 
     // Prints all information inside object
     void printAllInfo();
+    void printLabel();
 
 private:
     std::string actualLabel, actualUsername, actualPassword, actualComment;

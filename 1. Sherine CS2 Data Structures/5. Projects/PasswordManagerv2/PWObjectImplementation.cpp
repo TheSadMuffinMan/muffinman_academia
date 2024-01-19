@@ -75,6 +75,7 @@ void passwordObject::setComment(std::string userComment)
 }
 
 // Print Functions
+// All info printer
 void passwordObject::printAllInfo()
 {
     std::string label, un, pw, comment;
@@ -86,4 +87,12 @@ void passwordObject::printAllInfo()
     std::cout << "Username: " << un << std::endl;
     std::cout << "Password: " << pw << std::endl;
     std::cout << "Comment: " << comment << std::endl;
+}
+
+// Label printer
+void passwordObject::printLabel()
+{
+    std::string label;
+    label = passwordObject::getLabel();
+    std::cout << "Label: " << label << std::endl;
 }

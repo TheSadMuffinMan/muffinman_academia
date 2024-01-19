@@ -34,11 +34,13 @@ size_t menuNavigation(size_t &menuChoice)
     return menuChoice;
 }
 
-passwordObject populateArray(passwordObject* objectArray[10])
+passwordObject populateArray()
 {
     std::cout << "***Inside populateArray() loop***" << std::endl;
     std::ifstream inputStream;
     inputStream.open("pwData.csv");
+    passwordObject *objectArray = new passwordObject[10];
+
 
     while (inputStream.peek() != EOF)
     {
@@ -71,12 +73,12 @@ passwordObject populateArray(passwordObject* objectArray[10])
         tempObject.setComment(tempData[3]);
         // tempObject.printAllInfo();
 
-        *objectArray[counter] = tempObject;
-        std::cout << "objectArray[" << counter << "]: \n";
-        objectArray[counter]->printAllInfo();
+        objectArray[counter] = tempObject;
+        objectArray[counter].printLabel();
         counter++;
     }
 
+    // delete[] objectArray;
     inputStream.close();
-    return *objectArray[10];
+    return *objectArray;
 }

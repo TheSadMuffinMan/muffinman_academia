@@ -7,10 +7,7 @@ int main(int argc, char *argv[])
 {
     welcomeFunction();
 
-    // Main array that contains the Password Objects
-    passwordObject *objectArray = new passwordObject[10];
-
-    populateArray(objectArray[10]);
+    populateArray();
     
     string tempVar2 = "yeet"; // Garb variable
 
@@ -25,7 +22,7 @@ int main(int argc, char *argv[])
 
         // Each option has it's own loop
         // View loop
-        while(menuChoice == 1)
+        while (menuChoice == 1)
         {
             // system("clear");
             cout << "***INSIDE VIEW LOOP***" << endl;
@@ -38,7 +35,7 @@ int main(int argc, char *argv[])
         }
 
         // Edit loop
-        while(menuChoice == 2)
+        while (menuChoice == 2)
         {
             // system("clear");
             cout << "***INSIDE EDIT LOOP***" << endl;
@@ -52,7 +49,7 @@ int main(int argc, char *argv[])
         }
 
         // New pw loop
-        while(menuChoice == 3)
+        while (menuChoice == 3)
         {
             // system("clear");
             cout << "***INSIDE NEW PW LOOP***" << endl;
@@ -65,8 +62,12 @@ int main(int argc, char *argv[])
             menuChoice = 0;
             break;
         }
-    }
 
+        if (menuChoice == 4)
+        {
+            break;
+        }
+    }
     cout << "End of program." << endl;
     return 0;
 }
