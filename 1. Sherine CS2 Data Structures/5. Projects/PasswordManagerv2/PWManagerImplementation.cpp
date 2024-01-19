@@ -61,7 +61,10 @@ passwordObject populateArray()
             tempData[tempCounter] = inputString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
             tempCounter++;
-            if (inputString.find(',', startVariable)) // inputString.find(',', startVariable) // (endVariable == std::string::npos)
+            if (inputString.find(',', endVariable) == std::string::npos) // inputString.find(',', startVariable) // (endVariable == std::string::npos)
+            {
+                break;
+            } else if (tempCounter >= 4)
             {
                 break;
             }
@@ -71,12 +74,17 @@ passwordObject populateArray()
         tempObject.setUserName(tempData[1]);
         tempObject.setPassword(tempData[2]);
         tempObject.setComment(tempData[3]);
-        // tempObject.printAllInfo();
+        tempObject.printAllInfo();
 
-        objectArray[counter] = tempObject;
-        objectArray[counter].printLabel();
+        // objectArray[counter].setAllInfo(tempData[0], tempData[1], tempData[2], tempData[3]);
+
         counter++;
     }
+
+    // for (size_t i = 0; i < 2; i++)
+    // {
+    //     objectArray[i].printAllInfo();
+    // }
 
     // delete[] objectArray;
     inputStream.close();

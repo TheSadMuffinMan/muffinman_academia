@@ -33,7 +33,7 @@ std::string passwordObject::getLabel()
 
 
 // Username getter
-std::string passwordObject::getUserName()
+std::string passwordObject::getUsername()
 {
     return actualUsername;
 }
@@ -50,16 +50,25 @@ std::string passwordObject::getComment()
     return actualComment;
 }
 
+// Setters
+// All info setter
+void passwordObject::setAllInfo(std::string inputLabel, std::string inputUsername, std::string inputPassword, std::string inputComment)
+{
+    actualLabel = inputLabel;
+    actualUsername = inputUsername;
+    actualPassword = inputPassword;
+    actualComment = inputComment;
+}
+
 // Label setter
 void passwordObject::setLabel(std::string userLabel)
 {
     actualLabel = userLabel;
 }
 
-// Username setter
-void passwordObject::setUserName(std::string userNameInput)
+void passwordObject::setUserName(std::string usernameInput)
 {
-    actualUsername = userNameInput;
+    actualUsername = usernameInput;
 }
 
 // Password setter
@@ -80,7 +89,7 @@ void passwordObject::printAllInfo()
 {
     std::string label, un, pw, comment;
     label = passwordObject::getLabel();
-    un = passwordObject::getUserName();
+    un = passwordObject::getUsername();
     pw = passwordObject::getPassword();
     comment = passwordObject::getComment();
     std::cout << "Label: " << label << std::endl;

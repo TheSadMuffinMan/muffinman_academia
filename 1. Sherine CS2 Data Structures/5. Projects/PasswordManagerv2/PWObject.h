@@ -11,14 +11,15 @@ public:
 
     // Getters
     std::string getLabel();
+    std::string getUsername();
     std::string getPassword();
-    std::string getUserName();
     std::string getComment();
 
     // Setters
+    void setAllInfo(std::string, std::string, std::string, std::string);
     void setLabel(std::string);
-    void setPassword(std::string);
     void setUserName(std::string);
+    void setPassword(std::string);
     void setComment(std::string);
 
     // Prints all information inside object
