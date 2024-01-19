@@ -7,7 +7,11 @@ int main(int argc, char *argv[])
 {
     welcomeFunction();
 
-    populateArray();
+    // Determines how many objects there are in pwData.csv
+    size_t const totalNumObjects = numObjects();
+
+    // Initializes our main pointer that leads to our array of pwObjects located in the heap
+    passwordObject *objectArray = populateArray(totalNumObjects);
     
     string tempVar2 = "yeet"; // Garb variable
 
@@ -15,21 +19,27 @@ int main(int argc, char *argv[])
     while(true)
     {
         // system("clear");
-        printAllLabels();
+        printAllLabels(objectArray, totalNumObjects);
 
         size_t menuChoice = 0;
         menuNavigation(menuChoice);
 
-        // Each option has it's own loop
+        // Each option has its own loop
         // View loop
         while (menuChoice == 1)
         {
             // system("clear");
-            cout << "***INSIDE VIEW LOOP***" << endl;
-            // Print object function
+            size_t passwordSelection = 0;
+            cout << "Which password would you like to view? ";
+            cin >> passwordSelection;
+
+            passwordSelection = passwordSelection - 1; // Fixing off by one error
+
+            objectArray[passwordSelection].printAllInfo();
 
             cout << "Press enter to return back to main menu." << endl;
-            cin >> tempVar2;
+            cin.ignore(1000,'\n');
+            getline(cin, tempVar2);
             menuChoice = 0;
             break;
         }
@@ -43,12 +53,13 @@ int main(int argc, char *argv[])
             // Print object function
 
             cout << "Press enter to return back to main menu." << endl;
-            cin >> tempVar2;
+            cin.ignore(1000,'\n');
+            getline(cin, tempVar2);
             menuChoice = 0;
             break;
         }
 
-        // New pw loop
+        // New loop
         while (menuChoice == 3)
         {
             // system("clear");
@@ -58,16 +69,32 @@ int main(int argc, char *argv[])
             // Append object on end of array of objects
 
             cout << "Press enter to return back to main menu." << endl;
-            cin >> tempVar2;
+            cin.ignore(1000,'\n');
+            getline(cin, tempVar2);
             menuChoice = 0;
             break;
         }
 
-        if (menuChoice == 4)
+        // Delete loop
+        while (menuChoice == 4)
+        {
+            cout << "***INSIDE NEW PW LOOP***" << endl;
+            // Deletes a password
+            
+            cout << "Press enter to return back to main menu." << endl;
+            cin.ignore(1000,'\n');
+            getline(cin, tempVar2);
+            menuChoice = 0;
+            break;
+        }
+
+        if (menuChoice == 5)
         {
             break;
         }
     }
+    
+    delete[] objectArray;
     cout << "End of program." << endl;
     return 0;
 }

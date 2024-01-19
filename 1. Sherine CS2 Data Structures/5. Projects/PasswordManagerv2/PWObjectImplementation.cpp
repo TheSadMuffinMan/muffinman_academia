@@ -103,5 +103,5 @@ void passwordObject::printLabel()
 {
     std::string label;
     label = passwordObject::getLabel();
-    std::cout << "Label: " << label << std::endl;
+    std::cout << label << std::endl;
 }

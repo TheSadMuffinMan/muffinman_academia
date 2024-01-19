@@ -15,11 +15,36 @@ void welcomeFunction()
     getline(std::cin, tempVar);
 }
 
-void printAllLabels()
+// Returns the total number of passwordObjects in pwData.csv
+size_t numObjects()
 {
-    // Loops through populated object array and prints out the labels
+    std::ifstream inputStream;
+    std::string tempVar = "NULL";
+    inputStream.open("pwData.csv");
+    std::size_t totalNumObjects = 0;
+    while (inputStream.peek() != EOF) // Gets the number of lines in the csv file
+    {
+        getline(inputStream, tempVar);
+        totalNumObjects++;
+    }
+    inputStream.close();
+    return totalNumObjects;
+}
+
+// Loops through populated object array and prints out all labels
+void printAllLabels(passwordObject* objectArray, size_t totalNumObjects)
+{
     // system("clear");
-    std::cout << "*****All Labels*****" << std::endl;
+
+    std::size_t counter = 0;
+    std::size_t displayNumber = counter + 1;
+    while (counter < totalNumObjects)
+    {
+        std::cout << displayNumber << ". ";
+        objectArray[counter].printLabel();
+        counter++;
+        displayNumber++;
+    }
 }
 
 size_t menuNavigation(size_t &menuChoice)
@@ -29,17 +54,17 @@ size_t menuNavigation(size_t &menuChoice)
     std::cout << "2. Edit Existing Password" << std::endl;
     std::cout << "3. Create New Password" << std::endl;
     std::cout << "4. Delete Existing Password" << std::endl;
+    std::cout << "5. Exit Program" << std::endl;
     std::cout << "Choice: ";
     std::cin >> menuChoice;
     return menuChoice;
 }
 
-passwordObject* populateArray()
+passwordObject* populateArray(std::size_t totalNumObjects)
 {
-    std::cout << "***Inside populateArray() loop***" << std::endl;
     std::ifstream inputStream;
     inputStream.open("pwData.csv");
-    passwordObject *objectArray = new passwordObject[10];
+    passwordObject *objectArray = new passwordObject[totalNumObjects];
     std::size_t counter = 0;
 
     while (inputStream.peek() != EOF)
@@ -60,32 +85,18 @@ passwordObject* populateArray()
             tempData[tempCounter] = inputString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
             tempCounter++;
-            // if () // inputString.find(',', startVariable) // (endVariable == std::string::npos)
-            // {
-            //     break;
-            // } else if (tempCounter >= 4)
-            // {
-            //     break;
-            // }
         }
 
         tempObject.setLabel(tempData[0]);
         tempObject.setUserName(tempData[1]);
         tempObject.setPassword(tempData[2]);
         tempObject.setComment(tempData[3]);
-        tempObject.printAllInfo();
 
         objectArray[counter].setAllInfo(tempData[0], tempData[1], tempData[2], tempData[3]);
 
         counter++;
     }
 
-    // for (size_t i = 0; i < 2; i++)
-    // {
-    //     objectArray[i].printAllInfo();
-    // }
-
-    // delete[] objectArray;
     inputStream.close();
     return objectArray;
 }
