@@ -26,6 +26,9 @@ public:
     void printAllInfo();
     void printLabel();
 
+    // "Editors"
+    void editLabel(std::string);
+
 private:
     std::string actualLabel, actualUsername, actualPassword, actualComment;
 };

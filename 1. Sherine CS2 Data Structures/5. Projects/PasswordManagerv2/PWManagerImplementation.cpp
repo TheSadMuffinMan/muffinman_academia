@@ -54,7 +54,7 @@ size_t menuNavigation(size_t &menuChoice)
     std::cout << "2. Edit Existing Password" << std::endl;
     std::cout << "3. Create New Password" << std::endl;
     std::cout << "4. Delete Existing Password" << std::endl;
-    std::cout << "5. Exit Program" << std::endl;
+    std::cout << "5. Save & Exit Program" << std::endl;
     std::cout << "Choice: ";
     std::cin >> menuChoice;
     return menuChoice;

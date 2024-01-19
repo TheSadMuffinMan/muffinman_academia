@@ -105,3 +105,12 @@ void passwordObject::printLabel()
     label = passwordObject::getLabel();
     std::cout << label << std::endl;
 }
+
+// "Editor" Functions
+void passwordObject::editLabel(std::string updatedString)
+{
+    std::string temp = "NULL";
+    passwordObject::setLabel(updatedString);
+    temp = passwordObject::getLabel();
+    std::cout << "Updated Label: " << temp << std::endl;
+}

@@ -32,7 +32,6 @@ int main(int argc, char *argv[])
             size_t passwordSelection = 0;
             cout << "Which password would you like to view? ";
             cin >> passwordSelection;
-
             passwordSelection = passwordSelection - 1; // Fixing off by one error
 
             objectArray[passwordSelection].printAllInfo();
@@ -47,13 +46,33 @@ int main(int argc, char *argv[])
         // Edit loop
         while (menuChoice == 2)
         {
-            // system("clear");
-            cout << "***INSIDE EDIT LOOP***" << endl;
-            // Manipulate setters
-            // Print object function
+            size_t passwordSelection = 0;
+            string updatedString = "NULL";
+            cout << "Which password would you like to edit? ";
+            cin >> passwordSelection;
+            passwordSelection = passwordSelection - 1;
 
-            cout << "Press enter to return back to main menu." << endl;
+            std::size_t editSelection = 0;
+            std::cout << "\tEDIT OPTIONS:" << std::endl;
+            std::cout << "1. Edit Label" << std::endl;
+            std::cout << "2. Edit Username" << std::endl;
+            std::cout << "3. Edit Password" << std::endl;
+            std::cout << "4. Edit Comment" << std::endl;
+            std::cout << "5. Go Back" << std::endl;
+            std::cout << "Selection: ";
+            std::cin >> editSelection;
+
+            if (editSelection == 1)
+            {
+                cout << "Desired update: ";
+                cin.ignore(1000,'\n');
+                getline(cin, updatedString);
+                objectArray[passwordSelection].editLabel(updatedString);
+                editSelection = 0;
+            }
+
             cin.ignore(1000,'\n');
+            cout << "Press enter to return back to main menu." << endl;
             getline(cin, tempVar2);
             menuChoice = 0;
             break;
