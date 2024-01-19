@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
             cout << "Which password would you like to view? ";
             cin >> passwordSelection;
             system("clear");
-            
+
             passwordSelection = passwordSelection - 1; // Fixing off by one error
 
             objectArray[passwordSelection].printAllInfo();
@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
             std::cout << "Selection: ";
             std::cin >> editSelection;
 
-            if (editSelection == 1)
+            if (editSelection == 1) // Edit labbel section
             {
                 cout << "Desired update: ";
                 cin.ignore(1000,'\n');
@@ -77,14 +77,14 @@ int main(int argc, char *argv[])
                 getline(cin, updatedString);
                 objectArray[passwordSelection].editUsername(updatedString);
                 editSelection = 0;
-            } else if (editSelection == 3) // Edit username section
+            } else if (editSelection == 3) // Edit password section
             {
                 cout << "Desired update: ";
                 cin.ignore(1000,'\n');
                 getline(cin, updatedString);
                 objectArray[passwordSelection].editPassword(updatedString);
                 editSelection = 0;
-            } else if (editSelection == 4) // Edit username section
+            } else if (editSelection == 4) // Edit comment section
             {
                 cout << "Desired update: ";
                 cin.ignore(1000,'\n');
