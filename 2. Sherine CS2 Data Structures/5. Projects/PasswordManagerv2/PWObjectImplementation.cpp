@@ -91,7 +91,7 @@ void passwordObject::printAllInfo()
     label = passwordObject::getLabel();
     un = passwordObject::getUsername();
     pw = passwordObject::getPassword();
-    comment = passwordObject::getComment();
+    comment = passwordObject::getComment(); 
     std::cout << "Label: " << label << std::endl;
     std::cout << "Username: " << un << std::endl;
     std::cout << "Password: " << pw << std::endl;
