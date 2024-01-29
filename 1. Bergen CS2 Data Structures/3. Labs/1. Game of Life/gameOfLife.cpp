@@ -20,7 +20,13 @@ Should create structs and populate the array
 */
 void initCells(Cell* board[][10], int boardSize)
 {
-
+    for (size_t i = 0; i < 10, i++) // Loops through the function 10 times
+    {
+        for (size_t k = 0; k < boardSize; i++) // Loops through the function boardSize times
+        {
+            //
+        }
+    }
 }
 
 /*
@@ -30,6 +36,9 @@ Structure of file should consist of 10 lines of 0 or 1 to indicate cell state
 */
 void readBoard(Cell* board[][10], int boardSize) 
 {
+    std::size_t fileOption = 0;
+    std::cout << "Which file would you like to read? Options are 1, 2, and 3:";
+    std::cin >> fileOption;
 
 }
 
