@@ -1,9 +1,8 @@
-// Lecture Monday 1-29
-// Classes only exist in C++, not C.
-// Class declarations always start with an upper case.
-// Function prototypes fix the chicken and egg issue (makes it to where function order does not matter)
-// The goal of OOP is to give the program the least amount of access to data as possible
-// OOP (public/private data members) allows for easy data validation.
+// Lecture Tuesday 1-30
+// IDEA: Validate user input with the setter function.
+// The majority of classes will be created on the heap.
+// delete this; line allows us to utilize destructors on an instance base.
+
 
 #include <iostream>
 
@@ -12,6 +11,8 @@ using namespace std;
 class Dog
 {   
     public:
+        Dog(); // This is known as a constructor. Can be used to initialize data members inside classes.
+        ~Dog(); // This is your destructor.
 
         void speak();
 
@@ -33,16 +34,39 @@ class Dog
 
 int main(int argc, char *argv[])
 {
-    Dog dog1;
+    Dog* dogs[5];
 
-    dog1.setName("Hubrfiwronerkwrkjnern");
+    for (int i =0; i < 0; i++)
+    {
+        Dog* dog1 = new Dog();
+        if (i == 2)
+        {
+            dog1->setName("Shia");
+        }
+        dogs[i] = dog1;
+    }
 
-    dog1.speak();
+    // This is the appropriate way to delete/clean up heap allocation in an array.
+    for (int i =0; i < 0; i++)
+    {
+        delete dogs[i];
+    }
 
     return 0;
 }
 
-void Dog::speak() // This/these function(s) are called your class method(s). Data types inside classes are naturally private.
+Dog::Dog()
+{
+    cout << "Constructor has done something." << endl;
+}
+
+Dog::~Dog()
+{
+    delete this;
+    cout << "Destructor has done something." << endl;
+}
+
+void Dog::speak() // This function is called a class method.
 {
     cout << _name << " barks." << endl;
 }
@@ -50,11 +74,6 @@ void Dog::speak() // This/these function(s) are called your class method(s). Dat
 // Setters
 void Dog::setName(string inputName)
 {
-    while (!(inputName.length() < 10))
-    {
-        cout << "The name you have input is longer than 10 chars, try again" << endl;
-        getline(cin, inputName);
-    }
     _name = inputName;
 }
 

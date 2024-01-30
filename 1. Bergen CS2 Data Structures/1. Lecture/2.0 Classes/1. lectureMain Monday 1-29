@@ -1,0 +1,70 @@
+// Lecture Monday 1-29
+// Classes only exist in C++, not C.
+// By default, all data members are private.
+// Class declarations always start with an upper case.
+// Function prototypes fix the chicken and egg issue (makes it to where function order does not matter).
+// The goal of OOP is to give the program/user the least amount of permission to data as possible.
+// OOP (public/private data members) allows for easy data validation.
+
+// This program uses the setter as input validation, see void Dog::setName(string inputName) line
+
+#include <iostream>
+
+using namespace std;
+
+class Dog
+{   
+    public:
+
+        void speak();
+
+        // Setters
+        void setName(string);
+        
+        // Getters
+        string getName();
+
+    // Data types will ALWAYS be private to avoid global variables.
+    // The underline signifies that the variable is a class member variable
+    private:
+        string _name;
+        string _breed;
+        float _weight;
+        int _numLegs;
+        char _gender;
+};
+
+int main(int argc, char *argv[])
+{
+    Dog dog1;
+
+    dog1.setName("Hubrfiwronerkwrkjnern");
+    dog1.speak();
+
+    Dog* dog1 = new Dog(); // Creates a pointer to a Dog object (that is loacted on the heap).
+
+
+    return 0;
+}
+
+void Dog::speak() // This/these function(s) are called your class method(s). Data types inside classes are naturally private.
+{
+    cout << _name << " barks." << endl;
+}
+
+// Setters
+void Dog::setName(string inputName)
+{
+    while (!(inputName.length() < 10))
+    {
+        cout << "The name you have input is longer than 10 chars, try again" << endl;
+        getline(cin, inputName);
+    }
+    _name = inputName;
+}
+
+// Getters
+string Dog::getName()
+{
+    return _name;
+}
