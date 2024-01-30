@@ -2,7 +2,7 @@
 // IDEA: Validate user input with the setter function.
 // The majority of classes will be created on the heap.
 // delete this; line allows us to utilize destructors on an instance base.
-
+// Briefly went over the concept of minimum default arguments/parameters, where the required data members go first.
 
 #include <iostream>
 
@@ -12,6 +12,8 @@ class Dog
 {   
     public:
         Dog(); // This is known as a constructor. Can be used to initialize data members inside classes.
+        // Dog(string, string); // Can be overloaded (having the same name)
+        // Dog(string, string = "Jerk", float = 50, int = 4, char = 'U'); // Minimum default parameters
         ~Dog(); // This is your destructor.
 
         void speak();
@@ -38,7 +40,7 @@ int main(int argc, char *argv[])
 
     for (int i =0; i < 0; i++)
     {
-        Dog* dog1 = new Dog();
+        Dog* dog1 = new Dog("Novo");
         if (i == 2)
         {
             dog1->setName("Shia");
@@ -59,6 +61,16 @@ Dog::Dog()
 {
     cout << "Constructor has done something." << endl;
 }
+
+Dog::Dog(string inputName, string breed, float weight, int numLegs, char gender = 'U');
+{
+    _name = inputName;
+    _breed = breed;
+    _weight = weight;
+    _numLegs = numLegs;
+    _gender = gender;
+}
+
 
 Dog::~Dog()
 {
