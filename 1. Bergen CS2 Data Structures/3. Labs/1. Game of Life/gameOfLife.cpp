@@ -106,10 +106,48 @@ void printCells(Cell* board[][10], int boardSize)
 Function to count the number of live neighbors for each cell.
 Must use the x, y position stored with each cell to determine which neighbors they have
 */
-// void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
-// {
+void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
+{
+    if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y+1)]/top left cell
+    {
+        curCell->numLiveNeighbors++;
+    }
 
-// }
+    if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the [x,(y+1)]/top middle cell
+    {
+        curCell->numLiveNeighbors++;
+    }
+
+    if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the [(x+1),(y+1)]/top right cell
+    {
+        curCell->numLiveNeighbors++;
+    }
+
+    if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks the [(x-1),y]/middle left cell
+    {
+        curCell->numLiveNeighbors++;
+    }
+
+    if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the [(x+1),y]/middle right cell
+    {
+        curCell->numLiveNeighbors++;
+    }
+
+    if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the [(x-1),(y-1)]/bottom left cell
+    {
+        curCell->numLiveNeighbors++;
+    }
+
+    if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the [x,(y+1)]/bottom middle cell
+    {
+        curCell->numLiveNeighbors++;
+    }
+
+    if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y-1)]/bottom right cell
+    {
+        curCell->numLiveNeighbors++;
+    }
+}
 
 /*
 Function to update each cell's state based on number of neighbors
@@ -122,7 +160,7 @@ Any dead cell with exactly three live neighbors becomes a live cell, as if by re
 
 Return if you updated cells or not to break out of while loop from main.
 */
-// bool updateBoardState(Cell* board[][10], int boardSize) 
-// {
-//     return false;
-// }
+bool updateBoardState(Cell* board[][10], int boardSize) 
+{
+    return false;
+}

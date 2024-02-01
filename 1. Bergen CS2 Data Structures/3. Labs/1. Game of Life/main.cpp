@@ -15,19 +15,17 @@ int main(int argc, char* argv[])
     initCells(board, boardSize);
     readBoard(board, boardSize);
 
-    printCells(board, boardSize);
+    while(boardChanged)
+    {
+        clearScreen();
+        cout << "Stage: " << stage << endl;
 
-    // while(boardChanged)
-    // {
-    //     clearScreen();
-    //     cout << "Stage: " << stage << endl;
+        printCells(board, boardSize);
+        boardChanged = updateBoardState(board, boardSize);
 
-    //     printCells(board, boardSize);
-    //     boardChanged = updateBoardState(board, boardSize);
-
-    //     cin.get();
-    //     stage++;
-    // }
+        cin.get();
+        stage++;
+    }
 
     // Clean up board if cells were allocated on the heap
     for (int i = 0; i < 10; i++)
