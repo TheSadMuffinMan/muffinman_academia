@@ -15,7 +15,7 @@ int main(int argc, char* argv[])
     initCells(board, boardSize);
 
     printCells(board, boardSize);
-    // readBoard(board, boardSize);
+    readBoard(board, boardSize);
 
     // while(boardChanged)
     // {
@@ -30,6 +30,13 @@ int main(int argc, char* argv[])
     // }
 
     // Clean up board if cells were allocated on the heap
+    for (int i = 0; i < 10; i++)
+    {
+        for (size_t k = 0; k < boardSize; k++)
+        {
+            delete board[i][k];
+        }
+    }
 
     return 0;
 }

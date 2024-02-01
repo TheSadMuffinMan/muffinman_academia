@@ -39,13 +39,13 @@ Function to read the board from a file
 Prompt for the file to read inside of the function
 Structure of file should consist of 10 lines of 0 or 1 to indicate cell state
 */
-// void readBoard(Cell* board[][10], int boardSize) 
-// {
-//     std::size_t fileOption = 0;
-//     std::cout << "Which file would you like to read? Options are 1, 2, and 3:";
-//     std::cin >> fileOption;
+void readBoard(Cell* board[][10], int boardSize) 
+{
+    std::size_t fileOption = 0;
+    std::cout << "Which file would you like to read? Options are 1, 2, and 3:";
+    std::cin >> fileOption;
 
-// }
+}
 
 /*
 Function to print out all cells to cout
