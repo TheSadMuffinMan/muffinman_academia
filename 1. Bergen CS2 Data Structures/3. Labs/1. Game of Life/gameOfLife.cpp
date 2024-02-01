@@ -20,13 +20,18 @@ Should create structs and populate the array
 */
 void initCells(Cell* board[][10], int boardSize)
 {
-    // for (size_t i = 0; i < 10, i++) // Loops through the function 10 times
-    // {
-    //     for (size_t k = 0; k < boardSize; i++) // Loops through the function boardSize times
-    //     {
-    //         //
-    //     }
-    // }
+    for (int i = 0; i < 10; i++) // i synonymous with y values
+    {
+        for (int k = 0; k < boardSize; k++) // k synonymous with x values/boardSize
+        {
+            Cell* newCell = new Cell;
+            newCell-> y = i;
+            newCell-> x = k;
+            newCell->state = 0;
+            newCell->numLiveNeighbors = 0;
+            board[i][k] = newCell;
+        }
+    }
 }
 
 /*
@@ -34,30 +39,37 @@ Function to read the board from a file
 Prompt for the file to read inside of the function
 Structure of file should consist of 10 lines of 0 or 1 to indicate cell state
 */
-void readBoard(Cell* board[][10], int boardSize) 
-{
-    std::size_t fileOption = 0;
-    std::cout << "Which file would you like to read? Options are 1, 2, and 3:";
-    std::cin >> fileOption;
+// void readBoard(Cell* board[][10], int boardSize) 
+// {
+//     std::size_t fileOption = 0;
+//     std::cout << "Which file would you like to read? Options are 1, 2, and 3:";
+//     std::cin >> fileOption;
 
-}
+// }
 
 /*
 Function to print out all cells to cout
 */
 void printCells(Cell* board[][10], int boardSize)
 {
-
+    for (int i = 0; i < 10; i++) // Y value loop
+    {
+        for (int k = 0; k < boardSize; k++) // x value/boardsize loop
+        {
+            cout << board[i][k]->state;
+        }
+    cout << endl;
+    }
 }
 
 /*
 Function to count the number of live neighbors for each cell.
 Must use the x, y position stored with each cell to determine which neighbors they have
 */
-void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
-{
+// void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
+// {
 
-}
+// }
 
 /*
 Function to update each cell's state based on number of neighbors
@@ -70,7 +82,7 @@ Any dead cell with exactly three live neighbors becomes a live cell, as if by re
 
 Return if you updated cells or not to break out of while loop from main.
 */
-bool updateBoardState(Cell* board[][10], int boardSize) 
-{
-    return false;
-}
+// bool updateBoardState(Cell* board[][10], int boardSize) 
+// {
+//     return false;
+// }

@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 
     for (int i =0; i < 0; i++)
     {
-        Dog* dog1 = new Dog("Novo");
+        // Dog* dog1 = new Dog("Novo");
         if (i == 2)
         {
             dog1->setName("Shia");
@@ -62,14 +62,14 @@ Dog::Dog()
     cout << "Constructor has done something." << endl;
 }
 
-Dog::Dog(string inputName, string breed, float weight, int numLegs, char gender = 'U');
-{
-    _name = inputName;
-    _breed = breed;
-    _weight = weight;
-    _numLegs = numLegs;
-    _gender = gender;
-}
+// Dog::Dog(string inputName, string breed, float weight, int numLegs, char gender = 'U');
+// {
+//     _name = inputName;
+//     _breed = breed;
+//     _weight = weight;
+//     _numLegs = numLegs;
+//     _gender = gender;
+// }
 
 
 Dog::~Dog()

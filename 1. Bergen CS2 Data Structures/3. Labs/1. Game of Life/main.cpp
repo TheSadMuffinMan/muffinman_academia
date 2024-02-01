@@ -13,19 +13,21 @@ int main(int argc, char* argv[])
     Cell* board[10][10];
 
     initCells(board, boardSize);
-    readBoard(board, boardSize);
 
-    while(boardChanged)
-    {
-        clearScreen();
-        cout << "Stage: " << stage << endl;
+    printCells(board, boardSize);
+    // readBoard(board, boardSize);
 
-        printCells(board, boardSize);
-        boardChanged = updateBoardState(board, boardSize);
+    // while(boardChanged)
+    // {
+    //     clearScreen();
+    //     cout << "Stage: " << stage << endl;
 
-        cin.get();
-        stage++;
-    }
+    //     printCells(board, boardSize);
+    //     boardChanged = updateBoardState(board, boardSize);
+
+    //     cin.get();
+    //     stage++;
+    // }
 
     // Clean up board if cells were allocated on the heap
 
