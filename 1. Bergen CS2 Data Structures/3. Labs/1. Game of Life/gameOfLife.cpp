@@ -68,7 +68,7 @@ void readBoard(Cell* board[][10], int boardSize)
         string tempString;
         getline(inputStream, tempString); // WORKING
 
-        for (size_t k = 0; k < boardSize; k++)
+        for (int k = 0; k < boardSize; k++)
         {
             int temp;
             temp = tempString.at(k); // If the char is 0, function returns 48. If 1, returns 49. Manually changes it back to 1s and 0s.
@@ -94,7 +94,7 @@ void printCells(Cell* board[][10], int boardSize)
 {
     for (int i = 0; i < 10; i++) // Y value loop
     {
-        for (int k = 0; k < boardSize; k++) // x value/boardsize loop
+        for (int k = 0; k < boardSize; k++) // X value/boardsize loop
         {
             cout << board[i][k]->state;
         }
@@ -108,44 +108,48 @@ Must use the x, y position stored with each cell to determine which neighbors th
 */
 void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
 {
-    if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y+1)]/top left cell
+    if ((curCell->x) <= 1 && (curCell->x) >= 8) // If the curCell is a middle cell
     {
-        curCell->numLiveNeighbors++;
-    }
+        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y+1)]/top left cell
+        {
+            curCell->numLiveNeighbors++;
+        }
 
-    if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the [x,(y+1)]/top middle cell
-    {
-        curCell->numLiveNeighbors++;
-    }
+        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the [x,(y+1)]/top middle cell
+        {
+            curCell->numLiveNeighbors++;
+        }
 
-    if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the [(x+1),(y+1)]/top right cell
-    {
-        curCell->numLiveNeighbors++;
-    }
+        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the [(x+1),(y+1)]/top right cell
+        {
+            curCell->numLiveNeighbors++;
+        }
 
-    if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks the [(x-1),y]/middle left cell
-    {
-        curCell->numLiveNeighbors++;
-    }
+        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks the [(x-1),y]/middle left cell
+        {
+            curCell->numLiveNeighbors++;
+        }
 
-    if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the [(x+1),y]/middle right cell
-    {
-        curCell->numLiveNeighbors++;
-    }
+        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the [(x+1),y]/middle right cell
+        {
+            curCell->numLiveNeighbors++;
+        }
 
-    if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the [(x-1),(y-1)]/bottom left cell
-    {
-        curCell->numLiveNeighbors++;
-    }
+        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the [(x-1),(y-1)]/bottom left cell
+        {
+            curCell->numLiveNeighbors++;
+        }
 
-    if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the [x,(y+1)]/bottom middle cell
-    {
-        curCell->numLiveNeighbors++;
-    }
+        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the [x,(y+1)]/bottom middle cell
+        {
+            curCell->numLiveNeighbors++;
+        }
 
-    if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y-1)]/bottom right cell
-    {
-        curCell->numLiveNeighbors++;
+        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y-1)]/bottom right cell
+        {
+            curCell->numLiveNeighbors++;
+        }
+
     }
 }
 
@@ -162,5 +166,47 @@ Return if you updated cells or not to break out of while loop from main.
 */
 bool updateBoardState(Cell* board[][10], int boardSize) 
 {
+    // Loop goes through every cell and counts the number of alive neighbors it has but DOES NOT UPDATE ANYTHING
+    for (int i = 0; i < 10; i++)
+    {
+        for (int k = 0; k < boardSize; k++)
+        {
+            Cell* curCell;
+            curCell->x = i;
+            curCell->y = k;
+
+            findNumLiveNeighbors(board, boardSize, curCell);
+        }
+    }
+
+    // Loop implements the logic of the game for each cell
+    for (int i = 0; i < 10; i++)
+    {
+        for (int k = 0; k < boardSize; k++)
+        {
+            if (board[i][k]->state == 0) // If a cell is dead
+            {
+                if (board[i][k]->numLiveNeighbors == 3) // And if a cell has 3 neighbors
+                {
+                    board[i][k]->state = 1; // REVIIIIIIIVE
+                    return true;
+                }
+            }
+
+            if (board[i][k]->state == 1) // If a cell is alive
+            {
+                if (board[i][k]->numLiveNeighbors <= 1) // And it has 1 or less alive neighbors (underpopulation)
+                {
+                    board[i][k]->state = 0;
+                    return true;
+                }
+                else if (board[i][k]->numLiveNeighbors >= 4) // And it has 4 or more alive neighbors (overpopulation)
+                {
+                    board[i][k]->state = 0;
+                    return true;
+                }
+            }
+        }
+    }
     return false;
 }
