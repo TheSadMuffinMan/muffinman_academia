@@ -39,12 +39,52 @@ Function to read the board from a file
 Prompt for the file to read inside of the function
 Structure of file should consist of 10 lines of 0 or 1 to indicate cell state
 */
-void readBoard(Cell* board[][10], int boardSize) 
+void readBoard(Cell* board[][10], int boardSize)
 {
     std::size_t fileOption = 0;
-    std::cout << "Which file would you like to read? Options are 1, 2, and 3:";
+    std::cout << "Which file would you like to read? Options are 1, 2, and 3: ";
     std::cin >> fileOption;
 
+    ifstream inputStream; // Creates the input stream to pull our data from the txt files
+    if (fileOption == 1)
+    {
+        inputStream.open("board0.txt");
+    }
+    else if (fileOption == 2)
+    {
+        inputStream.open("board1.txt");
+    }
+    else if (fileOption == 3)
+    {
+        inputStream.open("board2.txt");
+    }
+    else
+    {
+        cout << "readBoard() ***BROKE***" << endl;
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        string tempString;
+        getline(inputStream, tempString); // WORKING
+
+        for (size_t k = 0; k < boardSize; k++)
+        {
+            int temp;
+            temp = tempString.at(k); // If the char is 0, function returns 48. If 1, returns 49. Manually changes it back to 1s and 0s.
+            if (temp == 48)
+            {
+                temp = 0;
+            }
+            else
+            {
+                temp = 1;
+            }
+            board[i][k]->state = temp;
+        }
+    }
+
+    inputStream.close(); // Closes the file
 }
 
 /*

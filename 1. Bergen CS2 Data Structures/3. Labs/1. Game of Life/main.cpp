@@ -13,9 +13,9 @@ int main(int argc, char* argv[])
     Cell* board[10][10];
 
     initCells(board, boardSize);
+    readBoard(board, boardSize);
 
     printCells(board, boardSize);
-    readBoard(board, boardSize);
 
     // while(boardChanged)
     // {
