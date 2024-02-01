@@ -15,12 +15,13 @@ int main(int argc, char* argv[])
     initCells(board, boardSize);
     readBoard(board, boardSize);
 
-    while(boardChanged) {
+    while(boardChanged)
+    {
         clearScreen();
         cout << "Stage: " << stage << endl;
 
         printCells(board, boardSize);
-        boardChanged = updateCellState(board, boardSize);
+        boardChanged = updateBoardState(board, boardSize);
 
         cin.get();
         stage++;

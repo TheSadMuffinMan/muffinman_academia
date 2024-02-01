@@ -20,13 +20,13 @@ Should create structs and populate the array
 */
 void initCells(Cell* board[][10], int boardSize)
 {
-    for (size_t i = 0; i < 10, i++) // Loops through the function 10 times
-    {
-        for (size_t k = 0; k < boardSize; i++) // Loops through the function boardSize times
-        {
-            //
-        }
-    }
+    // for (size_t i = 0; i < 10, i++) // Loops through the function 10 times
+    // {
+    //     for (size_t k = 0; k < boardSize; i++) // Loops through the function boardSize times
+    //     {
+    //         //
+    //     }
+    // }
 }
 
 /*
@@ -54,7 +54,7 @@ void printCells(Cell* board[][10], int boardSize)
 Function to count the number of live neighbors for each cell.
 Must use the x, y position stored with each cell to determine which neighbors they have
 */
-void findNumNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
+void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
 {
 
 }
@@ -70,7 +70,7 @@ Any dead cell with exactly three live neighbors becomes a live cell, as if by re
 
 Return if you updated cells or not to break out of while loop from main.
 */
-bool updateCellState(Cell* board[][10], int boardSize) 
+bool updateBoardState(Cell* board[][10], int boardSize) 
 {
     return false;
 }

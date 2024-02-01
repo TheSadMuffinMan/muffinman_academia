@@ -43,12 +43,12 @@ Fraction::~Fraction()
     //
 }
 
-void setNumerator(int inputNumerator)
+void Fraction::setNumerator(int inputNumerator)
 {
     _numerator = inputNumerator;
 }
 
-void setDenominator(int inputDenominator)
+void Fraction::setDenominator(int inputDenominator)
 {
     _denominator = inputDenominator;
 }
