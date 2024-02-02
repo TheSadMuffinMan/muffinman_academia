@@ -108,7 +108,61 @@ Must use the x, y position stored with each cell to determine which neighbors th
 */
 void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell) 
 {
-    if ((curCell->x) <= 1 && (curCell->x) >= 8) // If the curCell is a middle cell
+    if ((curCell->x == 0) && (curCell->y == 0)) // If curCell is (0,0)/Top left corner
+    {
+        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks cell below corner
+        {
+            curCell->numLiveNeighbors++;
+        }
+
+        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks diagonal cell
+        {
+            curCell->numLiveNeighbors++;
+        }
+
+        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks right cell
+        {
+            curCell->numLiveNeighbors++;
+        }
+    }
+
+    if ((curCell->x == 0) && (curCell->y == 9)) // If curCell is (0,9)/Top right
+    {
+        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks left cell
+        {
+            curCell->numLiveNeighbors++;
+        }
+
+        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks diagonal cell
+        {
+            curCell->numLiveNeighbors;
+        }
+
+        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the below cell
+        {
+            curCell->numLiveNeighbors++;
+        }
+    }
+
+    if ((curCell->x == 9) && (curCell->y == 0)) // If curCell is (9,0)/Bottom left
+    {
+        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks above cell
+        {
+            curCell->numLiveNeighbors++;
+        }
+
+        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks diagonal cell
+        {
+            curCell->numLiveNeighbors;
+        }
+
+        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the right cell
+        {
+            curCell->numLiveNeighbors++;
+        }
+    }
+
+    if (((curCell->x) <= 1) && ((curCell->x) >= 8) && ((curCell->y) <= 1) && ((curCell->y) >= 8)) // If the curCell is a middle cell
     {
         if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y+1)]/top left cell
         {
