@@ -339,12 +339,12 @@ bool updateBoardState(Cell* board[][10], int boardSize)
 
             if (board[i][k]->state == 1) // If a cell is alive
             {
-                if (board[i][k]->numLiveNeighbors <= 1) // And it has 1 or less alive neighbors (underpopulation)
+                if (board[i][k]->numLiveNeighbors < 2) // And it has 1 or less alive neighbors (underpopulation)
                 {
                     board[i][k]->state = 0;
                     return true;
                 }
-                else if (board[i][k]->numLiveNeighbors >= 4) // And it has 4 or more alive neighbors (overpopulation)
+                else if (board[i][k]->numLiveNeighbors > 3) // And it has 4 or more alive neighbors (overpopulation)
                 {
                     board[i][k]->state = 0;
                     return true;
