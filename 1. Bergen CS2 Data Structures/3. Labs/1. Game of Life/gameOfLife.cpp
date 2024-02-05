@@ -110,17 +110,17 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 {
     if ((curCell->x == 0) && (curCell->y == 0)) // If curCell is (0,0)/Top left corner
     {
-        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks cell below corner
+        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks cell below corner
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks bottom right diagonal cell
+        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks bottom right diagonal cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks right cell
+        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks right cell
         {
             curCell->numLiveNeighbors++;
         }
@@ -128,17 +128,17 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 
     if ((curCell->x == 0) && (curCell->y == 9)) // If curCell is (0,9)/Top right
     {
-        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks left cell
+        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks left cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks lower left diagonal cell
+        if (board[(curCell->x) + 1][(curCell->y) - 1]->state == 1) // Checks lower left diagonal cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the below cell
+        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the below cell
         {
             curCell->numLiveNeighbors++;
         }
@@ -146,17 +146,17 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 
     if ((curCell->x == 9) && (curCell->y == 0)) // If curCell is (9,0)/Bottom left
     {
-        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks above cell
+        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks above cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks upper right diagonal cell
+        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks upper right diagonal cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the right cell
+        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the right cell
         {
             curCell->numLiveNeighbors++;
         }
@@ -164,17 +164,17 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 
     if ((curCell->x == 9) && (curCell->y == 9)) // If curCell is (9,9)/Bottom right
     {
-        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks left cell
+        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks left cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks upper left diagonal cell
+        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks upper left diagonal cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the above cell
+        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks the above cell
         {
             curCell->numLiveNeighbors++;
         }
@@ -182,17 +182,17 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 
     if (((curCell->x == 0) && (curCell->y != 0)) && ((curCell->x == 0) && (curCell->y != 9))) // If a cell is on the top row but NOT the corners
     {
-        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the lower left diag
+        if (board[(curCell->x) + 1][(curCell->y) - 1]->state == 1) // Checks the lower left diag
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the middle lower
+        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the middle lower
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the lower right diag
+        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the lower right diag
         {
             curCell->numLiveNeighbors++;
         }
@@ -200,17 +200,17 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 
     if (((curCell->y == 0) && (curCell->x != 0)) && ((curCell->y == 0) && (curCell->x != 9))) // If a cell is on the left column but NOT the corners
     {
-        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the upper right diag
+        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the upper right diag
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the middle right
+        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the middle right
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the lower right diag
+        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the lower right diag
         {
             curCell->numLiveNeighbors++;
         }
@@ -218,17 +218,17 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 
     if (((curCell->x == 9) && (curCell->x != 0)) && ((curCell->x == 9) && (curCell->y != 9))) // If a cell is on the bottom row but NOT the corners
     {
-        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the upper left diag
+        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the upper left diag
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the upper middle
+        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks the upper middle
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the upper right diag
+        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the upper right diag
         {
             curCell->numLiveNeighbors++;
         }
@@ -236,17 +236,17 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 
     if (((curCell->y == 9) && (curCell->x != 0)) && ((curCell->y == 9) && (curCell->x != 9))) // If a cell is on the right column but NOT the corners
     {
-        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the upper left diag
+        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the upper left diag
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks the left middle
+        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the left middle
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the lower left diag
+        if (board[(curCell->x) + 1][(curCell->y) - 1]->state == 1) // Checks the lower left diag
         {
             curCell->numLiveNeighbors++;
         }
@@ -255,42 +255,42 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
 
     if (((curCell->x >= 1) && (curCell->x <= 8)) && ((curCell->y >= 1) && (curCell->y <= 8))) // If the curCell is a middle cell
     {
-        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y+1)]/top left cell
+        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the [(x-1),(y-1)]/top left cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the [x,(y+1)]/top middle cell
+        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks the [(x-1),y]/top middle cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the [(x+1),(y+1)]/top right cell
+        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y+1)]/top right cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][curCell->y]->state == 1) // Checks the [(x-1),y]/middle left cell
+        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the [x,(y-1)]/middle left cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the [(x+1),y]/middle right cell
+        if (board[curCell->x][(curCell->y) + 1]->state == 1) // Checks the [x,(y+1)]/middle right cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][(curCell->y) - 1]->state == 1) // Checks the [(x-1),(y-1)]/bottom left cell
+        if (board[(curCell->x) + 1][(curCell->y) - 1]->state == 1) // Checks the [(x+1),(y-1)]/bottom left cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[curCell->x][(curCell->y) - 1]->state == 1) // Checks the [x,(y+1)]/bottom middle cell
+        if (board[(curCell->x) + 1][curCell->y]->state == 1) // Checks the [(x+1),y]/bottom middle cell
         {
             curCell->numLiveNeighbors++;
         }
 
-        if (board[(curCell->x) - 1][(curCell->y) + 1]->state == 1) // Checks the [(x-1),(y-1)]/bottom right cell
+        if (board[(curCell->x) + 1][(curCell->y) + 1]->state == 1) // Checks the [(x+1),(y+1)]/bottom right cell
         {
             curCell->numLiveNeighbors++;
         }
