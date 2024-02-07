@@ -7,7 +7,7 @@ namespace person
     class Student : public Person
     {
         public:
-            Student(int = 0; string = "");
+            Student(int = 0, string = "");
             void setCourse(string);
         
         private:
