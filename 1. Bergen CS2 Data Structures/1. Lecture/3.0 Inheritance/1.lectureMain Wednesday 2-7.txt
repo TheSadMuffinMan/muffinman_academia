@@ -1,0 +1,68 @@
+// Start of Class Inheritance
+// Went over protected type
+
+#include <iostream>
+
+using namespace std;
+
+class Base
+{
+    public:
+        Base();
+    
+    // The protected keyword allows an inherited class to access the member functions of
+    // the base class.
+    // Usually make attributes at least protected, default is private.
+    protected:
+        int getN1();
+
+    private:
+        int _n1;
+        string _name;
+};
+
+// The class Derived can see everything inside Base, but it can't really access anything
+// The public keyword allows access to public members, same with private.
+class Derived : private Base
+{
+    public:
+        Derived();
+        int derivedGetN1();
+    
+    private:
+        string _something;
+    
+};
+
+int main(int argc, char* argv[])
+{
+    Derived d1;
+
+    cout << "d1.getN1(): " << d1.derivedGetN1() << endl;
+    
+    return 0;
+}
+
+int Base::getN1()
+{
+    return this->getN1();
+    // return (*this).getN1(); // The above line is functionally the same as this one
+}
+
+int Derived::derivedGetN1()
+{
+    return this->getN1();
+}
+
+Base::Base()
+{
+    cout << "base constructor" << endl;
+    this->_n1 = 0;
+    this->_name = "";
+}
+
+Derived::Derived()
+{
+    cout << "Derived constructor" << endl;
+    _something = "";
+}
