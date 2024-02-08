@@ -113,13 +113,27 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
     {
         for (int i = ((curCell->x) - 1); i <= ((curCell->x) + 1); i++)
         {
-            // If k/y is negative, or if k is greater than boardSize, iterate the loop.
+            // Skips the middle cell/itself
+            if ((k == curCell->y) && (i == curCell->x))
+            {
+                continue;
+            }
+
+            if ((((i > 0) && (i <= boardSize)) && ((k > 0) && (k <= boardSize))) && (board[k][i]->state == 1))
+            {
+                curCell->numLiveNeighbors++;
+            } else
+            {
+                continue;
+            }
+            /* WHY WON'T YOU WORKKKKKKKKKKKKKKKKKKKKKKK
+            // If k/y is negative, or if k is greater than boardSize, iterate/skip the loop.
             if ((k < 0) || (k >= boardSize))
             {
                 continue;
             }
 
-            // If i/x is negative, or if i is bigger than boardSize, iterate the loop
+            // If i/x is negative, or if i is bigger than boardSize, iterate/skip the loop
             if ((i < 0) || (i >= boardSize))
             {
                 continue;
@@ -131,11 +145,7 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
                 continue;
             }
             // By now, we have filtered out all of the cells outside of array's memory location
-
-            if (board[k][i]->state == 1)
-            {
-                curCell->numLiveNeighbors++;
-            }
+            */
         }
     }
 }
