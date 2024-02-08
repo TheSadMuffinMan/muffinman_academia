@@ -12,7 +12,7 @@ LABS:
         Self Grade + Reasoning: 80, incomplete, late
 
     Lab 2 - Point Distance
-        Status: Have not started
+        Status: Early in development process
         Due Date: Mon Feb 12
         Completion Date: INCOMPLETE
             Submitted to D2L?: NO
