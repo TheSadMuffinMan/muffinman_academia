@@ -164,46 +164,41 @@ Return if you updated cells or not to break out of while loop from main.
 bool updateBoardState(Cell* board[][10], int boardSize) 
 {
     // Loop goes through every cell and counts the number of alive neighbors it has but DOES NOT UPDATE ANYTHING
-    for (int i = 0; i < boardSize; i++)
+    for (int k = 0; k < boardSize; k++)
     {
-        for (int k = 0; k < boardSize; k++)
+        for (int i = 0; i < boardSize; i++)
         {
-            Cell* curCell;
-            
-            curCell->x = i;
-            curCell->y = k;
-
-            findNumLiveNeighbors(board, boardSize, curCell);
+            findNumLiveNeighbors(board, boardSize, board[k][i]);
         }
     }
 
     // Loop implements the logic of the game for each cell
-    for (int i = 0; i < boardSize; i++)
+    for (int k = 0; k < boardSize; k++)
     {
-        for (int k = 0; k < boardSize; k++)
+        for (int i = 0; i < boardSize; i++)
         {
             // If a cell is dead
-            if (board[i][k]->state == 0)
+            if (board[k][i]->state == 0)
             {
                 // And if a cell has 3 neighbors
-                if (board[i][k]->numLiveNeighbors == 3)
+                if (board[k][i]->numLiveNeighbors == 3)
                 {
-                    board[i][k]->state = 1; // REVIIIIIIIVE
+                    board[k][i]->state = 1; // REVIIIIIIIVE
                     return true;
                 }
             }
 
             // If a cell is alive
-            if (board[i][k]->state == 1)
+            if (board[k][i]->state == 1)
             {
-                if (board[i][k]->numLiveNeighbors < 2) // And it has 1 or less alive neighbors (underpopulation)
+                if (board[k][i]->numLiveNeighbors < 2) // And it has 1 or less alive neighbors (underpopulation)
                 {
-                    board[i][k]->state = 0;
+                    board[k][i]->state = 0;
                     return true;
                 }
-                else if (board[i][k]->numLiveNeighbors > 3) // And it has 4 or more alive neighbors (overpopulation)
+                else if (board[k][i]->numLiveNeighbors > 3) // And it has 4 or more alive neighbors (overpopulation)
                 {
-                    board[i][k]->state = 0;
+                    board[k][i]->state = 0;
                     return true;
                 }
             }
