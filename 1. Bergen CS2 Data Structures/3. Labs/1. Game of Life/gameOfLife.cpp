@@ -119,7 +119,7 @@ void findNumLiveNeighbors(Cell* board[][10], int boardSize, Cell* curCell)
                 continue;
             }
 
-            if ((((i > 0) && (i <= boardSize)) && ((k > 0) && (k <= boardSize))) && (board[k][i]->state == 1))
+            if ((((i >= 0) && (i < boardSize)) && ((k >= 0) && (k < boardSize))) && (board[k][i]->state == 1))
             {
                 curCell->numLiveNeighbors++;
             } else
