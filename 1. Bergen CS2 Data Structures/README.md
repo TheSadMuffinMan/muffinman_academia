@@ -7,13 +7,13 @@ LABS:
     Lab 1 - Conway's Game of Life
         Status: Turned in, but incomplete
         Due Date: Mon Feb 5
-        Turn in Date: 12 Feb 24
+        Turn in Date: Feb 12 2024
             Submitted to D2L?: YES
         Self Grade + Reasoning: 70, incomplete, late
 
     Lab 2 - Point Distance
         Status: Early in development process
-        Due Date: Mon Feb 12
+        Due Date: Mon Feb 19 2024
         Turn in Date: INCOMPLETE
             Submitted to D2L?: NO
         Self Grade + Reasoning: N/A
@@ -22,7 +22,7 @@ HOMEWORK:
     
     Homework 1 - Movie Database
         Status: Have not started
-        Due Date: Mon Feb 19
+        Due Date: Mon Feb 19 2024
         Turn in Date: INCOMPLETE
             Submitted to D2L?: NO
         Self Grade + Reasoning: N/A
