@@ -1,3 +1,5 @@
+// https://docs.google.com/document/d/1ftT_SMwfc_sBhfx6D-zFW9r_1jx6Ku8A8y1KCiB1nCk/edit
+
 #include "point.h"
 
 //Constructor
@@ -7,6 +9,7 @@ points::Point::Point(int X, int Y, points::Point* closestPoint)
     y = Y;
     nearestPoint = closestPoint;
 }
+
 //Destructor
 points::Point::~Point()
 {
