@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
         cout << "Stage: " << stage << endl;
 
         printCells(board, boardSize);
-        boardChanged = updateBoardState(board, boardSize);
+        boardChanged = updateCellState(board, boardSize);
 
         cin.get();
         stage++;

@@ -5,16 +5,16 @@ Kattis Problems Complete: 0
 LABS:
 
     Lab 1 - Conway's Game of Life
-        Status: INCOMPLETE
+        Status: Turned in, but incomplete
         Due Date: Mon Feb 5
-        Completion Date: INCOMPLETE
-            Submitted to D2L?: NO
-        Self Grade + Reasoning: 80, incomplete, late
+        Turn in Date: 12 Feb 24
+            Submitted to D2L?: YES
+        Self Grade + Reasoning: 70, incomplete, late
 
     Lab 2 - Point Distance
         Status: Early in development process
         Due Date: Mon Feb 12
-        Completion Date: INCOMPLETE
+        Turn in Date: INCOMPLETE
             Submitted to D2L?: NO
         Self Grade + Reasoning: N/A
 
@@ -23,6 +23,6 @@ HOMEWORK:
     Homework 1 - Movie Database
         Status: Have not started
         Due Date: Mon Feb 19
-        Completion Date: INCOMPLETE
+        Turn in Date: INCOMPLETE
             Submitted to D2L?: NO
         Self Grade + Reasoning: N/A
