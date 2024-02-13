@@ -23,7 +23,7 @@ namespace movieNamespace
             void setYear(int);
             void setGenre(std::string);
             void setRating(int);
-            void setDirector
+            void setDirector(std::string);
 
         private:
             std::string _imbdTitleID;
