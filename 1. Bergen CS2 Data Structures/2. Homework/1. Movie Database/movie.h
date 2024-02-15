@@ -1,7 +1,5 @@
 #pragma once
 
-#include "movie.cpp"
-#include "database.h"
 #include <iostream>
 
 namespace movieNamespace

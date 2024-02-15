@@ -1,10 +1,10 @@
 #pragma once
 #include <iostream>
 #include "movie.h"
-#include "main.cpp"
 
 // The database should have the following variables: name, db_id, array for Movies (as pointers)
-
+// Add movie, remove movie (given ID), display all movies, search for movie given title or genre
+// and print out a table of them.
 class Database
 {
     public:
