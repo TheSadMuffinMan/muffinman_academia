@@ -4,7 +4,6 @@
 
 namespace movieNamespace
 {
-    // Put the class in here
     class MovieClass
     {
         public:
@@ -18,7 +17,7 @@ namespace movieNamespace
 
             // Setters
             void setIMBDTitleID(std::string);
-            void getMovieTitle(std::string);
+            void setMovieTitle(std::string);
             void setYear(int);
             void setGenre(std::string);
             void setRating(int);

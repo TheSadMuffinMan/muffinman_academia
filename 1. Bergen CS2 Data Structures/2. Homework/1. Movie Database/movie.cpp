@@ -38,7 +38,7 @@ namespace movieNamespace
         _imbdTitleID = desiredTitle;
     }
 
-    void MovieClass::getMovieTitle(std::string desiredTitle)
+    void MovieClass::setMovieTitle(std::string desiredTitle)
     {
         _movieTitle = desiredTitle;
     }
