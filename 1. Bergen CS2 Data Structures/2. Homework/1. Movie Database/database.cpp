@@ -8,40 +8,56 @@ Database::Database()
     newObject->setMovieTitle(nullptr);
 }
 
+// Deconstructor
 Database::~Database()
 {
-    // Deconstructor
+    std::cout << "Hey, you're inside ~Database() deconstructor." << std::endl;
 }
 
 // Main methods
+
+// Function initializes each movieClass to NULLPTR.
+// Creates an input stream.
+// Reads data from movies.cpp.
+// Breaks data apart.
+// Assigns data to new class, iterates counter.
+// Updates _movieListArray[] and returns the array.
 void Database::loadData()
 {
-    // Loads the data
+    std::cout << "Inside Database::loadData()." << std::endl;
 }
 
+// Displays all movie objects inside movieListArray
 void Database::displayAllMovies()
 {
-    // Displays all movie objects inside movieListArray
+    std::cout << "Inside Database::displayAllMovies." << std::endl;
 }
 
+// Instantiates a new MovieClass.
+// Asks for user input/data.
+// Assigns user input to the new MovieClass.
+// Appends new pointer to MovieClass inside _movieListArray[].
 void Database::addMovie()
 {
-    // Adds a movie
+    std::cout << "Inside Database::addMovie()." << std::endl;
 }
 
+// Removies a movie
 void Database::removeMovie()
 {
-    // Removies a movie
+    std::cout << "Inside Database::removieMovie()." << std::endl;    
 }
 
+// Searches for movies or genres
 void Database::searchFunction()
 {
-    // Searches for movies or genres
+    std::cout << "Inside Database::searchFunction()." << std::endl;
 }
 
+// Iterates private data member _objectCounter
 std::size_t Database::objectCounterIterator(std::size_t&)
 {
-    // Iterates private data member _objectCounter
+    //
 }
 
 // Getters
@@ -59,6 +75,19 @@ int* Database::getDb_id()
 std::size_t Database::getObjectCounter()
 {
     return _objectCounter;
+}
+
+std::size_t Database::getMovieListSize()
+{
+    return _movieListSize;
+}
+
+// Function returns the entire _movieListArray[]
+movieNamespace::MovieClass* Database::getMovieListArray()
+{
+    std::size_t tempSize = 0;
+    tempSize = Database::getMovieListSize();
+    return _movieListArray[tempSize];
 }
 
 // Setters
@@ -82,7 +111,11 @@ void Database::setMovieListSize(std::size_t userInput)
     _movieListSize = userInput;
 }
 
-void setMovieArrayList(movieNamespace::MovieClass movieListArray[], std::size_t movieListSize, movieNamespace::MovieClass inputMovieClass)
+// Method sets a pointer to a single MovieClass inside *movieListArray[]
+void Database::setSingleMovieInArrayList(movieNamespace::MovieClass* movieListArray[], movieNamespace::MovieClass* inputMovieClassPointer)
 {
-    // Method sets a pointer to a MovieClass inside movieListArray[]
+    std::size_t arraySize;
+    arraySize = getMovieListSize();
+
+    _movieListArray[arraySize] = inputMovieClassPointer;
 }

@@ -24,15 +24,15 @@ class Database
         std::string* getName();
         int* getDb_id();
         std::size_t getObjectCounter();
-        // NO GETTER FOR movieListSize;
-        // movieNamespace::MovieClass*[] getMovieListArray();
+        std::size_t getMovieListSize();
+        movieNamespace::MovieClass* getMovieListArray();
 
         // Setters
         void setName(std::string*);
         void setDb_id(int*);
         void setObjectCounter(std::size_t);
         void setMovieListSize(std::size_t);
-        void setMovieArrayList(movieNamespace::MovieClass movieListArray[], std::size_t, movieNamespace::MovieClass);
+        void setSingleMovieInArrayList(movieNamespace::MovieClass* movieListArray[], movieNamespace::MovieClass*);
 
     private:
         std::string* _name;
