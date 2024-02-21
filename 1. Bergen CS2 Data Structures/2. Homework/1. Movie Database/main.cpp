@@ -9,5 +9,7 @@ int main(int argc, char *argv[])
 {
     void welcomeFunction();
 
+    Database *tempDatabaseObject = new Database();
+
     return 0;
 }

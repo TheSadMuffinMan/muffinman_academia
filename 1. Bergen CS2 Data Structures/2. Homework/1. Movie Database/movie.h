@@ -8,27 +8,27 @@ namespace movieNamespace
     {
         public:
             // Getters
-            std::string getIMBDTitleID();
-            std::string getMovieTitle();
-            int getYear();
-            std::string getGenre();
-            int getRating();
-            std::string getDirector();
+            std::string* getIMBDTitleIDPointer();
+            std::string* getMovieTitlePointer();
+            int* getYearPointer();
+            std::string* getGenrePointer();
+            int* getRatingPointer();
+            std::string* getDirectorPointer();
 
             // Setters
-            void setIMBDTitleID(std::string);
-            void setMovieTitle(std::string);
-            void setYear(int);
-            void setGenre(std::string);
-            void setRating(int);
-            void setDirector(std::string);
+            void setIMBDTitleID(std::string*);
+            void setMovieTitle(std::string*);
+            void setYear(int*);
+            void setGenre(std::string*);
+            void setRating(int*);
+            void setDirector(std::string*);
 
         private:
-            std::string _imbdTitleID;
-            std::string _movieTitle;
-            int _year;
-            std::string _genre;
-            int _rating;
-            std::string _director;
+            std::string* _imbdTitleID;
+            std::string* _movieTitle;
+            int* _year;
+            std::string* _genre;
+            int* _rating;
+            std::string* _director;
     };
 }

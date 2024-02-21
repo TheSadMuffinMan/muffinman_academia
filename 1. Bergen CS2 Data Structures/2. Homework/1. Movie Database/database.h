@@ -18,7 +18,7 @@ class Database
         void addMovie();
         void removeMovie();
         void searchFunction();
-        std::size_t objectCounterIterator(std::size_t&);
+        void objectCounterIterator();
 
         // Getters
         std::string* getName();

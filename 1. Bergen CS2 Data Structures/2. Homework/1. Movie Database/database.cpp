@@ -1,11 +1,17 @@
 #include "database.h"
 
-// Default constructor
+// Default constructor, set's all data members to nullptr.
 Database::Database()
 {
-    // Cell* newCell = new Cell
     movieNamespace::MovieClass* newObject = new movieNamespace::MovieClass;
+    newObject->setIMBDTitleID(nullptr);
     newObject->setMovieTitle(nullptr);
+    newObject->setYear(nullptr);
+    newObject->setGenre(nullptr);
+    newObject->setRating(nullptr);
+    newObject->setDirector(nullptr);
+
+    std::cout << "Default Database Constructor utilized." << std::endl;
 }
 
 // Deconstructor
@@ -16,7 +22,7 @@ Database::~Database()
 
 // Main methods
 
-// Function initializes each movieClass to NULLPTR.
+// Function initializes each movieClass to nullptr.
 // Creates an input stream.
 // Reads data from movies.cpp.
 // Breaks data apart.
@@ -55,9 +61,14 @@ void Database::searchFunction()
 }
 
 // Iterates private data member _objectCounter
-std::size_t Database::objectCounterIterator(std::size_t&)
+void Database::objectCounterIterator()
 {
-    //
+    std::cout << "Inside Database::objectCounterIterator." << std::endl;
+    std::size_t tempObjectCounter = 0;
+    tempObjectCounter = Database::getObjectCounter();
+    tempObjectCounter++;
+    Database::setObjectCounter(tempObjectCounter);
+    std::cout << "_objectCounter: " << Database::getObjectCounter() << std::endl;
 }
 
 // Getters

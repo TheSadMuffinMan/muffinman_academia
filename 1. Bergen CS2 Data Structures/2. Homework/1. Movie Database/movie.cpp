@@ -2,63 +2,63 @@
 
 namespace movieNamespace
 {
-    std::string MovieClass::getIMBDTitleID()
+    std::string* MovieClass::getIMBDTitleIDPointer()
     {
         return _imbdTitleID;
     }
 
-    std::string MovieClass::getMovieTitle()
+    std::string* MovieClass::getMovieTitlePointer()
     {
         return _movieTitle;
     }
 
-    int MovieClass::getYear()
+    int* MovieClass::getYearPointer()
     {
         return _year;
     }
 
-    std::string MovieClass::getGenre()
+    std::string* MovieClass::getGenrePointer()
     {
         return _genre;
     }
 
-    int MovieClass::getRating()
+    int* MovieClass::getRatingPointer()
     {
         return _rating;
     }
 
-    std::string MovieClass::getDirector()
+    std::string* MovieClass::getDirectorPointer()
     {
         return _director;
     }
 
     // Setters
-    void MovieClass::setIMBDTitleID(std::string desiredTitle)
+    void MovieClass::setIMBDTitleID(std::string* desiredTitle)
     {
         _imbdTitleID = desiredTitle;
     }
 
-    void MovieClass::setMovieTitle(std::string desiredTitle)
+    void MovieClass::setMovieTitle(std::string* desiredTitle)
     {
         _movieTitle = desiredTitle;
     }
 
-    void MovieClass::setYear(int desiredYear)
+    void MovieClass::setYear(int *desiredYear)
     {
         _year = desiredYear;
     }
 
-    void MovieClass::setGenre(std::string desiredGenre)
+    void MovieClass::setGenre(std::string* desiredGenre)
     {
         _genre = desiredGenre;
     }
 
-    void MovieClass::setRating(int desiredRating)
+    void MovieClass::setRating(int *desiredRating)
     {
         _rating = desiredRating;
     }
 
-    void MovieClass::setDirector(std::string desiredDirector)
+    void MovieClass::setDirector(std::string* desiredDirector)
     {
         _director = desiredDirector;
     }
