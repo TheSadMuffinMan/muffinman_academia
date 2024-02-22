@@ -7,9 +7,9 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    void welcomeFunction();
+    size_t dataBaseSize = 10;
 
-    Database *tempDatabaseObject = new Database();
+    void welcomeFunction();
 
     return 0;
 }

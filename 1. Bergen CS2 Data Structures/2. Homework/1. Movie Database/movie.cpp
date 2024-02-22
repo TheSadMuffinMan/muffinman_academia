@@ -2,63 +2,81 @@
 
 namespace movieNamespace
 {
-    std::string* MovieClass::getIMBDTitleIDPointer()
+    // Default constructor, initializes all values to nullptr.
+    MovieClass::MovieClass()
+    {
+        MovieClass* newObject = new MovieClass;
+        newObject->setIMBDTitleID(0);
+        newObject->setMovieTitle("NULL");
+        newObject->setYear(0);
+        newObject->setGenre("NULL");
+        newObject->setRating(0);
+        newObject->setDirector("NULL");
+    }
+
+    MovieClass::~MovieClass()
+    {
+        std::cout << "MovieClass deconstructor used." << std::endl;
+    }
+
+    // Getters
+    std::string MovieClass::getIMBDTitleID()
     {
         return _imbdTitleID;
     }
 
-    std::string* MovieClass::getMovieTitlePointer()
+    std::string MovieClass::getMovieTitle()
     {
         return _movieTitle;
     }
 
-    int* MovieClass::getYearPointer()
+    int MovieClass::getYear()
     {
         return _year;
     }
 
-    std::string* MovieClass::getGenrePointer()
+    std::string MovieClass::getGenre()
     {
         return _genre;
     }
 
-    int* MovieClass::getRatingPointer()
+    float MovieClass::getRating()
     {
         return _rating;
     }
 
-    std::string* MovieClass::getDirectorPointer()
+    std::string MovieClass::getDirector()
     {
         return _director;
     }
 
     // Setters
-    void MovieClass::setIMBDTitleID(std::string* desiredTitle)
+    void MovieClass::setIMBDTitleID(std::string desiredTitle)
     {
         _imbdTitleID = desiredTitle;
     }
 
-    void MovieClass::setMovieTitle(std::string* desiredTitle)
+    void MovieClass::setMovieTitle(std::string desiredTitle)
     {
         _movieTitle = desiredTitle;
     }
 
-    void MovieClass::setYear(int *desiredYear)
+    void MovieClass::setYear(int desiredYear)
     {
         _year = desiredYear;
     }
 
-    void MovieClass::setGenre(std::string* desiredGenre)
+    void MovieClass::setGenre(std::string desiredGenre)
     {
         _genre = desiredGenre;
     }
 
-    void MovieClass::setRating(int *desiredRating)
+    void MovieClass::setRating(float desiredRating)
     {
         _rating = desiredRating;
     }
 
-    void MovieClass::setDirector(std::string* desiredDirector)
+    void MovieClass::setDirector(std::string desiredDirector)
     {
         _director = desiredDirector;
     }

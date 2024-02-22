@@ -1,17 +1,15 @@
 #include "database.h"
+#include "movie.h"
 
-// Default constructor, set's all data members to nullptr.
-Database::Database()
+// Default constructor, initializes values to 0.
+Database::Database(std::size_t dataBaseSize)
 {
-    movieNamespace::MovieClass* newObject = new movieNamespace::MovieClass;
-    newObject->setIMBDTitleID(nullptr);
-    newObject->setMovieTitle(nullptr);
-    newObject->setYear(nullptr);
-    newObject->setGenre(nullptr);
-    newObject->setRating(nullptr);
-    newObject->setDirector(nullptr);
-
     std::cout << "Default Database Constructor utilized." << std::endl;
+    _name = "NULL";
+    _db_id = 0;
+    _objectCounter = 0;
+    _movieListSize = 0;
+    _movieListArray[dataBaseSize];
 }
 
 // Deconstructor
@@ -28,9 +26,14 @@ Database::~Database()
 // Breaks data apart.
 // Assigns data to new class, iterates counter.
 // Updates _movieListArray[] and returns the array.
-void Database::loadData()
+void Database::loadData(std::size_t dataBaseSize)
 {
     std::cout << "Inside Database::loadData()." << std::endl;
+    for (std::size_t i = 0; i < dataBaseSize; i++)
+    {
+        movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
+
+    }
 }
 
 // Displays all movie objects inside movieListArray
@@ -72,12 +75,12 @@ void Database::objectCounterIterator()
 }
 
 // Getters
-std::string* Database::getName()
+std::string Database::getName()
 {
     return _name;
 }
 
-int* Database::getDb_id()
+int Database::getDb_id()
 {
     return _db_id;
 }
@@ -102,12 +105,12 @@ movieNamespace::MovieClass* Database::getMovieListArray()
 }
 
 // Setters
-void Database::setName(std::string* userInput)
+void Database::setName(std::string userInput)
 {
     _name = userInput;
 }
 
-void Database::setDb_id(int* userInput)
+void Database::setDb_id(int userInput)
 {
     _db_id = userInput;
 }
@@ -122,11 +125,8 @@ void Database::setMovieListSize(std::size_t userInput)
     _movieListSize = userInput;
 }
 
-// Method sets a pointer to a single MovieClass inside *movieListArray[]
-void Database::setSingleMovieInArrayList(movieNamespace::MovieClass* movieListArray[], movieNamespace::MovieClass* inputMovieClassPointer)
+// Method sets a pointer to a single MovieClass inside movieListArray[]
+void setSingleMovieInArrayList(std::string inputName, int inputDb_id, movieNamespace::MovieClass* inputMovieClass);
 {
-    std::size_t arraySize;
-    arraySize = getMovieListSize();
-
-    _movieListArray[arraySize] = inputMovieClassPointer;
+    
 }
