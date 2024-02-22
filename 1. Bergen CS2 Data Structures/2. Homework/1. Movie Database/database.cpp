@@ -1,50 +1,46 @@
 #include "database.h"
 #include "movie.h"
 
-// Default constructor, initializes values to 0.
-Database::Database(std::size_t dataBaseSize)
+// Default constructor, creates a default database class.
+Database::Database()
 {
-    std::cout << "Default Database Constructor utilized." << std::endl;
-    _name = "NULL";
-    _db_id = 0;
-    _objectCounter = 0;
-    _movieListSize = 0;
-    _movieListArray[dataBaseSize];
+    setName("NULL");
+    setDb_id(0);
+    setObjectCounter(0);
 
-    for (std::size_t i = 0; i < dataBaseSize; i++)
-    {
-        movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
-        _movieListArray[i] = tempMovie;
-    }
+    std::cout << "Database(size_t) Constructor used." << std::endl;
+}
+
+// Non-default constructor class.
+Database::Database(std::string inputName, int inputDb_id)
+{
+    _name = inputName;
+    _db_id = inputDb_id;
+    _objectCounter = 0;
+
+    std::cout << "Non-default constructor class used." << std::endl;
 }
 
 // Deconstructor
 Database::~Database()
 {
-    std::cout << "Hey, you're inside ~Database() deconstructor." << std::endl;
+    std::cout << "~Database() deconstructor used." << std::endl;
 }
 
-void Database::databaseCleanup(std::size_t dataBaseSize)
-{
-    for (std::size_t i = 0; i < dataBaseSize; i++)
-    {
-        delete _movieListArray[i];
-    }
-
-    std::cout << "Database memory on the heap has been cleaned (I hope)." << std::endl;
-}
 
 // Main methods
 
-// Function initializes each movieClass to nullptr.
+// Function initializes each movieClass inside _movieListArray to nullptr.
 // Creates an input stream.
 // Reads data from movies.cpp.
 // Breaks data apart.
 // Assigns data to new class, iterates counter.
-// Updates _movieListArray[] and returns the array.
-void Database::loadData(std::size_t dataBaseSize)
+// Updates _movieListArray[].
+void Database::loadData()
 {
     std::cout << "Inside Database::loadData()." << std::endl;
+    std::size_t sizeOfArray = 0;
+
 }
 
 // Displays all movie objects inside movieListArray
@@ -62,7 +58,7 @@ void Database::addMovie()
     std::cout << "Inside Database::addMovie()." << std::endl;
 }
 
-// Removies a movie
+// Removes a movie
 void Database::removeMovie()
 {
     std::cout << "Inside Database::removieMovie()." << std::endl;    
@@ -101,11 +97,6 @@ std::size_t Database::getObjectCounter()
     return _objectCounter;
 }
 
-std::size_t Database::getMovieListSize()
-{
-    return _movieListSize;
-}
-
 // Function returns a pointer to _movieListArray[inputPosition].
 movieNamespace::MovieClass* Database::getMovieListArrayAtPosition(std::size_t inputPosition)
 {
@@ -126,11 +117,6 @@ void Database::setDb_id(int userInput)
 void Database::setObjectCounter(std::size_t userInput)
 {
     _objectCounter = userInput;
-}
-
-void Database::setMovieListSize(std::size_t userInput)
-{
-    _movieListSize = userInput;
 }
 
 // Method sets a pointer to a single MovieClass inside movieListArray[]

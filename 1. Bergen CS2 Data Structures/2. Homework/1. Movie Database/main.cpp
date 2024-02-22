@@ -9,11 +9,13 @@ int main(int argc, char *argv[])
 {
     void welcomeFunction();
 
-    size_t dataBaseSize = 10;
-    Database mainDatabase = Database(dataBaseSize);
+    string dataBaseName = "DataBase located in Main";
+    int db_id = 1;
 
-    mainDatabase.databaseCleanup(dataBaseSize);
-    // delete &mainDatabase; LOL this works??
+    // Declares the mainDataBase that we will be using
+    Database mainDataBase = Database(dataBaseName, db_id);
+
+    // delete &mainDatabase; // Invalid pointer, thought I was on to something cool lol.
 
     return 0;
 }

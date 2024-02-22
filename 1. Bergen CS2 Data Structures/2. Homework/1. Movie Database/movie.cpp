@@ -2,16 +2,16 @@
 
 namespace movieNamespace
 {
-    // Default constructor, initializes all values to nullptr.
+    // Default constructor, initializes all values to nullptr and 0 respectively.
     MovieClass::MovieClass()
     {
         MovieClass* newObject = new MovieClass;
-        newObject->setIMBDTitleID(0);
-        newObject->setMovieTitle("NULL");
+        newObject->setIMBDTitleID(nullptr);
+        newObject->setMovieTitle(nullptr);
         newObject->setYear(0);
-        newObject->setGenre("NULL");
-        newObject->setRating(0);
-        newObject->setDirector("NULL");
+        newObject->setGenre(nullptr);
+        newObject->setRating(0.0);
+        newObject->setDirector(nullptr);
     }
 
     MovieClass::~MovieClass()
