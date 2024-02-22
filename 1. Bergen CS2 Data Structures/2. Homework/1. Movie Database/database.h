@@ -8,9 +8,11 @@
 class Database
 {
     public:
-        // Default contstructor and destructor
+        // Default contstructor and destructor.
         Database(std::size_t);
         ~Database();
+        // More thorough deconstructor.
+        void databaseCleanup(std::size_t);
 
         // Main methods
         void loadData(std::size_t);
@@ -25,14 +27,14 @@ class Database
         int getDb_id();
         std::size_t getObjectCounter();
         std::size_t getMovieListSize();
-        movieNamespace::MovieClass* getMovieListArray();
+        movieNamespace::MovieClass* getMovieListArrayAtPosition(std::size_t);
 
         // Setters
         void setName(std::string);
         void setDb_id(int);
         void setObjectCounter(std::size_t);
         void setMovieListSize(std::size_t);
-        void setSingleMovieInArrayList(std::string, int, movieNamespace::MovieClass*);
+        void setMovieListArray(movieNamespace::MovieClass*, std::size_t);
 
     private:
         std::string _name;

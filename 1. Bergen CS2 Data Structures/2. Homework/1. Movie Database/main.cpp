@@ -7,9 +7,13 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    size_t dataBaseSize = 10;
-
     void welcomeFunction();
+
+    size_t dataBaseSize = 10;
+    Database mainDatabase = Database(dataBaseSize);
+
+    mainDatabase.databaseCleanup(dataBaseSize);
+    // delete &mainDatabase; LOL this works??
 
     return 0;
 }

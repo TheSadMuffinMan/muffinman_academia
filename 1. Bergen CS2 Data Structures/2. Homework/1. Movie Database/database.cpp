@@ -10,12 +10,28 @@ Database::Database(std::size_t dataBaseSize)
     _objectCounter = 0;
     _movieListSize = 0;
     _movieListArray[dataBaseSize];
+
+    for (std::size_t i = 0; i < dataBaseSize; i++)
+    {
+        movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
+        _movieListArray[i] = tempMovie;
+    }
 }
 
 // Deconstructor
 Database::~Database()
 {
     std::cout << "Hey, you're inside ~Database() deconstructor." << std::endl;
+}
+
+void Database::databaseCleanup(std::size_t dataBaseSize)
+{
+    for (std::size_t i = 0; i < dataBaseSize; i++)
+    {
+        delete _movieListArray[i];
+    }
+
+    std::cout << "Database memory on the heap has been cleaned (I hope)." << std::endl;
 }
 
 // Main methods
@@ -29,11 +45,6 @@ Database::~Database()
 void Database::loadData(std::size_t dataBaseSize)
 {
     std::cout << "Inside Database::loadData()." << std::endl;
-    for (std::size_t i = 0; i < dataBaseSize; i++)
-    {
-        movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
-
-    }
 }
 
 // Displays all movie objects inside movieListArray
@@ -85,7 +96,6 @@ int Database::getDb_id()
     return _db_id;
 }
 
-// ***Is NOT a pointer***
 std::size_t Database::getObjectCounter()
 {
     return _objectCounter;
@@ -96,12 +106,10 @@ std::size_t Database::getMovieListSize()
     return _movieListSize;
 }
 
-// Function returns the entire _movieListArray[]
-movieNamespace::MovieClass* Database::getMovieListArray()
+// Function returns a pointer to _movieListArray[inputPosition].
+movieNamespace::MovieClass* Database::getMovieListArrayAtPosition(std::size_t inputPosition)
 {
-    std::size_t tempSize = 0;
-    tempSize = Database::getMovieListSize();
-    return _movieListArray[tempSize];
+    return _movieListArray[inputPosition];
 }
 
 // Setters
@@ -126,7 +134,7 @@ void Database::setMovieListSize(std::size_t userInput)
 }
 
 // Method sets a pointer to a single MovieClass inside movieListArray[]
-void setSingleMovieInArrayList(std::string inputName, int inputDb_id, movieNamespace::MovieClass* inputMovieClass);
+void Database::setMovieListArray(movieNamespace::MovieClass* inputMovieClass, std::size_t desiredArrayPosition)
 {
-    
+    _movieListArray[desiredArrayPosition] = inputMovieClass;
 }
