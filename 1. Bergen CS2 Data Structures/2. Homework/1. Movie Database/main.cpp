@@ -15,6 +15,8 @@ int main(int argc, char *argv[])
     // Declares the mainDataBase that we will be using
     Database mainDataBase = Database(dataBaseName, db_id);
 
+    mainDataBase.loadData();
+
     // delete &mainDatabase; // Invalid pointer, thought I was on to something cool lol.
 
     return 0;

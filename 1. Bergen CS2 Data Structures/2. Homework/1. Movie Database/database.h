@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include "movie.h"
 
 // The database should have the following variables: name, db_id, array for Movies (as pointers)

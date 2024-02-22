@@ -27,60 +27,6 @@ Database::~Database()
     std::cout << "~Database() deconstructor used." << std::endl;
 }
 
-
-// Main methods
-
-// Function initializes each movieClass inside _movieListArray to nullptr.
-// Creates an input stream.
-// Reads data from movies.cpp.
-// Breaks data apart.
-// Assigns data to new class, iterates counter.
-// Updates _movieListArray[].
-void Database::loadData()
-{
-    std::cout << "Inside Database::loadData()." << std::endl;
-    std::size_t sizeOfArray = 0;
-
-}
-
-// Displays all movie objects inside movieListArray
-void Database::displayAllMovies()
-{
-    std::cout << "Inside Database::displayAllMovies." << std::endl;
-}
-
-// Instantiates a new MovieClass.
-// Asks for user input/data.
-// Assigns user input to the new MovieClass.
-// Appends new pointer to MovieClass inside _movieListArray[].
-void Database::addMovie()
-{
-    std::cout << "Inside Database::addMovie()." << std::endl;
-}
-
-// Removes a movie
-void Database::removeMovie()
-{
-    std::cout << "Inside Database::removieMovie()." << std::endl;    
-}
-
-// Searches for movies or genres
-void Database::searchFunction()
-{
-    std::cout << "Inside Database::searchFunction()." << std::endl;
-}
-
-// Iterates private data member _objectCounter
-void Database::objectCounterIterator()
-{
-    std::cout << "Inside Database::objectCounterIterator." << std::endl;
-    std::size_t tempObjectCounter = 0;
-    tempObjectCounter = Database::getObjectCounter();
-    tempObjectCounter++;
-    Database::setObjectCounter(tempObjectCounter);
-    std::cout << "_objectCounter: " << Database::getObjectCounter() << std::endl;
-}
-
 // Getters
 std::string Database::getName()
 {
@@ -123,4 +69,73 @@ void Database::setObjectCounter(std::size_t userInput)
 void Database::setMovieListArray(movieNamespace::MovieClass* inputMovieClass, std::size_t desiredArrayPosition)
 {
     _movieListArray[desiredArrayPosition] = inputMovieClass;
+}
+
+
+// Main methods
+
+// Creates an input stream.
+// Reads data from movies.cpp.
+// Breaks data apart.
+// Assigns data to new class, iterates counter.
+// Updates _movieListArray[].
+void Database::loadData()
+{
+    std::cout << "Inside Database::loadData()." << std::endl;
+
+    std::ifstream is;
+    is.open("movies.csv");
+
+    // Temp variables to be used for parsing information
+    std::string tempString;
+    // BELOW is seg faulting
+    movieNamespace::MovieClass tempMovieClass = movieNamespace::MovieClass();
+    std::cout << "tempMovieClass is working" << std::endl;
+
+    // Loop iterates so long as the cursor is not at the end of the file
+    while (is.peek() != EOF) // While not at the end of the file
+    {
+        getline(is, tempString);
+        std::cout << "tempString: " << tempString << std::endl;
+    }
+
+    is.close();
+}
+
+// Displays all movie objects inside movieListArray
+void Database::displayAllMovies()
+{
+    std::cout << "Inside Database::displayAllMovies." << std::endl;
+}
+
+// Instantiates a new MovieClass.
+// Asks for user input/data.
+// Assigns user input to the new MovieClass.
+// Appends new pointer to MovieClass inside _movieListArray[].
+void Database::addMovie()
+{
+    std::cout << "Inside Database::addMovie()." << std::endl;
+}
+
+// Removes a movie
+void Database::removeMovie()
+{
+    std::cout << "Inside Database::removieMovie()." << std::endl;    
+}
+
+// Searches for movies or genres
+void Database::searchFunction()
+{
+    std::cout << "Inside Database::searchFunction()." << std::endl;
+}
+
+// Iterates private data member _objectCounter
+void Database::objectCounterIterator()
+{
+    std::cout << "Inside Database::objectCounterIterator." << std::endl;
+    std::size_t tempObjectCounter = 0;
+    tempObjectCounter = Database::getObjectCounter();
+    tempObjectCounter++;
+    Database::setObjectCounter(tempObjectCounter);
+    std::cout << "_objectCounter: " << Database::getObjectCounter() << std::endl;
 }
