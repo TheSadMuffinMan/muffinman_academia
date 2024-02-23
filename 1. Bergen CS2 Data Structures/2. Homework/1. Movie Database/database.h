@@ -16,6 +16,7 @@ class Database
 
         // Main methods
         void loadData(); // Working, completed.
+        void displaySingleMovie(movieNamespace::MovieClass*, std::size_t); // Working on
         void displayAllMovies();
         void addMovie();
         void removeMovie();
@@ -23,8 +24,8 @@ class Database
         void objectCounterIterator();
 
         // Getters
-        std::string getName();
-        int getDb_id();
+        // std::string getName(); // Never interact with these variables
+        // int getDb_id(); // Never interact with these variables
         std::size_t getObjectCounter();
         movieNamespace::MovieClass* getMovieListArrayAtPosition(std::size_t);
 

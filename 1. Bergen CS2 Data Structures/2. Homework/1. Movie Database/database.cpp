@@ -28,16 +28,6 @@ Database::~Database()
 }
 
 // Getters
-std::string Database::getName()
-{
-    return _name;
-}
-
-int Database::getDb_id()
-{
-    return _db_id;
-}
-
 std::size_t Database::getObjectCounter()
 {
     return _objectCounter;
@@ -132,27 +122,30 @@ void Database::loadData()
         }
     }
     is.close();
+    delete tempMovieClass;
 }
+
+// Function takes in what position to display, and then prints all data members to console.
+void Database::displaySingleMovie(movieNamespace::MovieClass* movieListArray[], std::size_t positionToDisplay)
+{
+    movieNamespace::MovieClass* tempMovie;
+    tempMovie = getMovieListArrayAtPosition(positionToDisplay);
+    std::cout << "IMBD Title ID: " << tempMovie->getIMBDTitleID() << ", "; // Seg faulting here
+    std::cout << "Movie Title: " << tempMovie->getMovieTitle() << ", ";
+    std::cout << "Year Released: " << tempMovie->getYear() << ", ";
+    std::cout << "Genre: " << tempMovie->getGenre() << ", ";
+    std::cout << "Rating: " << tempMovie->getRating() << ", ";
+    std::cout << "Director: " << tempMovie->getDirector() << ", " << std::endl;
+
+    delete tempMovie;
+}
+
 
 // Displays all movie objects inside movieListArray
 void Database::displayAllMovies()
 {
+    // std::size_t numObjects = Database::getObjectCounter();
     std::cout << "Inside Database::displayAllMovies." << std::endl;
-    std::size_t numObjects = Database::getObjectCounter();
-
-    for (std::size_t i = 0; i <= numObjects; i++)
-    {
-        movieNamespace::MovieClass* tempMovieClass = getMovieListArrayAtPosition(i);
-
-        std::cout << "IMBD Title ID: " << tempMovieClass->getIMBDTitleID() << ", ";
-        std::cout << "Movie Title: " << tempMovieClass->getMovieTitle() << ", ";
-        std::cout << "Year Released: " << tempMovieClass->getYear() << ", ";
-        std::cout << "Genre: " << tempMovieClass->getGenre() << ", ";
-        std::cout << "Rating: " << tempMovieClass->getRating() << ", ";
-        std::cout << "Director: " << tempMovieClass->getDirector() << ", ";
-
-        delete tempMovieClass;
-    }
 }
 
 // Instantiates a new MovieClass.
