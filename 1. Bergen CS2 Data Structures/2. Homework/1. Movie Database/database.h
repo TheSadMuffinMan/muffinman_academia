@@ -11,7 +11,7 @@ class Database
     public:
         // Default contstructor and destructor.
         Database();
-        Database(std::string, int);
+        Database(std::size_t, std::string, int);
         ~Database();
 
         // Main methods

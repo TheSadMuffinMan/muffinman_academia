@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <string>
+#include <sstream>
 
 namespace movieNamespace
 {
@@ -10,8 +12,9 @@ namespace movieNamespace
 
             // Initializes all values to nullptr.
             MovieClass();
-            
             ~MovieClass();
+            MovieClass(std::string, std::string, int, std::string, float, std::string);
+
 
             // Getters
             std::string getIMBDTitleID();
@@ -25,8 +28,10 @@ namespace movieNamespace
             void setIMBDTitleID(std::string);
             void setMovieTitle(std::string);
             void setYear(int);
+            void setYear(std::string);
             void setGenre(std::string);
             void setRating(float);
+            void setRating(std::string);
             void setDirector(std::string);
 
         private:

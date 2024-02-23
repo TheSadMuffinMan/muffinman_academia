@@ -12,13 +12,13 @@ Database::Database()
 }
 
 // Non-default constructor class.
-Database::Database(std::string inputName, int inputDb_id)
+Database::Database(std::size_t dataBaseArraySize, std::string inputName, int inputDb_id)
 {
     _name = inputName;
     _db_id = inputDb_id;
     _objectCounter = 0;
 
-    std::cout << "Non-default constructor class used." << std::endl;
+    // std::cout << "Non-default Database constructor class used." << std::endl;
 }
 
 // Deconstructor
@@ -88,15 +88,29 @@ void Database::loadData()
 
     // Temp variables to be used for parsing information
     std::string tempString;
-    // BELOW is seg faulting
-    movieNamespace::MovieClass tempMovieClass = movieNamespace::MovieClass();
-    std::cout << "tempMovieClass is working" << std::endl;
+    movieNamespace::MovieClass* tempMovieClass = new movieNamespace::MovieClass();
 
     // Loop iterates so long as the cursor is not at the end of the file
     while (is.peek() != EOF) // While not at the end of the file
     {
         getline(is, tempString);
-        std::cout << "tempString: " << tempString << std::endl;
+        // std::cout << "tempString: " << tempString << std::endl;
+        std::size_t startVariable = 0;
+        std::size_t endVariable = 0;
+        std::string tempData[6];
+        std::size_t tempCounter = 0;
+
+        // Loop iterates through tempString and seperates the data off of commas
+        // Then places "cleaned" data into tempData[6]
+        while(tempString.find(',', startVariable) != std::string::npos)
+        {
+            endVariable = tempString.find(',', startVariable);
+            tempData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
+            startVariable = (endVariable + 1);
+            tempCounter++;
+        }
+
+
     }
 
     is.close();
