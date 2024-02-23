@@ -11,13 +11,15 @@ int main(int argc, char *argv[])
 
     string dataBaseName = "DataBase located in Main";
     int db_id = 1;
-    std::size_t dataBaseArraySize = 10;
+    std::size_t dataBaseArraySize = 13;
 
     // Declares the mainDataBase that we will be using.
     Database mainDataBase;    
     mainDataBase = Database(dataBaseArraySize, dataBaseName, db_id); // Populates the mainDataBase with values.
 
     mainDataBase.loadData();
+
+    mainDataBase.displayAllMovies();
 
     return 0;
 }

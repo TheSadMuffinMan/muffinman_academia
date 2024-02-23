@@ -15,7 +15,7 @@ class Database
         ~Database();
 
         // Main methods
-        void loadData();
+        void loadData(); // Working, completed.
         void displayAllMovies();
         void addMovie();
         void removeMovie();
@@ -38,5 +38,5 @@ class Database
         std::string _name;
         int _db_id;
         std::size_t _objectCounter;
-        movieNamespace::MovieClass* _movieListArray[10];
+        movieNamespace::MovieClass* _movieListArray[13];
 };

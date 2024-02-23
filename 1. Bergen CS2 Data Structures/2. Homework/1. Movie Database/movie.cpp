@@ -13,17 +13,6 @@ namespace movieNamespace
         std::cout << "~MovieClass() deconstructor used." << std::endl;
     }
 
-    // Method sets takes all data members as strings, converts them back, and sets the values.
-    MovieClass::MovieClass(std::string inputIMBDTitle, std::string inputMovieTitle, int inputYear, 
-     std::string inputGenre, float inputRating, std::string inputDirector)
-    {
-        MovieClass::setIMBDTitleID(inputIMBDTitle);
-        MovieClass::setMovieTitle(inputMovieTitle);
-        MovieClass::setYear(inputYear);
-        MovieClass::setGenre(inputGenre);
-        MovieClass::setRating(inputRating);
-        MovieClass::setMovieTitle(inputDirector);
-    }
 
     // Getters
     std::string MovieClass::getIMBDTitleID()
@@ -92,8 +81,14 @@ namespace movieNamespace
 
     void MovieClass::setRating(std::string desiredRating)
     {
+        float tempFloat;
+        std::istringstream(desiredRating) >> tempFloat;
+        _rating = tempFloat;
+
+        /* DOES NOT WORK, not sure why.
         float tempVar = stol(desiredRating);
         _rating = tempVar;
+        */
     }
 
     void MovieClass::setDirector(std::string desiredDirector)

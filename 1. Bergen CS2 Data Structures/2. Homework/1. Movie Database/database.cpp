@@ -89,19 +89,23 @@ void Database::loadData()
     // Temp variables to be used for parsing information
     std::string tempString;
     movieNamespace::MovieClass* tempMovieClass = new movieNamespace::MovieClass();
+    std::size_t numObjects = getObjectCounter();
 
-    // Loop iterates so long as the cursor is not at the end of the file
+    // Loop iterates so long as the cursor is not at the end of the file.
+    // Loop populates tempMoveClass with data members from movies.csv.
     while (is.peek() != EOF) // While not at the end of the file
     {
         getline(is, tempString);
         // std::cout << "tempString: " << tempString << std::endl;
+
+        // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[6];
+        std::string tempData[6]; // One data member larger than needed, just in case.
         std::size_t tempCounter = 0;
 
-        // Loop iterates through tempString and seperates the data off of commas
-        // Then places "cleaned" data into tempData[6]
+        // Loop iterates through tempString and seperates the data off of commas.
+        // Then places "cleaned" data into tempData[].
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
@@ -110,9 +114,23 @@ void Database::loadData()
             tempCounter++;
         }
 
+        tempMovieClass->setIMBDTitleID(tempData[0]);
+        tempMovieClass->setMovieTitle(tempData[1]);
+        tempMovieClass->setYear(tempData[2]);
+        tempMovieClass->setGenre(tempData[3]);
+        tempMovieClass->setRating(tempData[4]);
+        tempMovieClass->setDirector(tempData[5]);
 
+        Database::setMovieListArray(tempMovieClass, Database::getObjectCounter());
+        Database::objectCounterIterator(); // Equivalent to _objectCounter++;
+
+        // Error catching
+        if (tempCounter >= 14)
+        {
+            std::cout << "Database::loadData() first loop is broken" << std::endl;
+            break;
+        }
     }
-
     is.close();
 }
 
@@ -120,6 +138,21 @@ void Database::loadData()
 void Database::displayAllMovies()
 {
     std::cout << "Inside Database::displayAllMovies." << std::endl;
+    std::size_t numObjects = Database::getObjectCounter();
+
+    for (std::size_t i = 0; i <= numObjects; i++)
+    {
+        movieNamespace::MovieClass* tempMovieClass = getMovieListArrayAtPosition(i);
+
+        std::cout << "IMBD Title ID: " << tempMovieClass->getIMBDTitleID() << ", ";
+        std::cout << "Movie Title: " << tempMovieClass->getMovieTitle() << ", ";
+        std::cout << "Year Released: " << tempMovieClass->getYear() << ", ";
+        std::cout << "Genre: " << tempMovieClass->getGenre() << ", ";
+        std::cout << "Rating: " << tempMovieClass->getRating() << ", ";
+        std::cout << "Director: " << tempMovieClass->getDirector() << ", ";
+
+        delete tempMovieClass;
+    }
 }
 
 // Instantiates a new MovieClass.
@@ -146,10 +179,10 @@ void Database::searchFunction()
 // Iterates private data member _objectCounter
 void Database::objectCounterIterator()
 {
-    std::cout << "Inside Database::objectCounterIterator." << std::endl;
-    std::size_t tempObjectCounter = 0;
-    tempObjectCounter = Database::getObjectCounter();
+    // std::cout << "Inside Database::objectCounterIterator." << std::endl;
+    std::size_t tempObjectCounter = Database::getObjectCounter();
+    // tempObjectCounter = Database::getObjectCounter();
     tempObjectCounter++;
     Database::setObjectCounter(tempObjectCounter);
-    std::cout << "_objectCounter: " << Database::getObjectCounter() << std::endl;
+    // std::cout << "_objectCounter: " << Database::getObjectCounter() << std::endl;
 }

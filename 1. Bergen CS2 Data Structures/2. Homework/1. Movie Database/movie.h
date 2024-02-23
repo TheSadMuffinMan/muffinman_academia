@@ -13,8 +13,6 @@ namespace movieNamespace
             // Initializes all values to nullptr.
             MovieClass();
             ~MovieClass();
-            MovieClass(std::string, std::string, int, std::string, float, std::string);
-
 
             // Getters
             std::string getIMBDTitleID();
