@@ -90,7 +90,7 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[6]; // One data member larger than needed, just in case.
+        std::string tempData[5]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
@@ -123,38 +123,27 @@ void Database::loadData()
     is.close();
 }
 
-/* No
-// Function takes in what position to display, and then prints all data members to console.
-void Database::displaySingleMovie(movieNamespace::MovieClass* movieListArray[], std::size_t positionToDisplay)
+void Database::displaySingleMovie(movieNamespace::MovieClass* inputMovie)
 {
-    movieNamespace::MovieClass* tempMovie;
-    tempMovie = getMovieListArrayAtPosition(positionToDisplay);
-    std::cout << "IMBD Title ID: " << tempMovie->getIMBDTitleID() << ", "; // Seg faulting here
-    std::cout << "Movie Title: " << tempMovie->getMovieTitle() << ", ";
-    std::cout << "Year Released: " << tempMovie->getYear() << ", ";
-    std::cout << "Genre: " << tempMovie->getGenre() << ", ";
-    std::cout << "Rating: " << tempMovie->getRating() << ", ";
-    std::cout << "Director: " << tempMovie->getDirector() << ", " << std::endl;
-
-    delete tempMovie;
+    std::cout << "Movie: " << inputMovie->getMovieTitle() << std::endl;
 }
-*/
 
 // Displays all movie objects inside movieListArray
 void Database::displayAllMovies()
 {
-    // std::size_t numObjects = Database::getObjectCounter();
     std::cout << "Inside Database::displayAllMovies." << std::endl;
 
     for (std::size_t i = 0; i < Database::getObjectCounter(); i++)
     {
-        movieNamespace::MovieClass* tempMovie = Database::getMovieListArrayAtPosition(0);
+        movieNamespace::MovieClass* tempMovie = Database::getMovieListArrayAtPosition(i);
+        std::cout << "i: " << i << std::endl;
         std::cout << "IMBD Title ID: " << tempMovie->getIMBDTitleID() << std::endl;
         std::cout << "Movie Title: " << tempMovie->getMovieTitle() << std::endl;
         std::cout << "Release Year: " << tempMovie->getYear() << std::endl;
-
-
-        delete tempMovie;
+        std::cout << "Genre: " << tempMovie->getGenre() << std::endl;
+        std::cout << "Rating: " << tempMovie->getRating() << std::endl;
+        std::cout << "Director: " << tempMovie->getDirector() << std::endl;
+        std::cout << "------------------------------------------------------" << std::endl;
     }
 }
 

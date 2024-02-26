@@ -19,7 +19,15 @@ int main(int argc, char *argv[])
 
     mainDataBase.loadData();
 
-    mainDataBase.displayAllMovies();
+    // mainDataBase.displayAllMovies();
+
+    cout << "Movie at position[1]: ";
+    mainDataBase.displaySingleMovie(mainDataBase.getMovieListArrayAtPosition(1));
+    cout << endl;
+
+    cout << "Movie at position[2]: ";
+    mainDataBase.displaySingleMovie(mainDataBase.getMovieListArrayAtPosition(2));
+    cout << endl;
 
     return 0;
 }
