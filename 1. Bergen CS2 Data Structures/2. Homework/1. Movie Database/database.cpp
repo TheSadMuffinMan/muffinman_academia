@@ -125,6 +125,7 @@ void Database::loadData()
     delete tempMovieClass;
 }
 
+/* No
 // Function takes in what position to display, and then prints all data members to console.
 void Database::displaySingleMovie(movieNamespace::MovieClass* movieListArray[], std::size_t positionToDisplay)
 {
@@ -139,13 +140,17 @@ void Database::displaySingleMovie(movieNamespace::MovieClass* movieListArray[], 
 
     delete tempMovie;
 }
-
+*/
 
 // Displays all movie objects inside movieListArray
 void Database::displayAllMovies()
 {
     // std::size_t numObjects = Database::getObjectCounter();
     std::cout << "Inside Database::displayAllMovies." << std::endl;
+    movieNamespace::MovieClass* tempMovie = Database::getMovieListArrayAtPosition(1);
+    std::cout << "Movie Name at position 1: " << tempMovie->getIMBDTitleID() << std::endl;
+
+    delete tempMovie;
 }
 
 // Instantiates a new MovieClass.

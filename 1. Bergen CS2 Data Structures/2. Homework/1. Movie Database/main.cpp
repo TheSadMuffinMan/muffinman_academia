@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
 
     mainDataBase.loadData();
 
-    mainDataBase.displaySingleMovie(1);
+    mainDataBase.displayAllMovies();
 
     return 0;
 }
