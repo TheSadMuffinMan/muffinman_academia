@@ -16,7 +16,7 @@ class Database
 
         // Main methods
         void loadData(); // Working, completed.
-        void displayAllMovies(); // Currently working on
+        void displayAllMovies(); // Currently working on, making actual progress
         void addMovie();
         void removeMovie();
         void searchFunction();
