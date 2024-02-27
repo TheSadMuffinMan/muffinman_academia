@@ -8,7 +8,7 @@ Database::Database()
     setDb_id(0);
     setObjectCounter(0);
 
-    std::cout << "Database(size_t) Constructor used." << std::endl;
+    // std::cout << "Database(size_t) Constructor used." << std::endl;
 }
 
 // Non-default constructor class.
@@ -24,7 +24,7 @@ Database::Database(std::size_t dataBaseArraySize, std::string inputName, int inp
 // Deconstructor
 Database::~Database()
 {
-    std::cout << "~Database() deconstructor used." << std::endl;
+    // std::cout << "~Database() deconstructor used." << std::endl;
 }
 
 // Getters
@@ -78,14 +78,15 @@ void Database::loadData()
 
     // Temp variables to be used for parsing information
     std::string tempString;
-    movieNamespace::MovieClass* tempMovieClass = new movieNamespace::MovieClass();
 
     // Loop iterates so long as the cursor is not at the end of the file.
     // Loop populates tempMoveClass with data members from movies.csv.
     while (is.peek() != EOF) // While not at the end of the file
     {
         getline(is, tempString);
-        // std::cout << "tempString: " << tempString << std::endl;
+        std::cout << "tempString: " << tempString << std::endl;
+        movieNamespace::MovieClass* tempMovieClass = new movieNamespace::MovieClass();
+
 
         // Temporary loop variables.
         std::size_t startVariable = 0;
@@ -110,6 +111,8 @@ void Database::loadData()
         tempMovieClass->setRating(tempData[4]);
         tempMovieClass->setDirector(tempData[5]);
 
+        std::cout << "tempMovieClass Director: " << tempMovieClass->getDirector() << std::endl;
+
         Database::setMovieListArray(tempMovieClass, Database::getObjectCounter());
         Database::objectCounterIterator(); // Equivalent to _objectCounter++;
 
@@ -120,6 +123,13 @@ void Database::loadData()
             break;
         }
     }
+    // std::cout << "Movie title at 1: ";
+    // displaySingleMovie(Database::getMovieListArrayAtPosition(1));
+    // std::cout << std::endl;
+
+    // std::cout << "Movie title at 10: ";
+    // displaySingleMovie(Database::getMovieListArrayAtPosition(10));
+    // std::cout << std::endl;
     is.close();
 }
 
@@ -129,7 +139,7 @@ void Database::displaySingleMovie(movieNamespace::MovieClass* inputMovie)
 }
 
 // Displays all movie objects inside movieListArray
-void Database::displayAllMovies()
+void Database::displayAllData()
 {
     std::cout << "Inside Database::displayAllMovies." << std::endl;
 

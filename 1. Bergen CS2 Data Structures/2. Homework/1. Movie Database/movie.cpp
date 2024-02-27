@@ -5,12 +5,12 @@ namespace movieNamespace
     // Default constructor, initializes all values to nullptr and 0 respectively.
     MovieClass::MovieClass()
     {
-        std::cout << "MovieClass() Constructor utilized." << std::endl;
+        // std::cout << "MovieClass() Constructor utilized." << std::endl;
     }
 
     MovieClass::~MovieClass()
     {
-        std::cout << "~MovieClass() deconstructor used." << std::endl;
+        // std::cout << "~MovieClass() deconstructor used." << std::endl;
     }
 
 

@@ -15,9 +15,9 @@ class Database
         ~Database();
 
         // Main methods
-        void loadData(); // Working, completed.
-        void displayAllMovies(); // Currently working on, making actual progress
-        void displaySingleMovie(movieNamespace::MovieClass*);
+        void loadData(); // Basically Complete, not pulling director.
+        void displayAllData(); // Complete, need to come back and "make pretty".
+        void displaySingleMovie(movieNamespace::MovieClass*); // Complete.
         void addMovie();
         void removeMovie();
         void searchFunction();
