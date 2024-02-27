@@ -19,8 +19,8 @@ class Database
         void loadData(); // Basically Complete, not pulling director.
         void displayAllData(); // Complete, need to come back and "make pretty".
         void displaySingleMovie(movieNamespace::MovieClass*); // Complete.
-        void addMovie(); // Working on.
-        void removeMovie();
+        void addMovie(); // Complete.
+        void removeMovie(); // Working on.
         void searchFunction();
         void objectCounterIterator(); // Complete.
 
@@ -40,5 +40,5 @@ class Database
         std::string _name;
         int _db_id;
         std::size_t _objectCounter;
-        movieNamespace::MovieClass* _movieListArray[13];
+        movieNamespace::MovieClass* _movieListArray[20];
 };

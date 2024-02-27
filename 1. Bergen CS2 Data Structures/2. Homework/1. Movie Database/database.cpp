@@ -119,13 +119,6 @@ void Database::loadData()
             break;
         }
     }
-    // std::cout << "Movie title at 1: ";
-    // displaySingleMovie(Database::getMovieListArrayAtPosition(1));
-    // std::cout << std::endl;
-
-    // std::cout << "Movie title at 10: ";
-    // displaySingleMovie(Database::getMovieListArrayAtPosition(10));
-    // std::cout << std::endl;
     is.close();
 }
 
@@ -153,61 +146,64 @@ void Database::displayAllData()
     }
 }
 
-// Instantiates a new MovieClass.
 // Asks for user input/data.
-// Assigns user input to the new MovieClass.
-// Appends new pointer to MovieClass inside _movieListArray[].
+// Assigns user input to a new MovieClass.
+// Creates a second Database with one additional spot in _movieListArray[].
 void Database::addMovie()
 {
     std::cout << "Inside Database::addMovie()." << std::endl;
 
     // Temp data members to hold input.
-    std::string inputIMBDTitle, inputMovieTitle, inputMovieYear, inputMovieGenre, inputMovieRating, inputMovieDirector;
+    std::string inputMovieIMBDTitle, inputMovieTitle, inputMovieYear, inputMovieGenre, inputMovieRating, inputMovieDirector;
 
     std::cout << "\n***MUST INPUT VALUES FOR EACH OR ELSE SHIT WILL BREAK***\n" << std::endl;
-    std::cout << "If you don't want to input a value, input \",\" ." << std::endl;
 
     std::cout << "Input IMBD Title: ";
-    std::cin.ignore(); // Clears the stream
-    getline(std::cin, inputIMBDTitle);
+    getline(std::cin, inputMovieIMBDTitle);
 
     std::cout << "Input Movie Title: ";
-    std::cin.ignore();
+    // std::cin.ignore();
     getline(std::cin, inputMovieTitle);
 
     std::cout << "Input Year: ";
-    getline(std::cin, inputMovieYear); // NEED TO CONVERT TO INT.
+    getline(std::cin, inputMovieYear);
+    // Converts input to an int.
     int cleanInputMovieYear;
     std::istringstream(inputMovieYear) >> cleanInputMovieYear;
-    std::cout << "cleanInputMovieYear: " << cleanInputMovieYear << std::endl;
-
 
     std::cout << "Input Genre: ";
-    std::cin.ignore();
+    // std::cin.ignore();
     getline(std::cin, inputMovieGenre);
 
     std::cout << "Input Rating: ";
-    std::cin.ignore();
-    getline(std::cin, inputMovieRating); // NEED TO CONVERT TO FLOAT.
+    getline(std::cin, inputMovieRating);
+    // Converts to a float.
+    float cleanInputMovieRating;
+    std::istringstream(inputMovieRating) >> cleanInputMovieRating;
 
     std::cout << "Input Director: ";
-    std::cin.ignore();
+    // std::cin.ignore();
     getline(std::cin, inputMovieDirector);
 
-    /* Private data members inside movieClass.
-    std::string _imbdTitleID;
-    std::string _movieTitle;
-    int _year;
-    std::string _genre;
-    float _rating;
-    std::string _director;
-    */
+    // Populates a new movieClass.
+    movieNamespace::MovieClass* newMovie = new movieNamespace::MovieClass;
+    objectCounterIterator(); // Same as _objectCounter++, working.
+    newMovie->setIMBDTitleID(inputMovieIMBDTitle);
+    newMovie->setMovieTitle(inputMovieTitle);
+    newMovie->setYear(cleanInputMovieYear);
+    newMovie->setGenre(inputMovieGenre);
+    newMovie->setRating(cleanInputMovieRating);
+    newMovie->setDirector(inputMovieDirector);
+
+    // Updates _movieListArray[].
+    // Not sure why it has a -1 error but w/e lol.
+    Database::setMovieListArray(newMovie, (Database::getObjectCounter() - 1));
 }
 
 // Removes a movie
 void Database::removeMovie()
 {
-    std::cout << "Inside Database::removieMovie()." << std::endl;    
+    std::cout << "Inside Database::removeMovie()." << std::endl;  
 }
 
 // Searches for movies or genres
