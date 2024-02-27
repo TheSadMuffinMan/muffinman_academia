@@ -84,9 +84,7 @@ void Database::loadData()
     while (is.peek() != EOF) // While not at the end of the file
     {
         getline(is, tempString);
-        std::cout << "tempString: " << tempString << std::endl;
         movieNamespace::MovieClass* tempMovieClass = new movieNamespace::MovieClass();
-
 
         // Temporary loop variables.
         std::size_t startVariable = 0;
@@ -110,8 +108,6 @@ void Database::loadData()
         tempMovieClass->setGenre(tempData[3]);
         tempMovieClass->setRating(tempData[4]);
         tempMovieClass->setDirector(tempData[5]);
-
-        std::cout << "tempMovieClass Director: " << tempMovieClass->getDirector() << std::endl;
 
         Database::setMovieListArray(tempMovieClass, Database::getObjectCounter());
         Database::objectCounterIterator(); // Equivalent to _objectCounter++;
@@ -164,6 +160,48 @@ void Database::displayAllData()
 void Database::addMovie()
 {
     std::cout << "Inside Database::addMovie()." << std::endl;
+
+    // Temp data members to hold input.
+    std::string inputIMBDTitle, inputMovieTitle, inputMovieYear, inputMovieGenre, inputMovieRating, inputMovieDirector;
+
+    std::cout << "\n***MUST INPUT VALUES FOR EACH OR ELSE SHIT WILL BREAK***\n" << std::endl;
+    std::cout << "If you don't want to input a value, input \",\" ." << std::endl;
+
+    std::cout << "Input IMBD Title: ";
+    std::cin.ignore(); // Clears the stream
+    getline(std::cin, inputIMBDTitle);
+
+    std::cout << "Input Movie Title: ";
+    std::cin.ignore();
+    getline(std::cin, inputMovieTitle);
+
+    std::cout << "Input Year: ";
+    getline(std::cin, inputMovieYear); // NEED TO CONVERT TO INT.
+    int cleanInputMovieYear;
+    std::istringstream(inputMovieYear) >> cleanInputMovieYear;
+    std::cout << "cleanInputMovieYear: " << cleanInputMovieYear << std::endl;
+
+
+    std::cout << "Input Genre: ";
+    std::cin.ignore();
+    getline(std::cin, inputMovieGenre);
+
+    std::cout << "Input Rating: ";
+    std::cin.ignore();
+    getline(std::cin, inputMovieRating); // NEED TO CONVERT TO FLOAT.
+
+    std::cout << "Input Director: ";
+    std::cin.ignore();
+    getline(std::cin, inputMovieDirector);
+
+    /* Private data members inside movieClass.
+    std::string _imbdTitleID;
+    std::string _movieTitle;
+    int _year;
+    std::string _genre;
+    float _rating;
+    std::string _director;
+    */
 }
 
 // Removes a movie

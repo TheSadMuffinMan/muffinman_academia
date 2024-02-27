@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <fstream>
+#include <sstream>
 #include "movie.h"
 
 // The database should have the following variables: name, db_id, array for Movies (as pointers)
@@ -18,7 +19,7 @@ class Database
         void loadData(); // Basically Complete, not pulling director.
         void displayAllData(); // Complete, need to come back and "make pretty".
         void displaySingleMovie(movieNamespace::MovieClass*); // Complete.
-        void addMovie();
+        void addMovie(); // Working on.
         void removeMovie();
         void searchFunction();
         void objectCounterIterator(); // Complete.
