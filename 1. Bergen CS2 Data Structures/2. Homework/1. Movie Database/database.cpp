@@ -55,8 +55,8 @@ void Database::setObjectCounter(std::size_t userInput)
     _objectCounter = userInput;
 }
 
-// Method sets a pointer to a single MovieClass inside movieListArray[]
-void Database::setMovieListArray(movieNamespace::MovieClass* inputMovieClass, std::size_t desiredArrayPosition)
+// Method sets a pointer to a single MovieClass inside movieListArray[].
+void Database::setSingleMovieListArray(std::size_t desiredArrayPosition, movieNamespace::MovieClass* inputMovieClass)
 {
     _movieListArray[desiredArrayPosition] = inputMovieClass;
 }
@@ -109,7 +109,7 @@ void Database::loadData()
         tempMovieClass->setRating(tempData[4]);
         tempMovieClass->setDirector(tempData[5]);
 
-        Database::setMovieListArray(tempMovieClass, Database::getObjectCounter());
+        Database::setSingleMovieListArray(Database::getObjectCounter(), tempMovieClass);
         Database::objectCounterIterator(); // Equivalent to _objectCounter++;
 
         // Error catching
@@ -151,8 +151,6 @@ void Database::displayAllData()
 // Creates a second Database with one additional spot in _movieListArray[].
 void Database::addMovie()
 {
-    std::cout << "Inside Database::addMovie()." << std::endl;
-
     // Temp data members to hold input.
     std::string inputMovieIMBDTitle, inputMovieTitle, inputMovieYear, inputMovieGenre, inputMovieRating, inputMovieDirector;
 
@@ -197,13 +195,34 @@ void Database::addMovie()
 
     // Updates _movieListArray[].
     // Not sure why it has a -1 error but w/e lol.
-    Database::setMovieListArray(newMovie, (Database::getObjectCounter() - 1));
+    Database::setSingleMovieListArray((Database::getObjectCounter() - 1), newMovie);
 }
 
 // Removes a movie
 void Database::removeMovie()
 {
-    std::cout << "Inside Database::removeMovie()." << std::endl;  
+    std::cout << "Inside Database::removeMovie()." << std::endl;
+
+    std::size_t deletionPosition = -1;
+    std::cout << "Input which movie you would like to delete: ";
+    std::cin >> deletionPosition;
+
+
+    movieNamespace::MovieClass* tempMovieListArray1[20];
+    movieNamespace::MovieClass* tempMovieListArray2[20];
+
+    std::size_t tempCounter = 0;
+    while (tempCounter != deletionPosition)
+    {
+        tempMovieListArray1[tempCounter] = Database::getMovieListArrayAtPosition(tempCounter);
+        tempCounter++;
+    }
+
+    for (std::size_t i = 0; i < (20 - deletionPosition); i++)
+    {
+        tempMovieListArray2[i] = getMovieListArrayAtPosition(i + 1);
+        std::cout << "tempMovieListArray2[" << i << "]: " << getMovieListArrayAtPosition(i) << std::endl;
+    }
 }
 
 // Searches for movies or genres

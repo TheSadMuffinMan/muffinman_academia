@@ -6,6 +6,12 @@ namespace movieNamespace
     MovieClass::MovieClass()
     {
         // std::cout << "MovieClass() Constructor utilized." << std::endl;
+        // _imbdTitleID = nullptr;
+        // _movieTitle = nullptr;
+        // _year = nullptr;
+        // _genre = nullptr;
+        // _rating = nullptr;
+        // _director = nullptr;
     }
 
     MovieClass::~MovieClass()

@@ -20,8 +20,11 @@ int main(int argc, char *argv[])
     mainDataBase.loadData();
 
     // mainDataBase.addMovie(); // Working
-
     // mainDataBase.displayAllData(); // Working
+
+    mainDataBase.removeMovie();
+
+    // mainDataBase.displayAllData();
 
     return 0;
 }

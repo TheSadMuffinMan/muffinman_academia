@@ -34,7 +34,8 @@ class Database
         void setName(std::string);
         void setDb_id(int);
         void setObjectCounter(std::size_t);
-        void setMovieListArray(movieNamespace::MovieClass*, std::size_t);
+        void setSingleMovieListArray(std::size_t, movieNamespace::MovieClass*);
+        void setEntireMovieListArray(std::size_t, movieNamespace::MovieClass*[]);
 
     private:
         std::string _name;
