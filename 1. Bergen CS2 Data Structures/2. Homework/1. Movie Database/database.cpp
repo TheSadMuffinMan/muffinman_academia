@@ -8,6 +8,11 @@ Database::Database()
     setDb_id(0);
     setObjectCounter(0);
 
+    for (std::size_t i = 0; i < 20; i++)
+    {
+        Database::setSingleMovieListArray(i, nullptr);
+    }
+
     // std::cout << "Database(size_t) Constructor used." << std::endl;
 }
 
@@ -17,6 +22,11 @@ Database::Database(std::size_t dataBaseArraySize, std::string inputName, int inp
     _name = inputName;
     _db_id = inputDb_id;
     _objectCounter = 0;
+
+    for (std::size_t i = 0; i < dataBaseArraySize; i++)
+    {
+        Database::setSingleMovieListArray(i, nullptr);
+    }
 
     // std::cout << "Non-default Database constructor class used." << std::endl;
 }
@@ -207,21 +217,15 @@ void Database::removeMovie()
     std::cout << "Input which movie you would like to delete: ";
     std::cin >> deletionPosition;
 
+    Database::setSingleMovieListArray(deletionPosition, nullptr);
 
-    movieNamespace::MovieClass* tempMovieListArray1[20];
-    movieNamespace::MovieClass* tempMovieListArray2[20];
-
-    std::size_t tempCounter = 0;
-    while (tempCounter != deletionPosition)
+    std::size_t tempCounter = deletionPosition;
+    movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
+    while (Database::getMovieListArrayAtPosition(tempCounter + 1) != nullptr)
     {
-        tempMovieListArray1[tempCounter] = Database::getMovieListArrayAtPosition(tempCounter);
+        tempMovie = Database::getMovieListArrayAtPosition((tempCounter) + 1);
+        Database::setSingleMovieListArray(tempCounter, tempMovie);
         tempCounter++;
-    }
-
-    for (std::size_t i = 0; i < (20 - deletionPosition); i++)
-    {
-        tempMovieListArray2[i] = getMovieListArrayAtPosition(i + 1);
-        std::cout << "tempMovieListArray2[" << i << "]: " << getMovieListArrayAtPosition(i) << std::endl;
     }
 }
 

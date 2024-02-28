@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     string dataBaseName = "DataBase located in Main";
     int db_id = 1;
-    std::size_t dataBaseArraySize = 20;
+    std::size_t const dataBaseArraySize = 20;
 
     // Declares the mainDataBase that we will be using.
     Database mainDataBase;
@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
     mainDataBase.removeMovie();
 
-    // mainDataBase.displayAllData();
+    mainDataBase.displayAllData();
 
     return 0;
 }

@@ -20,7 +20,7 @@ class Database
         void displayAllData(); // Complete, need to come back and "make pretty".
         void displaySingleMovie(movieNamespace::MovieClass*); // Complete.
         void addMovie(); // Complete.
-        void removeMovie(); // Working on.
+        void removeMovie(); // Complete.
         void searchFunction();
         void objectCounterIterator(); // Complete.
 
