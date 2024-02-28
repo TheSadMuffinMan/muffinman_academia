@@ -21,8 +21,7 @@ int main(int argc, char *argv[])
 
     // mainDataBase.addMovie(); // Working
     // mainDataBase.displayAllData(); // Working
-
-    mainDataBase.removeMovie();
+    // mainDataBase.removeMovie(); // Working
 
     mainDataBase.displayAllData();
 
