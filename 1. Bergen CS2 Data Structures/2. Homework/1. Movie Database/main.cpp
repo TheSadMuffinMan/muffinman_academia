@@ -23,6 +23,8 @@ int main(int argc, char *argv[])
     // mainDataBase.displayAllData(); // Working
     // mainDataBase.removeMovie(); // Working
 
+    mainDataBase.searchFunction();
+
     mainDataBase.displayAllData();
 
     return 0;

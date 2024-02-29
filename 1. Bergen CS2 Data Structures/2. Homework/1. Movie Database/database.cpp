@@ -237,7 +237,72 @@ movieNamespace::MovieClass* Database::searchFunction()
     // Ask for genre or IMBD title
 
     // Declare temporary array and initialize ea. member to nullptr.
+    movieNamespace::MovieClass* tempArray[20];
+    for (std::size_t i = 0; i < 20; i++)
+    {
+        tempArray[i] = nullptr;
+    }
+
     // Stores any pointers to movieClasses with genre X.
+    std::size_t positionCounter = 0;
+    std::string inputGenre;
+    std::cout << "Options are: 1. Adventure   2. Action   3. Animation   4. Comedy" << std::endl;
+    std::cout << "Please input what type of genre you would like (Input Exact):";
+    std::cin >> inputGenre;
+    for (std::size_t i = 0; i < 20; i++)
+    {
+        std::string tempString = ""; // String to hold data that will be compared to.
+        movieNamespace::MovieClass* tempMovie; // TempMovie to hold data.
+        tempMovie = Database::getMovieListArrayAtPosition(i);
+        tempString = tempMovie->getGenre();
+
+        if (tempString == "Action")
+        {
+            tempArray[positionCounter] = tempMovie;
+            positionCounter++;
+        } else if (tempString == "Action")
+        {
+            tempArray[positionCounter] = tempMovie;
+            positionCounter++;
+        } else if (tempString == "Animation")
+        {
+            tempArray[positionCounter] = tempMovie;
+            positionCounter++;
+        } else if (tempString == "Comedy")
+        {
+            tempArray[positionCounter] = tempMovie;
+            positionCounter++;
+        } else
+        {
+            std::cout << "***Debug*** Somethin broke" << std::endl;
+        }
+
+        std::cout << tempString << std::endl;
+
+        // if ((tempMovie->getGenre() == "Adventure") && (inputGenre == "Adventure"))
+        // {
+        //     tempArray[positionCounter] = tempMovie;
+        //     positionCounter++;
+        // } else if ((tempMovie->getGenre() == "Action") && (inputGenre == "Action"))
+        // {
+        //     tempArray[positionCounter] = tempMovie;
+        //     positionCounter++;
+        // } else if ((tempMovie->getGenre() == "Animation") && (inputGenre == "Animation"))
+        // {
+        //     tempArray[positionCounter] = tempMovie;
+        //     positionCounter++;
+        // } else if ((tempMovie->getGenre() == "Comedy") && (inputGenre == "Comedy"))
+        // {
+        //     tempArray[positionCounter] = tempMovie;
+        //     positionCounter++;
+        // } else
+        // {
+        //     std::cout << "Somethin broke" << std::endl;
+        // }
+
+        return tempArray[0];
+    }
+
     // Loop through each _movieListArray[20] and add to array if parameters are met.
     // Return array once loop is complete.
 
