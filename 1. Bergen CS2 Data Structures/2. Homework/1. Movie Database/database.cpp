@@ -230,10 +230,25 @@ void Database::removeMovie()
 }
 
 // Searches for movies or genres
-void Database::searchFunction()
+// Returns movieNameSpace::MovieClass*
+movieNamespace::MovieClass* Database::searchFunction()
 {
     std::cout << "Inside Database::searchFunction()." << std::endl;
+    // Ask for genre or IMBD title
+
+    // Declare temporary array and initialize ea. member to nullptr.
+    // Stores any pointers to movieClasses with genre X.
+    // Loop through each _movieListArray[20] and add to array if parameters are met.
+    // Return array once loop is complete.
+
 }
+
+void Database::outputToCSV(movieNamespace::MovieClass* inputArray[])
+{
+    // Asks for user input for name of .csv.
+    // Function loops through the passed array and pushes it to a .csv.
+}
+
 
 // Iterates private data member _objectCounter
 void Database::objectCounterIterator()
