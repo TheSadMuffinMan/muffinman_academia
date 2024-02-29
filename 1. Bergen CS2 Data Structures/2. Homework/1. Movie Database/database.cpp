@@ -234,78 +234,66 @@ void Database::removeMovie()
 movieNamespace::MovieClass* Database::searchFunction()
 {
     std::cout << "Inside Database::searchFunction()." << std::endl;
-    // Ask for genre or IMBD title
 
     // Declare temporary array and initialize ea. member to nullptr.
     movieNamespace::MovieClass* tempArray[20];
-    for (std::size_t i = 0; i < 20; i++)
+    for (std::size_t i = 0; i <= 20; i++)
     {
         tempArray[i] = nullptr;
     }
 
-    // Stores any pointers to movieClasses with genre X.
-    std::size_t positionCounter = 0;
-    std::string inputGenre;
-    std::cout << "Options are: 1. Adventure   2. Action   3. Animation   4. Comedy" << std::endl;
-    std::cout << "Please input what type of genre you would like (Input Exact):";
-    std::cin >> inputGenre;
-    for (std::size_t i = 0; i < 20; i++)
+    // Ask for genre or IMBD title
+    std::size_t searchType = 0; // 0 = null | 1 = Genre | 2 = Title
+    std::cout << "Searching by genre or movie title? 1. GENRE\t2.MOVIE TITLE" << std::endl;
+    std::cin >> searchType;
+
+    if (searchType == 1) // Genre search loop
     {
-        std::string tempString = ""; // String to hold data that will be compared to.
-        movieNamespace::MovieClass* tempMovie; // TempMovie to hold data.
-        tempMovie = Database::getMovieListArrayAtPosition(i);
-        tempString = tempMovie->getGenre();
+        std::cout << "Inside Genre Search Loop." << std::endl;
 
-        if (tempString == "Action")
+        // Stores any pointers to movieClasses with input Genre.
+        std::size_t positionCounter = 0;
+        std::string inputGenre;
+        std::cout << "Options are:\tAdventure\tAction\tAnimation\tComedy" << std::endl;
+        std::cout << "Please input what type of genre you would like (INPUT EXACT): ";
+        std::cin >> inputGenre;
+
+        for (std::size_t i = 0; i < 20; i++)
         {
-            tempArray[positionCounter] = tempMovie;
-            positionCounter++;
-        } else if (tempString == "Action")
-        {
-            tempArray[positionCounter] = tempMovie;
-            positionCounter++;
-        } else if (tempString == "Animation")
-        {
-            tempArray[positionCounter] = tempMovie;
-            positionCounter++;
-        } else if (tempString == "Comedy")
-        {
-            tempArray[positionCounter] = tempMovie;
-            positionCounter++;
-        } else
-        {
-            std::cout << "***Debug*** Somethin broke" << std::endl;
+            std::string tempGenre = ""; // String to hold data that will be compared to.
+            movieNamespace::MovieClass* tempMovie = Database::getMovieListArrayAtPosition(i); // TempMovie to hold data.
+            if (tempMovie == nullptr)
+            {
+                break;
+            }
+            
+            tempGenre = tempMovie->getGenre();
+
+            if ((inputGenre == "Adventure") && (tempGenre == "Adventure"))
+            {
+                tempArray[positionCounter] = tempMovie;
+                positionCounter++;
+            } else if ((inputGenre == "Action") && (tempGenre == "Action"))
+            {
+                tempArray[positionCounter] = tempMovie;
+                positionCounter++;
+            } else if ((inputGenre == "Animation") && (tempGenre == "Animation"))
+            {
+                tempArray[positionCounter] = tempMovie;
+                positionCounter++;
+            } else if ((inputGenre == "Comedy") && (tempGenre == "Comedy"))
+            {
+                tempArray[positionCounter] = tempMovie;
+                positionCounter++;
+            }
         }
+    } else if (searchType == 2) // Movie title search loop
+    {
 
-        std::cout << tempString << std::endl;
-
-        // if ((tempMovie->getGenre() == "Adventure") && (inputGenre == "Adventure"))
-        // {
-        //     tempArray[positionCounter] = tempMovie;
-        //     positionCounter++;
-        // } else if ((tempMovie->getGenre() == "Action") && (inputGenre == "Action"))
-        // {
-        //     tempArray[positionCounter] = tempMovie;
-        //     positionCounter++;
-        // } else if ((tempMovie->getGenre() == "Animation") && (inputGenre == "Animation"))
-        // {
-        //     tempArray[positionCounter] = tempMovie;
-        //     positionCounter++;
-        // } else if ((tempMovie->getGenre() == "Comedy") && (inputGenre == "Comedy"))
-        // {
-        //     tempArray[positionCounter] = tempMovie;
-        //     positionCounter++;
-        // } else
-        // {
-        //     std::cout << "Somethin broke" << std::endl;
-        // }
-
-        return tempArray[0];
     }
 
-    // Loop through each _movieListArray[20] and add to array if parameters are met.
     // Return array once loop is complete.
-
+    return tempArray[0];
 }
 
 void Database::outputToCSV(movieNamespace::MovieClass* inputArray[])

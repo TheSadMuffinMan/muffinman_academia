@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 
     mainDataBase.searchFunction();
 
-    mainDataBase.displayAllData();
+    // mainDataBase.displayAllData();
 
     return 0;
 }
