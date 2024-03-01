@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     string dataBaseName = "DataBase located in Main";
     int db_id = 1;
-    std::size_t const dataBaseArraySize = 20;
+    std::size_t const dataBaseArraySize = 20; // This eliminates the use of "magic numbers".
 
     // Declares the mainDataBase that we will be using.
     Database mainDataBase;

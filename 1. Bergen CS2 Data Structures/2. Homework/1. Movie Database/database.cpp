@@ -236,15 +236,18 @@ movieNamespace::MovieClass* Database::searchFunction()
     std::cout << "Inside Database::searchFunction()." << std::endl;
 
     // Declare temporary array and initialize ea. member to nullptr.
-    movieNamespace::MovieClass* tempArray[20];
-    for (std::size_t i = 0; i <= 20; i++)
+    movieNamespace::MovieClass** tempArray;
+    tempArray = new movieNamespace::MovieClass* [20];
+
+    // = new movieNamespace::MovieClass;
+    for (std::size_t i = 0; i < 20; i++)
     {
         tempArray[i] = nullptr;
     }
 
     // Ask for genre or IMBD title
     std::size_t searchType = 0; // 0 = null | 1 = Genre | 2 = Title
-    std::cout << "Searching by genre or movie title? 1. GENRE\t2.MOVIE TITLE" << std::endl;
+    std::cout << "Searching by genre or movie title?\t1. GENRE\t2. MOVIE TITLE" << std::endl;
     std::cin >> searchType;
 
     if (searchType == 1) // Genre search loop
@@ -289,8 +292,36 @@ movieNamespace::MovieClass* Database::searchFunction()
         }
     } else if (searchType == 2) // Movie title search loop
     {
+        std::cout << "Inside IMBD Title Search loop." << std::endl;
 
+        std::size_t positionCounter = 0;
+        std::string inputIMBDTitle;
+        std::cout << "Please input IMBD Title (INPUT EXACT): ";
+        std::cin >> inputIMBDTitle;
+
+        for (std::size_t i = 0; i < 20; i++)
+        {
+            std::string tempIMBDTitle = ""; // String to hold IMBD title that will be compared to.
+            movieNamespace::MovieClass* tempMovie = Database::getMovieListArrayAtPosition(i); // TempMovie to hold data.
+            if (tempMovie == nullptr)
+            {
+                break;
+            }
+
+            tempIMBDTitle = tempMovie->getIMBDTitleID();
+
+            if (tempIMBDTitle == inputIMBDTitle)
+            {
+                tempArray[0] = tempMovie;
+                tempArray[1] = nullptr;
+                break;
+            }
+        }
     }
+
+    // movieNamespace::MovieClass* tempMovie = tempArray[0];
+    std::string tempPrintString = tempArray[0]->getMovieTitle();
+    std::cout << "tempArray[0]: " << tempPrintString << std::endl;
 
     // Return array once loop is complete.
     return tempArray[0];
