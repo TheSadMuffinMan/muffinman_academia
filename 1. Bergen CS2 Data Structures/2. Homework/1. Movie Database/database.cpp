@@ -231,11 +231,12 @@ void Database::removeMovie()
 
 // Searches for movies or genres
 // Returns movieNameSpace::MovieClass*
-movieNamespace::MovieClass* Database::searchFunction()
+movieNamespace::MovieClass** Database::searchFunction()
 {
     std::cout << "Inside Database::searchFunction()." << std::endl;
 
-    // Declare temporary array and initialize ea. member to nullptr.
+    // Declares array that will hold the data we're searching for.
+    // Initializes each data member (on the stack) to nullptr.
     movieNamespace::MovieClass** tempArray;
     tempArray = new movieNamespace::MovieClass* [20];
 
@@ -294,7 +295,6 @@ movieNamespace::MovieClass* Database::searchFunction()
     {
         std::cout << "Inside IMBD Title Search loop." << std::endl;
 
-        std::size_t positionCounter = 0;
         std::string inputIMBDTitle;
         std::cout << "Please input IMBD Title (INPUT EXACT): ";
         std::cin >> inputIMBDTitle;
@@ -317,6 +317,9 @@ movieNamespace::MovieClass* Database::searchFunction()
                 break;
             }
         }
+    } else
+    {
+        std::cout << "Yer input broke somethin >:(" << std::endl;
     }
 
     // movieNamespace::MovieClass* tempMovie = tempArray[0];
@@ -324,13 +327,24 @@ movieNamespace::MovieClass* Database::searchFunction()
     std::cout << "tempArray[0]: " << tempPrintString << std::endl;
 
     // Return array once loop is complete.
-    return tempArray[0];
+    return tempArray;
 }
 
 void Database::outputToCSV(movieNamespace::MovieClass* inputArray[])
 {
-    // Asks for user input for name of .csv.
     // Function loops through the passed array and pushes it to a .csv.
+    std::cout << "Inside Database::outputToCSV() function." << std::endl;
+
+    std::ofstream outputStream;
+    outputStream.open("outputFile.csv");
+
+
+    std::size_t sizeOfOutputArray = 0;
+    sizeOfOutputArray = sizeof(inputArray);
+
+    std::cout << "sizeof(inputArray): " << sizeOfOutputArray << std::endl;
+
+    outputStream.close();
 }
 
 

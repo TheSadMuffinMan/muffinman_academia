@@ -21,7 +21,7 @@ class Database
         void displaySingleMovie(movieNamespace::MovieClass*); // Complete.
         void addMovie(); // Complete.
         void removeMovie(); // Complete.
-        movieNamespace::MovieClass* searchFunction(); // Working on.
+        movieNamespace::MovieClass** searchFunction(); // Working on.
         void outputToCSV(movieNamespace::MovieClass*[]); // Planned.
         void objectCounterIterator(); // Complete.
 

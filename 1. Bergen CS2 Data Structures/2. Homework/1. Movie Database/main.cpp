@@ -23,7 +23,10 @@ int main(int argc, char *argv[])
     // mainDataBase.displayAllData(); // Working
     // mainDataBase.removeMovie(); // Working
 
-    mainDataBase.searchFunction();
+    movieNamespace::MovieClass** tempArray;
+    tempArray = mainDataBase.searchFunction();
+
+    mainDataBase.outputToCSV(tempArray);
 
     // mainDataBase.displayAllData();
 
