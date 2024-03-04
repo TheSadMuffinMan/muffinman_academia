@@ -230,17 +230,16 @@ void Database::removeMovie()
 }
 
 // Searches for movies or genres
-// Returns movieNameSpace::MovieClass*
+// Returns a pointer to an array of pointers to movies (movieNameSpace::MovieClass*).
 movieNamespace::MovieClass** Database::searchFunction()
 {
     std::cout << "Inside Database::searchFunction()." << std::endl;
 
     // Declares array that will hold the data we're searching for.
-    // Initializes each data member (on the stack) to nullptr.
     movieNamespace::MovieClass** tempArray;
     tempArray = new movieNamespace::MovieClass* [20];
 
-    // = new movieNamespace::MovieClass;
+    // Initializes each data member to nullptr.
     for (std::size_t i = 0; i < 20; i++)
     {
         tempArray[i] = nullptr;
@@ -262,6 +261,7 @@ movieNamespace::MovieClass** Database::searchFunction()
         std::cout << "Please input what type of genre you would like (INPUT EXACT): ";
         std::cin >> inputGenre;
 
+        // Loop searches each _movieListArray[] position and will put the compared data into tempArray[].
         for (std::size_t i = 0; i < 20; i++)
         {
             std::string tempGenre = ""; // String to hold data that will be compared to.
@@ -338,11 +338,17 @@ void Database::outputToCSV(movieNamespace::MovieClass* inputArray[])
     std::ofstream outputStream;
     outputStream.open("outputFile.csv");
 
+    // outputStream << "Testing"; // Puts "Testing" in the first line of the csv file.
 
-    std::size_t sizeOfOutputArray = 0;
-    sizeOfOutputArray = sizeof(inputArray);
+    movieNamespace::MovieClass* tempMovie;
+    std::string tempString;
 
-    std::cout << "sizeof(inputArray): " << sizeOfOutputArray << std::endl;
+    for (std::size_t i = 0; i < 20; i++)
+    {
+        tempMovie = Database::getMovieListArrayAtPosition(i);
+        tempString = tempMovie->getMovieTitle();
+        outputStream << tempString << "\n";
+    }
 
     outputStream.close();
 }

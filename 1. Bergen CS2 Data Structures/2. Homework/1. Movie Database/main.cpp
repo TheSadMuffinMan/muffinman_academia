@@ -14,8 +14,7 @@ int main(int argc, char *argv[])
     std::size_t const dataBaseArraySize = 20; // This eliminates the use of "magic numbers".
 
     // Declares the mainDataBase that we will be using.
-    Database mainDataBase;
-    mainDataBase = Database(dataBaseArraySize, dataBaseName, db_id); // Populates the mainDataBase with values.
+    Database mainDataBase = Database(dataBaseArraySize, dataBaseName, db_id); // Populates the mainDataBase with values.
 
     mainDataBase.loadData();
 
@@ -30,5 +29,6 @@ int main(int argc, char *argv[])
 
     // mainDataBase.displayAllData();
 
+    cout << "\nProgram complete." << endl;
     return 0;
 }
