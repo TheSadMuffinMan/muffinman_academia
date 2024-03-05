@@ -99,7 +99,7 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[5]; // Holds the 6 private data members.
+        std::string* tempData[5]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
@@ -107,7 +107,7 @@ void Database::loadData()
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
-            tempData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
+            tempData[tempCounter] = &tempString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
             tempCounter++;
         }
@@ -186,8 +186,8 @@ void Database::addMovie()
     std::cout << "Input Rating: ";
     getline(std::cin, inputMovieRating);
     // Converts to a float.
-    float cleanInputMovieRating;
-    std::istringstream(inputMovieRating) >> cleanInputMovieRating;
+    float* cleanInputMovieRating;
+    std::istringstream(inputMovieRating) >> *cleanInputMovieRating;
 
     std::cout << "Input Director: ";
     // std::cin.ignore();
@@ -196,12 +196,12 @@ void Database::addMovie()
     // Populates a new movieClass.
     movieNamespace::MovieClass* newMovie = new movieNamespace::MovieClass;
     objectCounterIterator(); // Same as _objectCounter++, working.
-    newMovie->setIMBDTitleID(inputMovieIMBDTitle);
-    newMovie->setMovieTitle(inputMovieTitle);
-    newMovie->setYear(cleanInputMovieYear);
-    newMovie->setGenre(inputMovieGenre);
+    newMovie->setIMBDTitleID(&inputMovieIMBDTitle);
+    newMovie->setMovieTitle(&inputMovieTitle);
+    newMovie->setYear(&cleanInputMovieYear);
+    newMovie->setGenre(&inputMovieGenre);
     newMovie->setRating(cleanInputMovieRating);
-    newMovie->setDirector(inputMovieDirector);
+    newMovie->setDirector(&inputMovieDirector);
 
     // Updates _movieListArray[].
     // Not sure why it has a -1 error but w/e lol.
@@ -342,14 +342,15 @@ void Database::outputToCSV(movieNamespace::MovieClass* inputArray[])
 
     movieNamespace::MovieClass* tempMovie;
     std::string tempString;
+    // Working up to this point.
 
     for (std::size_t i = 0; i < 20; i++)
     {
         tempMovie = Database::getMovieListArrayAtPosition(i);
         tempString = tempMovie->getMovieTitle();
-        outputStream << tempString << "\n";
+        outputStream << tempString;
     }
-
+    std::cout << "DEBUG Working?" << std::endl;
     outputStream.close();
 }
 
