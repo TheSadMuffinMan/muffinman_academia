@@ -99,7 +99,7 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string* tempData[5]; // Holds the 6 private data members.
+        std::string tempData[5]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
@@ -107,7 +107,7 @@ void Database::loadData()
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
-            tempData[tempCounter] = &tempString.substr(startVariable, (endVariable - startVariable));
+            tempData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
             tempCounter++;
         }
@@ -132,9 +132,34 @@ void Database::loadData()
     is.close();
 }
 
+movieNamespace::MovieClass* Database::getEntireMovieList()
+{
+    //
+}
+
+
 void Database::displaySingleMovie(movieNamespace::MovieClass* inputMovie)
 {
     std::cout << "Movie: " << inputMovie->getMovieTitle() << std::endl;
+}
+
+// Function takes an array of movieNamespace::MovieClass pointers and prints out all the movie titles inside said array.
+void Database::displayAllMovieTitles(movieNamespace::MovieClass* inputArray[])
+{
+    std::size_t tempCounter = 0;
+    std::string tempString;
+    while (inputArray[tempCounter] != nullptr)
+    {
+        tempString = inputArray[tempCounter]->getMovieTitle();
+        std::cout << (tempCounter + 1) << ": " << tempString << std::endl;
+        tempCounter++;
+
+        if (tempCounter >= 8)
+        {
+            std::cout << "Something broke inside Database::displayAllMovies()" << std::endl;
+            break;
+        }
+    }
 }
 
 // Displays all movie objects inside movieListArray
@@ -186,8 +211,8 @@ void Database::addMovie()
     std::cout << "Input Rating: ";
     getline(std::cin, inputMovieRating);
     // Converts to a float.
-    float* cleanInputMovieRating;
-    std::istringstream(inputMovieRating) >> *cleanInputMovieRating;
+    float cleanInputMovieRating;
+    std::istringstream(inputMovieRating) >> cleanInputMovieRating;
 
     std::cout << "Input Director: ";
     // std::cin.ignore();
@@ -196,12 +221,12 @@ void Database::addMovie()
     // Populates a new movieClass.
     movieNamespace::MovieClass* newMovie = new movieNamespace::MovieClass;
     objectCounterIterator(); // Same as _objectCounter++, working.
-    newMovie->setIMBDTitleID(&inputMovieIMBDTitle);
-    newMovie->setMovieTitle(&inputMovieTitle);
-    newMovie->setYear(&cleanInputMovieYear);
-    newMovie->setGenre(&inputMovieGenre);
+    newMovie->setIMBDTitleID(inputMovieIMBDTitle);
+    newMovie->setMovieTitle(inputMovieTitle);
+    newMovie->setYear(cleanInputMovieYear);
+    newMovie->setGenre(inputMovieGenre);
     newMovie->setRating(cleanInputMovieRating);
-    newMovie->setDirector(&inputMovieDirector);
+    newMovie->setDirector(inputMovieDirector);
 
     // Updates _movieListArray[].
     // Not sure why it has a -1 error but w/e lol.
@@ -264,7 +289,7 @@ movieNamespace::MovieClass** Database::searchFunction()
         // Loop searches each _movieListArray[] position and will put the compared data into tempArray[].
         for (std::size_t i = 0; i < 20; i++)
         {
-            std::string tempGenre = ""; // String to hold data that will be compared to.
+            std::string tempGenre; // String to hold data that will be compared to.
             movieNamespace::MovieClass* tempMovie = Database::getMovieListArrayAtPosition(i); // TempMovie to hold data.
             if (tempMovie == nullptr)
             {
@@ -340,17 +365,49 @@ void Database::outputToCSV(movieNamespace::MovieClass* inputArray[])
 
     // outputStream << "Testing"; // Puts "Testing" in the first line of the csv file.
 
+    // Temporary variables.
     movieNamespace::MovieClass* tempMovie;
     std::string tempString;
-    // Working up to this point.
+    int tempInt = 0;
+    float tempFloat = 0.0;
 
+    // Loop outputs all data to outputFile, formatted for a csv.
     for (std::size_t i = 0; i < 20; i++)
-    {
-        tempMovie = Database::getMovieListArrayAtPosition(i);
-        tempString = tempMovie->getMovieTitle();
-        outputStream << tempString;
+    {        
+        tempMovie = inputArray[i];
+
+        if (tempMovie == nullptr)
+        {
+            break;
+        }
+
+        tempString = inputArray[i]->getIMBDTitleID();
+        std::cout << "tempIMBDID: " << tempString << std::endl;
+        outputStream << tempString << ",";
+
+        tempString = inputArray[i]->getMovieTitle();
+        std::cout << "tempTitle: " << tempString << std::endl;
+        outputStream << tempString << ",";
+
+        tempInt = inputArray[i]->getYear();
+        std::cout << "tempYear: " << tempInt << std::endl;
+        outputStream << tempInt << ",";
+
+        tempString = inputArray[i]->getGenre();
+        std::cout << "tempGenre: " << tempString << std::endl;
+        outputStream << tempString << ",";
+
+        tempFloat = inputArray[i]->getRating();
+        std::cout << "tempRating: " << tempFloat << std::endl;
+        outputStream << tempString << ",";
+
+        tempString = inputArray[i]->getDirector();
+        std::cout << "tempDirector: " << tempString << std::endl;
+        outputStream << tempString << ",";
+
+        outputStream << "\n";
     }
-    std::cout << "DEBUG Working?" << std::endl;
+
     outputStream.close();
 }
 

@@ -18,16 +18,20 @@ int main(int argc, char *argv[])
 
     mainDataBase.loadData();
 
+    mainDataBase.displayAllMovieTitles();
+
+    size_t menuChoice = 0;
+    cout << "\n\tMENU: ";
+
+
     // mainDataBase.addMovie(); // Working
     // mainDataBase.displayAllData(); // Working
     // mainDataBase.removeMovie(); // Working
 
-    movieNamespace::MovieClass** tempArray;
-    tempArray = mainDataBase.searchFunction();
+    // movieNamespace::MovieClass** tempArray;
+    // tempArray = mainDataBase.searchFunction();
 
-    mainDataBase.outputToCSV(tempArray);
-
-    // mainDataBase.displayAllData();
+    // mainDataBase.outputToCSV(tempArray);
 
     cout << "\nProgram complete." << endl;
     return 0;

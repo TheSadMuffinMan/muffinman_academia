@@ -21,80 +21,79 @@ namespace movieNamespace
 
 
     // Getters
-    std::string* MovieClass::getIMBDTitleID()
+    std::string MovieClass::getIMBDTitleID()
     {
         return _imbdTitleID;
     }
 
-    std::string* MovieClass::getMovieTitle()
+    std::string MovieClass::getMovieTitle()
     {
         return _movieTitle;
     }
 
-    int* MovieClass::getYear()
+    int MovieClass::getYear()
     {
         return _year;
     }
 
-    std::string* MovieClass::getGenre()
+    std::string MovieClass::getGenre()
     {
         return _genre;
     }
 
-    float* MovieClass::getRating()
+    float MovieClass::getRating()
     {
         return _rating;
     }
 
-    std::string* MovieClass::getDirector()
+    std::string MovieClass::getDirector()
     {
         return _director;
     }
 
     // Setters
-    void MovieClass::setIMBDTitleID(std::string* desiredTitle)
+    void MovieClass::setIMBDTitleID(std::string desiredTitle)
     {
         _imbdTitleID = desiredTitle;
     }
 
-    void MovieClass::setMovieTitle(std::string* desiredTitle)
+    void MovieClass::setMovieTitle(std::string desiredTitle)
     {
         _movieTitle = desiredTitle;
     }
 
-    void MovieClass::setYear(int* desiredYear)
+    void MovieClass::setYear(int desiredYear)
     {
         _year = desiredYear;
     }
 
-    // Function is passed in a string*
-    // Function converts string* to an int*
-    // Function sets int* _year.
-    void MovieClass::setYear(std::string* desiredYear)
+    // Overloaded function takes in a string and converts it to an int.
+    void MovieClass::setYear(std::string desiredYear)
     {
-        int* tempInt;
-        std::istringstream(*desiredYear) >> *tempInt;
+        int tempInt;
+        std::istringstream(desiredYear) >> tempInt;
         _year = tempInt;
     }
 
-    void MovieClass::setGenre(std::string* desiredGenre)
+    void MovieClass::setGenre(std::string desiredGenre)
     {
         _genre = desiredGenre;
     }
 
-    void MovieClass::setRating(float* desiredRating)
+    void MovieClass::setRating(float desiredRating)
     {
         _rating = desiredRating;
     }
 
-    void MovieClass::setRating(std::string* desiredRating)
+    // Overloaded function takes in a string and converts it to a float.
+    void MovieClass::setRating(std::string desiredRating)
     {
-        float* tempFloat;
-        std::istringstream(*desiredRating) >> *tempFloat;
+        float tempFloat;
+        std::istringstream(desiredRating) >> tempFloat;
         _rating = tempFloat;
     }
 
-    void MovieClass::setDirector(std::string* desiredDirector)
+    void MovieClass::setDirector(std::string desiredDirector)
     {
         _director = desiredDirector;
     }

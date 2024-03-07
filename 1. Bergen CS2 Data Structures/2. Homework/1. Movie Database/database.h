@@ -19,16 +19,18 @@ class Database
         void loadData(); // Basically Complete, not pulling director.
         void displayAllData(); // Complete, need to come back and "make pretty". <iomanip>
         void displaySingleMovie(movieNamespace::MovieClass*); // Complete.
+        void displayAllMovieTitles(movieNamespace::MovieClass*[]);
         void addMovie(); // Complete.
         void removeMovie(); // Complete.
-        movieNamespace::MovieClass** searchFunction(); // Working on.
-        void outputToCSV(movieNamespace::MovieClass*[]); // Planned.
+        movieNamespace::MovieClass** searchFunction(); // Complete.
+        void outputToCSV(movieNamespace::MovieClass*[]); // Complete.
         void objectCounterIterator(); // Complete.
 
         // Getters
         // std::string getName(); // Never interact with this variable.
         // int getDb_id(); // Never interact with this variable.
         std::size_t getObjectCounter();
+        movieNamespace::MovieClass* getEntireMovieList();
         movieNamespace::MovieClass* getMovieListArrayAtPosition(std::size_t);
 
         // Setters
