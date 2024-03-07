@@ -18,20 +18,77 @@ int main(int argc, char *argv[])
 
     mainDataBase.loadData();
 
-    mainDataBase.displayAllMovieTitles();
 
+    std::string garbVariable = "";
     size_t menuChoice = 0;
-    cout << "\n\tMENU: ";
+    // 0 == Main menu.
+    // 1 == Display all info.
+    // 2 == Add movie.
+    // 3 == Remove movie.
+    // 4 == Search for movie.
+    // 5 == Output to CSV.
+    // 6 == Exit program.
 
+    while (menuChoice == 0) // Main menu loop.
+    {
+        mainDataBase.displayAllMovieTitles();
+        
+        std::cout << "\n\tMENU: " << std::endl;
+        std::cout << "1. Display all information\t2. Add Movie" << std::endl;
+        std::cout << "3. Remove Movie\t4. Search for Movie" << std::endl;
+        std::cout << "5. Output to .csv\t6. Exit Program" << std::endl;
+        std::cout << "Menu Choice: ";
+        std::cin >> menuChoice;
 
-    // mainDataBase.addMovie(); // Working
-    // mainDataBase.displayAllData(); // Working
-    // mainDataBase.removeMovie(); // Working
+        while (menuChoice == 1) // Display all info loop.
+            {
+                mainDataBase.displayAllData();
+                std::cout << "Press Enter to continue.";
+                getline(std::cin, garbVariable);
+                std::cin.ignore();
+                menuChoice = 0;
+            }
 
-    // movieNamespace::MovieClass** tempArray;
-    // tempArray = mainDataBase.searchFunction();
+        while (menuChoice == 2) // Add movie loop.
+            {
+                mainDataBase.addMovie();
+                std::cout << "Press enter to continue.";
+                getline(std::cin, garbVariable);
+                std::cin.ignore();
+                menuChoice = 0;
+            }
 
-    // mainDataBase.outputToCSV(tempArray);
+        while (menuChoice == 3) // Remove movie loop.
+            {
+                mainDataBase.removeMovie();
+                std::cout << "Press enter to continue.";
+                getline(std::cin, garbVariable);
+                std::cin.ignore();
+                menuChoice = 0;
+            }
+
+        while (menuChoice == 4) // Search for movie loop.
+            {
+                mainDataBase.searchFunction();
+                std::cout << "Press enter to continue.";
+                getline(std::cin, garbVariable);
+                std::cin.ignore();
+                menuChoice = 0;
+            }
+
+        while (menuChoice == 5) // Output to CSV loop.
+            {
+                std::cout << "Not coded yet lol" << std::endl;
+                getline(std::cin, garbVariable);
+                std::cin.ignore();
+                menuChoice = 0;
+            }
+
+        if ((menuChoice < 0) || (menuChoice > 6))
+            {
+                menuChoice = 0;
+            }
+    }
 
     cout << "\nProgram complete." << endl;
     return 0;
