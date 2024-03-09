@@ -1,16 +1,15 @@
 #pragma once
 
-#include <tvshows.h>
 #include <media.h>
 #include <iostream>
 
-namespace tvShows
+namespace tvShowNamespace
 {
-    class TVShow: public media::MediaClass
+    class TVShowClass: public media::MediaClass
     {
         public:
-            TVShow();
-            ~TVShow();
+            TVShowClass();
+            ~TVShowClass();
 
             // virtual DisplayInfo();
 

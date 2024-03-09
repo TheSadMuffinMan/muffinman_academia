@@ -1,55 +1,55 @@
 #include <tvshows.h>
 
 // Default Constructor.
-tvShows::TVShow::TVShow()
+tvShowNamespace::TVShowClass::TVShowClass()
 {
     //
 }
 
 // Deconstructor.
-tvShows::TVShow::~TVShow()
+tvShowNamespace::TVShowClass::~TVShowClass()
 {
     //
 }
 
 // Virtual function.
-void tvShows::TVShow::MediaClass::displayInfo()
+void tvShowNamespace::TVShowClass::MediaClass::displayInfo()
 {
     //
 }
 
 // Native Getters.
-float tvShows::TVShow::getRating()
+float tvShowNamespace::TVShowClass::getRating()
 {
     //
 }
 
-int tvShows::TVShow::getNumEpisodes()
+int tvShowNamespace::TVShowClass::getNumEpisodes()
 {
     //
 }
 
 
 // Native Setters
-void tvShows::TVShow::setRating(float inputRating)
+void tvShowNamespace::TVShowClass::setRating(float inputRating)
 {
     //
 }
 
 // Overloaded setRating function that accepts a string and converts it to a float.
-void tvShows::TVShow::setRating(std::string inputRating)
+void tvShowNamespace::TVShowClass::setRating(std::string inputRating)
 {
     //
 }
 
 // Regular/Non-overloaded function.
-void tvShows::TVShow::setNumEpisodes(int inputNumEpisodes)
+void tvShowNamespace::TVShowClass::setNumEpisodes(int inputNumEpisodes)
 {
     //
 }
 
 // Overloaded function that accepts a string and converts it to an int.
-void tvShows::TVShow::setNumEpisodes(std::string inputNumEpisodes)
+void tvShowNamespace::TVShowClass::setNumEpisodes(std::string inputNumEpisodes)
 {
-
+    //
 }
