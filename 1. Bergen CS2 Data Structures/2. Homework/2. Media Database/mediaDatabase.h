@@ -1,47 +1,47 @@
 #pragma once
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include "movie.h"
 
-// The database should have the following variables: name, db_id, array for Movies (as pointers)
-// Functionality: Add movie, remove movie (given ID), display all movies, search for movie given title or genre
-// and print out a table of them.
+#include <media.h>
+#include <movie.h>
+#include <tvshows.h>
+#include <music.h>
+
+#include <string>
+#include <iomanip>
+
 class Database
 {
     public:
-        // Default contstructor and destructor.
         Database();
-        Database(std::size_t, std::string, int);
         ~Database();
 
-        // Main methods
-        void loadData(); // Basically Complete, not pulling director.
-        void displayAllData(); // Complete, need to come back and "make pretty". <iomanip>
-        void displaySingleMovie(movieNamespace::MovieClass*); // Complete.
-        void displayAllMovieTitles(); // Complete.
-        void addMovie(); // Complete.
-        void removeMovie(); // Complete.
-        movieNamespace::MovieClass** searchFunction(); // Complete.
-        void outputToCSV(movieNamespace::MovieClass*[]); // Complete.
-        void objectCounterIterator(); // Complete.
+        void loadData();
+        // Load data
 
-        // Getters
-        // std::string getName(); // Never interact with this variable.
-        // int getDb_id(); // Never interact with this variable.
-        std::size_t getObjectCounter();
-        movieNamespace::MovieClass* getMovieListArrayAtPosition(std::size_t);
+        // Add Movie
+        // Add TV Show
+        // Add Music
 
-        // Setters
-        void setName(std::string);
-        void setDb_id(int);
-        void setObjectCounter(std::size_t);
-        void setSingleMovieListArray(std::size_t, movieNamespace::MovieClass*);
-        // void setEntireMovieListArray(std::size_t, movieNamespace::MovieClass*[]);
+        // Display all media.
+        // Display single movie.
+        // Display single TV show.
+        // Display single Music.
+
+        // Remove single movie.
+        // Remove single TV show.
+        // Remove single Music.
+
+        // Output all data to CSV.
+
+        // Search for media.
 
     private:
         std::string _name;
         int _db_id;
-        std::size_t _objectCounter;
-        movieNamespace::MovieClass* _movieListArray[20];
+        std::size_t numMovies;
+        std::size_t numTVShows;
+        std::size_t numMusicObjects;
+
+        movieNamespace::MovieClass* movieList[100];
+        tvShowNamespace::TVShowClass* tvShowList[100];
+        musicNamespace::MusicClass* musicList[100];
 };
