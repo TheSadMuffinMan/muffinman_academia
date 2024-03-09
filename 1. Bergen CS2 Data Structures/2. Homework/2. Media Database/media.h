@@ -9,7 +9,7 @@ namespace media
     class MediaClass
     {
         public:
-            virtual void displayAllInfo();
+            virtual void displayInfo();
             // Getters
             std::string getMediaId();
             std::string getMediaTitle();

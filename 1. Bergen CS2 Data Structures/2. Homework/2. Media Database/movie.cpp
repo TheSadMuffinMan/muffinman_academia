@@ -1,100 +1,47 @@
-#include "movie.h"
+#include <movie.h>
 
-namespace movieNamespace
+// Standard constructor.
+movieNamespace::MovieClass::MovieClass()
 {
-    // Default constructor, initializes all values to nullptr and 0 respectively.
-    MovieClass::MovieClass()
-    {
-        // std::cout << "MovieClass() Constructor utilized." << std::endl;
-        // _imbdTitleID = nullptr;
-        // _movieTitle = nullptr;
-        // _year = nullptr;
-        // _genre = nullptr;
-        // _rating = nullptr;
-        // _director = nullptr;
-    }
+    //
+}
 
-    MovieClass::~MovieClass()
-    {
-        // std::cout << "~MovieClass() deconstructor used." << std::endl;
-    }
+// Standard destructor.
+movieNamespace::MovieClass::~MovieClass()
+{
+    //
+}
+
+void movieNamespace::MovieClass::MediaClass::displayInfo()
+{
+    //
+}
 
 
-    // Getters
-    std::string MovieClass::getIMBDTitleID()
-    {
-        return _imbdTitleID;
-    }
+// Native Getters
+float movieNamespace::MovieClass::getRating()
+{
+    //
+}
 
-    std::string MovieClass::getMovieTitle()
-    {
-        return _movieTitle;
-    }
+std::string movieNamespace::MovieClass::getDirector()
+{
+    //
+}
 
-    int MovieClass::getYear()
-    {
-        return _year;
-    }
 
-    std::string MovieClass::getGenre()
-    {
-        return _genre;
-    }
+// Native Setters
+void movieNamespace::MovieClass::setRating(float inputFloat)
+{
+    //
+}
 
-    float MovieClass::getRating()
-    {
-        return _rating;
-    }
+void movieNamespace::MovieClass::setRating(std::string inputRating)
+{
+    //
+}
 
-    std::string MovieClass::getDirector()
-    {
-        return _director;
-    }
-
-    // Setters
-    void MovieClass::setIMBDTitleID(std::string desiredTitle)
-    {
-        _imbdTitleID = desiredTitle;
-    }
-
-    void MovieClass::setMovieTitle(std::string desiredTitle)
-    {
-        _movieTitle = desiredTitle;
-    }
-
-    void MovieClass::setYear(int desiredYear)
-    {
-        _year = desiredYear;
-    }
-
-    // Overloaded function takes in a string and converts it to an int.
-    void MovieClass::setYear(std::string desiredYear)
-    {
-        int tempInt;
-        std::istringstream(desiredYear) >> tempInt;
-        _year = tempInt;
-    }
-
-    void MovieClass::setGenre(std::string desiredGenre)
-    {
-        _genre = desiredGenre;
-    }
-
-    void MovieClass::setRating(float desiredRating)
-    {
-        _rating = desiredRating;
-    }
-
-    // Overloaded function takes in a string and converts it to a float.
-    void MovieClass::setRating(std::string desiredRating)
-    {
-        float tempFloat;
-        std::istringstream(desiredRating) >> tempFloat;
-        _rating = tempFloat;
-    }
-
-    void MovieClass::setDirector(std::string desiredDirector)
-    {
-        _director = desiredDirector;
-    }
+void movieNamespace::MovieClass::setDirector(std::string inputDirector)
+{
+    //
 }

@@ -1,6 +1,6 @@
 #include <media.h>
 
-void media::MediaClass::displayAllInfo()
+void media::MediaClass::displayInfo()
 {
     // This is a virtual function to be inheritited.
 }
