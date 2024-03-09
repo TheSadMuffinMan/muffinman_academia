@@ -26,3 +26,10 @@ HOMEWORK:
         Turn in Date: March 8 2024.
             Submitted to D2L?: YES
         Self Grade + Reasoning: 70%, super late + not fully functional.
+
+    Homework 2 - Media Database
+        Status: Working on it.
+        Due Date: Mon March 11 2024.
+        Turn in Date: Not turned in yet.
+            Submitted to D2L?: NO
+        Self Grade + Reasoning:

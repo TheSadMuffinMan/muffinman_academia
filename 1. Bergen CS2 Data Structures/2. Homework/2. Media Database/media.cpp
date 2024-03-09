@@ -1,5 +1,10 @@
 #include <media.h>
 
+void media::MediaClass::displayAllInfo()
+{
+    // This is a virtual function to be inheritited.
+}
+
 // Getters
 std::string media::MediaClass::getMediaId()
 {
@@ -14,6 +19,11 @@ std::string media::MediaClass::getMediaTitle()
 int media::MediaClass::getMediaYear()
 {
     return _mediaYear;
+}
+
+std::string media::MediaClass::getGenre()
+{
+    return _mediaGenre;
 }
 
 
@@ -31,4 +41,9 @@ void media::MediaClass::setMediaTitle(std::string inputTitle)
 void media::MediaClass::setMediaYear(int inputNumber)
 {
     _mediaYear = inputNumber;
+}
+
+void media::MediaClass::setGenre(std::string inputGenre)
+{
+    _mediaGenre = inputGenre;
 }
