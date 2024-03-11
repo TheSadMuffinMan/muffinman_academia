@@ -21,14 +21,14 @@ int media::MediaClass::getMediaYear()
     return _mediaYear;
 }
 
-std::string media::MediaClass::getGenre()
+std::string media::MediaClass::getMediaGenre()
 {
     return _mediaGenre;
 }
 
 
 // Setters
-void media::MediaClass::setMediaID(std::string inputID)
+void media::MediaClass::setMediaIMDBID(std::string inputID)
 {
     _mediaID = inputID;
 }
@@ -43,7 +43,7 @@ void media::MediaClass::setMediaYear(int inputNumber)
     _mediaYear = inputNumber;
 }
 
-void media::MediaClass::setGenre(std::string inputGenre)
+void media::MediaClass::setMediaGenre(std::string inputGenre)
 {
     _mediaGenre = inputGenre;
 }

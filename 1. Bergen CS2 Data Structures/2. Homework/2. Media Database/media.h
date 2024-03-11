@@ -14,13 +14,13 @@ namespace media
             std::string getMediaId();
             std::string getMediaTitle();
             int getMediaYear();
-            std::string getGenre();
+            std::string getMediaGenre();
 
             // Setters
-            void setMediaID(std::string);
+            void setMediaIMDBID(std::string);
             void setMediaTitle(std::string);
             void setMediaYear(int);
-            void setGenre(std::string);
+            void setMediaGenre(std::string);
 
         private:
             std::string _mediaID;

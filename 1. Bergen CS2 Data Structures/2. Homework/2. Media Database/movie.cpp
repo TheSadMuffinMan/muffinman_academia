@@ -3,7 +3,13 @@
 // Standard constructor.
 movieNamespace::MovieClass::MovieClass()
 {
-    //
+    // Inherited class methodology.
+    movieNamespace::MovieClass::MediaClass::setMediaIMDBID("MOVIE");
+    movieNamespace::MovieClass::MediaClass::setMediaTitle("MOVIE");
+    movieNamespace::MovieClass::MediaClass::setMediaGenre("GENRE");
+    movieNamespace::MovieClass::MediaClass::setMediaYear(0000);
+
+    
 }
 
 // Standard destructor.
