@@ -9,7 +9,8 @@ movieNamespace::MovieClass::MovieClass()
     movieNamespace::MovieClass::MediaClass::setMediaGenre("GENRE");
     movieNamespace::MovieClass::MediaClass::setMediaYear(0000);
 
-    
+    _rating = 0.0;
+    _director = "MOVIE DIRECTOR";
 }
 
 // Standard destructor.
@@ -18,9 +19,13 @@ movieNamespace::MovieClass::~MovieClass()
     //
 }
 
-void movieNamespace::MovieClass::MediaClass::displayInfo()
+void movieNamespace::MovieClass::displayInfo()
 {
-    //
+    std::cout << "IMDB ID: " << getMediaId() << std::endl;
+    std::cout << "Movie Title: " << getMediaTitle() << std::endl;
+    std::cout << "Release Year: " << getMediaYear() << std::endl;
+    std::cout << "Genre: " << getMediaGenre() << std::endl;
+    std::cout << "Rating: " << movieNamespace::MovieClass::getRating() << std::endl;
 }
 
 
