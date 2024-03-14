@@ -50,7 +50,7 @@ void media::MediaClass::setMediaYear(int inputNumber)
     _mediaYear = inputNumber;
 }
 
-// Special overloaded function that takes in a string and converts it to an int.
+// Overloaded function that takes in a string and converts it to an int.
 void media::MediaClass::setMediaYear(std::string inputString)
 {
     int tempInt = 0;

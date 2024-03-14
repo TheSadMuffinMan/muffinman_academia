@@ -19,6 +19,8 @@ movieNamespace::MovieClass::~MovieClass()
     //
 }
 
+
+// Virtual inherited function.
 void movieNamespace::MovieClass::displayInfo()
 {
     media::MediaClass::displayInfo();
@@ -29,6 +31,7 @@ void movieNamespace::MovieClass::displayInfo()
 
 
 // Native Getters
+
 float movieNamespace::MovieClass::getRating()
 {
     return _rating;
@@ -41,12 +44,13 @@ std::string movieNamespace::MovieClass::getDirector()
 
 
 // Native Setters
+
 void movieNamespace::MovieClass::setRating(float inputFloat)
 {
     _rating = inputFloat;
 }
 
-// Overloaded special function.
+// Overloaded function that takes in a string and converts it to a float.
 void movieNamespace::MovieClass::setRating(std::string inputString)
 {
     float tempFloat = 0.0;

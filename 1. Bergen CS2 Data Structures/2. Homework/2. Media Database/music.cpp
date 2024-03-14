@@ -30,6 +30,7 @@ void musicNamespace::MusicClass::displayInfo()
 
 
 // Native Getters.
+
 std::string musicNamespace::MusicClass::getComposer()
 {
     return _composer;
@@ -47,6 +48,7 @@ float musicNamespace::MusicClass::getTotalPlaytime()
 
 
 // Native Setters.
+
 void musicNamespace::MusicClass::setComposer(std::string inputString)
 {
     _composer = inputString;
