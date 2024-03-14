@@ -11,7 +11,7 @@ namespace tvShowNamespace
             TVShowClass();
             ~TVShowClass();
 
-            // virtual DisplayInfo();
+            void displayInfo();
 
             // Native Getters
             float getRating();

@@ -11,7 +11,7 @@ namespace musicNamespace
             MusicClass();
             ~MusicClass();
 
-            // virtual DisplayInfo();
+            void displayInfo();
 
             // Native Getters
             std::string getComposer();

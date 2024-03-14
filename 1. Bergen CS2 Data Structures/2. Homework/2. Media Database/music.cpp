@@ -3,7 +3,15 @@
 // Default constructor.
 musicNamespace::MusicClass::MusicClass()
 {
-    //
+    // Inherited class methodology.
+    musicNamespace::MusicClass::setMediaIMDBID("MUSIC");
+    musicNamespace::MusicClass::setMediaTitle("MUSIC_TITLE");
+    musicNamespace::MusicClass::setMediaGenre("MUSIC_GENRE");
+    musicNamespace::MusicClass::setMediaYear(0000);
+
+    _composer = "MUSIC_COMPOSER";
+    _numTracks = 0;
+    _totalPlaytime = 0.0;
 }
 
 musicNamespace::MusicClass::~MusicClass()
@@ -11,9 +19,13 @@ musicNamespace::MusicClass::~MusicClass()
     //
 }
 
-void musicNamespace::MusicClass::MediaClass::displayInfo()
+void musicNamespace::MusicClass::displayInfo()
 {
-    //
+    media::MediaClass::displayInfo();
+    std::cout << std::endl;
+    std::cout << "Composer: " << getComposer() << std::endl;
+    std::cout << "Number of Tracks: " << getNumTracks() << std::endl;
+    std::cout << "Total Playtime: " << getTotalPlaytime() << std::endl;
 }
 
 

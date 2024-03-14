@@ -4,10 +4,10 @@
 movieNamespace::MovieClass::MovieClass()
 {
     // Inherited class methodology.
-    movieNamespace::MovieClass::MediaClass::setMediaIMDBID("MOVIE");
-    movieNamespace::MovieClass::MediaClass::setMediaTitle("MOVIE");
-    movieNamespace::MovieClass::MediaClass::setMediaGenre("GENRE");
-    movieNamespace::MovieClass::MediaClass::setMediaYear(0000);
+    movieNamespace::MovieClass::setMediaIMDBID("MOVIE");
+    movieNamespace::MovieClass::setMediaTitle("MOVIE");
+    movieNamespace::MovieClass::setMediaGenre("GENRE");
+    movieNamespace::MovieClass::setMediaYear(0000);
 
     _rating = 0.0;
     _director = "MOVIE DIRECTOR";
