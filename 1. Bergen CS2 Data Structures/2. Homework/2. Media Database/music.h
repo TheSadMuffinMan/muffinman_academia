@@ -11,23 +11,28 @@ namespace musicNamespace
             MusicClass();
             ~MusicClass();
 
+            // Virtual inherited function.
             void displayInfo();
 
+
             // Native Getters
+
             std::string getComposer();
             std::size_t getNumTracks();
             float getTotalPlaytime();
 
+
             // Native Setters
+
             void setComposer(std::string);
             void setNumTracks(int);
-            void setNumTracks(std::string);
+            void setNumTracks(std::string); // Special overloaded function.
             void setTotalPlaytime(float);
-            void setTotalPlaytime(std::string);
+            void setTotalPlaytime(std::string); // Special overloaded function.
 
         private:
             std::string _composer;
             int _numTracks;
-            float _totalPlaytime; // In seconds (pedantic)
+            float _totalPlaytime; // In seconds.
     };
 }

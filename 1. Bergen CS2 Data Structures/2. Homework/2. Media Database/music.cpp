@@ -60,7 +60,9 @@ void musicNamespace::MusicClass::setNumTracks(int inputNum)
 // Overloaded function that accepts a string and converts it to an int.
 void musicNamespace::MusicClass::setNumTracks(std::string inputString)
 {
-    //
+    int tempInt = 0;
+    std::istringstream(inputString) >> tempInt;
+    _numTracks = tempInt;
 }
 
 void musicNamespace::MusicClass::setTotalPlaytime(float inputNum)
@@ -71,5 +73,7 @@ void musicNamespace::MusicClass::setTotalPlaytime(float inputNum)
 // Overloaded function that accepts a string and converts it to a float.
 void musicNamespace::MusicClass::setTotalPlaytime(std::string inputString)
 {
-    //
+    float tempFloat = 0.0;
+    std::istringstream(inputString) >> tempFloat;
+    _totalPlaytime = tempFloat;
 }

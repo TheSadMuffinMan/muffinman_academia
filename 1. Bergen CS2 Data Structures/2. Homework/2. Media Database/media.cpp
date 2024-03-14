@@ -1,5 +1,6 @@
 #include <media.h>
 
+// Virtual inherited function.
 void media::MediaClass::displayInfo()
 {
     // This is a virtual function to be inheritited.
@@ -10,6 +11,7 @@ void media::MediaClass::displayInfo()
 }
 
 // Getters
+
 std::string media::MediaClass::getMediaId()
 {
     return _mediaID;
@@ -32,6 +34,7 @@ std::string media::MediaClass::getMediaGenre()
 
 
 // Setters
+
 void media::MediaClass::setMediaIMDBID(std::string inputID)
 {
     _mediaID = inputID;
@@ -45,6 +48,14 @@ void media::MediaClass::setMediaTitle(std::string inputTitle)
 void media::MediaClass::setMediaYear(int inputNumber)
 {
     _mediaYear = inputNumber;
+}
+
+// Special overloaded function that takes in a string and converts it to an int.
+void media::MediaClass::setMediaYear(std::string inputString)
+{
+    int tempInt = 0;
+    std::istringstream(inputString) >> tempInt;
+    _mediaYear = tempInt;
 }
 
 void media::MediaClass::setMediaGenre(std::string inputGenre)

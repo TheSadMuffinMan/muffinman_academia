@@ -49,7 +49,9 @@ void movieNamespace::MovieClass::setRating(float inputFloat)
 // Overloaded special function.
 void movieNamespace::MovieClass::setRating(std::string inputString)
 {
-    //
+    float tempFloat = 0.0;
+    std::istringstream(inputString) >> tempFloat;
+    _rating = tempFloat;
 }
 
 void movieNamespace::MovieClass::setDirector(std::string inputString)

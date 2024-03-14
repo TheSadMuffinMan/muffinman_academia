@@ -3,6 +3,7 @@
 
 #include <movie.h>
 #include <iostream>
+#include <sstream>
 
 namespace media
 {
@@ -10,17 +11,23 @@ namespace media
     {
         public:
             virtual void displayInfo();
+
             // Getters
+
             std::string getMediaId();
             std::string getMediaTitle();
             int getMediaYear();
             std::string getMediaGenre();
 
+
             // Setters
+
             void setMediaIMDBID(std::string);
             void setMediaTitle(std::string);
             void setMediaYear(int);
+            void setMediaYear(std::string); // Special overloaded setter.
             void setMediaGenre(std::string);
+            
 
         private:
             std::string _mediaID;

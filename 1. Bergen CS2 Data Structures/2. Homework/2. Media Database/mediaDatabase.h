@@ -11,11 +11,14 @@
 class Database
 {
     public:
-        Database(); // Complete.
-        ~Database(); // Working on.
 
-        void loadData();
-        // Load data
+        // Default constructors and destructors
+
+        Database(); // Complete.
+        ~Database(); // Incomplete.
+
+
+        void loadData(); // Incomplete
 
         // Add Movie
         // Add TV Show

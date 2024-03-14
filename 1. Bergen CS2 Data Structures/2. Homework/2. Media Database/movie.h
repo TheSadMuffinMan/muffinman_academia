@@ -2,26 +2,33 @@
 
 #include <media.h>
 #include <iostream>
+#include <sstream>
 
 namespace movieNamespace
 {
     class MovieClass: public media::MediaClass
     {
         public:
-            // Initializes all values to nullptr.
+
+            // Default constructors and destructors.
+
             MovieClass();
             ~MovieClass();
 
             // Virtual inherited function.
             void displayInfo();
 
+
             // Native Getters
+
             float getRating();
             std::string getDirector();
 
+
             // Native Setters
+
             void setRating(float);
-            void setRating(std::string);
+            void setRating(std::string); // Special overloaded setter
             void setDirector(std::string);
 
         private:
