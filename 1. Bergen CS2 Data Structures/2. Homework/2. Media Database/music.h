@@ -2,6 +2,7 @@
 
 #include <media.h>
 #include <iostream>
+#include <sstream>
 
 namespace musicNamespace
 {
