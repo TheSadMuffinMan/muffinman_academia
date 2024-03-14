@@ -12,7 +12,8 @@ namespace movieNamespace
             MovieClass();
             ~MovieClass();
 
-            // void DisplayInfo(); // This function does not need to be defined here.
+            // Virtual inherited function.
+            void displayInfo();
 
             // Native Getters
             float getRating();

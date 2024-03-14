@@ -21,11 +21,10 @@ movieNamespace::MovieClass::~MovieClass()
 
 void movieNamespace::MovieClass::displayInfo()
 {
-    std::cout << "IMDB ID: " << getMediaId() << std::endl;
-    std::cout << "Movie Title: " << getMediaTitle() << std::endl;
-    std::cout << "Release Year: " << getMediaYear() << std::endl;
-    std::cout << "Genre: " << getMediaGenre() << std::endl;
-    std::cout << "Rating: " << movieNamespace::MovieClass::getRating() << std::endl;
+    media::MediaClass::displayInfo();
+    std::cout << std::endl;
+    std::cout << "Rating: " << getRating() << std::endl;
+    std::cout << "Director: " << getDirector() << std::endl;
 }
 
 

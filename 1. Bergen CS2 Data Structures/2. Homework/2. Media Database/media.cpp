@@ -3,6 +3,10 @@
 void media::MediaClass::displayInfo()
 {
     // This is a virtual function to be inheritited.
+    std::cout << "IMDB ID: " << getMediaId() << std::endl;
+    std::cout << "Movie Title: " << getMediaTitle() << std::endl;
+    std::cout << "Release Year: " << getMediaYear() << std::endl;
+    std::cout << "Genre: " << getMediaGenre() << std::endl;
 }
 
 // Getters
