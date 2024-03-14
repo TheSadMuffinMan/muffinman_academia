@@ -1,5 +1,6 @@
 #include <mediaDatabase.h>
 
+// Default constructor for Database class.
 Database::Database()
 {
     //

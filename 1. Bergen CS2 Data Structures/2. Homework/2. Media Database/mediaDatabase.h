@@ -11,8 +11,8 @@
 class Database
 {
     public:
-        Database();
-        ~Database();
+        Database(); // Complete.
+        ~Database(); // Working on.
 
         void loadData();
         // Load data
