@@ -7,6 +7,7 @@
 
 #include <string>
 #include <iomanip>
+#include <fstream>
 
 class Database
 {
@@ -18,9 +19,10 @@ class Database
         ~Database(); // Incomplete.
 
 
-        void loadData(); // Incomplete
+        void loadData(); // Incomplete, working on.
 
-        // Add Movie
+        // Add Movie // Incomplete, working on.
+        movieNamespace::MovieClass* addMovie(std::size_t, movieNamespace::MovieClass*, movieNamespace::MovieClass*);
         // Add TV Show
         // Add Music
 
@@ -37,14 +39,23 @@ class Database
 
         // Search for media.
 
+        // Getters
+
+        std::size_t getNumMovies();
+        std::size_t getNumTVShows();
+        std::size_t getNumMusicObjects();
+
+
+        // Setters
+
     private:
         std::string _name;
         int _db_id;
-        std::size_t numMovies;
-        std::size_t numTVShows;
-        std::size_t numMusicObjects;
+        std::size_t _numMovies;
+        std::size_t _numTVShows;
+        std::size_t _numMusicObjects;
 
-        movieNamespace::MovieClass* movieList[100];
-        tvShowNamespace::TVShowClass* tvShowList[100];
-        musicNamespace::MusicClass* musicList[100];
+        movieNamespace::MovieClass* _movieList[100];
+        tvShowNamespace::TVShowClass* _tvShowList[100];
+        musicNamespace::MusicClass* _musicList[100];
 };
