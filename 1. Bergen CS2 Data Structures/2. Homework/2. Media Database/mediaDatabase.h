@@ -1,13 +1,13 @@
 #pragma once
 
-#include <media.h>
-#include <movie.h>
-#include <tvshows.h>
-#include <music.h>
-
 #include <string>
 #include <iomanip>
 #include <fstream>
+
+#include "media.h"
+#include "movie.h"
+#include "tvshows.h"
+#include "music.h"
 
 class Database
 {
@@ -21,8 +21,9 @@ class Database
 
         void loadData(); // Incomplete, working on.
 
-        // Add Movie // Incomplete, working on.
         movieNamespace::MovieClass* addMovie(std::size_t, movieNamespace::MovieClass*, movieNamespace::MovieClass*);
+        void incrementNumMovies(); // Complete?
+
         // Add TV Show
         // Add Music
 
@@ -45,17 +46,28 @@ class Database
         std::size_t getNumTVShows();
         std::size_t getNumMusicObjects();
 
+        movieNamespace::MovieClass* getMovieArrayHead();
+        // tvShowNamespace::TVShowClass* getTVShowArrayHead();
+        // musicNamespace::MusicClass* getMusicObjectArrayHead();
+
 
         // Setters
 
+        void setNumMovies(std::size_t);
+        // void setNumTVShows(std::size_t);
+        // void setNumMusicObjects(std::size_t);
+
+        void setMovieArray(std::size_t, movieNamespace::MovieClass*);
+
     private:
-        std::string _name;
-        int _db_id;
+        std::string _name; // More or less garbage variable.
+        int _db_id; // See above.
+
         std::size_t _numMovies;
         std::size_t _numTVShows;
         std::size_t _numMusicObjects;
 
-        movieNamespace::MovieClass* _movieList[100];
-        tvShowNamespace::TVShowClass* _tvShowList[100];
-        musicNamespace::MusicClass* _musicList[100];
+        movieNamespace::MovieClass* _movieArray[100];
+        tvShowNamespace::TVShowClass* _tvShowArray[100];
+        musicNamespace::MusicClass* _musicArray[100];
 };

@@ -1,9 +1,8 @@
 // THIS IS THE BASE CLASS THAT WILL "PRODUCE CHILDREN".
 #pragma once
 
-#include <movie.h>
-#include <iostream>
-#include <sstream>
+#include "iostream"
+#include "sstream"
 
 namespace media
 {
