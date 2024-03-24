@@ -19,10 +19,10 @@ class Database
         ~Database(); // Incomplete.
 
 
-        void loadData(); // Incomplete, working on.
+        void loadData(); // working on.
 
-        movieNamespace::MovieClass* addMovie(std::size_t, movieNamespace::MovieClass*, movieNamespace::MovieClass*);
-        void incrementNumMovies(); // Complete?
+        movieNamespace::MovieClass** addMovie(movieNamespace::MovieClass**, std::size_t, movieNamespace::MovieClass*);
+        void incrementNumMovies(); // Broken, seg faulting.
 
         // Add TV Show
         // Add Music
@@ -46,7 +46,7 @@ class Database
         std::size_t getNumTVShows();
         std::size_t getNumMusicObjects();
 
-        movieNamespace::MovieClass* getMovieArrayHead();
+        movieNamespace::MovieClass** getMovieArrayAddress();
         // tvShowNamespace::TVShowClass* getTVShowArrayHead();
         // musicNamespace::MusicClass* getMusicObjectArrayHead();
 
@@ -57,7 +57,7 @@ class Database
         // void setNumTVShows(std::size_t);
         // void setNumMusicObjects(std::size_t);
 
-        void setMovieArray(std::size_t, movieNamespace::MovieClass*);
+        void setMovieArray(movieNamespace::MovieClass*, std::size_t);
 
     private:
         std::string _name; // More or less garbage variable.

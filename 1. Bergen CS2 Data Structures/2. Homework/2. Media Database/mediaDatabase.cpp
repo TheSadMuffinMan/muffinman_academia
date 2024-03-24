@@ -1,6 +1,6 @@
 #include "mediaDatabase.h"
 
-// Default constructor for Database class.
+// Default constructor, assigns _movieArray, _tvShowArray, and _musicArray's contents to nullptr.
 Database::Database()
 {
     _name = "Media Database";
@@ -8,20 +8,35 @@ Database::Database()
     _numMovies = 0;
     _numTVShows = 0;
     _numMusicObjects = 0;
+
+    // Loop initializes all values inside of the private arrays to nullptr.
+    for (std::size_t i = 0; i < 100; i++)
+    {
+        _movieArray[i] = nullptr;
+        _tvShowArray[i] = nullptr;
+        _musicArray[i] = nullptr;
+    }
 }
 
+// Default deconstructor that *should* clean up everything regardless of location.
 Database::~Database()
 {
     //
 }
 
+
 void Database::loadData()
 {
-   std::string tempString = "";
-   std::ifstream is; // Creates the input file stream.
+    std::cout << "Inside loadData()." << std::endl;
 
-   is.open("movies.csv");
+    std::string tempString = "";
+    std::size_t numLines = 0;
+    std::ifstream is; // Creates the input file stream.
 
+    is.open("movies.csv");
+
+    movieNamespace::MovieClass** movieArrayAddress = Database::getMovieArrayAddress();
+    
     while (is.peek() != EOF) // While not at the end of the file
     {
         getline(is, tempString);
@@ -50,40 +65,35 @@ void Database::loadData()
         tempMovie->setRating(tempData[4]);
         tempMovie->setDirector(tempData[5]);
 
-        Database::addMovie((Database::getNumMovies()), Database::getMovieArrayHead(), tempMovie);
-
-        // Database::setSingleMovieListArray(Database::getObjectCounter(), tempMovieClass);
-        // Database::objectCounterIterator(); // Equivalent to _objectCounter++;
+        // WORKING AS INTENDED TO THIS POINT.
+        numLines++;
 
         // Error catching
-        if (tempCounter >= 99)
+        if (numLines >= 99)
         {
             std::cout << "Database::loadData() first loop is broken" << std::endl;
             break;
         }
     }
     is.close();
-
 }
 
-// Function takes in numMovies, the address to the head of _movieList, and a pointer to a movie.
-// Function increments _numMovies.
-// The function adds a movie to the end of the data inside _movieList.
+// Function takes in the address to the head of _movieList, the desired input position, 
+// and a pointer to a movie that you want added.
 // Function returns the address to the head of _movieList.
-movieNamespace::MovieClass* Database::addMovie(std::size_t numMovies, movieNamespace::MovieClass* headMovieArray, 
+movieNamespace::MovieClass** Database::addMovie(movieNamespace::MovieClass** movieArray, std::size_t position, 
     movieNamespace::MovieClass* movieToBeAdded)
 {
-    Database::incrementNumMovies(); // Increments _numMovies.
-    numMovies++; // Increments the local numMovies.
+    movieArray[(position)]->setMediaIMDBID(movieToBeAdded->getMediaId());
+    movieArray[(position)]->setMediaTitle(movieToBeAdded->getMediaTitle());
+    movieArray[(position)]->setMediaYear(movieToBeAdded->getMediaYear());
+    movieArray[(position)]->setMediaGenre(movieToBeAdded->getMediaGenre());
+    movieArray[(position)]->setRating(movieToBeAdded->getRating());
+    movieArray[(position)]->setDirector(movieToBeAdded->getDirector());
 
-    headMovieArray[(numMovies)].setMediaIMDBID(movieToBeAdded->getMediaId());
-    headMovieArray[(numMovies)].setMediaTitle(movieToBeAdded->getMediaTitle());
-    headMovieArray[(numMovies)].setMediaYear(movieToBeAdded->getMediaYear());
-    headMovieArray[(numMovies)].setMediaGenre(movieToBeAdded->getMediaGenre());
-    headMovieArray[(numMovies)].setRating(movieToBeAdded->getRating());
-    headMovieArray[(numMovies)].setDirector(movieToBeAdded->getDirector());
+    std::cout << "***DEBUG***" << std::endl;
 
-    return headMovieArray;
+    return movieArray;
 }
 
 // Calling this function is the equivalent of _numMovies++.
@@ -113,9 +123,10 @@ std::size_t Database::getNumMusicObjects()
     return _numMusicObjects;
 }
 
-movieNamespace::MovieClass* Database::getMovieArrayHead()
+// Function returns the address of the head of _movieArray.
+movieNamespace::MovieClass** Database::getMovieArrayAddress()
 {
-    return _movieArray[0];
+    return _movieArray;
 }
 
 // tvShowNamespace::TVShowClass* Database::getTVShowArrayHead()
@@ -147,7 +158,7 @@ void Database::setNumMovies(std::size_t inputNumMovies)
 // }
 
 // Function takes the position to input the movie and a pointer to a movie.
-void Database::setMovieArray(std::size_t inputPosition, movieNamespace::MovieClass* inputMovie)
+void Database::setMovieArray(movieNamespace::MovieClass* inputMovie, std::size_t inputPosition)
 {
     _movieArray[inputPosition] = inputMovie;
 }

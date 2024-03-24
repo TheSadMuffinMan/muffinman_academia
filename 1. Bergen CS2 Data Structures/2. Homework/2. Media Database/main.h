@@ -17,7 +17,7 @@ void clearScreen()
 // Function welcomes the user and clears the screen
 void welcomeFunction()
 {
-    clearScreen();
+    // clearScreen();
     std::string tempVar = "";
     std::cout << "Welcome to the Muffin Man's Movie Database :D" << std::endl;
     std::cout << "Press enter to continue." << std::endl;
