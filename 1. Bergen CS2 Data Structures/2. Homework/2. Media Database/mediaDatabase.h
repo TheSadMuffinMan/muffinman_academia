@@ -19,7 +19,7 @@ class Database
         ~Database(); // Incomplete.
 
 
-        void loadData(); // working on.
+        void loadData(movieNamespace::MovieClass**); // working on.
 
         movieNamespace::MovieClass** addMovie(movieNamespace::MovieClass**, std::size_t, movieNamespace::MovieClass*);
         void incrementNumMovies(); // Broken, seg faulting.

@@ -25,7 +25,7 @@ Database::~Database()
 }
 
 
-void Database::loadData()
+void Database::loadData(movieNamespace::MovieClass** movieArrayAddress)
 {
     std::cout << "Inside loadData()." << std::endl;
 
@@ -34,8 +34,6 @@ void Database::loadData()
     std::ifstream is; // Creates the input file stream.
 
     is.open("movies.csv");
-
-    movieNamespace::MovieClass** movieArrayAddress = Database::getMovieArrayAddress();
     
     while (is.peek() != EOF) // While not at the end of the file
     {
@@ -65,9 +63,15 @@ void Database::loadData()
         tempMovie->setRating(tempData[4]);
         tempMovie->setDirector(tempData[5]);
 
-        // WORKING AS INTENDED TO THIS POINT.
-        numLines++;
+        for (std::size_t i = 0; i < 6; i++)
+        {
+            std::cout << "tempData[" << i << "]: " << tempData[i] << std::endl;
+        }
 
+        // WORKING AS INTENDED TO THIS POINT.
+        Database::addMovie(movieArrayAddress, numLines, tempMovie);
+
+        numLines++;
         // Error catching
         if (numLines >= 99)
         {
@@ -84,14 +88,15 @@ void Database::loadData()
 movieNamespace::MovieClass** Database::addMovie(movieNamespace::MovieClass** movieArray, std::size_t position, 
     movieNamespace::MovieClass* movieToBeAdded)
 {
+    std::cout << "Inside Database::addMovie() function." << std::endl;
     movieArray[(position)]->setMediaIMDBID(movieToBeAdded->getMediaId());
+    std::cout << "***DEBUG***" << std::endl;
+
     movieArray[(position)]->setMediaTitle(movieToBeAdded->getMediaTitle());
     movieArray[(position)]->setMediaYear(movieToBeAdded->getMediaYear());
     movieArray[(position)]->setMediaGenre(movieToBeAdded->getMediaGenre());
     movieArray[(position)]->setRating(movieToBeAdded->getRating());
     movieArray[(position)]->setDirector(movieToBeAdded->getDirector());
-
-    std::cout << "***DEBUG***" << std::endl;
 
     return movieArray;
 }
