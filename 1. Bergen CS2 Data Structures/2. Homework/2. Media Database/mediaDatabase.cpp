@@ -48,6 +48,7 @@ void Database::loadData()
 
         // Loop iterates through tempString and seperates the data off of commas.
         // Then places "cleaned" data into tempData[].
+        // ***NEED TO FIX SO THAT LOOP PULLS LAST DATA MEMBER***
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
@@ -68,7 +69,6 @@ void Database::loadData()
         // {
         //     std::cout << "tempData[" << i << "]: " << tempData[i] << std::endl;
         // }
-        // WORKING AS INTENDED TO THIS POINT.
 
         // Function adds the tempMovie to _musicArray
         addMovie(tempMovie);

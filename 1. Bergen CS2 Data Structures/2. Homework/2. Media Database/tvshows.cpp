@@ -23,7 +23,6 @@ tvShowNamespace::TVShowClass::~TVShowClass()
 void tvShowNamespace::TVShowClass::displayInfo()
 {
     media::MediaClass::displayInfo();
-    std::cout << std::endl;
     std::cout << "Rating: " << getRating() << std::endl;
     std::cout << "Number of Episodes: " << getNumEpisodes() << std::endl;
 }

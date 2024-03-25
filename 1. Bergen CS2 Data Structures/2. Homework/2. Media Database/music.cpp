@@ -22,7 +22,6 @@ musicNamespace::MusicClass::~MusicClass()
 void musicNamespace::MusicClass::displayInfo()
 {
     media::MediaClass::displayInfo();
-    std::cout << std::endl;
     std::cout << "Composer: " << getComposer() << std::endl;
     std::cout << "Number of Tracks: " << getNumTracks() << std::endl;
     std::cout << "Total Playtime: " << getTotalPlaytime() << std::endl;

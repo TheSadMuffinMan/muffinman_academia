@@ -24,7 +24,6 @@ movieNamespace::MovieClass::~MovieClass()
 void movieNamespace::MovieClass::displayInfo()
 {
     media::MediaClass::displayInfo();
-    std::cout << std::endl;
     std::cout << "Rating: " << getRating() << std::endl;
     std::cout << "Director: " << getDirector() << std::endl;
 }
