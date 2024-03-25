@@ -33,7 +33,7 @@ void Database::loadData()
     std::size_t numLines = 0; // Used for error catching.
     std::ifstream is; // Creates the input file stream.
 
-    is.open("movies.csv");
+    is.open("csv_files/movies.csv");
     
     while (is.peek() != EOF) // While not at the end of the file
     {
@@ -81,7 +81,12 @@ void Database::loadData()
             break;
         }
     }
-    is.close();
+    is.close(); // Movies have been loaded.
+
+    tempString = "";
+    numLines = 0;
+    is.open("csv_files/tvshows.csv");
+
 }
 
 // Function takes a pointer to a movie and adds it to the end of _musicArray.

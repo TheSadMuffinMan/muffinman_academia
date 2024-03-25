@@ -19,7 +19,7 @@ class Database
         ~Database(); // Incomplete.
 
 
-        void loadData(); // Working (for movies), incomplete.
+        void loadData(); // Working Movies, incomplete TV Shows, incomplete Music Objects.
 
         void addMovie(movieNamespace::MovieClass*); // Working!!!!!!!!!!! FINALLLLLLYYYYYYYYYYYYYYYYY
         void incrementNumMovies(); // Complete, working.
@@ -46,8 +46,8 @@ class Database
         std::size_t getNumTVShows();
         std::size_t getNumMusicObjects();
 
-        movieNamespace::MovieClass* getMovieArrayAddress();
-        movieNamespace::MovieClass* getMovieArrayAddress(std::size_t);
+        movieNamespace::MovieClass* getMovieArrayAddress(); // Working, complete.
+        movieNamespace::MovieClass* getMovieArrayAddress(std::size_t); // Working, complete.
         // tvShowNamespace::TVShowClass* getTVShowArrayAddress();
         // musicNamespace::MusicClass* getMusicArrayAddress();
 
