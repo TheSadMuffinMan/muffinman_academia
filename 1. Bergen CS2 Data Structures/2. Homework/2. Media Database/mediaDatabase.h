@@ -24,8 +24,12 @@ class Database
         void addMovie(movieNamespace::MovieClass*); // Working!!!!!!!!!!! FINALLLLLLYYYYYYYYYYYYYYYYY
         void incrementNumMovies(); // Complete, working.
 
-        // Add TV Show
-        // Add Music
+        void addTVShow(tvShowNamespace::TVShowClass*);
+        void incrementNumTVShows();
+
+        void addMusic(musicNamespace::MusicClass*);
+        void incrementNumMusicObjects();
+
 
         // Display all media.
         // Display single movie.
@@ -46,18 +50,24 @@ class Database
         std::size_t getNumTVShows();
         std::size_t getNumMusicObjects();
 
-        movieNamespace::MovieClass* getMovieArrayAddress(); // Working, complete.
-        movieNamespace::MovieClass* getMovieArrayAddress(std::size_t); // Working, complete.
-        // tvShowNamespace::TVShowClass* getTVShowArrayAddress();
-        // musicNamespace::MusicClass* getMusicArrayAddress();
+        movieNamespace::MovieClass* getMovieArrayAddress();
+        movieNamespace::MovieClass* getMovieArrayAddress(std::size_t);
+
+        tvShowNamespace::TVShowClass* getTVShowAddress();
+        tvShowNamespace::TVShowClass* getTVShowAddress(std::size_t);
+       
+        musicNamespace::MusicClass* getMusicArrayAddress();
+        musicNamespace::MusicClass* getMusicArrayAddress(std::size_t);
 
         // Setters
 
         void setNumMovies(std::size_t);
-        // void setNumTVShows(std::size_t);
-        // void setNumMusicObjects(std::size_t);
+        void setNumTVShows(std::size_t);
+        void setNumMusicObjects(std::size_t);
 
         void setMovieArray(movieNamespace::MovieClass*, std::size_t);
+        void setTVArray(tvShowNamespace::TVShowClass*, std::size_t);
+        void setMusicArray(musicNamespace::MusicClass*, std::size_t);
 
     private:
         std::string _name; // More or less garbage variable.

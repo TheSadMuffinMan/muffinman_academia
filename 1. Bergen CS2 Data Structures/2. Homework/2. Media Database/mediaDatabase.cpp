@@ -85,15 +85,15 @@ void Database::loadData()
 
     tempString = "";
     numLines = 0;
-    is.open("csv_files/tvshows.csv");
+    // is.open("csv_files/tvshows.csv");
 
 }
 
 // Function takes a pointer to a movie and adds it to the end of _musicArray.
 // Function is basically a setter with extra steps.
-void Database::addMovie(movieNamespace::MovieClass* movieToBeAdded)
+void Database::addMovie(movieNamespace::MovieClass* inputMovie)
 {
-    Database::setMovieArray(movieToBeAdded, (Database::getNumMovies() + 1));
+    Database::setMovieArray(inputMovie, (Database::getNumMovies() + 1));
     Database::incrementNumMovies();
 }
 
@@ -103,6 +103,32 @@ void Database::incrementNumMovies()
     std::size_t tempNum = Database::getNumMovies();
     tempNum++;
     Database::setNumMovies(tempNum);
+}
+
+void Database::addTVShow(tvShowNamespace::TVShowClass* inputTVShow)
+{
+    Database::setTVArray(inputTVShow, (Database::getNumTVShows() + 1));
+    Database::incrementNumTVShows();
+}
+
+void Database::incrementNumTVShows()
+{
+    std::size_t tempNum = Database::getNumTVShows();
+    tempNum++;
+    Database::setNumTVShows(tempNum);
+}
+
+void Database::addMusic(musicNamespace::MusicClass* inputMusic)
+{
+    Database::setMusicArray(inputMusic, (Database::getNumMusicObjects() + 1));
+    Database::incrementNumMusicObjects();
+}
+
+void Database::incrementNumMusicObjects()
+{
+    std::size_t tempNum = Database::getNumTVShows();
+    tempNum++;
+    Database::setNumTVShows(tempNum);
 }
 
 
@@ -135,16 +161,27 @@ movieNamespace::MovieClass* Database::getMovieArrayAddress(std::size_t index)
     return _movieArray[index];
 }
 
+tvShowNamespace::TVShowClass* Database::getTVShowAddress()
+{
+    return *_tvShowArray;
+}
 
-// tvShowNamespace::TVShowClass* Database::getTVShowArrayHead()
-// {
-//     return _tvShowArray[0];
-// }
+// Overloaded function that returns the address of the input index.
+tvShowNamespace::TVShowClass* Database::getTVShowAddress(std::size_t index)
+{
+    return _tvShowArray[index];
+}
+       
+musicNamespace::MusicClass* Database::getMusicArrayAddress()
+{
+    return *_musicArray;
+}
 
-// musicNamespace::MusicClass* Database::getMusicObjectArrayHead()
-// {
-//     return _musicArray[0];
-// }
+// Overloaded function that returns the address of the input index.
+musicNamespace::MusicClass* Database::getMusicArrayAddress(std::size_t index)
+{
+    return _musicArray[index];
+}
 
 
 // Setters
@@ -154,18 +191,30 @@ void Database::setNumMovies(std::size_t inputNumMovies)
     _numMovies = inputNumMovies;
 }
 
-// void Database::setNumTVShows(std::size_t inputNumTVShows)
-// {
-//     _numTVShows = inputNumTVShows;
-// }
+void Database::setNumTVShows(std::size_t inputNumTVShows)
+{
+    _numTVShows = inputNumTVShows;
+}
 
-// void Database::setNumMusicObjects(std::size_t inputNumMusicObjects)
-// {
-//     _numMusicObjects = inputNumMusicObjects;
-// }
+void Database::setNumMusicObjects(std::size_t inputNumMusicObjects)
+{
+    _numMusicObjects = inputNumMusicObjects;
+}
 
-// Function takes the position to input the movie and a pointer to a movie.
+// Function takes a pointer to a movie and what index you want to place it in.
 void Database::setMovieArray(movieNamespace::MovieClass* inputMovie, std::size_t inputPosition)
 {
     _movieArray[inputPosition] = inputMovie;
+}
+
+// Function takes a pointer to a TV Show and what index you want to place it in.
+void Database::setTVArray(tvShowNamespace::TVShowClass* inputTVShow, std::size_t inputPosition)
+{
+    _tvShowArray[inputPosition] = inputTVShow;
+}
+
+// Function takes a pointer to a Music Object and what index you want to place it in.
+void Database::setMusicArray(musicNamespace::MusicClass* inputMusicObject, std::size_t inputPosition)
+{
+    _musicArray[inputPosition] = inputMusicObject;
 }
