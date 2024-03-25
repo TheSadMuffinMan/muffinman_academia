@@ -17,6 +17,10 @@ int main(int argc, char *argv[])
 
     mainDatabase.loadData();
 
+    movieNamespace::MovieClass* tempMovie = mainDatabase.getMovieArrayAddress(4);
+    cout << "DEBUG _movieArray[4]: ";
+    tempMovie->displayInfo();
+
     cout << "\nProgram complete." << endl;
     return 0;
 }

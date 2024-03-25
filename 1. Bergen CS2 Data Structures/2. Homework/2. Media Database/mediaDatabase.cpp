@@ -30,7 +30,7 @@ void Database::loadData()
     std::cout << "Inside loadData()." << std::endl;
 
     std::string tempString = "";
-    std::size_t numLines = 0;
+    std::size_t numLines = 0; // Used for error catching.
     std::ifstream is; // Creates the input file stream.
 
     is.open("movies.csv");
@@ -63,10 +63,11 @@ void Database::loadData()
         tempMovie->setRating(tempData[4]);
         tempMovie->setDirector(tempData[5]);
 
-        for (std::size_t i = 0; i < 6; i++)
-        {
-            std::cout << "tempData[" << i << "]: " << tempData[i] << std::endl;
-        }
+        // Loop prints out everything inside tempData.
+        // for (std::size_t i = 0; i < 6; i++)
+        // {
+        //     std::cout << "tempData[" << i << "]: " << tempData[i] << std::endl;
+        // }
         // WORKING AS INTENDED TO THIS POINT.
 
         // Function adds the tempMovie to _musicArray
@@ -87,10 +88,6 @@ void Database::loadData()
 // Function is basically a setter with extra steps.
 void Database::addMovie(movieNamespace::MovieClass* movieToBeAdded)
 {
-    std::cout << "Inside Database::addMovie() function." << std::endl;
-
-    // std::size_t numMovies = Database::getNumMovies(); // Not needed?
-
     Database::setMovieArray(movieToBeAdded, (Database::getNumMovies() + 1));
     Database::incrementNumMovies();
 }
@@ -126,6 +123,13 @@ movieNamespace::MovieClass* Database::getMovieArrayAddress()
 {
     return *_movieArray;
 }
+
+// Overloaded function that returns the address to the requested index.
+movieNamespace::MovieClass* Database::getMovieArrayAddress(std::size_t index)
+{
+    return _movieArray[index];
+}
+
 
 // tvShowNamespace::TVShowClass* Database::getTVShowArrayHead()
 // {
