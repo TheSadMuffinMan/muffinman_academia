@@ -43,7 +43,7 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[6]; // Holds the 7 private data members.
+        std::string tempData[5]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
@@ -77,16 +77,106 @@ void Database::loadData()
         // Error catching
         if (numLines > 99)
         {
-            std::cout << "Database::loadData() first loop is broken" << std::endl;
+            std::cout << "Database::loadData() movie loop is broken." << std::endl;
             break;
         }
     }
     is.close(); // Movies have been loaded.
 
+
     tempString = "";
     numLines = 0;
-    // is.open("csv_files/tvshows.csv");
+    is.open("csv_files/tvshows.csv");
 
+    while (is.peek() != EOF) // While not at the end of the file
+    {
+        getline(is, tempString);
+        tvShowNamespace::TVShowClass* tempShow = new tvShowNamespace::TVShowClass;
+
+        // Temporary loop variables.
+        std::size_t startVariable = 0;
+        std::size_t endVariable = 0;
+        std::string tempData[5]; // Holds the 6 private data members.
+        std::size_t tempCounter = 0;
+
+        // Loop iterates through tempString and seperates the data off of commas.
+        // Then places "cleaned" data into tempData[].
+        // ***NEED TO FIX SO THAT LOOP PULLS LAST DATA MEMBER***
+        while(tempString.find(',', startVariable) != std::string::npos)
+        {
+            endVariable = tempString.find(',', startVariable);
+            tempData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
+            startVariable = (endVariable + 1);
+            tempCounter++;
+        }
+
+        tempShow->setMediaIMDBID(tempData[0]);
+        tempShow->setMediaTitle(tempData[1]);
+        tempShow->setMediaYear(tempData[2]);
+        tempShow->setMediaGenre(tempData[3]);
+        tempShow->setRating(tempData[4]);
+        tempShow->setNumEpisodes(tempData[5]);
+
+        // Function adds the tempShow to _tvShowArray.
+        addTVShow(tempShow);
+
+        numLines++;
+        // Error catching
+        if (numLines > 99)
+        {
+            std::cout << "Database::loadData() TV Loop is broken." << std::endl;
+            break;
+        }
+    }
+    is.close(); // TV Shows have been loaded.
+
+
+    tempString = "";
+    numLines = 0;
+    is.open("csv_files/music.csv");
+
+    while (is.peek() != EOF) // While not at the end of the file
+    {
+        getline(is, tempString);
+        musicNamespace::MusicClass* tempMusic = new musicNamespace::MusicClass;
+
+        // Temporary loop variables.
+        std::size_t startVariable = 0;
+        std::size_t endVariable = 0;
+        std::string tempData[6]; // Holds the 7 private data members.
+        std::size_t tempCounter = 0;
+
+        // Loop iterates through tempString and seperates the data off of commas.
+        // Then places "cleaned" data into tempData[].
+        // ***NEED TO FIX SO THAT LOOP PULLS LAST DATA MEMBER***
+        while(tempString.find(',', startVariable) != std::string::npos)
+        {
+            endVariable = tempString.find(',', startVariable);
+            tempData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
+            startVariable = (endVariable + 1);
+            tempCounter++;
+        }
+
+        tempMusic->setMediaIMDBID(tempData[0]);
+        tempMusic->setMediaTitle(tempData[1]);
+        tempMusic->setMediaYear(tempData[2]);
+        tempMusic->setMediaGenre(tempData[3]);
+        tempMusic->setComposer(tempData[4]);
+        tempMusic->setNumTracks(tempData[5]);
+        tempMusic->setTotalPlaytime(tempData[6]);
+
+        // Function adds tempMusic to _musicArray.
+        addMusic(tempMusic);
+
+        numLines++;
+        // Error catching
+        if (numLines > 99)
+        {
+            std::cout << "Database::loadData() Music loop is broken." << std::endl;
+            break;
+        }
+    }
+    is.close(); // Music has been loaded.
 }
 
 // Function takes a pointer to a movie and adds it to the end of _musicArray.

@@ -19,7 +19,7 @@ class Database
         ~Database(); // Incomplete.
 
 
-        void loadData(); // Working Movies, incomplete TV Shows, incomplete Music Objects.
+        void loadData(); // Complete?
 
         void addMovie(movieNamespace::MovieClass*); // Working!!!!!!!!!!! FINALLLLLLYYYYYYYYYYYYYYYYY
         void incrementNumMovies(); // Complete, working.
