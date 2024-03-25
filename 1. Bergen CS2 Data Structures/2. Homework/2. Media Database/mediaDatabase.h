@@ -19,10 +19,10 @@ class Database
         ~Database(); // Incomplete.
 
 
-        void loadData(movieNamespace::MovieClass**); // working on.
+        void loadData(); // Working on.
 
-        movieNamespace::MovieClass** addMovie(movieNamespace::MovieClass**, std::size_t, movieNamespace::MovieClass*);
-        void incrementNumMovies(); // Broken, seg faulting.
+        void addMovie(movieNamespace::MovieClass*); // Working!!!!!!!!!!! FINALLLLLLYYYYYYYYYYYYYYYYY
+        void incrementNumMovies(); // Working.
 
         // Add TV Show
         // Add Music
@@ -46,10 +46,9 @@ class Database
         std::size_t getNumTVShows();
         std::size_t getNumMusicObjects();
 
-        movieNamespace::MovieClass** getMovieArrayAddress();
-        // tvShowNamespace::TVShowClass* getTVShowArrayHead();
-        // musicNamespace::MusicClass* getMusicObjectArrayHead();
-
+        movieNamespace::MovieClass* getMovieArrayAddress();
+        // tvShowNamespace::TVShowClass* getTVShowArrayAddress();
+        // musicNamespace::MusicClass* getMusicArrayAddress();
 
         // Setters
 
