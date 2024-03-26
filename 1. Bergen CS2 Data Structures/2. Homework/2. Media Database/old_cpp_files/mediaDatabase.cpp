@@ -13,9 +13,18 @@ Database::Database()
     for (std::size_t i = 0; i < 100; i++)
     {
         _movieArray[i] = nullptr;
-        _tvShowArray[i] = nullptr;
-        _musicArray[i] = nullptr;
     }
+
+    for (std::size_t j = 0; j < 100; j++)
+    {
+        _tvShowArray[j] = nullptr;
+    }
+
+    for (std::size_t k = 0; k < 100; k++)
+    {
+        _musicArray[k] = nullptr;
+    }
+
 }
 
 // Default deconstructor that *should* clean up everything regardless of location.
@@ -24,20 +33,21 @@ Database::~Database()
     //
 }
 
-
+// Function pulls data from the csv_folder and populates the database's arrays.
+// All array locations are instantiatied to nullptr unless there is an object there.
 void Database::loadData()
 {
     std::cout << "Inside loadData()." << std::endl;
 
     std::string tempString = "";
     std::size_t numLines = 0; // Used for error catching.
-    std::ifstream is; // Creates the input file stream.
+    std::ifstream movieStream; // Creates the input movie file stream.
 
-    is.open("csv_files/movies.csv");
+    movieStream.open("csv_files/movies.csv");
     
-    while (is.peek() != EOF) // While not at the end of the file
+    while (movieStream.peek() != EOF) // While not at the end of the file
     {
-        getline(is, tempString);
+        getline(movieStream, tempString);
         movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
 
         // Temporary loop variables.
@@ -81,16 +91,16 @@ void Database::loadData()
             break;
         }
     }
-    is.close(); // Movies have been loaded.
+    movieStream.close(); // Movies have been loaded.
 
-
+    std::ifstream tvStream; // Creates the input TV file stream.
     tempString = "";
     numLines = 0;
-    is.open("csv_files/tvshows.csv");
+    tvStream.open("csv_files/tvshows.csv");
 
-    while (is.peek() != EOF) // While not at the end of the file
+    while (tvStream.peek() != EOF) // While not at the end of the file
     {
-        getline(is, tempString);
+        getline(tvStream, tempString);
         tvShowNamespace::TVShowClass* tempShow = new tvShowNamespace::TVShowClass;
 
         // Temporary loop variables.
@@ -128,16 +138,15 @@ void Database::loadData()
             break;
         }
     }
-    is.close(); // TV Shows have been loaded.
+    tvStream.close(); // TV Shows have been loaded.
 
-
+    std::ifstream musicStream; // Creates the input music file stream.
     tempString = "";
     numLines = 0;
-    is.open("csv_files/music.csv");
-
-    while (is.peek() != EOF) // While not at the end of the file
+    musicStream.open("csv_files/music.csv");
+    while (musicStream.peek() != EOF) // While not at the end of the file
     {
-        getline(is, tempString);
+        getline(musicStream, tempString);
         musicNamespace::MusicClass* tempMusic = new musicNamespace::MusicClass;
 
         // Temporary loop variables.
@@ -176,7 +185,7 @@ void Database::loadData()
             break;
         }
     }
-    is.close(); // Music has been loaded.
+    musicStream.close(); // Music has been loaded.
 }
 
 // Function takes a pointer to a movie and adds it to the end of _musicArray.
