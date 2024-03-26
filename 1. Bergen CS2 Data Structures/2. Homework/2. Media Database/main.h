@@ -21,6 +21,6 @@ void welcomeFunction()
     std::string tempVar = "";
     std::cout << "Welcome to the Muffin Man's Movie Database :D" << std::endl;
     std::cout << "Press enter to continue." << std::endl;
-    std::cin.ignore(256, '\n');
+    std::cin.ignore();
     getline(std::cin, tempVar);
 }
