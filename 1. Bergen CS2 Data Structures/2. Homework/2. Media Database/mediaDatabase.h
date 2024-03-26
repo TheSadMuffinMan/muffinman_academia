@@ -52,13 +52,13 @@ class Database
         std::size_t getNumTVShows();
         std::size_t getNumMusicObjects();
 
-        movieNamespace::MovieClass* getMovieArrayAddress();
+        // movieNamespace::MovieClass* getMovieArrayAddress();
         movieNamespace::MovieClass* getMovieArrayAddress(std::size_t);
 
-        tvShowNamespace::TVShowClass* getTVShowAddress();
+        // tvShowNamespace::TVShowClass* getTVShowAddress();
         tvShowNamespace::TVShowClass* getTVShowAddress(std::size_t);
        
-        musicNamespace::MusicClass* getMusicArrayAddress();
+        // musicNamespace::MusicClass* getMusicArrayAddress();
         musicNamespace::MusicClass* getMusicArrayAddress(std::size_t);
 
         // Setters
@@ -140,7 +140,6 @@ void Database::loadData()
     std::cout << "Inside loadData()." << std::endl;
 
     std::string tempString = "";
-    std::size_t numLines = 0; // Used for error catching.
     std::ifstream movieStream; // Creates the input movie file stream.
 
     movieStream.open("csv_files/movies.csv");
@@ -183,21 +182,12 @@ void Database::loadData()
 
         // Function adds the tempMovie to _musicArray
         addMovie(tempMovie);
-
-        numLines++;
-        // Error catching
-        if (numLines > 99)
-        {
-            std::cout << "Database::loadData() movie loop is broken." << std::endl;
-            break;
-        }
     }
     movieStream.close(); // Movies have been loaded.
     std::cout << "Movies have been loaded." << std::endl;
 
     std::ifstream tvStream; // Creates the input TV file stream.
     tempString = "";
-    numLines = 0;
     tvStream.open("csv_files/tvshows.csv");
 
     while (tvStream.peek() != EOF) // While not at the end of the file
@@ -232,21 +222,12 @@ void Database::loadData()
 
         // Function adds the tempShow to _tvShowArray.
         addTVShow(tempShow);
-
-        numLines++;
-        // Error catching
-        if (numLines > 99)
-        {
-            std::cout << "Database::loadData() TV Loop is broken." << std::endl;
-            break;
-        }
     }
     tvStream.close(); // TV Shows have been loaded.
     std::cout << "TV shows have been loaded." << std::endl;
 
     std::ifstream musicStream; // Creates the input music file stream.
     tempString = "";
-    numLines = 0;
     musicStream.open("csv_files/music.csv");
     while (musicStream.peek() != EOF) // While not at the end of the file
     {
@@ -256,7 +237,7 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[6]; // Holds the 7 private data members.
+        std::string tempData[7]; // Holds the 7 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
@@ -281,14 +262,6 @@ void Database::loadData()
 
         // Function adds tempMusic to _musicArray.
         addMusic(tempMusic);
-
-        numLines++;
-        // Error catching
-        if (numLines > 99)
-        {
-            std::cout << "Database::loadData() Music loop is broken." << std::endl;
-            break;
-        }
     }
     musicStream.close(); // Music has been loaded.
     std::cout << "Music has been loaded." << std::endl;
@@ -337,6 +310,20 @@ void Database::incrementNumMusicObjects()
 }
 
 
+void Database::displayAllMedia()
+{
+    std::cout << "Inside Database::displayAllMedia" << std::endl;
+
+    for (std::size_t i = 0; i <= Database::getNumMovies(); i++)
+    {
+        movieNamespace::MovieClass* tempMovie = Database::getMovieArrayAddress(i);
+        std::cout << "MovieArrayAddress: " << tempMovie << std::endl;
+        // std::cout << tempMovie->getMediaTitle();
+        // tempMovie->displayInfo();
+    }
+}
+
+
 // Getters
 
 std::size_t Database::getNumMovies()
@@ -355,34 +342,34 @@ std::size_t Database::getNumMusicObjects()
 }
 
 // Function returns a pointer to _movieArray.
-movieNamespace::MovieClass* Database::getMovieArrayAddress()
-{
-    return *_movieArray;
-}
+// movieNamespace::MovieClass* Database::getMovieArrayAddress()
+// {
+//     return *_movieArray;
+// }
 
-// Overloaded function that returns the address to the requested index.
+// Function returns the address to the requested index.
 movieNamespace::MovieClass* Database::getMovieArrayAddress(std::size_t index)
 {
     return _movieArray[index];
 }
 
-tvShowNamespace::TVShowClass* Database::getTVShowAddress()
-{
-    return *_tvShowArray;
-}
+// tvShowNamespace::TVShowClass* Database::getTVShowAddress()
+// {
+//     return *_tvShowArray;
+// }
 
-// Overloaded function that returns the address of the input index.
+// Function returns the address of the input index.
 tvShowNamespace::TVShowClass* Database::getTVShowAddress(std::size_t index)
 {
     return _tvShowArray[index];
 }
        
-musicNamespace::MusicClass* Database::getMusicArrayAddress()
-{
-    return *_musicArray;
-}
+// musicNamespace::MusicClass* Database::getMusicArrayAddress()
+// {
+//     return *_musicArray;
+// }
 
-// Overloaded function that returns the address of the input index.
+// Function returns the address of the input index.
 musicNamespace::MusicClass* Database::getMusicArrayAddress(std::size_t index)
 {
     return _musicArray[index];
