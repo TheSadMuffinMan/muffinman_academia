@@ -16,10 +16,10 @@ class Database
         // Default constructors and destructors
 
         Database(); // Complete.
-        ~Database(); // Incomplete.
+        ~Database(); // Complete.
 
 
-        void loadData(); // Complete?
+        void loadData(); // Complete.
 
         void addMovie(movieNamespace::MovieClass*); // Working!!!!!!!!!!! FINALLLLLLYYYYYYYYYYYYYYYYY
         void incrementNumMovies(); // Complete, working.
@@ -32,6 +32,8 @@ class Database
 
 
         // Display all media.
+        void displayAllMedia(); // Working on.
+
         // Display single movie.
         // Display single TV show.
         // Display single Music.
@@ -113,7 +115,22 @@ Database::Database()
 // Default deconstructor that *should* clean up everything regardless of location.
 Database::~Database()
 {
-    //
+    for (std::size_t i = 0; i < 100; i++)
+    {
+        _movieArray[i] = nullptr;
+    }
+
+    for (std::size_t i = 0; i < 100; i++)
+    {
+        _tvShowArray[i] = nullptr;
+    }
+
+    for (std::size_t i = 0; i < 100; i++)
+    {
+        _musicArray[i] = nullptr;
+    }
+
+    std::cout << "Memory has been cleaned up." << std::endl;
 }
 
 // Function pulls data from the csv_folder and populates the database's arrays.
@@ -136,7 +153,7 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[5]; // Holds the 6 private data members.
+        std::string tempData[6]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
@@ -149,6 +166,7 @@ void Database::loadData()
             startVariable = (endVariable + 1);
             tempCounter++;
         }
+        tempData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
 
         tempMovie->setMediaIMDBID(tempData[0]);
         tempMovie->setMediaTitle(tempData[1]);
@@ -175,6 +193,7 @@ void Database::loadData()
         }
     }
     movieStream.close(); // Movies have been loaded.
+    std::cout << "Movies have been loaded." << std::endl;
 
     std::ifstream tvStream; // Creates the input TV file stream.
     tempString = "";
@@ -189,7 +208,7 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[5]; // Holds the 6 private data members.
+        std::string tempData[6]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
@@ -202,6 +221,7 @@ void Database::loadData()
             startVariable = (endVariable + 1);
             tempCounter++;
         }
+        tempData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
 
         tempShow->setMediaIMDBID(tempData[0]);
         tempShow->setMediaTitle(tempData[1]);
@@ -222,6 +242,7 @@ void Database::loadData()
         }
     }
     tvStream.close(); // TV Shows have been loaded.
+    std::cout << "TV shows have been loaded." << std::endl;
 
     std::ifstream musicStream; // Creates the input music file stream.
     tempString = "";
@@ -248,6 +269,7 @@ void Database::loadData()
             startVariable = (endVariable + 1);
             tempCounter++;
         }
+        tempData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
 
         tempMusic->setMediaIMDBID(tempData[0]);
         tempMusic->setMediaTitle(tempData[1]);
@@ -269,6 +291,7 @@ void Database::loadData()
         }
     }
     musicStream.close(); // Music has been loaded.
+    std::cout << "Music has been loaded." << std::endl;
 }
 
 // Function takes a pointer to a movie and adds it to the end of _musicArray.

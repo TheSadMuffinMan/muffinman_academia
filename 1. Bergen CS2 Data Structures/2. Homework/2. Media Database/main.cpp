@@ -17,10 +17,6 @@ int main(int argc, char *argv[])
 
     mainDatabase.loadData();
 
-    cout << "_musicArray[4] Info: " << endl;
-
-    mainDatabase.getMusicArrayAddress(4)->displayInfo();
-
     cout << "\nProgram complete." << endl;
     return 0;
 }

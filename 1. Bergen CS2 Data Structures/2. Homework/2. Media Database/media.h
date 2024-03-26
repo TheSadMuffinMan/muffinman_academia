@@ -1,4 +1,3 @@
-// THIS IS THE BASE CLASS THAT WILL "PRODUCE CHILDREN".
 #pragma once
 
 #include "iostream"
