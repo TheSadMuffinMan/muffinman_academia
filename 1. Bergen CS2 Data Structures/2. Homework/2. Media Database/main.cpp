@@ -17,7 +17,7 @@ int main(int argc, char *argv[])
 
     mainDatabase.loadData();
 
-    mainDatabase.getMusicArrayAddress()->displayInfo();
+    mainDatabase.getMusicArrayAddress(2)->displayInfo();
 
     // mainDatabase.displayAllMedia();
 

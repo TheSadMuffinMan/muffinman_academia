@@ -19,7 +19,7 @@ class Database
         ~Database(); // Complete.
 
 
-        void loadData(); // Broke, not loading TV Shows or Music.
+        void loadData(); // Working.
 
         void addMovie(movieNamespace::MovieClass*); // Working!!!!!!!!!!! FINALLLLLLYYYYYYYYYYYYYYYYY
         void incrementNumMovies(); // Complete, working.
@@ -218,6 +218,12 @@ void Database::loadData()
         tempShow->setRating(tempTVData[4]);
         tempShow->setNumEpisodes(tempTVData[5]);
 
+        // Loop prints out everything inside tempData.
+        // for (std::size_t i = 0; i < 6; i++)
+        // {
+        //     std::cout << "tempTVData[" << i << "]: " << tempTVData[i] << std::endl;
+        // }
+
         // Function adds the tempShow to _tvShowArray.
         addTVShow(tempShow);
     }
@@ -259,9 +265,17 @@ void Database::loadData()
 
         // Function adds tempMusic to _musicArray.
         addMusic(tempMusic);
+
+        // Loop prints out everything inside tempData.
+        // for (std::size_t i = 0; i < 7; i++)
+        // {
+        //     std::cout << "tempMusicData[" << i << "]: " << tempMusicData[i] << std::endl;
+        // };
     }
     musicStream.close(); // Music has been loaded.
     std::cout << "Music has been loaded." << std::endl;
+
+    std::cout << "Music Array Size: " << Database::getNumMusicObjects();
 }
 
 // Function takes a pointer to a movie and adds it to the end of _musicArray.
@@ -301,9 +315,9 @@ void Database::addMusic(musicNamespace::MusicClass* inputMusic)
 
 void Database::incrementNumMusicObjects()
 {
-    std::size_t tempNum = Database::getNumTVShows();
+    std::size_t tempNum = Database::getNumMusicObjects();
     tempNum++;
-    Database::setNumTVShows(tempNum);
+    Database::setNumMusicObjects(tempNum);
 }
 
 
