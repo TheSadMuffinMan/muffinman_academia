@@ -19,7 +19,7 @@ class Database
         ~Database(); // Complete.
 
 
-        void loadData(); // Complete.
+        void loadData(); // Broke, not loading TV Shows or Music.
 
         void addMovie(movieNamespace::MovieClass*); // Working!!!!!!!!!!! FINALLLLLLYYYYYYYYYYYYYYYYY
         void incrementNumMovies(); // Complete, working.
@@ -52,13 +52,13 @@ class Database
         std::size_t getNumTVShows();
         std::size_t getNumMusicObjects();
 
-        // movieNamespace::MovieClass* getMovieArrayAddress();
+        movieNamespace::MovieClass* getMovieArrayAddress();
         movieNamespace::MovieClass* getMovieArrayAddress(std::size_t);
 
-        // tvShowNamespace::TVShowClass* getTVShowAddress();
+        tvShowNamespace::TVShowClass* getTVShowAddress();
         tvShowNamespace::TVShowClass* getTVShowAddress(std::size_t);
        
-        // musicNamespace::MusicClass* getMusicArrayAddress();
+        musicNamespace::MusicClass* getMusicArrayAddress();
         musicNamespace::MusicClass* getMusicArrayAddress(std::size_t);
 
         // Setters
@@ -152,32 +152,31 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[6]; // Holds the 6 private data members.
+        std::string tempMovieData[6]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
         // Then places "cleaned" data into tempData[].
-        // ***NEED TO FIX SO THAT LOOP PULLS LAST DATA MEMBER***
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
-            tempData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
+            tempMovieData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
             tempCounter++;
         }
-        tempData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
+        tempMovieData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
 
-        tempMovie->setMediaIMDBID(tempData[0]);
-        tempMovie->setMediaTitle(tempData[1]);
-        tempMovie->setMediaYear(tempData[2]);
-        tempMovie->setMediaGenre(tempData[3]);
-        tempMovie->setRating(tempData[4]);
-        tempMovie->setDirector(tempData[5]);
+        tempMovie->setMediaIMDBID(tempMovieData[0]);
+        tempMovie->setMediaTitle(tempMovieData[1]);
+        tempMovie->setMediaYear(tempMovieData[2]);
+        tempMovie->setMediaGenre(tempMovieData[3]);
+        tempMovie->setRating(tempMovieData[4]);
+        tempMovie->setDirector(tempMovieData[5]);
 
         // Loop prints out everything inside tempData.
         // for (std::size_t i = 0; i < 6; i++)
         // {
-        //     std::cout << "tempData[" << i << "]: " << tempData[i] << std::endl;
+        //     std::cout << "tempData[" << i << "]: " << tempMovieData[i] << std::endl;
         // }
 
         // Function adds the tempMovie to _musicArray
@@ -198,27 +197,26 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[6]; // Holds the 6 private data members.
+        std::string tempTVData[6]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
         // Then places "cleaned" data into tempData[].
-        // ***NEED TO FIX SO THAT LOOP PULLS LAST DATA MEMBER***
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
-            tempData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
+            tempTVData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
             tempCounter++;
         }
-        tempData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
+        tempTVData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
 
-        tempShow->setMediaIMDBID(tempData[0]);
-        tempShow->setMediaTitle(tempData[1]);
-        tempShow->setMediaYear(tempData[2]);
-        tempShow->setMediaGenre(tempData[3]);
-        tempShow->setRating(tempData[4]);
-        tempShow->setNumEpisodes(tempData[5]);
+        tempShow->setMediaIMDBID(tempTVData[0]);
+        tempShow->setMediaTitle(tempTVData[1]);
+        tempShow->setMediaYear(tempTVData[2]);
+        tempShow->setMediaGenre(tempTVData[3]);
+        tempShow->setRating(tempTVData[4]);
+        tempShow->setNumEpisodes(tempTVData[5]);
 
         // Function adds the tempShow to _tvShowArray.
         addTVShow(tempShow);
@@ -237,28 +235,27 @@ void Database::loadData()
         // Temporary loop variables.
         std::size_t startVariable = 0;
         std::size_t endVariable = 0;
-        std::string tempData[7]; // Holds the 7 private data members.
+        std::string tempMusicData[7]; // Holds the 7 private data members.
         std::size_t tempCounter = 0;
 
         // Loop iterates through tempString and seperates the data off of commas.
         // Then places "cleaned" data into tempData[].
-        // ***NEED TO FIX SO THAT LOOP PULLS LAST DATA MEMBER***
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
-            tempData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
+            tempMusicData[tempCounter] = tempString.substr(startVariable, (endVariable - startVariable));
             startVariable = (endVariable + 1);
             tempCounter++;
         }
-        tempData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
+        tempMusicData[tempCounter] = tempString.substr(startVariable, (tempString.size() - startVariable));
 
-        tempMusic->setMediaIMDBID(tempData[0]);
-        tempMusic->setMediaTitle(tempData[1]);
-        tempMusic->setMediaYear(tempData[2]);
-        tempMusic->setMediaGenre(tempData[3]);
-        tempMusic->setComposer(tempData[4]);
-        tempMusic->setNumTracks(tempData[5]);
-        tempMusic->setTotalPlaytime(tempData[6]);
+        tempMusic->setMediaIMDBID(tempMusicData[0]);
+        tempMusic->setMediaTitle(tempMusicData[1]);
+        tempMusic->setMediaYear(tempMusicData[2]);
+        tempMusic->setMediaGenre(tempMusicData[3]);
+        tempMusic->setComposer(tempMusicData[4]);
+        tempMusic->setNumTracks(tempMusicData[5]);
+        tempMusic->setTotalPlaytime(tempMusicData[6]);
 
         // Function adds tempMusic to _musicArray.
         addMusic(tempMusic);
@@ -316,8 +313,6 @@ void Database::displayAllMedia()
 
     for (std::size_t i = 0; i <= Database::getNumMovies(); i++)
     {
-        movieNamespace::MovieClass* tempMovie = Database::getMovieArrayAddress(i);
-        std::cout << "MovieArrayAddress: " << tempMovie << std::endl;
         // std::cout << tempMovie->getMediaTitle();
         // tempMovie->displayInfo();
     }
@@ -342,10 +337,10 @@ std::size_t Database::getNumMusicObjects()
 }
 
 // Function returns a pointer to _movieArray.
-// movieNamespace::MovieClass* Database::getMovieArrayAddress()
-// {
-//     return *_movieArray;
-// }
+movieNamespace::MovieClass* Database::getMovieArrayAddress()
+{
+    return *_movieArray;
+}
 
 // Function returns the address to the requested index.
 movieNamespace::MovieClass* Database::getMovieArrayAddress(std::size_t index)
@@ -353,10 +348,10 @@ movieNamespace::MovieClass* Database::getMovieArrayAddress(std::size_t index)
     return _movieArray[index];
 }
 
-// tvShowNamespace::TVShowClass* Database::getTVShowAddress()
-// {
-//     return *_tvShowArray;
-// }
+tvShowNamespace::TVShowClass* Database::getTVShowAddress()
+{
+    return *_tvShowArray;
+}
 
 // Function returns the address of the input index.
 tvShowNamespace::TVShowClass* Database::getTVShowAddress(std::size_t index)
@@ -364,10 +359,10 @@ tvShowNamespace::TVShowClass* Database::getTVShowAddress(std::size_t index)
     return _tvShowArray[index];
 }
        
-// musicNamespace::MusicClass* Database::getMusicArrayAddress()
-// {
-//     return *_musicArray;
-// }
+musicNamespace::MusicClass* Database::getMusicArrayAddress()
+{
+    return *_musicArray;
+}
 
 // Function returns the address of the input index.
 musicNamespace::MusicClass* Database::getMusicArrayAddress(std::size_t index)
