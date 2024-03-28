@@ -17,7 +17,7 @@ class Database
 
         void loadData(); // Complete.
 
-        void addMovie(movieNamespace::MovieClass*); // Complete.
+        void addMovie(movieNamespace::MovieClass*); // All complete.
         void addTVShow(tvShowNamespace::TVShowClass*);
         void addMusic(musicNamespace::MusicClass*);
 
@@ -32,12 +32,12 @@ class Database
         void displaySingleMusic(std::size_t);
 
 
-        movieNamespace::MovieClass* removeMovie(std::size_t); // All comp,ete.
+        movieNamespace::MovieClass* removeMovie(std::size_t); // All complete.
         tvShowNamespace::TVShowClass* removeTVShow(std::size_t);
         musicNamespace::MusicClass* removeMusic(std::size_t);
 
 
-        // Output all data to CSV.
+        void outputDatatoCSV(); // Working on.
 
         // Search for media.
 
@@ -251,6 +251,7 @@ void Database::loadData()
 
 // Function takes a pointer to a movie and adds it to the end of _musicArray.
 // Function is basically a setter with extra steps.
+// This function is responsible for zero index +1 error. *****Fix in the future*****
 void Database::addMovie(movieNamespace::MovieClass* inputMovie)
 {
     Database::setMovieArray(inputMovie, (Database::getNumMovies() + 1));
@@ -483,6 +484,21 @@ musicNamespace::MusicClass* Database::removeMusic(std::size_t index)
     return Database::getMusicArrayAddress(0);
 }
 
+void Database::outputDatatoCSV()
+{
+    std::ofstream outputStream;
+    outputStream.open("csv_files/outputFile.csv");
+
+    // outputStream << "Testing"; // Puts "Testing" in the first line of the csv file.
+
+    // Outputs movie data to outputFile.csv.
+    for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
+    {
+        //
+    }
+
+    outputStream.close();
+}
 
 
 // Getters
@@ -502,33 +518,19 @@ std::size_t Database::getNumMusicObjects()
     return _numMusicObjects;
 }
 
-// Function returns a pointer to _movieArray.
-// movieNamespace::MovieClass* Database::getMovieArrayAddress()
-// {
-//     return *_movieArray;
-// }
 
 // Function returns the address to the requested index.
+// Function can also be used the same as Database::getMovieArrayAddress() by returning the 0 index.
 movieNamespace::MovieClass* Database::getMovieArrayAddress(std::size_t index)
 {
     return _movieArray[index];
 }
-
-// tvShowNamespace::TVShowClass* Database::getTVShowAddress()
-// {
-//     return *_tvShowArray;
-// }
 
 // Function returns the address of the input index.
 tvShowNamespace::TVShowClass* Database::getTVShowAddress(std::size_t index)
 {
     return _tvShowArray[index];
 }
-       
-// musicNamespace::MusicClass* Database::getMusicArrayAddress()
-// {
-//     return *_musicArray;
-// }
 
 // Function returns the address of the input index.
 musicNamespace::MusicClass* Database::getMusicArrayAddress(std::size_t index)
