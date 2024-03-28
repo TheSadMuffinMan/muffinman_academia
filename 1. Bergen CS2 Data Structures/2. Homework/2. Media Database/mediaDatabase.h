@@ -19,10 +19,10 @@ class Database
         ~Database(); // Complete.
 
 
-        void loadData(); // Working.
+        void loadData(); // Complete.
 
-        void addMovie(movieNamespace::MovieClass*); // Working!!!!!!!!!!! FINALLLLLLYYYYYYYYYYYYYYYYY
-        void incrementNumMovies(); // Complete, working.
+        void addMovie(movieNamespace::MovieClass*); // Complete.
+        void incrementNumMovies(); // Complete.
 
         void addTVShow(tvShowNamespace::TVShowClass*);
         void incrementNumTVShows();
@@ -31,10 +31,11 @@ class Database
         void incrementNumMusicObjects();
 
 
-        // Display all media.
-        void displayAllMedia(); // Working on.
+        void displayAllMedia(); // Complete.
 
         // Display single movie.
+        void displaySingleMovie(std::size_t); // Working on.
+
         // Display single TV show.
         // Display single Music.
 
@@ -52,13 +53,13 @@ class Database
         std::size_t getNumTVShows();
         std::size_t getNumMusicObjects();
 
-        movieNamespace::MovieClass* getMovieArrayAddress();
+        // movieNamespace::MovieClass* getMovieArrayAddress(); // Never need access to the "full" array.
         movieNamespace::MovieClass* getMovieArrayAddress(std::size_t);
 
-        tvShowNamespace::TVShowClass* getTVShowAddress();
+        // tvShowNamespace::TVShowClass* getTVShowAddress();
         tvShowNamespace::TVShowClass* getTVShowAddress(std::size_t);
        
-        musicNamespace::MusicClass* getMusicArrayAddress();
+        // musicNamespace::MusicClass* getMusicArrayAddress();
         musicNamespace::MusicClass* getMusicArrayAddress(std::size_t);
 
         // Setters
@@ -137,7 +138,7 @@ Database::~Database()
 // All array locations are instantiatied to nullptr unless there is an object there.
 void Database::loadData()
 {
-    std::cout << "Inside loadData()." << std::endl;
+    // std::cout << "Inside loadData()." << std::endl;
 
     std::string tempString = "";
     std::ifstream movieStream; // Creates the input movie file stream.
@@ -173,17 +174,16 @@ void Database::loadData()
         tempMovie->setRating(tempMovieData[4]);
         tempMovie->setDirector(tempMovieData[5]);
 
-        // Loop prints out everything inside tempData.
+        // Loop prints out everything inside tempMovieData.
         // for (std::size_t i = 0; i < 6; i++)
         // {
-        //     std::cout << "tempData[" << i << "]: " << tempMovieData[i] << std::endl;
+        //     std::cout << "tempMovieData[" << i << "]: " << tempMovieData[i] << std::endl;
         // }
 
-        // Function adds the tempMovie to _musicArray
+        // Function adds the tempMovie to _movieArray.
         addMovie(tempMovie);
     }
     movieStream.close(); // Movies have been loaded.
-    std::cout << "Movies have been loaded." << std::endl;
 
     std::ifstream tvStream; // Creates the input TV file stream.
     tempString = "";
@@ -200,8 +200,6 @@ void Database::loadData()
         std::string tempTVData[6]; // Holds the 6 private data members.
         std::size_t tempCounter = 0;
 
-        // Loop iterates through tempString and seperates the data off of commas.
-        // Then places "cleaned" data into tempData[].
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
@@ -218,17 +216,10 @@ void Database::loadData()
         tempShow->setRating(tempTVData[4]);
         tempShow->setNumEpisodes(tempTVData[5]);
 
-        // Loop prints out everything inside tempData.
-        // for (std::size_t i = 0; i < 6; i++)
-        // {
-        //     std::cout << "tempTVData[" << i << "]: " << tempTVData[i] << std::endl;
-        // }
-
         // Function adds the tempShow to _tvShowArray.
         addTVShow(tempShow);
     }
     tvStream.close(); // TV Shows have been loaded.
-    std::cout << "TV shows have been loaded." << std::endl;
 
     std::ifstream musicStream; // Creates the input music file stream.
     tempString = "";
@@ -244,8 +235,6 @@ void Database::loadData()
         std::string tempMusicData[7]; // Holds the 7 private data members.
         std::size_t tempCounter = 0;
 
-        // Loop iterates through tempString and seperates the data off of commas.
-        // Then places "cleaned" data into tempData[].
         while(tempString.find(',', startVariable) != std::string::npos)
         {
             endVariable = tempString.find(',', startVariable);
@@ -265,17 +254,10 @@ void Database::loadData()
 
         // Function adds tempMusic to _musicArray.
         addMusic(tempMusic);
-
-        // Loop prints out everything inside tempData.
-        // for (std::size_t i = 0; i < 7; i++)
-        // {
-        //     std::cout << "tempMusicData[" << i << "]: " << tempMusicData[i] << std::endl;
-        // };
     }
     musicStream.close(); // Music has been loaded.
-    std::cout << "Music has been loaded." << std::endl;
 
-    std::cout << "Music Array Size: " << Database::getNumMusicObjects();
+    std::cout << "All data loaded." << std::endl;
 }
 
 // Function takes a pointer to a movie and adds it to the end of _musicArray.
@@ -323,12 +305,31 @@ void Database::incrementNumMusicObjects()
 
 void Database::displayAllMedia()
 {
-    std::cout << "Inside Database::displayAllMedia" << std::endl;
+    std::cout << "Inside Database::displayAllMedia()." << std::endl;
 
-    for (std::size_t i = 0; i <= Database::getNumMovies(); i++)
+    std::cout << "-----MOVIES-----" << std::endl;
+
+    // Database::getMovieArrayAddress(2)->displayInfo(); // WORKING.
+
+    for (std::size_t i = 1; i < Database::getNumMovies(); i++) // *****HELP***** ASK MR. BERGEN ABOUT THIS LINE.
     {
-        // std::cout << tempMovie->getMediaTitle();
-        // tempMovie->displayInfo();
+        Database::getMovieArrayAddress(i)->displayInfo();
+
+        std::cout << std::endl;
+    }
+
+    std::cout << "-----TV SHOWS-----" << std::endl;
+    for (std::size_t i = 1; i < Database::getNumTVShows(); i++)
+    {
+        Database::getTVShowAddress(i)->displayInfo();
+        std::cout << std::endl;
+    }
+
+    std::cout << "-----MUSIC-----" << std::endl;
+    for (std::size_t i = 1; i < Database::getNumMusicObjects(); i++)
+    {
+        Database::getMusicArrayAddress(i)->displayInfo();
+        std::cout << std::endl;
     }
 }
 
@@ -351,10 +352,10 @@ std::size_t Database::getNumMusicObjects()
 }
 
 // Function returns a pointer to _movieArray.
-movieNamespace::MovieClass* Database::getMovieArrayAddress()
-{
-    return *_movieArray;
-}
+// movieNamespace::MovieClass* Database::getMovieArrayAddress()
+// {
+//     return *_movieArray;
+// }
 
 // Function returns the address to the requested index.
 movieNamespace::MovieClass* Database::getMovieArrayAddress(std::size_t index)
@@ -362,10 +363,10 @@ movieNamespace::MovieClass* Database::getMovieArrayAddress(std::size_t index)
     return _movieArray[index];
 }
 
-tvShowNamespace::TVShowClass* Database::getTVShowAddress()
-{
-    return *_tvShowArray;
-}
+// tvShowNamespace::TVShowClass* Database::getTVShowAddress()
+// {
+//     return *_tvShowArray;
+// }
 
 // Function returns the address of the input index.
 tvShowNamespace::TVShowClass* Database::getTVShowAddress(std::size_t index)
@@ -373,10 +374,10 @@ tvShowNamespace::TVShowClass* Database::getTVShowAddress(std::size_t index)
     return _tvShowArray[index];
 }
        
-musicNamespace::MusicClass* Database::getMusicArrayAddress()
-{
-    return *_musicArray;
-}
+// musicNamespace::MusicClass* Database::getMusicArrayAddress()
+// {
+//     return *_musicArray;
+// }
 
 // Function returns the address of the input index.
 musicNamespace::MusicClass* Database::getMusicArrayAddress(std::size_t index)

@@ -17,9 +17,9 @@ int main(int argc, char *argv[])
 
     mainDatabase.loadData();
 
-    mainDatabase.getMusicArrayAddress(2)->displayInfo();
+    // mainDatabase.getMusicArrayAddress(2)->displayInfo(); // WORKS.
 
-    // mainDatabase.displayAllMedia();
+    mainDatabase.displayAllMedia();
 
     cout << "\nProgram complete." << endl;
     return 0;
