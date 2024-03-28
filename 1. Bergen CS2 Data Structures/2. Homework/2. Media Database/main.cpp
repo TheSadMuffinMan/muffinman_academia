@@ -17,7 +17,8 @@ int main(int argc, char *argv[])
 
     mainDatabase.loadData();
 
-    // mainDatabase.getMusicArrayAddress(2)->displayInfo(); // WORKS.
+    mainDatabase.removeMovie(2);
+    cout << "\n***DEBUG*** Movie should be removed." << endl;
 
     mainDatabase.displayAllMedia();
 

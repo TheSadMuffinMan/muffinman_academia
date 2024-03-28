@@ -18,28 +18,26 @@ class Database
         Database(); // Complete.
         ~Database(); // Complete.
 
-
         void loadData(); // Complete.
 
         void addMovie(movieNamespace::MovieClass*); // Complete.
-        void incrementNumMovies(); // Complete.
-
         void addTVShow(tvShowNamespace::TVShowClass*);
-        void incrementNumTVShows();
-
         void addMusic(musicNamespace::MusicClass*);
+
+        void incrementNumMovies(); // Complete.
+        void incrementNumTVShows();
         void incrementNumMusicObjects();
 
 
         void displayAllMedia(); // Complete.
+        void displaySingleMovie(std::size_t);
+        void displaySingleTVShow(std::size_t);
+        void displaySingleMusic(std::size_t);
 
-        // Display single movie.
-        void displaySingleMovie(std::size_t); // Working on.
-
-        // Display single TV show.
-        // Display single Music.
 
         // Remove single movie.
+        movieNamespace::MovieClass* removeMovie(std::size_t);
+
         // Remove single TV show.
         // Remove single Music.
 
@@ -55,11 +53,7 @@ class Database
 
         // movieNamespace::MovieClass* getMovieArrayAddress(); // Never need access to the "full" array.
         movieNamespace::MovieClass* getMovieArrayAddress(std::size_t);
-
-        // tvShowNamespace::TVShowClass* getTVShowAddress();
         tvShowNamespace::TVShowClass* getTVShowAddress(std::size_t);
-       
-        // musicNamespace::MusicClass* getMusicArrayAddress();
         musicNamespace::MusicClass* getMusicArrayAddress(std::size_t);
 
         // Setters
@@ -86,7 +80,7 @@ class Database
 };
 
 
-// Default constructor, assigns _movieArray, _tvShowArray, and _musicArray's contents to nullptr.
+// Default constructor, assigns all of _movieArray's, _tvShowArray's, and _musicArray's contents to nullptr.
 Database::Database()
 {
     _name = "Media Database";
@@ -113,7 +107,7 @@ Database::Database()
 
 }
 
-// Default deconstructor that *should* clean up everything regardless of location.
+// Default deconstructor that ***I think*** cleans up everything regardless of location.
 Database::~Database()
 {
     for (std::size_t i = 0; i < 100; i++)
@@ -135,7 +129,6 @@ Database::~Database()
 }
 
 // Function pulls data from the csv_folder and populates the database's arrays.
-// All array locations are instantiatied to nullptr unless there is an object there.
 void Database::loadData()
 {
     // std::cout << "Inside loadData()." << std::endl;
@@ -268,18 +261,25 @@ void Database::addMovie(movieNamespace::MovieClass* inputMovie)
     Database::incrementNumMovies();
 }
 
+void Database::addTVShow(tvShowNamespace::TVShowClass* inputTVShow)
+{
+    Database::setTVArray(inputTVShow, (Database::getNumTVShows() + 1));
+    Database::incrementNumTVShows();
+}
+
+void Database::addMusic(musicNamespace::MusicClass* inputMusic)
+{
+    Database::setMusicArray(inputMusic, (Database::getNumMusicObjects() + 1));
+    Database::incrementNumMusicObjects();
+}
+
+
 // Calling this function is the equivalent of _numMovies++.
 void Database::incrementNumMovies()
 {
     std::size_t tempNum = Database::getNumMovies();
     tempNum++;
     Database::setNumMovies(tempNum);
-}
-
-void Database::addTVShow(tvShowNamespace::TVShowClass* inputTVShow)
-{
-    Database::setTVArray(inputTVShow, (Database::getNumTVShows() + 1));
-    Database::incrementNumTVShows();
 }
 
 void Database::incrementNumTVShows()
@@ -289,18 +289,13 @@ void Database::incrementNumTVShows()
     Database::setNumTVShows(tempNum);
 }
 
-void Database::addMusic(musicNamespace::MusicClass* inputMusic)
-{
-    Database::setMusicArray(inputMusic, (Database::getNumMusicObjects() + 1));
-    Database::incrementNumMusicObjects();
-}
-
 void Database::incrementNumMusicObjects()
 {
     std::size_t tempNum = Database::getNumMusicObjects();
     tempNum++;
     Database::setNumMusicObjects(tempNum);
 }
+
 
 // Function either displays all media and correlated data, or only displays media titles.
 void Database::displayAllMedia()
@@ -370,6 +365,57 @@ void Database::displayAllMedia()
     {
         std::cout << "Uh oh, something broke." << std::endl;
     }
+}
+
+// Function displays all movie information at requested index.
+void Database::displaySingleMovie(std::size_t index)
+{
+    Database::getMovieArrayAddress(index)->displayInfo();
+}
+
+// Function displays all TV Show information at requested index.
+void Database::displaySingleTVShow(std::size_t index)
+{
+    Database::getTVShowAddress(index)->displayInfo();
+}
+
+// Function displays all Music information at requested index.
+void Database::displaySingleMusic(std::size_t index)
+{
+    Database::getMusicArrayAddress(index)->displayInfo();
+}
+
+
+// Function takes in which index you would like to delete.
+// Function updates _movieArray and returns the updated address to _movieArray.
+movieNamespace::MovieClass* Database::removeMovie(std::size_t index)
+{
+    // Sets the index position = nullptr.
+    Database::setMovieArray(nullptr, index);
+
+    // Loop starts at index and checks if the next object in _movieArray is nullptr.
+    for (std::size_t i = index; i <= Database::getNumMovies(); i++)
+    {
+        movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
+
+        // If the next "member" is nullptr, break out of the loop.
+        if ((Database::getMovieArrayAddress(i + 1)) == nullptr)
+        {
+            break;
+        }
+
+        tempMovie = Database::getMovieArrayAddress(i + 1);
+
+        Database::setMovieArray(tempMovie, i);
+    }
+
+    // WORKING.
+    // Decrements _numMovies.
+    std::size_t tempNumMovies = (Database::getNumMovies() - 1);
+    Database::setNumMovies(tempNumMovies);
+
+    std::cout << "Movie has been removed." << std::endl;
+    return Database::getMovieArrayAddress(0);
 }
 
 
