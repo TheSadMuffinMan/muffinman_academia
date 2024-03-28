@@ -302,34 +302,73 @@ void Database::incrementNumMusicObjects()
     Database::setNumMusicObjects(tempNum);
 }
 
-
+// Function either displays all media and correlated data, or only displays media titles.
 void Database::displayAllMedia()
 {
     std::cout << "Inside Database::displayAllMedia()." << std::endl;
 
-    std::cout << "-----MOVIES-----" << std::endl;
+    std::size_t navigationChoice = 0;
+    std::cout << "Input 1 to display all info, input 2 to display only media titles. ";
+    std::cin >> navigationChoice;
 
-    // Database::getMovieArrayAddress(2)->displayInfo(); // WORKING.
 
-    for (std::size_t i = 1; i < Database::getNumMovies(); i++) // *****HELP***** ASK MR. BERGEN ABOUT THIS LINE.
+    if (navigationChoice == 1)
     {
-        Database::getMovieArrayAddress(i)->displayInfo();
+        std::cout << "Printing out all data... :D" << std::endl;
 
-        std::cout << std::endl;
+        std::cout << "-----MOVIES-----" << std::endl;
+        for (std::size_t i = 1; i <= Database::getNumMovies(); i++) // *****HELP***** ASK MR. BERGEN ABOUT THIS LINE.
+        {
+            std::cout << i << ". ";
+            Database::getMovieArrayAddress(i)->displayInfo();
+
+            std::cout << std::endl;
+        }
+
+        std::cout << "-----TV SHOWS-----" << std::endl;
+        for (std::size_t i = 1; i <= Database::getNumTVShows(); i++)
+        {
+            std::cout << i << ". ";
+            Database::getTVShowAddress(i)->displayInfo();
+            std::cout << std::endl;
+        }
+
+        std::cout << "-----MUSIC-----" << std::endl;
+        for (std::size_t i = 1; i <= Database::getNumMusicObjects(); i++)
+        {
+            std::cout << i << ". ";
+            Database::getMusicArrayAddress(i)->displayInfo();
+            std::cout << std::endl;
+        }
     }
-
-    std::cout << "-----TV SHOWS-----" << std::endl;
-    for (std::size_t i = 1; i < Database::getNumTVShows(); i++)
+    else if (navigationChoice == 2)
     {
-        Database::getTVShowAddress(i)->displayInfo();
-        std::cout << std::endl;
+        std::cout << "Printing out media titles... :D" << std::endl;
+
+        std::cout << "\n-----MOVIES-----" << std::endl;
+        for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
+        {
+            std::cout << i << ". ";
+            std::cout << Database::getMovieArrayAddress(i)->getMediaTitle() << std::endl;
+        }
+
+        std::cout << "\n-----TV SHOWS-----" << std::endl;
+        for (std::size_t i = 1; i <= Database::getNumTVShows(); i++)
+        {
+            std::cout << i << ". ";
+            std::cout << Database::getTVShowAddress(i)->getMediaTitle() << std::endl;
+        }
+
+        std::cout << "\n-----MUSIC-----" << std::endl;
+        for (std::size_t i = 1; i <= Database::getNumMusicObjects(); i++)
+        {
+            std::cout << i << ". ";
+            std::cout << Database::getMusicArrayAddress(i)->getMediaTitle() << std::endl;
+        }
     }
-
-    std::cout << "-----MUSIC-----" << std::endl;
-    for (std::size_t i = 1; i < Database::getNumMusicObjects(); i++)
+    else
     {
-        Database::getMusicArrayAddress(i)->displayInfo();
-        std::cout << std::endl;
+        std::cout << "Uh oh, something broke." << std::endl;
     }
 }
 
