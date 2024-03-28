@@ -17,10 +17,8 @@ int main(int argc, char *argv[])
 
     mainDatabase.loadData();
 
-    mainDatabase.displayAllMedia();
-
-    mainDatabase.removeMovie(5);
-    cout << "\n***DEBUG*** Movie #5 should be removed." << endl;
+    mainDatabase.removeMusic(4);
+    cout << "\n***DEBUG*** Music #4 should be removed." << endl;
 
     mainDatabase.displayAllMedia();
 

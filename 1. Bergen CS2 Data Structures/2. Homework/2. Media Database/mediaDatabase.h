@@ -12,9 +12,6 @@
 class Database
 {
     public:
-
-        // Default constructors and destructors
-
         Database(); // Complete.
         ~Database(); // Complete.
 
@@ -24,19 +21,19 @@ class Database
         void addTVShow(tvShowNamespace::TVShowClass*);
         void addMusic(musicNamespace::MusicClass*);
 
-        void incrementNumMovies(); // Complete.
+        void incrementNumMovies(); // All complete.
         void incrementNumTVShows();
         void incrementNumMusicObjects();
 
 
-        void displayAllMedia(); // Complete.
+        void displayAllMedia(); // All complete.
         void displaySingleMovie(std::size_t);
         void displaySingleTVShow(std::size_t);
         void displaySingleMusic(std::size_t);
 
 
-        movieNamespace::MovieClass* removeMovie(std::size_t); // Complete.
-        tvShowNamespace::TVShowClass* removeTVShow(std::size_t); // Buggy?
+        movieNamespace::MovieClass* removeMovie(std::size_t); // All comp,ete.
+        tvShowNamespace::TVShowClass* removeTVShow(std::size_t);
         musicNamespace::MusicClass* removeMusic(std::size_t);
 
 
@@ -363,7 +360,7 @@ void Database::displayAllMedia()
     }
     else
     {
-        std::cout << "Uh oh, something broke." << std::endl;
+        std::cout << "Uh oh, something broke inside Database::displayAllMedia()" << std::endl;
     }
 }
 
@@ -426,7 +423,7 @@ tvShowNamespace::TVShowClass* Database::removeTVShow(std::size_t index)
 
         // Decrements _numTVShows.
         std::size_t tempNumTVShows = (Database::getNumTVShows() - 1);
-        Database::setNumMovies(tempNumTVShows);
+        Database::setNumTVShows(tempNumTVShows);
 
         return Database::getTVShowAddress(0);
     }
@@ -449,7 +446,7 @@ tvShowNamespace::TVShowClass* Database::removeTVShow(std::size_t index)
 
     // Decrements _numTVShows.
     std::size_t tempNumTVShows = (Database::getNumTVShows() - 1);
-    Database::setNumMovies(tempNumTVShows);
+    Database::setNumTVShows(tempNumTVShows);
 
     std::cout << "Show has been removed." << std::endl;
     return Database::getTVShowAddress(0);
