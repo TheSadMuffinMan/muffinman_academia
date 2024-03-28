@@ -35,11 +35,10 @@ class Database
         void displaySingleMusic(std::size_t);
 
 
-        // Remove single movie.
-        movieNamespace::MovieClass* removeMovie(std::size_t);
+        movieNamespace::MovieClass* removeMovie(std::size_t); // Complete.
+        tvShowNamespace::TVShowClass* removeTVShow(std::size_t); // Buggy?
+        musicNamespace::MusicClass* removeMusic(std::size_t);
 
-        // Remove single TV show.
-        // Remove single Music.
 
         // Output all data to CSV.
 
@@ -341,6 +340,7 @@ void Database::displayAllMedia()
         std::cout << "Printing out media titles... :D" << std::endl;
 
         std::cout << "\n-----MOVIES-----" << std::endl;
+        std::cout << "***DEBUG*** _numMovies: " << Database::getNumMovies() << std::endl;
         for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
         {
             std::cout << i << ". ";
@@ -396,20 +396,17 @@ movieNamespace::MovieClass* Database::removeMovie(std::size_t index)
     // Loop starts at index and checks if the next object in _movieArray is nullptr.
     for (std::size_t i = index; i <= Database::getNumMovies(); i++)
     {
-        movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
-
-        // If the next "member" is nullptr, break out of the loop.
-        if ((Database::getMovieArrayAddress(i + 1)) == nullptr)
+        // If the "next member" is nullptr, loop breaks out.
+        if ((Database::getMovieArrayAddress(i + 1)) != nullptr)
         {
-            break;
+            movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
+
+            tempMovie = Database::getMovieArrayAddress(i + 1);
+
+            Database::setMovieArray(tempMovie, i);
         }
-
-        tempMovie = Database::getMovieArrayAddress(i + 1);
-
-        Database::setMovieArray(tempMovie, i);
     }
 
-    // WORKING.
     // Decrements _numMovies.
     std::size_t tempNumMovies = (Database::getNumMovies() - 1);
     Database::setNumMovies(tempNumMovies);
@@ -417,6 +414,78 @@ movieNamespace::MovieClass* Database::removeMovie(std::size_t index)
     std::cout << "Movie has been removed." << std::endl;
     return Database::getMovieArrayAddress(0);
 }
+
+// Function takes in which index you would like to delete.
+// Function updates _tvShowArray and returns the updated address to _tvShowArray.
+tvShowNamespace::TVShowClass* Database::removeTVShow(std::size_t index)
+{
+    // EDGE CASE (index == last data member).
+    if (index == Database::getNumTVShows())
+    {
+        Database::setTVArray(nullptr, index);
+
+        // Decrements _numTVShows.
+        std::size_t tempNumTVShows = (Database::getNumTVShows() - 1);
+        Database::setNumMovies(tempNumTVShows);
+
+        return Database::getTVShowAddress(0);
+    }
+
+    // Sets the index position = nullptr.
+    Database::setTVArray(nullptr, index);
+
+    // Loop starts at index and checks if the next object in _tvShowArray is nullptr.
+    for (std::size_t i = index; i <= Database::getNumTVShows(); i++)
+    {
+        // If the "next member" is nullptr, loop will not continue.
+        if ((Database::getTVShowAddress(i + 1)) != nullptr)
+        {
+            tvShowNamespace::TVShowClass* tempTVShow = new tvShowNamespace::TVShowClass;
+            tempTVShow = Database::getTVShowAddress(i + 1);
+
+            Database::setTVArray(tempTVShow, i);
+        }
+    }
+
+    // Decrements _numTVShows.
+    std::size_t tempNumTVShows = (Database::getNumTVShows() - 1);
+    Database::setNumMovies(tempNumTVShows);
+
+    std::cout << "Show has been removed." << std::endl;
+    return Database::getTVShowAddress(0);
+}
+
+// Function takes in which index you would like to delete.
+// Function updates _musicArray and returns the updated address to _musicArray.
+musicNamespace::MusicClass* Database::removeMusic(std::size_t index)
+{
+    // Sets the index position = nullptr.
+    Database::setMusicArray(nullptr, index);
+
+    // Loop starts at index and checks if the next object in _musicArray is nullptr.
+    for (std::size_t i = index; i <= Database::getNumMusicObjects(); i++)
+    {
+        musicNamespace::MusicClass* tempMusic = new musicNamespace::MusicClass;
+
+        // If the next "member" is nullptr, break out of the loop.
+        if ((Database::getMusicArrayAddress(i + 1)) == nullptr)
+        {
+            break;
+        }
+
+        tempMusic = Database::getMusicArrayAddress(i + 1);
+
+        Database::setMusicArray(tempMusic, i);
+    }
+
+    // Decrements _numMusicObjects.
+    std::size_t tempNumMusicObjects = (Database::getNumMusicObjects() - 1);
+    Database::setNumMusicObjects(tempNumMusicObjects);
+
+    std::cout << "Music has been removed." << std::endl;
+    return Database::getMusicArrayAddress(0);
+}
+
 
 
 // Getters
