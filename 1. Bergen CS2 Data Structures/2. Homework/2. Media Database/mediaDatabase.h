@@ -494,7 +494,7 @@ void Database::outputDatatoCSV()
     // Outputs movie data to outputFile.csv.
     for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
     {
-        //
+        // xyz
     }
 
     outputStream.close();
