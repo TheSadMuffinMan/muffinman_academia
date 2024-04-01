@@ -17,8 +17,7 @@ int main(int argc, char *argv[])
 
     mainDatabase.loadData();
 
-    mainDatabase.removeMusic(4);
-    cout << "\n***DEBUG*** Music #4 should be removed." << endl;
+    mainDatabase.outputDatatoCSV();
 
     mainDatabase.displayAllMedia();
 

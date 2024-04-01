@@ -40,6 +40,7 @@ class Database
         void outputDatatoCSV(); // Working on.
 
         // Search for media.
+        // Make dumb.
 
         // Getters
 
@@ -492,9 +493,23 @@ void Database::outputDatatoCSV()
     // outputStream << "Testing"; // Puts "Testing" in the first line of the csv file.
 
     // Outputs movie data to outputFile.csv.
+    // Use output stringstream.    
     for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
     {
-        // xyz
+        outputStream << Database::getMovieArrayAddress(i)->getMediaId() << ",";
+        outputStream << Database::getMovieArrayAddress(i)->getMediaTitle() << ",";
+        outputStream << Database::getMovieArrayAddress(i)->getMediaYear() << ",";
+        outputStream << Database::getMovieArrayAddress(i)->getMediaGenre() << ",";
+        outputStream << Database::getMovieArrayAddress(i)->getRating() << ",";
+        outputStream << Database::getMovieArrayAddress(i)->getDirector() << "\n";
+
+        /*
+        tempString = Database::getMovieArrayAddress(i)->getMediaId();
+        tempString = tempString + "," + Database::getMovieArrayAddress(i)->getMediaTitle();
+
+        int tempInt = Database::getMovieArrayAddress(i)->getMediaYear();
+        tempString = tempString + "," + Database::getMovieArrayAddress(i)->getMediaYear();
+        */
     }
 
     outputStream.close();
