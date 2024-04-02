@@ -1,3 +1,5 @@
+// Uses: extremely fast data structure.
+
 #include <iostream>
 
 using namespace std;
