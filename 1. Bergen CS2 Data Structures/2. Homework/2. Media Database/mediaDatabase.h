@@ -38,7 +38,8 @@ class Database
 
         void outputDatatoCSV(); // Complete.
 
-        std::string* searchMovie(std::string); // Working on.
+        movieNamespace::MovieClass** searchMovie(std::string); // WORKING FOR MOVIES LETS GOOOOOOO, NEEDS OVERLOAD.
+        // void searchMovieCleanup();
 
         // Getters
 
@@ -530,13 +531,11 @@ void Database::outputDatatoCSV()
 // Function returns a pointer to an array
 // If nothing is found, function returns nullptr.
 // ***FUNCTION NEEDS AN OVERLOAD THAT ALLOWS FOR INTS AND FLOATS***
-std::string* Database::searchMovie(std::string inputString)
+movieNamespace::MovieClass** Database::searchMovie(std::string inputString)
 {
-    // movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
-    // inputString == searchItem.
-
     // Temp variables.
-    std::string tempMovieArray[Database::getNumMovies()];
+    movieNamespace::MovieClass** tempMovieArray = new movieNamespace::MovieClass*[(Database::getNumMovies() + 1)];
+    // std::string tempString = "";
     std::size_t tempIndex = 1;
 
     // Populating temp array with all pointers pointing to nullptr.
@@ -546,36 +545,36 @@ std::string* Database::searchMovie(std::string inputString)
     }
 
     // Loop searches through each Movie Class.
-    // If a match is found, then it is dropped into tempMovieArray[].
+    // If a match is found, it is dropped into tempMovieArray.
     for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
     {
         if (inputString == Database::getMovieArrayAddress(i)->getMediaId())
         {
-            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i)->getMediaId();
+            // tempString = Database::getMovieArrayAddress(i)->getMediaId();
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
             tempIndex++;
         }
         else if (inputString == Database::getMovieArrayAddress(i)->getMediaTitle())
         {
-            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i)->getMediaTitle();
+            // tempString = Database::getMovieArrayAddress(i)->getMediaTitle();
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
             tempIndex++;
         } // SKIPPING YEAR FOR RN.
         else if (inputString == Database::getMovieArrayAddress(i)->getMediaGenre())
         {
-            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i)->getMediaGenre();
+            // tempString = Database::getMovieArrayAddress(i)->getMediaGenre();
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
             tempIndex++;
         } // SKIPPING RATING FOR RN.
         else if (inputString == Database::getMovieArrayAddress(i)->getDirector())
         {
-            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i)->getDirector();
+            // tempString = Database::getMovieArrayAddress(i)->getDirector();
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
             tempIndex++;
-        }
-        else
-        {
-            std::cout << "***DEBUG*** NOTHING FOUND." << std::endl;
         }
     }
     
-    return &tempMovieArray[0];
+    return tempMovieArray;
 }
 
 // Getters
