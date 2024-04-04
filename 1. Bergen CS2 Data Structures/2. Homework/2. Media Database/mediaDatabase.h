@@ -1,3 +1,5 @@
+// MAJOR GOOF: all data arrays start at 1, not 0. Too much work to go back and fix.
+// (All arrays have nothing at 0 index).
 #pragma once
 
 #include <string>
@@ -25,22 +27,18 @@ class Database
         void incrementNumTVShows();
         void incrementNumMusicObjects();
 
-
         void displayAllMedia(); // All complete.
         void displaySingleMovie(std::size_t);
         void displaySingleTVShow(std::size_t);
         void displaySingleMusic(std::size_t);
 
-
         movieNamespace::MovieClass* removeMovie(std::size_t); // All complete.
         tvShowNamespace::TVShowClass* removeTVShow(std::size_t);
         musicNamespace::MusicClass* removeMusic(std::size_t);
 
+        void outputDatatoCSV(); // Complete.
 
-        void outputDatatoCSV(); // Working on.
-
-        // Search for media.
-        // Make dumb.
+        std::string* searchMovie(std::string); // Working on.
 
         // Getters
 
@@ -485,6 +483,7 @@ musicNamespace::MusicClass* Database::removeMusic(std::size_t index)
     return Database::getMusicArrayAddress(0);
 }
 
+// Function outputs all data to outputFile.csv.
 void Database::outputDatatoCSV()
 {
     std::ofstream outputStream;
@@ -492,8 +491,7 @@ void Database::outputDatatoCSV()
 
     // outputStream << "Testing"; // Puts "Testing" in the first line of the csv file.
 
-    // Outputs movie data to outputFile.csv.
-    // Use output stringstream.    
+    // Outputs movie data to outputFile.csv.    
     for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
     {
         outputStream << Database::getMovieArrayAddress(i)->getMediaId() << ",";
@@ -502,19 +500,83 @@ void Database::outputDatatoCSV()
         outputStream << Database::getMovieArrayAddress(i)->getMediaGenre() << ",";
         outputStream << Database::getMovieArrayAddress(i)->getRating() << ",";
         outputStream << Database::getMovieArrayAddress(i)->getDirector() << "\n";
-
-        /*
-        tempString = Database::getMovieArrayAddress(i)->getMediaId();
-        tempString = tempString + "," + Database::getMovieArrayAddress(i)->getMediaTitle();
-
-        int tempInt = Database::getMovieArrayAddress(i)->getMediaYear();
-        tempString = tempString + "," + Database::getMovieArrayAddress(i)->getMediaYear();
-        */
     }
 
+    // Output TV shows loop.
+    for (std::size_t i = 1; i <= Database::getNumTVShows(); i++)
+    {
+        outputStream << Database::getTVShowAddress(i)->getMediaId() << ",";
+        outputStream << Database::getTVShowAddress(i)->getMediaTitle() << ",";
+        outputStream << Database::getTVShowAddress(i)->getMediaYear() << ",";
+        outputStream << Database::getTVShowAddress(i)->getMediaGenre() << ",";
+        outputStream << Database::getTVShowAddress(i)->getRating() << ",";
+        outputStream << Database::getTVShowAddress(i)->getNumEpisodes() << "\n";
+    }
+
+    // Output music objects loop.
+    for (std::size_t i = 1; i <= Database::getNumMusicObjects(); i++)
+    {
+        outputStream << Database::getMusicArrayAddress(i)->getMediaId() << ",";
+        outputStream << Database::getMusicArrayAddress(i)->getMediaTitle() << ",";
+        outputStream << Database::getMusicArrayAddress(i)->getMediaYear() << ",";
+        outputStream << Database::getMusicArrayAddress(i)->getMediaGenre() << ",";
+        outputStream << Database::getMusicArrayAddress(i)->getComposer() << ",";
+        outputStream << Database::getMusicArrayAddress(i)->getNumTracks() << ",";
+        outputStream << Database::getMusicArrayAddress(i)->getTotalPlaytime() << "\n";
+    }
     outputStream.close();
 }
 
+// Function returns a pointer to an array
+// If nothing is found, function returns nullptr.
+// ***FUNCTION NEEDS AN OVERLOAD THAT ALLOWS FOR INTS AND FLOATS***
+std::string* Database::searchMovie(std::string inputString)
+{
+    // movieNamespace::MovieClass* tempMovie = new movieNamespace::MovieClass;
+    // inputString == searchItem.
+
+    // Temp variables.
+    std::string tempMovieArray[Database::getNumMovies()];
+    std::size_t tempIndex = 1;
+
+    // Populating temp array with all pointers pointing to nullptr.
+    for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
+    {
+        tempMovieArray[i] = nullptr;
+    }
+
+    // Loop searches through each Movie Class.
+    // If a match is found, then it is dropped into tempMovieArray[].
+    for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
+    {
+        if (inputString == Database::getMovieArrayAddress(i)->getMediaId())
+        {
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i)->getMediaId();
+            tempIndex++;
+        }
+        else if (inputString == Database::getMovieArrayAddress(i)->getMediaTitle())
+        {
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i)->getMediaTitle();
+            tempIndex++;
+        } // SKIPPING YEAR FOR RN.
+        else if (inputString == Database::getMovieArrayAddress(i)->getMediaGenre())
+        {
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i)->getMediaGenre();
+            tempIndex++;
+        } // SKIPPING RATING FOR RN.
+        else if (inputString == Database::getMovieArrayAddress(i)->getDirector())
+        {
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i)->getDirector();
+            tempIndex++;
+        }
+        else
+        {
+            std::cout << "***DEBUG*** NOTHING FOUND." << std::endl;
+        }
+    }
+    
+    return &tempMovieArray[0];
+}
 
 // Getters
 

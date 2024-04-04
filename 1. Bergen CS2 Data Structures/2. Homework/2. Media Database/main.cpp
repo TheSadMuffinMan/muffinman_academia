@@ -19,8 +19,6 @@ int main(int argc, char *argv[])
 
     mainDatabase.outputDatatoCSV();
 
-    mainDatabase.displayAllMedia();
-
     cout << "\nProgram complete." << endl;
     return 0;
 }
