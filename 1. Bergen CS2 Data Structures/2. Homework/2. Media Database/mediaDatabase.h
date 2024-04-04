@@ -2,8 +2,8 @@
 // (All arrays have nothing at 0 index).
 #pragma once
 
-#include <string>
 #include <iomanip>
+#include <string>
 #include <fstream>
 
 #include "media.h"
@@ -38,6 +38,7 @@ class Database
 
         void outputDatatoCSV(); // Complete.
 
+        // Is leaking memory, needs fix.
         movieNamespace::MovieClass** searchMovie(std::string); // WORKING FOR MOVIES LETS GOOOOOOO, NEEDS OVERLOAD.
         // void searchMovieCleanup();
 
@@ -530,7 +531,7 @@ void Database::outputDatatoCSV()
 
 // Function returns a pointer to an array
 // If nothing is found, function returns nullptr.
-// ***FUNCTION NEEDS AN OVERLOAD THAT ALLOWS FOR INTS AND FLOATS***
+// ***FUNCTION NEEDS TO BE ABLE TO CONVERT inputString TO AN INT IF IT'S AN INT***
 movieNamespace::MovieClass** Database::searchMovie(std::string inputString)
 {
     // Temp variables.
