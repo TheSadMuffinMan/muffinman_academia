@@ -1,5 +1,6 @@
 // MAJOR GOOF: all data arrays start at 1, not 0. Too much work to go back and fix.
 // (All arrays have nullptr at 0 index).
+// WORKING ON PRIVATE DATA MEMBERS
 #pragma once
 
 #include <iomanip>
@@ -19,9 +20,9 @@ class Database
 
         void loadData(); // Complete.
 
-        void userAddMovie();
-        void addTVShow(tvShowNamespace::TVShowClass*);
-        void addMusic(musicNamespace::MusicClass*);
+        void addMovie();
+        void addTVShow();
+        void addMusic();
 
         void incrementNumMovies(); // All complete.
         void incrementNumTVShows();
@@ -73,7 +74,12 @@ class Database
         std::size_t _numTVShows;
         std::size_t _numMusicObjects;
 
-        void internalAddMovie(movieNamespace::MovieClass*); // Testing.
+        // I UNDERSTAND WHY WE HAVE PRIVATE DATA/FUNCTIONS NOW:
+        // I do not want users to access these functions because they could really mess shit up if they did have access:
+        // I (as the programmer) only want the user to use the addMovie (which uses this function safely).
+        void _internalAddMovie(movieNamespace::MovieClass*);
+        void _internalAddTV(tvShowNamespace::TVShowClass*);
+        void _internalAddMusic(musicNamespace::MusicClass*);
 
         movieNamespace::MovieClass* _movieArray[100];
         tvShowNamespace::TVShowClass* _tvShowArray[100];
@@ -175,7 +181,7 @@ void Database::loadData()
         // }
 
         // Function adds the tempMovie to _movieArray.
-        addMovie(tempMovie);
+        _internalAddMovie(tempMovie);
     }
     movieStream.close(); // Movies have been loaded.
 
@@ -210,8 +216,7 @@ void Database::loadData()
         tempShow->setRating(tempTVData[4]);
         tempShow->setNumEpisodes(tempTVData[5]);
 
-        // Function adds the tempShow to _tvShowArray.
-        addTVShow(tempShow);
+        _internalAddTV(tempShow);
     }
     tvStream.close(); // TV Shows have been loaded.
 
@@ -247,23 +252,16 @@ void Database::loadData()
         tempMusic->setTotalPlaytime(tempMusicData[6]);
 
         // Function adds tempMusic to _musicArray.
-        addMusic(tempMusic);
+        _internalAddMusic(tempMusic);
     }
     musicStream.close(); // Music has been loaded.
 
     std::cout << "All data loaded." << std::endl;
 }
 
-// Function takes a pointer to a movie and adds it to the end of _movieArray.
-// This is the function mediaDatabase uses to populate _movieArray, hence the userAddMovie() function.
-// This function is responsible for zero index +1 error. *****DEBUG in the future*****
-void Database::addMovie(movieNamespace::MovieClass* inputMovie)
-{
-    Database::setMovieArray(inputMovie, (Database::getNumMovies() + 1));
-    Database::incrementNumMovies(); // <----- THIS IS THE TROUBLEMAKER (line is not needed).
-}
-
-void Database::userAddMovie()
+// User function that takes in movie input and adds that input to a movieClass,
+// the function then adds said movie to _movieArray.
+void Database::addMovie()
 {
     std::string tempString;
     movieNamespace::MovieClass* userMovie;
@@ -292,20 +290,79 @@ void Database::userAddMovie()
     getline(cin, tempString);
     userMovie->setDirector(tempString);
 
-    Database::addMovie(userMovie);
+    Database::_internalAddMovie(userMovie);
 }
 
-
-void Database::addTVShow(tvShowNamespace::TVShowClass* inputTVShow)
+// User function that takes in TV Show input and adds that input to a TVShow,
+// the function then adds said show to _tvShowArray.
+void Database::addTVShow()
 {
-    Database::setTVArray(inputTVShow, (Database::getNumTVShows() + 1));
-    Database::incrementNumTVShows();
+    std::string tempString;
+    tvShowNamespace::TVShowClass* userTV;
+
+    std::cout << "\nIMBD ID: ";
+    std::getline(cin, tempString);
+    userTV->setMediaIMDBID(tempString);
+
+    std::cout << "\nShow Title: ";
+    getline(cin,tempString);
+    userTV->setMediaTitle(tempString);
+
+    std::cout << "\nShow Year: ";
+    cin >> tempString;
+    userTV->setMediaYear(tempString);
+
+    std::cout << "\nShow Genre: ";
+    getline(cin, tempString);
+    userTV->setMediaGenre(tempString);
+
+    std::cout <<"\nShow Rating (one decimal): ";
+    getline(cin, tempString);
+    userTV->setRating(tempString);
+
+    std::cout << "\nNumber of Episodes: ";
+    getline(cin, tempString);
+    userTV->setNumEpisodes(tempString);
+
+    Database::_internalAddTV(userTV);
 }
 
-void Database::addMusic(musicNamespace::MusicClass* inputMusic)
+// User function that takes in movie input and adds that input to a musicClass,
+// the function then adds said music to _musicArray.
+void Database::addMusic()
 {
-    Database::setMusicArray(inputMusic, (Database::getNumMusicObjects() + 1));
-    Database::incrementNumMusicObjects();
+    std::string tempString;
+    musicNamespace::MusicClass* userMusic;
+
+    std::cout << "\nIMBD ID: ";
+    std::getline(cin, tempString);
+    userMusic->setMediaIMDBID(tempString);
+
+    std::cout << "\nMusic Title: ";
+    getline(cin,tempString);
+    userMusic->setMediaTitle(tempString);
+
+    std::cout << "\nRelease Year: ";
+    cin >> tempString;
+    userMusic->setMediaYear(tempString);
+
+    std::cout << "\nGenre: ";
+    getline(cin, tempString);
+    userMusic->setMediaGenre(tempString);
+
+    std::cout <<"\nComposer: ";
+    getline(cin, tempString);
+    userMusic->setComposer(tempString);
+
+    std::cout << "\nNumber of Tracks: ";
+    getline(cin, tempString);
+    userMusic->setNumTracks(tempString);
+
+    std::cout << "\nTotal Playtime (in seconds): ";
+    cin >> tempString;
+    userMusic->setTotalPlaytime(tempString);
+
+    Database::_internalAddMusic(userMusic);
 }
 
 
@@ -855,4 +912,28 @@ void Database::setTVArray(tvShowNamespace::TVShowClass* inputTVShow, std::size_t
 void Database::setMusicArray(musicNamespace::MusicClass* inputMusicObject, std::size_t inputPosition)
 {
     _musicArray[inputPosition] = inputMusicObject;
+}
+
+
+// Private Functions
+
+// Function takes a pointer to a movie and adds it to the end of _movieArray.
+// This is the function mediaDatabase uses internally to populate _movieArray.
+// The user does not have access to this function.
+void Database::_internalAddMovie(movieNamespace::MovieClass* inputMovie)
+{
+    Database::setMovieArray(inputMovie, (Database::getNumMovies() + 1));
+    Database::incrementNumMovies(); // <----- THIS IS THE TROUBLEMAKER (line is not needed).
+}
+
+void Database::_internalAddTV(tvShowNamespace::TVShowClass* inputTV)
+{
+    Database::setTVArray(inputTV, (Database::getNumTVShows() + 1));
+    Database::incrementNumTVShows();
+}
+
+void Database::_internalAddMusic(musicNamespace::MusicClass* inputMusic)
+{
+    Database::setMusicArray(inputMusic, (Database::getNumMusicObjects() + 1));
+    Database::incrementNumMusicObjects();
 }
