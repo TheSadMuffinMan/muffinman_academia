@@ -21,10 +21,17 @@ int main(int argc, char *argv[])
     // cout << "\nWhat would you like to search for? Options are...\n1.Movies\n2.TV Shows\n3.Music" << endl;
     // cin >> searchOption;
     movieNamespace::MovieClass** searchItem;
-    searchItem = mainDatabase.searchMovie("Flight of the Navigator");
-    cout << "***DEBUG*** searchItem[1] (all info):\n";
+    searchItem = mainDatabase.searchMovie("7.7");
+
+    cout << "***DEBUG*** searchItem[1]:";
     searchItem[1]->displayInfo();
     cout << endl;
+
+    cout << "***DEBUG*** searchItem[2]:";
+    searchItem[2]->displayInfo();
+    cout << endl;
+
+    mainDatabase.searchMovieCleanup(searchItem, mainDatabase.getNumMovies());
 
     cout << "\nProgram complete." << endl;
     return 0;

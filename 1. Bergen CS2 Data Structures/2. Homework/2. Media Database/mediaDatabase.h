@@ -40,7 +40,7 @@ class Database
 
         // Is leaking memory, needs fix.
         movieNamespace::MovieClass** searchMovie(std::string); // WORKING FOR MOVIES LETS GOOOOOOO, NEEDS OVERLOAD.
-        // void searchMovieCleanup();
+        void searchMovieCleanup(movieNamespace::MovieClass**, std::size_t);
 
         // Getters
 
@@ -529,15 +529,14 @@ void Database::outputDatatoCSV()
     outputStream.close();
 }
 
-// Function returns a pointer to an array
-// If nothing is found, function returns nullptr.
-// ***FUNCTION NEEDS TO BE ABLE TO CONVERT inputString TO AN INT IF IT'S AN INT***
+// Function returns a pointer to an array of pointers to movies.
+// If nothing is found, function returns an array of nullptrs.
 movieNamespace::MovieClass** Database::searchMovie(std::string inputString)
 {
     // Temp variables.
     movieNamespace::MovieClass** tempMovieArray = new movieNamespace::MovieClass*[(Database::getNumMovies() + 1)];
-    // std::string tempString = "";
-    std::size_t tempIndex = 1;
+    // The above array needs a +1 because _numMovies will not "fit" inside an array of size _numMovies.
+    std::size_t tempIndex = 1; // Used for indexing the above array.
 
     // Populating temp array with all pointers pointing to nullptr.
     for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
@@ -546,37 +545,70 @@ movieNamespace::MovieClass** Database::searchMovie(std::string inputString)
     }
 
     // Loop searches through each Movie Class.
+    // Loop converts _year and _rating to strings to be compared to.
     // If a match is found, it is dropped into tempMovieArray.
     for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
     {
+        // Converts the two non-string data types to strings so that they can be easily compared to.
+        std::string convertedMovieYearInt = std::to_string(Database::getMovieArrayAddress(i)->getMediaYear());
+        std::string convertedMovieRatingFloat = std::to_string(Database::getMovieArrayAddress(i)->getRating());
+
+        // Below is required because std::to_string() returns a float that has more than 3 chars in it.
+        convertedMovieRatingFloat = convertedMovieRatingFloat.substr(0,3);
+
         if (inputString == Database::getMovieArrayAddress(i)->getMediaId())
         {
-            // tempString = Database::getMovieArrayAddress(i)->getMediaId();
             tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
             tempIndex++;
         }
         else if (inputString == Database::getMovieArrayAddress(i)->getMediaTitle())
         {
-            // tempString = Database::getMovieArrayAddress(i)->getMediaTitle();
             tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
             tempIndex++;
-        } // SKIPPING YEAR FOR RN.
+        }
+        else if (inputString == convertedMovieYearInt)
+        {
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
+            tempIndex++;
+        }
         else if (inputString == Database::getMovieArrayAddress(i)->getMediaGenre())
         {
-            // tempString = Database::getMovieArrayAddress(i)->getMediaGenre();
             tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
             tempIndex++;
-        } // SKIPPING RATING FOR RN.
+        }
+        else if (inputString == convertedMovieRatingFloat)
+        {
+            tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
+            tempIndex++;
+        }
         else if (inputString == Database::getMovieArrayAddress(i)->getDirector())
         {
-            // tempString = Database::getMovieArrayAddress(i)->getDirector();
             tempMovieArray[tempIndex] = Database::getMovieArrayAddress(i);
             tempIndex++;
         }
     }
+
+    if (tempMovieArray[1] == nullptr)
+    {
+        std::cout << "NO RESULTS FOUND." << std::endl;
+    }
     
     return tempMovieArray;
 }
+
+void Database::searchMovieCleanup(movieNamespace::MovieClass** inputDoublePointer, std::size_t sizeOfArray)
+{
+    std::cout << "***DEBUG*** inside searchMovieCleanup." << std::endl;
+
+    // Function starts at the tail of the array and works its way back, deleting each movieClass.
+    for (std::size_t i = sizeOfArray; i >= 0; i--)
+    {
+        delete inputDoublePointer[i];
+    }
+
+    std::cout << "***DEBUG*** searchMovie() cleaned up." << std::endl;
+}
+
 
 // Getters
 
