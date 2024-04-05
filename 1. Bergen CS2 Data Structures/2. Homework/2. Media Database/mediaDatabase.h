@@ -39,8 +39,10 @@ class Database
         void outputDatatoCSV(); // Complete.
 
         // Is leaking memory, needs fix.
-        movieNamespace::MovieClass** searchMovie(std::string); // WORKING FOR MOVIES LETS GOOOOOOO, NEEDS OVERLOAD.
+        movieNamespace::MovieClass** searchMovie(std::string); // WORKING, LET'S GOOOOOOOOOOOOO.
         void searchMovieCleanup(movieNamespace::MovieClass**, std::size_t);
+        tvShowNamespace::TVShowClass** searchTV(std::string); // Complete, untested.
+        musicNamespace::MusicClass** searchMusic(std::string); // Complete, untested.
 
         // Getters
 
@@ -535,9 +537,8 @@ movieNamespace::MovieClass** Database::searchMovie(std::string inputString)
 {
     // Temp variables.
     movieNamespace::MovieClass** tempMovieArray = new movieNamespace::MovieClass*[(Database::getNumMovies() + 1)];
-    // The above array needs a +1 because _numMovies will not "fit" inside an array of size _numMovies.
+    // The above array needs a +1 because of the zero index on arrays. (_numMovies is too large)
     std::size_t tempIndex = 1; // Used for indexing the above array.
-
     // Populating temp array with all pointers pointing to nullptr.
     for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
     {
@@ -596,6 +597,7 @@ movieNamespace::MovieClass** Database::searchMovie(std::string inputString)
     return tempMovieArray;
 }
 
+// NOT WORKING. Malloc error?
 void Database::searchMovieCleanup(movieNamespace::MovieClass** inputDoublePointer, std::size_t sizeOfArray)
 {
     std::cout << "***DEBUG*** inside searchMovieCleanup." << std::endl;
@@ -607,6 +609,141 @@ void Database::searchMovieCleanup(movieNamespace::MovieClass** inputDoublePointe
     }
 
     std::cout << "***DEBUG*** searchMovie() cleaned up." << std::endl;
+}
+
+// I have a strange feeling that all of this copying and pasting is solved through templating.... But I'm a newb.
+
+// Function returns a pointer to an array of pointers to TV Shows.
+// If nothing is found, function returns an array of nullptrs.
+tvShowNamespace::TVShowClass** Database::searchTV(std::string inputString)
+{
+    // Temp variables.
+    tvShowNamespace::TVShowClass** tempTVArray = new tvShowNamespace::TVShowClass*[(Database::getNumTVShows() + 1)];
+    // The above array needs a +1 because I'm a goof and this program isn't 0 indexed.
+    std::size_t tempIndex = 1; // Used for indexing the above array.
+    // Populating temp array with all pointers pointing to nullptr.
+    for (std::size_t i = 1; i <= Database::getNumTVShows(); i++)
+    {
+        tempTVArray[i] = nullptr;
+    }
+
+    // Loop searches through each TV Class.
+    // Loop converts _year, _rating, and _numEpisodes to strings to be easily compared to.
+    // If a match is found, it is dropped into tempTVArray.
+    for (std::size_t i = 1; i <= Database::getNumTVShows(); i++)
+    {
+        // Converts the three non-string data types to strings so that they can be easily compared to.
+        std::string convertedTVYearInt = std::to_string(Database::getTVShowAddress(i)->getMediaYear());
+        std::string convertedTVRatingFloat = std::to_string(Database::getTVShowAddress(i)->getRating());
+        std::string convertedTVNumEpisodesInt = std::to_string(Database::getTVShowAddress(i)->getNumEpisodes());
+
+        // Below is required because std::to_string() returns a float that has more than 3 chars in it.
+        convertedTVRatingFloat = convertedTVRatingFloat.substr(0,3);
+
+        if (inputString == Database::getTVShowAddress(i)->getMediaId())
+        {
+            tempTVArray[tempIndex] = Database::getTVShowAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == Database::getTVShowAddress(i)->getMediaTitle())
+        {
+            tempTVArray[tempIndex] = Database::getTVShowAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == convertedTVYearInt)
+        {
+            tempTVArray[tempIndex] = Database::getTVShowAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == Database::getTVShowAddress(i)->getMediaGenre())
+        {
+            tempTVArray[tempIndex] = Database::getTVShowAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == convertedTVRatingFloat)
+        {
+            tempTVArray[tempIndex] = Database::getTVShowAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == convertedTVNumEpisodesInt)
+        {
+            tempTVArray[tempIndex] = Database::getTVShowAddress(i);
+            tempIndex++;
+        }
+    }
+
+    if (tempTVArray[1] == nullptr)
+    {
+        std::cout << "NO RESULTS FOUND." << std::endl;
+    }
+    
+    return tempTVArray;
+}
+
+// Function returns a pointer to an array of pointers to Music objects.
+// If nothing is found, function returns an array of nullptrs.
+musicNamespace::MusicClass** Database::searchMusic(std::string inputString)
+{
+    // Temp variables.
+    musicNamespace::MusicClass** tempMusicArray = new musicNamespace::MusicClass*[(Database::getNumMusicObjects() + 1)];
+    std::size_t tempIndex = 1; // Used for indexing the above array.
+    // Populating temp array with all pointers pointing to nullptr.
+    for (std::size_t i = 1; i <= Database::getNumMusicObjects(); i++)
+    {
+        tempMusicArray[i] = nullptr;
+    }
+
+    // Loop searches through each Music Object.
+    // Loop converts _year, _numTracks, and _totalPlaytime to strings to be easily compared to.
+    // If a match is found, it is dropped into tempMusicArray.
+    for (std::size_t i = 1; i <= Database::getNumMusicObjects(); i++)
+    {
+        // Converts the three non-string data types to strings so that they can be easily compared to.
+        std::string convertedMusicYearInt = std::to_string(Database::getMusicArrayAddress(i)->getMediaYear());
+        std::string convertedMusicNumTracksInt = std::to_string(Database::getMusicArrayAddress(i)->getNumTracks());
+        std::string convertedMusicTotalPlaytimeFloat = std::to_string(Database::getMusicArrayAddress(i)->getTotalPlaytime());
+
+        // Below is required because std::to_string() returns a float that has more than 3 chars in it.
+        convertedMusicTotalPlaytimeFloat = convertedMusicTotalPlaytimeFloat.substr(0,3);
+
+        if (inputString == Database::getMusicArrayAddress(i)->getMediaId())
+        {
+            tempMusicArray[tempIndex] = Database::getMusicArrayAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == Database::getMusicArrayAddress(i)->getMediaTitle())
+        {
+            tempMusicArray[tempIndex] = Database::getMusicArrayAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == convertedMusicYearInt)
+        {
+            tempMusicArray[tempIndex] = Database::getMusicArrayAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == Database::getMusicArrayAddress(i)->getMediaGenre())
+        {
+            tempMusicArray[tempIndex] = Database::getMusicArrayAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == convertedMusicNumTracksInt)
+        {
+            tempMusicArray[tempIndex] = Database::getMusicArrayAddress(i);
+            tempIndex++;
+        }
+        else if (inputString == convertedMusicTotalPlaytimeFloat)
+        {
+            tempMusicArray[tempIndex] = Database::getMusicArrayAddress(i);
+            tempIndex++;
+        }
+    }
+
+    if (tempMusicArray[1] == nullptr)
+    {
+        std::cout << "NO RESULTS FOUND." << std::endl;
+    }
+    
+    return tempMusicArray;
 }
 
 

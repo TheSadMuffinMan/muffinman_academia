@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     searchItem[2]->displayInfo();
     cout << endl;
 
-    mainDatabase.searchMovieCleanup(searchItem, mainDatabase.getNumMovies());
+    // mainDatabase.searchMovieCleanup(searchItem, mainDatabase.getNumMovies());
 
     cout << "\nProgram complete." << endl;
     return 0;
