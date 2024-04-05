@@ -1,5 +1,5 @@
 // MAJOR GOOF: all data arrays start at 1, not 0. Too much work to go back and fix.
-// (All arrays have nothing at 0 index).
+// (All arrays have nullptr at 0 index).
 #pragma once
 
 #include <iomanip>
@@ -19,7 +19,7 @@ class Database
 
         void loadData(); // Complete.
 
-        void addMovie(movieNamespace::MovieClass*); // All complete.
+        void userAddMovie();
         void addTVShow(tvShowNamespace::TVShowClass*);
         void addMusic(musicNamespace::MusicClass*);
 
@@ -38,9 +38,9 @@ class Database
 
         void outputDatatoCSV(); // Complete.
 
-        // Is leaking memory, needs fix.
+        // 99% sure these are leaking memory, but the malloc error makes me think otherise?
         movieNamespace::MovieClass** searchMovie(std::string); // WORKING, LET'S GOOOOOOOOOOOOO.
-        void searchMovieCleanup(movieNamespace::MovieClass**, std::size_t);
+        // void searchMovieCleanup(movieNamespace::MovieClass**, std::size_t); // Not working, malloc error?
         tvShowNamespace::TVShowClass** searchTV(std::string); // Complete, untested.
         musicNamespace::MusicClass** searchMusic(std::string); // Complete, untested.
 
@@ -72,6 +72,8 @@ class Database
         std::size_t _numMovies;
         std::size_t _numTVShows;
         std::size_t _numMusicObjects;
+
+        void internalAddMovie(movieNamespace::MovieClass*); // Testing.
 
         movieNamespace::MovieClass* _movieArray[100];
         tvShowNamespace::TVShowClass* _tvShowArray[100];
@@ -252,14 +254,47 @@ void Database::loadData()
     std::cout << "All data loaded." << std::endl;
 }
 
-// Function takes a pointer to a movie and adds it to the end of _musicArray.
-// Function is basically a setter with extra steps.
-// This function is responsible for zero index +1 error. *****Fix in the future*****
+// Function takes a pointer to a movie and adds it to the end of _movieArray.
+// This is the function mediaDatabase uses to populate _movieArray, hence the userAddMovie() function.
+// This function is responsible for zero index +1 error. *****DEBUG in the future*****
 void Database::addMovie(movieNamespace::MovieClass* inputMovie)
 {
     Database::setMovieArray(inputMovie, (Database::getNumMovies() + 1));
-    Database::incrementNumMovies();
+    Database::incrementNumMovies(); // <----- THIS IS THE TROUBLEMAKER (line is not needed).
 }
+
+void Database::userAddMovie()
+{
+    std::string tempString;
+    movieNamespace::MovieClass* userMovie;
+
+    std::cout << "\nIMBD ID: ";
+    std::getline(cin, tempString);
+    userMovie->setMediaIMDBID(tempString);
+
+    std::cout << "\nMovie Title: ";
+    getline(cin,tempString);
+    userMovie->setMediaTitle(tempString);
+
+    std::cout << "\nMovie Year: ";
+    cin >> tempString;
+    userMovie->setMediaYear(tempString);
+
+    std::cout << "\nMovie Genre: ";
+    getline(cin, tempString);
+    userMovie->setMediaGenre(tempString);
+
+    std::cout <<"\nMovie Rating (one decimal): ";
+    getline(cin, tempString);
+    userMovie->setRating(tempString);
+
+    std::cout << "\nMovie Director: ";
+    getline(cin, tempString);
+    userMovie->setDirector(tempString);
+
+    Database::addMovie(userMovie);
+}
+
 
 void Database::addTVShow(tvShowNamespace::TVShowClass* inputTVShow)
 {
@@ -597,6 +632,7 @@ movieNamespace::MovieClass** Database::searchMovie(std::string inputString)
     return tempMovieArray;
 }
 
+/*
 // NOT WORKING. Malloc error?
 void Database::searchMovieCleanup(movieNamespace::MovieClass** inputDoublePointer, std::size_t sizeOfArray)
 {
@@ -610,6 +646,7 @@ void Database::searchMovieCleanup(movieNamespace::MovieClass** inputDoublePointe
 
     std::cout << "***DEBUG*** searchMovie() cleaned up." << std::endl;
 }
+*/
 
 // I have a strange feeling that all of this copying and pasting is solved through templating.... But I'm a newb.
 
