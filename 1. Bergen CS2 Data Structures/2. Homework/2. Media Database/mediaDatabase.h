@@ -264,30 +264,30 @@ void Database::loadData()
 void Database::addMovie()
 {
     std::string tempString;
-    movieNamespace::MovieClass* userMovie;
+    movieNamespace::MovieClass* userMovie = new movieNamespace::MovieClass;
 
     std::cout << "\nIMBD ID: ";
-    std::getline(cin, tempString);
+    getline(std::cin, tempString);
     userMovie->setMediaIMDBID(tempString);
 
     std::cout << "\nMovie Title: ";
-    getline(cin,tempString);
+    getline(std::cin,tempString);
     userMovie->setMediaTitle(tempString);
 
     std::cout << "\nMovie Year: ";
-    cin >> tempString;
+    std::cin >> tempString;
     userMovie->setMediaYear(tempString);
 
     std::cout << "\nMovie Genre: ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userMovie->setMediaGenre(tempString);
 
     std::cout <<"\nMovie Rating (one decimal): ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userMovie->setRating(tempString);
 
     std::cout << "\nMovie Director: ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userMovie->setDirector(tempString);
 
     Database::_internalAddMovie(userMovie);
@@ -298,30 +298,30 @@ void Database::addMovie()
 void Database::addTVShow()
 {
     std::string tempString;
-    tvShowNamespace::TVShowClass* userTV;
+    tvShowNamespace::TVShowClass* userTV = new tvShowNamespace::TVShowClass;
 
     std::cout << "\nIMBD ID: ";
-    std::getline(cin, tempString);
+    getline(std::cin, tempString);
     userTV->setMediaIMDBID(tempString);
 
     std::cout << "\nShow Title: ";
-    getline(cin,tempString);
+    getline(std::cin,tempString);
     userTV->setMediaTitle(tempString);
 
     std::cout << "\nShow Year: ";
-    cin >> tempString;
+    std::cin >> tempString;
     userTV->setMediaYear(tempString);
 
     std::cout << "\nShow Genre: ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userTV->setMediaGenre(tempString);
 
     std::cout <<"\nShow Rating (one decimal): ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userTV->setRating(tempString);
 
     std::cout << "\nNumber of Episodes: ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userTV->setNumEpisodes(tempString);
 
     Database::_internalAddTV(userTV);
@@ -332,34 +332,34 @@ void Database::addTVShow()
 void Database::addMusic()
 {
     std::string tempString;
-    musicNamespace::MusicClass* userMusic;
+    musicNamespace::MusicClass* userMusic = new musicNamespace::MusicClass;
 
     std::cout << "\nIMBD ID: ";
-    std::getline(cin, tempString);
+    std::getline(std::cin, tempString);
     userMusic->setMediaIMDBID(tempString);
 
     std::cout << "\nMusic Title: ";
-    getline(cin,tempString);
+    getline(std::cin,tempString);
     userMusic->setMediaTitle(tempString);
 
     std::cout << "\nRelease Year: ";
-    cin >> tempString;
+    std::cin >> tempString;
     userMusic->setMediaYear(tempString);
 
     std::cout << "\nGenre: ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userMusic->setMediaGenre(tempString);
 
     std::cout <<"\nComposer: ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userMusic->setComposer(tempString);
 
     std::cout << "\nNumber of Tracks: ";
-    getline(cin, tempString);
+    getline(std::cin, tempString);
     userMusic->setNumTracks(tempString);
 
     std::cout << "\nTotal Playtime (in seconds): ";
-    cin >> tempString;
+    std::cin >> tempString;
     userMusic->setTotalPlaytime(tempString);
 
     Database::_internalAddMusic(userMusic);
