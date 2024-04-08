@@ -75,8 +75,8 @@ class Database
         std::size_t _numMusicObjects;
 
         // I UNDERSTAND WHY WE HAVE PRIVATE DATA/FUNCTIONS NOW:
-        // I do not want users to access these functions because they could really mess shit up if they did have access:
-        // I (as the programmer) only want the user to use the addMovie (which uses this function safely).
+        // I do not want users to access these functions because they could really mess stuff up if they did have access:
+        // I (as the programmer) only want the user to use addMovie() (which uses this function safely).
         void _internalAddMovie(movieNamespace::MovieClass*);
         void _internalAddTV(tvShowNamespace::TVShowClass*);
         void _internalAddMusic(musicNamespace::MusicClass*);
@@ -267,6 +267,7 @@ void Database::addMovie()
     movieNamespace::MovieClass* userMovie = new movieNamespace::MovieClass;
 
     std::cout << "\nIMBD ID: ";
+    std::cin.ignore(1);
     getline(std::cin, tempString);
     userMovie->setMediaIMDBID(tempString);
 
@@ -279,6 +280,7 @@ void Database::addMovie()
     userMovie->setMediaYear(tempString);
 
     std::cout << "\nMovie Genre: ";
+    std::cin.ignore(1);
     getline(std::cin, tempString);
     userMovie->setMediaGenre(tempString);
 
@@ -301,6 +303,7 @@ void Database::addTVShow()
     tvShowNamespace::TVShowClass* userTV = new tvShowNamespace::TVShowClass;
 
     std::cout << "\nIMBD ID: ";
+    std::cin.ignore(1);
     getline(std::cin, tempString);
     userTV->setMediaIMDBID(tempString);
 
@@ -313,6 +316,7 @@ void Database::addTVShow()
     userTV->setMediaYear(tempString);
 
     std::cout << "\nShow Genre: ";
+    std::cin.ignore(1);
     getline(std::cin, tempString);
     userTV->setMediaGenre(tempString);
 
@@ -335,6 +339,7 @@ void Database::addMusic()
     musicNamespace::MusicClass* userMusic = new musicNamespace::MusicClass;
 
     std::cout << "\nIMBD ID: ";
+    std::cin.ignore(1);
     std::getline(std::cin, tempString);
     userMusic->setMediaIMDBID(tempString);
 
@@ -347,6 +352,7 @@ void Database::addMusic()
     userMusic->setMediaYear(tempString);
 
     std::cout << "\nGenre: ";
+    std::cin.ignore(1);
     getline(std::cin, tempString);
     userMusic->setMediaGenre(tempString);
 
@@ -392,10 +398,10 @@ void Database::incrementNumMusicObjects()
 // Function either displays all media and correlated data, or only displays media titles.
 void Database::displayAllMedia()
 {
-    std::cout << "Inside Database::displayAllMedia()." << std::endl;
+    // std::cout << "Inside Database::displayAllMedia()." << std::endl;
 
     std::size_t navigationChoice = 0;
-    std::cout << "Input 1 to display all info, input 2 to display only media titles. ";
+    std::cout << "Input 1 to display all info, input 2 to display only media titles: ";
     std::cin >> navigationChoice;
 
 
@@ -433,7 +439,6 @@ void Database::displayAllMedia()
         std::cout << "Printing out media titles... :D" << std::endl;
 
         std::cout << "\n-----MOVIES-----" << std::endl;
-        std::cout << "***DEBUG*** _numMovies: " << Database::getNumMovies() << std::endl;
         for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
         {
             std::cout << i << ". ";
@@ -627,10 +632,10 @@ void Database::outputDatatoCSV()
 // If nothing is found, function returns an array of nullptrs.
 movieNamespace::MovieClass** Database::searchMovie(std::string inputString)
 {
-    // Temp variables.
     movieNamespace::MovieClass** tempMovieArray = new movieNamespace::MovieClass*[(Database::getNumMovies() + 1)];
     // The above array needs a +1 because of the zero index on arrays. (_numMovies is too large)
     std::size_t tempIndex = 1; // Used for indexing the above array.
+
     // Populating temp array with all pointers pointing to nullptr.
     for (std::size_t i = 1; i <= Database::getNumMovies(); i++)
     {
