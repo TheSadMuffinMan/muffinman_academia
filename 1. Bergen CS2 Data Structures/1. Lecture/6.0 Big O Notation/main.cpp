@@ -5,6 +5,7 @@ O(x) stands for "Order (x)".
 O(1) "Order 1" (Constant time). All operations take the same time. Assignment operators (x = 42) are best example.
 
 O(n) "Order n" (Linear time). It depends on input N for however long the calculation will take. Loops are best example.
+The amount of time complexity is directly proportional to n.
 
 O(n^2) "Order n squared" (Quadratic time). Example is a nested for loop.
 
