@@ -40,11 +40,24 @@ fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 
 void fractions::Fraction::simplify()
 {
+    if (_denominator == _numerator)
+    {
+        _denominator = 1;
+        _numerator = 1;
+    }
+
+    int c = _denominator % _numerator;
+    if (c == 0)
+    {
+        return;
+    }
 }
 
 int fractions::Fraction::gcd(int a, int b)
 {
-    return 0;
+    int c = a * b;
+
+    return c;
 }
 
 bool fractions::Fraction::operator==(Fraction const &frac)
