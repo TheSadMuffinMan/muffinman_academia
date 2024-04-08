@@ -1,6 +1,5 @@
 // MAJOR GOOF: all data arrays start at 1, not 0. Too much work to go back and fix.
 // (All arrays have nullptr at 0 index).
-// WORKING ON PRIVATE DATA MEMBERS
 #pragma once
 
 #include <iomanip>
@@ -928,7 +927,7 @@ void Database::setMusicArray(musicNamespace::MusicClass* inputMusicObject, std::
 void Database::_internalAddMovie(movieNamespace::MovieClass* inputMovie)
 {
     Database::setMovieArray(inputMovie, (Database::getNumMovies() + 1));
-    Database::incrementNumMovies(); // <----- THIS IS THE TROUBLEMAKER (line is not needed).
+    Database::incrementNumMovies(); // <----- THIS IS THE TROUBLEMAKER.
 }
 
 void Database::_internalAddTV(tvShowNamespace::TVShowClass* inputTV)

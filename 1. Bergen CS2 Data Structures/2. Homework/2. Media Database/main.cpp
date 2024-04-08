@@ -89,7 +89,6 @@ int main(int argc, char *argv[])
         else if (menuNavigation == 3) // Remove media loop.
         {
             size_t userChoice = 0;
-            cout << "\n\t***DEBUG Inside Remove Media Loop." << endl;
             cout << "\nWhat type of media would you like to remove? Options are..." << endl;
             cout << "1) Remove Movie\n2) Remove TV Show\n3) Remove Music\nUser choice: ";
             cin >> userChoice;
@@ -139,8 +138,6 @@ int main(int argc, char *argv[])
 
         else if (menuNavigation == 4) // Search for media loop.
         {
-            cout << "\n***DEBUG*** Inside search media loop." << endl;
-
             size_t userChoice = 0;
             cout << "\nWhat type of media would you like to search for? Options are..." << endl;
             cout << "1) Search Movie\n2) Search TV Shows\n3) Search Music\nUser choice: ";
@@ -233,8 +230,6 @@ int main(int argc, char *argv[])
 
         else if (menuNavigation == 5) // Output to csv loop.
         {
-            cout << "\n***DEBUG*** Inside output to csv loop." << endl;
-
             mainDatabase.outputDatatoCSV();
 
             cout << "\nAll data has been pushed to outputFile.csv" << endl;

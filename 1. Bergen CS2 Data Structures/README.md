@@ -18,6 +18,20 @@ LABS:
             Submitted to D2L?: NO
         Self Grade + Reasoning: N/A
 
+    Lab 3 - Fractions and Operator Overloading
+        Status: Not started
+        Due Date: Mar 11 2024
+        Turn in Date: INCOMPLETE
+            Submitted to D2L?: NO
+        Self Grade + Reasoning: N/A
+
+    Lab 4 - Doubly Linked List
+        Status: Not started
+        Due Date: Mar 15 2024
+        Turn in Date: INCOMPLETE
+            Submitted to D2L?: NO
+        Self Grade + Reasoning: N/A
+
 HOMEWORK:
     
     Homework 1 - Movie Database
@@ -28,8 +42,8 @@ HOMEWORK:
         Self Grade + Reasoning: 70%, super late + not fully functional.
 
     Homework 2 - Media Database
-        Status: Working on it.
+        Status: Turned in.
         Due Date: Mon March 11 2024.
-        Turn in Date: Not turned in yet.
-            Submitted to D2L?: NO
-        Self Grade + Reasoning:
+        Turn in Date: April 8 2024.
+            Submitted to D2L?: YES.
+        Self Grade + Reasoning: 80%: Late, not outputting nicely formatted tables.
