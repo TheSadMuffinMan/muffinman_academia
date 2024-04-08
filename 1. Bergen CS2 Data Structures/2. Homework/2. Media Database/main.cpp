@@ -16,7 +16,7 @@ void clearTerminal();
 
 int main(int argc, char *argv[])
 {
-    // clearTerminal();
+    clearTerminal();
     cout << "\nProgram start." << endl;
     string advancementString = " ";
 
