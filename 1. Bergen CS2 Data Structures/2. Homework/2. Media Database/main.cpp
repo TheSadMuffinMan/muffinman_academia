@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     cout << "\nProgram start." << endl;
     string advancementString = " ";
 
-    cout << "Hello, and welcome to my second assignment I have turned in \"on time\" this semester :D" << endl;
+    cout << "Hello, and welcome to my Media Database :D" << endl;
     cout << "Input anything to continue: ";
     cin >> advancementString;
     cin.ignore(1);
