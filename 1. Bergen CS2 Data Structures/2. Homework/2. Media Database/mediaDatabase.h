@@ -142,7 +142,7 @@ void Database::loadData()
     std::string tempString = "";
     std::ifstream movieStream; // Creates the input movie file stream.
 
-    movieStream.open("csv_files/movies.csv");
+    movieStream.open("movies.csv");
     
     while (movieStream.peek() != EOF) // While not at the end of the file
     {
@@ -186,7 +186,7 @@ void Database::loadData()
 
     std::ifstream tvStream; // Creates the input TV file stream.
     tempString = "";
-    tvStream.open("csv_files/tvshows.csv");
+    tvStream.open("tvshows.csv");
 
     while (tvStream.peek() != EOF) // While not at the end of the file
     {
@@ -221,7 +221,7 @@ void Database::loadData()
 
     std::ifstream musicStream; // Creates the input music file stream.
     tempString = "";
-    musicStream.open("csv_files/music.csv");
+    musicStream.open("music.csv");
     while (musicStream.peek() != EOF) // While not at the end of the file
     {
         getline(musicStream, tempString);
@@ -587,7 +587,7 @@ musicNamespace::MusicClass* Database::removeMusic(std::size_t index)
 void Database::outputDatatoCSV()
 {
     std::ofstream outputStream;
-    outputStream.open("csv_files/outputFile.csv");
+    outputStream.open("outputFile.csv");
 
     // outputStream << "Testing"; // Puts "Testing" in the first line of the csv file.
 
