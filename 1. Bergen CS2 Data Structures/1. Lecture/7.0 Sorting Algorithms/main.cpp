@@ -37,7 +37,7 @@ Psuedo-code for Selection Sort:
 Results in O(n^2) time complexity and O(1) space complexity.
 
 ----------------------------------------------------------------------------------------------------------------
-INSERTION SORT: Going over the following sorts tomorrow.
+INSERTION SORT:
 
 ----------------------------------------------------------------------------------------------------------------
 QUICK SORT:
