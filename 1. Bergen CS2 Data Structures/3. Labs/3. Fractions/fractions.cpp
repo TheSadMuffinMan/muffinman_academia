@@ -40,10 +40,11 @@ fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 
 void fractions::Fraction::simplify()
 {
-    if (_denominator == _numerator)
+    if (_denominator == _numerator) // If the fraction is 1.
     {
         _denominator = 1;
         _numerator = 1;
+        return;
     }
 
     int c = _denominator % _numerator;
