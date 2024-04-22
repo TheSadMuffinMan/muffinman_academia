@@ -9,7 +9,7 @@ fractions::Fraction::Fraction(int numerator, int denominator)
     }
     else
     {
-        cout << "Denominator == 0." << std::endl;
+        cout << "Invalid Fraction." << std::endl;
     }
 }
 
@@ -56,9 +56,18 @@ void fractions::Fraction::simplify()
 
 int fractions::Fraction::gcd(int a, int b)
 {
-    int c = a * b;
+    int min;
 
-    return c;
+    if (a < b)
+    {
+        min = a;
+    }
+    else
+    {
+        min = b;
+    }
+
+    return min;
 }
 
 bool fractions::Fraction::operator==(Fraction const &frac)
