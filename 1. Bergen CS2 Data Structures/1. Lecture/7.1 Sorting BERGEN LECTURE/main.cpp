@@ -1,4 +1,5 @@
 // COPIED FROM MR. BERGEN'S LECTURE REPO on 4/23/24.
+// See Lecture 7.0 for notes about each of the sorting algorithms.
 #include <iostream>
 #include <algorithm>
 #include <random>
@@ -13,7 +14,7 @@ void insertionSort(int[], int);
 void mergeSort(int[], int, int);
 void merge(int[], int, int, int);
 
-void quickSort(int[], int, int); // NOT A STABLE SORT
+void quickSort(int[], int, int);
 int partition(int[], int, int);
 
 void printArray(int[], int);
