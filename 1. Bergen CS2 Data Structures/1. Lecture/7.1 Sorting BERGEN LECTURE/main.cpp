@@ -18,7 +18,7 @@ void copyArray(int[], int[], int);
 
 int main(int argc, char* argv[])
 {
-    int arrSize = 10000;
+    int arrSize = 1000; // Start to run into issues at arrSize ~10,0000
     int array[arrSize];
     int bubbleArray[arrSize];
     int selectionArray[arrSize];
@@ -67,6 +67,16 @@ int main(int argc, char* argv[])
     // printArray(bubbleArray, arrSize);
     // printArray(selectionArray, arrSize);
     // printArray(insertionArray, arrSize);
+    
+    for (int i = 0; i < arrSize; i++)
+    {
+        if (bubbleArray[i] != mergeArray[i])
+        {
+            cout << "Arrays differ at index: " << i << endl;
+            break;
+        }
+    }
+
     return 0;
 }
 
