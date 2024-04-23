@@ -1,6 +1,7 @@
 /*
 KEY CONCEPTS: <algorithm> library, <chrono> library, bubble sort, selection sort, insertion sort,
 quick sort, merge sort.
+***SEE LECTURE 7.1 FOR RUNNING CODE OF EACH***
 
 // int unsortedArray[6] = {3, -4, 62, 1003, -15, 42};
 // int sortedArray[6] = {-15, -4, 3, 42, 62, 1003};
@@ -43,10 +44,12 @@ Results in O(n^2) time complexity and O(1) space complexity.
 INSERTION SORT:
 
 ----------------------------------------------------------------------------------------------------------------
-QUICK SORT:
+QUICK SORT: Not a stable sort, so if you have duplicate values, it could cause problems.
+n(log(n)) Time complex sorting algorithm.
 
 ----------------------------------------------------------------------------------------------------------------
-MERGE SORT:
+MERGE SORT: IS a stable sort.
+n(log(n)) time complex sorting algorithm. 
 
 ----------------------------------------------------------------------------------------------------------------
 */
@@ -141,28 +144,3 @@ void insertionSort(int array[], int arraySize)
         array[j + 1] = key;
     }
 }
-
-/* ***NOT WORKING***
-void bubbleSort(int[], int);
-void bubbleSort(int array[], int arraySize)
-{
-    bool swapped = false;
-
-    for(int i = 0; i < arraySize; i++)
-    {
-        swapped = false;
-        for (int j = 0; j < arraySize - 1 - i; j++)
-        {
-            if (array[j], array[j+1])
-            {
-                swap(array[j], array[j+1]);
-                swapped = true;
-            }
-        }
-        // if (!swapped)
-        // {
-
-        // }
-    }
-}
-*/

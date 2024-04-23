@@ -13,17 +13,21 @@ void insertionSort(int[], int);
 void mergeSort(int[], int, int);
 void merge(int[], int, int, int);
 
+void quickSort(int[], int, int); // NOT A STABLE SORT
+int partition(int[], int, int);
+
 void printArray(int[], int);
 void copyArray(int[], int[], int);
 
 int main(int argc, char* argv[])
 {
-    int arrSize = 1000; // Start to run into issues at arrSize ~10,0000
+    int arrSize = 1000; // Start to run into issues at arrSize ~3,500.
     int array[arrSize];
     int bubbleArray[arrSize];
     int selectionArray[arrSize];
     int insertionArray[arrSize];
-    int mergeArray[arrSize];
+    // int mergeArray[arrSize];
+    int quickArray[arrSize];
 
     cout << "Building array..." << endl;
     buildArray(array, arrSize);
@@ -53,6 +57,15 @@ int main(int argc, char* argv[])
     elapsed = end - start;
     cout << "Selection Sort: " << elapsed.count() << '\n';
 
+    start = chrono::system_clock::now();
+    cout << "Quick Sorting array..." << endl;
+    copyArray(array, quickArray, arrSize);
+    quickSort(array, 0, arrSize - 1);
+    end = chrono::system_clock::now();
+    elapsed = end - start;
+    cout << "Quick Sort: " << elapsed.count() << '\n';
+
+    /* BREAKING
     int l, r;
     l = 0;
     r = arrSize-1;
@@ -64,10 +77,7 @@ int main(int argc, char* argv[])
     end = chrono::system_clock::now();
     elapsed = end - start;
     cout << "Merge Sort: " << elapsed.count() << '\n';
-    // printArray(bubbleArray, arrSize);
-    // printArray(selectionArray, arrSize);
-    // printArray(insertionArray, arrSize);
-    
+
     for (int i = 0; i < arrSize; i++)
     {
         if (bubbleArray[i] != mergeArray[i])
@@ -76,7 +86,12 @@ int main(int argc, char* argv[])
             break;
         }
     }
+    */
 
+    // printArray(bubbleArray, arrSize);
+    // printArray(selectionArray, arrSize);
+    // printArray(insertionArray, arrSize);
+    
     return 0;
 }
 
@@ -221,4 +236,32 @@ void bubbleSort(int array[], int arrSize)
         }
         if(!swapped) break;
     }
+}
+
+void quickSort(int array[],int start, int end)
+{
+    if (start < end)
+    {
+        int partitionIndex = partition(array, start, end);
+
+        quickSort(array, start, partitionIndex - 1);
+        quickSort(array, partitionIndex + 1, end);
+    }
+}
+
+int partition(int array[], int start, int end)
+{
+    int pivot = array[end];
+    int i = start - 1;
+
+    for (int j = start; j < end; j++)
+    {
+        if (array[j] <= pivot)
+        {
+            i++;
+            swap(array[i], array[j]);
+        }
+    }
+    swap(array[i + 1], array[end]);
+    return i + 1;
 }
