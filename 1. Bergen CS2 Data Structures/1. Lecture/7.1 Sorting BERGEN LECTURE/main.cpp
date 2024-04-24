@@ -1,3 +1,4 @@
+// WORKING.
 // COPIED FROM MR. BERGEN'S LECTURE REPO on 4/23/24.
 // See Lecture 7.0 for notes about each of the sorting algorithms.
 #include <iostream>
@@ -27,7 +28,7 @@ int main(int argc, char* argv[])
     int bubbleArray[arrSize];
     int selectionArray[arrSize];
     int insertionArray[arrSize];
-    // int mergeArray[arrSize];
+    int mergeArray[arrSize];
     int quickArray[arrSize];
 
     cout << "Building array..." << endl;
@@ -66,7 +67,6 @@ int main(int argc, char* argv[])
     elapsed = end - start;
     cout << "Quick Sort: " << elapsed.count() << '\n';
 
-    /* BREAKING
     int l, r;
     l = 0;
     r = arrSize-1;
@@ -78,20 +78,6 @@ int main(int argc, char* argv[])
     end = chrono::system_clock::now();
     elapsed = end - start;
     cout << "Merge Sort: " << elapsed.count() << '\n';
-
-    for (int i = 0; i < arrSize; i++)
-    {
-        if (bubbleArray[i] != mergeArray[i])
-        {
-            cout << "Arrays differ at index: " << i << endl;
-            break;
-        }
-    }
-    */
-
-    // printArray(bubbleArray, arrSize);
-    // printArray(selectionArray, arrSize);
-    // printArray(insertionArray, arrSize);
     
     return 0;
 }
@@ -131,21 +117,31 @@ void merge(int array[], int p, int q, int r)
 
     for (int i = 0; i < n1; i++)
     {
-        L[i] = array[p+i];
+        L[i] = array[p + i];
     }
     for (int j = 0; j < n1; j++)
     {
         M[j] = array[q + 1 + j];
     }
 
+    // for (int i = 0; i < n1; i++)
+    // {
+    //     cout << L[i] << " ";
+    // }
+    // cout << endl;
+    // for (int i = 0; i < n2; i++)
+    // {
+    //     cout << M[i] << " ";
+    // }
+    // cout << endl;
     int i, j, k;
     i = 0;
     j = 0;
     k = p;
 
-    while(i < n1 && j < n2)
+    while (i < n1 && j < n2)
     {
-        if(L[i] <= M[j])
+        if (L[i] <= M[j])
         {
             array[k] = L[i];
             i++;
@@ -157,33 +153,45 @@ void merge(int array[], int p, int q, int r)
         }
         k++;
     }
-    while(i < n1)
+    while (i < n1)
     {
         array[k] = L[i];
         i++;
         k++;
     }
-    while(j < n2)
+    while (j < n2)
     {
         array[k] = M[j];
         j++;
         k++;
     }
+    // cout << "Merged array: " << endl;
+    // for (int arrIdx = 0; arrIdx < k; arrIdx++)
+    // {
+    //     cout << array[arrIdx] << " ";
+    // }
+    // cout << endl;
 }
 
 void mergeSort(int array[], int l, int r)
 {
-    
-    if(l < r)
+    if (l < r)
     {
-        int m = l + (r - 1)/2;
+        int m = l + (r - l) / 2;
         mergeSort(array, l, m);
         mergeSort(array, m + 1, r);
-        
+
+        // cout << "Calling merge: " << endl;
         merge(array, l, m, r);
+        // cout << "After merge: " << endl;
+        // cout << "DEBUG: l: " << l << endl;
+        // for (int arrIdx = 0; arrIdx < r; arrIdx++)
+        // {
+        //     cout << array[arrIdx] << " ";
+        // }
+        // cout << endl;
     }
 }
-
 void insertionSort(int array[], int arrSize)
 {
     for(int i = 1; i < arrSize; i++)
