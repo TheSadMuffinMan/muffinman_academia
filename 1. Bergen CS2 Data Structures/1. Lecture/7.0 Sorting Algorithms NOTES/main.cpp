@@ -28,7 +28,8 @@ Results in O(n^2) time complexity, but with line 15, it reduces the time complex
 Results in O(1) space complexity because we are not making a new memory location for the sort.
 
 ----------------------------------------------------------------------------------------------------------------
-SELECTION SORT: Unstable In Place sort, is slightly better than Bubble Sort, but not by much.
+SELECTION SORT:
+Unstable, In Place sort. Is slightly better than Bubble Sort, but not by much.
 
 Psuedo-code for Selection Sort:
 // (First == unsortedArray[0], Second == unsortedArray[1], etc)
@@ -42,14 +43,18 @@ Results in O(n^2) time complexity and O(1) space complexity.
 
 ----------------------------------------------------------------------------------------------------------------
 INSERTION SORT:
+See Lecture 7.1 (BERGEN LECTURE) for example code.
 
 ----------------------------------------------------------------------------------------------------------------
-QUICK SORT: Not a stable sort, so if you have duplicate values, it could cause problems.
+QUICK SORT:
+NOT a stable sort, so if you have duplicate values, it could cause problems.
 n(log(n)) Time complex sorting algorithm.
 
 ----------------------------------------------------------------------------------------------------------------
-MERGE SORT: IS a stable sort.
-n(log(n)) time complex sorting algorithm. 
+MERGE SORT:
+IS a stable sort.
+n(log(n)) time complex sorting algorithm.
+In Lecture 7.1 (BERGEN LECTURE), this algorithm is faster than quick sort ironically enough.
 
 ----------------------------------------------------------------------------------------------------------------
 */

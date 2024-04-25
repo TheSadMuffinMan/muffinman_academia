@@ -98,6 +98,10 @@ T1 List<T1>::pop_back()
 }
 
 // overloading <<, should return a space separated stream of all of the elements
+// Needs to print out the entire passed list.
+// In an ideal world, we would also overload the Node class so that we could utilize the << operator
+// here with ease.
+// All this function is doing is traversing the list and outputting the data.
 template <class T1>
 ostream &operator<<(ostream &os, const List<T1> &list)
 {

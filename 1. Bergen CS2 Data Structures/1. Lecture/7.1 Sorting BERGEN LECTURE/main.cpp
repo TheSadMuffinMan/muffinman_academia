@@ -23,7 +23,7 @@ void copyArray(int[], int[], int);
 
 int main(int argc, char* argv[])
 {
-    int arrSize = 1000; // Start to run into issues at arrSize ~3,500.
+    int arrSize = 3000; // Start to run into issues at arrSize ~3,500.
     int array[arrSize];
     int bubbleArray[arrSize];
     int selectionArray[arrSize];
