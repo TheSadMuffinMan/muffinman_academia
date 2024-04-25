@@ -1,5 +1,4 @@
 // SEARCHING ALGORITHMS :D Lecture Wed 4-24 and Thu 4-25.
-
 /*
 Searching algorithms generally only work if the data is sorted.
 
@@ -63,6 +62,8 @@ int main(int argc, char* argv[])
     return 0;
 }
 
+// Essentially splits the array in half with a mid point and searches from there.
+// Is generally the fastest in average cases.
 bool binarySearch(vector<long>& array, long data, int start, int end)
 {
     int mid = start + (end - start) / 2;
@@ -73,6 +74,7 @@ bool binarySearch(vector<long>& array, long data, int start, int end)
     return false;
 }
 
+// Goes through each element linearly and compares each to search element.
 bool linearSearch(vector<long>& array, long data)
 {
     for(auto it = array.begin(); it != array.end(); it++)
@@ -91,11 +93,13 @@ bool linearSearch(vector<long>& array, long data)
 
 void buildArray(vector<long> &array, int arrSize)
 {
-    srand(time(0));
+    // srand(time(0));
     for (int i = 0; i < arrSize; i++)
     {
         array.push_back(rand());
     }
     array.push_back(31415926535);
     sort(array.begin(), array.end());
+    
+    // cout << "Middle: " << array.at(0) << endl;
 }
