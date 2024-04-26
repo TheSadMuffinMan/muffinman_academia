@@ -50,7 +50,7 @@ class List
         void addStartPrivate(Node<T1>*, T1);
         T1 removeEnd(Node<T1>*);
         T1 removeStart(Node<T1>*);
-        void walkList(Node<T1>*); // RECURSIVE FUNCTION
+        void walkList(Node<T1>*);
 };
 
 
@@ -117,6 +117,8 @@ void List<T1>::printList()
 }
 */
 
+// This is an example of recursion. This function essentially does the same thing as a while loop,
+// but with a different structure as to how the same functionality is accomplished.
 template <typename T1>
 void List<T1>::walkList(Node<T1>* head)
 {

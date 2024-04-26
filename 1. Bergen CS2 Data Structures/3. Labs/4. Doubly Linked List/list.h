@@ -1,3 +1,5 @@
+// AHA! I finally understand why programmer's use the "this" keyword. 4/26
+
 #pragma once
 #include "node.h"
 #include <iostream>
@@ -13,11 +15,11 @@ class List
         size_t listSize;
 
     public:
-        List();
-        ~List();
+        List(); // Complete
+        ~List(); // Tricky, coming back to later.
 
-        bool empty();
-        size_t size();
+        bool empty(); // Complete.
+        size_t size(); // Complete.
 
         void push_front(T1);
         T1 pop_front();
@@ -36,12 +38,30 @@ class List
 template <class T1>
 List<T1>::List()
 {
+    _head = nullptr;
+    _tail = nullptr;
+    listSize = 0;
 }
 
 // iteratively delete the list starting at _head
 template <class T1>
 List<T1>::~List()
 {
+    if (this->empty() == true)
+    {
+        cout << "Empty list, destructor not doing anything." << endl;
+    }
+    // for (size_t i = 0; i < listSize; i++)
+    // {
+    //     if (_head == nullptr)
+    //     {
+    //         break;
+    //     }
+        
+    //     delete this->_head;
+    //     delete this->_data;
+    //     delete this->_tail;
+    // }
 }
 
 // return true if the list is empty, false otherwise.
@@ -49,12 +69,21 @@ List<T1>::~List()
 template <class T1>
 bool List<T1>::empty()
 {
+    if ((this->_head == nullptr) && (this->_tail == nullptr))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 // return number of elements in list
 template <class T1>
 size_t List<T1>::size()
 {
+    return listSize;
 }
 
 // add an element to the beginning of the list, updating _head
