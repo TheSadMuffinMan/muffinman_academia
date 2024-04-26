@@ -1,4 +1,7 @@
-// *****NEED TO DEBUG*****
+// TEMPLATED DOUBLY LINKED LIST (with Recusion)
+// Lecture from 4/25/24.
+// See List<T1>::walkList() for an example of recursion with explanation.
+
 #include <iostream>
 
 using namespace std;
@@ -7,7 +10,7 @@ template <typename T1>
 class Node
 {
     public:
-        Node(T1 data, Node<T1>*, Node<T1>* prev, Node<T1>* next) {_data = data; _prev = prev; _next = next;}
+        Node(T1 data, Node<T1>* prev, Node<T1>* next) {_data = data; _prev = prev; _next = next;}
         void setData(T1 data) {_data = data;}
         void setPrev(Node<T1>* prev) {_prev = prev;}
         void setNext(Node<T1>* next) {_next = next;}
