@@ -1,6 +1,10 @@
-// TEMPLATED DOUBLY LINKED LIST (with Recusion)
-// Lecture from 4/25/24.
-// See List<T1>::walkList() for an example of recursion with explanation.
+// WORKING: 4/26/24.
+
+/*
+TEMPLATED, DOUBLY LINKED LIST (with Recursion), Lecture from 4/25/24.
+See List<T1>::walkList() for an example of recursion with explanation.
+List Class uses non-standard function names to avoid Mr. Bergen straight up giving us the answers.
+*/
 
 #include <iostream>
 
@@ -122,7 +126,7 @@ void List<T1>::walkList(Node<T1>* head)
         return;
     }
 
-    if (head == nullptr) // NOT the private _head, this is the passed in head.
+    if (head == nullptr) // NOT the private _head, this is the (parameter) passed in.
     {
         return;
     }
