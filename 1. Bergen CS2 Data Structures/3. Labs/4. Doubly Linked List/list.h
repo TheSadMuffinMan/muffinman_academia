@@ -1,4 +1,8 @@
-// AHA! I finally understand why programmer's use the "this" keyword. 4/26
+/*
+*****Program is STACK allocated*****
+AHA! I finally understand why programmer's use the "this" keyword. 4/26
+I feel like I'm finally able to demonstrate everything we have learned this semester with this program :D
+*/
 
 #pragma once
 #include "node.h"
@@ -21,10 +25,10 @@ class List
         bool empty(); // Complete.
         size_t size(); // Complete.
 
-        void push_front(T1);
+        void push_front(T1); // Complete?
         T1 pop_front();
-        T1 front();
-        void push_back(T1);
+        T1 front(); // Complete.
+        void push_back(T1); // Complete?
         T1 pop_back();
         T1 back();
 
@@ -90,6 +94,16 @@ size_t List<T1>::size()
 template <class T1>
 void List<T1>::push_front(T1 data)
 {
+    Node<T1> tempNode;
+    tempNode->setData(data);
+    tempNode->setPrev(_tail); // Sets the new node's previous element to the tail of the list.
+    tempNode->setNext(_head); // Sets the new node's next element to the (not updated) head.
+    listSize++;
+
+    _head->setPrev(tempNode);
+    _tail->setNext(tempNode);
+
+    _head = tempNode;
 }
 
 // return the first element in the list.
@@ -97,6 +111,13 @@ void List<T1>::push_front(T1 data)
 template <class T1>
 T1 List<T1>::front()
 {
+    if (this->empty() == true)
+    {
+        cout << "List is empty." << endl;
+        return 0;
+    }
+
+    return _head;
 }
 
 // remove the first element from the list and return its data
@@ -104,12 +125,27 @@ T1 List<T1>::front()
 template <class T1>
 T1 List<T1>::pop_front()
 {
+    if (this->empty() == true)
+    {
+        cout << "List is empty." << endl;
+        return 0;
+    }
 }
 
-// add an element to the end of hte list, updating _tail
+// add an element to the end of the list, updating _tail
 template <class T1>
 void List<T1>::push_back(T1 data)
 {
+    Node<T1> tempNode;
+    tempNode->setData(data);
+    tempNode->setPrev(_tail);
+    tempNode->setNext(_head);
+    listSize++;
+
+    _tail->setNext(tempNode);
+    _head->setPrev(tempNode);
+
+    _tail = tempNode;
 }
 
 // return the last element in the list.
