@@ -11,7 +11,7 @@ CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
 # THIS IS THE INPUT FILE
-PROGRAM = mainProgram.exe
+PROGRAM = mainProgram.out
 
 # list all .cpp files separated by space
 CPPFILES = sandboxMain.cpp

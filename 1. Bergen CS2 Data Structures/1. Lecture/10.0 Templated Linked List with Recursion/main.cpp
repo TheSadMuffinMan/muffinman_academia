@@ -28,7 +28,7 @@ class List
 {
     public:
         void addEnd(T1);
-        void addStart();
+        void addStart(T1);
 
         T1 getEnd();
         T1 getStart();
@@ -42,7 +42,7 @@ class List
         void addEndPrivate(Node<T1>*, T1);
         void addStartPrivate(Node<T1>*, T1);
         T1 removeEnd(Node<T1>*);
-        T1 removeStart(Node<T1*);
+        T1 removeStart(Node<T1>*);
         void walkList(Node<T1>*); // RECURSIVE FUNCTION
 };
 
@@ -73,13 +73,13 @@ int main(int argc, char *argv[])
 template <typename T1>
 void List<T1>::addEnd(T1 data)
 {
-    addEndPrivate(_end, data);
+    addEndPrivate(_tail, data);
 }
 
 template <typename T1>
-void List<T1>::addStart()
+void List<T1>::addStart(T1 data)
 {
-    //
+    addStartPrivate(_head, data);
 }
 
 template <typename T1>
@@ -95,11 +95,20 @@ T1 List<T1>::getStart()
 }
 
 template <typename T1>
-void List<T1>::printList()
+void List<T1>::printList() // This function can also "walk" in reverse. See below.
 {
     walkList(_head);
     cout << endl;
 }
+
+/* This is how you can "walk" backwards. All you have to do is pass the tail.
+template <typename T1>
+void List<T1>::printList()
+{
+    walkList(_tail);
+    cout << endl;
+}
+*/
 
 template <typename T1>
 void List<T1>::walkList(Node<T1>* head)
@@ -164,7 +173,7 @@ T1 List<T1>::removeEnd(Node<T1>*)
 }
 
 template <typename T1>
-T1 List<T1>::removeStart(Node<T1*)
+T1 List<T1>::removeStart(Node<T1>*)
 {
     //
 }
