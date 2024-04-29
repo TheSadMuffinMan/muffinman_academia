@@ -2,6 +2,7 @@
 *****Program is STACK allocated*****
 AHA! I finally understand why programmer's use the "this" keyword. 4/26
 I feel like I'm finally able to demonstrate everything we have learned this semester with this program :D
+Nearing completion
 */
 
 #pragma once
@@ -180,9 +181,22 @@ T1 List<T1>::back()
 
 // remove the last element from the list and return its data
 // if the list is empty, print that out and return 0;
+// Function is the implementation of pop_front(), just in reverse.
 template <class T1>
 T1 List<T1>::pop_back()
 {
+    if (this->empty() == true)
+    {
+        cout << "List is empty :(" << endl;
+        return 0;
+    }
+    else
+    {
+        T1 tempData = _tail->getData();
+
+
+        return tempData;
+    }
 }
 
 // overloading <<, should return a space separated stream of all of the elements
