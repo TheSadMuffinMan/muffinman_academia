@@ -30,7 +30,7 @@ class List
         T1 pop_front(); // Complete?
         T1 front(); // Complete.
         void push_back(T1); // Complete?
-        T1 pop_back(); // Working on.
+        T1 pop_back(); // Complete?
         T1 back(); // Complete.
 
         bool operator==(const List<T1>&);
@@ -193,11 +193,18 @@ T1 List<T1>::pop_back()
     else
     {
         T1 tempData = _tail->getData();
+        _head->setPrev(_tail->getPrev());
 
+        _tail->getPrev()->setNext(_head);
 
+        delete _tail;
+        listSize--;
+
+        _tail = _head->getPrev();
         return tempData;
     }
 }
+
 
 // overloading <<, should return a space separated stream of all of the elements
 // Needs to print out the entire passed list.
