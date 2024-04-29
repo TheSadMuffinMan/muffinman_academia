@@ -26,11 +26,11 @@ class List
         size_t size(); // Complete.
 
         void push_front(T1); // Complete?
-        T1 pop_front();
+        T1 pop_front(); // Complete?
         T1 front(); // Complete.
         void push_back(T1); // Complete?
-        T1 pop_back();
-        T1 back();
+        T1 pop_back(); // Working on.
+        T1 back(); // Complete.
 
         bool operator==(const List<T1>&);
         // Have to declare a template for friend functions using a different template variable
@@ -122,6 +122,8 @@ T1 List<T1>::front()
 
 // remove the first element from the list and return its data
 // if the list is empty, print that out and return 0;
+// This function grabs the data from _head, updates _tail's pointers, and then sets a new _head based off
+// of _tail's updates (updates _head to _tail's prev).
 template <class T1>
 T1 List<T1>::pop_front()
 {
@@ -129,6 +131,18 @@ T1 List<T1>::pop_front()
     {
         cout << "List is empty." << endl;
         return 0;
+    }
+    else
+    {
+        T1 tempData = _head->getData(); // Storing data to be returned later.
+        _tail->setNext(_head->getNext()); // Cleaning up _tail's next.
+        _head->getNext()->setPrev(_tail); // This line solidifies my love for pointers <3 :D
+
+        delete _head;
+        _head = _tail->getPrev();
+        listSize--;
+
+        return tempData;
     }
 }
 
@@ -153,6 +167,15 @@ void List<T1>::push_back(T1 data)
 template <class T1>
 T1 List<T1>::back()
 {
+    if (this->empty() == true)
+    {
+        cout << "List is empty." << endl;
+        return 0;
+    }
+    else
+    {
+        return _tail;
+    }
 }
 
 // remove the last element from the list and return its data
