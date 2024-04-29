@@ -1,9 +1,12 @@
-// WORKING: 4/26/24.
+// WORKING: 4/29/24.
+// COPY BERGEN REPO for List::removeStart() and List::removeEnd().
 
 /*
 TEMPLATED, DOUBLY LINKED LIST (with Recursion), Lecture from 4/25/24.
 See List<T1>::walkList() for an example of recursion with explanation.
-List Class uses non-standard function names to avoid Mr. Bergen straight up giving us the answers.
+Program is visualized in iCloud Notes Computer Science/1. CS2 Bergen/1.10 Lab 4 - Doubly Linked List/
+List Class uses non-standard naming schemes to avoid Mr. Bergen straight up giving us the answers lol
+For a complete example of a doubly linked list, see 3. Labs/4. Doubly Linked List/list.h/
 */
 
 #include <iostream>
@@ -175,12 +178,14 @@ void List<T1>::addStartPrivate(Node<T1>* head, T1 data)
     _listSize++;
 }
 
+// Couldn't keep up with lecture. Examples in Doubly Linked List (Lab 4).
 template <typename T1>
-T1 List<T1>::removeEnd(Node<T1>*)
+T1 List<T1>::removeEnd(Node<T1>* end)
 {
     //
 }
 
+// Couldn't keep up with lecture. Examples in Doubly Linked List (Lab 4).
 template <typename T1>
 T1 List<T1>::removeStart(Node<T1>*)
 {
