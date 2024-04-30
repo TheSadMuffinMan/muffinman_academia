@@ -35,18 +35,19 @@ class UnaryClass
         UnaryClass() {_value = 10;}
 
         int operator ++() {_value = _value + 5;return _value;} // Prefix notation.
-        int operator ++ (int) {_value = (_value + 1);return _value;} // Postfix notation.
+        int operator ++ (int) {_value = (_value + 1);return _value;} // Postfix notation, allows Inc++;
 
         void display() {cout << "Value is: " << _value << endl;}
 
     private:
         int _value;
-}
+
 /* ***PASTE IN MAIN***
     UnaryClass Inc;
     ++Inc; // Inc++ also works.
     Inc.display();
-*/;
+*/
+};
 
 class BinaryClass
 {
@@ -59,7 +60,14 @@ class BinaryClass
         void setImaginary(int);
 
         friend BinaryClass operator+(const BinaryClass, const BinaryClass); // See implementation for explanation.
-        friend ostream &operator << (&ostream, const BinaryClass); // Application of knowledge :D
+
+        // The goal of this function is to return the address to the ostream.
+        // The friend keyword allows access to private data members.
+        friend ostream& operator << (ostream& os, const BinaryClass& inputClass) // See "Implementation" for notes.
+        {
+            os << inputClass._real << " + " << inputClass._imaginary << " ";
+            return os;
+        }
     
     private:
         int _real;
@@ -138,7 +146,10 @@ BinaryClass operator +(const BinaryClass object1, const BinaryClass object2)
     return temp;
 };
 
-ostream BinaryClass::&operator << (ostream &os, const BinaryClass object)
+/*
+This function must be implemented inside of class declaration because we are using namespace std.
+Because ostream is a part of the STL, we would have to redefine is outside of the class declaration.
+ostream BinaryClass::operator << (ostream& os, const BinaryClass object)
 {
     //
-}
+} */
