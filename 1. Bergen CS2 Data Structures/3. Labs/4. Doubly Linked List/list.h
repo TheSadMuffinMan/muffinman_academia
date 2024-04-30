@@ -213,6 +213,19 @@ T1 List<T1>::pop_back()
 template <class T1>
 ostream &operator<<(ostream &os, const List<T1> &list)
 {
+    Node<T1> currNode = list._head;
+
+    os << currNode.getData() << " ";
+    currNode = currNode.getNext();
+
+    while (currNode != list._head)
+    {
+        //
+    }
+    // for (size_t i = 0; i < list->size(); i++)
+    // {
+    //     //
+    // }
 }
 
 // should iterate through each list to check that they are exactly the same
