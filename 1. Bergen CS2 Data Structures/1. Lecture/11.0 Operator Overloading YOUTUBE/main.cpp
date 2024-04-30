@@ -1,7 +1,8 @@
 // https://www.youtube.com/watch?v=edfATDog-LQ
 // Operator Overloading in C++ by Simplilearn
 
-// WORKING ON: << overload, 4-29-24.
+// WORKING :D :D :D 4/30/24
+
 /*
 Operator overloading allows a user to utilize standard operators with user specific data.
 GENERAL SYNTAX: returnType operator symbol(arguments)
@@ -14,12 +15,12 @@ OPERATORS THAT CANNOT BE OVERLOADED: (syntactically impossible to overload)
     ?: (ternary operator)
 
 ---------------------------------------------------------------------------------------------------------------
-There are two types of operator overloading: Unary Operator Overloadings and Binary Operator Overloading
+There are two types of operator overloading: Unary Operator Overloading and Binary Operator Overloading
 UNARY OPERATOR OVERLOADING: An operator which only contains one operand. Best examples are ++ and --.
     Syntax:
         returnType operator symbol()
 
-BINARY OPERATOR OVERLOADING: An operator that contains two operands.
+BINARY OPERATOR OVERLOADING: An operator that contains two operands. Much more common.
     Synatx:
         returnType operator symbol(argument)
 
@@ -90,7 +91,7 @@ int main(int argc, char *argv[])
 
     BinaryClass num3 = num1 + num2;
 
-    cout << "Answer: " << num3.getReal() << " " << num3.getImaginary() << endl;
+    cout << "Answer: " << num3 << endl;
 
     return 0;
 }
@@ -128,7 +129,7 @@ void BinaryClass::setImaginary(int data)
 }
 
 
-// Function is a "friend" because the function needs to have access to private data members.
+// Function is a "friend" because the function needs to have access to private BinaryClass members.
 // Friend also allows this function to be utilized in other classes.
 // Normally function arguments need to be dereferenced (const &BinaryTree ...), but because
 // we are not using pointers, this is not needed.
