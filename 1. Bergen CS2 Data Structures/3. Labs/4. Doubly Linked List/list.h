@@ -20,18 +20,18 @@ class List
         size_t listSize;
 
     public:
-        List(); // Complete
+        List(); // Complete.
         ~List(); // Tricky, coming back to later.
 
         bool empty(); // Complete.
         size_t size(); // Complete.
 
-        void push_front(T1); // Complete?
-        T1 pop_front(); // Complete?
-        T1 front(); // Complete.
-        void push_back(T1); // Complete?
-        T1 pop_back(); // Complete?
-        T1 back(); // Complete.
+        void push_front(T1); // Complete.
+        T1 pop_front();
+        T1 front();
+        void push_back(T1); // Working on.
+        T1 pop_back();
+        T1 back();
 
         bool operator==(const List<T1>&);
         // Have to declare a template for friend functions using a different template variable
@@ -97,14 +97,12 @@ void List<T1>::push_front(T1 data)
 {
     Node<T1> tempNode;
     tempNode->setData(data);
-    tempNode->setPrev(_tail); // Sets the new node's previous element to the tail of the list.
-    tempNode->setNext(_head); // Sets the new node's next element to the (not updated) head.
-    listSize++;
 
+    tempNode->setNext(_head);
     _head->setPrev(tempNode);
-    _tail->setNext(tempNode);
-
+    
     _head = tempNode;
+    listSize++;
 }
 
 // return the first element in the list.
