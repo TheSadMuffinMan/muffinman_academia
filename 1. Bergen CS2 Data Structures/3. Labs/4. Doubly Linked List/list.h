@@ -27,11 +27,11 @@ class List
         size_t size(); // Complete.
 
         void push_front(T1); // Complete.
-        T1 pop_front();
-        T1 front();
-        void push_back(T1); // Working on.
-        T1 pop_back();
-        T1 back();
+        T1 pop_front(); // Complete.
+        T1 front(); // Complete.
+        void push_back(T1); // Complete.
+        T1 pop_back(); // Complete.
+        T1 back(); // Complete.
 
         bool operator==(const List<T1>&);
         // Have to declare a template for friend functions using a different template variable
@@ -121,44 +121,34 @@ T1 List<T1>::front()
 
 // remove the first element from the list and return its data
 // if the list is empty, print that out and return 0;
-// This function grabs the data from _head, updates _tail's pointers, and then sets a new _head based off
-// of _tail's updates (updates _head to _tail's prev).
+// Function should delete _head and return its data.
+// Function is drawn out in iCloud notes.
 template <class T1>
 T1 List<T1>::pop_front()
 {
-    if (this->empty() == true)
-    {
-        cout << "List is empty." << endl;
-        return 0;
-    }
-    else
-    {
-        T1 tempData = _head->getData(); // Storing data to be returned later.
-        _tail->setNext(_head->getNext()); // Cleaning up _tail's next.
-        _head->getNext()->setPrev(_tail); // This line solidifies my love for pointers <3 :D
+    T1 returnData = _head->getData();
+    Node<T1>* newHeadLocation = _head->getNext(); // Declaring a "new" _head.
 
-        delete _head;
-        _head = _tail->getPrev();
-        listSize--;
-
-        return tempData;
-    }
+    newHeadLocation->setPrev(nullptr);
+    delete _head;
+    listSize--;
+    _head = newHeadLocation;
+    return returnData;
 }
 
 // add an element to the end of the list, updating _tail
+// Do NOT need to set tempNode._prev = nullptr because Node Constructor sets _prev and _next to nullptr.
 template <class T1>
 void List<T1>::push_back(T1 data)
 {
     Node<T1> tempNode;
     tempNode->setData(data);
+
     tempNode->setPrev(_tail);
-    tempNode->setNext(_head);
-    listSize++;
-
     _tail->setNext(tempNode);
-    _head->setPrev(tempNode);
-
+    
     _tail = tempNode;
+    listSize++;
 }
 
 // return the last element in the list.
@@ -179,28 +169,19 @@ T1 List<T1>::back()
 
 // remove the last element from the list and return its data
 // if the list is empty, print that out and return 0;
-// Function is the implementation of pop_front(), just in reverse.
+// Function is the same implementation of pop_front(), just interacting with the end of the list
+// instead of the front. See iCloud notes.
 template <class T1>
 T1 List<T1>::pop_back()
 {
-    if (this->empty() == true)
-    {
-        cout << "List is empty :(" << endl;
-        return 0;
-    }
-    else
-    {
-        T1 tempData = _tail->getData();
-        _head->setPrev(_tail->getPrev());
+    T1 returnData = _tail->getData();
+    Node<T1>* newTailLocation = _tail->getPrev(); // Declaring a "new" _tail.
 
-        _tail->getPrev()->setNext(_head);
-
-        delete _tail;
-        listSize--;
-
-        _tail = _head->getPrev();
-        return tempData;
-    }
+    newTailLocation->setNext(nullptr);
+    delete _tail;
+    listSize--;
+    _tail = newTailLocation;
+    return returnData;
 }
 
 
