@@ -192,6 +192,7 @@ T1 List<T1>::pop_back()
 template <class T1>
 ostream &operator<<(ostream &os, const List<T1> &list)
 {
+    // Add while loop that progresses until list._next == nullptr.
     Node<T1> currNode = list._head;
 
     os << currNode.getData() << " ";
@@ -208,6 +209,9 @@ ostream &operator<<(ostream &os, const List<T1> &list)
 }
 
 // should iterate through each list to check that they are exactly the same
+// Function should just compare data.
+// In lists: different order == different list.
+//      In sets: different order == same set.
 template <class T1>
 bool List<T1>::operator==(const List<T1>& rhs)
 {
