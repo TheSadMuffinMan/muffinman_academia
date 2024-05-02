@@ -1,8 +1,9 @@
 /*
-*****Program is STACK allocated*****
+*****PROGRAM IS ONLY STACK ALLOCATED*****
 AHA! I finally understand why programmer's use the "this" keyword. 4/26
 I feel like I'm finally able to demonstrate everything we have learned this semester with this program :D
 Nearing completion
+Seg faulting in push_back()??? 5/2
 */
 
 #pragma once
@@ -21,7 +22,7 @@ class List
 
     public:
         List(); // Complete.
-        ~List(); // Tricky, coming back to later.
+        ~List(); // Complete?
 
         bool empty(); // Complete.
         size_t size(); // Complete.
@@ -32,11 +33,12 @@ class List
         void push_back(T1); // Complete.
         T1 pop_back(); // Complete.
         T1 back(); // Complete.
-
-        bool operator==(const List<T1>&);
+        
         // Have to declare a template for friend functions using a different template variable
         template <class T2>
-        friend ostream &operator<<(ostream &, const List<T2> &);
+        friend ostream &operator<<(ostream &, const List<T2> &); // Complete?
+
+        bool operator==(const List<T1>&); // Working on.
 };
 
 // set to nullptr and initialize listSize
@@ -49,6 +51,7 @@ List<T1>::List()
 }
 
 // iteratively delete the list starting at _head
+// A quick solution to this function would be to just call pop_front() listSize times lol
 template <class T1>
 List<T1>::~List()
 {
@@ -61,7 +64,17 @@ List<T1>::~List()
     {
         for (size_t i = 0; i < listSize; i++)
         {
-            
+            Node<T1>* currNode = _head->getNext();
+            if (currNode == nullptr)
+            {
+                break;
+            }
+            else
+            {
+                _head->getNext()->setPrev(nullptr);
+                delete _head;
+                _head = currNode;
+            }
         }
     }
 }
@@ -88,18 +101,31 @@ size_t List<T1>::size()
     return listSize;
 }
 
-// add an element to the beginning of the list, updating _head
+/*
+Add an element to the beginning of the list, updating _head
+EDGE CASE: List has nothing in it.
+    Initially kept running into seg faults because I was not accounting for this.
+    List::push_back() also accounts for this edge case.
+*/
 template <class T1>
 void List<T1>::push_front(T1 data)
 {
-    Node<T1> tempNode;
+    Node<T1>* tempNode;
     tempNode->setData(data);
-
-    tempNode->setNext(_head);
-    _head->setPrev(tempNode);
-    
-    _head = tempNode;
     listSize++;
+
+    if (this->empty() == true) // If the list is empty
+    {
+        _head = tempNode;
+        return;
+    }
+    else
+    {
+        tempNode->setNext(_head);
+        _head->setPrev(tempNode);
+        
+        _head = tempNode;
+    }
 }
 
 // return the first element in the list.
@@ -113,7 +139,7 @@ T1 List<T1>::front()
         return 0;
     }
 
-    return _head;
+    return _head->getData();
 }
 
 // remove the first element from the list and return its data
@@ -138,14 +164,24 @@ T1 List<T1>::pop_front()
 template <class T1>
 void List<T1>::push_back(T1 data)
 {
-    Node<T1> tempNode;
+    Node<T1>* tempNode;
     tempNode->setData(data);
 
-    tempNode->setPrev(_tail);
-    _tail->setNext(tempNode);
-    
-    _tail = tempNode;
-    listSize++;
+    // If the list is empty (not sure why anyone would use this one to start, but *shrug emoji*).
+    if (this->empty() == true)
+    {
+        _head = tempNode;
+        listSize++;
+        return;
+    }
+    else
+    {
+        tempNode->setPrev(_tail);
+        _tail->setNext(tempNode);
+        
+        _tail = tempNode;
+        listSize++;
+    }
 }
 
 // return the last element in the list.
@@ -160,7 +196,7 @@ T1 List<T1>::back()
     }
     else
     {
-        return _tail;
+        return _tail->getData();
     }
 }
 
@@ -181,31 +217,44 @@ T1 List<T1>::pop_back()
     return returnData;
 }
 
-
-// overloading <<, should return a space separated stream of all of the elements
-// Needs to print out the entire passed list.
-// In an ideal world, we would also overload the Node class so that we could utilize the << operator
-// here with ease.
+/*
+Overloading <<, should return a space separated stream of all of the elements.
+In an ideal world, we would also overload the Node class so that we could utilize the << operator
+    here with ease.
+This overload allows us to code the following:
+    cout << "List 1)" << List1;
+*/
 template <class T1>
 ostream &operator<<(ostream &os, const List<T1> &list)
 {
-    // Add while loop that progresses until list._next == nullptr.
-    Node<T1> currNode = list._head;
+    // if (list.empty() == true) // If the list is empty
+    // {
+    //     os << "[Empty List]" << endl;
+    //     return os;
+    // }
+    // else // List is not empty
+    // {
+        Node<T1>* currNode = list._head;
 
-    os << currNode.getData() << " ";
-    currNode = currNode.getNext();
+        while (currNode != nullptr)
+        {
+            os << currNode->getData() << " ";
+            currNode = currNode->getNext();
+        }
 
-    while (currNode != list._head)
-    {
-        //
-    }
+        return os;
+    // }
 }
 
-// should iterate through each list to check that they are exactly the same
-// Function should just compare data.
-// In lists: different order == different list.
-//      In sets: different order == same set.
+/*
+Function iteratively checks each Node's _data and compares it to the passed list.
+    If all _data members are in the right spot, then the function returns true.
+
+In lists: different order == different list.
+    In sets: different order == same set.
+*/
 template <class T1>
 bool List<T1>::operator==(const List<T1>& rhs)
 {
+    return false;
 }
