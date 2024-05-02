@@ -55,18 +55,15 @@ List<T1>::~List()
     if (this->empty() == true)
     {
         cout << "Empty list, destructor not doing anything." << endl;
+        return;
     }
-    // for (size_t i = 0; i < listSize; i++)
-    // {
-    //     if (_head == nullptr)
-    //     {
-    //         break;
-    //     }
-        
-    //     delete this->_head;
-    //     delete this->_data;
-    //     delete this->_tail;
-    // }
+    else
+    {
+        for (size_t i = 0; i < listSize; i++)
+        {
+            
+        }
+    }
 }
 
 // return true if the list is empty, false otherwise.
@@ -202,10 +199,6 @@ ostream &operator<<(ostream &os, const List<T1> &list)
     {
         //
     }
-    // for (size_t i = 0; i < list->size(); i++)
-    // {
-    //     //
-    // }
 }
 
 // should iterate through each list to check that they are exactly the same
