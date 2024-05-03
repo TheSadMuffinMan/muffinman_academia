@@ -1,9 +1,8 @@
 /*
-*****PROGRAM IS ONLY STACK ALLOCATED*****
 AHA! I finally understand why programmer's use the "this" keyword. 4/26
 I feel like I'm finally able to demonstrate everything we have learned this semester with this program :D
-Nearing completion
-Seg faulting in push_back()??? 5/2
+Nearing completion, going over edge cases now.
+***NOTE*** When a List only has one Node, BOTH (_head && _tail) == the same Node.
 */
 
 #pragma once
@@ -22,17 +21,17 @@ class List
 
     public:
         List(); // Complete.
-        ~List(); // Complete?
+        ~List(); // Working?
 
         bool empty(); // Complete.
         size_t size(); // Complete.
 
-        void push_front(T1); // Complete.
-        T1 pop_front(); // Complete.
-        T1 front(); // Complete.
-        void push_back(T1); // Complete.
-        T1 pop_back(); // Complete.
-        T1 back(); // Complete.
+        void push_front(T1); // Should work.
+        T1 pop_front(); // Should work.
+        T1 front(); // Should work.
+        void push_back(T1); // Should work.
+        T1 pop_back(); // Should work.
+        T1 back(); // Should work.
         
         // Have to declare a template for friend functions using a different template variable
         template <class T2>
@@ -55,32 +54,21 @@ List<T1>::List()
 template <class T1>
 List<T1>::~List()
 {
-    if (this->empty() == true)
+    while (this->_head->getNext() != nullptr)
     {
-        cout << "Empty list, destructor not doing anything." << endl;
-        return;
+        Node<T1>* currNode = this->_head->getNext();
+        delete _head;
+        listSize--;
+        _head = currNode;
     }
-    else
-    {
-        for (size_t i = 0; i < listSize; i++)
-        {
-            Node<T1>* currNode = _head->getNext();
-            if (currNode == nullptr)
-            {
-                break;
-            }
-            else
-            {
-                _head->getNext()->setPrev(nullptr);
-                delete _head;
-                _head = currNode;
-            }
-        }
-    }
+
+    _tail = nullptr;
 }
 
-// return true if the list is empty, false otherwise.
-// Do not just check listSize, should actually check _head and _tail
+/*
+Return true if the list is empty, false otherwise.
+Do not just check listSize, should actually check _head and _tail.
+*/
 template <class T1>
 bool List<T1>::empty()
 {
@@ -102,20 +90,38 @@ size_t List<T1>::size()
 }
 
 /*
-Add an element to the beginning of the list, updating _head
+Add an element to the beginning of the list, updating _head.
 EDGE CASE: List has nothing in it.
     Initially kept running into seg faults because I was not accounting for this.
     List::push_back() also accounts for this edge case.
+EDGE CASE 2: List only has one Node.
+    Had to make some changes to how the program worked when I came across this.
+    Initially, with only one Node in the List, I did not set (_head = _tail) and left _tail set
+        as nullptr (meaning it has not been created yet). This isn't necessarily bad, but the
+        implementation of this logic would have been A LOT of extra code.
 */
 template <class T1>
 void List<T1>::push_front(T1 data)
 {
-    Node<T1>* tempNode;
+    Node<T1>* tempNode = new Node<T1>;
     tempNode->setData(data);
     listSize++;
 
     if (this->empty() == true) // If the list is empty
     {
+        _head = tempNode;
+        _tail = tempNode;
+        return;
+    }
+    /*
+    If _head == _tail, there is only one Node in the List.
+    ***NOTE*** This conditional is comparing pointers to each other, so in essence, it is checking
+        to see if the List's (_head && _tail) point to the same Node/object.
+    */
+    else if (_head == _tail)
+    {
+        _tail->setPrev(tempNode);
+        tempNode->setNext(_tail);
         _head = tempNode;
         return;
     }
@@ -125,6 +131,7 @@ void List<T1>::push_front(T1 data)
         _head->setPrev(tempNode);
         
         _head = tempNode;
+        return;
     }
 }
 
@@ -135,43 +142,62 @@ T1 List<T1>::front()
 {
     if (this->empty() == true)
     {
-        cout << "List is empty." << endl;
+        cout << "[Empty List]" << endl;
         return 0;
     }
 
     return _head->getData();
 }
 
-// remove the first element from the list and return its data
-// if the list is empty, print that out and return 0;
-// Function should delete _head and return its data.
-// Function is drawn out in iCloud notes.
+/*
+Remove the first element from the list and return its data. If the list is empty, print
+    that out and return 0;
+Function should delete _head and return its data.
+Function is drawn out in iCloud notes.
+*/
 template <class T1>
 T1 List<T1>::pop_front()
 {
+    if (this->empty() == true)
+    {
+        cout << "[Empty List]" << endl;
+        return 0;
+    }
+    
     T1 returnData = _head->getData();
-    Node<T1>* newHeadLocation = _head->getNext(); // Declaring a "new" _head.
+    Node<T1>* newHeadLocation = _head->getNext(); // Storing "new" _head Node's location.
 
-    newHeadLocation->setPrev(nullptr);
     delete _head;
     listSize--;
     _head = newHeadLocation;
     return returnData;
 }
 
-// add an element to the end of the list, updating _tail
-// Do NOT need to set tempNode._prev = nullptr because Node Constructor sets _prev and _next to nullptr.
+/*
+Add an element to the end of the list, updating _tail
+Do NOT need to set tempNode._prev = nullptr because Node Constructor sets _prev and _next = nullptr.
+See List<T1>::push_front() for more explanation: it is the reverse of this function. 
+*/
 template <class T1>
 void List<T1>::push_back(T1 data)
 {
-    Node<T1>* tempNode;
+    Node<T1>* tempNode = new Node<T1>;
     tempNode->setData(data);
+    listSize++;
 
     // If the list is empty (not sure why anyone would use this one to start, but *shrug emoji*).
     if (this->empty() == true)
     {
         _head = tempNode;
-        listSize++;
+        _tail = tempNode;
+        return;
+    }
+    // If the list only has one Node.
+    else if (_head == _tail)
+    {
+        _head->setNext(tempNode);
+        tempNode->setPrev(_head);
+        _tail = tempNode;
         return;
     }
     else
@@ -180,7 +206,7 @@ void List<T1>::push_back(T1 data)
         _tail->setNext(tempNode);
         
         _tail = tempNode;
-        listSize++;
+        return;
     }
 }
 
@@ -191,7 +217,7 @@ T1 List<T1>::back()
 {
     if (this->empty() == true)
     {
-        cout << "List is empty." << endl;
+        cout << "[Empty List]" << endl;
         return 0;
     }
     else
@@ -200,17 +226,23 @@ T1 List<T1>::back()
     }
 }
 
-// remove the last element from the list and return its data
-// if the list is empty, print that out and return 0;
-// Function is the same implementation of pop_front(), just interacting with the end of the list
-// instead of the front. See iCloud notes.
+/*
+Remove the last element from the list and return its data. If the list is empty, print that out and return 0.
+Function has the same implementation of pop_front(), just interacting with the end of the list instead of
+    the front. See iCloud notes.
+*/
 template <class T1>
 T1 List<T1>::pop_back()
 {
-    T1 returnData = _tail->getData();
-    Node<T1>* newTailLocation = _tail->getPrev(); // Declaring a "new" _tail.
+    if (this->empty() == true)
+    {
+        cout << "[Empty List]" << endl;
+        return 0;
+    }
 
-    newTailLocation->setNext(nullptr);
+    T1 returnData = _tail->getData();
+    Node<T1>* newTailLocation = _tail->getPrev(); // Holding "new" _tail's memory location.
+
     delete _tail;
     listSize--;
     _tail = newTailLocation;
