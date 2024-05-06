@@ -3,6 +3,7 @@ Documentation: https://docs.google.com/document/d/1NkiGmXkHvojNCghU3fFk7ziKBKbXN
 
 All of the easy stuff complete.
 MAX STACK SIZE: 1000 Nodes (limited by List<T1>::userInput() function).
+class Node<T1> only has _data and _next (is only singly linked).
 Working on List::userInput() function.
 */
 #pragma once
@@ -23,6 +24,7 @@ class Stack
     public:
         Stack();
         ~Stack();
+        Node<T1>* buildStack(string*);
 
         bool empty();
         size_t size();
@@ -67,6 +69,23 @@ Stack<T1>::~Stack()
 
     cout << "\nMemory cleaned up." << endl;
 }
+
+// Function returns a pointer to _top.
+template <class T1>
+Node<T1>* Stack<T1>::buildStack(string *stringArray)
+{
+    for (size_t i = 0; i < 1000; i++)
+    {
+        push(stringArray[i]);
+        if (stringArray[i + 1] == nullptr)
+        {
+            break;
+        }
+    }
+
+    return _top;
+}
+
 
 // return true if the Stack is empty, false otherwise.
 // Do not just check stackSize, should actually check top
@@ -165,8 +184,7 @@ void Stack<T1>::printStack()
 }
 
 /*
-Function takes in user input, validates the input, and then returns a pointer to an
-    array populated with our data.
+Function takes in user input, validates the input, and then returns a pointer to _top.
 */
 template <class T1>
 Node<T1>* Stack<T1>::userInput()
@@ -177,18 +195,22 @@ Node<T1>* Stack<T1>::userInput()
     cout << "Please enter each RPN term, seperated by a space: ";
     getline(cin, input);
 
-    while ((input.find(" ", startPosition)) != string::npos)
+    size_t i = 0;
+    while (input.find(" ", startPosition) != string::npos)
     {
-        size_t i = 0;
         endPosition = input.find(" ", startPosition);
-        if (endPosition == string::npos)
-        {
-            return &storageArray;
-        }
 
         storageArray[i] = input.substr(startPosition, (endPosition - startPosition));
         i++;
+    } // tempArray is now populated.
+    
+    size_t j = 0;
+    while (true)
+    {
+        push(storageArray[j]);
+        j++;
     }
+    
 
-    return &storageArray;
+    return _top;
 }
