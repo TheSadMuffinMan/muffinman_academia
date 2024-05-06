@@ -1,7 +1,8 @@
 /*
-AHA! I finally understand why programmer's use the "this" keyword. 4/26
+PROGRAM COMPLETED AND FULLY RUNNING 5-5-24
+AHA! I finally understand why programmer's use the "this" keyword. 4-26
 I feel like I'm finally able to demonstrate everything we have learned this semester with this program :D
-Nearing completion, going over edge cases now.
+
 ***NOTE*** When a List only has one Node, BOTH (_head && _tail) == the same Node.
 */
 
@@ -20,24 +21,24 @@ class List
         size_t listSize;
 
     public:
-        List(); // Complete.
-        ~List(); // Working?
+        List();
+        ~List();
 
-        bool empty(); // Complete.
-        size_t size(); // Complete.
+        bool empty();
+        size_t size();
 
-        void push_front(T1); // Should work.
-        T1 pop_front(); // Should work.
-        T1 front(); // Should work.
-        void push_back(T1); // Should work.
-        T1 pop_back(); // Should work.
-        T1 back(); // Should work.
+        void push_front(T1);
+        T1 pop_front();
+        T1 front();
+        void push_back(T1);
+        T1 pop_back();
+        T1 back();
         
         // Have to declare a template for friend functions using a different template variable
         template <class T2>
-        friend ostream &operator<<(ostream &, const List<T2> &); // Complete?
+        friend ostream &operator<<(ostream &, const List<T2> &);
 
-        bool operator==(const List<T1>&); // Working on.
+        bool operator==(const List<T1>&);
 };
 
 // set to nullptr and initialize listSize
@@ -54,15 +55,15 @@ List<T1>::List()
 template <class T1>
 List<T1>::~List()
 {
-    while (this->_head->getNext() != nullptr)
+    while (this->_head != nullptr)
     {
-        Node<T1>* currNode = this->_head->getNext();
+        Node<T1>* nextNode = this->_head->getNext();
         delete _head;
         listSize--;
-        _head = currNode;
+        _head = nextNode;
     }
 
-    _tail = nullptr;
+    cout << "\nList Destructor invoked, memory cleaned up." << endl;
 }
 
 /*
@@ -72,7 +73,7 @@ Do not just check listSize, should actually check _head and _tail.
 template <class T1>
 bool List<T1>::empty()
 {
-    if ((this->_head == nullptr) && (this->_tail == nullptr))
+    if ((_head == nullptr) && (_tail == nullptr))
     {
         return true;
     }
@@ -86,7 +87,7 @@ bool List<T1>::empty()
 template <class T1>
 size_t List<T1>::size()
 {
-    return listSize;
+    return this->listSize;
 }
 
 /*
@@ -107,18 +108,14 @@ void List<T1>::push_front(T1 data)
     tempNode->setData(data);
     listSize++;
 
-    if (this->empty() == true) // If the list is empty
+    if (this.empty() == true) // If the list is empty
     {
         _head = tempNode;
         _tail = tempNode;
         return;
     }
-    /*
-    If _head == _tail, there is only one Node in the List.
-    ***NOTE*** This conditional is comparing pointers to each other, so in essence, it is checking
-        to see if the List's (_head && _tail) point to the same Node/object.
-    */
-    else if (_head == _tail)
+    // This elif can't compare pointers because if both pointers lead to nullptr, we run into issues.
+    else if (this->size() == 1)
     {
         _tail->setPrev(tempNode);
         tempNode->setNext(_tail);
@@ -167,9 +164,18 @@ T1 List<T1>::pop_front()
     T1 returnData = _head->getData();
     Node<T1>* newHeadLocation = _head->getNext(); // Storing "new" _head Node's location.
 
+    if (newHeadLocation == nullptr)
+    {
+        _head = nullptr;
+        _tail = nullptr;
+        listSize--;
+        return returnData;
+    }
+
     delete _head;
     listSize--;
     _head = newHeadLocation;
+    _head->setPrev(nullptr);
     return returnData;
 }
 
@@ -193,7 +199,7 @@ void List<T1>::push_back(T1 data)
         return;
     }
     // If the list only has one Node.
-    else if (_head == _tail)
+    else if (listSize == 1)
     {
         _head->setNext(tempNode);
         tempNode->setPrev(_head);
@@ -243,9 +249,18 @@ T1 List<T1>::pop_back()
     T1 returnData = _tail->getData();
     Node<T1>* newTailLocation = _tail->getPrev(); // Holding "new" _tail's memory location.
 
+    if (newTailLocation == nullptr)
+    {
+        _head = nullptr;
+        _tail = nullptr;
+        listSize--;
+        return returnData;
+    }
+
     delete _tail;
     listSize--;
     _tail = newTailLocation;
+    _tail->setNext(nullptr);
     return returnData;
 }
 
@@ -259,13 +274,13 @@ This overload allows us to code the following:
 template <class T1>
 ostream &operator<<(ostream &os, const List<T1> &list)
 {
-    // if (list.empty() == true) // If the list is empty
-    // {
-    //     os << "[Empty List]" << endl;
-    //     return os;
-    // }
-    // else // List is not empty
-    // {
+    if (list.listSize == 0) // If the list is empty
+    {
+        os << "[Empty List]" << endl;
+        return os;
+    }
+    else // List is not empty
+    {
         Node<T1>* currNode = list._head;
 
         while (currNode != nullptr)
@@ -275,7 +290,7 @@ ostream &operator<<(ostream &os, const List<T1> &list)
         }
 
         return os;
-    // }
+    }
 }
 
 /*
@@ -288,5 +303,29 @@ In lists: different order == different list.
 template <class T1>
 bool List<T1>::operator==(const List<T1>& rhs)
 {
-    return false;
+    if (rhs->listSize() == List<T1>::listSize)
+    {
+        Node<T1>* currNode = this->_head;
+        Node<T1>* rhsCurrNode = rhs->_head;
+
+        for (size_t i = 0; i < listSize; i++)
+        {
+            if (currNode->getData() == rhsCurrNode->getData())
+            {
+                currNode = currNode->getNext();
+                rhsCurrNode = rhsCurrNode->setNext();
+            }
+            else
+            {
+                return false; // Might be troublesome in the future.
+            }
+        }
+
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+
 }

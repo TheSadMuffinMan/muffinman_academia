@@ -26,11 +26,11 @@ LABS:
         Self Grade + Reasoning: N/A
 
     Lab 4 - Doubly Linked List
-        Status: Not started
+        Status: Complete!
         Due Date: Mar 15 2024
-        Turn in Date: INCOMPLETE
-            Submitted to D2L?: NO
-        Self Grade + Reasoning: N/A
+        Turn in Date: 5 May 2024
+            Submitted to D2L?: YES
+        Self Grade + Reasoning: 90%. Program is late, but fully operational. Very proud of this one.
 
 HOMEWORK:
     
