@@ -15,7 +15,7 @@ using namespace std;
 class Stack
 {
     private:
-        Node<double> *_top;
+        Node<double>* _top;
         size_t _stackSize;
 
     public:
