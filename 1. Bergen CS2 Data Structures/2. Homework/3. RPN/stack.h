@@ -4,6 +4,7 @@ Documentation: https://docs.google.com/document/d/1NkiGmXkHvojNCghU3fFk7ziKBKbXN
 I want to fully template this program because the switch between Node<T1> and Node<float> seems
     kinda silly.
 All of the easy stuff complete.
+Working on List::userInput() function.
 */
 #pragma once
 #include "node.h"
@@ -29,11 +30,8 @@ class Stack
         double pop();
         double top();
 
-        // Function that takes in a single line of user input
-        
-        // Function that "cleans" input
-
-        // Function that builds a stack of Nodes
+        // Function should take in user data, validate it, and build a stack.
+        string userInput();
 
         // Function that executes stack functionality
 
@@ -106,21 +104,6 @@ void Stack::push(double data)
     }
 }
 
-// return the first element in the Stack.
-// if the Stack is empty, print an error and return NaN (from cmath)
-double Stack::top()
-{
-    if (this->empty() == true)
-    {
-        cout << "\nStack is empty." << endl;
-        return 0.0;
-    }
-    else
-    {
-        return this->_top->getData();
-    }
-}
-
 // remove the first element from the Stack and return its data
 // if the Stack is empty, print an error and return NaN (from cmath)
 double Stack::pop()
@@ -138,5 +121,33 @@ double Stack::pop()
         _stackSize--;
         _top = nextNode;
         return returnData;
+    }
+}
+
+// return the first element in the Stack.
+// if the Stack is empty, print an error and return NaN (from cmath)
+double Stack::top()
+{
+    if (this->empty() == true)
+    {
+        cout << "\nStack is empty." << endl;
+        return 0.0;
+    }
+    else
+    {
+        return this->_top->getData();
+    }
+}
+
+string Stack::userInput()
+{
+    string input, masterString;
+    bool goodInput = false;
+    cout << "Please enter each RPN term, seperated by hitting \"enter\": ";
+    getline(cin, input);
+
+    while (goodInput == false)
+    {
+        //
     }
 }
