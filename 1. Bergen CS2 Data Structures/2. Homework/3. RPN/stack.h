@@ -1,22 +1,23 @@
 /*
 Documentation: https://docs.google.com/document/d/1NkiGmXkHvojNCghU3fFk7ziKBKbXN4PxaZGbrCxr0HQ/edit
 
-I want to fully template this program because the switch between Node<T1> and Node<float> seems
-    kinda silly.
 All of the easy stuff complete.
+MAX STACK SIZE: 1000 Nodes (limited by List<T1>::userInput() function).
 Working on List::userInput() function.
 */
 #pragma once
 #include "node.h"
 #include <iostream>
 #include <cmath>
+#include <string>
 
 using namespace std;
 
+template <class T1>
 class Stack
 {
     private:
-        Node<double>* _top;
+        Node<T1>* _top;
         size_t _stackSize;
 
     public:
@@ -26,12 +27,12 @@ class Stack
         bool empty();
         size_t size();
 
-        void push(double);
+        void push(T1);
         double pop();
         double top();
+        void printStack();
 
-        // Function should take in user data, validate it, and build a stack.
-        string userInput();
+        Node<T1>* userInput();
 
         // Function that executes stack functionality
 
@@ -45,30 +46,32 @@ class Stack
 };
 
 // set to nullptr and initialize stackSize
-Stack::Stack()
+template <class T1>
+Stack<T1>::Stack()
 {
     _top = nullptr;
     _stackSize = 0;
 }
 
 // iteratively delete the stack starting at top
-Stack::~Stack()
+template <class T1>
+Stack<T1>::~Stack()
 {
     while (_top != nullptr)
     {
-        for (size_t i = 0; i < this->size(); i++)
-        {
-            Node<double>* nextNode = this->_top->getNext();
-            delete _top;
-            _stackSize--;
-            _top = nextNode;
-        }
+        Node<T1>* nextNode = this->_top->getNext();
+        delete _top;
+        _stackSize--;
+        _top = nextNode;
     }
+
+    cout << "\nMemory cleaned up." << endl;
 }
 
 // return true if the Stack is empty, false otherwise.
 // Do not just check stackSize, should actually check top
-bool Stack::empty()
+template <class T1>
+bool Stack<T1>::empty()
 {
     if (_top == nullptr)
     {
@@ -81,15 +84,17 @@ bool Stack::empty()
 }
 
 // return number of elements in Stack
-size_t Stack::size()
+template <class T1>
+size_t Stack<T1>::size()
 {
     return _stackSize;
 }
 
 // add an element to the beginning of the Stack, updating top
-void Stack::push(double data)
+template <class T1>
+void Stack<T1>::push(T1 data)
 {
-    Node<double>* newNode = new Node<double>;
+    Node<T1>* newNode = new Node<T1>;
     newNode->setData(data);
     _stackSize++;
 
@@ -106,7 +111,8 @@ void Stack::push(double data)
 
 // remove the first element from the Stack and return its data
 // if the Stack is empty, print an error and return NaN (from cmath)
-double Stack::pop()
+template <class T1>
+double Stack<T1>::pop()
 {
     if (this->empty() == true)
     {
@@ -115,8 +121,8 @@ double Stack::pop()
     }
     else
     {
-        double returnData = this->top();
-        Node<double>* nextNode = this->_top->getNext();
+        T1 returnData = this->top();
+        Node<T1>* nextNode = this->_top->getNext();
         delete _top;
         _stackSize--;
         _top = nextNode;
@@ -126,7 +132,8 @@ double Stack::pop()
 
 // return the first element in the Stack.
 // if the Stack is empty, print an error and return NaN (from cmath)
-double Stack::top()
+template <class T1>
+double Stack<T1>::top()
 {
     if (this->empty() == true)
     {
@@ -139,15 +146,49 @@ double Stack::top()
     }
 }
 
-string Stack::userInput()
+template <class T1>
+void Stack<T1>::printStack()
 {
-    string input, masterString;
-    bool goodInput = false;
-    cout << "Please enter each RPN term, seperated by hitting \"enter\": ";
+    if (this->empty() == true)
+    {
+        cout << "\n[Empty Stack]" << endl;
+        return;
+    }
+    Node<T1>* currNode;
+    currNode = this->_top;
+
+    while (currNode != nullptr)
+    {
+        cout << currNode->getData() << " ";
+        currNode = currNode->getNext();
+    }
+}
+
+/*
+Function takes in user input, validates the input, and then returns a pointer to an
+    array populated with our data.
+*/
+template <class T1>
+Node<T1>* Stack<T1>::userInput()
+{
+    string input, storageArray[1000];
+    size_t startPosition = 0;
+    size_t endPosition = 0;
+    cout << "Please enter each RPN term, seperated by a space: ";
     getline(cin, input);
 
-    while (goodInput == false)
+    while ((input.find(" ", startPosition)) != string::npos)
     {
-        //
+        size_t i = 0;
+        endPosition = input.find(" ", startPosition);
+        if (endPosition == string::npos)
+        {
+            return &storageArray;
+        }
+
+        storageArray[i] = input.substr(startPosition, (endPosition - startPosition));
+        i++;
     }
+
+    return &storageArray;
 }

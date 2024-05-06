@@ -12,5 +12,13 @@ double evaluateRPN(string expression)
 
 int main(int argc, char *argv[])
 {
+    cout << "\nProgram start." << endl;
+
+    Stack<double> mainStack;
+    mainStack.userInput();
+
+    mainStack.printStack();
+
+    cout << "\nProgram completed." << endl;
     return 0;
 }
