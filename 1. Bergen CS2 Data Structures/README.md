@@ -30,7 +30,14 @@ LABS:
         Due Date: Mar 15 2024
         Turn in Date: 5 May 2024
             Submitted to D2L?: YES
-        Self Grade + Reasoning: 90%. Program is late, but fully operational. Very proud of this one.
+        Self Grade + Reasoning: 90%: Late, but fully operational. Very proud of this one.
+
+    Lab 5 - Binary Search Tree
+        Status: Planning phase.
+        Due Date: Fri May 5 2024
+        Turn in Date: INCOMPLETE
+            Submitted to D2L?: NO
+        Self Grade + Reasoning: N/A
 
 HOMEWORK:
     
@@ -47,3 +54,17 @@ HOMEWORK:
         Turn in Date: April 8 2024.
             Submitted to D2L?: YES.
         Self Grade + Reasoning: 80%: Late, not outputting nicely formatted tables.
+
+    Homework 3 - Reverse Polish Notation Calculator
+        Status: 2/3 complete. Coding main file now.
+        Due Date: Fri May 5 2024.
+        Turn in Date: INCOMPLETE
+            Submitted to D2L?: NO
+        Self Grade + Reasoning: N/A
+
+    FINAL PROJECT - Word Counter (Implementation of BST)
+        Status: Not started.
+        Due Date: Mon May 13 2024.
+        Turn in Date: INCOMPLETE
+            Submitted to D2L?: NO
+        Self Grade + Reasoning: N/A
