@@ -1,5 +1,8 @@
-// Documentation: https://docs.google.com/document/d/1NkiGmXkHvojNCghU3fFk7ziKBKbXN4PxaZGbrCxr0HQ/edit
 /*
+Documentation: https://docs.google.com/document/d/1NkiGmXkHvojNCghU3fFk7ziKBKbXN4PxaZGbrCxr0HQ/edit
+
+I want to fully template this program because the switch between Node<T1> and Node<float> seems
+    kinda silly.
 All of the easy stuff complete.
 */
 #pragma once
@@ -13,7 +16,7 @@ class Stack
 {
     private:
         Node<double> *_top;
-        size_t stackSize;
+        size_t _stackSize;
 
     public:
         Stack();
@@ -47,7 +50,7 @@ class Stack
 Stack::Stack()
 {
     _top = nullptr;
-    stackSize = 0;
+    _stackSize = 0;
 }
 
 // iteratively delete the stack starting at top
@@ -59,7 +62,7 @@ Stack::~Stack()
         {
             Node<double>* nextNode = this->_top->getNext();
             delete _top;
-            stackSize--;
+            _stackSize--;
             _top = nextNode;
         }
     }
@@ -82,7 +85,7 @@ bool Stack::empty()
 // return number of elements in Stack
 size_t Stack::size()
 {
-    return stackSize;
+    return _stackSize;
 }
 
 // add an element to the beginning of the Stack, updating top
@@ -90,7 +93,7 @@ void Stack::push(double data)
 {
     Node<double>* newNode = new Node<double>;
     newNode->setData(data);
-    stackSize++;
+    _stackSize++;
 
     if (this->empty() == true)
     {
@@ -132,7 +135,7 @@ double Stack::pop()
         double returnData = this->top();
         Node<double>* nextNode = this->_top->getNext();
         delete _top;
-        stackSize--;
+        _stackSize--;
         _top = nextNode;
         return returnData;
     }
