@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 {
     cout << "\nProgram start." << endl;
 
-    Stack<double> mainStack;
+    Stack<string> mainStack;
     mainStack.userInput();
 
     mainStack.printStack();

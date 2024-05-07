@@ -2,7 +2,6 @@
 Documentation: https://docs.google.com/document/d/1NkiGmXkHvojNCghU3fFk7ziKBKbXN4PxaZGbrCxr0HQ/edit
 
 All of the easy stuff complete.
-MAX STACK SIZE: 1000 Nodes (limited by List<T1>::userInput() function).
 class Node<T1> only has _data and _next (is only singly linked).
 Working on List::userInput() function.
 */
@@ -24,7 +23,6 @@ class Stack
     public:
         Stack();
         ~Stack();
-        Node<T1>* buildStack(string*);
 
         bool empty();
         size_t size();
@@ -34,7 +32,7 @@ class Stack
         double top();
         void printStack();
 
-        Node<T1>* userInput();
+        Node<T1>* userInput(); // Function takes in RPN values one at a time.
 
         // Function that executes stack functionality
 
@@ -68,22 +66,6 @@ Stack<T1>::~Stack()
     }
 
     cout << "\nMemory cleaned up." << endl;
-}
-
-// Function returns a pointer to _top.
-template <class T1>
-Node<T1>* Stack<T1>::buildStack(string *stringArray)
-{
-    for (size_t i = 0; i < 1000; i++)
-    {
-        push(stringArray[i]);
-        if (stringArray[i + 1] == nullptr)
-        {
-            break;
-        }
-    }
-
-    return _top;
 }
 
 
@@ -189,10 +171,6 @@ Function takes in user input, validates the input, and then returns a pointer to
 template <class T1>
 Node<T1>* Stack<T1>::userInput()
 {
-    // size_t startPosition = 0;
-    // size_t endPosition = 0;
-    // getline(cin, input); // I think getline is what is causing me issues.
-
     string input;
     cout << "Enter RPN Term (-999 to stop): ";
     cin >> input;
@@ -200,28 +178,9 @@ Node<T1>* Stack<T1>::userInput()
     while (input != "-999")
     {
         push(input);
-        cout << "Enter RPN Term (-999 to stop): "
+        cout << "Enter RPN Term (-999 to stop): ";
         cin >> input;
     }
-
-/*
-    size_t i = 0;
-    while (input.find(" ", startPosition) != string::npos)
-    {
-        endPosition = input.find(" ", startPosition);
-
-        storageArray[i] = input.substr(startPosition, (endPosition - startPosition));
-        i++;
-    } // tempArray is now populated.
-    
-    size_t j = 0;
-    while (true)
-    {
-        push(storageArray[j]);
-        j++;
-    }
-*/
-    
 
     return _top;
 }

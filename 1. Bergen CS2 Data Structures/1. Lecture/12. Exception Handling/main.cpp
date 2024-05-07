@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
         {
             throw runtime_error("Division by zero");
         }
-        result = numerator/(float)denominator;
+        result = numerator/(float)denominator; // Casting denominator as a float.
         cout << "Result: " << result << endl;
     }
     catch(int number)
