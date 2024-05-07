@@ -1,3 +1,7 @@
+/*
+This Node class is only SINGLY LINKED.
+    There is no *_prev (like in Lab 4 - Doubly Linked List). 
+*/
 #pragma once
 
 template <class T1>
@@ -11,10 +15,8 @@ class Node
     public:
     Node();
     void setData(T1);
-    // void setPrev(Node<T1>*);
     void setNext(Node<T1>*);
     T1 getData();
-    // Node<T1>* getPrev();
     Node<T1>* getNext();
 };
 

@@ -189,12 +189,22 @@ Function takes in user input, validates the input, and then returns a pointer to
 template <class T1>
 Node<T1>* Stack<T1>::userInput()
 {
-    string input, storageArray[1000];
-    size_t startPosition = 0;
-    size_t endPosition = 0;
-    cout << "Please enter each RPN term, seperated by a space: ";
-    getline(cin, input);
+    // size_t startPosition = 0;
+    // size_t endPosition = 0;
+    // getline(cin, input); // I think getline is what is causing me issues.
 
+    string input;
+    cout << "Enter RPN Term (-999 to stop): ";
+    cin >> input;
+    
+    while (input != "-999")
+    {
+        push(input);
+        cout << "Enter RPN Term (-999 to stop): "
+        cin >> input;
+    }
+
+/*
     size_t i = 0;
     while (input.find(" ", startPosition) != string::npos)
     {
@@ -210,6 +220,7 @@ Node<T1>* Stack<T1>::userInput()
         push(storageArray[j]);
         j++;
     }
+*/
     
 
     return _top;
