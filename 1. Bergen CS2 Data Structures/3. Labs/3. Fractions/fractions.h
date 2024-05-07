@@ -1,3 +1,5 @@
+// Notes and documentation are inside fractions.cpp file.
+// ***Program is only stack allocated***
 #pragma once
 #include <iostream>
 
@@ -11,36 +13,12 @@ namespace fractions
             int _denominator;
 
         public:
-            /*
-            Constructor for Fraction.
-            Default: 0/1
-
-            Must check to verify denominator is not 0
-            */
             Fraction(int = 0, int = 0); // Complete.
             
+            void simplify(); // Using recusion, working on.
+            static Fraction simplify(Fraction); // In progress.
 
-            /*
-            Function to simplify Fraction to the GCD.
-            Should call gcd method from inside simplify
-
-            Overloaded method is static so it can be called without instantiating class
-            Takes in a Fraction and returns a simplified Fraction
-            */
-            void simplify();
-            static Fraction simplify(Fraction);
-
-            /*
-            Calculate the greatest common divisor
-
-            Find min(a, b)
-            Assume that the greatest is 1 and start at 1
-            while i <= min, if a and b % i == 0, that's the gcd
-            otherwise increment i
-
-            Alternatively, recursively call the method, passing in b, a%b and return a when b == 0
-            */
-            static int gcd(int, int);
+            static int gcd(int, int); // Complete.
 
             // Operator overloading
             /*

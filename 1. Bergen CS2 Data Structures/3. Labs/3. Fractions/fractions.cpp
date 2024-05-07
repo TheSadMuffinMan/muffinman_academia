@@ -1,3 +1,4 @@
+// ***Program is only Stack allocated***
 #include "fractions.h"
 
 /*
@@ -49,17 +50,11 @@ Should call gcd method from inside simplify
 */
 void fractions::Fraction::simplify()
 {
-    if (_denominator == _numerator) // If the fraction is 1.
+    if (this->gcd(_numerator, _denominator) == _denominator)
     {
-        _denominator = 1;
-        _numerator = 1;
-        return;
-    }
-
-    int c = _denominator % _numerator;
-    if (c == 0)
-    {
-        return;
+        _numerator = _numerator / _denominator;
+        _denominator = _denominator / _denominator;
+        return simplify();
     }
 }
 
@@ -67,7 +62,7 @@ void fractions::Fraction::simplify()
 This overloaded function method is static so it can be called without instantiating
     a Fraction class.
 Takes in a Fraction and returns a simplified Fraction.
-***NOTE***: The Modulus Operator "%" divides a by b, and then returns the remainder.
+**NOTE: The Modulus Operator "%" divides a by b, and then returns the remainder.
     Example:
         int a = 5;
         int b = 2;
@@ -78,32 +73,41 @@ Takes in a Fraction and returns a simplified Fraction.
         int e = 5;
         int f = e % f;
         cout << "f = " << f << endl; (Will print "f = 3")
+More Modulus examples can be found in 0. General Knowledge.
 */
 fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 {
-    int modResult = 0;
+    int newNumerator;
+    int newDenominator = 1;
+    int fracGCD = frac.gcd(frac._numerator, frac._denominator);
 
-    if ((frac._numerator % frac._denominator) == 0)
-    {
-        //
-    }
-    return Fraction(0, 1);
+    newNumerator = frac._numerator / fracGCD;
+    newDenominator = frac._denominator / fracGCD;
+    return Fraction(newNumerator, newDenominator);
+
+    // if (fracGCD == 0) // if gcd() == 0 / _d divides cleanly into _n.
+    // {
+    //     newNumerator = (frac._numerator / frac._denominator);
+    //     return Fraction(newNumerator, 1);
+    // }
+    // return frac;
 }
 
+/*
+Function recursively calculates the greatest common divisor between two passed ints, and then
+    returns the GCD as an int.
+
+MR. BERGEN HINT:
+    Alternatively, recursively call the method, passing in b, a%b and return a when b == 0.
+*/
 int fractions::Fraction::gcd(int a, int b)
 {
-    int min;
-
-    if (a < b)
+    if (b != 0)
     {
-        min = a;
-    }
-    else
-    {
-        min = b;
+        return fractions::Fraction::gcd(b, (a % b));
     }
 
-    return min;
+    return a;
 }
 
 bool fractions::Fraction::operator==(Fraction const &frac)
