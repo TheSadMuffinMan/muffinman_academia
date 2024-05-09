@@ -2,7 +2,7 @@
 Builds a BST composed of Nodes (_l,_r,_data) with _data = *Word.
 word.h Completed on 5-9-24.
 
-WORKING ON: Insert and Insert Wrapper
+WORKING ON: removeData
 */
 #pragma once
 #include "node.h"
@@ -10,21 +10,21 @@ WORKING ON: Insert and Insert Wrapper
 template <class T1>
 class BST
 {
-    private:
-    Node<T1>* _root;
-    Node<T1>* insertNode(Node<T1>*, T1);
-    void inOrderPrint(Node<T1>*);
-    Node<T1>* searchData(Node<T1>*, T1);
-    Node<T1>* removeData(Node<T1>*, T1);
-    Node<T1>* minVal(Node<T1>*);
-
     public:
-    void insert(T1);
-    void inOrder();
-    bool search(T1);
-    void remove(T1);
-    void increment(T1);
-    ~BST();
+        ~BST();
+        void insert(T1);
+        void inOrder();
+        bool search(T1);
+        void remove(T1);
+        void increment(T1);
+
+    private:
+        Node<T1>* _root;
+        Node<T1>* insertNode(Node<T1>*, T1);
+        void inOrderPrint(Node<T1>*);
+        Node<T1>* searchData(Node<T1>*, T1);
+        Node<T1>* removeData(Node<T1>*, T1); // In progress
+        Node<T1>* minVal(Node<T1>*); // Working on
 };
 
 // Destructor, should check if root exists and then delete it. Each node will handle deleting its leaf nodes.
@@ -61,17 +61,57 @@ Bergen: {
 template <class T1>
 Node<T1>* BST<T1>::removeData(Node<T1>* root, T1 data)
 {
+    // The below conditionals are my BASE CASE(s).
+    // The conditionals traverse the tree until passed data == (passed)root->data (data is found in BST).
+    if (data > root->getData())
+    {
+        return removeData(root->getRight(), data);
+    }
+    else if (data < root->getData())
+    {
+        return removeData(root->getLeft(), data);
+    }
+
+    // == When we find the data to delete...
+    if (data == root->getData())
+    {
+        // root has no children.
+        if ((root->getLeft() == nullptr) && (root->getRight() == nullptr))
+        {
+            cout << "Data\"" << data << "\" has been deleted." << endl;
+            delete root;
+            return nullptr;
+        }
+        else if (())
+
+    }
+/*
+// If there is only one Node in the tree.
     if ((root->getLeft() == nullptr) && (root->getRight() == nullptr))
     {
         delete root;
+        return nullptr;
     }
+*/
     return nullptr;
 }
 
-// Given a node, find the smallest value in that subtree. Return that node
+/*
+Bergen: {
+    Given a node, find the smallest value in that subtree. Return that node.
+}
+*/
 template <class T1>
 Node<T1>* BST<T1>::minVal(Node<T1>* root)
 {
+    if (root->getLeft() == nullptr)
+    {
+        return root;
+    }
+    else if (root->getRight() != nullptr)
+    {
+        return minVal(root->getRight());
+    }
     return nullptr;
 }
 
@@ -82,17 +122,26 @@ Node<T1>* BST<T1>::searchData(Node<T1>* root, T1 data)
     return nullptr;
 }
 
-// Wrapper function for searchData. Pass data, root into searchData and return true if data found, return false if data not found.
+/*
+Bergen: {
+    Wrapper function for searchData. Pass data, root into searchData and return true if data found, return
+        false if data not found.
+}
+*/
 template <class T1>
 bool BST<T1>::search(T1 data)
 {
     return false;
 }
 
-// Given a node, recursively walk the tree to print out the inOrder format. That's left->root->right.
-// Make sure you cout with a space separating each value as I based my tests on that!
-// For example, you would end up cout (do not add the "): "1 2 3 4 5 "
-// Notice that there is an extra space at the end.
+/*
+Bergen: {
+    Given a node, recursively walk the tree to print out the inOrder format. That's left->root->right.
+    Make sure you cout with a space separating each value as I based my tests on that!
+    For example, you would end up cout (do not add the "): "1 2 3 4 5 "
+    **Notice that there is an extra space at the end**
+}
+*/
 template <class T1>
 void BST<T1>::inOrderPrint(Node<T1>* root)
 {
@@ -104,23 +153,37 @@ void BST<T1>::inOrder()
 {
 }
 
-// Give some data and a node, recursively walk the tree until you get to a nullptr and store the value there.
-// You should ensure that if data < the current node's data, you walk the left. If data > current node's data, walk right.
-// You should check if the value already exists and say so (it's just adding an else with a cout).
+/*
+Bergen: {
+    Give some data and a node, recursively walk the tree until you get to a nullptr and store the value there.
+    You should ensure that if data < the current node's data, you walk the left. If data > current node's data,
+        walk right.
+    You should check if the value already exists and say so (it's just adding an else with a cout).
+}
+*/
 template <class T1>
 Node<T1>* BST<T1>::insertNode(Node<T1>* root, T1 data)
 {
     return nullptr;
 }
 
-// Wrapper for insertNode. Take in data to pass that and _root to insertNode. Ensure you update _root since if the tree is empty, that would be the new _root.
+/*
+Bergen: {
+    Wrapper for insertNode. Take in data to pass that and _root to insertNode. Ensure you update _root since if
+        the tree is empty, that would be the new _root.
+}
+*/
 template <class T1>
 void BST<T1>::insert(T1 data)
 {
 }
 
-// Search for the word by calling searchData passing in _root and data.
-// If node is found, setData on that node with getData++
+/*
+Bergen: {
+    Search for the word by calling searchData passing in _root and data.
+    If node is found, setData on that node with getData++
+}
+*/
 template <class T1>
 void BST<T1>::increment(T1 data)
 {
