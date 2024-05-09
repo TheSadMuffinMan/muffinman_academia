@@ -1,8 +1,9 @@
 /*
-Builds a BST composed of Nodes (_l,_r,_data) with _data = *Word.
-word.h Completed on 5-9-24.
+INCOMPLETE / IN PROGRESS. WORKING ON: _removeData().
+    node.h Completed 5-9-24.
+    word.h Completed 5-9-24.
 
-WORKING ON: _minVal
+Builds a BST composed of Nodes (_l,_r,_data) with _data = *Word.
 */
 #pragma once
 #include "node.h"
@@ -24,7 +25,7 @@ class BST
         void _inOrderPrint(Node<T1>*);
         Node<T1>* _searchData(Node<T1>*, T1);
         Node<T1>* _removeData(Node<T1>*, T1); // In progress
-        Node<T1>* _minVal(Node<T1>*); // Working on
+        Node<T1>* _minVal(Node<T1>*); // Complete?
 };
 
 /*
@@ -93,20 +94,23 @@ Node<T1>* BST<T1>::_removeData(Node<T1>* root, T1 data)
 }
 
 /*
+When dealing with a minimum values in a BST, we really only care about the left children.
+See Notes 5.0 FINAL for visualization.
+
 Bergen: { Given a node, find the smallest value in that subtree. Return that node.
 } */
 template <class T1>
 Node<T1>* BST<T1>::_minVal(Node<T1>* root)
 {
-    if (root->getLeft() == nullptr)
+    // If root has a left child, then that value is less than root.
+    if (root->getLeft() != nullptr)
+    {
+        return _minVal(root->getLeft());
+    }
+    else // Every other "case" is accounted for.
     {
         return root;
     }
-    else if (root->getRight() != nullptr)
-    {
-        return _minVal(root->getRight());
-    }
-    return nullptr;
 }
 
 /*
@@ -156,16 +160,39 @@ You should check if the value already exists and say so (it's just adding an els
 template <class T1>
 Node<T1>* BST<T1>::_insertNode(Node<T1>* root, T1 data)
 {
-    return nullptr;
+    if (root == nullptr)
+    {
+        Node<T1>* tempNode = new Node<T1>;
+        tempNode->setData(data);
+        root = tempNode;
+        return root;
+    }
+
+    if (data < root->getData())
+    {
+        return _insertNode(root->getLeft(), data);
+    }
+    else if (data > root->getData())
+    {
+        return _insertNode(root->getRight(), data);
+    }
+    else
+    {
+        cout << "Value already exists." << endl;
+        return nullptr;
+    }
 }
 
 /*
+Only need to pass in _root because _insertNode only needs to know where to start at.
+
 Bergen: { Wrapper for insertNode. Take in data to pass that and _root to insertNode. Ensure you update _root since if
     the tree is empty, that would be the new _root.
 } */
 template <class T1>
 void BST<T1>::insert(T1 data)
 {
+    _root = _insertNode(_root, data);
 }
 
 /*
