@@ -52,7 +52,7 @@ void readWord(string &inWord, BST<Word> &myTree)
 {
     while (inWord.size() > 0 && (tolower(inWord.at(0)) < 'a' || tolower(inWord.at(0)) > 'z'))
     {
-        inWord.erase(0, 1);
+        inWord.erase(0, 1); // Getting rid of punction, special chars, etc.
     }
     while (inWord.size() > 0 && (tolower(inWord.at(inWord.size() - 1)) < 'a' || tolower(inWord.size() - 1) > 'z'))
     {
