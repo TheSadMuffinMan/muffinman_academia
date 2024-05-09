@@ -1,3 +1,9 @@
+/*
+Builds a BST composed of Nodes (_l,_r,_data) with _data = *Word.
+word.h Completed on 5-9-24.
+
+WORKING ON: Insert and Insert Wrapper
+*/
 #pragma once
 #include "node.h"
 
