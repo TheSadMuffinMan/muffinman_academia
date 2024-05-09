@@ -13,7 +13,7 @@ class BST
 {
     public:
         ~BST();
-        void insert(T1);
+        void insert(T1); // Complete?
         void inOrder();
         bool search(T1);
         void remove(T1);
