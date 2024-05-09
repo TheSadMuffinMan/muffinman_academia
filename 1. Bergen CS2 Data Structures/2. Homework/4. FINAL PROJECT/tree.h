@@ -31,22 +31,40 @@ class BST
 template <class T1>
 BST<T1>::~BST()
 {
+    if (_root)
+    {
+        //
+    }
 }
 
-// Public method that takes in some data and passes that into the removeData method. Don't forget to update _root as you may end up deleting the original root.
+/*
+Bergen: {
+    Public method that takes in some data and passes that into the removeData method.
+    Don't forget to update _root as you may end up deleting the original root.
+}
+*/
 template <class T1>
 void BST<T1>::remove(T1 data)
 {
 }
 
-// Private method to recursively walk the tree until the data is found.
-// Then using the process built in class, check if there is only one leaf, if so then move that leaf into the root position.
-// If there are two leafs, find the smallest value in the right subtree (or the largest value in the left subtree but you would have to rename minVal method) and then replace
-// the current node with that.
-// Don't forget to clean up your memory!
+/*
+Bergen: {
+    Private method to recursively walk the tree until the data is found.
+    Then using the process built in class, check if there is only one leaf, if so then move that leaf into the
+        root position.
+    If there are two leafs, find the smallest value in the right subtree (or the largest value in the left subtree
+        but you would have to rename minVal method) and then replace the current node with that.
+    Don't forget to clean up your memory!
+    }
+*/
 template <class T1>
 Node<T1>* BST<T1>::removeData(Node<T1>* root, T1 data)
 {
+    if ((root->getLeft() == nullptr) && (root->getRight() == nullptr))
+    {
+        delete root;
+    }
     return nullptr;
 }
 
