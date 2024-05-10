@@ -1,7 +1,10 @@
 /*
-INCOMPLETE / IN PROGRESS. WORKING ON: _removeData().
+INCOMPLETE / IN PROGRESS. WORKING ON: _insertNode()
     node.h Completed 5-9-24.
     word.h Completed 5-9-24.
+
+BST<T1>::insert(T1 data) function implementation was ripped from Mr. Bergen's Repo. Proper citation is
+    located inside implementation.
 
 Builds a BST composed of Nodes (_l,_r,_data) with _data = *Word.
 */
@@ -13,7 +16,7 @@ class BST
 {
     public:
         ~BST();
-        void insert(T1); // Complete?
+        void insert(T1); // Complete, untested.
         void inOrder();
         bool search(T1);
         void remove(T1);
@@ -21,11 +24,11 @@ class BST
 
     private:
         Node<T1>* _root;
-        Node<T1>* _insertNode(Node<T1>*, T1);
+        Node<T1>* _insertNode(Node<T1>*, T1); // Complete, untested.
         void _inOrderPrint(Node<T1>*);
         Node<T1>* _searchData(Node<T1>*, T1);
         Node<T1>* _removeData(Node<T1>*, T1); // In progress
-        Node<T1>* _minVal(Node<T1>*); // Complete?
+        Node<T1>* _minVal(Node<T1>*); // Complete, untested.
 };
 
 /*
@@ -82,20 +85,13 @@ Node<T1>* BST<T1>::_removeData(Node<T1>* root, T1 data)
         else if (())
 
     }
-/*
-// If there is only one Node in the tree.
-    if ((root->getLeft() == nullptr) && (root->getRight() == nullptr))
-    {
-        delete root;
-        return nullptr;
-    }
-*/
+
     return nullptr;
 }
 
 /*
 When dealing with a minimum values in a BST, we really only care about the left children.
-See Notes 5.0 FINAL for visualization.
+See iCloud Notes 5.0 FINAL for visualization.
 
 Bergen: { Given a node, find the smallest value in that subtree. Return that node.
 } */
@@ -123,6 +119,8 @@ Node<T1>* BST<T1>::_searchData(Node<T1>* root, T1 data)
 }
 
 /*
+I'm going to take a guess and assume that this wrapper function is very similiar to BST::insert().
+
 Bergen: { Wrapper function for _searchData. Pass data, root into _searchData and return true if data found,
     return false if data not found.
 } */
@@ -152,6 +150,23 @@ void BST<T1>::inOrder()
 }
 
 /*
+Only need to pass in _root because _insertNode only needs to know where to start at.
+
+Bergen: { Wrapper for insertNode. Take in data to pass that and _root to insertNode. Ensure you update _root since if
+    the tree is empty, that would be the new _root.
+} */
+template <class T1>
+void BST<T1>::insert(T1 data)
+{
+    _root = _insertNode(_root, data);
+    /*
+    Because I am still shakey with the concept of wrapper functions, the above line was taken from
+        Mr. Bergen's Lecture Repository on 5-9-24:
+    https://github.com/jeremybergen/CS2-jbergen/blob/main/lecture/trees/classes/tree.h
+    */
+}
+
+/*
 Bergen: { Give some data and a node, recursively walk the tree until you get to a nullptr and store the value there.
 You should ensure that if data < the current node's data, you walk the left. If data > current node's data,
     walk right.
@@ -160,6 +175,8 @@ You should check if the value already exists and say so (it's just adding an els
 template <class T1>
 Node<T1>* BST<T1>::_insertNode(Node<T1>* root, T1 data)
 {
+    // BASE CASE: if we've "walked" to a nullptr, we're safe to insert.
+    // Reminder: instantiation of a new Node sets *_left and *_right to nullptr.
     if (root == nullptr)
     {
         Node<T1>* tempNode = new Node<T1>;
@@ -178,21 +195,9 @@ Node<T1>* BST<T1>::_insertNode(Node<T1>* root, T1 data)
     }
     else
     {
-        cout << "Value already exists." << endl;
+        cout << "[Duplicate Data]" << endl;
         return nullptr;
     }
-}
-
-/*
-Only need to pass in _root because _insertNode only needs to know where to start at.
-
-Bergen: { Wrapper for insertNode. Take in data to pass that and _root to insertNode. Ensure you update _root since if
-    the tree is empty, that would be the new _root.
-} */
-template <class T1>
-void BST<T1>::insert(T1 data)
-{
-    _root = _insertNode(_root, data);
 }
 
 /*
