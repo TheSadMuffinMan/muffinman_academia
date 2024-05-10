@@ -19,7 +19,7 @@ class BST
         void insert(T1); // Complete, untested.
         void inOrder();
         bool search(T1);
-        void remove(T1);
+        void remove(T1); // Complete, untested.
         void increment(T1);
 
     private:
@@ -42,12 +42,15 @@ BST<T1>::~BST()
 }
 
 /*
+I'm going to take a guess and assume that this wrapper function is very similiar to BST::insert().
+
 Bergen: { Public method that takes in some data and passes that into the _removeData method.
 Don't forget to update _root as you may end up deleting the original root.
 } */
 template <class T1>
 void BST<T1>::remove(T1 data)
 {
+    _root = _removeData(_root, data);
 }
 
 /*
@@ -119,7 +122,7 @@ Node<T1>* BST<T1>::_searchData(Node<T1>* root, T1 data)
 }
 
 /*
-I'm going to take a guess and assume that this wrapper function is very similiar to BST::insert().
+Same thing here as insert() && remove().
 
 Bergen: { Wrapper function for _searchData. Pass data, root into _searchData and return true if data found,
     return false if data not found.
@@ -142,6 +145,8 @@ void BST<T1>::_inOrderPrint(Node<T1>* root)
 }
 
 /*
+Same thing here as insert() && remove().
+
 Bergen: { Wrapper for _inOrderPrint.
 } */
 template <class T1>
