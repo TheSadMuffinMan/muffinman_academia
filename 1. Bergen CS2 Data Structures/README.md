@@ -19,14 +19,14 @@ LABS:
         Self Grade + Reasoning: N/A
 
     Lab 3 - Fractions and Operator Overloading
-        Status: Not started
+        Status: Barely started.
         Due Date: Mar 11 2024
         Turn in Date: INCOMPLETE
             Submitted to D2L?: NO
         Self Grade + Reasoning: N/A
 
     Lab 4 - Doubly Linked List
-        Status: Complete!
+        Status: Fully complete!
         Due Date: Mar 15 2024
         Turn in Date: 5 May 2024
             Submitted to D2L?: YES
@@ -56,14 +56,14 @@ HOMEWORK:
         Self Grade + Reasoning: 80%: Late, not outputting nicely formatted tables.
 
     Homework 3 - Reverse Polish Notation Calculator
-        Status: 2/3 complete. Coding main file now.
+        Status: 2/3 complete.
         Due Date: Fri May 5 2024.
         Turn in Date: INCOMPLETE
             Submitted to D2L?: NO
         Self Grade + Reasoning: N/A
 
     FINAL PROJECT - Word Counter (Implementation of BST)
-        Status: Not started.
+        Status: Half way complete.
         Due Date: Mon May 13 2024.
         Turn in Date: INCOMPLETE
             Submitted to D2L?: NO
