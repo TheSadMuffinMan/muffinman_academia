@@ -1,5 +1,5 @@
 /*
-INCOMPLETE / IN PROGRESS. WORKING ON: BST::~BST().
+INCOMPLETE / IN PROGRESS. WORKING ON: BST::_removeData()
     node.h Completed 5-9-24.
     word.h Completed 5-9-24.
 
@@ -15,7 +15,7 @@ template <class T1>
 class BST
 {
     public:
-        ~BST();
+        ~BST(); // Must complete _removeData() first
         void insert(T1); // Complete, untested.
         void inOrder();
         bool search(T1); // Complete, untested.
@@ -27,11 +27,13 @@ class BST
         Node<T1>* _insertNode(Node<T1>*, T1); // Complete, untested.
         void _inOrderPrint(Node<T1>*);
         Node<T1>* _searchData(Node<T1>*, T1); // Complete, untested.
-        Node<T1>* _removeData(Node<T1>*, T1); // In progress
+        Node<T1>* _removeData(Node<T1>*, T1); // Working on
         Node<T1>* _minVal(Node<T1>*); // Complete, untested.
 };
 
 /*
+In order to code this function, we need to first code up BST::_remove().
+
 Bergen: { Destructor, should check if root exists and then delete it.
 Each node will handle deleting its leaf nodes.
 } */
@@ -113,7 +115,9 @@ Node<T1>* BST<T1>::_minVal(Node<T1>* root)
 }
 
 /*
-Same thing here as insert() && remove().
+This is the third wrapper function that I have coded now, and I think I understand their purpose now:
+    They allow the user to use private functions safely, as well as allow us (as the programmer) to do
+    specials things with the user's input.
 
 Bergen: { Wrapper function for _searchData. Pass data, root into _searchData and return true if data found,
     return false if data not found.
