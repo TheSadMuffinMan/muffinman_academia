@@ -1,5 +1,5 @@
 /*
-INCOMPLETE / IN PROGRESS. WORKING ON: _insertNode()
+INCOMPLETE / IN PROGRESS. WORKING ON: BST::_searchData()
     node.h Completed 5-9-24.
     word.h Completed 5-9-24.
 
@@ -26,7 +26,7 @@ class BST
         Node<T1>* _root;
         Node<T1>* _insertNode(Node<T1>*, T1); // Complete, untested.
         void _inOrderPrint(Node<T1>*);
-        Node<T1>* _searchData(Node<T1>*, T1);
+        Node<T1>* _searchData(Node<T1>*, T1); // Working on
         Node<T1>* _removeData(Node<T1>*, T1); // In progress
         Node<T1>* _minVal(Node<T1>*); // Complete, untested.
 };
@@ -118,6 +118,22 @@ Bergen: { Given data and a node, recursively walk the tree to find that node if 
 template <class T1>
 Node<T1>* BST<T1>::_searchData(Node<T1>* root, T1 data)
 {
+    if (data == root->getData())
+    {
+        return root;
+    }
+
+    if (data > root->getData())
+    {
+        return _searchData(root->getRight(), data);
+    }
+
+    if (data < root->getData())
+    {
+        return _searchData(root->getLeft(), data);
+    }
+
+    // If nothing is found, function will return nullptr.
     return nullptr;
 }
 
