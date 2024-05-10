@@ -1,5 +1,5 @@
 /*
-INCOMPLETE / IN PROGRESS. WORKING ON: BST::_searchData()
+INCOMPLETE / IN PROGRESS. WORKING ON: BST::~BST().
     node.h Completed 5-9-24.
     word.h Completed 5-9-24.
 
@@ -18,7 +18,7 @@ class BST
         ~BST();
         void insert(T1); // Complete, untested.
         void inOrder();
-        bool search(T1);
+        bool search(T1); // Complete, untested.
         void remove(T1); // Complete, untested.
         void increment(T1);
 
@@ -26,7 +26,7 @@ class BST
         Node<T1>* _root;
         Node<T1>* _insertNode(Node<T1>*, T1); // Complete, untested.
         void _inOrderPrint(Node<T1>*);
-        Node<T1>* _searchData(Node<T1>*, T1); // Working on
+        Node<T1>* _searchData(Node<T1>*, T1); // Complete, untested.
         Node<T1>* _removeData(Node<T1>*, T1); // In progress
         Node<T1>* _minVal(Node<T1>*); // Complete, untested.
 };
@@ -113,12 +113,30 @@ Node<T1>* BST<T1>::_minVal(Node<T1>* root)
 }
 
 /*
+Same thing here as insert() && remove().
+
+Bergen: { Wrapper function for _searchData. Pass data, root into _searchData and return true if data found,
+    return false if data not found.
+} */
+template <class T1>
+bool BST<T1>::search(T1 data)
+{
+    // If SOMETHING is returned, search == true.
+    if (_searchData(_root, data) != nullptr)
+    {
+        return true;
+    }
+    else {return false;}
+}
+
+/*
 Bergen: { Given data and a node, recursively walk the tree to find that node if it exists.
 } */
 template <class T1>
 Node<T1>* BST<T1>::_searchData(Node<T1>* root, T1 data)
 {
-    if (data == root->getData())
+    // **Don't forget about the case if root == nullptr!**
+    if ((root == nullptr) || (data == root->getData()))
     {
         return root;
     }
@@ -134,19 +152,8 @@ Node<T1>* BST<T1>::_searchData(Node<T1>* root, T1 data)
     }
 
     // If nothing is found, function will return nullptr.
+    cout << "[Data not found]" << endl;
     return nullptr;
-}
-
-/*
-Same thing here as insert() && remove().
-
-Bergen: { Wrapper function for _searchData. Pass data, root into _searchData and return true if data found,
-    return false if data not found.
-} */
-template <class T1>
-bool BST<T1>::search(T1 data)
-{
-    return false;
 }
 
 /*
