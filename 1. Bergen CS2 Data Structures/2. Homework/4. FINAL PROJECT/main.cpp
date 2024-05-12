@@ -1,4 +1,8 @@
-// Word frequency counter that uses a binary search tree.
+/*
+Word frequency counter that uses a binary search tree.
+Program was written by Mr. Bergen.
+*/
+
 #include <iostream>
 #include <sstream>
 #include <cassert>
@@ -48,6 +52,9 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+/*
+This function was written by Mr. Bergen.
+*/
 void readWord(string &inWord, BST<Word> &myTree)
 {
     while (inWord.size() > 0 && (tolower(inWord.at(0)) < 'a' || tolower(inWord.at(0)) > 'z'))
@@ -67,7 +74,8 @@ void readWord(string &inWord, BST<Word> &myTree)
         }
     }
 
-    // Creating a word for checking if it exists in the tree. This word will not be saved as the tree will create its own node with the data
+    // Creating a word for checking if it exists in the tree.
+    // This word will not be saved as the tree will create its own node with the data.
     Word newWord(inWord, 1);
 
     if (myTree.search(newWord))
@@ -94,7 +102,7 @@ void test()
     }
     fin.close();
     string sampleWords = "a:3 another:1 be:2 count:3 final:1 is:4 on:2 program:3 sample:1 sentence:3 that:1 the:2 this:3 to:2 used:3 word:3 ";
-    streambuf *backup = cout.rdbuf();
+    streambuf *backup = cout.rdbuf(); // <-- Unsure of what .rdbuf() function does.
     cout.rdbuf(buffer.rdbuf());
     myTree->inOrder();
     string test1 = buffer.str();

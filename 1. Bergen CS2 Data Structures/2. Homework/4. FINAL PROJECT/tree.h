@@ -66,6 +66,9 @@ Don't forget to clean up your memory!
 template <class T1>
 Node<T1>* BST<T1>::_removeData(Node<T1>* root, T1 data)
 {
+    // Below line was grabbed after referencing Mr. Bergen's tree lecture.
+    if(root == nullptr) {return root;}
+
     // The below conditionals are my BASE CASE(s).
     // The conditionals traverse the tree until passed data == (passed)root->data (data is found in BST).
     if (data > root->getData())
@@ -77,21 +80,57 @@ Node<T1>* BST<T1>::_removeData(Node<T1>* root, T1 data)
         return _removeData(root->getLeft(), data);
     }
 
-    // == When we find the data to delete...
+    // == When we find the data to delete.
+    // This else line is assuming that we have found the Node with data in it.
+    else
+    {
+        // Only the right tree exists.
+        if (root->getLeft() == nullptr)
+        {
+            Node<T1>* currNode = root->getRight();
+
+            delete root;
+            return currNode;
+        }
+        // Only the left tree exists.
+        else if (root->getRight() == nullptr)
+        {
+            Node<T1>* currNode = root->getLeft();
+
+            delete root;
+            return currNode;
+        }
+        /*
+        This last condition stores the minimum value of the right tree, which
+            will grab the proper Node to replace root.
+        */
+        else
+        {
+            Node<T1>* currNode = _minVal(root->getRight());
+
+            root->setData(currNode->getData()); // "Resetting" root's data/address.
+
+            // "Recursive return statement"
+            root->setRight(_removeData(root->getRight(), currNode->getData()));
+        }
+
+    }
+    return root;
+
+/* OLD CODE, this was my first draft.
     if (data == root->getData())
     {
         // root has no children.
         if ((root->getLeft() == nullptr) && (root->getRight() == nullptr))
         {
-            cout << "Data\"" << data << "\" has been deleted." << endl;
+            std::cout << "Data\"" << data << "\" has been deleted." << std::endl;
             delete root;
             return nullptr;
         }
         else if (())
 
     }
-
-    return nullptr;
+*/
 }
 
 /*
@@ -156,14 +195,14 @@ Node<T1>* BST<T1>::_searchData(Node<T1>* root, T1 data)
     }
 
     // If nothing is found, function will return nullptr.
-    cout << "[Data not found]" << endl;
+    std::cout << "[Data not found]" << std::endl;
     return nullptr;
 }
 
 /*
 Bergen: { Given a node, recursively walk the tree to print out the inOrder format. That's left->root->right.
-Make sure you cout with a space separating each value as I based my tests on that!
-For example, you would end up cout (do not add the "): "1 2 3 4 5 "
+Make sure you std::cout with a space separating each value as I based my tests on that!
+For example, you would end up std::cout (do not add the "): "1 2 3 4 5 "
 **Notice that there is an extra space at the end**
 } */
 template <class T1>
@@ -202,7 +241,7 @@ void BST<T1>::insert(T1 data)
 Bergen: { Give some data and a node, recursively walk the tree until you get to a nullptr and store the value there.
 You should ensure that if data < the current node's data, you walk the left. If data > current node's data,
     walk right.
-You should check if the value already exists and say so (it's just adding an else with a cout).
+You should check if the value already exists and say so (it's just adding an else with a std::cout).
 } */
 template <class T1>
 Node<T1>* BST<T1>::_insertNode(Node<T1>* root, T1 data)
@@ -227,7 +266,7 @@ Node<T1>* BST<T1>::_insertNode(Node<T1>* root, T1 data)
     }
     else
     {
-        cout << "[Duplicate Data]" << endl;
+        std::cout << "[Duplicate Data]" << std::endl;
         return nullptr;
     }
 }
