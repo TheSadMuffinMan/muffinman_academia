@@ -15,15 +15,17 @@ template <class T1>
 class BST
 {
     public:
+        BST();
         ~BST(); // Must complete _removeData() first
         void insert(T1); // Complete, untested.
         void inOrder();
         bool search(T1); // Complete, untested.
         void remove(T1); // Complete, untested.
-        void increment(T1);
+        void increment(T1); // Complete, untested.
 
     private:
         Node<T1>* _root;
+        void _deleteBST(Node<T1>*);
         Node<T1>* _insertNode(Node<T1>*, T1); // Complete, untested.
         void _inOrderPrint(Node<T1>*);
         Node<T1>* _searchData(Node<T1>*, T1); // Complete, untested.
@@ -31,16 +33,36 @@ class BST
         Node<T1>* _minVal(Node<T1>*); // Complete, untested.
 };
 
-/*
-In order to code this function, we need to first code up BST::_remove().
+template <class T1>
+BST<T1>::BST()
+{
+    _root = nullptr;
+}
 
+/*
+This implementation was taken from Stack Overflow.
+https://stackoverflow.com/questions/34170164/destructor-for-binary-search-tree
+*/
+template <class T1>
+void BST<T1>::_deleteBST(Node<T1>* root)
+{
+    if (root != nullptr)
+    {
+        _deleteBST(root->getLeft());
+        _deleteBST(root->getRight());
+
+        delete root;
+    }
+}
+
+/*
 Bergen: { Destructor, should check if root exists and then delete it.
 Each node will handle deleting its leaf nodes.
 } */
 template <class T1>
 BST<T1>::~BST()
 {
-    //
+    _deleteBST(_root);
 }
 
 /*
@@ -110,7 +132,7 @@ Node<T1>* BST<T1>::_removeData(Node<T1>* root, T1 data)
 
             root->setData(currNode->getData()); // "Resetting" root's data/address.
 
-            // "Recursive return statement"
+            // Recursive "return statement"
             root->setRight(_removeData(root->getRight(), currNode->getData()));
         }
 
@@ -155,7 +177,7 @@ Node<T1>* BST<T1>::_minVal(Node<T1>* root)
 
 /*
 This is the third wrapper function that I have coded now, and I think I understand their purpose now:
-    They allow the user to use private functions safely, as well as allow us (as the programmer) to do
+    They allow the user to use recursive functions safely, as well as allow us (as the programmer) to do
     specials things with the user's input.
 
 Bergen: { Wrapper function for _searchData. Pass data, root into _searchData and return true if data found,
@@ -200,6 +222,10 @@ Node<T1>* BST<T1>::_searchData(Node<T1>* root, T1 data)
 }
 
 /*
+Basically, all we need to do is traverse the tree down the left side until the next left is a nullptr.
+    Because everything greater than root will be printed later, we print root and then recursively "return"
+    the address of right (which will do the same thing down the list :D).
+
 Bergen: { Given a node, recursively walk the tree to print out the inOrder format. That's left->root->right.
 Make sure you std::cout with a space separating each value as I based my tests on that!
 For example, you would end up std::cout (do not add the "): "1 2 3 4 5 "
@@ -208,6 +234,12 @@ For example, you would end up std::cout (do not add the "): "1 2 3 4 5 "
 template <class T1>
 void BST<T1>::_inOrderPrint(Node<T1>* root)
 {
+    if (root == nullptr) {return;}
+
+    _inOrderPrint(root->getLeft());
+    std::cout << root->getData() << " ";
+
+    _inOrderPrint(root->getRight());
 }
 
 /*
@@ -218,6 +250,8 @@ Bergen: { Wrapper for _inOrderPrint.
 template <class T1>
 void BST<T1>::inOrder()
 {
+    _inOrderPrint(_root);
+    std::cout << std::endl;
 }
 
 /*
@@ -278,4 +312,10 @@ If node is found, setData on that node with getData++.
 template <class T1>
 void BST<T1>::increment(T1 data)
 {
+    if (_searchData(_root, data) != nullptr)
+    {
+        Node<T1>* tempNode = _searchData(_root, data);
+
+        tempNode->getData()++;
+    }
 }
