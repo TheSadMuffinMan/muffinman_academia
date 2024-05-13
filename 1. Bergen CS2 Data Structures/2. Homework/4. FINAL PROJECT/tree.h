@@ -231,6 +231,7 @@ Node<T1>* BST<T1>::_searchData(Node<T1>* root, T1 data)
 Basically, all we need to do is traverse the tree down the left side until the next left is a nullptr.
     Because everything greater than root will be printed later, we print root and then recursively "return"
     the address of right (which will do the same thing down the list :D).
+This is also a "Left Root Right" print.
 
 Bergen: { Given a node, recursively walk the tree to print out the inOrder format. That's left->root->right.
 Make sure you std::cout with a space separating each value as I based my tests on that!
@@ -292,23 +293,23 @@ Node<T1>* BST<T1>::_insertNode(Node<T1>* root, T1 data)
     {
         Node<T1>* tempNode = new Node<T1>;
         tempNode->setData(data);
-        root = tempNode;
-        return root;
+        return tempNode; // AHA! I was returning root here like a noob.
     }
 
     if (data < root->getData())
     {
-        return _insertNode(root->getLeft(), data);
+        root->setLeft(_insertNode(root->getLeft(), data));
+        // Aha, another error here, I had:
+        // return _insertNode(root->getleft(), data);
+        // This resulted in the list just traversing the BST but making no actual changes to Nodes.
     }
     else if (data > root->getData())
     {
-        return _insertNode(root->getRight(), data);
+        root->setRight(_insertNode(root->getRight(), data));
     }
-    else
-    {
-        std::cout << "[Duplicate Data]" << std::endl;
-        return nullptr;
-    }
+
+    std::cout << "[Duplicate Data]" << std::endl;
+    return root;
 }
 
 /*
