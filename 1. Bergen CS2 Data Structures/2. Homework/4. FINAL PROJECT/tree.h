@@ -15,7 +15,7 @@ template <class T1>
 class BST
 {
     public:
-        BST();
+        // BST();
         ~BST(); // Must complete _removeData() first
         void insert(T1); // Complete, untested.
         void inOrder();
@@ -33,11 +33,11 @@ class BST
         Node<T1>* _minVal(Node<T1>*); // Complete, untested.
 };
 
-template <class T1>
-BST<T1>::BST()
-{
-    _root = nullptr;
-}
+// template <class T1>
+// BST<T1>::BST()
+// {
+//     _root = nullptr;
+// }
 
 /*
 This implementation was taken from Stack Overflow.
@@ -46,13 +46,12 @@ https://stackoverflow.com/questions/34170164/destructor-for-binary-search-tree
 template <class T1>
 void BST<T1>::_deleteBST(Node<T1>* root)
 {
-    if (root != nullptr)
-    {
-        _deleteBST(root->getLeft());
-        _deleteBST(root->getRight());
+    if (root == nullptr) {return;}
 
-        delete root;
-    }
+    _deleteBST(root->getLeft());
+    _deleteBST(root->getRight());
+
+    delete root;
 }
 
 /*
@@ -63,6 +62,11 @@ template <class T1>
 BST<T1>::~BST()
 {
     _deleteBST(_root);
+
+    if (_root != nullptr)
+    {
+        delete _root;
+    }
 }
 
 /*
@@ -186,8 +190,10 @@ Bergen: { Wrapper function for _searchData. Pass data, root into _searchData and
 template <class T1>
 bool BST<T1>::search(T1 data)
 {
+    Node<T1>* comparisonNode = _searchData(_root, data);
+
     // If SOMETHING is returned, search == true.
-    if (_searchData(_root, data) != nullptr)
+    if (comparisonNode != nullptr)
     {
         return true;
     }
