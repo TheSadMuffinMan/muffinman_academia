@@ -1,7 +1,5 @@
 /*
-INCOMPLETE / IN PROGRESS. WORKING ON: BST::_removeData()
-    node.h Completed 5-9-24.
-    word.h Completed 5-9-24.
+ALL COMPLETE YESSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS.
 
 BST<T1>::insert(T1 data) function implementation was ripped from Mr. Bergen's Repo. Proper citation is
     located inside implementation.
@@ -16,21 +14,21 @@ class BST
 {
     public:
         // BST();
-        ~BST(); // Must complete _removeData() first
-        void insert(T1); // Complete, untested.
-        void inOrder();
-        bool search(T1); // Complete, untested.
-        void remove(T1); // Complete, untested.
-        void increment(T1); // Complete, untested.
+        ~BST(); // Complete, working.
+        void insert(T1); // Complete, working.
+        void inOrder(); // Complete, working.
+        bool search(T1); // Complete, working.
+        void remove(T1); // Complete, working.
+        void increment(T1); // Complete, working.
 
     private:
         Node<T1>* _root;
         void _deleteBST(Node<T1>*);
-        Node<T1>* _insertNode(Node<T1>*, T1); // Complete, untested.
-        void _inOrderPrint(Node<T1>*);
-        Node<T1>* _searchData(Node<T1>*, T1); // Complete, untested.
-        Node<T1>* _removeData(Node<T1>*, T1); // Working on
-        Node<T1>* _minVal(Node<T1>*); // Complete, untested.
+        Node<T1>* _insertNode(Node<T1>*, T1); // Complete, working.
+        void _inOrderPrint(Node<T1>*); // Complete, working.
+        Node<T1>* _searchData(Node<T1>*, T1); // Complete, working.
+        Node<T1>* _removeData(Node<T1>*, T1); // Complete, working.
+        Node<T1>* _minVal(Node<T1>*); // Complete, working.
 };
 
 // template <class T1>
@@ -46,7 +44,10 @@ https://stackoverflow.com/questions/34170164/destructor-for-binary-search-tree
 template <class T1>
 void BST<T1>::_deleteBST(Node<T1>* root)
 {
-    if (root == nullptr) {return;}
+    if (root == nullptr)
+    {
+        return;
+    }
 
     _deleteBST(root->getLeft());
     _deleteBST(root->getRight());
@@ -61,8 +62,6 @@ Each node will handle deleting its leaf nodes.
 template <class T1>
 BST<T1>::~BST()
 {
-    _deleteBST(_root);
-
     if (_root != nullptr)
     {
         delete _root;
@@ -258,7 +257,6 @@ template <class T1>
 void BST<T1>::inOrder()
 {
     _inOrderPrint(_root);
-    std::cout << std::endl;
 }
 
 /*
@@ -308,7 +306,7 @@ Node<T1>* BST<T1>::_insertNode(Node<T1>* root, T1 data)
         root->setRight(_insertNode(root->getRight(), data));
     }
 
-    std::cout << "[Duplicate Data]" << std::endl;
+    // std::cout << "[Duplicate Data]" << std::endl;
     return root;
 }
 
@@ -323,6 +321,6 @@ void BST<T1>::increment(T1 data)
     {
         Node<T1>* tempNode = _searchData(_root, data);
 
-        tempNode->getData()++;
+        tempNode->setData(tempNode->getData()++); // This implementation seems very weird to me, but it works lol
     }
 }

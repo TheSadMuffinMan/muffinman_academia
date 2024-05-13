@@ -46,6 +46,7 @@ int main(int argc, char *argv[])
 
     myTree->inOrder();
     cout << endl;
+    // Working up to this point.
 
     fin.close();
     delete myTree;
@@ -78,7 +79,7 @@ void readWord(string &inWord, BST<Word> &myTree)
     // This word will not be saved as the tree will create its own node with the data.
     Word newWord(inWord, 1);
 
-    if (myTree.search(newWord))
+    if (myTree.search(newWord)) // If this is true...
     {
         myTree.increment(newWord);
     }

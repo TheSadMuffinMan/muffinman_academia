@@ -33,11 +33,11 @@ LABS:
         Self Grade + Reasoning: 90%: Late, but fully operational. Very proud of this one.
 
     Lab 5 - Binary Search Tree
-        Status: Planning phase.
-        Due Date: Fri May 5 2024
-        Turn in Date: INCOMPLETE
+        Status: Incomplete.
+        Due Date: Mon 13 May 2024
+        Turn in Date: Incomplete.
             Submitted to D2L?: NO
-        Self Grade + Reasoning: N/A
+        Self Grade + Reasoning:
 
 HOMEWORK:
     
@@ -62,9 +62,9 @@ HOMEWORK:
             Submitted to D2L?: NO
         Self Grade + Reasoning: N/A
 
-    FINAL PROJECT - Word Counter (Implementation of BST)
-        Status: Half way complete.
-        Due Date: Mon May 13 2024.
-        Turn in Date: INCOMPLETE
-            Submitted to D2L?: NO
-        Self Grade + Reasoning: N/A
+    FINAL - Word Counter (Implementation of BST)
+        Status: Complete!
+        Due Date: Mon 13 May 2024
+        Turn in Date: 12 May 2024
+            Submitted to D2L?: YES
+        Self Grade + Reasoning: 100%!!!
