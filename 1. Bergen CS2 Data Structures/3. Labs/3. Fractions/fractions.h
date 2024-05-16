@@ -1,5 +1,9 @@
-// Notes and documentation are inside fractions.cpp file.
-// ***Program is only stack allocated***
+/*
+***Do NOT change this file***
+***Program is only stack allocated***
+Notes and documentation are inside fractions.cpp file.
+*/
+
 #pragma once
 #include <iostream>
 
@@ -15,8 +19,8 @@ namespace fractions
         public:
             Fraction(int = 0, int = 0); // Complete.
             
-            void simplify(); // Using recusion, working on.
-            static Fraction simplify(Fraction); // In progress.
+            void simplify(); // Complete.
+            static Fraction simplify(Fraction); // In progress
 
             static int gcd(int, int); // Complete.
 

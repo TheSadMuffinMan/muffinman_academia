@@ -97,17 +97,20 @@ fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 Function recursively calculates the greatest common divisor between two passed ints, and then
     returns the GCD as an int.
 
-MR. BERGEN HINT:
+Bergen: {
     Alternatively, recursively call the method, passing in b, a%b and return a when b == 0.
+}
 */
 int fractions::Fraction::gcd(int a, int b)
 {
     if (b != 0)
     {
-        return fractions::Fraction::gcd(b, (a % b));
+        return gcd(b, (a % b));
     }
-
-    return a;
+    else
+    {
+        return a;
+    }
 }
 
 bool fractions::Fraction::operator==(Fraction const &frac)
