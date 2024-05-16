@@ -35,15 +35,29 @@ points::Point* points::Point::getNearestPoint()
 // This will be the biggest portion of the code
 points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long arrSize)
 {
-    points::Point* tempPoint = nullptr; // This variable will store the nearest point.
-    float distance = 0.0;
+    points::Point* tempNearest = getNearestPoint(); // This variable will store the nearest point.
+    double distance = 0.0; // sqrt() function returns a double.
+    // double furthestDistance = 10000.0;
 
+    /*
+    At each index of pointList, we want to run the distance formula and then compare that
+        to previous results.
+    */
     for (size_t i = 0; i < arrSize; i++)
     {
-        distance = sqrt((points::Point::getX() - pointList[i]->getX()) +
-            (points::Point::getY() - pointList[i]->getY()));
+        points::Point comparePoint;
+        comparePoint.setX(pointList[i]->getX());
+        comparePoint.setY(pointList[i]->getY());
+
+        distance = distPoints(comparePoint);
+        
+        if (distance < distPoints())
+        {
+            tempNearest = pointList[i];
+        }
     }
-    return nullptr;
+
+    return tempNearest;
 }
 
 //Setters
@@ -62,9 +76,13 @@ void points::Point::setNearestPoint(Point* newNearestPoint)
     nearestPoint = newNearestPoint;
 }
 
+// Function runs the distance formula with input point and private data members.
 double points::Point::distPoints(Point& point)
 {
-    return 0.0;
+    double distance = abs(sqrt((point.getX() - points::Point::getX()) +
+            (point.getY() - points::Point::getY())));
+    
+    return distance;
 }
 
 /*
