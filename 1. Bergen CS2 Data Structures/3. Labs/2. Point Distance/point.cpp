@@ -35,29 +35,37 @@ points::Point* points::Point::getNearestPoint()
 // This will be the biggest portion of the code
 points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long arrSize)
 {
-    points::Point* tempNearest = getNearestPoint(); // This variable will store the nearest point.
+    points::Point* nearestPointAddress = getNearestPoint();
+    nearestPointAddress->;
+
+    // This point will be compared to and temporarily hold our data.
+    // We are assuming that tempNearest is the closest at the start.
+    points::Point tempNearest;
+    tempNearest.setX(getNearestPoint()->getX());
+    tempNearest.setY(getNearestPoint()->getY());
+
     double distance = 0.0; // sqrt() function returns a double.
-    // double furthestDistance = 10000.0;
 
     /*
     At each index of pointList, we want to run the distance formula and then compare that
-        to previous results.
+        to previous current nearest Point.
     */
     for (size_t i = 0; i < arrSize; i++)
     {
-        points::Point comparePoint;
-        comparePoint.setX(pointList[i]->getX());
-        comparePoint.setY(pointList[i]->getY());
-
-        distance = distPoints(comparePoint);
+        points::Point arrayPoint;
+        arrayPoint.setX(pointList[i]->getX());
+        arrayPoint.setY(pointList[i]->getY());
+        distance = distPoints(arrayPoint);
         
-        if (distance < distPoints())
+        if (distance < distPoints(tempNearest))
         {
             tempNearest = pointList[i];
+            nearestPointAddress = pointList[i];
         }
     }
 
-    return tempNearest;
+    // setNearestPoint(nearestPointAddress);
+    return nearestPointAddress;
 }
 
 //Setters
@@ -79,8 +87,13 @@ void points::Point::setNearestPoint(Point* newNearestPoint)
 // Function runs the distance formula with input point and private data members.
 double points::Point::distPoints(Point& point)
 {
-    double distance = abs(sqrt((point.getX() - points::Point::getX()) +
-            (point.getY() - points::Point::getY())));
+    double internalXVal = (point.getX() - points::Point::getX());
+    internalXVal = (internalXVal * internalXVal); // Forgot how to square something in <cmath> lol
+
+    double internalYVal = (point.getY() - points::Point::getY());
+    internalYVal = (internalYVal * internalYVal);
+
+    double distance = sqrt(abs(internalXVal + internalYVal));
     
     return distance;
 }
