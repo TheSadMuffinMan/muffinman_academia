@@ -30,7 +30,16 @@ fractions::Fraction::Fraction(int numerator, int denominator)
 
 fractions::Fraction fractions::Fraction::operator+(fractions::Fraction const &frac)
 {
-    return Fraction(0, 1);
+    fractions::Fraction returnFrac;
+
+    int gcdVar = gcd(_denominator, frac._denominator);
+
+    returnFrac._numerator = (((gcdVar / _denominator) * _numerator) + ((gcdVar / frac._denominator) * _numerator));
+    returnFrac._denominator = gcdVar;
+
+    // simplify
+
+    return Fraction(returnFrac._numerator, returnFrac._denominator);
 }
 
 fractions::Fraction fractions::Fraction::operator-(fractions::Fraction const &frac)
@@ -90,7 +99,7 @@ fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 
     a = (a / gcdVar);
     b = (b / gcdVar);
-    
+
     frac._numerator = a;
     frac._denominator = b;
 
