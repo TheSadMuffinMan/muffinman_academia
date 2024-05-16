@@ -19,8 +19,8 @@ namespace fractions
         public:
             Fraction(int = 0, int = 0); // Complete.
             
-            void simplify(); // In progress
-            static Fraction simplify(Fraction); // In progress
+            void simplify(); // Complete, untested.
+            static Fraction simplify(Fraction); // Complete, untested.
 
             static int gcd(int, int); // Complete.
 
@@ -33,7 +33,7 @@ namespace fractions
             Keep note that creating an instance of a fraction inside of the fraction class will have
             access to private attributes!
             */
-            Fraction operator+(Fraction const&);
+            Fraction operator+(Fraction const&); // Working on
             Fraction operator-(Fraction const&);
             Fraction operator*(Fraction const&);
             Fraction operator/(Fraction const&);

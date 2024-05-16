@@ -84,8 +84,17 @@ More Modulus examples can be found in 0. General Knowledge.
 */
 fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 {
+    int a = frac._numerator;
+    int b = frac._denominator;
+    int gcdVar = gcd(a,b);
 
-    return 0;
+    a = (a / gcdVar);
+    b = (b / gcdVar);
+    
+    frac._numerator = a;
+    frac._denominator = b;
+
+    return frac;
 }
 
 /*
