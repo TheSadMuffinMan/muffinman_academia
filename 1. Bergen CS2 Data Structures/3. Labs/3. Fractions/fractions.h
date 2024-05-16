@@ -19,7 +19,7 @@ namespace fractions
         public:
             Fraction(int = 0, int = 0); // Complete.
             
-            void simplify(); // Complete.
+            void simplify(); // In progress
             static Fraction simplify(Fraction); // In progress
 
             static int gcd(int, int); // Complete.

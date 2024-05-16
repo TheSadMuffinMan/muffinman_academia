@@ -1,4 +1,8 @@
-// ***Program is only Stack allocated***
+/*
+***Program is only Stack allocated***
+Notes/plan for program are in iCloud Notes 1. College/1. CS/1. CS2 Bergen/4.00 Lab 3 - Fractions.
+*/
+
 #include "fractions.h"
 
 /*
@@ -50,12 +54,15 @@ Should call gcd method from inside simplify
 */
 void fractions::Fraction::simplify()
 {
-    if (this->gcd(_numerator, _denominator) == _denominator)
-    {
-        _numerator = _numerator / _denominator;
-        _denominator = _denominator / _denominator;
-        return simplify();
-    }
+    int a = _numerator;
+    int b = _denominator;
+
+    int gcdVar = gcd(a,b);
+    a = (a / gcdVar);
+    b = (b / gcdVar);
+
+    _numerator = a;
+    _denominator = b;
 }
 
 /*
@@ -77,20 +84,8 @@ More Modulus examples can be found in 0. General Knowledge.
 */
 fractions::Fraction fractions::Fraction::simplify(Fraction frac)
 {
-    int newNumerator;
-    int newDenominator = 1;
-    int fracGCD = frac.gcd(frac._numerator, frac._denominator);
 
-    newNumerator = frac._numerator / fracGCD;
-    newDenominator = frac._denominator / fracGCD;
-    return Fraction(newNumerator, newDenominator);
-
-    // if (fracGCD == 0) // if gcd() == 0 / _d divides cleanly into _n.
-    // {
-    //     newNumerator = (frac._numerator / frac._denominator);
-    //     return Fraction(newNumerator, 1);
-    // }
-    // return frac;
+    return 0;
 }
 
 /*
