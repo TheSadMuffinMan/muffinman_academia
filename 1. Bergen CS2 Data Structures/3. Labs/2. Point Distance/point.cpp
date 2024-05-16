@@ -1,4 +1,5 @@
 // https://docs.google.com/document/d/1ftT_SMwfc_sBhfx6D-zFW9r_1jx6Ku8A8y1KCiB1nCk/edit
+// All test cases passed.
 
 #include "point.h"
 
@@ -35,37 +36,75 @@ points::Point* points::Point::getNearestPoint()
 // This will be the biggest portion of the code
 points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long arrSize)
 {
-    points::Point* nearestPointAddress = getNearestPoint();
-    nearestPointAddress->;
+    // Edge cases.
+    if (arrSize == 0)
+    {
+        std::cout << "[No array passed]" << std::endl;
+        return nullptr;
+    }
+    else if (arrSize == 1)
+    {
+        return pointList[0];
+    }
+    else if (arrSize == 2)
+    {
+        points::Point point0, point1; // point0 = pointList[0], point1 = pointList[1].
+        double distance0, distance1;
 
-    // This point will be compared to and temporarily hold our data.
-    // We are assuming that tempNearest is the closest at the start.
-    points::Point tempNearest;
-    tempNearest.setX(getNearestPoint()->getX());
-    tempNearest.setY(getNearestPoint()->getY());
+        point0.setX(pointList[0]->getX());
+        point0.setY(pointList[0]->getY());
+
+        point1.setX(pointList[1]->getX());
+        point1.setY(pointList[1]->getY());
+
+        distance0 = distPoints(point0);
+        distance1 = distPoints(point1);
+
+        if (distance0 > distance1)
+        {
+            return pointList[0];
+        }
+        else
+        {
+            return pointList[1];
+        }
+    }
+
+    // At this point, we know that arrSize >= 3 elements.
+
+    /*
+    This line "assumes" that the first point is the nearest and compares to that.
+    */
+    points::Point* nearestPointREFERENCE = pointList[0];
 
     double distance = 0.0; // sqrt() function returns a double.
 
     /*
     At each index of pointList, we want to run the distance formula and then compare that
         to previous current nearest Point.
+    Loop starts at 1 because we have already grabbed the first index above with nearestPointREFERENCE.
     */
-    for (size_t i = 0; i < arrSize; i++)
+    for (size_t i = 1; i < (arrSize - 1); i++)
     {
         points::Point arrayPoint;
         arrayPoint.setX(pointList[i]->getX());
         arrayPoint.setY(pointList[i]->getY());
         distance = distPoints(arrayPoint);
+
+        points::Point nearestPointVALUE;
+        nearestPointVALUE.setX(nearestPointREFERENCE->getX());
+        nearestPointVALUE.setY(nearestPointREFERENCE->getY());
         
-        if (distance < distPoints(tempNearest))
+        if (distance < distPoints(nearestPointVALUE))
         {
-            tempNearest = pointList[i];
-            nearestPointAddress = pointList[i];
+            nearestPointREFERENCE = pointList[i];
+            nearestPointVALUE.setX(pointList[i]->getX());
+            nearestPointVALUE.setY(pointList[i]->getY());
         }
     }
 
-    // setNearestPoint(nearestPointAddress);
-    return nearestPointAddress;
+    // setNearestPoint(nearestPointREFERENCE);
+    return nearestPointREFERENCE;
 }
 
 //Setters

@@ -12,11 +12,11 @@ LABS:
         Self Grade + Reasoning: 70, incomplete, late
 
     Lab 2 - Point Distance
-        Status: Early in development process
+        Status: Complete
         Due Date: Mon Feb 19 2024
-        Turn in Date: INCOMPLETE
-            Submitted to D2L?: NO
-        Self Grade + Reasoning: N/A
+        Turn in Date: Thur May 16
+            Submitted to D2L?: YES
+        Self Grade + Reasoning: 0%, turned in after last day.
 
     Lab 3 - Fractions and Operator Overloading
         Status: Barely started.
