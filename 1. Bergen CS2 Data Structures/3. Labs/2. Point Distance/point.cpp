@@ -35,6 +35,14 @@ points::Point* points::Point::getNearestPoint()
 // This will be the biggest portion of the code
 points::Point* points::Point::calcNearestPoint(Point* pointList[], unsigned long arrSize)
 {
+    points::Point* tempPoint = nullptr; // This variable will store the nearest point.
+    float distance = 0.0;
+
+    for (size_t i = 0; i < arrSize; i++)
+    {
+        distance = sqrt((points::Point::getX() - pointList[i]->getX()) +
+            (points::Point::getY() - pointList[i]->getY()));
+    }
     return nullptr;
 }
 
