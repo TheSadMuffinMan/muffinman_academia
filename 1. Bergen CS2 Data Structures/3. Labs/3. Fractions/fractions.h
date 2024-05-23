@@ -17,7 +17,9 @@ namespace fractions
             int _denominator;
 
         public:
-            Fraction(int = 0, int = 0); // Complete.
+            // Fraction(int = 0, int = 0); // Complete.
+            // Fraction();
+            Fraction(int, int);
             
             void simplify(); // Complete, untested.
             static Fraction simplify(Fraction); // Complete, untested.

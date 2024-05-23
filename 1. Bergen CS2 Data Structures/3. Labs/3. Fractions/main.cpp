@@ -12,10 +12,23 @@ int main(int argc, char* argv[])
         return 0;
     }
 
-    cout << "Fraction 1: " << endl;
-    fractions::Fraction frac1;
-    cout << "Fraction 2: " << endl;
-    fractions::Fraction frac2;
+    int frac1Num, frac1Denom;
+    cout << "Input frac1 numerator: ";
+    cin >> frac1Num;
+    cout << "Input frac1 denominator: ";
+    cin >> frac1Denom;
+
+    fractions::Fraction frac1 = fractions::Fraction(frac1Num, frac1Denom);
+    cout << "Fraction 1: " << frac1 << endl;
+
+    int frac2Num, frac2Denom;
+    cout << "Input frac2 numerator: ";
+    cin >> frac2Num;
+    cout << "Input frac2 denominator: ";
+    cin >> frac2Denom;
+
+    fractions::Fraction frac2 = fractions::Fraction(frac2Num, frac2Denom);
+    cout << "Fraction 2: " << frac2 << endl;
 
     cout << frac1 << " + " << frac2 << " = " << frac1 + frac2 << endl;
     cout << frac1 << " - " << frac2 << " = " << frac1 - frac2 << endl;

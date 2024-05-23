@@ -11,18 +11,39 @@ Default: 0/1
 
 Must check to verify denominator is not 0
 */
+// fractions::Fraction::Fraction(int numerator, int denominator)
+// {
+//     _numerator = numerator;
+
+//     // while (denominator == 0)
+//     // {
+//     //     cout << "\nInvalid denominator (=//= 0). Please input new denominator: ";
+//     //     cin >> denominator;
+//     // }
+
+//     // Extra condition checking.
+//     if (denominator != 0)
+//     {
+//         _denominator = denominator;
+//     }
+// }
+
+// fractions::Fraction::Fraction()
+// {
+//     _numerator = 0;
+//     _denominator = 1;
+// }
+
 fractions::Fraction::Fraction(int numerator, int denominator)
 {
     _numerator = numerator;
 
-    while (denominator == 0)
+    if (denominator == 0)
     {
-        cout << "\nInvalid denominator (=//= 0). Please input new denominator: ";
-        cin >> denominator;
+        cout << "[Invalid denominator]" << endl;
+        return;
     }
-
-    // Extra condition checking.
-    if (denominator != 0)
+    else
     {
         _denominator = denominator;
     }
@@ -30,16 +51,16 @@ fractions::Fraction::Fraction(int numerator, int denominator)
 
 fractions::Fraction fractions::Fraction::operator+(fractions::Fraction const &frac)
 {
-    fractions::Fraction returnFrac;
+    fractions::Fraction returnFrac = fractions::Fraction(0, 1);
 
     int gcdVar = gcd(_denominator, frac._denominator);
 
-    returnFrac._numerator = (((gcdVar / _denominator) * _numerator) + ((gcdVar / frac._denominator) * _numerator));
-    returnFrac._denominator = gcdVar;
+    returnFrac._numerator = ((gcdVar * _numerator) + (gcdVar * frac._denominator));
+    returnFrac._denominator = (gcdVar * _denominator);
 
-    // simplify
+    // simplify(returnFrac);
 
-    return Fraction(returnFrac._numerator, returnFrac._denominator);
+    return returnFrac;
 }
 
 fractions::Fraction fractions::Fraction::operator-(fractions::Fraction const &frac)
@@ -67,11 +88,14 @@ void fractions::Fraction::simplify()
     int b = _denominator;
 
     int gcdVar = gcd(a,b);
-    a = (a / gcdVar);
-    b = (b / gcdVar);
+    if (gcdVar > 0)
+    {
+        a = (a / gcdVar);
+        b = (b / gcdVar);
 
-    _numerator = a;
-    _denominator = b;
+        _numerator = a;
+        _denominator = b;
+    }
 }
 
 /*
@@ -97,21 +121,24 @@ fractions::Fraction fractions::Fraction::simplify(Fraction frac)
     int b = frac._denominator;
     int gcdVar = gcd(a,b);
 
-    a = (a / gcdVar);
-    b = (b / gcdVar);
+    if (gcdVar > 0)
+    {
+        a = (a / gcdVar);
+        b = (b / gcdVar);
 
-    frac._numerator = a;
-    frac._denominator = b;
+        frac._numerator = a;
+        frac._denominator = b;
+        return frac;
+    }
 
     return frac;
 }
 
 /*
+Bergen: {
 Function recursively calculates the greatest common divisor between two passed ints, and then
     returns the GCD as an int.
-
-Bergen: {
-    Alternatively, recursively call the method, passing in b, a%b and return a when b == 0.
+Alternatively, recursively call the method, passing in b, a%b and return a when b == 0.
 }
 */
 int fractions::Fraction::gcd(int a, int b)
@@ -133,5 +160,6 @@ bool fractions::Fraction::operator==(Fraction const &frac)
 
 ostream &fractions::operator<<(ostream &os, const Fraction &frac)
 {
+    os << frac._numerator << " / " << frac._numerator;
     return os;
 }
