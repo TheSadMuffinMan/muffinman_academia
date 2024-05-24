@@ -5,10 +5,18 @@ fn main()
 }
 
 /*
+To build cargo for a new project, ensure you are in the directory (in the terminal) of where
+    you want to initialize the new project.
+Input "cargo new <Name of Project>".
+    *****DO NOT HAVE ANY SPACES IN CARGO NAME***** use "_"s.
+New cargo is created.
+*/
+
+/*
 To "properly" compile and run this code, first navigate to where the program is located in your terminal.
 Instead of using the "rustc <Program Name>" command, input the "cargo build" command.
     This command compiles and builds our executable program.
-    If you type "ls", you'll several new files.
+    If you type "ls", you'll see several new files.
 cd into "target" directory.
 cd into "debug" directory.
     ./<Program Name>
