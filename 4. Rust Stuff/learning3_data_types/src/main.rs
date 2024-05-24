@@ -1,3 +1,5 @@
+// https://www.youtube.com/watch?v=t047Hseyj_k
+
 fn main()
 {
     let tup: (i32, char, bool) = (1, 't', true); // This is a tuple. Can use "mut" to change them.
@@ -71,5 +73,5 @@ Compound Data Types:
 TOUPLES: a fixed length sequence of elements. Elements do not have to be the same data type.
 
 ARRAYS: Same exact as above, but elements ARE all the same data type.
-    Arrays behave the exact same way in Rust as in C++.
+    Arrays behave the exact same way in C++, but are explicitly defined a little different.
 */
