@@ -23,3 +23,8 @@ Alternatively, a faster way to compile and run your code is to input "cargo run"
 Another very useful terminal command is "cargo check" (when inside base directory).
     This command checks if your code will compile without actually compiling the program.
 */
+
+/*
+The last terminal command that this episode covered is "rustfmt <Program Name>" (inside src/main.rs directory).
+    This command reformats your code to be more "proper".
+*/
