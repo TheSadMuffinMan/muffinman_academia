@@ -1,4 +1,6 @@
+// Learned from https://www.youtube.com/watch?v=gvgBUY8iNO4&t=166s
 // Comments work the same way as in C++.
+
 fn main()
 {
     println!("Hello, world!");
@@ -7,7 +9,7 @@ fn main()
 /*
 To build cargo for a new project, ensure you are in the directory (in the terminal) of where
     you want to initialize the new project.
-Input "cargo new <Name of Project>".
+Input "cargo new <Name of Project>" in the terminal.
     *****DO NOT HAVE ANY SPACES IN CARGO NAME***** use "_"s.
 New cargo is created.
 */
