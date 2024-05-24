@@ -3,7 +3,8 @@
 fn main()
 {
     let _a = 4; // Implicit type assignment: the compiler decides the data type.
-    // x = "hello"; // This will NOT work because Rust does not allow you to change data types.
+    // _a = "hello"; // This will NOT work because Rust does not allow you to change data types.
+    // The Rust compiler also seems to want us to prefix implicitly defined variables with an underscore.
 
     let b: u32 = 6; // Explicit type assignment: we decide the data type.
 
