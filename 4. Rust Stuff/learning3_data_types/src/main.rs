@@ -43,6 +43,8 @@ Integers: all whole numbers (no decimals).
     Integers use the first bit to signify if the # is > or < 0.
     i32 is the DEFAULT INTEGER in Rust.
         i32 range: -2 billion to 2 billion (-2,147,483,648 to 2,147,483,647).
+            To find ranges of data types, we input...
+                let x = (<Data Type>::MAX); print x;
     Rust also uses i8, i16, i32, i64, and i128.
 
 Unsigned Integers: all positive whole numners.
