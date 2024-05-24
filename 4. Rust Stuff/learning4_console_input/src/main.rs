@@ -23,11 +23,10 @@ fn main()
 
 /*
 Every Rust file includes a PRELUDE: the list of things that Rust automatically imports into every program.
-    It's kept as small as possible, and is focused on things, particularly traits, which are used in almost
-    every single Rust program.
+    It's kept as small as possible, and is focused on traits which are used in almost every single Rust program.
         This is functionally the same thing as using the STL in C++.
     One thing the Prelude does NOT have is a standard way to capture user input.
-    Because of this, we must import a specific Module from a Crate.
+    Because of this, we must import the io Module from the std Crate.
         CRATE: == C++ library.
         MODULE: specific portion of a Crate.
 */
