@@ -1,5 +1,6 @@
 // https://open.kattis.com/problems/whichisgreater
 /*
+COMPLETE 6/27/24
 Given two positive integers, determine whether the first one is larger than the second one.
 
 INPUT:
@@ -16,18 +17,14 @@ int main(int argc, char *argv[])
     double a, b;
     std::cin >> a >> b;
 
-    if (a == b)
+    if ((a == b) || (a < b))
     {
-        return 0;
-    }
-    else if (a < b)
-    {
-        return 0;
+        std::cout << "0";
     }
     else
     {
-        return 1;
+        std::cout << "1";
     }
-    
+
     return 0;
 }
