@@ -1,6 +1,6 @@
 // https://open.kattis.com/problems/reversebinary
 /*
-6/28/24 working on. This one is difficult.
+7/11/24 Skipping. Way more difficult than I imagined.
 
 TASK:
     Your task will be to write a program for reversing numbers in binary. For instance, the binary
