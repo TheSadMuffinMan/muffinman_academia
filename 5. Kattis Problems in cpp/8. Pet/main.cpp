@@ -15,18 +15,18 @@ INPUT:
         5 in the order in which their grades were given.
 
     Example 1:
-    5 4 4 5
-    5 4 4 4
-    5 5 4 4
-    5 5 5 4
-    4 4 4 5
+        5 4 4 5
+        5 4 4 4
+        5 5 4 4
+        5 5 5 4
+        4 4 4 5
 
 OUTPUT:
     Output on a single line the winner’s number and their points, separated by a space. The input data will
         guarantee that the solution is unique.
 
     Example 1:
-    4 19
+        4 19
 
 PLAN:
     Build 5 arrays of 5 ints. First 4 ints will be input, the last will be the sum of the previous ints.
@@ -36,16 +36,42 @@ PLAN:
 
 #include <iostream>
 
+int buildArray(int[]);
+bool largerThanRest(int);
+
 int main(int argc, char *argv[])
 {
     int array0[4], array1[4], array2[4], array3[4], array4[4];
+    int* winner = array0;
 
-    for (std::size_t i = 0; i < 5; i++) // Progress through ea line.
+    buildArray(array0);
+    buildArray(array1);
+    buildArray(array2);
+    buildArray(array3);
+    buildArray(array4);
+
+    for (std::size_t i = 0; i < 5; i++)
     {
-        for (std::size_t j = 0; j < 4; j++) // Progress through ea int.
+
+    }
+
+    return 0;
+}
+
+int buildArray(int array[])
+{
+    for (std::size_t i = 0; i < 4; i++) // Populating array
+    {
+        std::cin >> array[i];
+
+        if (i = 0)
         {
-            
+            array[4] = array[0];
+            continue;
+        }
+        else
+        {
+            array[4] = array[4] + array[i];
         }
     }
-    return 0;
 }
