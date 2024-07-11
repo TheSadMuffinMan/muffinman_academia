@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 
     for (std::size_t p = 0; p < numTrips; p++)
     {
-        std::cout << resultArray[p] << " ";
+        std::cout << resultArray[p] << std::endl;
     }
 
     return 0;
