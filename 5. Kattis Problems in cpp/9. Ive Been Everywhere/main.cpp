@@ -1,6 +1,6 @@
 // https://open.kattis.com/problems/everywhere
 /*
-7/11/24 Kinda works, problems iterating resultArray.
+7/11/24 Kinda works, problems iterating resultArray. This is a good one!
 
 TASK:
     Alice travels a lot for her work. Each time she travels, she visits a single city before returning home.
