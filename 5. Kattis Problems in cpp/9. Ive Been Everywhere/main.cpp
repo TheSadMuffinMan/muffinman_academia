@@ -16,7 +16,7 @@ INPUT:
         one letter, and do not contain spaces.
     The number of trips is at most 100 and no city name contains more than 20 characters.
 
-    Example1:
+    Example 1:
 2
 7
 saskatoon
@@ -35,9 +35,11 @@ OUTPUT:
     For each test case, simply output a single line containing a single integer that is the number of distinct cities
         that Alice has visited on her work trips.
     
-    Example1:
-    4
-    2
+    Example 1:
+        4
+        2
+
+    Example 2:
 */
 
 #include <iostream>
