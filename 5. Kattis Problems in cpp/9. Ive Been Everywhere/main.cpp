@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
                 continue;
             }
 
-            for (std::size_t k = 0; k < numCities; k++) // Compares currCity to ea string inside citiesArray.
+            for (std::size_t k = 0; k < (numCities - j); k++) // Compares currCity to ea string inside citiesArray.
             {
                 if (citiesArray[k] == currCity)
                 {
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
                 else if (citiesArray[k] == "x")
                 {
                     citiesArray[k] = currCity;
-                    resultArray[i] = i + 1;
+                    resultArray[i] = (resultArray[i] + 1);
                 }
             }
         }
@@ -90,7 +90,8 @@ int main(int argc, char *argv[])
 
     for (std::size_t p = 0; p < numTrips; p++)
     {
-        std::cout << resultArray[p] << std::endl;
+        std::cout << resultArray[p] << " ";
+        // std::cout << resultArray[p] << std::endl;
     }
 
     return 0;
