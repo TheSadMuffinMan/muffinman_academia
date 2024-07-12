@@ -1,18 +1,3 @@
-// https://open.kattis.com/problems/reversebinary
-/*
-7/11/24 Skipping. Way more difficult than I imagined.
-
-TASK:
-    Your task will be to write a program for reversing numbers in binary. For instance, the binary
-        representation of 13 is 1101, and reversing it gives 1011, which corresponds to number 11.
-
-INPUT:
-    The input contains a single line with an integer N(1 <= N <= 1,000,000,000).
-
-OUTPUT:
-    Output one line with one integer, the number we get by reversing the binary representation of N.
-*/
-
 #include <iostream>
 #include <string>
 

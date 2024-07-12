@@ -1,0 +1,10 @@
+https://open.kattis.com/problems/isyavowel
+
+6/28/24 COMPLETE, first try :D
+
+INPUT:
+    The single line of input contains a string of at least one and at most lowercase letters.
+
+OUTPUT:
+    Output two space-separated integers. The first is the number of vowels assuming y is not
+        a vowel, the second is the number of vowels assuming y is a vowel.

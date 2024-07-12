@@ -1,15 +1,3 @@
-// https://open.kattis.com/problems/nsum
-/*
-COMPLETE 6/27/24, first try.
-
-INPUT:
-    The first line of the input contains an integer N(2 < N < 10), the number of integers your program should add.
-    The next line contains the N integers to add, each between 0 and 1000.
-
-OUTPUT:
-    Output a single integer – the sum of the N integers from the input.
-*/
-
 #include <iostream>
 
 int main(int argc, char *argv[])

@@ -1,0 +1,13 @@
+https://open.kattis.com/problems/keysphonewallet
+
+6/28/24 COMPLETE, very first compilation worked :D
+
+INPUT:
+    The first line of input contains a single integer N(1 <= N <= 20) indicating the number of items you
+        grabbed before heading out the door. The next N lines each contain a single nonempty string of
+        lowercase letters with length at most 10 indicating an item you grabbed before heading out the
+        door. No two strings will be the same.
+
+OUTPUT:
+    Output each of keys, phone, and wallet that does not appear in the input, one per line and in alphabetic
+        order. If you did not forget any of these items, simply print a single line with the text "ready".

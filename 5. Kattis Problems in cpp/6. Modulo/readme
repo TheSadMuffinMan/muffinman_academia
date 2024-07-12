@@ -1,0 +1,12 @@
+https://open.kattis.com/problems/modulo
+
+6/28/24 COMPLETE
+
+INPUT:
+    The input will contain 10 non-negative integers, each smaller than 1000, one per line.
+
+OUTPUT:
+    Output the number of distinct values when considered modulo 42 on a single line.
+
+    Program wants you to perform Modulus (%) on each of the 10 input ints, and then return
+        the number of unique ints from each Modulus operation.

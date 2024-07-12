@@ -1,38 +1,3 @@
-// https://open.kattis.com/problems/pet
-/*
-7/11/24 COMPLETE, first try :D
-
-TASK:
-    In the popular show “Dinner for Five”, five contestants compete in preparing culinary delights. Every
-        evening one of them makes dinner and each of other four then grades it on a scale from 1 to 5. The
-        number of points a contestant gets is equal to the sum of grades they got. The winner of the show
-        is the contestant that gets the most points.
-
-    Write a program that determines the currLargest and how many points they got.
-
-INPUT:
-    Five lines, each containing 4 integers, the grades a contestant got. The contestants are numbered 1 to
-        5 in the order in which their grades were given.
-
-    Example 1:
-        5 4 4 5
-        5 4 4 4
-        5 5 4 4
-        5 5 5 4
-        4 4 4 5
-
-OUTPUT:
-    Output on a single line the currLargest’s number and their points, separated by a space. The input data will
-        guarantee that the solution is unique.
-
-    Example 1:
-        4 19
-
-PLAN:
-    Build 5 arrays of 6 ints. First int identifies which contestant it is, next 4 are scores, and last int is
-        the contestant's total score.
-*/
-
 #include <iostream>
 
 int buildArray(int, int[]);
