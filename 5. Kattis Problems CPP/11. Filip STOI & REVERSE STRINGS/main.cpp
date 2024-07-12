@@ -5,7 +5,7 @@ int main(int argc, char *argv[])
     std::string iN1, iN2;
     std::cin >> iN1 >> iN2;
 
-    std::string rN1(iN1.rbegin(), iN1.rend()), rN2(iN2.rbegin(), iN2.rend()); // Known as Reverse Iterators
+    std::string rN1(iN1.rbegin(), iN1.rend()), rN2(iN2.rbegin(), iN2.rend()); // Known as Reversing Iterators
     // ^ Found @ https://www.geeksforgeeks.org/reverse-a-string-in-c-cpp-different-methods/
     // ^^ Other methods include recursive, pointers, diff. libraries, char stacks, looping, etc..
 
