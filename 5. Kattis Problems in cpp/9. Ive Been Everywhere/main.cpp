@@ -17,19 +17,19 @@ INPUT:
     The number of trips is at most 100 and no city name contains more than 20 characters.
 
     Example1:
-        2
-        7
-        saskatoon
-        toronto
-        winnipeg
-        toronto
-        vancouver
-        saskatoon
-        toronto
-        3
-        edmonton
-        edmonton
-        edmonton
+2
+7
+saskatoon
+toronto
+winnipeg
+toronto
+vancouver
+saskatoon
+toronto
+3
+edmonton
+edmonton
+delta
 
 OUTPUT:
     For each test case, simply output a single line containing a single integer that is the number of distinct cities
@@ -37,7 +37,7 @@ OUTPUT:
     
     Example1:
     4
-    1
+    2
 */
 
 #include <iostream>
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
                 continue;
             }
 
-            for (std::size_t k = 0; k < (numCities - j); k++) // Compares currCity to ea string inside citiesArray.
+            for (std::size_t k = 0; k < numCities; k++) // Compares currCity to ea string inside citiesArray.
             {
                 if (citiesArray[k] == currCity)
                 {
@@ -83,6 +83,7 @@ int main(int argc, char *argv[])
                 {
                     citiesArray[k] = currCity;
                     resultArray[i] = (resultArray[i] + 1);
+                    break;
                 }
             }
         }
