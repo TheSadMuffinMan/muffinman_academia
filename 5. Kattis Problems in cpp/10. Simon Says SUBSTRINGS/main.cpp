@@ -8,17 +8,21 @@ int main(int argc, char *argv[])
     std::cin >> numCommands;
     std::cin.ignore(1);
 
-    std::string printArray[numCommands];
     std::size_t numGoodSimons = 0;
+    std::string printArray[numCommands];
+    for (std::size_t x = 0; x < numCommands; x++) // Filling printArray with "x"s.
+    {
+        printArray[x] = "x";
+    }
 
     for (std::size_t i = 0; i < numCommands; i++)
     {
         std::string inputString;
         std::getline(std::cin, inputString);
 
-        if (inputString.substr(simonSize) == "Simon says") // Populating printArray.
+        if (inputString.substr(0, simonSize) == "Simon says") // Populating printArray.
         {
-            printArray[i] = inputString;
+            printArray[numGoodSimons] = inputString.substr(simonSize);
             numGoodSimons++;
         }
         else {continue;}
@@ -26,13 +30,8 @@ int main(int argc, char *argv[])
 
     for (std::size_t j = 0; j < numGoodSimons; j++)
     {
-        std::string printStatement = printArray[j].substr(simonSize);
-
-        std::cout << "***DEBUG***1" << printStatement << std::endl;
+        std::cout << printArray[j] << std::endl;
     }
-
-    std::cout << "***DEBUG***2" << std::endl;
-
 
     return 0;
 }
