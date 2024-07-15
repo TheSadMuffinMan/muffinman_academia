@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
         stringEndPos = inputString.find(' ', stringStartPos);
         std::string indivWord = inputString.substr(stringStartPos, (stringEndPos - stringStartPos));
         
-        for (std::size_t j = 0; j < indivWord.size(); j++) // Sanitizing string.
+        for (std::size_t j = 0; j < indivWord.size(); j++) // Sanitizing string to ALL CAPS.
         {
             indivWord.at(j) = toupper(indivWord.at(j));
         }
@@ -36,20 +36,31 @@ int main(int argc, char *argv[])
         {
             break;
         }
-        // WORKING AS INTENDED TO THIS POINT.s
     }
 
-    // std::cout << "***DEBUG*** numWords: " << numWords << std::endl;
-    // std::cout << "***DEBUG*** inputString.size(): " << inputString.size() << std::endl;
-
-    for (std::size_t i = 0; i < maxSize; i++)
+    bool hasRepeat = false;
+    // Comparing ea word to every other word inside wordArray.
+    for (std::size_t i = 0; i < numWords; i++) // First loop pulls indiv word.
     {
-        if (wordArray[i] != "x")
+        std::string compareWord = wordArray[i];
+
+        for (std::size_t j = 0; j < numWords; j++) // Second loop compares indiv word to every other word.
         {
-            std::cout << wordArray[i] << std::endl;
+            if (j == i) // Skipping the indiv word itself inside wordArray.
+            {
+                continue;
+            }
+
+            if (compareWord == wordArray[j])
+            {
+                hasRepeat = true;
+                break;
+            }
         }
     }
 
-    std::cout << "\nEnd of program." << std::endl;
+    if (hasRepeat == true) {std::cout << "no" << std::endl;}
+    else {std::cout << "yes" << std::endl;}
+
     return 0;
 }
