@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
         stringStartPos = (stringEndPos + 1);
         // WORKING AS INTENDED TO THIS POINT.
 
-        if (stringStartPos > inputString.size())
+        if (stringStartPos >= inputString.size())
         {
             break;
         }
@@ -52,5 +52,6 @@ int main(int argc, char *argv[])
         }
     }
 
+    std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
