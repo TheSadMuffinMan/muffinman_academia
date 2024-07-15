@@ -1,0 +1,33 @@
+https://open.kattis.com/problems/easiest
+
+7/15/24 working on
+
+TASK:
+    Some people think this is the easiest problem in today’s problem set. Some people think otherwise, since it involves sums
+        of digits of numbers and that’s difficult to grasp.
+    If we multiply a number 'N' with another number 'M', the sum of digits typically changes. For example, if M=26 and N=3029,
+        then (N*M) = 78,754 and the sum of the digits is 31, while the sum of digits of 'N' is 14.
+    However, there are some numbers that if multiplied by 'N' will result in the same sum of digits as the original number 'N'.
+        For example, consider M=37 & N=3029, then (N*M) = 112,073 which has sum of digits 14, same as the sum of digits of 'N'.
+    Your task is to find the smallest positive integer 'p' among those that will result in the same sum of the digits when
+        multiplied by 'N'. To make the task a little bit more challenging, the number must also be higher than ten.
+
+INPUT:
+    The input consists of several test cases. Each case is described by a single line containing one positive integer number
+        'N', 1 <= N <= 100,000. The last test case is followed by a line containing zero.
+
+    Example 1:
+3029
+4
+5
+42
+0
+
+OUTPUT:
+    For each test case, print one line with a single integer number 'p' which is the minimal number such that (N*p) has the same sum of digits as 'N' and 'p' is bigger than 10.
+
+    Example 1:
+37
+28
+28
+25
