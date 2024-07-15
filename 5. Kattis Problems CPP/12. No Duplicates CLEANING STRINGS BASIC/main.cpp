@@ -26,23 +26,21 @@ int main(int argc, char *argv[])
         {
             indivWord.at(j) = toupper(indivWord.at(j));
         }
+        
+        stringStartPos = (stringEndPos + 1);
 
         wordArray[i] = indivWord;
         numWords++;
-        stringStartPos = (stringEndPos + 1);
-        // WORKING AS INTENDED TO THIS POINT.
 
-        if (stringStartPos >= inputString.size())
+        if (stringEndPos >= inputString.size())
         {
             break;
         }
+        // WORKING AS INTENDED TO THIS POINT.s
     }
 
-    std::cout << "***DEBUG*** numWords: " << numWords << std::endl;
-    std::cout << "***DEBUG*** inputString.size(): " << inputString.size() << std::endl;
-
-    std::cout << "\nEnd of program." << std::endl;
-    return 0;
+    // std::cout << "***DEBUG*** numWords: " << numWords << std::endl;
+    // std::cout << "***DEBUG*** inputString.size(): " << inputString.size() << std::endl;
 
     for (std::size_t i = 0; i < maxSize; i++)
     {
