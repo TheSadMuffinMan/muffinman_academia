@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
     inputAngle = (inputAngle * (pi/180));
 
     double result = (inputHeight / sin(inputAngle));
-    result = std::round(result);
+    result = std::ceil(result); // Other rounding methods include std::round() & std::floor(). 
 
     std::cout << result << std::endl;
     
