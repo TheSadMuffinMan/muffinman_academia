@@ -1,6 +1,6 @@
 https://open.kattis.com/problems/nodup
 
-7/12/24 working on
+7/15/24 working on. wordArray is overpopulating :(
 
 TASK:
     There is a game in which you try not to repeat a word while your opponent tries to see if you have repeated one.
