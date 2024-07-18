@@ -23,9 +23,16 @@ int main(int argc, char *argv[])
         std::cin >> inputNum;
         inputArray[arrayIndex] = inputNum;
         arrayIndex++;
-
-        if (arrayIndex >= maxSize) {break;}
     }
+
+    // ***DEBUGGING***
+    // for (std::size_t t = 0; t < maxSize; t++)
+    // {
+    //     if (inputArray[t] == 0) {break;}
+
+    //     std::cout << "***DEBUG*** inputArray[" << t << "]: " << inputArray[t] << std::endl;
+    // }
+    // Working as intended to this point.
 
     int sumsArray[maxSize];
     for (std::size_t x = 0; x < maxSize; x++) // Populating sumsArray.
@@ -41,13 +48,13 @@ int main(int argc, char *argv[])
     }
 
     arrayIndex = 0;
-    while (inputArray[arrayIndex] != 0)
+    for (std::size_t i = 0; i < maxSize; i++)
     {
         int startNum = 10;
-        bool foundNum = false;
-        while (foundNum = false)
+        while (true)
         {
             int resultNum = findSum(startNum, inputTestNum);
+
             if (resultNum == sumsArray[arrayIndex])
             {
                 std::cout << resultNum << std::endl;
@@ -58,6 +65,7 @@ int main(int argc, char *argv[])
             {
                 startNum++;
                 arrayIndex++;
+                continue;
             }
         }
     }
