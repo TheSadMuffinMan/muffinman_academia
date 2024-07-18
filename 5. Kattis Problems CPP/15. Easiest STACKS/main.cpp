@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stack>
 
+int findSum(int);
 int findSum(int, int);
 
 int main(int argc, char *argv[])
@@ -8,6 +9,8 @@ int main(int argc, char *argv[])
     const std::size_t maxSize = 100;
     int inputTestNum = 0;
     std::cin >> inputTestNum;
+    const int targetNum = findSum(inputTestNum);
+    
 
     int inputArray[maxSize];
     for (std::size_t x = 0; x < maxSize; x++) // Populating array.
@@ -25,21 +28,6 @@ int main(int argc, char *argv[])
         arrayIndex++;
     }
 
-    int sumsArray[maxSize];
-    for (std::size_t x = 0; x < maxSize; x++) // Populating sumsArray.
-    {
-        sumsArray[x] = 0;
-    }
-
-    arrayIndex = 0;
-    while (inputArray[arrayIndex] != 0)
-    {
-        sumsArray[arrayIndex] = findSum(inputTestNum, inputArray[arrayIndex]);
-        // ***DEBUG***
-        std::cout << "***DEBUG*** sumsArray[" << arrayIndex << "]: " << sumsArray[arrayIndex] << std::endl;
-        arrayIndex++;
-    }
-
     for (std::size_t i = 0; i < maxSize; i++)
     {
         int startNum = 10;
@@ -47,15 +35,13 @@ int main(int argc, char *argv[])
         {
             int resultNum = findSum(startNum, inputTestNum);
 
-            if (resultNum == sumsArray[i])
+            if (resultNum == targetNum)
             {
                 std::cout << startNum << std::endl;
                 break;
             }
             else {startNum++;}
         }
-
-        if (sumsArray[i] == 0) {break;}
     }
 
     
@@ -63,7 +49,29 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-// Function multiplies num1 and num2 to result in num3, then returns the sum of all the digits in num3.
+// Function returns the sum of all digits inside of passed int.
+int findSum(int inputNum)
+{
+    std::stack<int> workingStack;
+
+    while (inputNum > 0)
+    {
+        int indivDigit = (inputNum % 10);
+        inputNum /= 10;
+        workingStack.push(indivDigit);
+    }
+
+    int returnNum = 0;
+    while (!workingStack.empty())
+    {
+        returnNum = (returnNum + workingStack.top());
+        workingStack.pop();
+    }
+
+    return returnNum;
+}
+
+// Overloaded function that multiplies num1 and num2 to result in num3, then returns the sum of all the digits in num3.
 int findSum(int num1, int num2)
 {
     std::stack<int> workingStack; // Stack to hold indiv digits.
@@ -85,3 +93,18 @@ int findSum(int num1, int num2)
 
     return returnSum;
 }
+
+/*
+    int sumsArray[maxSize];
+    for (std::size_t x = 0; x < maxSize; x++) // Populating sumsArray.
+    {
+        sumsArray[x] = 0;
+    }
+
+    arrayIndex = 0;
+    while (inputArray[arrayIndex] != 0)
+    {
+        sumsArray[arrayIndex] = findSum(inputTestNum, inputArray[arrayIndex]);
+        arrayIndex++;
+    }
+*/
