@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stack>
 
 int main(int argc, char *argv[])
 {
@@ -30,10 +31,14 @@ int main(int argc, char *argv[])
         resultArray[x] = 0;
     }
 
+    std::stack<double> workingStack;
     arrayIndex = 0;
     while (inputArray[arrayIndex] != 0)
     {
         double testXinput = (testNum * inputArray[arrayIndex]);
+        double textXinputTotal = 0;
+
+        //
     }
 
     
