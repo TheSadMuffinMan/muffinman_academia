@@ -6,8 +6,8 @@ int findSum(int, int);
 int main(int argc, char *argv[])
 {
     const std::size_t maxSize = 100;
-    int testNum = 0;
-    std::cin >> testNum;
+    int inputTestNum = 0;
+    std::cin >> inputTestNum;
 
     int inputArray[maxSize];
     for (std::size_t x = 0; x < maxSize; x++) // Populating array.
@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
         if (arrayIndex >= maxSize) {break;}
     }
 
-    double sumsArray[maxSize];
+    int sumsArray[maxSize];
     for (std::size_t x = 0; x < maxSize; x++) // Populating sumsArray.
     {
         sumsArray[x] = 0;
@@ -36,7 +36,30 @@ int main(int argc, char *argv[])
     arrayIndex = 0;
     while (inputArray[arrayIndex] != 0)
     {
-        //
+        sumsArray[arrayIndex] = findSum(inputTestNum, inputArray[arrayIndex]);
+        arrayIndex++;
+    }
+
+    arrayIndex = 0;
+    while (inputArray[arrayIndex] != 0)
+    {
+        int startNum = 10;
+        bool foundNum = false;
+        while (foundNum = false)
+        {
+            int resultNum = findSum(startNum, inputTestNum);
+            if (resultNum == sumsArray[arrayIndex])
+            {
+                std::cout << resultNum << std::endl;
+                arrayIndex++;
+                break;
+            }
+            else
+            {
+                startNum++;
+                arrayIndex++;
+            }
+        }
     }
 
     
