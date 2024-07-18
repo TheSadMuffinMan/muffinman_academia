@@ -2,14 +2,38 @@
 
 int main(int argc, char *argv[])
 {
-    const int maxSize = 100;
-    int mainNum = 0;
-    std::cin >> mainNum;
+    const std::size_t maxSize = 100;
+    int testNum = 0;
+    std::cin >> testNum;
 
-    int numArray[maxSize];
-    for (std::size_t x = 0; x < maxSize, x++;) // Populating array.
+    double inputArray[maxSize];
+    for (std::size_t x = 0; x < maxSize; x++) // Populating array.
     {
-        numArray[x] = 0;
+        inputArray[x] = 0;
+    }
+
+    std::size_t arrayIndex = 0;
+    double inputNum = -1;
+
+    while (inputNum != 0)
+    {
+        std::cin >> inputNum;
+        inputArray[arrayIndex] = inputNum;
+        arrayIndex++;
+
+        if (arrayIndex >= maxSize) {break;}
+    }
+
+    double resultArray[maxSize];
+    for (std::size_t x = 0; x < maxSize; x++) // Populating resultArray.
+    {
+        resultArray[x] = 0;
+    }
+
+    arrayIndex = 0;
+    while (inputArray[arrayIndex] != 0)
+    {
+        double testXinput = (testNum * inputArray[arrayIndex]);
     }
 
     
