@@ -25,15 +25,6 @@ int main(int argc, char *argv[])
         arrayIndex++;
     }
 
-    // ***DEBUGGING***
-    // for (std::size_t t = 0; t < maxSize; t++)
-    // {
-    //     if (inputArray[t] == 0) {break;}
-
-    //     std::cout << "***DEBUG*** inputArray[" << t << "]: " << inputArray[t] << std::endl;
-    // }
-    // Working as intended to this point.
-
     int sumsArray[maxSize];
     for (std::size_t x = 0; x < maxSize; x++) // Populating sumsArray.
     {
@@ -44,10 +35,11 @@ int main(int argc, char *argv[])
     while (inputArray[arrayIndex] != 0)
     {
         sumsArray[arrayIndex] = findSum(inputTestNum, inputArray[arrayIndex]);
+        // ***DEBUG***
+        std::cout << "***DEBUG*** sumsArray[" << arrayIndex << "]: " << sumsArray[arrayIndex] << std::endl;
         arrayIndex++;
     }
 
-    arrayIndex = 0;
     for (std::size_t i = 0; i < maxSize; i++)
     {
         int startNum = 10;
@@ -55,19 +47,15 @@ int main(int argc, char *argv[])
         {
             int resultNum = findSum(startNum, inputTestNum);
 
-            if (resultNum == sumsArray[arrayIndex])
+            if (resultNum == sumsArray[i])
             {
-                std::cout << resultNum << std::endl;
-                arrayIndex++;
+                std::cout << startNum << std::endl;
                 break;
             }
-            else
-            {
-                startNum++;
-                arrayIndex++;
-                continue;
-            }
+            else {startNum++;}
         }
+
+        if (sumsArray[i] == 0) {break;}
     }
 
     
