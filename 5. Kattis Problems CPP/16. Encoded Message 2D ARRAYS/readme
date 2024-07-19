@@ -4,6 +4,8 @@ https://open.kattis.com/problems/encodedmessage
 
 Plan/Notes in iCloud//1. College/1. Computer Science/2. Kattis Problems
 
+Program only "decrypts" each line. Does NOT apply decryption to entire string.
+
 TASK:
     Alex wants to send a love poem to his girlfriend Bridget. Unfortunately, she has a nosy friend, Ellen, who might intercept
         his message and invade their privacy.
