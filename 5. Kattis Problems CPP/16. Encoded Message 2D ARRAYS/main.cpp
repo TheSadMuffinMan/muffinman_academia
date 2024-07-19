@@ -17,12 +17,13 @@ int main(int argc, char *argv[])
     {
         getline(std::cin, inputStringArray[i]);
     }
-    // WORKING AS INTENDED TO THIS POINT.
+    
+    for (std::size_t i = 0; i < numLines; i++)
+    {
+        decryptString(inputStringArray[i]);
+        std::cout << std::endl;
+    }
 
-    decryptString(inputStringArray[0]);
-
-
-    std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
 
@@ -49,7 +50,7 @@ void decryptString(std::string inputString)
     }
 
     // Long story short.. You gotta use integers here because of size_t's sign properties.
-    for (int y = (twoDArraySize - 1); y >= 0; y--)
+    for (int y = (int(twoDArraySize) - 1); y >= 0; y--)
     {
         for (int x = 0; x < int(twoDArraySize); x++)
         {
