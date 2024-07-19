@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stack>
 
-int findSum(int);
+int findSumOfDigits(int);
 int findSum(int, int);
 
 int main(int argc, char *argv[])
@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
     const std::size_t maxSize = 100;
     int inputTestNum = 0;
     std::cin >> inputTestNum;
-    const int targetNum = findSum(inputTestNum);
+    const int targetNum = findSumOfDigits(inputTestNum);
     std::cout << "***DEBUG*** targetNum: " << targetNum << std::endl;
     
 
@@ -35,14 +35,14 @@ int main(int argc, char *argv[])
 
         while (true)
         {
-            int resultNum = findSum(startNum * inputTestNum);
+            int resultNum = findSumOfDigits(startNum * inputTestNum);
 
             if (resultNum == targetNum)
             {
                 std::cout << startNum << std::endl;
                 break;
             }
-            else {startNum++;}
+            else {startNum++; continue;}
         }
     }
 
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
 }
 
 // WORKING. Function returns the sum of all digits inside of passed int.
-int findSum(int inputNum)
+int findSumOfDigits(int inputNum)
 {
     std::stack<int> workingStack;
 
@@ -71,11 +71,4 @@ int findSum(int inputNum)
     }
 
     return returnNum;
-}
-
-// Overloaded function that multiplies num1 and num2 to result in num3, then returns the sum of all the digits in num3.
-int findSum(int num1, int num2)
-{
-    int returnSum = findSum(num1 * num2);
-    return returnSum;
 }
