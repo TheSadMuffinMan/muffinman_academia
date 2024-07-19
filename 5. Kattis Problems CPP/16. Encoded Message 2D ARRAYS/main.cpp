@@ -35,11 +35,6 @@ std::size_t twoDSize(std::string inputString)
 
 void decryptString(std::string inputString)
 {
-    // Determine array "square size".
-    // Split input string into equal substrings.
-    // Populate 2D array with each substring.
-    // Walk backwards through 2D array and print ea. char.
-
     std::size_t twoDArraySize = twoDSize(inputString);
 
     char charArray[twoDArraySize][twoDArraySize];
@@ -52,30 +47,13 @@ void decryptString(std::string inputString)
             arrayIndex++;
         }
     }
-    // FUNCTION WORKING AS INTENDED TO THIS POINT.
 
-    // DEBUGGING
-    for (std::size_t x = 0; x < twoDArraySize; x++)
+    // Long story short.. You gotta use integers here because of size_t's sign properties.
+    for (int y = (twoDArraySize - 1); y >= 0; y--)
     {
-        for (std::size_t y = 0; y < twoDArraySize; y++)
+        for (int x = 0; x < int(twoDArraySize); x++)
         {
-            std::cout << "(" << x << "," << y << "): " << charArray[x][y] << " ";
+            std::cout << charArray[x][y];
         }
-        std::cout << std::endl;
     }
-
-    std::cout << "\n***DEBUGGING***\n" <<std::endl;
-
-    std::cout << charArray[0][2] << charArray[1][2] << charArray[2][2] << std::endl;
-
-    // for (std::size_t x = 0; x < twoDArraySize; x++)
-    // {
-    //     for (std::size_t y = twoDArraySize; y > 0; y--)
-    //     {
-    //         std::cout << charArray[x][y] << " ";
-    //     }
-
-    //     std::cout << std::endl;
-    // }
-
 }
