@@ -59,20 +59,23 @@ void decryptString(std::string inputString)
     {
         for (std::size_t y = 0; y < twoDArraySize; y++)
         {
-            std::cout << charArray[x][y] << " ";
+            std::cout << "(" << x << "," << y << "): " << charArray[x][y] << " ";
         }
-
         std::cout << std::endl;
     }
 
-    for (std::size_t x = twoDArraySize; x > 0; x--)
-    {
-        for (std::size_t y = 0; y < twoDArraySize; y++) // (std::size_t y = twoDArraySize; y > 0; y--)
-        {
-            std::cout << charArray[x][y] << " ";
-        }
+    std::cout << "\n***DEBUGGING***\n" <<std::endl;
 
-        std::cout << std::endl;
-    }
+    std::cout << charArray[0][2] << charArray[1][2] << charArray[2][2] << std::endl;
+
+    // for (std::size_t x = 0; x < twoDArraySize; x++)
+    // {
+    //     for (std::size_t y = twoDArraySize; y > 0; y--)
+    //     {
+    //         std::cout << charArray[x][y] << " ";
+    //     }
+
+    //     std::cout << std::endl;
+    // }
 
 }
