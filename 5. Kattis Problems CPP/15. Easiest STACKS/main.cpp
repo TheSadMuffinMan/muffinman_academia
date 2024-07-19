@@ -2,7 +2,6 @@
 #include <stack>
 
 int findSumOfDigits(int);
-int findSum(int, int);
 
 int main(int argc, char *argv[])
 {
@@ -35,14 +34,17 @@ int main(int argc, char *argv[])
 
         while (true)
         {
-            int resultNum = findSumOfDigits(startNum * inputTestNum);
+            int resultNum = findSumOfDigits(inputTestNum * startNum);
+            // ***DEBUG***
+            std::cout << "***DEBUG*** resultNum: " << resultNum << std::endl;
 
             if (resultNum == targetNum)
             {
                 std::cout << startNum << std::endl;
                 break;
             }
-            else {startNum++; continue;}
+            
+            startNum++;
         }
     }
 

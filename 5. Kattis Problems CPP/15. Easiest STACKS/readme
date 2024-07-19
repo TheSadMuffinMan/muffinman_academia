@@ -1,6 +1,6 @@
 https://open.kattis.com/problems/easiest
 
-7/15/24 working on
+7/19/24 Given up. I know that I can do this problem, but I don't understand what the directions are asking.
 
 TASK:
     Some people think this is the easiest problem in today’s problem set. Some people think otherwise, since it involves sums
@@ -24,7 +24,8 @@ INPUT:
 0
 
 OUTPUT:
-    For each test case, print one line with a single integer number 'p' which is the minimal number such that (N*p) has the same sum of digits as 'N' and 'p' is bigger than 10.
+    For each test case, print one line with a single integer number 'p' which is the minimal number such that (N*p) has the
+        same sum of digits as 'N', and with 'p' being bigger than 10.
 
     Example 1:
 37
