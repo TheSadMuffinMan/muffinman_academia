@@ -2,6 +2,7 @@
 #include <sstream>
 #include <vector>
 #include <cmath>
+#include <typeinfo>
 
 int main(int argc, char *argv[])
 {
@@ -17,17 +18,19 @@ int main(int argc, char *argv[])
 
         sstream << input;
         sstream >> num1 >> num2;
+        std::cout << "Num1: " << typeid(num1).name() << std::endl;
         // WORKING AS INTENDED TO THIS POINT.
-        // std::cout << "Num1: " << num1 << "Num2: " << num2 << std::endl;
 
-        inputVector.at(vectorIterator) = num1;
-        inputVector.at(vectorIterator + 1) = num2;
+        inputVector[vectorIterator] = num1;
+        inputVector[vectorIterator + 1] = num2;
         vectorIterator = (vectorIterator + 2);
+
+        std::cout << "***DEBUG*** Seen?" << std::endl;
     }
     std::size_t oldVectorIterator = vectorIterator;
 
     vectorIterator = 0;
-    while (vectorIterator < oldVectorIterator)
+    while (vectorIterator <= oldVectorIterator)
     {
         int inputNumerator, denominator;
         inputNumerator = inputVector.at(vectorIterator);
