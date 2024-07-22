@@ -19,7 +19,6 @@ int main(int argc, char *argv[])
         sstream << input;
         sstream >> num1 >> num2;
         // std::cout << "Num1: " << typeid(num1).name() << std::endl; // See more in "0. General Knowledge"
-        // WORKING AS INTENDED TO THIS POINT.
 
         inputVector.push_back(num1);
         vectorIterator++;
@@ -28,25 +27,22 @@ int main(int argc, char *argv[])
         vectorIterator++;
     }
 
-    for (std::size_t i = 0; i < inputVector.size(); i++)
+    std::size_t elementsInVector = vectorIterator;
+    vectorIterator = 0;
+    while (vectorIterator < elementsInVector)
     {
-        std::cout << "***DEBUG*** inputVector[" << i << "]: " << inputVector.at(i) << std::endl;
+        int inputNumerator, denominator;        
+        inputNumerator = inputVector.at(vectorIterator);
+        denominator = inputVector.at(vectorIterator + 1);
+
+        if (denominator == 0) {break;}
+
+        int wholeNum = std::floor(inputNumerator / denominator);
+        int newNumerator = (inputNumerator % denominator);
+
+        std::cout << wholeNum << " " << newNumerator << " / " << denominator << std::endl;
+        vectorIterator = (vectorIterator + 2);
     }
-
-    // vectorIterator = 0;
-    // while (vectorIterator <= oldVectorIterator)
-    // {
-    //     int inputNumerator, denominator;
-    //     inputNumerator = inputVector.at(vectorIterator);
-    //     denominator = inputVector.at(vectorIterator + 1);
-
-    //     int wholeNum = std::floor(inputNumerator / denominator);
-    //     int newNumerator = (inputNumerator % denominator);
-
-    //     std::cout << wholeNum << " " << newNumerator << " / " << denominator << std::endl;
-    //     vectorIterator = (vectorIterator + 2);
-    // }
     
-    std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
