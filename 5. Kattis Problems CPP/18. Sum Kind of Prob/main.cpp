@@ -1,6 +1,6 @@
 #include <iostream>
 
-int64_t* buildFibonacci(int64_t*, int);
+int64_t calculateFactorial(int64_t*, int);
 
 int main(int argc, char *argv[])
 {
@@ -18,28 +18,34 @@ int main(int argc, char *argv[])
         std::cin >> currNum;
         currArray[i] = currNum;
 
-        if (currNum > largestInput) // largestNum is used later in Fibonacci Array.
+        if (currNum > largestInput) // largestNum is used later in Factorial Array.
         {
             largestInput = currNum;
         }
     }
 
     // This array is indexed - array[0] represents 0, array[1] == 1, array[2] == 2, etc.
-    int64_t fibonacciArray[largestInput];
-    for (std::size_t x = 0; x < largestInput; x++) {fibonacciArray[x] = 0;} // Populating.
+    int64_t factorialArray[largestInput];
+    for (std::size_t x = 0; x < largestInput; x++) {factorialArray[x] = 0;} // Populating.
+
+    for (int i = 1; i < largestInput; i++)
+    {
+        factorialArray[i] = calculateFactorial(factorialArray, i);
+    }
+
+    std::cout << std::endl;
+    for (std::size_t i = 0; i < largestInput; i++)
+    {
+        std::cout << "***DEBUG*** fibArray[" << i << "]: " << factorialArray[i] << std::endl;
+    }
     
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
 
-// Input largest num to populate Fibonacci Array to largest num.
-int64_t* buildFibonacci(int64_t* intArray, int largestInt)
+// Must be used sequentially (meant for a for loop).
+// Returns the result as an int64_t.
+int64_t calculateFactorial(int64_t* factorialArray, int targetInt)
 {
-    // Array starts at 0, which allows for initial edge case to be avoided.
-    for (std::size_t i = 0; i < largestInt; i++)
-    {
-        intArray[i] = intArray[i - 1] + intArray[i]; 
-    }
-
-    return intArray;
+    return (factorialArray[(targetInt - 1)] + targetInt);
 }
