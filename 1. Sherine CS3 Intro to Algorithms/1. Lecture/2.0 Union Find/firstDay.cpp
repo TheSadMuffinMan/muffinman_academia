@@ -18,7 +18,8 @@ Assessments - Will be group work. Will have two groups - coding groups and theor
 Teamwork is a must, as that is how you will work as professionals.
 
 Expectations:
-LaTeX is the standard. ***NEED TO RESEARCH*** is on D2L. Any kind of handwriting will be digital (use iPad).
+LaTeX is the standard. ***NEED TO RESEARCH*** (is on D2L).
+Any kind of handwriting will be digital (use iPad).
 Proper writing/English is required. Just don't be an idiot when typing.
 
 This course aims to change us from code writers into programmers.
@@ -30,21 +31,21 @@ Do NOT use AI. (It's worthless anyways lol)
 
 Office Hours:
 1300-1500 (Monday), 1300-1400 (Wed), 0900-1100 (Friday)
-Will require an appointment (because his CS1 & 2 classes are MASSIVE).
+Will require an appointment (because his CS1&2 classes are MASSIVE).
 
 Tech synergy happens on Wednesdays at 1600.
 
 Spend time on Week 1 - LaTeX
 Code should be styled nicely. Brackets should line up with ea/other.
-*** Learn Doxygen Comments (Is an organizational type I think).
+***Learn Doxygen Comments (Is an organizational type I think).
 Examples of LaTeX code can be found in D2L Week 1.
 
 The scientific model approach to problems is how we will be attacking problems this semester.
-Header files will be treated the same way that Bergen treated them - don't touch em!
+Header files will be treated the same way that Bergen treated them - don't touch 'em!
 */
 
-/* ACTUAL LEARNING START
-1.5: Union-Find & Dynamic Connectivity Problem
+/* ACTUAL LECTURE START
+CHAPTER/UNIT 1.5: Union-Find & Dynamic Connectivity Problem
 
 Dynamic Connectivity Problem: Given a set of N objects, supports two operations.
     Connect two objects.
@@ -57,6 +58,7 @@ Dynamic Connectivity Problem: Given a set of N objects, supports two operations.
 Questions to ask:
     Are 0 and 7 connected? NO
     Are 8 and 9 connected? YES
+    etc
 
 Applications of Union-Find:
     Pixels in a digital photo.
@@ -96,7 +98,7 @@ Data structure:
     Interpretation: id[p] is the id of the component containing p.
 
         0   1   2   3   4   5   6   7   8   9
-id[]    0   1   1   8   8   0   0   1   8   8
+id[]:   0   1   1   8   8   0   0   1   8   8
 
 Find- What is the id of p?  id[6] = 0; id[1] = 1.
 Connected - do p and q have the same id? 6 and 1 are not connected.
