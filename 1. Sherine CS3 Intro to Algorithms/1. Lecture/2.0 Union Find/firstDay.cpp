@@ -102,4 +102,24 @@ id[]:   0   1   1   8   8   0   0   1   8   8
 
 Find- What is the id of p?  id[6] = 0; id[1] = 1.
 Connected - do p and q have the same id? 6 and 1 are not connected.
+
+This approach is problematic with large data sets because there can be too many values to change at one time.
+For the union of 5 and 6, the below array changes to...
+        0   1   2   3   4   5   6   7   8   9
+id[]:   0   1   2   3   4   5   6   7   8   9
+        CHANGED TO.... [union5,6]
+        0   1   2   3   4   5   6   7   8   9
+id[]:   0   1   2   3   4   5   5   7   8   9
+The key starting point to union-find is initializing the array with proper increments inside (0,1,2,3...).
+
+Quick-Find implementation is in Sherine's Lecture.
+*/
+
+/*
+Sherine wants us to be at Tech Snyergy to help set up coding environment. LLVM compilor is the end goal.
+    Is worth 3% extra credit if you finish in any place other than last.
+
+Any code you write must be your own writing.
+Cmath, Clib, iostream (but no sorting), cmath, and cstring.
+    If you need to resize an array, you do it yourself.
 */
