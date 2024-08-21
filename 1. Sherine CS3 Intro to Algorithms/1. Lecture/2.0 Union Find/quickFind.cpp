@@ -46,4 +46,8 @@ class QuickFindUF
     10^9 operations for 10^9 data set.
     For single queries, the quick find algorithm is linear.
 
+Defects of quick-find:
+    Union operation is too expensive (N array accesses).
+    Trees are flat, but it is too expensive to keep them flat.
+
 */
