@@ -45,8 +45,40 @@ WEIGHTED QUICK-UNION:
 Running Time.
     Find: Takes time proportional to depth of p.
         Depth of any nore x is at most lg(N).
-            Is essentially repetitively dividing by 2.
+            Is essentially repetitively dividing by 2, which is very good for run time improvements.
     Union: takes constant time, given roots.
+
+We can still improve this further though!
+*/
+
+/*
+QUICK UNION WITH PATH COMPRESSION
+Just after computing the root of p, set the id[] of each examined node to point to that root.
+    More or less, each node will have an additional data member that points back to the root of the tree.
+
+Bottom Line:
+    Now, the find() function automatically flattens the tree.
+
+Simpler one-pass variant (AKA "path=halving"):
+    Makes every other node in the path point to its grandparent.
+    id[i] = id[id[i]];
+*/
+
+/*
+UNION FIND APPLICATIONS:
+    N-by-N grid of sites.
+    Each open site is determined by randomly generating whether a grid is blocked or not.
+    System percolates/diffuses if top and bottom grids are connected by open sites.
+
+    So, how do we know what number of randomness will cause percolation?
+        Well, no one knows, but we do have a couple of educated guesses:
+            p == percolation probability.
+            p* == site vacancy probability.            
+        p > p*: almost certainly percolates.
+        p < p*: almost certainly does not percolate.
+
+    So, what's the value of p*?
+        After running the scenario millions of times, it appears the p* = .592746 (for large square lattices).
 */
 
 class QuickUnionUF
