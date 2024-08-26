@@ -43,11 +43,42 @@ The program then maintains an array called id[] for each object/line that tracks
 
 #define N 10000
 
+class standardObject
+{
+    public:
+        standardObject(); // Constructor with name of file in it.
+
+        // Getters
+        int* getID(); int getSize();
+
+        // Setters
+        void setId(int*); void setSize(int);
+    
+    private:
+        int* _id; // Holds the address to the id[] array.
+        int _size; // Total size of the id[] array.
+};
+
 int main(int argc, char *argv[])
 {
     std::string fileName = " ";
+    std::cout << "\nHINT: random10" << std::endl;
     std::cout << "\nProgram start. What is the name of the file with data in it?: ";
     std::cin >> fileName;
+
+    standardObject object;
+
+
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
+}
+
+standardObject::standardObject()
+{
+    int totalSets = 0;
+    std::string fileName = " ";
+    std::cout << "\nPlease input file name (\"NAME\".txt): ";
+    std::getline(std::cin, fileName);
 
     std::ifstream inputStream;
     inputStream.open(fileName);
@@ -56,10 +87,20 @@ int main(int argc, char *argv[])
     {
         std::cout << std::endl << fileName << " failed to open. Program terminating." << std::endl;
         inputStream.close();
-        return 0;
-    }  
+        return;
+    }
 
-
-    std::cout << "\nEnd of program." << std::endl;
-    return 0;
+    while (!inputStream.eof()) // While we are not at the end of the file.
+    {
+        inputStream >> 
+    }
+    
 }
+
+// Getters
+int* standardObject::getID() {return _id;}
+int standardObject::getSize() {return _size;}
+
+// Setters
+void standardObject::setId(int* input) {_id = input;}
+void standardObject::setSize(int input) {_size = input;}
