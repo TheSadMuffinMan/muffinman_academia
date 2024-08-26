@@ -1,7 +1,3 @@
-#include <stdio.h>
-#include <iostream>
-#define N 10000
-
 // QUICK-FIND (aka Slow-Union)
 
 /* Program 1.1 (in textbook)
@@ -17,52 +13,53 @@ This implementation is a simple algorithm called the quick-find algorithm that s
     union operation for p and q, we go through the array, changing all the entries with the same name as p to have
     the same name as q. This choice is arbitrary — we could have decided to change all the entries with the same name
     as q to have the same name as p.
+
+TEXTBOOK PSEUDO-CODE (Program 1.1)
+    int i, p, q, t, id[N];
+
+    for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
+
+    while (scanf("%d %d\n", &p, &q) == 2)
+    {
+        if (id[p] == id[q]) {continue;} // If a union already exists...
+
+        for (t = id[p], i = 0; i < N; i++)
+        {
+            if (id[i] == t) id[i] = id[q];
+            printf(" %d %d\n", p, q);
+        }
+    }
 */
+
+/* MY NOTES:
+This program reads in input in the form of "p q" from a text file.
+The program then maintains an array called id[] for each object/line that tracks an entry for every other object.
+    Inside of the id[], p and q are equal only if p and q are connected.
+*/
+
+#include <stdio.h>
+#include <iostream>
+#include <fstream>
+
+#define N 10000
 
 int main(int argc, char *argv[])
 {
-    class QuickFind
+    std::string fileName = " ";
+    std::cout << "\nProgram start. What is the name of the file with data in it?: ";
+    std::cin >> fileName;
+
+    std::ifstream inputStream;
+    inputStream.open(fileName);
+
+    if (!inputStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
     {
-        public:
-            int* id;
-            int size;
+        std::cout << std::endl << fileName << " failed to open. Program terminating." << std::endl;
+        inputStream.close();
+        return 0;
+    }  
 
-            QuickFind() // Constructor.
-            {
-                for (int i = 0; i < N; i++)
-                {
-                    id[i] = i;
-                }
-            }
-
-            void setId(int*, int)
-            {
-
-            }
-
-
-        // private:
-        //     int* _id;
-        //     int _size;
-    };
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
-
-/* TEXTBOOK CODE (Program 1.1)
-int i, p, q, t, id[N]; // i == index, (p&q) == data/"nodes", t == what you're searching for, id[N] == data array.
-
-for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
-
-while (scanf("%d %d\n", &p, &q) == 2)
-{
-    if (id[p] == id[q]) {continue;} // If a union already exists...
-
-    for (t = id[p], i = 0; i < N; i++)
-    {
-        if (id[i] == t) id[i] = id[q];
-        printf(" %d %d\n", p, q);
-    }
-}
-*/
