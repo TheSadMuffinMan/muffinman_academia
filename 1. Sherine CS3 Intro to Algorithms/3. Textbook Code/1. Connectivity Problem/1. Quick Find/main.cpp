@@ -33,8 +33,10 @@ TEXTBOOK PSEUDO-CODE (Program 1.1)
 
 /* MY NOTES:
 This program reads in input in the form of "p q" from a text file.
-The program then maintains an array called id[] for each object/line that tracks an entry for every other object.
-    Inside of the id[], p and q are equal only if p and q are connected.
+The program maintains an array called id[] for each object/line that tracks an entry for every other object.
+    Inside of id[], p and q are equal ONLY if p and q are connected.
+The goal is to write a program to filter out extraneous pairs from the set: When the program inputs a pair p-q, it
+    should output the pair only if the pairs it has seen to that point do not imply that p is connected to q. 
 */
 
 #include <stdio.h>
@@ -43,10 +45,45 @@ The program then maintains an array called id[] for each object/line that tracks
 
 #define N 10000
 
+int main(int argc, char *argv[])
+{
+/*
+TEXTBOOK PSEUDO-CODE (Program 1.1)
+    int i, p, q, t, id[N];
+
+    for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
+
+    while (scanf("%d %d\n", &p, &q) == 2)
+    {
+        if (id[p] == id[q]) {continue;} // If a union already exists...
+
+        for (t = id[p], i = 0; i < N; i++)
+        {
+            if (id[i] == t) id[i] = id[q];
+            printf(" %d %d\n", p, q);
+        }
+    }
+*/
+
+    std::cout << "\nProgram start." << std::endl;
+    int iterator, p, q, t, id[N];
+
+    std::ifstream inputStream;
+    std::cout << "***DEBUG*** Opening random10.txt..." << std::endl;
+
+    inputStream.open("random10.txt");
+
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
+}
+
+/* Attempt at using a class for this.
 class standardObject
 {
     public:
-        standardObject(); // Constructor with name of file in it.
+        standardObject();
+
+        int* readData();
 
         // Getters
         int* getID(); int getSize();
@@ -59,42 +96,9 @@ class standardObject
         int _size; // Total size of the id[] array.
 };
 
-int main(int argc, char *argv[])
-{
-    std::string fileName = " ";
-    std::cout << "\nHINT: random10" << std::endl;
-    std::cout << "\nProgram start. What is the name of the file with data in it?: ";
-    std::cin >> fileName;
-
-    standardObject object;
-
-
-    std::cout << "\nEnd of program." << std::endl;
-    return 0;
-}
-
 standardObject::standardObject()
 {
-    int totalSets = 0;
-    std::string fileName = " ";
-    std::cout << "\nPlease input file name (\"NAME\".txt): ";
-    std::getline(std::cin, fileName);
-
-    std::ifstream inputStream;
-    inputStream.open(fileName);
-
-    if (!inputStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
-    {
-        std::cout << std::endl << fileName << " failed to open. Program terminating." << std::endl;
-        inputStream.close();
-        return;
-    }
-
-    while (!inputStream.eof()) // While we are not at the end of the file.
-    {
-        inputStream >> 
-    }
-    
+    // Default constructor
 }
 
 // Getters
@@ -104,3 +108,5 @@ int standardObject::getSize() {return _size;}
 // Setters
 void standardObject::setId(int* input) {_id = input;}
 void standardObject::setSize(int input) {_size = input;}
+
+*/
