@@ -2,6 +2,8 @@
 #include <iostream>
 #define N 10000
 
+// QUICK-FIND (aka Slow-Union)
+
 /* Program 1.1 (in textbook)
 This program reads a sequence of pairs of nonnegative integers less than N from standard input (interpreting
     the pair p q to mean “connect object p to object q”) and prints out pairs representing objects that are not
@@ -19,18 +21,48 @@ This implementation is a simple algorithm called the quick-find algorithm that s
 
 int main(int argc, char *argv[])
 {
-    int i, p, q, t, id[N]; // i == index, (p&q) == data/"nodes", t == what you're searching for, id[N] == data array.
-
-    for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
-
-    while (scanf("%d %d\n", &p, &q) == 2)
+    class QuickFind
     {
-        if (id[p] == id[q]) {continue;} // If a union already exists...
+        public:
+            int* id;
+            int size;
 
-        for (t = id[p], i = 0; i < N; i++)
-        {
-            if (id[i] == t) id[i] = id[q];
-            printf(" %d %d\n", p, q);
-        }
+            QuickFind() // Constructor.
+            {
+                for (int i = 0; i < N; i++)
+                {
+                    id[i] = i;
+                }
+            }
+
+            void setId(int*, int)
+            {
+
+            }
+
+
+        // private:
+        //     int* _id;
+        //     int _size;
+    };
+
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
+}
+
+/* TEXTBOOK CODE (Program 1.1)
+int i, p, q, t, id[N]; // i == index, (p&q) == data/"nodes", t == what you're searching for, id[N] == data array.
+
+for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
+
+while (scanf("%d %d\n", &p, &q) == 2)
+{
+    if (id[p] == id[q]) {continue;} // If a union already exists...
+
+    for (t = id[p], i = 0; i < N; i++)
+    {
+        if (id[i] == t) id[i] = id[q];
+        printf(" %d %d\n", p, q);
     }
 }
+*/
