@@ -16,10 +16,7 @@ class QuickFindUF
             }
         }
 
-        bool find(int p)
-        {
-            return id[p];
-        }
+        bool find(int p) {return id[p];}
 
         void Union(int p, int q)
         {
@@ -35,10 +32,7 @@ class QuickFindUF
             }
         }
 
-        ~QuickFindUF()
-        {
-            delete[] id;
-        }
+        ~QuickFindUF() {delete[] id;}
 };
 
 /*
@@ -49,5 +43,4 @@ class QuickFindUF
 Defects of quick-find:
     Union operation is too expensive (N array accesses).
     Trees are flat, but it is too expensive to keep them flat.
-
 */
