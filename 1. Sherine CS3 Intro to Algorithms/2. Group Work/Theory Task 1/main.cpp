@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <chrono> // Used for timing run-time.
+#include <chrono> // Used for timing program run-time.
 
 using namespace std;
 

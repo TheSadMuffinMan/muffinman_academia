@@ -38,6 +38,24 @@ What are the keys principles of the Scientific Method with regards to program pe
     Iteration.
 */
 
+/*
+EXPERIMENTAL ALGORITHMICS:
+
+Total Run-Time = sum of cost x frequency for all observations.
+
+Ok, so what are the costs of basic operations?
+    Int add: (a + b) 2.1 nanoseconds
+    Int multiply: (a * b) 2.4 nanos
+    Int divide: (a / b) 5.4 nanos
+    Float add: 4.6 nanos
+    Float multiply: 4.2 nanos
+    Float divide: 13.5 nanos
+    Sine: 91.3 nanos
+    Arctangent: 129.0 nanos
+
+Most primitive operations take constant time (which is good).
+*/
+
 int main(int argc, char *argv[])
 {
     

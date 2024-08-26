@@ -1,6 +1,10 @@
 #include <iostream>
 #include <fstream>
 
+/*
+This is the Brute Force solution to the classic 3-Sum problem.
+*/
+
 int count(int a[], int N)
 {
     int count = 0;
@@ -33,6 +37,7 @@ int main(int argc, char* argv[])
     }
     
     in.close();
+
     std::cout << count(a, N) << std::endl;
     delete[] a;
     return 0;
