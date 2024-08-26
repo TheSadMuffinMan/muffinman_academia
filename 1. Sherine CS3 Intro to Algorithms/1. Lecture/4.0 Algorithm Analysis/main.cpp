@@ -52,8 +52,10 @@ Ok, so what are the costs of basic operations?
     Float divide: 13.5 nanos
     Sine: 91.3 nanos
     Arctangent: 129.0 nanos
+        It is safe to assume that all super basic operations take approx 2.1 nanoseconds.
 
 Most primitive operations take constant time (which is good).
+
 */
 
 int main(int argc, char *argv[])
