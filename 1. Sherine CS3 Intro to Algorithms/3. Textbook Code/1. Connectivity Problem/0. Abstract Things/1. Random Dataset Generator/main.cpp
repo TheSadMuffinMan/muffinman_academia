@@ -34,11 +34,10 @@ int main(int argc, char *argv[])
     std::cin.ignore(1);
     std::getline(std::cin, dumpVar);
 
-    int num1, num2;
     for (std::size_t i = 0; i < dataSetSize; i++)
     {
-        num1 = (rand() % 9);
-        num2 = (rand() % 9);
+        int num1 = (rand() % 9);
+        int num2 = (rand() % 9);
 
         outputStream << num1 << " " << num2 << std::endl;
     }
