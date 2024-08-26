@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <iostream>
 #define N 10000
 
-/* ***FROM TEXTBOOK***
+/* Program 1.1 (in textbook)
 This program reads a sequence of pairs of nonnegative integers less than N from standard input (interpreting
     the pair p q to mean “connect object p to object q”) and prints out pairs representing objects that are not
     yet connected. It maintains an array id that has an entry for each object, with the property that id[p] and
@@ -16,7 +17,7 @@ This implementation is a simple algorithm called the quick-find algorithm that s
     as q to have the same name as p.
 */
 
-main()
+int main(int argc, char *argv[])
 {
     int i, p, q, t, id[N];
 
