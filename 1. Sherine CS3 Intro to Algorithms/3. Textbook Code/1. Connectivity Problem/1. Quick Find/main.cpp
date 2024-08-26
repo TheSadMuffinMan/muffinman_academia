@@ -19,13 +19,13 @@ This implementation is a simple algorithm called the quick-find algorithm that s
 
 int main(int argc, char *argv[])
 {
-    int i, p, q, t, id[N];
+    int i, p, q, t, id[N]; // i == index, (p&q) == data/"nodes", t == what you're searching for, id[N] == data array.
 
     for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
 
     while (scanf("%d %d\n", &p, &q) == 2)
     {
-        if (id[p] == id[q]) {continue;}
+        if (id[p] == id[q]) {continue;} // If a union already exists...
 
         for (t = id[p], i = 0; i < N; i++)
         {
