@@ -59,7 +59,6 @@ class connectivityClient
         int find(int);
         void regularUnion(int, int);
         bool connected(int, int);
-
 };
 
 int main(int argc, char *argv[])
