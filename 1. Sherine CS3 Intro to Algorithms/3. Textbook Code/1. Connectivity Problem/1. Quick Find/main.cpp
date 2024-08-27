@@ -64,33 +64,29 @@ class algorithmicObject
 
 int main(int argc, char *argv[])
 {
-    std::cout << "\nProgram start." << std::endl;
-    std::ifstream inputFileStream;
-    inputFileStream.open("random10b.txt");
+    std::string dumpVar = " ";
+    std::cout << "\nProgram start." << std::endl << std::endl;
+    std::cout << "This program creates an array of " << N << " elements." << std::endl;
+    std::cout << "From there, input is read in, in the form of \"p *SPACE* q\"." << std::endl;
+    std::cout << "Each p & q are union commands - meaning we want to join those objects." << std::endl;
+    std::cout << "Input anything to continue." << std::endl;
+    std::getline(std::cin, dumpVar);
+    // std::cin.ignore(1); // Avoiding the end-line flag(?).
 
-    if (!inputFileStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
-    {
-        std::cout << "\nrandom10.txt failed to open, program terminating." << std::endl;
-        inputFileStream.close();
-        return 0;
-    }
-
-    int iterator, t, id[N];
-
-    algorithmicObject workingObject = algorithmicObject(N); // Declaring our workingObject.
-
+    algorithmicObject workingObject = algorithmicObject(N); // Instantiating our workingObject.
     int p, q;
 
-    while (inputFileStream >> p >> q)
+    // Need to read in a list of commands.
+    while (std::cin >> p >> q) // Reading in each p & q respectively.
     {
-        if (!workingObject.connected(p,q))
+        if (!workingObject.connected(p,q)) // If p and q are not connected...
         {
-            workingObject.Union(p,q);
+            workingObject.Union(p,q); // Connect them!
             std::cout << p << " " << q << std::endl;
+
         }
     }
 
-    inputFileStream.close();
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
@@ -157,4 +153,16 @@ TEXTBOOK PSEUDO-CODE (Program 1.1)
             printf(" %d %d\n", p, q);
         }
     }
+*/
+
+/* Input file stuff:
+std::ifstream inputFileStream;
+inputFileStream.open("random10b.txt");
+
+if (!inputFileStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
+{
+    std::cout << "\nrandom10.txt failed to open, program terminating." << std::endl;
+    inputFileStream.close();
+    return 0;
+}
 */
