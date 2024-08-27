@@ -46,18 +46,18 @@ The goal is to write a program to filter out extraneous pairs from the set: When
 // ***CHANGE BACK TO 10,000 ONCE COMPLETE***
 #define N 10
 
-class algorithmicObject
+class connectivityClient
 {
     private:
         int* _id;
         int _size;
 
     public:
-        algorithmicObject(int);
-        ~algorithmicObject() {delete[] _id;}
+        connectivityClient(int);
+        ~connectivityClient() {delete[] _id;}
 
         int find(int);
-        void Union(int, int);
+        void regularUnion(int, int);
         bool connected(int, int);
 
 };
@@ -73,26 +73,36 @@ int main(int argc, char *argv[])
     std::getline(std::cin, dumpVar);
     // std::cin.ignore(1); // Avoiding the end-line flag(?).
 
-    algorithmicObject workingObject = algorithmicObject(N); // Instantiating our workingObject.
+    connectivityClient workingObject = connectivityClient(N); // Instantiating our workingObject.
     int p, q;
 
-    // Need to read in a list of commands.
-    while (std::cin >> p >> q) // Reading in each p & q respectively.
+    // Reading in a list of commands.
+    std::ifstream inputStream;
+    inputStream.open("unionCommands.txt");
+    if (!inputStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
+    {
+        std::cout << "\nunionCommands.txt failed to open, program terminating." << std::endl;
+        inputStream.close();
+        return 0;
+    }
+
+    while (inputStream >> p >> q) // Reading in each p & q respectively.
     {
         if (!workingObject.connected(p,q)) // If p and q are not connected...
         {
-            workingObject.Union(p,q); // Connect them!
+            workingObject.regularUnion(p,q); // Connect them!
             std::cout << p << " " << q << std::endl;
 
         }
     }
 
+    inputStream.close();
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
 
 // Non-Default constructor. Each object will have it's own unique _id[] that stores what unions already exist.
-algorithmicObject::algorithmicObject(int M)
+connectivityClient::connectivityClient(int M)
 {
     _size = M;
     _id = new int[M];
@@ -105,13 +115,16 @@ algorithmicObject::algorithmicObject(int M)
 }
 
 // This function returns the root/"group" that p belongs to.
-int algorithmicObject::find(int p)
+int connectivityClient::find(int p)
 {
     return _id[p];
 }
 
-// Function groups together/"unionizes" two objects.
-void algorithmicObject::Union(int p, int q)
+/*
+Function groups together/"unionizes" two objects.
+This is just the regular union, meaning that p and q are simply connected with no consideration of tree size.
+*/
+void connectivityClient::regularUnion(int p, int q)
 {
     int pid = _id[p]; // Determining p's root.
     int qid = _id[q]; // (== above line) What "group" q belongs to.
@@ -132,20 +145,21 @@ void algorithmicObject::Union(int p, int q)
     }
 }
 
-bool algorithmicObject::connected(int p, int q)
+// Function returns whether or not p & q share the same _id[].
+bool connectivityClient::connected(int p, int q)
 {
     return find(p) == find(q);
 }
 
 /*
 TEXTBOOK PSEUDO-CODE (Program 1.1)
-    int i, p, q, t, id[N]; // i == index, (p&q) == comparison data, t == temporary index, id[N] == 
+    int i, p, q, t, id[N];
 
     for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
 
     while (scanf("%d %d\n", &p, &q) == 2)
     {
-        if (id[p] == id[q]) {continue;} // If a union already exists...
+        if (id[p] == id[q]) {continue;} // If p & q belong to the same _id[]...
 
         for (t = id[p], i = 0; i < N; i++)
         {
@@ -153,16 +167,4 @@ TEXTBOOK PSEUDO-CODE (Program 1.1)
             printf(" %d %d\n", p, q);
         }
     }
-*/
-
-/* Input file stuff:
-std::ifstream inputFileStream;
-inputFileStream.open("random10b.txt");
-
-if (!inputFileStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
-{
-    std::cout << "\nrandom10.txt failed to open, program terminating." << std::endl;
-    inputFileStream.close();
-    return 0;
-}
 */
