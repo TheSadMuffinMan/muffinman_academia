@@ -44,12 +44,12 @@ The goal is to write a program to filter out extraneous pairs from the set: When
 #include <fstream>
 
 // ***CHANGE BACK TO 10,000 ONCE COMPLETE***
-#define N 10
+// #define N 10
 
 class connectivityClient
 {
     private:
-        int* _id;
+        int* _id; // Analgomous with "what group I belong to".
         int _size;
 
     public:
@@ -66,37 +66,31 @@ int main(int argc, char *argv[])
 {
     std::string dumpVar = " ";
     std::cout << "\nProgram start." << std::endl << std::endl;
-    std::cout << "This program creates an array of " << N << " elements." << std::endl;
+    std::cout << "Program first asks for data set size (aka N), and then creates N unique objects." << std::endl;
     std::cout << "From there, input is read in, in the form of \"p *SPACE* q\"." << std::endl;
     std::cout << "Each p & q are union commands - meaning we want to join those objects." << std::endl;
+    std::cout << "Inputting a negative number for p will stop the union loop." << std::endl;
     std::cout << "Input anything to continue." << std::endl;
     std::getline(std::cin, dumpVar);
+
+    int numObjects = 0;
+    std::cout << std::endl << std::endl << "Number of objects (N)?: ";
+    std::cin >> numObjects;
     // std::cin.ignore(1); // Avoiding the end-line flag(?).
 
-    connectivityClient workingObject = connectivityClient(N); // Instantiating our workingObject.
+    connectivityClient workingObject = connectivityClient(numObjects); // Instantiating our workingObject.
     int p, q;
-
-    // Reading in a list of commands.
-    std::ifstream inputStream;
-    inputStream.open("unionCommands.txt");
-    if (!inputStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
+    while (std::cin >> p >> q)
     {
-        std::cout << "\nunionCommands.txt failed to open, program terminating." << std::endl;
-        inputStream.close();
-        return 0;
-    }
+        if ((p < 0) || (q < 0)) {break;} // Negative input will break out of infinite loop.
 
-    while (inputStream >> p >> q) // Reading in each p & q respectively.
-    {
-        if (!workingObject.connected(p,q)) // If p and q are not connected...
+        if (!workingObject.connected(p,q))
         {
-            workingObject.regularUnion(p,q); // Connect them!
+            workingObject.regularUnion(p,q);
             std::cout << p << " " << q << std::endl;
-
         }
     }
 
-    inputStream.close();
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
@@ -167,4 +161,28 @@ TEXTBOOK PSEUDO-CODE (Program 1.1)
             printf(" %d %d\n", p, q);
         }
     }
+*/
+
+/* inputFile stuff:
+// Reading in a list of commands.
+std::ifstream inputStream;
+inputStream.open("unionCommands.txt");
+if (!inputStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
+{
+    std::cout << "\nunionCommands.txt failed to open, program terminating." << std::endl;
+    inputStream.close();
+    return 0;
+}
+
+while (inputStream >> p >> q) // Reading in each p & q respectively.
+{
+    if (!workingObject.connected(p,q)) // If p and q are not connected...
+    {
+        workingObject.regularUnion(p,q); // Connect them!
+        std::cout << p << " " << q << std::endl;
+
+    }
+}
+
+inputStream.close();
 */
