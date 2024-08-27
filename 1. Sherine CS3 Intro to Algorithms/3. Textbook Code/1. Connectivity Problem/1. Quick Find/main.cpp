@@ -43,13 +43,51 @@ The goal is to write a program to filter out extraneous pairs from the set: When
 #include <iostream>
 #include <fstream>
 
-#define N 10000
+// ***CHANGE BACK TO 10,000 ONCE COMPLETE***
+#define N 10
+
+class algorithmUnions
+{
+    private:
+        int* _id;
+        int _size;
+
+    public:
+        algorithmUnions(int M)
+        {
+            _size = M;
+            _id = new int[M];
+
+            for (int i = 0; i < M; i++)
+            {
+                _id[i] = i;
+            }
+        }
+
+        bool find(int p) {return _id[p];}
+
+        void Union(int p, int q)
+        {
+            int pid = _id[p];
+            int qid = _id[q];
+
+            for (int i = 0; i < _size; i++)
+            {
+                if (_id[i] == pid)
+                {
+                    _id[i] = qid;
+                }
+            }
+        }
+
+        ~algorithmUnions() {delete[] _id;}
+};
 
 int main(int argc, char *argv[])
 {
 /*
 TEXTBOOK PSEUDO-CODE (Program 1.1)
-    int i, p, q, t, id[N];
+    int i, p, q, t, id[N]; // i == index, (p&q) == comparison data, t == temporary index, id[N] == 
 
     for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
 
@@ -73,40 +111,8 @@ TEXTBOOK PSEUDO-CODE (Program 1.1)
 
     inputStream.open("random10.txt");
 
+
+    inputStream.close();
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
-
-/* Attempt at using a class for this.
-class standardObject
-{
-    public:
-        standardObject();
-
-        int* readData();
-
-        // Getters
-        int* getID(); int getSize();
-
-        // Setters
-        void setId(int*); void setSize(int);
-    
-    private:
-        int* _id; // Holds the address to the id[] array.
-        int _size; // Total size of the id[] array.
-};
-
-standardObject::standardObject()
-{
-    // Default constructor
-}
-
-// Getters
-int* standardObject::getID() {return _id;}
-int standardObject::getSize() {return _size;}
-
-// Setters
-void standardObject::setId(int* input) {_id = input;}
-void standardObject::setSize(int input) {_size = input;}
-
-*/
