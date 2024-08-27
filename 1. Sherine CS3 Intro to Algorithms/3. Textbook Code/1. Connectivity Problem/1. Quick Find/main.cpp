@@ -66,7 +66,7 @@ int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
     std::ifstream inputFileStream;
-    inputFileStream.open("random10.txt");
+    inputFileStream.open("random10b.txt");
 
     if (!inputFileStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
     {
@@ -95,7 +95,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-// Non-Default constructor.
+// Non-Default constructor. Each object will have it's own unique _id[] that stores what unions already exist.
 algorithmicObject::algorithmicObject(int M)
 {
     _size = M;
@@ -103,13 +103,12 @@ algorithmicObject::algorithmicObject(int M)
 
     for (int i = 0; i < M; i++)
     {
-        _id[i] = i; // This is ensuring that each object is not connected to another.
+        _id[i] = i;
+        // This line ensures that each object points to itself - meaning that each object is its own root.
     }
 }
 
-/*
-This function searches the root that p belongs to.
-*/
+// This function returns the root/"group" that p belongs to.
 int algorithmicObject::find(int p)
 {
     return _id[p];
@@ -118,12 +117,19 @@ int algorithmicObject::find(int p)
 // Function groups together/"unionizes" two objects.
 void algorithmicObject::Union(int p, int q)
 {
-    int pid = _id[p];
-    int qid = _id[q];
+    int pid = _id[p]; // Determining p's root.
+    int qid = _id[q]; // (== above line) What "group" q belongs to.
 
+    if (pid == qid) // If a union already exists.
+    {
+        std::cout << "Union already exists." << std::endl;
+        return;
+    }
+
+    // Loop cycles through all other objects and changes all of _id[]
     for (int i = 0; i < _size; i++)
     {
-        if (_id[i] == pid)
+        if (_id[i] == pid) // Changing all "old" roots to point to new root.
         {
             _id[i] = qid;
         }
