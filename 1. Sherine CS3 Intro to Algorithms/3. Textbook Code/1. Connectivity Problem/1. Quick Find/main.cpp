@@ -54,26 +54,43 @@ class algorithmicObject
 
     public:
         algorithmicObject(int);
-
-        bool find(int);
-
-        void Union(int, int);
-
         ~algorithmicObject() {delete[] _id;}
+
+        int find(int);
+        void Union(int, int);
+        bool connected(int, int);
+
 };
 
 int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
-    int iterator, p, q, t, id[N];
+    std::ifstream inputFileStream;
+    inputFileStream.open("random10.txt");
 
-    std::ifstream inputStream;
-    std::cout << "***DEBUG*** Opening random10.txt..." << std::endl;
+    if (!inputFileStream.is_open()) // Error catching: if the file fails to open, program will not proceed.
+    {
+        std::cout << "\nrandom10.txt failed to open, program terminating." << std::endl;
+        inputFileStream.close();
+        return 0;
+    }
 
-    inputStream.open("random10.txt");
+    int iterator, t, id[N];
 
+    algorithmicObject workingObject = algorithmicObject(N); // Declaring our workingObject.
 
-    inputStream.close();
+    int p, q;
+
+    while (inputFileStream >> p >> q)
+    {
+        if (!workingObject.connected(p,q))
+        {
+            workingObject.Union(p,q);
+            std::cout << p << " " << q << std::endl;
+        }
+    }
+
+    inputFileStream.close();
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
@@ -93,7 +110,7 @@ algorithmicObject::algorithmicObject(int M)
 /*
 This function searches the root that p belongs to.
 */
-bool algorithmicObject::find(int p)
+int algorithmicObject::find(int p)
 {
     return _id[p];
 }
@@ -111,6 +128,11 @@ void algorithmicObject::Union(int p, int q)
             _id[i] = qid;
         }
     }
+}
+
+bool algorithmicObject::connected(int p, int q)
+{
+    return find(p) == find(q);
 }
 
 /*
