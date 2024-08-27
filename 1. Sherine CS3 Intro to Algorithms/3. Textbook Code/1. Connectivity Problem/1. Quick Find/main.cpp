@@ -46,45 +46,73 @@ The goal is to write a program to filter out extraneous pairs from the set: When
 // ***CHANGE BACK TO 10,000 ONCE COMPLETE***
 #define N 10
 
-class algorithmUnions
+class algorithmicObject
 {
     private:
         int* _id;
         int _size;
 
     public:
-        algorithmUnions(int M)
-        {
-            _size = M;
-            _id = new int[M];
+        algorithmicObject(int);
 
-            for (int i = 0; i < M; i++)
-            {
-                _id[i] = i;
-            }
-        }
+        bool find(int);
 
-        bool find(int p) {return _id[p];}
+        void Union(int, int);
 
-        void Union(int p, int q)
-        {
-            int pid = _id[p];
-            int qid = _id[q];
-
-            for (int i = 0; i < _size; i++)
-            {
-                if (_id[i] == pid)
-                {
-                    _id[i] = qid;
-                }
-            }
-        }
-
-        ~algorithmUnions() {delete[] _id;}
+        ~algorithmicObject() {delete[] _id;}
 };
 
 int main(int argc, char *argv[])
 {
+    std::cout << "\nProgram start." << std::endl;
+    int iterator, p, q, t, id[N];
+
+    std::ifstream inputStream;
+    std::cout << "***DEBUG*** Opening random10.txt..." << std::endl;
+
+    inputStream.open("random10.txt");
+
+
+    inputStream.close();
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
+}
+
+// Non-Default constructor.
+algorithmicObject::algorithmicObject(int M)
+{
+    _size = M;
+    _id = new int[M];
+
+    for (int i = 0; i < M; i++)
+    {
+        _id[i] = i; // This is ensuring that each object is not connected to another.
+    }
+}
+
+/*
+This function searches the root that p belongs to.
+*/
+bool algorithmicObject::find(int p)
+{
+    return _id[p];
+}
+
+// Function groups together/"unionizes" two objects.
+void algorithmicObject::Union(int p, int q)
+{
+    int pid = _id[p];
+    int qid = _id[q];
+
+    for (int i = 0; i < _size; i++)
+    {
+        if (_id[i] == pid)
+        {
+            _id[i] = qid;
+        }
+    }
+}
+
 /*
 TEXTBOOK PSEUDO-CODE (Program 1.1)
     int i, p, q, t, id[N]; // i == index, (p&q) == comparison data, t == temporary index, id[N] == 
@@ -102,17 +130,3 @@ TEXTBOOK PSEUDO-CODE (Program 1.1)
         }
     }
 */
-
-    std::cout << "\nProgram start." << std::endl;
-    int iterator, p, q, t, id[N];
-
-    std::ifstream inputStream;
-    std::cout << "***DEBUG*** Opening random10.txt..." << std::endl;
-
-    inputStream.open("random10.txt");
-
-
-    inputStream.close();
-    std::cout << "\nEnd of program." << std::endl;
-    return 0;
-}
