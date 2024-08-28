@@ -55,7 +55,22 @@ Ok, so what are the costs of basic operations?
         It is safe to assume that all super basic operations take approx 2.1 nanoseconds.
 
 Most primitive operations take constant time (which is good).
+*/
 
+/*
+LECTURE 8/28 START
+Invarient: A varient that causes discourse of some variet. For example, on a chess board, we can fit 32 dominoes
+    on the board while maintaining color parity. If someone were to remove two corner pieces diagonally from each
+    other, then we would only be able to fit 30 dominoes on the board due to color parity.
+
+We are always striving for lineartithmic or lower time when scaling algorithms.
+
+Typically speaking, a better order of growth will result in faster operation times.
+
+The best algorithm analyses consist of:
+    Best Case: determined by "easiest" input and provides a goal for all inputs.
+    Worst Case: determined by "hardest" input and provides a time-guarentee for all inputs.
+    Average Case: this is the expected cost of random input, but requires a model for "random" input.
 */
 
 int main(int argc, char *argv[])
