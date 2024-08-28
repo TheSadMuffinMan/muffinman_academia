@@ -8,6 +8,16 @@ using namespace std;
 QUESTION 1: (Question 1.15)
 Give a sequence of input pairs that causes the weighted Q-U algorithm with path compression by halving
     (Program 1.4) to produce a path of length 4.
+FULL SEQUENCE:
+    1   2   3   4   5   6   7   8
+Union Operations:
+    union(1,2); 1-2, 3, 4, 5, 6, 7, 8.
+    union(3,4); 1-2, 3-4, 5, 6, 7, 8.
+    union(5,6); 1-2, 3-4, 5-6, 7, 8.
+    union(7,8); 1-2, 3-4, 5-6, 7-8.
+    union(2,3); 1-2-3-4, 5-6, 7-8.
+    union(6,7); 1-2-3-4, 5-6-7-8.
+    union(1,5); 1-2-3-4-5-6-7-8.
 
 QUESTION 2: (Question 1.22)
 Modify the program to generate random pairs of integers between 0 and (N-1) instead of reading them from standard input,

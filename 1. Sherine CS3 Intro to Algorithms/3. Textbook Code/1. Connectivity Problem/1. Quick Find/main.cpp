@@ -46,15 +46,15 @@ The goal is to write a program to filter out extraneous pairs from the set: When
 // ***CHANGE BACK TO 10,000 ONCE COMPLETE***
 // #define N 10
 
-class quickFindClient
+class QuickFindClient
 {
     private:
         int* _id; // Analgomous with "what group I belong to".
         int _size;
 
     public:
-        quickFindClient(int);
-        ~quickFindClient() {delete[] _id;}
+        QuickFindClient(int);
+        ~QuickFindClient() {delete[] _id;}
 
         int find(int);
         void regularUnion(int, int);
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
     std::cin >> numObjects;
     // std::cin.ignore(1); // Avoiding the end-line flag(?).
 
-    quickFindClient workingObject = quickFindClient(numObjects); // Instantiating our workingObject.
+    QuickFindClient workingObject = QuickFindClient(numObjects); // Instantiating our workingObject.
     int p, q;
     while (std::cin >> p >> q)
     {
@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 Non-Default constructor. Each object will have it's own unique _id[] that stores what unions already exist.
 Can also be thought about as: each _id[] stores what "group" each node falls under.
 */
-quickFindClient::quickFindClient(int M)
+QuickFindClient::QuickFindClient(int M)
 {
     _size = M;
     _id = new int[M];
@@ -111,7 +111,7 @@ quickFindClient::quickFindClient(int M)
 }
 
 // This function returns the root/"group" that p belongs to.
-int quickFindClient::find(int p)
+int QuickFindClient::find(int p)
 {
     return _id[p];
 }
@@ -120,7 +120,7 @@ int quickFindClient::find(int p)
 Function groups together/"unionizes" two objects.
 This is just the regular union, meaning that p and q are simply connected with no consideration of tree size.
 */
-void quickFindClient::regularUnion(int p, int q)
+void QuickFindClient::regularUnion(int p, int q)
 {
     int pid = _id[p]; // Determining p's root.
     int qid = _id[q]; // (== above line) What "group" q belongs to.
@@ -142,7 +142,7 @@ void quickFindClient::regularUnion(int p, int q)
 }
 
 // Function returns whether or not p & q share the same _id[].
-bool quickFindClient::connected(int p, int q)
+bool QuickFindClient::connected(int p, int q)
 {
     return find(p) == find(q);
 }

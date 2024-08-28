@@ -29,7 +29,7 @@ class quickUnionClient
         ~quickUnionClient() {delete[] _id;}
 
         int find(int);
-        void regularUnion(int, int);
+        void quickUnion(int, int);
         bool connected(int, int);
 };
 
@@ -57,7 +57,7 @@ int main(int argc, char *argv[])
 
         if (!workingObject.connected(p,q))
         {
-            workingObject.regularUnion(p,q);
+            workingObject.quickUnion(p,q);
             std::cout << p << " " << q << std::endl;
         }
     }
@@ -92,8 +92,16 @@ int quickUnionClient::find(int p)
 Function groups together/"unionizes" two objects.
 This is just the regular union, meaning that p and q are simply connected with no consideration of tree size.
 */
-void quickUnionClient::regularUnion(int p, int q)
+/* FROM TEXTBOOK:
+for (i = p; i != id[i]; i = id[i]);
+for (j = q; j != id[j]; j = id[j]);
+if (i == j) continue;
+id[i] = j;
+printf(" %d %d\n", p, q);
+*/
+void quickUnionClient::quickUnion(int p, int q)
 {
+    int i = 0;
     int pid = _id[p]; // Determining p's root.
     int qid = _id[q]; // (== above line) What "group" q belongs to.
 
@@ -118,20 +126,3 @@ bool quickUnionClient::connected(int p, int q)
 {
     return find(p) == find(q);
 }
-/* FROM TEXTBOOK:
-{
-int i, p, q, t, id[N];
-
-for (i = 0; i < N; i++) {id[i] = i;} // Populating the array.
-
-while (scanf("%d %d\n", &p, &q) == 2)
-{
-    for (i = p; i != id[i]; i = id[i]) // i == index, p&q == "nodes".
-        for (int j = q; j != id[j]; j = id[j])
-            if (i == j) {continue;} // If a union already exists..
-            
-            id[i] = j; // Implementing the "union" operation.
-            
-            printf(" %d %d\n", p, q);
-}
-*/
