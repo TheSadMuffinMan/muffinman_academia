@@ -46,15 +46,15 @@ The goal is to write a program to filter out extraneous pairs from the set: When
 // ***CHANGE BACK TO 10,000 ONCE COMPLETE***
 // #define N 10
 
-class connectivityClient
+class quickFindClient
 {
     private:
         int* _id; // Analgomous with "what group I belong to".
         int _size;
 
     public:
-        connectivityClient(int);
-        ~connectivityClient() {delete[] _id;}
+        quickFindClient(int);
+        ~quickFindClient() {delete[] _id;}
 
         int find(int);
         void regularUnion(int, int);
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
     std::cin >> numObjects;
     // std::cin.ignore(1); // Avoiding the end-line flag(?).
 
-    connectivityClient workingObject = connectivityClient(numObjects); // Instantiating our workingObject.
+    quickFindClient workingObject = quickFindClient(numObjects); // Instantiating our workingObject.
     int p, q;
     while (std::cin >> p >> q)
     {
@@ -94,8 +94,11 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-// Non-Default constructor. Each object will have it's own unique _id[] that stores what unions already exist.
-connectivityClient::connectivityClient(int M)
+/*
+Non-Default constructor. Each object will have it's own unique _id[] that stores what unions already exist.
+Can also be thought about as: each _id[] stores what "group" each node falls under.
+*/
+quickFindClient::quickFindClient(int M)
 {
     _size = M;
     _id = new int[M];
@@ -108,7 +111,7 @@ connectivityClient::connectivityClient(int M)
 }
 
 // This function returns the root/"group" that p belongs to.
-int connectivityClient::find(int p)
+int quickFindClient::find(int p)
 {
     return _id[p];
 }
@@ -117,7 +120,7 @@ int connectivityClient::find(int p)
 Function groups together/"unionizes" two objects.
 This is just the regular union, meaning that p and q are simply connected with no consideration of tree size.
 */
-void connectivityClient::regularUnion(int p, int q)
+void quickFindClient::regularUnion(int p, int q)
 {
     int pid = _id[p]; // Determining p's root.
     int qid = _id[q]; // (== above line) What "group" q belongs to.
@@ -139,7 +142,7 @@ void connectivityClient::regularUnion(int p, int q)
 }
 
 // Function returns whether or not p & q share the same _id[].
-bool connectivityClient::connected(int p, int q)
+bool quickFindClient::connected(int p, int q)
 {
     return find(p) == find(q);
 }
