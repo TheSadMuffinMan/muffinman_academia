@@ -6,7 +6,7 @@ This program reads a sequence of pairs of nonnegative integers less than N from 
     Alternatively, we could take it from the input and allocate the id array dynamically.
 */
 
-// #include <iostream>
+#include <iostream>
 #include <stdio.h>
 
 #define N 100
@@ -16,24 +16,24 @@ int main(int argc, char *argv[])
     // id[N] maintains an entry for every other object.
     int i, p, q, t, id[N];
 
-    for (i = 0; i < N; i++)
-    {
-        while (scanf("%d %d\n", &p, &q) == 2)
+    for (i = 0; i < N; i++) {id[i] = i;} // Initiallizing ea id[i] to "point" to itself.
+
+    
+    while (scanf("%d %d\n", &p, &q) == 2)
+    {        
+        if (id[p] == id[q]) {continue;}
+
+        for (t = id[p], i = 0; i < N; i++)
         {
-            if (id[p] == id[q]) {continue;}
-
-            for (i = 0; i < N; i++)
+            if (id[i] == t)
             {
-                t = id[p];
-
-                if (id[i] == t)
-                {
-                    id[i] = id[q];
-                    printf(" %d %d\n", p, q);
-                }
+                id[i] = id[q];
             }
+
+            printf(" %d %d\n", p, q);
         }
-    }    
+    }
+  
     printf("\nEnd of program.");
     return 0;
 }
