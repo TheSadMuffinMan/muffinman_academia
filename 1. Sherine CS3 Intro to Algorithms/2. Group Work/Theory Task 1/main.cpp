@@ -28,6 +28,7 @@ Show that Property 1.3 holds for the algorithm described in Exercise 1.20.
 */
 int main(int argc, char *argv[])
 {
+    std::default_random_engine randomNumGenerator;
     std::cout << "\nThis is Program 1.4: Path Compression by Halving." << std::endl;
 
     
