@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{geometry}
+\geometry{letterpaper}
+
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Brief Article}
+\author{The Author}
+
+\begin{document}
+\begin{minipage}{\linewidth}
+  \centering
+  \includegraphics[keepaspectratio=true, scale=0.35]{CMU.png}
+  \section*{\emph{\bf Theory Task 1 \hspace{0.2 cm} Due: 11:00 PM Jan 31\textsuperscript{st}, 2024\hspace{0.2cm}10 Points}}
+  \section*{CSCI 250 Introduction to Algorithms}
+\end{minipage}
+
+\section*{Objectives}
+This group Theory assessment task thoroughly evaluates your understanding of union-find, quick union, path compression, and basic data structures.
+
+\section*{Task}
+Please address in full detail the following questions from your textbook chapter 1:
+
+\begin{itemize}
+  \item Question 1.15
+  \item Question 1.22
+  \item Question 1.21
+\end{itemize}
+
+\section*{Submission Contents Presentation Method}
+For each question in this task:
+\begin{itemize}
+  \item Transcribe the question accurately.
+  \item If the question involves modifying the solution to the preceding question:
+  \subitem Create a subsection, transcribe the preceding question accurately, and address it in full detail.
+  \subitem Once done, create a subsequent subsection and address the original question in detail.
+  \item If coding is involved, include a clear screen capture of the run and its outcome as part of your solution, referring to the material presented in your screen capture.
+\end{itemize}
+
+\section*{Algorithms and Implementation Notes}
+Many algorithms can be implemented in various ways. For all tasks assigned, the implementation must follow the techniques outlined in your textbook and lectures only. Implementations diverging from the covered material will not be considered.
+
+\section*{Blacklist}
+In case you need to write code as part of your solution, be aware that \textcolor{red}{All STL libraries and constructs are blacklisted}; their use is not permitted. Also, \textcolor{red}{if you need to sort data, write the code for the sort}. Any data structure not of your making is prohibited.
+
+\textbf{Deliverables:}
+\begin{itemize}
+  \item A \LaTeX\ based PDF document, the \LaTeX\ source file, and support files needed for \LaTeX\ clean compile.
+  \subitem PDFs generated from word processing based documents will not be considered.
+  \item C++ code implementing... (not required, just a very clear screen capture of the run needed to answer questions if such a run was required).
+\end{itemize}
+
+\vfill
+\hrule
+
+\begin{center}
+{\scriptsize Last updated: \today\ - Typeset using: \textsc{t\kern -.12em\lower.4ex\hbox{e}\kern-.1em xs}hop by:\\ Dr. S Antoun \textcolor{blue}{Assistant Professor of Computer Science} \\ Email: \textcolor{blue}{santoun@coloradomesa.edu}}
+\end{center}
+
+\end{document}

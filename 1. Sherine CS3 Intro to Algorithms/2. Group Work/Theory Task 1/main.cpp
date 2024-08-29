@@ -1,6 +1,5 @@
 #include <iostream>
-#include <string>
-#include <chrono> // Used for timing program run-time.
+#include <random>
 
 using namespace std;
 
@@ -29,6 +28,8 @@ Show that Property 1.3 holds for the algorithm described in Exercise 1.20.
 */
 int main(int argc, char *argv[])
 {
+    std::cout << "\nThis is Program 1.4: Path Compression by Halving." << std::endl;
+
     
     return 0;
 }

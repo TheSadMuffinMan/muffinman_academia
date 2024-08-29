@@ -1,0 +1,47 @@
+\documentclass[]{article}
+\usepackage{geometry}
+\geometry{letterpaper}
+
+
+% Title Page
+\title{CS3 Theory Task 1}
+\author{Anthony Cade Streich}
+
+
+\begin{document}
+\maketitle
+\section*{Question 1.15}
+Give a sequence of input pairs that causes the weighted quick-union algorithm with path compression by halving to produce a path of length 4.
+\newline
+\newline
+\newline
+Begin with a sequence of unique integers from the range of [0,7]. Execute the following union commands to build an algorithm with a path length of 4:
+
+\begin{itemize}
+	\item {1. union(0,1);}
+	\item {2. union(2,3);}
+	\item {3. union(4,5);}
+	\item {4. union(6,7);}
+	
+	\item {5. union(1,2); // This union joins sequences (0,1) and (2,3).}
+	\item {6. union(5,6); // This union joins sequences (4,5) and (6,7).}
+	\item {7. union(0,4); // This union joins the two trees by unionizing (0,1)-(2,3) on "top" of (4,5)-(6,7), resulting in a path length of 4.}
+\end{itemize}
+
+\pagebreak
+
+\section*{Question 1.22}
+Modify Program 1.4 (Path Compression by Halving) to generate random pairs of integers between 0 and N – 1 instead of reading them from standard input, and to loop until N –1 union operations have been performed. Run your program for N = $10^{3}$, $10^{4}$, $10^{5}$, and $10^{6}$ and print out the total number of edges generated for each value of N.
+
+\section*{Code}
+\#include <iostream>\newline
+\#include <random>\newline
+\newline
+int main(int argc, char *argv[ ])\newline
+\{\newline
+\indent input
+\newline \}
+
+
+
+\end{document}          
