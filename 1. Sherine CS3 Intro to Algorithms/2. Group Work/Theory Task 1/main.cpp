@@ -31,6 +31,14 @@ int main(int argc, char *argv[])
     std::default_random_engine randomNumGenerator;
     std::cout << "\nThis is Program 1.4: Path Compression by Halving." << std::endl;
 
-    
+    for (std::size_t i = 0; i < 5; i++)
+    {
+        int num1 = randomNumGenerator();
+        int num2 = randomNumGenerator();
+
+        std::cout << "\nnum1: " << num1 << " num2: " << num2 << std::endl;
+    }
+
+    std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
