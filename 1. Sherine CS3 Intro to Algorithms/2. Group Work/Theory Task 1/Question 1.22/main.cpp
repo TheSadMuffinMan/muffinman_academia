@@ -1,5 +1,5 @@
 /*
-QUESTION 2: (Question 1.22)
+Question 1.22:
 Modify Program 1.4 (Weighted Quick Union with Path Compression by Halving) to generate random pairs of integers
     between 0 and (N-1) instead of reading them from standard input, and to loop until N-1 union operations have
     been formed. Run your program for for N = (10^3, 10^4, 10^5, 10^6) and print out the total number of edges
@@ -9,14 +9,13 @@ Modify Program 1.4 (Weighted Quick Union with Path Compression by Halving) to ge
 #include <iostream>
 #include <random>
 
-#define N 100
+#define N 100000
+// 10^5 == 100,000
 
 int main(int argc, char *argv[])
 {
-    std::cout << "\nN: " << N << std::endl;
-
     int i, j, p, q, id[N], size[N];
-    std::default_random_engine randomNumGenerator;
+    std::default_random_engine randomNumGenerator; // Creating a random number object.
     
     for (i = 0; i < N; i++) // Initializing each array.
     {
@@ -31,7 +30,7 @@ int main(int argc, char *argv[])
         q = (randomNumGenerator() % N); // Assigning q a random value.
 
         for (i = p; i != id[i]; i = id[i])
-            id[i] = id[id[i]]; // This is the line that halves the length of the path.
+            id[i] = id[id[i]]; // Halves the length of the path to root.
         for (j = q; j != id[j]; j = id[j])
             id[j] = id[id[j]]; // Ditto to above, but for j.
 
@@ -48,9 +47,37 @@ int main(int argc, char *argv[])
             size[i] += size[j];
         }
 
-        printf(" %d: %d %d\n", z, p, q);
+        printf(" %d %d\n", p, q);
     }
 
+    int* resultArray = new int[N]; /*
+    ^ Stores each individual group/tree/edge.
+    Is needed in heap memory because of data set potentially being as large as 10^6.*/
+    int resultArraySize = 0;
+
+    // For every element, we must check and see if it belongs to a tree/group, so we will be looping N times.
+    for (int x = 0; x < N; x++)
+    {
+        bool hasGroup = false; // Needed to track if ea indiv element belongs to a tree/group.
+
+        for (int y = 0; y < resultArraySize; y++) // Looping through each "group" that already exists.
+        {
+            if (id[x] == resultArray[y]) // If the group already exists...
+            {
+                hasGroup = true;
+                break;
+            }
+        }
+
+        if (hasGroup == true) {break;}
+
+        resultArray[resultArraySize] = id[x];
+        resultArraySize++;
+    }
+
+    std::cout << "\nNumber of edges: " << (N - resultArraySize) << std::endl;
+
     printf("\nEnd of program.\n");
+    delete[] resultArray;
     return 0;
 }
