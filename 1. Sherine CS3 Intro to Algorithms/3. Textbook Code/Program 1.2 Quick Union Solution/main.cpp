@@ -10,33 +10,22 @@ This program is fundamentally the same as Program 1.1, but does less computation
 
 int main(int argc, char *argv[])
 {
-    int i, p, q, t, id[N];
+    int i, j, p, q, id[N];
 
-    while (scanf("%d %d\n", &p, &q) == 2)
-    {
-        for (i = p; i < N; i++)
-        {
-            if (i != id[i])
-            {
-                i = id[i];
-            }
-        }
-    }
+    for (i = 0; i < N; i++) {id[i] = i;} // Initiallizing ea id[i] to "point" to itself.
+    
+    while (scanf("%d %d\n", &p, &q) == 2) // Reads in input to unionize objects.
+    {        
+        for (i = p; i != id[i]; i = id[i]);
+        for (j = q; j != id[j]; j = id[j]);
 
-
-
-    printf("\nEnd of program.");
-    return 0;
-}
-/*
-for (i = p, i != id[i]; i = id[i];)
-{
-    for (int j = q; j != id[j]; j = id[j])
-    {
         if (i == j) {continue;}
 
         id[i] = j;
+
         printf(" %d %d\n", p, q);
     }
+  
+    printf("\nEnd of program.");
+    return 0;
 }
-*/
