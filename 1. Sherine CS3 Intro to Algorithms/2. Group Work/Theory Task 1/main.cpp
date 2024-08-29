@@ -26,10 +26,22 @@ Modify the program to generate random pairs of integers between 0 and (N-1) inst
 QUESTION 3: (Question 1.21)
 Show that Property 1.3 holds for the algorithm described in Exercise 1.20.
 */
+
 int main(int argc, char *argv[])
 {
     std::default_random_engine randomNumGenerator;
     std::cout << "\nThis is Program 1.4: Path Compression by Halving." << std::endl;
+
+    const int N = 1000; // N == number of elements.
+
+    int* id = new int[N];
+    int* size = new int[N];
+    int p, q;
+
+    for (std::size_t i = 0; i < N; i++)
+    {
+        //
+    }
 
     for (std::size_t i = 0; i < 5; i++)
     {
@@ -39,6 +51,8 @@ int main(int argc, char *argv[])
         std::cout << "\nnum1: " << num1 << " num2: " << num2 << std::endl;
     }
 
+    delete id;
+    delete size;
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
