@@ -31,18 +31,89 @@ Begin with a sequence of unique integers from the range of [0,7]. Execute the fo
 \pagebreak
 
 \section*{Question 1.22}
-Modify Program 1.4 (Path Compression by Halving) to generate random pairs of integers between 0 and N-1 instead of reading them from standard input, and to loop until N-1 union operations have been performed. Run your program for N = $10^{3}$, $10^{4}$, $10^{5}$, and $10^{6}$ and print out the total number of edges generated for each value of N.
+Modify Program 1.4 (Weighted Quick Union with Path Compression by Halving) to generate random pairs of integers between 0 and N-1 instead of reading them from standard input, and to loop until N-1 union operations have been performed. Run your program for N = $10^{3}$, $10^{4}$, $10^{5}$, and $10^{6}$ and print out the total number of edges generated for each value of N.
 
 \section*{Code}
-\#include <iostream>\newline
-\#include <random>\newline
+\#include $<$iostream$>$\newline
+\#include $<$random$>$\newline\newline
+\#define N 1000000\newline
 \newline
 int main(int argc, char *argv[ ])\newline
 \{\newline
-\indent const int N = 1000;\newline
-\indent std::default\_random\_engine randomNumGenerator;\newline
+\indent int i, j, p, q, id[N], size[N];\newline
+\indent std::default\_random\_engine randomNumGenerator;\newline\newline
+\indent for (i = 0; i $<$ N; i++) // Initializing each array.\newline
+\indent \{\newline
+\indent\indent id[i] = i;\newline
+\indent\indent size[i] = 1;\newline
+\indent \}\newline\newline
+\indent for (int z = 0; z $<$ (N - 1); z++)\newline
+\indent \{\newline
+\indent\indent p = (randomNumGenerator() \% N); // Assigning p a random value.\newline
+\indent\indent q = (randomNumGenerator() \% N); // Assigning q a random value.\newline\newline
+\indent\indent for (i = p; i != id[i]; i = id[i])\newline
+\indent\indent \{\newline
+\indent\indent\indent id[i] = id[id[i]]; // Halves the length of the path to root.\newline
+\indent\indent \}\newline
+\indent\indent for (j = q; j != id[q]; j = id[q])\newline
+\indent\indent \{\newline
+\indent\indent\indent id[j] = id[id[j]];\newline
+\indent\indent \}\newline\newline
+\indent\indent if (i == j) \{continue;\}\newline\newline
+\indent\indent if (size[i] $<$ size[j])\newline
+\indent\indent \{\newline
+\indent\indent\indent id[i] = j;\newline
+\indent\indent\indent size[j] += size[i];\newline
+\indent\indent \} else \{\newline
+\indent\indent\indent id[j] = i;\newline
+\indent\indent\indent size[j] += size[i];\newline
+\indent\indent \}\newline\newline
+\indent\indent printf(" \%d \%d$\backslash$n", p, q);\newline
+\indent \}\newline
+
+int* resultArray = new int[N]; // Must be declared on heap. Program will result in stack overflow when element size approaches $10^6$.\newline\newline
+\indent int resultArraySize = 0;\newline
+
+for (int x = 0; x $<$ N; x++)\newline
+\indent \{\newline
+\indent\indent bool hasGroup = false; // Needed to track if ea individual element belongs to a tree/group.\newline\newline
+\indent\indent for (int y = 0; y $<$ resultArraySize; y++) // Looping through each pre-existing group.\newline
+\indent\indent \{\newline
+\indent\indent\indent if (id[x] == resultArray[y]) // Comparing current group with pre-existing groups.\newline
+\indent\indent\indent \{\newline
+\indent\indent\indent\indent hasGroup = true;\newline
+\indent\indent\indent\indent break;\newline
+\indent\indent\indent \}\newline
+\indent\indent\ \}\newline\newline
+\indent\indent if (hasGroup == true) \{break;\}\newline\newline
+\indent\indent resultArray[resultArraySize] = id[x];\newline
+\indent\indent resultArraySize++;\newline
+\indent \}\newline\newline
+\indent std::cout $<<$ "$\backslash$nNumber of edges: $<<$ (N - resultArraySize) $<<$ std::endl;\newline
+\indent delete[ ] resultArray;\newline // End of program.\newline
+\noindent \}
+
+\section*{Results}
+\begin{itemize}
+	\item $10^3$ : 993 edges.
+	\item $10^4$ : 9999 edges.
+	\item $10^5$ : 99998 edges.
+	\item $10^6$ : 999998 edges.
+\end{itemize}
+\pagebreak
+
+\section*{Question 1.21}
+Show that Property 1.3 (Weighted Quick Union M lg N edge processing) holds for the algorithm described in Exercise 1.20 (Weighted Quick Union).
+
+\section*{Exercise 1.20 - Quick Union Solution}
+Modify Program 1.3 (Weighted Quick Union) to use the height of the trees (longest path from any node to the root), instead of the weight, to decide whether to set (id[i] = j) or (id[j] = i). Run empirical studies to compare this variant with Program 1.3.
+
+\section*{Program 1.3 (Modified Weighted Quick Union)}
+// This program has been modified to generate random union commands so that it is easier to empirically compare different algorithms.\newline\newline
+\#include $<$iostream$>$\newline
+\#include $<$random$>$\newline\newline
+\#define N 1000000\newline
 \newline
-\}
 
 
 

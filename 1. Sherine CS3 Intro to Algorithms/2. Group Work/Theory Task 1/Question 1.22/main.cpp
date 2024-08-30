@@ -9,7 +9,7 @@ Modify Program 1.4 (Weighted Quick Union with Path Compression by Halving) to ge
 #include <iostream>
 #include <random>
 
-#define N 100000
+#define N 1000000
 // 10^5 == 100,000
 
 int main(int argc, char *argv[])
