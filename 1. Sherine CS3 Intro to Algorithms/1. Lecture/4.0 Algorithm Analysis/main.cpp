@@ -110,6 +110,13 @@ COMMON MISTAKES:
 /*
 Memory requirements also need to be considered.
 
+RULE OF THUMB:
+    DECLARE ALL VARIABLES (of the same type) AT THE SAME PLACE.
+        This allows better memory optimization. For example, ponder the following code:
+            int i; // Memory block is 8 bits, only 4 are used.
+            char x; // Memory block is 4 bits, only 1 is used.
+            float z; // Memory block is 8 bits, only 4 are used.
+            int j; // C++ does not go back and refill i, it creates a new memory location for j.
 */
 
 int main(int argc, char *argv[])
