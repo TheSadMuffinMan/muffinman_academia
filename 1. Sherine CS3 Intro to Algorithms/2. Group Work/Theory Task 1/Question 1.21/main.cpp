@@ -56,12 +56,15 @@ int main(int argc, char *argv[])
             size[i] += size[j];
         }
 
-        printf(" %d %d\n", p, q);
+        // printf(" %d %d\n", p, q);
     }
     auto timeStop = Time::now();
-    auto duration = Time::duration(timeStart - timeStop);
+    auto duration = Time::duration(timeStop - timeStart);
 
-    std::cout << "\nRun Time: " << duration.count() << std::endl;
+    // One nanosecond == 0.000,000,0001 seconds (one-billionth of a second).
+    // One microsecond == 0.000,0001 seconds (one-millionth of a second).
+    // One millisecond == 0.001 (one-thousandth of a second).
+    std::cout << "\nRun Time: " << duration.count() << " nanoseconds." << std::endl;
 
     printf("\nEnd of program.\n");
     return 0;
