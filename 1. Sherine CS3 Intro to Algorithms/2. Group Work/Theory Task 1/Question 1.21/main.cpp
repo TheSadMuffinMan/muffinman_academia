@@ -56,14 +56,11 @@ int main(int argc, char *argv[])
             size[i] += size[j];
         }
 
-        // printf(" %d %d\n", p, q);
+        // printf(" %d %d\n", p, q); // Don't need to print out un-unionized objects.
     }
     auto timeStop = Time::now();
     auto duration = Time::duration(timeStop - timeStart);
 
-    // One nanosecond == 0.000,000,0001 seconds (one-billionth of a second).
-    // One microsecond == 0.000,0001 seconds (one-millionth of a second).
-    // One millisecond == 0.001 (one-thousandth of a second).
     std::cout << "\nRun Time: " << duration.count() << " nanoseconds." << std::endl;
 
     printf("\nEnd of program.\n");
