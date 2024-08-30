@@ -17,7 +17,7 @@ Question 1.21:
 #include <random>
 #include <chrono>
 
-typedef std::chrono::steady_clock Time;// Makes is to where we don't have to type entire library every time.
+typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type entire library every time.
 
 #define N 1000
 
