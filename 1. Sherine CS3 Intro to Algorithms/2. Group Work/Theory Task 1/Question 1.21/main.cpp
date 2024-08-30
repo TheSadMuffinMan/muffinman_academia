@@ -45,6 +45,7 @@ int main(int argc, char *argv[])
 
         if (i == j) {continue;}
 
+        // NEED TO CHANGE TO COMPARE TREE HEIGHT.
         if (size[i] < size[j])
         {
             id[i] = j;

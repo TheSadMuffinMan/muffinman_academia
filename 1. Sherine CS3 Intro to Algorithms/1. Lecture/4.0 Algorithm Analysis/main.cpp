@@ -71,6 +71,24 @@ The best algorithm analyses consist of:
     Best Case: determined by "easiest" input and provides a goal for all inputs.
     Worst Case: determined by "hardest" input and provides a time-guarentee for all inputs.
     Average Case: this is the expected cost of random input, but requires a model for "random" input.
+
+ALGORITHMIC DESIGN APPROACH:
+    Start:
+        Develop an algorithm.
+        Prove lower bound.
+    
+    Gap?
+        Lower the upper bound (discover a new algorithm).
+        Rause the lower bound (more difficult).
+    
+    Golden Age of Algorithm Design:
+        1970s - 1980s.
+        Steadily decreasing upper bounds for many important problems.
+            Now we know many optimal algorithms.
+    
+    Caveats:
+        Are we being overly pessimistic to focus on worst case?
+        Need better than "to within a constant factor" to predict performance.
 */
 
 int main(int argc, char *argv[])
