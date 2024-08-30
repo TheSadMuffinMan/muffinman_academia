@@ -83,12 +83,33 @@ ALGORITHMIC DESIGN APPROACH:
     
     Golden Age of Algorithm Design:
         1970s - 1980s.
+            Sherine claims the decline in algorithmic thinking is due to academia, which is a fair assessment imo.
         Steadily decreasing upper bounds for many important problems.
             Now we know many optimal algorithms.
     
     Caveats:
         Are we being overly pessimistic to focus on worst case?
         Need better than "to within a constant factor" to predict performance.
+
+Algorithms have improved over time because of programmer's pessimisitic approach towards algorithms.
+    Sherine states that the worst case scenario shouldn't be your main focus, but it should be considered.
+*/
+
+/*
+COMMONLY USED NOTATIONS IN THE THEORY OF ALGORITHMS
+    Tilde: "~", used for the leading term. ~10N^2. Is used to provide approximate model.
+    Big Theta: provides asympototic order of growth, and is used to classify algorithms.
+    Big Oh: Used to develop upper bounds.
+    Big Omega: Used to develop lower bounds.
+COMMON MISTAKES:
+    Interpreting Big Oh as an approximate model.
+
+    This course will primarily use Tilde notation.
+*/
+
+/*
+Memory requirements also need to be considered.
+
 */
 
 int main(int argc, char *argv[])
