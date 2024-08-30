@@ -1,7 +1,5 @@
 #include <iostream>
 
-using namespace std;
-
 void clearScreen();
 
 // Function clears the screen
