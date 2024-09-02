@@ -7,7 +7,9 @@ Modify Program 1.4 (Weighted Quick Union with Path Compression by Halving) to ge
 */
 
 /*
-Repurpose the size array to be used as height.
+Repurpose the size array to be used as height. When comparing height, if the trees are not equal, then we do not
+    need to increment the height array. If they are the same height, then the height will change, and we will
+    increment height +1.
 */
 
 #include <iostream>
