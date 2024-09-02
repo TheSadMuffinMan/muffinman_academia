@@ -1,14 +1,13 @@
 /*
-Fundamental data structures include...
-    Stacks: First in, last out.
-    Queues: First in, first out.
+This program is an application of the Stack data structure utilized through classes.
+    See the bottom of the program to see an array implementation of stacks.
 */
 
 /*
 STACKS
 The Stack is essentially a more fancy linked list. Each node maintains a pointer to the next node except the
     last node (which points to NULL).
-We also maintain an instance node == working node.
+We also maintain an instance node (== working node).
 
 Because there are no loops, we have a constant cost for every operation.
 
@@ -21,6 +20,7 @@ API:
 */
 
 #include <iostream>
+#define N 100
 
 class Stack
 {
@@ -35,7 +35,7 @@ class Stack
         int peek();
     
     private:
-        int stack[100];
+        int stack[N];
         int top;
 };
 
@@ -107,3 +107,34 @@ int Stack::peek()
 
     return stack[top];
 }
+
+/*
+class FixedCapacityStackOfStrings
+{
+    private:
+        std::string* s;
+        int N;
+        int capacity;
+
+    public:
+        FixedCapacityStackOfStrings(int capacity) : capacity(capacity)
+        {
+            s = new std::string[capacity];
+            N = 0;
+        }
+
+        ~FixedCapacityStackOfStrings() {delete[] s;}
+
+        bool isEmpty() {return N == 0;}
+        
+        void push(std::string item)
+        {
+            s[N++] = item;
+        }
+
+        std::string pop()
+        {
+            return s[--N];
+        }
+}
+*/
