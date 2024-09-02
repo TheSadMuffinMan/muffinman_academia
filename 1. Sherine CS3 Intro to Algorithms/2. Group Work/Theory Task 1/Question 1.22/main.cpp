@@ -6,6 +6,10 @@ Modify Program 1.4 (Weighted Quick Union with Path Compression by Halving) to ge
     generated for each value of N.
 */
 
+/*
+Repurpose the size array to be used as height.
+*/
+
 #include <iostream>
 #include <random>
 
