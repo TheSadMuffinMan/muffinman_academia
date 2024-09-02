@@ -35,18 +35,23 @@ class Stack
         int peek();
     
     private:
-        int stack[N];
-        int top;
+        int _stack[N];
+        int _top;
 };
 
 int main(int argc, char* argv[])
 {
+    std::cout << "Program start. This is an int stack. Input a negative number to stop stackin'." << std::endl;
     Stack myStack;
 
-    myStack.push(42);
-    myStack.push(15);
-    myStack.push(9000);
-    myStack.push(-3);
+    int pushInt = 0;
+    while (pushInt >= 0)
+    {
+        std::cin >> pushInt;
+        myStack.push(pushInt);
+    }
+
+    myStack.pop(); // Removing the last negative data element.
 
     while (myStack.empty() == false)
     {
@@ -54,23 +59,24 @@ int main(int argc, char* argv[])
     }
     std::cout << std::endl;
 
+    std::cout << "End of program." << std::endl;
     return 0;
 }
 
 Stack::Stack()
 {
-    top = -1;
+    _top = -1;
 }
 
 bool Stack::empty()
 {
-    if (top == -1) return true;
+    if (_top == -1) return true;
     return false;
 }
 
 int Stack::size()
 {
-    return top + 1;
+    return _top + 1;
 }
 
 void Stack::push(int data)
@@ -81,8 +87,8 @@ void Stack::push(int data)
         // Create larger array and copy elements.
     }
     */
-    top++;
-    stack[top] = data;
+    _top++;
+    _stack[_top] = data;
 }
 
 int Stack::pop()
@@ -93,8 +99,8 @@ int Stack::pop()
         return -999;
     }
 
-    top--;
-    return stack[top+1];
+    _top--;
+    return _stack[_top+1];
 }
 
 int Stack::peek()
@@ -105,7 +111,7 @@ int Stack::peek()
         return -999;
     }
 
-    return stack[top];
+    return _stack[_top];
 }
 
 /*
