@@ -4,7 +4,7 @@ This program is an application of the Stack data structure utilized through clas
 */
 
 /*
-STACKS
+STACKS (Utilizing Linked List data structure)
 The Stack is essentially a more fancy linked list. Each node maintains a pointer to the next node except the
     last node (which points to NULL).
 We also maintain an instance node (== working node).
