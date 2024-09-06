@@ -30,11 +30,37 @@ P4) There are three natives, A, B, and C. A says "B and C are of the same type".
     find out if A is telling the truth?
         Q = (A = (A = B)); // "(A = (A = B))" can be simplified as "B".
 .       ANSWER: So, ask B if they are a knight.
+
+P5) There are two natives, A and B. What question should you ask A to determine if B is a knight?
+    ANSWER: "Is B of the same type as you?". If a knave, then he will be lying about the lie, and if a knight,
+        they will be telling the truth about the truth.
+        (Q = A) = B;
+        Q = (A = B); // Reorganized above line.
+
+P6) There are two natives, A and B. What questions should you ask A to determine whether A and B are of the same
+    type?
+    Potential answer: Ask A if B is a knight.
+        (Q = A) = (A = B);
+        Q = (A = (A = B));
+        Q = ((A = A) = B);
+        Q = (true = B); // So, we can conclude by asking A "Is B a knight?".
+    Better answer: Are you and B of the same type?
+        Q = (A = B);
+        if (A == Knight && B == Knight) {A == true; B == true; Q == true;}
+        if (A == Knave && B == Knight) {A == true; B == false; Q == true;}
+        if (A == Knight && B == Knave) {A == false; B == true; Q == false;}
+        if (A == Knave && B == Knave) {A == true; B = true; Q == true;}
+            CONCLUSION: There is only one scenario in which we receive a false.
+
+
+P7) You are walking on a path and come across a native standing at a fork in the path. One path leads to
+    a painful demise, and the other leads to a nice resturaunt. What questions can you ask the local to
+    lead you in the right direction?
 */
 
 /*
 CALCULATIONAL LOGIC
-aka Boolean Logic.
+aka BOOLEAN LOGIC.
 Has many properties:
     REFLEXIVE: p = p.
     SYMMETRIC: (p = q) = (q = p)
