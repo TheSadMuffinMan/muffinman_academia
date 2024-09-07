@@ -10,7 +10,7 @@ P1) You come across a native. They tell you "There is gold on the island" and "I
             A = (A = G);
             (A = A) = G;
             true = G;
-        TAKEAWAY: Some questions do not have an answer.
+        TAKEAWAY: Some questions do not have an answer. Kinda weird take imo.
 
 P2) You come across two natives. You ask each if the other is a knight. Do you get the same answer from both?
     ANSWER: Native1 will answer yes, and Native2 must also answer yes. Native1's answer must be the same as Native2's.
