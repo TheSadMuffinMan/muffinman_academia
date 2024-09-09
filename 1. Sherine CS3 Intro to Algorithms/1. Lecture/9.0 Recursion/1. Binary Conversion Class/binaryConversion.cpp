@@ -6,7 +6,7 @@ class Binary
     public:
         static std::string convert(int N)
         {
-            if (N == 1) {return "1";}
+            if (N == 1) {return "1";} // BASE CASE.
 
             return convert(N / 2) + std::to_string(N % 2);
         }

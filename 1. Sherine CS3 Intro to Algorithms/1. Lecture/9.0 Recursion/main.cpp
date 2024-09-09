@@ -26,13 +26,12 @@ Recursion IS very good for algorithmic trees.
 */
 
 #include <iostream>
+#include <cmath>
 
+// The code below is from lecture/the textbook.
 std::string ruler(int n)
 {
-    if (n == 1)
-    {
-        return "1";
-    }
+    if (n == 1) {return "1";} // BASE CASE.
 
     std::string ruler_n_minus_1 = ruler(n - 1);
     return ruler_n_minus_1 + " " + std::to_string(n) + " " + ruler_n_minus_1;
@@ -42,9 +41,15 @@ int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-    int n = std::stoi(argv[1]);
+    int n = 0;
+    int moveCounter = 0;
+
+    std::cout << "What would you like N to equal?: ";
+    std::cin >> n;
     std::cout << ruler(n) << std::endl;
     
+    moveCounter = (pow(2,n) - 1);
+    std::cout << "Number of (optimal) moves: " << moveCounter << "." << std::endl;
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }

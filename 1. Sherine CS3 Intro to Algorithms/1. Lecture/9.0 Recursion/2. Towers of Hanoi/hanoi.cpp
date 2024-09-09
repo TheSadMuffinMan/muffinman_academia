@@ -2,7 +2,7 @@
 
 std::string hanoi(int n, bool left)
 {
-    if (n == 0) {return " ";}
+    if (n == 0) {return " ";} // BASE CASE.
 
     std::string move;
     if (left)
