@@ -3,6 +3,10 @@
 # "\" is an escape key.
 # One main difference that Python has is the lack of data type declaration. Is kinda nice I guess.
 
+# Casting looks like this:
+auto cast(int):
+    
+
 # User defined functions
 def addNums(x,y):
     sum = (x + y)
