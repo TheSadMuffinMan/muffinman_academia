@@ -1,13 +1,13 @@
 /*
-This is just a basic representation of what recursive code can be.
+This program is a visual representation of a ruler. See rulerRepresentation.png for a depiction.
 */
 
 /*
 Recursion is just a function that calls itsself. This is advantageous for solving large problems that have
     many smaller parts that need to be solved. The function executes until it reaches its BASE CASE.
 
-What is Recursion? (Textbook Definition)
-    When something is specified in terms of itself.
+What is Recursion?
+    When something is specified in terms of itself. (Textbook Definition)
 
 Why learn Recursion?
     Represents a new mode of thinking.
@@ -26,7 +26,6 @@ Recursion IS very good for algorithmic trees.
 */
 
 #include <iostream>
-#include "binaryConversion.h" // Class converts an int to it's binary representation.
 
 std::string ruler(int n)
 {

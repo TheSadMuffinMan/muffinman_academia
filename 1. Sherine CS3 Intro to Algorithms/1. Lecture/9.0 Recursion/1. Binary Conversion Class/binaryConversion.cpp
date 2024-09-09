@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     std::cout << "\nEnter an integer: ";
     std::cin >> n;
 
-    std::cout << "\nBinary representation of " << n << ":";
+    std::cout << "\nBinary representation of " << n << ": ";
     std::cout << Binary::convert(n) << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
