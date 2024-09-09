@@ -8,8 +8,11 @@ def addNums(x,y):
     sum = (x + y)
     return sum
 
-print("Program start.\n")
+def main():
+    print("Program start.\n")
 
-num1 = int(input("Please input an int to continue: ")) # Variable declaration and user input.
+    num1 = int(input("Please input an int to continue: ")) # Variable declaration and user input.
 
-print("You input: ", num1)
+    print("You input: ", num1)
+
+main()
