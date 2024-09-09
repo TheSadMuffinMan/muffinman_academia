@@ -15,6 +15,11 @@ Many computational artifacts are naturally self-referential.
     File systems wiht folders containing folders.
     Fractal graphical patterns.
     Divide-and-Conquer Algorithms (stay tuned :D).
+
+One unfortunate aspect of Recursion is that to prove functionality, you often need to provide mathmatical proofs.
+
+Recursion IS very good for algorithmic trees.
+    
 */
 
 #include <iostream>
