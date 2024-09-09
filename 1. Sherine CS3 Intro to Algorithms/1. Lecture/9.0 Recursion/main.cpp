@@ -1,8 +1,12 @@
 /*
+This is just a basic representation of what recursive code can be.
+*/
+
+/*
 Recursion is just a function that calls itsself. This is advantageous for solving large problems that have
     many smaller parts that need to be solved. The function executes until it reaches its BASE CASE.
 
-What is Recursion?
+What is Recursion? (Textbook Definition)
     When something is specified in terms of itself.
 
 Why learn Recursion?
@@ -21,37 +25,26 @@ One unfortunate aspect of Recursion is that to prove functionality, you often ne
 Recursion IS very good for algorithmic trees.
 */
 
-/* Towers of Hanoi fun.
-    Has the same exact solution as the ruler problem (below).
-*/
-
 #include <iostream>
-#include <string>
+#include "binaryConversion.h" // Class converts an int to it's binary representation.
 
-std::string hanoi(int n, bool left)
+std::string ruler(int n)
 {
-    if (n == 0) {return " ";}
-
-    std::string move;
-    if (left)
+    if (n == 1)
     {
-        move = std::to_string(n) + "L";
-    } else {
-        move = std::to_string(n) + "R";
+        return "1";
     }
 
-    return hanoi(n-1, !left) + move + hanoi(n-1, !left);
+    std::string ruler_n_minus_1 = ruler(n - 1);
+    return ruler_n_minus_1 + " " + std::to_string(n) + " " + ruler_n_minus_1;
 }
 
 int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-    int n = 0;
-    std::cout << "How many blocks would you like?: ";
-    std::cin >> n;
-
-    std::cout << hanoi(n, false) << std::endl;
+    int n = std::stoi(argv[1]);
+    std::cout << ruler(n) << std::endl;
     
     std::cout << "\nEnd of program." << std::endl;
     return 0;
