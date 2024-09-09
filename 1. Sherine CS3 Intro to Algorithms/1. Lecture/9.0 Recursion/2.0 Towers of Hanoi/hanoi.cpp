@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 std::string hanoi(int n, bool left)
 {
@@ -23,7 +24,11 @@ int main(int argc, char *argv[])
     std::cout << "How many \"blocks\" would you like there to be?: ";
     std::cin >> n;
 
+    int numMoves = 0;
     std::cout << hanoi(n, false) << std::endl;
+    
+    numMoves = (pow(2,n) - 1);
+    std::cout << "Number of (optimal) moves: " << numMoves << "." << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
 }
