@@ -15,6 +15,7 @@ long long F(int n)
 
     return memo[n];
 }
+
 int main(int argc, char* argv[])
 {
     int n = std::stoi(argv[1]);
