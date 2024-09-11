@@ -9,16 +9,6 @@ OBSERVATIONS:
         "(previous perfect squares)... -> 4 -> 2 -> 1 -> 4 -> 2 -> 1 etc";
 */
 
-u_int32_t iterativeCollatz(u_int32_t numIterations, u_int32_t startingNum)
-{
-    //
-}
-
-u_int32_t recursiveCollatz(u_int32_t numIterations, u_int32_t startingNum)
-{
-    //
-}
-
 #include <iostream>
 
 int main(int argc, char *argv[])
@@ -46,6 +36,8 @@ int main(int argc, char *argv[])
             startingNum = ((3 * startingNum) + 1);
             std::cout << startingNum << " -> ";
         }
+
+        if (startingNum == 1) {break;}
     }
 
     std::cout << "\nEnd of program." << std::endl;
