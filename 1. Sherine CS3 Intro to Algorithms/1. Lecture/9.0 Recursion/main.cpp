@@ -23,6 +23,7 @@ Many computational artifacts are naturally self-referential.
 One unfortunate aspect of Recursion is that to prove functionality, you often need to provide mathmatical proofs.
 
 Recursion IS very good for algorithmic trees.
+    It provides a hierarchical approach to trees, with benefits including increased efficiency.
 
 An example of recursion is an H tree program.
 */
