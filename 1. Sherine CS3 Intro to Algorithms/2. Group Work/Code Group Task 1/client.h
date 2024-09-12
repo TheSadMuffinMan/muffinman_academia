@@ -7,7 +7,7 @@ typedef std::chrono::milliseconds ms; // Ditto to above.
 
 /*
 ***IMPORTANT***: Program memory is dynamically allocated.
-Each element inside client will frequently be referred to as a "Node".
+Each data element inside client will frequently be referred to as "Node".
 */
 class unionClient
 {
@@ -53,6 +53,7 @@ unionClient::unionClient()
     auto duration = Time::duration(timeStop - timeStart);
 
     // NOTE: Chrono typically operates in nanoseconds, so I've converted it ms.
+    // NOTE 2: It takes a data set of >1,000,000 to see time increment.
     ms durationMS = std::chrono::duration_cast<ms>(duration);
 
     std::cout << "Client with " << N << " nodes initialized in " << durationMS.count()
@@ -100,11 +101,6 @@ void unionClient::Union(int p, int q)
 int unionClient::find(int p)
 {
     return unionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
-
-    /* OLD CODE. May need in future if the above line does not work.
-    // int* tempArray = unionClient::getIDArray();
-    // return tempArray[p];
-    */
 }
 
 // Function determines if two nodes are connected or not.
