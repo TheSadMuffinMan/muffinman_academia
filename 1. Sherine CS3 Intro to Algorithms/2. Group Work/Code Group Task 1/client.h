@@ -1,7 +1,10 @@
 #include <iostream>
+#include <chrono>
 
 #define N 1000
+typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
 
+// Each client will frequently be referred to as a "Node".
 class unionClient
 {
     public:
@@ -14,16 +17,17 @@ class unionClient
         void setIDArray(int* desiredGroup) {_idArray = desiredGroup;}
         void setSizeArray(int* desiredArray) {_sizeArray = desiredArray;}
 
-        int* Union(int, int); // Union operation. Joins two clients.
+        int* Union(int, int);
     
     private:
-        int* _idArray;
-        int* _sizeArray;
+        int* _idArray; // This array stores all of the different unions that the Node has been connected to.
+        int* _sizeArray; // This array stores the size 
 };
 
 // Default constructor.
 unionClient::unionClient()
 {
+    auto timeStart = Time::now();
     int tempIDArray[N], tempSizeArray[N];
 
     for (int i = 0; i < N; i++)
@@ -31,16 +35,46 @@ unionClient::unionClient()
         tempIDArray[i] = i;
         // This sets every node to "point" to itself, meaning that all nodes are not connected to anything.
 
-        tempSizeArray[i] = i;
+        tempSizeArray[i] = 1;
         // This sets the size of every node to 1 (because there have been no union operations yet).
     }
 
     unionClient::setIDArray(tempIDArray);
     unionClient::setSizeArray(tempSizeArray);
+    auto timeStop = Time::now();
+    auto duration = Time::duration(timeStop - timeStart);
+    
+    // NOTE: Chrono typically operates in nanoseconds, so I've converted it ms.
+    std::cout << "Client with " << N << " nodes initialized in " << (duration.count() * 1000)
+        << " milliseconds (ms)." << std::endl;
 }
 
-// Comment.
+// Utilizes the Quick Union with Path Compression Algorithm.
+// GOAL: Join two nodes.
 int* unionClient::Union(int p, int q)
 {
-    //
+    int i = 0; // i == p's index.
+    int j = 0; // j == q's index.
+
+    for (int z = 0; z < (N -1); z++)
+    {
+        for (i = p; i != _idArray[i]; i = _idArray[i])
+            _idArray[i] = _idArray[_idArray[i]]; // Halves the length of the path to root.
+
+        for (j = q; j != _idArray[j]; j = _idArray[j])
+            _idArray[j] = _idArray[_idArray[j]]; // Ditto to above, but for j.
+
+        if (i == j) {continue;} // If the nodes are already unionized.
+
+        if (_sizeArray[i] < _sizeArray[j]) // If i's group/_sizeArray are smaller than j's group/_sizeArray...
+        {
+            _idArray[i] = j;
+            _sizeArray[j] += _sizeArray[i];
+        }
+        else
+        {
+            _idArray[j] = i;
+            _sizeArray[i] += _sizeArray[j];
+        }
+    }
 }
