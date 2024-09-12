@@ -6,7 +6,7 @@ typedef std::chrono::steady_clock Time;// Makes it to where we don't have to typ
 typedef std::chrono::milliseconds ms; // Ditto to above.
 
 /*
-***IMPORTANT***: Program memory is dynamically allocated (client is located on heap).
+***IMPORTANT***: Program memory is dynamically allocated.
 Each element inside client will frequently be referred to as a "Node".
 */
 class unionClient
@@ -54,7 +54,7 @@ unionClient::unionClient()
 
     // NOTE: Chrono typically operates in nanoseconds, so I've converted it ms.
     ms durationMS = std::chrono::duration_cast<ms>(duration);
-    
+
     std::cout << "Client with " << N << " nodes initialized in " << durationMS.count()
         << " ms." << std::endl;
 }
@@ -65,11 +65,10 @@ unionClient::~unionClient()
     delete _idArray;
     delete _sizeArray;
 
-    std::cout << "\nMemory cleaned up.";
+    std::cout << "\nMemory cleaned up." << std::endl;
 }
 
 // Utilizes the Quick Union with Path Compression Algorithm.
-// GOAL: Join two nodes.
 void unionClient::Union(int p, int q)
 {
     int i = 0; // i == p's index.
@@ -98,7 +97,6 @@ void unionClient::Union(int p, int q)
     }
 }
 
-// Having private data members makes this a little clunky, but workable.
 int unionClient::find(int p)
 {
     return unionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
@@ -109,7 +107,7 @@ int unionClient::find(int p)
     */
 }
 
-// GOAL: Determine whether or not nodes p & q are connected.
+// Function determines if two nodes are connected or not.
 bool unionClient::connected(int p, int q)
 {
     if (unionClient::getIDArray()[p] == unionClient::getIDArray()[q])
