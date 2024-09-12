@@ -23,7 +23,7 @@ class unionClient
     
     private:
         int* _idArray; // Stores what "group" each index belongs to.
-        int* _sizeArray; // This array stores the length of each index.
+        int* _sizeArray; // Stores the length of each index.
 };
 
 // Default constructor.
@@ -58,7 +58,7 @@ int* unionClient::Union(int p, int q)
     int i = 0; // i == p's index.
     int j = 0; // j == q's index.
 
-    for (int z = 0; z < (N -1); z++)
+    for (int z = 0; z < (N -1); z++) // Looping through every node...
     {
         for (i = p; i != _idArray[i]; i = _idArray[i])
             _idArray[i] = _idArray[_idArray[i]]; // Halves the length of the path to root.
@@ -66,7 +66,7 @@ int* unionClient::Union(int p, int q)
         for (j = q; j != _idArray[j]; j = _idArray[j])
             _idArray[j] = _idArray[_idArray[j]]; // Ditto to above, but for j.
 
-        if (i == j) {continue;} // If the nodes are already unionized.
+        if (i == j) {continue;} // If the indexes are the same...
 
         if (_sizeArray[i] < _sizeArray[j]) // If i's group/_sizeArray are smaller than j's group/_sizeArray...
         {
@@ -86,12 +86,17 @@ int unionClient::find(int p)
 {
     return unionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
 
+    /* OLD CODE. May need in future if the above line does not work.
     // int* tempArray = unionClient::getIDArray();
     // return tempArray[p];
+    */
 }
 
 // GOAL: Determine whether or not nodes p & q are connected.
 bool unionClient::connected(int p, int q)
 {
-    // comment.
+    if (unionClient::getIDArray()[p] == unionClient::getIDArray()[q])
+    {
+        return true;
+    } else {return false;}
 }
