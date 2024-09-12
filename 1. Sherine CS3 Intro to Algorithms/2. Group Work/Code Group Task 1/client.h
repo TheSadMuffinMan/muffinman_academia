@@ -18,10 +18,12 @@ class unionClient
         void setSizeArray(int* desiredArray) {_sizeArray = desiredArray;}
 
         int* Union(int, int);
+        int find(int p);
+        bool connected(int, int);
     
     private:
         int* _idArray; // This array stores all of the different unions that the Node has been connected to.
-        int* _sizeArray; // This array stores the size 
+        int* _sizeArray; // This array stores the length of each tree.
 };
 
 // Default constructor.
@@ -43,7 +45,7 @@ unionClient::unionClient()
     unionClient::setSizeArray(tempSizeArray);
     auto timeStop = Time::now();
     auto duration = Time::duration(timeStop - timeStart);
-    
+
     // NOTE: Chrono typically operates in nanoseconds, so I've converted it ms.
     std::cout << "Client with " << N << " nodes initialized in " << (duration.count() * 1000)
         << " milliseconds (ms)." << std::endl;
@@ -77,4 +79,17 @@ int* unionClient::Union(int p, int q)
             _sizeArray[i] += _sizeArray[j];
         }
     }
+}
+
+// Having private data members makes this a little clunky, but workable.
+int unionClient::find(int p)
+{
+    int* tempArray = unionClient::getIDArray();
+    return tempArray[p];
+}
+
+// GOAL: Determine whether or not nodes p & q are connected.
+bool unionClient::connected(int p, int q)
+{
+    //
 }
