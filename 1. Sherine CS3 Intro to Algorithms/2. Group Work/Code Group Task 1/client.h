@@ -17,8 +17,8 @@ class unionClient
         void setIDArray(int* desiredGroup) {_idArray = desiredGroup;}
         void setSizeArray(int* desiredArray) {_sizeArray = desiredArray;}
 
-        int* Union(int, int);
-        int find(int p);
+        void Union(int, int);
+        int find(int);
         bool connected(int, int);
     
     private:
@@ -53,7 +53,7 @@ unionClient::unionClient()
 
 // Utilizes the Quick Union with Path Compression Algorithm.
 // GOAL: Join two nodes.
-int* unionClient::Union(int p, int q)
+void unionClient::Union(int p, int q)
 {
     int i = 0; // i == p's index.
     int j = 0; // j == q's index.
