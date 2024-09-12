@@ -3,12 +3,17 @@
 
 #define N 1000
 typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
+typedef std::chrono::milliseconds ms; // Ditto to above.
 
-// Each element inside client will frequently be referred to as a "Node".
+/*
+***IMPORTANT***: Program memory is dynamically allocated (client is located on heap).
+Each element inside client will frequently be referred to as a "Node".
+*/
 class unionClient
 {
     public:
-        unionClient(); // Default Constructor.
+        unionClient();
+        ~unionClient();
 
         // Getters
         int* getIDArray() {return _idArray;}
@@ -22,15 +27,16 @@ class unionClient
         bool connected(int, int);
     
     private:
-        int* _idArray; // Stores what "group" each index belongs to.
-        int* _sizeArray; // Stores the length of each index.
+        int* _idArray; // Stores what "group" each node belongs to.
+        int* _sizeArray; // Stores the path length to root for each node.
 };
 
 // Default constructor.
 unionClient::unionClient()
 {
     auto timeStart = Time::now();
-    int tempIDArray[N], tempSizeArray[N];
+    int* tempIDArray = new int[N];
+    int* tempSizeArray = new int[N];
 
     for (int i = 0; i < N; i++)
     {
@@ -47,8 +53,19 @@ unionClient::unionClient()
     auto duration = Time::duration(timeStop - timeStart);
 
     // NOTE: Chrono typically operates in nanoseconds, so I've converted it ms.
-    std::cout << "Client with " << N << " nodes initialized in " << (duration.count() * 1000)
-        << " milliseconds (ms)." << std::endl;
+    ms durationMS = std::chrono::duration_cast<ms>(duration);
+    
+    std::cout << "Client with " << N << " nodes initialized in " << durationMS.count()
+        << " ms." << std::endl;
+}
+
+// Default deconstructor.
+unionClient::~unionClient()
+{
+    delete _idArray;
+    delete _sizeArray;
+
+    std::cout << "\nMemory cleaned up.";
 }
 
 // Utilizes the Quick Union with Path Compression Algorithm.
