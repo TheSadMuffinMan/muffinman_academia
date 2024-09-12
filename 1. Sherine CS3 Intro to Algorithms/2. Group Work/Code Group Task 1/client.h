@@ -4,7 +4,7 @@
 #define N 1000
 typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
 
-// Each client will frequently be referred to as a "Node".
+// Each element inside client will frequently be referred to as a "Node".
 class unionClient
 {
     public:
@@ -22,8 +22,8 @@ class unionClient
         bool connected(int, int);
     
     private:
-        int* _idArray; // This array stores all of the different unions that the Node has been connected to.
-        int* _sizeArray; // This array stores the length of each tree.
+        int* _idArray; // Stores what "group" each index belongs to.
+        int* _sizeArray; // This array stores the length of each index.
 };
 
 // Default constructor.
@@ -84,12 +84,14 @@ int* unionClient::Union(int p, int q)
 // Having private data members makes this a little clunky, but workable.
 int unionClient::find(int p)
 {
-    int* tempArray = unionClient::getIDArray();
-    return tempArray[p];
+    return unionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
+
+    // int* tempArray = unionClient::getIDArray();
+    // return tempArray[p];
 }
 
 // GOAL: Determine whether or not nodes p & q are connected.
 bool unionClient::connected(int p, int q)
 {
-    //
+    // comment.
 }
