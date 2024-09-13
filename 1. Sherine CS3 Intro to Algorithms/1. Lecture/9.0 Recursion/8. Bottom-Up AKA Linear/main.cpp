@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
     return 0;
 }
 
-/*
+/* From 0. General Knowledge/6. Fibonacci/etc.
 #include <iostream>
 #include <chrono>
 
