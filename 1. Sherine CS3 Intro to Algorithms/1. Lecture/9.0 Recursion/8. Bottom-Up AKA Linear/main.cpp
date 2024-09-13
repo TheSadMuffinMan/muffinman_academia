@@ -1,3 +1,10 @@
+/*
+There are two base cases with dynamic programming in this instance: F(1) + F(0).
+
+If we can break the problem down into smaller parts, we can often visualize the program better and
+    the BASE CASE is usually easier to see.
+*/
+
 #include <iostream>
 
 int main(int argc, char* argv[])
