@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-    // Initialize memoization array with 0
+    // Initialize memoisation array with 0
     for (int i = 0; i < MAX_N; i++) {memoArray[i] = 0;}
 
     std::cout << "Fibonacci " << MAX_N << ": " << memoFib(MAX_N) << std::endl;
