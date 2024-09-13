@@ -4,7 +4,7 @@ Program demonstrates Recursive Memoisation.
 
 #include <iostream>
 
-const int MAX_N = 70; // <-- Target Fibonacci number.
+const int MAX_N = 70;
 long long memoArray[MAX_N];
 
 long long memoFib(int n) 

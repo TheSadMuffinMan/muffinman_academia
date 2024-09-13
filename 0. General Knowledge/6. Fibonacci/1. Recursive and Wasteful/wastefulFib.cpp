@@ -17,7 +17,8 @@ long F(int n)
 int main(int argc, char* argv[])
 {
     int n = 0;
-    std::cout << "\nPlease input N value: ";
+    std::cout << "\nProgram start. Program takes a lot of time after N = 30." << std::endl;
+    std::cout << "Please input N value: ";
     std::cin >> n;
     
     std::cout << F(n) << std::endl;
