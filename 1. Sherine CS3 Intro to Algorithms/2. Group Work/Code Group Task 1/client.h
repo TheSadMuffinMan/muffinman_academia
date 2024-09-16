@@ -9,11 +9,11 @@ typedef std::chrono::milliseconds ms; // Ditto to above.
 ***IMPORTANT***: Program memory is dynamically allocated.
 Each data element inside client will frequently be referred to as "Node".
 */
-class unionClient
+class UnionClient
 {
     public:
-        unionClient();
-        ~unionClient();
+        UnionClient();
+        ~UnionClient();
 
         // Getters
         int* getIDArray() {return _idArray;}
@@ -32,7 +32,7 @@ class unionClient
 };
 
 // Default constructor.
-unionClient::unionClient()
+UnionClient::UnionClient()
 {
     auto timeStart = Time::now();
     int* tempIDArray = new int[N];
@@ -47,8 +47,8 @@ unionClient::unionClient()
         // This sets the size of every node to 1 (because there have been no union operations yet).
     }
 
-    unionClient::setIDArray(tempIDArray);
-    unionClient::setSizeArray(tempSizeArray);
+    UnionClient::setIDArray(tempIDArray);
+    UnionClient::setSizeArray(tempSizeArray);
     auto timeStop = Time::now();
     auto duration = Time::duration(timeStop - timeStart);
 
@@ -61,7 +61,7 @@ unionClient::unionClient()
 }
 
 // Default deconstructor.
-unionClient::~unionClient()
+UnionClient::~UnionClient()
 {
     delete _idArray;
     delete _sizeArray;
@@ -70,7 +70,7 @@ unionClient::~unionClient()
 }
 
 // Utilizes the Quick Union with Path Compression Algorithm.
-void unionClient::Union(int p, int q)
+void UnionClient::Union(int p, int q)
 {
     int i = 0; // i == p's index.
     int j = 0; // j == q's index.
@@ -98,15 +98,15 @@ void unionClient::Union(int p, int q)
     }
 }
 
-int unionClient::find(int p)
+int UnionClient::find(int p)
 {
-    return unionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
+    return UnionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
 }
 
 // Function determines if two nodes are connected or not.
-bool unionClient::connected(int p, int q)
+bool UnionClient::connected(int p, int q)
 {
-    if (unionClient::getIDArray()[p] == unionClient::getIDArray()[q])
+    if (UnionClient::getIDArray()[p] == UnionClient::getIDArray()[q])
     {
         return true;
     } else {return false;}
