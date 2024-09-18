@@ -82,6 +82,8 @@ A salesman must visit customers in a number of towns before returning home. They
     Edges: The roads between the towns.
     Weights: The fuel cost to travel on this road/edge.
     Task: Find the shortest closed loop that visits all nodes.
+
+WE HAVE ANOTHER 10 MINUTE QUIZ THIS FRIDAY.
 */
 
 #include <iostream>
