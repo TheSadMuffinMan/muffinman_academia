@@ -48,8 +48,20 @@ For the adj() function, it is wise to maintain a vertex-indexed array of lists. 
     The adjacency strikes the perfect balance between efficiency and computation time.
     Real world graphs tend to be sparse - meaning that they have a huge number of vertices and a smaller
         average vertex degree.
+*/
 
+/*
+DEPTH FIRST SEARCH:
+    Is one of the oldest algorithms out there!
+    One of the best representations of a graph is a Maze, especially the Pac-Man Maze!
+    Goal: Systematically traverse a graph.
+    Idea: Mimic maze exploration // Function-call stack acts as a ball of string.
 
+TREMAUX MAZE EXPLORATION:
+    Algorithm instructions:
+        Unroll a ball of string behind you.
+        Mark each visited intersection and each visitied passage.
+        Retrace steps when no unvisited options remain.
 */
 
 #include <iostream>
