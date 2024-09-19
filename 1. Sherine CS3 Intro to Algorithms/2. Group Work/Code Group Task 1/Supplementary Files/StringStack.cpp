@@ -1,15 +1,15 @@
 // NOT MY CODE, from Keegan in Code Group.
 
+/* QUESTIONS:
+Is there a reason that there are two different private sections inside this class?
+*/
+
 #include <stdio.h>
 #include <string>
 #include <iostream>
 
 class StringStack
 {
-	private:
-		std::string* s;
-		int N;
-		int capacity;
 	public:
 		StringStack():capacity(1){
 			s= new std::string[capacity];
@@ -34,8 +34,10 @@ class StringStack
 			}
 			return s[--N];		
 		}
+
 	private:
-		void resize(int newCapacity){
+		void resize(int newCapacity)
+		{
 			//creates an array of trice the size and copies items over
 			std::string* copy = new std::string[newCapacity];
 			std::cout<<"resizing array.\n";
@@ -46,6 +48,9 @@ class StringStack
 			s = copy;
 			capacity = newCapacity;
 		}
+		std::string* s;
+		int N;
+		int capacity;
 };
 
 int main(){
