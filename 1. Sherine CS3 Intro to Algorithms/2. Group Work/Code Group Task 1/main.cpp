@@ -15,6 +15,11 @@ Extra Credit Tasks:
     - Demonstrate how you can use these stack and queue data structures to solve simple problems, such as...
         - Reversing a non-trivial string using a stack.
         - Simulating a queue using two stacks.
+
+TO DO LIST FOR ME:
+    - Finish PART 2.
+    - Finish PART 3.
+    - Send all info to Dawson for parts 2 & 3.
 */
 
 /* DELIVERABLES:

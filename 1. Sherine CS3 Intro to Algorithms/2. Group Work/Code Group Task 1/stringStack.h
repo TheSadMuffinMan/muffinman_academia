@@ -23,7 +23,7 @@ class StringStackClient
         // Setters
         void setStackAddress(std::string*);
         void setNumElements(int);
-        void setStackCapacity(int);    
+        void setStackCapacity(int);
 
     private:
         std::string* _stackAddress;
