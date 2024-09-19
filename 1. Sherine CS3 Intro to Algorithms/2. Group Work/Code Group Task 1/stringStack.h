@@ -5,40 +5,62 @@ class StringStackClient
 {
     public:
         StringStackClient();
-        void loadString(std::string*);
+        StringStackClient(std::string*);
 
         // Getters
-        std::string* getStringAddress();
+        std::string* getStackAddress();
+        std::string* getTop();
         int getN();
-        int getStringCapacity();
-
+        int getStackCapacity();
         // Setters
-        void setStringAddress(std::string*);
+        void setStackAddress(std::string*);
         void setN(int);
-        void setStringCapacity(int);
+        void setStackCapacity(int);
+
+        void push(std::string);
+        bool isEmpty();
+        std::string pop();
     
     private:
-        std::string* _stringAddress;
-        int _N, _stringCapacity;
+        std::string* _stackAddress, *_top; // Weird that you must include "*" on _top.
+        int _N; // Used for number of elements inside _stackAddress.
+        int _stackCapacity; // Tracks the total size of _stackAddress.
+
+        void resizeArray();
 };
 
 // Default Constuctor.
 StringStackClient::StringStackClient()
 {
     StringStackClient::setN(0);
-    StringStackClient::setStringCapacity(0);
+    StringStackClient::setStackCapacity(0);
 }
 
-void StringStackClient::loadString(std::string* inputString)
+// Non-Default Constructor, will be primary way of reading in a string.
+StringStackClient::StringStackClient(std::string* inputString)
+{
+    //
+}
+
+void StringStackClient::push(std::string inputString)
 {
     //
 }
 
 
 // Getters and Setters
-std::string* StringStackClient::getStringAddress() {return _stringAddress;}
+std::string* StringStackClient::getStackAddress() {return _stackAddress;}
+std::string* StringStackClient::getTop() {return _top;}
+
 int StringStackClient::getN() {return _N;}
-int StringStackClient::getStringCapacity() {return _stringCapacity;}
-void StringStackClient::setStringAddress(std::string* newStringAddress) {_stringAddress = newStringAddress;}
-void StringStackClient::setN(int newN) {_N = newN;}
-void StringStackClient::setStringCapacity(int newCapacity) {_stringCapacity = newCapacity;}
+int StringStackClient::getStackCapacity() {return _stackCapacity;}
+void StringStackClient::setStackAddress(std::string* newStringAddress) {_stackAddress = newStringAddress;}
+void StringStackClient::setN(int inputN) {_N = inputN;}
+void StringStackClient::setStackCapacity(int newCapacity) {_stackCapacity = newCapacity;}
+
+// Function doubles the size of _stringAddress.
+void StringStackClient::resizeArray()
+{
+    int newN = getN();
+    int newCapacity = (getStackCapacity() * 2);
+}
