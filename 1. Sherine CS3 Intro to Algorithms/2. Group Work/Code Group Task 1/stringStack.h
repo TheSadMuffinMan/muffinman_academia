@@ -44,8 +44,6 @@ StringStackClient::StringStackClient()
 
 void StringStackClient::push(std::string inputString)
 {
-    int index = getNumElements(); // This is where the last element was placed.
-
     if (isEmpty() == true)
     {
         getStackAddress()[0] = inputString;
@@ -53,9 +51,11 @@ void StringStackClient::push(std::string inputString)
         return;
     }
 
-    if (index >= getStackCapacity()) {resizeArray();} // Ensuring array is large enough to hold all of our data.
+    // Ensuring array is large enough to hold all of our data.
+    if (getNumElements() >= getStackCapacity()) {resizeArray();}
 
-    
+    _stackAddress[getNumElements() + 1] = inputString;
+    setNumElements(getNumElements() + 1);
 }
 
 bool StringStackClient::isEmpty()
