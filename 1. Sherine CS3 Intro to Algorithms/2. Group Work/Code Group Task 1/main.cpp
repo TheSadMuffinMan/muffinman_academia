@@ -19,6 +19,7 @@ Extra Credit Tasks:
 TO DO LIST FOR ME:
     - Finish PART 2.
     - Finish PART 3.
+    - Assemble information into an educational/Sherine format.
     - Send all info to Dawson for parts 2 & 3.
 */
 
