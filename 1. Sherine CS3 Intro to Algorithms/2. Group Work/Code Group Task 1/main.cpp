@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
     UnionClient workingUserClient;
-    workingUserClient.useMandN();
+    workingUserClient.randomMandN(1000, 500);
 
     std::cout << "\nEnd of program." << std::endl;
 }

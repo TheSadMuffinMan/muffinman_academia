@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <random>
 // #include <chrono>
 
-#define N 100000
+#define N 1000
 // typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
 // typedef std::chrono::milliseconds ms; // Ditto to above.
 
@@ -16,7 +17,8 @@ class UnionClient
     public:
         UnionClient();
         void buildClient(int);
-        void useMandN();
+        void readMandNfromFile();
+        void randomMandN(int, int);
         ~UnionClient();
 
         // Getters
@@ -93,7 +95,7 @@ void UnionClient::buildClient(int numElements)
     UnionClient::setSizeArray(tempSizeArray);
 }
 
-void UnionClient::useMandN()
+void UnionClient::readMandNfromFile()
 {
     std::string yesOrNo = " ";
     std::cout << "Do you have a document named \"input.txt\" in this repo?" << std::endl;
@@ -139,7 +141,29 @@ void UnionClient::useMandN()
         int b = std::stoi(fullLine.substr(spaceIndex + 1));
         
         Union(a,b);
-        std::cout << "Unionized " << a << " and " << b << "." << std::endl;
+        // std::cout << "Unionized " << a << " and " << b << "." << std::endl;
+    }
+}
+
+// Function generates random M & N operations.
+// Function takes two ints: numElements (= N) and numOperations (= M).
+void UnionClient::randomMandN(int numElements, int numOperations)
+{
+    for (int i = 0; i < numOperations; i++)
+    {
+        int singleOrDouble = (rand() % 2);
+        if (singleOrDouble == 1)
+        {
+            int a = (rand() % numElements);
+            // std::cout << "Groupsize of " << a << ": " << findSize(a) << std::endl;
+        } else
+        {
+            int a = (rand() % numElements);
+            int b = (rand() % numElements);
+            Union(a,b);
+            // std::cout << "Objects " << a << " and object " << b << " unionized." << std::endl;
+        }
+        
     }
 }
 
