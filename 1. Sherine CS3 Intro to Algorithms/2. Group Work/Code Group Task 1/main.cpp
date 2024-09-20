@@ -31,18 +31,24 @@ A LaTeX document explaining your algorithm's time complexity analysis and any op
 #include <iostream>
 #include "client.h"
 
-// N = 1000; Have tested up to 1,000,000 so far
-
 int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
+    UnionClient workingUserClient;
+    workingUserClient.buildUserClient();
 
-    UnionClient* workingClient = new UnionClient; // Declaring on the heap.
-    workingClient->Union(1,2);
-    std::cout << std::boolalpha << "Nodes 1 & 2 are connected: " << workingClient->connected(1,2) << std::endl;
-    std::cout << "Nodes 2 & 3 are connected: " << workingClient->connected(2,3) << std::endl;
+    workingUserClient.Union(1,2);
+    std::cout << std::boolalpha << "Nodes 1 & 2 are connected: " << workingUserClient.connected(1,2) << std::endl;
+    std::cout << "Nodes 2 & 3 are connected: " << workingUserClient.connected(2,3) << std::endl;
 
 
-    delete workingClient;
     std::cout << "\nEnd of program." << std::endl;
 }
+
+/* OLD CODE
+
+UnionClient* workingClient = new UnionClient; // Declaring on the heap.
+workingClient->Union(1,2);
+std::cout << std::boolalpha << "Nodes 1 & 2 are connected: " << workingClient->connected(1,2) << std::endl;
+std::cout << "Nodes 2 & 3 are connected: " << workingClient->connected(2,3) << std::endl;
+*/

@@ -13,6 +13,7 @@ class UnionClient
 {
     public:
         UnionClient();
+        void buildUserClient();
         ~UnionClient();
 
         // Getters
@@ -25,7 +26,7 @@ class UnionClient
         void Union(int, int);
         int find(int);
         bool connected(int, int);
-    
+
     private:
         int* _idArray; // Stores what "group" each node belongs to.
         int* _sizeArray; // Stores the path length to root for each node.
@@ -60,13 +61,46 @@ UnionClient::UnionClient()
         << " ms." << std::endl;
 }
 
+// This "constructor" builds a client based off of user input.
+void UnionClient::buildUserClient()
+{
+    // Because we already have a client built, we need to delete the old one and replace it with a user built one.
+    UnionClient::~UnionClient();
+
+    int numElements = 0;
+    std::cout << "\nInput N (number of elements/nodes): ";
+    std::cin >> numElements;
+
+    auto timeStart = Time::now();
+    int* tempIDArray = new int[numElements];
+    int* tempSizeArray = new int[numElements];
+
+    for (int i = 0; i < numElements; i++)
+    {
+        tempIDArray[i] = i;
+        // This sets every node to "point" to itself, meaning that all nodes are not connected to anything.
+
+        tempSizeArray[i] = 1;
+        // This sets the size of every node to 1 (because there have been no union operations yet).
+    }
+
+    UnionClient::setIDArray(tempIDArray);
+    UnionClient::setSizeArray(tempSizeArray);
+    auto timeStop = Time::now();
+    auto duration = Time::duration(timeStop - timeStart);
+
+    ms durationMS = std::chrono::duration_cast<ms>(duration);
+
+    std::cout << "Client with " << numElements << " nodes initialized in " << durationMS.count()
+        << " ms." << std::endl;
+}
+
 // Default deconstructor.
 UnionClient::~UnionClient()
 {
     delete _idArray;
     delete _sizeArray;
-
-    std::cout << "\nMemory cleaned up." << std::endl;
+    // std::cout << "\nMemory cleaned up." << std::endl;
 }
 
 // Utilizes the Quick Union with Path Compression Algorithm.
