@@ -14,7 +14,7 @@ class UnionClient
 {
     public:
         UnionClient();
-        void buildUserClient();
+        void buildClient(int);
         void useMandN();
         ~UnionClient();
 
@@ -64,17 +64,13 @@ UnionClient::UnionClient()
 }
 
 // This "constructor" builds a client based off of user input.
-void UnionClient::buildUserClient()
+void UnionClient::buildClient(int numElements)
 {
     /*
     Because the default constructor builds a client, we need to delete the old one and 
         replace it with a user built one.
     */
     UnionClient::~UnionClient();
-
-    int numElements = 0;
-    std::cout << "\nInput N (number of elements/nodes): ";
-    std::cin >> numElements;
 
     auto timeStart = Time::now();
     int* tempIDArray = new int[numElements];
@@ -113,16 +109,28 @@ void UnionClient::useMandN()
         std::cin >> yesOrNo;
     }
     std::ifstream inputStream;
-    std::string fileName = "input.txt";
 
-    inputStream.open(fileName);
+    inputStream.open("input.txt");
     if (!inputStream.is_open())
     {
         std::cout << "File failed to open." << std::endl;
+        std::cout << "Please \"CTRL + C\" program to avoid memory leaks." << std::endl;
+        std::cin >> yesOrNo; // Using variable input to pause program.
     }
 
     int numElements = 0;
     int numOperations = 0;
+
+    inputStream >> numElements >> numOperations;
+
+    buildClient(numElements);
+
+    for (int i = 0; i < numOperations; i++)
+    {
+        int a, b;
+        inputStream >> a >> b;
+        Union(a,b);
+    }
 }
 
 // Default deconstructor.

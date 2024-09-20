@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
     UnionClient workingUserClient;
-    workingUserClient.buildUserClient();
+    workingUserClient.buildClient();
 
     workingUserClient.Union(1,2);
     std::cout << std::boolalpha << "Nodes 1 & 2 are connected: " << workingUserClient.connected(1,2) << std::endl;

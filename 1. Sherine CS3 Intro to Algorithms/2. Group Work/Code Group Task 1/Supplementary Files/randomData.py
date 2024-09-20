@@ -1,3 +1,4 @@
+# To compile and run, input "python3 randomData.py".
 import random
 
 def main():
