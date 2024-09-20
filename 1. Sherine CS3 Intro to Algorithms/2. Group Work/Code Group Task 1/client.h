@@ -103,11 +103,11 @@ void UnionClient::useMandN()
     std::cout << "(Answer \"Y\" to continue): ";
     std::cin >> yesOrNo;
 
-    while ((yesOrNo != "y") || (yesOrNo != "Y"))
-    {
-        std::cout << "\nInvalid input. Input \"Y\" when ready: ";
-        std::cin >> yesOrNo;
-    }
+    // while ((yesOrNo != "y") || (yesOrNo != "Y"))
+    // {
+    //     std::cout << "\nInvalid input. Input \"Y\" when ready: ";
+    //     std::cin >> yesOrNo;
+    // }
     std::ifstream inputStream;
 
     inputStream.open("input.txt");
@@ -128,7 +128,16 @@ void UnionClient::useMandN()
     for (int i = 0; i < numOperations; i++)
     {
         int a, b;
-        inputStream >> a >> b;
+        inputStream >> a;
+        if (inputStream.peek() == std::istream::traits_type::eof())
+        {
+            std::cout << find(a) << std::endl;
+            continue;
+        }
+
+        inputStream.ignore(1); // Ignoring the space between letters.
+        inputStream >> b;
+
         Union(a,b);
     }
 }

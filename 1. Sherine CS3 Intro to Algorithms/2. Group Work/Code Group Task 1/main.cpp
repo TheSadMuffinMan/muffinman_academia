@@ -35,12 +35,10 @@ int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
     UnionClient workingUserClient;
-    workingUserClient.buildClient();
+    workingUserClient.useMandN();
 
-    workingUserClient.Union(1,2);
-    std::cout << std::boolalpha << "Nodes 1 & 2 are connected: " << workingUserClient.connected(1,2) << std::endl;
-    std::cout << "Nodes 2 & 3 are connected: " << workingUserClient.connected(2,3) << std::endl;
-
+    workingUserClient.connected(9,5);
+    std::cout << std::boolalpha << "Nodes 9 & 5 are connected: " << workingUserClient.connected(9,5) << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
 }
