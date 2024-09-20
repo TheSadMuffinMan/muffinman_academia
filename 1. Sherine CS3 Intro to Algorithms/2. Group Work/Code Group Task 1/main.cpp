@@ -30,14 +30,15 @@ A LaTeX document explaining your algorithm's time complexity analysis and any op
 
 #include "client.h"
 #include <chrono>
+#include <cmath>
 
 typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
 
 int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
-    int numElements = 1000; // N.
-    int numOperations = 500; // M.
+    int numElements = 800; // N.
+    int numOperations = 400; // M.
 
     int numIterations = 0;
     std::cout << "How many iterations would you like?: ";
@@ -52,8 +53,15 @@ int main(int argc, char* argv[])
     auto timeStop = Time::now();
     auto duration = Time::duration(timeStop - timeStart);
 
-    std::cout << "Average time over " << numIterations << " iterations: " << (duration.count() / numIterations)
-        << std::endl;
+    std::cout << "\nWith..." << std::endl;
+    std::cout << "\tN = " << numElements << std::endl;
+    std::cout << "\tM = " << numOperations << std::endl;
+    std::cout << "\tNum Iterations: " << numIterations << std::endl;
+
+    std::cout << "\nEstimated run-time (Mlog(N)): " << (numOperations * std::log10(numElements)) <<
+        " microseconds." << std::endl;
+    std::cout << "Average run-time: " << (duration.count() / numIterations) << " nanoseconds." << std::endl;
+    std::cout << "(1 microsecond = 1000 nanoseconds)" << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
 }

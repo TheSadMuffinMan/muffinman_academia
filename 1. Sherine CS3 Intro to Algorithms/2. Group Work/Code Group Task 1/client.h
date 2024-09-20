@@ -95,6 +95,7 @@ void UnionClient::buildClient(int numElements)
     UnionClient::setSizeArray(tempSizeArray);
 }
 
+// Function is used for part 2 of this project.
 void UnionClient::readMandNfromFile()
 {
     std::string yesOrNo = " ";
