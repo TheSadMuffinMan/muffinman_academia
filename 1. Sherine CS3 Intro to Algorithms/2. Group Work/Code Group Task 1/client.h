@@ -121,12 +121,14 @@ void UnionClient::useMandN()
     int numOperations = 0; // AKA M.
 
     inputStream >> numElements >> numOperations;
-
+    std::cout << "NumElements: " << numElements << std::endl;
+    std::cout << "NumOperations: " << numOperations << std::endl;
     buildClient(numElements);
 
+    inputStream.ignore(1);
     for (int i = 0; i < numOperations; i++)
     {
-        std::string fullLine;
+        std::string fullLine = "abc";
         std::getline(inputStream, fullLine);
 
         // If we do NOT find a space inside of fullLine...
@@ -137,11 +139,12 @@ void UnionClient::useMandN()
             continue;
         }
 
+        int spaceIndex = fullLine.find(" ");
+        int a = std::stoi(fullLine.substr(0, spaceIndex));
+        int b = std::stoi(fullLine.substr(spaceIndex + 1));
         
-        
-
-        // Union(a,b);
-        // std::cout << "Unionized " << a << " and " << b << "." << std::endl;
+        Union(a,b);
+        std::cout << "Unionized " << a << " and " << b << "." << std::endl;
     }
 }
 
