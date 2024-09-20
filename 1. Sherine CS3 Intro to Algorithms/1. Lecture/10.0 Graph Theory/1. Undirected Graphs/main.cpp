@@ -56,6 +56,7 @@ DEPTH FIRST SEARCH:
     One of the best representations of a graph is a Maze, especially the Pac-Man Maze!
     Goal: Systematically traverse a graph.
     Idea: Mimic maze exploration // Function-call stack acts as a ball of string.
+    
 
 TREMAUX MAZE EXPLORATION:
     Algorithm instructions:
