@@ -3,6 +3,7 @@ Complete objectives:
     - Implement a data structure that supports Union(p,q); COMPLETE.
     - Implement Find(p); COMPLETE.
     - Implement Connected(p,q); COMPLETE.
+    - PART 2; COMPLETE.
 
 Incomplete objectives:
     - Provide a graph that demonstrates >= 11 Union Operations;
@@ -17,7 +18,6 @@ Extra Credit Tasks:
         - Simulating a queue using two stacks.
 
 TO DO LIST FOR ME:
-    - Finish PART 2.
     - Finish PART 3.
     - Assemble information into an educational/Sherine format.
     - Send all info to Dawson for parts 2 & 3.

@@ -1,11 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <chrono>
+// #include <chrono>
 
-#define N 1000
-typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
-typedef std::chrono::milliseconds ms; // Ditto to above.
+#define N 100000
+// typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
+// typedef std::chrono::milliseconds ms; // Ditto to above.
 
 /*
 ***IMPORTANT***: Program memory is dynamically allocated.
@@ -39,7 +39,7 @@ class UnionClient
 // Default constructor.
 UnionClient::UnionClient()
 {
-    auto timeStart = Time::now();
+    // auto timeStart = Time::now();
     int* tempIDArray = new int[N];
     int* tempSizeArray = new int[N];
 
@@ -54,15 +54,18 @@ UnionClient::UnionClient()
 
     UnionClient::setIDArray(tempIDArray);
     UnionClient::setSizeArray(tempSizeArray);
-    auto timeStop = Time::now();
-    auto duration = Time::duration(timeStop - timeStart);
+    // auto timeStop = Time::now();
+    // auto duration = Time::duration(timeStop - timeStart);
 
+    /* 
+    Old Chrono Stuff.
     // NOTE: Chrono typically operates in nanoseconds, so I've converted it ms.
     // NOTE 2: It takes a data set of >1,000,000 to see time increment.
     ms durationMS = std::chrono::duration_cast<ms>(duration);
 
     std::cout << "Client with " << N << " nodes initialized in " << durationMS.count()
         << " ms." << std::endl;
+    */
 }
 
 // This "constructor" builds a client based off of user input.
@@ -74,7 +77,6 @@ void UnionClient::buildClient(int numElements)
     */
     UnionClient::~UnionClient();
 
-    auto timeStart = Time::now();
     int* tempIDArray = new int[numElements];
     int* tempSizeArray = new int[numElements];
 
@@ -89,13 +91,6 @@ void UnionClient::buildClient(int numElements)
 
     UnionClient::setIDArray(tempIDArray);
     UnionClient::setSizeArray(tempSizeArray);
-    auto timeStop = Time::now();
-    auto duration = Time::duration(timeStop - timeStart);
-
-    ms durationMS = std::chrono::duration_cast<ms>(duration);
-
-    std::cout << "Client with " << numElements << " nodes initialized in " << durationMS.count()
-        << " ms." << std::endl;
 }
 
 void UnionClient::useMandN()

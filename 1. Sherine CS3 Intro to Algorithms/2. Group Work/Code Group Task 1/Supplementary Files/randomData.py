@@ -1,10 +1,11 @@
-# To compile and run, input "python3 randomData.py".
+# To compile and run, input "python3 randomData.py > tee"
 import random
 
 def main():
-    print("\nProgram creates a random data set in the form \"x *SPACE* y.\"\n")
-    setSize = int(input("How many data sets would you like?: "))
+    # print("\nProgram creates a random data set in the form \"x *SPACE* y.\"\n")
+    # setSize = int(input("How many data sets would you like?: "))
 
+    setSize = 100000
     z = int(0)
     while (z < setSize):
         x = random.randrange(setSize)
