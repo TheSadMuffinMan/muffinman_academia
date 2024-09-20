@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <chrono>
 
 #define N 1000
@@ -14,6 +15,7 @@ class UnionClient
     public:
         UnionClient();
         void buildUserClient();
+        void useMandN();
         ~UnionClient();
 
         // Getters
@@ -64,7 +66,10 @@ UnionClient::UnionClient()
 // This "constructor" builds a client based off of user input.
 void UnionClient::buildUserClient()
 {
-    // Because we already have a client built, we need to delete the old one and replace it with a user built one.
+    /*
+    Because the default constructor builds a client, we need to delete the old one and 
+        replace it with a user built one.
+    */
     UnionClient::~UnionClient();
 
     int numElements = 0;
