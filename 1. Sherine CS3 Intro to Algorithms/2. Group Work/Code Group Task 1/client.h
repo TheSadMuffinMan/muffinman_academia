@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <string>
 #include <chrono>
 
 #define N 1000
@@ -27,6 +28,7 @@ class UnionClient
 
         void Union(int, int);
         int find(int);
+        int findSize(int);
         bool connected(int, int);
 
     private:
@@ -103,23 +105,20 @@ void UnionClient::useMandN()
     std::cout << "(Answer \"Y\" to continue): ";
     std::cin >> yesOrNo;
 
-    // while ((yesOrNo != "y") || (yesOrNo != "Y"))
-    // {
-    //     std::cout << "\nInvalid input. Input \"Y\" when ready: ";
-    //     std::cin >> yesOrNo;
-    // }
     std::ifstream inputStream;
 
     inputStream.open("input.txt");
     if (!inputStream.is_open())
     {
-        std::cout << "File failed to open." << std::endl;
+        std::cout << "\nFile failed to open." << std::endl;
+        UnionClient::~UnionClient();
+
         std::cout << "Please \"CTRL + C\" program to avoid memory leaks." << std::endl;
         std::cin >> yesOrNo; // Using variable input to pause program.
     }
 
-    int numElements = 0;
-    int numOperations = 0;
+    int numElements = 0; // AKA N.
+    int numOperations = 0; // AKA M.
 
     inputStream >> numElements >> numOperations;
 
@@ -127,18 +126,22 @@ void UnionClient::useMandN()
 
     for (int i = 0; i < numOperations; i++)
     {
-        int a, b;
-        inputStream >> a;
-        if (inputStream.peek() == std::istream::traits_type::eof())
+        std::string fullLine;
+        std::getline(inputStream, fullLine);
+
+        // If we do NOT find a space inside of fullLine...
+        if (fullLine.find(" ") == std::string::npos)
         {
-            std::cout << find(a) << std::endl;
+            int a = std::stoi(fullLine);
+            std::cout << "Current group size of element " << a << " is " << findSize(a) << "." << std::endl;
             continue;
         }
 
-        inputStream.ignore(1); // Ignoring the space between letters.
-        inputStream >> b;
+        
+        
 
-        Union(a,b);
+        // Union(a,b);
+        // std::cout << "Unionized " << a << " and " << b << "." << std::endl;
     }
 }
 
@@ -182,6 +185,12 @@ void UnionClient::Union(int p, int q)
 int UnionClient::find(int p)
 {
     return UnionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
+}
+
+// Function returns the size of whatever group p is in.
+int UnionClient::findSize(int p)
+{
+    return UnionClient::getSizeArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
 }
 
 // Function determines if two nodes are connected or not.
