@@ -100,6 +100,31 @@ void UnionClient::buildUserClient()
         << " ms." << std::endl;
 }
 
+void UnionClient::useMandN()
+{
+    std::string yesOrNo = " ";
+    std::cout << "Do you have a document named \"input.txt\" in this repo?" << std::endl;
+    std::cout << "(Answer \"Y\" to continue): ";
+    std::cin >> yesOrNo;
+
+    while ((yesOrNo != "y") || (yesOrNo != "Y"))
+    {
+        std::cout << "\nInvalid input. Input \"Y\" when ready: ";
+        std::cin >> yesOrNo;
+    }
+    std::ifstream inputStream;
+    std::string fileName = "input.txt";
+
+    inputStream.open(fileName);
+    if (!inputStream.is_open())
+    {
+        std::cout << "File failed to open." << std::endl;
+    }
+
+    int numElements = 0;
+    int numOperations = 0;
+}
+
 // Default deconstructor.
 UnionClient::~UnionClient()
 {
