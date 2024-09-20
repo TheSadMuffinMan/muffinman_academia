@@ -155,6 +155,7 @@ void UnionClient::randomMandN(int numElements, int numOperations)
         if (singleOrDouble == 1)
         {
             int a = (rand() % numElements);
+            findSize(a);
             // std::cout << "Groupsize of " << a << ": " << findSize(a) << std::endl;
         } else
         {
