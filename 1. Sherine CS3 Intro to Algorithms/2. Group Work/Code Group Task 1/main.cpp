@@ -37,9 +37,6 @@ int main(int argc, char* argv[])
     UnionClient workingUserClient;
     workingUserClient.useMandN();
 
-    workingUserClient.connected(9,5);
-    std::cout << std::boolalpha << "Nodes 9 & 5 are connected: " << workingUserClient.connected(9,5) << std::endl;
-
     std::cout << "\nEnd of program." << std::endl;
 }
 
