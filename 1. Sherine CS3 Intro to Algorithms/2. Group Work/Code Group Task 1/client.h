@@ -4,7 +4,7 @@
 #include <random>
 // #include <chrono>
 
-#define N 1000
+// #define N 1000
 // typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
 // typedef std::chrono::milliseconds ms; // Ditto to above.
 
@@ -15,7 +15,7 @@ Each data element inside client will frequently be referred to as "Node".
 class UnionClient
 {
     public:
-        UnionClient();
+        UnionClient(); // Not usually used.
         void buildClient(int);
         void readMandNfromFile();
         void randomMandN(int, int);
@@ -24,9 +24,11 @@ class UnionClient
         // Getters
         int* getIDArray() {return _idArray;}
         int* getSizeArray() {return _sizeArray;}
+        int getNumElements() {return _numElements;}
         // Setters
         void setIDArray(int* desiredGroup) {_idArray = desiredGroup;}
         void setSizeArray(int* desiredArray) {_sizeArray = desiredArray;}
+        void setNumElements(int desiredN) {_numElements = desiredN;}
 
         void Union(int, int);
         int find(int);
@@ -36,16 +38,18 @@ class UnionClient
     private:
         int* _idArray; // Stores what "group" each node belongs to.
         int* _sizeArray; // Stores the path length to root for each node.
+        int _numElements; // Meant to represent N.
 };
 
 // Default constructor.
 UnionClient::UnionClient()
 {
+    setNumElements(1);
     // auto timeStart = Time::now();
-    int* tempIDArray = new int[N];
-    int* tempSizeArray = new int[N];
+    int* tempIDArray = new int[getNumElements()];
+    int* tempSizeArray = new int[getNumElements()];
 
-    for (int i = 0; i < N; i++)
+    for (int i = 0; i < getNumElements(); i++)
     {
         tempIDArray[i] = i;
         // This sets every node to "point" to itself, meaning that all nodes are not connected to anything.
@@ -93,6 +97,7 @@ void UnionClient::buildClient(int numElements)
 
     UnionClient::setIDArray(tempIDArray);
     UnionClient::setSizeArray(tempSizeArray);
+    setNumElements(numElements);
 }
 
 // Function is used for part 2 of this project.
@@ -183,7 +188,7 @@ void UnionClient::Union(int p, int q)
     int i = 0; // i == p's index.
     int j = 0; // j == q's index.
 
-    for (int z = 0; z < (N -1); z++) // Looping through every node...
+    for (int z = 0; z < (getNumElements() - 1); z++) // Looping through every node...
     {
         for (i = p; i != _idArray[i]; i = _idArray[i])
             _idArray[i] = _idArray[_idArray[i]]; // Halves the length of the path to root.

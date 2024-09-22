@@ -37,8 +37,8 @@ typedef std::chrono::steady_clock Time;// Makes it to where we don't have to typ
 int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
-    int numElements = 800; // N.
-    int numOperations = 400; // M.
+    int numElements = 1000; // N.
+    int numOperations = 350; // M.
 
     int numIterations = 0;
     std::cout << "How many iterations would you like?: ";
