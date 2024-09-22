@@ -37,7 +37,7 @@ typedef std::chrono::steady_clock Time;
 int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
-    int numElements = 500; // N.
+    int numElements = 999; // N.
     int numOperations = 1000; // M.
 
     int numIterations;

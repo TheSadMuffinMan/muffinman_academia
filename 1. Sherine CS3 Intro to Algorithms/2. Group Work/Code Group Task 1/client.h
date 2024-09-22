@@ -151,7 +151,7 @@ int64_t UnionClient::randomMandN(int numElements, int numOperations)
         if (singleOrDouble == 1)
         {
             int a = (rand() % numElements);
-            findSize(a);
+            find(a);
             // std::cout << a << " has a group size of: " << findSize(a) << "." << std::endl;
         } else
         {
@@ -177,8 +177,8 @@ UnionClient::~UnionClient()
 // Utilizes the Quick Union with Path Compression Algorithm.
 void UnionClient::Union(int p, int q)
 {
-    int i = 0; // i == p's index.
-    int j = 0; // j == q's index.
+    int i = find(p); // i == p's index.
+    int j = find(q); // j == q's index.
 
     for (int z = 0; z < (getNumElements() - 1); z++) // Looping through every node...
     {
@@ -203,9 +203,16 @@ void UnionClient::Union(int p, int q)
     }
 }
 
-int UnionClient::find(int p)
+int UnionClient::find(int i)
 {
-    return UnionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
+    while (i != getIDArray()[i])
+    {
+        // setIDArray(getIDArray()[getIDArray()[i]]);
+        _idArray[i] = _idArray[_idArray[i]];
+        i = _idArray[i];
+    }
+    return i;
+    // return UnionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
 }
 
 // Function returns the size of whatever group p is in.
