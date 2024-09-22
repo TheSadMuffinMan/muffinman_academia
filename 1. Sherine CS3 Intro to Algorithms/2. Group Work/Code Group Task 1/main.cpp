@@ -37,21 +37,33 @@ typedef std::chrono::steady_clock Time;// Makes it to where we don't have to typ
 int main(int argc, char* argv[])
 {
     std::cout << "\nProgram start." << std::endl;
-    int numElements = 1000; // N.
-    int numOperations = 350; // M.
+    int numElements = 500; // N.
+    int numOperations = 1000; // M.
 
-    int numIterations = 0;
+    int numIterations;
     std::cout << "How many iterations would you like?: ";
     std::cin >> numIterations;
 
-    auto timeStart = Time::now();
+    // Array that holds the time of each iteration.
+    std::chrono::duration<int64_t, std::nano>::rep timeArray[numIterations];
+
     for (int i = 0; i < numIterations; i++)
     {
         UnionClient workingUserClient;
+        auto timeStart = Time::now();
         workingUserClient.randomMandN(numElements, numOperations);
+        auto timeStop = Time::now();
+        auto duration = Time::duration(timeStop - timeStart);
+        timeArray[i] = duration.count();
     }
-    auto timeStop = Time::now();
-    auto duration = Time::duration(timeStop - timeStart);
+
+    auto totalRunTime = 0;
+    for (int i = 0; i < numIterations; i++) // Tallying up total runtime.
+    {
+        totalRunTime += timeArray[i];
+    }
+
+    int averageRunTime = (totalRunTime / numIterations);
 
     std::cout << "\nWith..." << std::endl;
     std::cout << "\tN = " << numElements << std::endl;
@@ -59,9 +71,8 @@ int main(int argc, char* argv[])
     std::cout << "\tNum Iterations: " << numIterations << std::endl;
 
     std::cout << "\nEstimated run-time (Mlog(N)): " << (numOperations * std::log10(numElements)) <<
-        " microseconds." << std::endl;
-    std::cout << "Average run-time: " << (duration.count() / numIterations) << " nanoseconds." << std::endl;
-    std::cout << "(1 microsecond = 1000 nanoseconds)" << std::endl;
+        " nanoseconds." << std::endl;
+    std::cout << "Average run-time: " << averageRunTime << " nanoseconds." << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
 }

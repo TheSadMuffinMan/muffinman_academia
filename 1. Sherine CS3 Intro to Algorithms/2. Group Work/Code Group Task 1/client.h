@@ -155,6 +155,8 @@ void UnionClient::readMandNfromFile()
 // Function takes two ints: numElements (= N) and numOperations (= M).
 void UnionClient::randomMandN(int numElements, int numOperations)
 {
+    buildClient(numElements); // Building a new clean client.
+
     for (int i = 0; i < numOperations; i++)
     {
         int singleOrDouble = (rand() % 2);
