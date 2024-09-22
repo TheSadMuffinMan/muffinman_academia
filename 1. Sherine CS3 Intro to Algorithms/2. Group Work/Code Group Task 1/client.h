@@ -147,19 +147,9 @@ int64_t UnionClient::randomMandN(int numElements, int numOperations)
     std::chrono::time_point timeStart = Time::now();
     for (int i = 0; i < numOperations; i++)
     {
-        int singleOrDouble = (rand() % 2);
-        if (singleOrDouble == 1)
-        {
-            int a = (rand() % numElements);
-            find(a);
-            // std::cout << a << " has a group size of: " << findSize(a) << "." << std::endl;
-        } else
-        {
-            int a = (rand() % numElements);
-            int b = (rand() % numElements);
-            Union(a,b);
-            // std::cout << a << " and " << b << " unionized." << std::endl;
-        }
+        int a = (rand() % numElements);
+        int b = (rand() % numElements);
+        Union(a,b);
     }
     std::chrono::time_point timeStop = Time::now();
     std::chrono::nanoseconds duration = Time::duration(timeStop - timeStart);
@@ -180,45 +170,40 @@ void UnionClient::Union(int p, int q)
     int i = find(p); // i == p's index.
     int j = find(q); // j == q's index.
 
-    for (int z = 0; z < (getNumElements() - 1); z++) // Looping through every node...
+    for (i = p; i != _idArray[i]; i = _idArray[i])
+        _idArray[i] = _idArray[_idArray[i]]; // Halves the length of the path to root.
+
+    for (j = q; j != _idArray[j]; j = _idArray[j])
+        _idArray[j] = _idArray[_idArray[j]]; // Ditto to above, but for j.
+        
+    if (i == j) {return;} // If the indexes are the same...
+
+    if (_sizeArray[i] < _sizeArray[j]) // If i's group/_sizeArray are smaller than j's group/_sizeArray...
     {
-        for (i = p; i != _idArray[i]; i = _idArray[i])
-            _idArray[i] = _idArray[_idArray[i]]; // Halves the length of the path to root.
-
-        for (j = q; j != _idArray[j]; j = _idArray[j])
-            _idArray[j] = _idArray[_idArray[j]]; // Ditto to above, but for j.
-
-        if (i == j) {continue;} // If the indexes are the same...
-
-        if (_sizeArray[i] < _sizeArray[j]) // If i's group/_sizeArray are smaller than j's group/_sizeArray...
-        {
-            _idArray[i] = j;
-            _sizeArray[j] += _sizeArray[i];
-        }
-        else
-        {
-            _idArray[j] = i;
-            _sizeArray[i] += _sizeArray[j];
-        }
+        _idArray[i] = j;
+        _sizeArray[j] += _sizeArray[i];
+    }
+    else
+    {
+        _idArray[j] = i;
+        _sizeArray[i] += _sizeArray[j];
     }
 }
 
 int UnionClient::find(int i)
 {
-    while (i != getIDArray()[i])
+    while (i != _idArray[i])
     {
-        // setIDArray(getIDArray()[getIDArray()[i]]);
         _idArray[i] = _idArray[_idArray[i]];
         i = _idArray[i];
     }
-    return i;
-    // return UnionClient::getIDArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
+    return _idArray[i]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
 }
 
 // Function returns the size of whatever group p is in.
 int UnionClient::findSize(int p)
 {
-    return UnionClient::getSizeArray()[p]; // NEW KNOWLEDGE ACQUIRED. I didn't know you could do this :D
+    return UnionClient::getSizeArray()[p];
 }
 
 // Function determines if two nodes are connected or not.
@@ -229,3 +214,19 @@ bool UnionClient::connected(int p, int q)
         return true;
     } else {return false;}
 }
+
+/* Old Code
+// int singleOrDouble = (rand() % 2);
+// if (singleOrDouble == 1)
+// {
+//     int a = (rand() % numElements);
+//     find(a);
+//     // std::cout << a << " has a group size of: " << findSize(a) << "." << std::endl;
+// } else
+// {
+//     int a = (rand() % numElements);
+//     int b = (rand() % numElements);
+//     Union(a,b);
+//     // std::cout << a << " and " << b << " unionized." << std::endl;
+// }
+*/

@@ -63,11 +63,11 @@ int main(int argc, char* argv[])
     int averageRunTime = (totalRunTime / numIterations);
 
     std::cout << "\nWith..." << std::endl;
-    std::cout << "\tN = " << numElements << std::endl;
-    std::cout << "\tM = " << numOperations << std::endl;
-    std::cout << "\tNum Iterations: " << numIterations << std::endl;
+    std::cout << "\tNumber of Elements (AKA \"N\") = " << numElements << std::endl;
+    std::cout << "\tNumber of Union Operations (AKA \"M\") = " << numOperations << std::endl;
 
-    std::cout << "\nEstimated run-time (Mlog(N)): " << (numOperations * std::log10(numElements)) << std::endl;
+    std::cout << "\nEstimated run-time (N + M*ln(N)): " << (numElements + 
+        (numOperations * std::log10(numElements))) << std::endl;
     std::cout << "Average run-time: " << averageRunTime << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
