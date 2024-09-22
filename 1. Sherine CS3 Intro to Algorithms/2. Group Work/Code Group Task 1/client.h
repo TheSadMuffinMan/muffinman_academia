@@ -2,11 +2,9 @@
 #include <fstream>
 #include <string>
 #include <random>
-// #include <chrono>
+#include <chrono>
 
-// #define N 1000
-// typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
-// typedef std::chrono::milliseconds ms; // Ditto to above.
+typedef std::chrono::steady_clock Time;
 
 /*
 ***IMPORTANT***: Program memory is dynamically allocated.
@@ -15,10 +13,10 @@ Each data element inside client will frequently be referred to as "Node".
 class UnionClient
 {
     public:
-        UnionClient(); // Not usually used.
+        UnionClient(); // Use buildClient() function instead.
         void buildClient(int);
         void readMandNfromFile();
-        void randomMandN(int, int);
+        int64_t randomMandN(int, int);
         ~UnionClient();
 
         // Getters
@@ -45,7 +43,6 @@ class UnionClient
 UnionClient::UnionClient()
 {
     setNumElements(1);
-    // auto timeStart = Time::now();
     int* tempIDArray = new int[getNumElements()];
     int* tempSizeArray = new int[getNumElements()];
 
@@ -60,18 +57,6 @@ UnionClient::UnionClient()
 
     UnionClient::setIDArray(tempIDArray);
     UnionClient::setSizeArray(tempSizeArray);
-    // auto timeStop = Time::now();
-    // auto duration = Time::duration(timeStop - timeStart);
-
-    /* 
-    Old Chrono Stuff.
-    // NOTE: Chrono typically operates in nanoseconds, so I've converted it ms.
-    // NOTE 2: It takes a data set of >1,000,000 to see time increment.
-    ms durationMS = std::chrono::duration_cast<ms>(duration);
-
-    std::cout << "Client with " << N << " nodes initialized in " << durationMS.count()
-        << " ms." << std::endl;
-    */
 }
 
 // This "constructor" builds a client based off of user input.
@@ -147,16 +132,19 @@ void UnionClient::readMandNfromFile()
         int b = std::stoi(fullLine.substr(spaceIndex + 1));
         
         Union(a,b);
-        // std::cout << "Unionized " << a << " and " << b << "." << std::endl;
+        std::cout << "Unionized " << a << " and " << b << "." << std::endl;
     }
 }
 
-// Function generates random M & N operations.
-// Function takes two ints: numElements (= N) and numOperations (= M).
-void UnionClient::randomMandN(int numElements, int numOperations)
+/*
+Function takes two ints: numElements (= N) and numOperations (= M) and returns the time it took for
+    the entire operation.
+*/
+int64_t UnionClient::randomMandN(int numElements, int numOperations)
 {
     buildClient(numElements); // Building a new clean client.
 
+    std::chrono::time_point timeStart = Time::now();
     for (int i = 0; i < numOperations; i++)
     {
         int singleOrDouble = (rand() % 2);
@@ -164,16 +152,18 @@ void UnionClient::randomMandN(int numElements, int numOperations)
         {
             int a = (rand() % numElements);
             findSize(a);
-            // std::cout << "Groupsize of " << a << ": " << findSize(a) << std::endl;
+            // std::cout << a << " has a group size of: " << findSize(a) << "." << std::endl;
         } else
         {
             int a = (rand() % numElements);
             int b = (rand() % numElements);
             Union(a,b);
-            // std::cout << "Objects " << a << " and object " << b << " unionized." << std::endl;
+            // std::cout << a << " and " << b << " unionized." << std::endl;
         }
-        
     }
+    std::chrono::time_point timeStop = Time::now();
+    std::chrono::nanoseconds duration = Time::duration(timeStop - timeStart);
+    return duration.count();
 }
 
 // Default deconstructor.

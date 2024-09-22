@@ -32,7 +32,7 @@ A LaTeX document explaining your algorithm's time complexity analysis and any op
 #include <chrono>
 #include <cmath>
 
-typedef std::chrono::steady_clock Time;// Makes it to where we don't have to type this bs every time.
+typedef std::chrono::steady_clock Time;
 
 int main(int argc, char* argv[])
 {
@@ -45,16 +45,12 @@ int main(int argc, char* argv[])
     std::cin >> numIterations;
 
     // Array that holds the time of each iteration.
-    std::chrono::duration<int64_t, std::nano>::rep timeArray[numIterations];
+    int64_t* timeArray = new int64_t[numIterations];
 
     for (int i = 0; i < numIterations; i++)
     {
         UnionClient workingUserClient;
-        auto timeStart = Time::now();
-        workingUserClient.randomMandN(numElements, numOperations);
-        auto timeStop = Time::now();
-        auto duration = Time::duration(timeStop - timeStart);
-        timeArray[i] = duration.count();
+        timeArray[i] = workingUserClient.randomMandN(numElements, numOperations);
     }
 
     auto totalRunTime = 0;
@@ -62,6 +58,7 @@ int main(int argc, char* argv[])
     {
         totalRunTime += timeArray[i];
     }
+    delete[] timeArray;
 
     int averageRunTime = (totalRunTime / numIterations);
 
@@ -70,9 +67,8 @@ int main(int argc, char* argv[])
     std::cout << "\tM = " << numOperations << std::endl;
     std::cout << "\tNum Iterations: " << numIterations << std::endl;
 
-    std::cout << "\nEstimated run-time (Mlog(N)): " << (numOperations * std::log10(numElements)) <<
-        " nanoseconds." << std::endl;
-    std::cout << "Average run-time: " << averageRunTime << " nanoseconds." << std::endl;
+    std::cout << "\nEstimated run-time (Mlog(N)): " << (numOperations * std::log10(numElements)) << std::endl;
+    std::cout << "Average run-time: " << averageRunTime << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
 }
