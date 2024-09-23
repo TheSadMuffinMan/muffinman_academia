@@ -214,19 +214,3 @@ bool UnionClient::connected(int p, int q)
         return true;
     } else {return false;}
 }
-
-/* Old Code
-// int singleOrDouble = (rand() % 2);
-// if (singleOrDouble == 1)
-// {
-//     int a = (rand() % numElements);
-//     find(a);
-//     // std::cout << a << " has a group size of: " << findSize(a) << "." << std::endl;
-// } else
-// {
-//     int a = (rand() % numElements);
-//     int b = (rand() % numElements);
-//     Union(a,b);
-//     // std::cout << a << " and " << b << " unionized." << std::endl;
-// }
-*/
