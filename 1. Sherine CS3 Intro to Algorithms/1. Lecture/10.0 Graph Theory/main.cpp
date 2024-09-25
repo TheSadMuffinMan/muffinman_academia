@@ -82,11 +82,52 @@ A salesman must visit customers in a number of towns before returning home. They
     Edges: The roads between the towns.
     Weights: The fuel cost to travel on this road/edge.
     Task: Find the shortest closed loop that visits all nodes.
+*/
 
-WE HAVE ANOTHER 10 MINUTE QUIZ THIS FRIDAY.
+/*
+Bipartite: a graph in which the vertices can be divided into two disjoint sets, such that no two vertices within
+    the same set are adjacent.
 */
 
 #include <iostream>
+#include <vector>
+
+class Graph
+{
+    private:
+        int V;
+        std::vector<std::vector<int>> adj;
+
+    public:
+        Graph(int V) : V(V), adj(V)
+        {
+            for (int v = 0; v < V; v++)
+            {
+                adj[v] = std::vector<int>();
+            }
+        }
+        void addEdge(int v, int w)
+        {
+            adj[v].push_back(w);
+            adj[w].push_back(v);
+        }
+
+        std::vector<int>& getAdj(int v)
+        {
+            return adj[v];
+        }
+};
+
+class Paths
+{
+    public:
+        Paths(Graph G, int s)
+        {
+            //
+        }
+
+
+};
 
 int main(int argc, char *argv[])
 {

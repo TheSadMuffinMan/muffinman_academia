@@ -17,17 +17,6 @@ Add to queue all unmarked vertices adjacent to v and mark them.
 
 #include <iostream>
 
-class BreadthFirstPaths
-{
-    public:
-        //
-    private:
-        bool* marked; // Array to hold whether or not vertices have been visited.
-        int* edgeTo;
-        int* distTo;
-
-        // void bfs(Graph, int);
-};
 
 int main(int argc, char *argv[])
 {
