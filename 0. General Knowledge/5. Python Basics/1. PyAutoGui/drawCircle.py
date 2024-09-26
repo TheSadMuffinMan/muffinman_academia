@@ -2,8 +2,8 @@ import pyautogui
 import time
 import math
 
-def fastSemiCircle():
-    R = 100
+def drawCircle():
+    R = 50
     (x,y) = pyautogui.size()
     (X, Y) = pyautogui.position((x / 2), (y / 2))
 
@@ -44,10 +44,10 @@ def drawSemiCircleSlow(r):
 
 def main():
     timeDelay = 3 # How long you want the program paused for.
-    print("Program paused for ", timeDelay, " seconds...")
+    print("Program paused for", timeDelay, "seconds...")
     time.sleep(timeDelay)
 
-    fastSemiCircle()
+    drawCircle()
 
 
 main()
