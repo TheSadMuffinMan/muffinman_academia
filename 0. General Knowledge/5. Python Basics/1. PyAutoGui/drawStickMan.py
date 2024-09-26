@@ -4,6 +4,7 @@ import pyautogui
 import time
 import math
 
+# Function draws a top hat.
 def drawTopHat(x,y, width, height):
     pyautogui.mouseDown()
     pyautogui.moveTo((x - (width / 2)), y)
@@ -77,10 +78,10 @@ def drawMurphy(x,y):
     pyautogui.moveTo(murphy_base_head)
     drawCircle(x, (y - 175 - murphy_head_radius), murphy_head_radius)
 
+    # Drawing Top Hat.
     murphy_top_head = (x, (y - 175 - (murphy_head_radius * 2)))
     pyautogui.moveTo(murphy_top_head)
     drawTopHat(x, (y - 175 - (murphy_head_radius * 2)), murphy_head_radius, murphy_head_radius)
-
 
 def main():
     timeDelay = 3 # How long you want the program paused for.
@@ -90,7 +91,5 @@ def main():
     (x,y) = pyautogui.position()
 
     drawMurphy(x,y)
-    # drawTopHat(x,y, 100, 100)
-
 
 main()
