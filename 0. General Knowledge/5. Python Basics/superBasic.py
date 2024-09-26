@@ -6,6 +6,7 @@
 # Casting looks like this:
 auto cast(int):
     
+import time # Time Library.
 
 # User defined functions
 def addNums(x,y):
@@ -18,5 +19,10 @@ def main():
     num1 = int(input("Please input an int to continue: ")) # Variable declaration and user input.
 
     print("You input: ", num1)
+    num2 = input("Please input another int: ")
+
+    time.sleep(3) # Program pauses for 3 seconds.
+    print("Your numbers added together = ", addNums(num1, num2))
+    
 
 main()
