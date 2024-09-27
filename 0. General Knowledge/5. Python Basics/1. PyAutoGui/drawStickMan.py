@@ -1,4 +1,5 @@
 # Program draws a stick man named Murphy!
+# CHALLENGE: Babe-tastic wants Murphy to have curly hair.
 
 import pyautogui
 import time

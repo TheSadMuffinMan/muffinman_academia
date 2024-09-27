@@ -167,26 +167,26 @@ UnionClient::~UnionClient()
 // Utilizes the Quick Union with Path Compression Algorithm.
 void UnionClient::Union(int p, int q)
 {
-    int i = find(p); // i == p's index.
-    int j = find(q); // j == q's index.
+    int rootP = find(p); // int i = find(p); // i == p's index.
+    int rootQ = find(q); // j == q's index.
 
-    for (i = p; i != _idArray[i]; i = _idArray[i])
-        _idArray[i] = _idArray[_idArray[i]]; // Halves the length of the path to root.
+    if (rootP == rootQ) {return;} // If the indexes are the same...
 
-    for (j = q; j != _idArray[j]; j = _idArray[j])
-        _idArray[j] = _idArray[_idArray[j]]; // Ditto to above, but for j.
-        
-    if (i == j) {return;} // If the indexes are the same...
+    for (rootP = p; rootP != _idArray[rootP]; rootP = _idArray[rootP])
+        _idArray[rootP] = _idArray[_idArray[rootP]]; // Halves the length of the path to root.
 
-    if (_sizeArray[i] < _sizeArray[j]) // If i's group/_sizeArray are smaller than j's group/_sizeArray...
+    for (rootQ = q; rootQ != _idArray[rootQ]; rootQ = _idArray[rootQ])
+        _idArray[rootQ] = _idArray[_idArray[rootQ]]; // Ditto to above, but for j.
+
+    if (_sizeArray[rootP] < _sizeArray[rootQ]) // If i's group/_sizeArray are smaller than j's group/_sizeArray...
     {
-        _idArray[i] = j;
-        _sizeArray[j] += _sizeArray[i];
+        _idArray[rootP] = rootQ;
+        _sizeArray[rootQ] += _sizeArray[rootP];
     }
     else
     {
-        _idArray[j] = i;
-        _sizeArray[i] += _sizeArray[j];
+        _idArray[rootQ] = rootP;
+        _sizeArray[rootP] += _sizeArray[rootQ];
     }
 }
 
