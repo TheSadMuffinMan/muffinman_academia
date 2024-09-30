@@ -1,6 +1,28 @@
 import pyautogui
 import time
 
+# Function changes the color and moves the cursor back to where it began.
+def changeColor(colorNum):
+    # Validating input.
+    while ((colorNum < 0) or (colorNum > 21)):
+        colorNum = input("Invalid color selection. Please input color number: ")
+
+    currentPosition = pyautogui.position()
+
+    if ((colorNum >= 0) & (colorNum <= 10)): # If we want the top row...
+        y = 940
+        x = (215 + (colorNum * 25))
+        pyautogui.moveTo(x,y)
+
+    if ((colorNum > 10) & (colorNum <= 21)): # If we want the bottom row...
+        colorNum = (colorNum - 11) # Getting rid of first char for easier calculations later.
+        y = 965
+        x = (215 + (colorNum * 25))
+        pyautogui.moveTo(x,y)
+
+    pyautogui.click()
+    pyautogui.moveTo(currentPosition)
+
 def drawSquare():
     pyautogui.drag(None, 100, 1, button = 'left') # Drag left mouse relative x, y + 10 over 1 second.
     pyautogui.drag(100, None, 1, button = 'left',)
