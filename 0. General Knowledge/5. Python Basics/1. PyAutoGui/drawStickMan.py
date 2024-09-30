@@ -6,11 +6,68 @@ import time
 import math
 
 # Function changes the color and moves the cursor back to where it began.
+# Color 0: Black
+# Color 1: Grey
+# Color 2: Red
+# Color 3: Orange
+# Color 4: Yellow
+# Color 5: Lime Green
+# Color 6: Cyan
+# Color 7: Blue
+# Color 8: Pink
+# Color 9: Tan-ish Pink
+# Color 10: Neon Green
+# Color 11: White
+# Color 12: Lighter Grey
+# Color 13: Sienna
+# Color 14: Dark Brown
+# Color 15: Dark Green
+# Color 16: Blue-Green
+# Color 17: Dark Blue
+# Color 18: Darker Purple
+# Color 19: Lighter Purple
+# Color 20: Lighter Yellow
 def changeColor(colorNum):
     currentPosition = pyautogui.position()
-    pyautogui.moveTo(370, 940)
-    pyautogui.click()
+    if (colorNum == 0): # Black
+        pyautogui.moveTo(215, 940)
+        pyautogui.click()
+    elif (colorNum == 1): # Grey
+        pyautogui.moveTo(230, 940)
+        pyautogui.click()
+    elif (colorNum == 2): # Red
+        pyautogui.moveTo(255, 940)
+        pyautogui.click()
+    elif (colorNum == 3): # Orange
+        pyautogui.moveTo(285, 940)
+        pyautogui.click()
+    elif (colorNum == 4): # Yellow
+        pyautogui.moveTo(315, 940)
+        pyautogui.click()
+    elif (colorNum == 5): # Lime Green
+        pyautogui.moveTo(340, 940)
+        pyautogui.click()
+    elif (colorNum == 6): # Cyan
+        pyautogui.moveTo(365, 940)
+        pyautogui.click()
+    elif (colorNum == 7): # Blue
+        pyautogui.moveTo(390, 940)
+        pyautogui.click()
+    elif (colorNum == 8): # Pink
+        pyautogui.moveTo(415, 940)
+        pyautogui.click()
+    elif (colorNum == 9): # Tan-ish Pink
+        pyautogui.moveTo(440, 940)
+        pyautogui.click()
+    elif (colorNum == 10): # Neon Green
+        pyautogui.moveTo(470, 940)
+        pyautogui.click()
+
+    # Wait a minute... There's a much easier way to do this T_T......
+    # Calculate (x,y) based off of input rather than utilizing (essentially) switch cases.
     pyautogui.moveTo(currentPosition)
+
+
 
 # Function draws a top hat.
 def drawTopHat(x,y, width, height):
@@ -96,8 +153,7 @@ def main():
     print("Program paused for", timeDelay, "seconds...")
     time.sleep(timeDelay)
 
-    pyautogui.click()
-    changeColor()
+    changeColor(10)
 
     # drawMurphy(x,y)
 
