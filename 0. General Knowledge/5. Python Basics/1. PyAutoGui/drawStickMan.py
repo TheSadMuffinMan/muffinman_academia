@@ -28,7 +28,6 @@ def changeColor(colorNum):
     pyautogui.moveTo(currentPosition)
 
 
-
 # Function draws a top hat.
 def drawTopHat(x,y, width, height):
     pyautogui.mouseDown()
