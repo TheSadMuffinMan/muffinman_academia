@@ -5,6 +5,13 @@ import pyautogui
 import time
 import math
 
+# Function changes the color and moves the cursor back to where it began.
+def changeColor(colorNum):
+    currentPosition = pyautogui.position()
+    pyautogui.moveTo(370, 940)
+    pyautogui.click()
+    pyautogui.moveTo(currentPosition)
+
 # Function draws a top hat.
 def drawTopHat(x,y, width, height):
     pyautogui.mouseDown()
@@ -89,8 +96,9 @@ def main():
     print("Program paused for", timeDelay, "seconds...")
     time.sleep(timeDelay)
 
-    (x,y) = pyautogui.position()
+    pyautogui.click()
+    changeColor()
 
-    drawMurphy(x,y)
+    # drawMurphy(x,y)
 
 main()
