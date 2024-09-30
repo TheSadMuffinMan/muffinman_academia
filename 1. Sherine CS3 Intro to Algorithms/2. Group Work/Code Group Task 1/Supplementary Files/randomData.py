@@ -5,7 +5,7 @@ def main():
     # print("\nProgram creates a random data set in the form \"x *SPACE* y.\"\n")
     # setSize = int(input("How many data sets would you like?: "))
 
-    setSize = 1000
+    setSize = 20
     z = int(0)
     while (z < setSize):
         x = random.randrange(setSize)
