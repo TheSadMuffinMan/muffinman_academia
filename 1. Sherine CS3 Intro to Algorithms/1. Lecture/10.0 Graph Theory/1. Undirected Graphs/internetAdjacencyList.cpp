@@ -23,11 +23,12 @@ Graph::Graph(int vertices)
     {
         for (int j = 0; j < _numVertices; i++)
         {
+            std::cout << "DEBUG Working1" << std::endl;
             _adjacencyMatrix[i][j] = 0;
         }
     }
 
-    std::cout << "DEBUG Working3" << std::endl;
+    std::cout << "DEBUG Working2" << std::endl;
 }
 
 /*
@@ -38,7 +39,7 @@ void Graph::addEdge(int v, int w)
 {
     std::cout << "Adding edge between " << v << " & " << w << std::endl;
     _adjacencyMatrix[v][w] = 1;
-    _adjacencyMatrix[w][v] = 1;
+    // _adjacencyMatrix[w][v] = 1;
 }
 
 void Graph::printGraph()
