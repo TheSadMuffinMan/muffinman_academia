@@ -1,12 +1,20 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
 #include "graphInterface.h"
 
-struct graph{int V; int E; int **adj;};
+struct graph
+{
+    int V;
+    int E;
+    int** adj;
+};
+
 Graph GRAPHinit(int V)
 {
-    Graph G = std::malloc(sizeof(*G));
+    Graph *G = new Graph;
     G->V = V;
     G->E = 0;
     G->adj = MATRIXint(V, V, 0);

@@ -1,6 +1,8 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
 #include "graphInterface.h"
 
 typedef struct node *link;
@@ -8,7 +10,7 @@ typedef struct node *link;
 struct node
 {
     int v;
-    link next;
+    link* next;
 };
 
 struct graph
@@ -18,9 +20,10 @@ struct graph
     link *adj;
 };
 
-link NEW(int v, link next)
+link* NEW(int v, link* next)
 {
-    link x = std::malloc(sizeof(*x));
+    // link x = malloc(sizeof(*x)); // Dynamic memory allocation.
+    link* x = new link;
     x->v = v;
     x->next = next;
     return x;
@@ -29,7 +32,7 @@ link NEW(int v, link next)
 Graph GRAPHinit(int V)
 {
     int v;
-    Graph G = malloc(V * sizeof(link));
+    Graph *G = new Graph(V);
     G->V = V;
     G->E = 0;
     G->adj = malloc(V * sizeof(link));
@@ -39,4 +42,30 @@ Graph GRAPHinit(int V)
     }
 
     return G;
+}
+
+void GRAPHinsertE(Graph G, Edge e)
+{
+    int v = e.v, w = e.w;
+    G->adj[v] = NEW(w, G->adj[v]);
+    G->adj[w] = NEW(v, G->adj[w]);
+    G->E++;
+}
+
+int GRAPHedges(Edge a[], Graph G)
+{
+    int v, E = 0;
+    link t;
+    for (v = 0; v < G->V; v++)
+    {
+        for (t = G->adj[v]; t != NULL; t = t->next)
+        {
+            if (v < t->v)
+            {
+                a[E++] = EDGE(v, t->v);
+            }
+        }
+    }
+
+    return E;
 }
