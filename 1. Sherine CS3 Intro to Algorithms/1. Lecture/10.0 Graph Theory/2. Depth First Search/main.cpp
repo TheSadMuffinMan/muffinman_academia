@@ -1,5 +1,6 @@
 /*
 DEPTH FIRST SEARCH:
+    "Going down the rabbit hole."
     Is one of the oldest algorithms out there!
     One of the best representations of a graph is a Maze, especially the Pac-Man Maze!
     Goal: Systematically traverse a graph.

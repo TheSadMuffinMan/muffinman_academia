@@ -1,4 +1,5 @@
 /*
+BREADTH FIRST SEARCH: Rather than "going down the rabbit hole" (Depth First), we "explore the whole farm".
 If we allow multiple links to a node as well as from a node, the resulting data structure is called a GRAPH.
 
 A graph is consisted of a set of NODES connected by EDGES.
