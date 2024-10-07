@@ -15,8 +15,11 @@ Quick sort runs with an average time complexity of (n log n) (with n being size 
 
 #include <iostream>
 #include <random>
+#include <chrono>
 
-int partition(int workingArray[], int low, int high) // std::vector<int> &vec
+typedef std::chrono::steady_clock Time;// Makes is to where we don't have to type entire library every time.
+
+int partition(int workingArray[], int low, int high)
 {
     // Selecting last element as the pivot.
     int pivot = workingArray[high];
@@ -27,7 +30,8 @@ int partition(int workingArray[], int low, int high) // std::vector<int> &vec
     for (int j = low; j <= high - 1; j++)
     {
         // If current element is smaller than or equal to pivot...
-        if (workingArray[j] <= pivot) {
+        if (workingArray[j] <= pivot)
+        {
             i++;
             std::swap(workingArray[i], workingArray[j]);
         }
@@ -56,23 +60,29 @@ void quickSort(int workingArray[], int low, int high)
 
 int main(int argc, char *argv[])
 {
-    const int setSize = 50; // SET SIZE NUMBER. CAN BE CHANGED IN THE SCOPE OF THIS PROGRAM.
+    const int setSize = 500; // SET SIZE NUMBER. CAN BE CHANGED IN THE SCOPE OF THIS PROGRAM.
     std::cout << "\nProgram start." << std::endl;
 
     int dataArray[setSize];
     for (int i = 0; i < setSize; i++)
     {
-        dataArray[i] = (rand() % 1000); // Modulus 1000 so that we can compare values easier.
+        dataArray[i] = (rand() % (setSize * 10)); // Raising one order of magnitude to prevent repeats.
     }
-    // int n = vec.size();
     
-      // Calling quicksort for the vector vec
+    auto timeStart = Time::now(); // Is the same as: auto timeStart = std::chrono::high_resolution_clock::now();
+
+    // Calling quickSort function on dataArray[].
     quickSort(dataArray, 0, (setSize - 1));
+
+    auto timeStop = Time::now();
+    auto duration = Time::duration(timeStop - timeStart);
 
     for (int i = 0; i < setSize; i++)
     {
         std::cout << dataArray[i] << " ";
     }
+    
+    std::cout << "\nRun Time: " << duration.count() << " nanoseconds." << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
