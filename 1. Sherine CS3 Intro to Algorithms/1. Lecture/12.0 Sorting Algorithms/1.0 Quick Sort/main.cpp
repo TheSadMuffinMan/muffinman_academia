@@ -1,4 +1,6 @@
 /*
+https://youtu.be/uOd-OcJVHa0?si=29q3xm93GVk2Gms3
+
 There are three main sorting algorithms in modern CS:
     QUICK SORT, MERGE SORT, and INSERTION SORT.
 */
@@ -6,10 +8,13 @@ There are three main sorting algorithms in modern CS:
 /*
 Quick sort is a recursive sorting algorithm.
 Quick sort works by first selecting a pivot point - usually the last data element.
-    In this program, the last element is the starting pivot.
     After selecting a pivot point, we split the array into two subarrays - one with all data larger than
         the pivot, and the other with all data less than the pivot.
-    This process is then repeated for each smaller array until we arrive at subarrays of size 2.
+            ***NOTE***: Initially, the data will NOT be sorted in sequential order, but this is okay.
+    After placing all data into their respective subarray, the pivot is placed into it's correct spot in between
+        the two subarrays.
+    This process is then repeated for each smaller array by selecting the last element of each subarray as
+        the pivot.
 */
 
 /*
