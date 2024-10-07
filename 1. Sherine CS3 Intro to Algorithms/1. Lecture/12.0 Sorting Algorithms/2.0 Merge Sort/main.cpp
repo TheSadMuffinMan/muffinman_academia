@@ -1,9 +1,12 @@
 #include <stdio.h>
+#include <iostream>
+#include <random>
+#include <chrono>
 
 // Merge two subarrays L and M into arr
 void merge(int arr[], int p, int q, int r)
 {
-    // Create L ← A[p..q] and M ← A[q+1..r]
+    // Create L ← A[p..q] and M ← A[q+1..r].
     int n1 = q - p + 1;
     int n2 = r - q;
 
@@ -14,7 +17,7 @@ void merge(int arr[], int p, int q, int r)
     for (int j = 0; j < n2; j++)
     M[j] = arr[q + 1 + j];
 
-    // Maintain current index of sub-arrays and main array
+    // Maintain current index of sub-arrays and main array.
     int i, j, k;
     i = 0;
     j = 0;
@@ -77,17 +80,17 @@ void printArray(int arr[], int size)
     for (int i = 0; i < size; i++)
     {
         printf("%d ", arr[i]);
-        printf("\n");
     }
 }
 
 // Driver program
-int main() {
-  int arr[] = {6, 5, 12, 10, 9, 1};
-  int size = sizeof(arr) / sizeof(arr[0]);
+int main()
+{
+    int arr[] = {6, 5, 12, 10, 9, 1};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-  mergeSort(arr, 0, size - 1);
+    mergeSort(arr, 0, size - 1);
 
-  printf("Sorted array: \n");
-  printArray(arr, size);
+    printf("Sorted array: \n");
+    printArray(arr, size);
 }
