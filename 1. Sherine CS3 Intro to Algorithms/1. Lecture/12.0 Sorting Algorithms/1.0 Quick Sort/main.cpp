@@ -1,7 +1,15 @@
 /*
-There are two main sorting algorithms in modern CS:
-    QUICK SORT and
-    MERGE SORT.
+There are three main sorting algorithms in modern CS:
+    QUICK SORT, MERGE SORT, and INSERTION SORT.
+*/
+
+/*
+Quick sort is a recursive sorting algorithm.
+Quick sort works by first selecting a pivot point - usually the last data element.
+    In this program, the last element is the starting pivot.
+    After selecting a pivot point, we split the array into two subarrays - one with all data larger than
+        the pivot, and the other with all data less than the pivot.
+    This process is then repeated for each smaller array until we arrive at subarrays of size 2.
 */
 
 /*
@@ -60,16 +68,20 @@ void quickSort(int workingArray[], int low, int high)
 
 int main(int argc, char *argv[])
 {
-    const int setSize = 500; // SET SIZE NUMBER. CAN BE CHANGED IN THE SCOPE OF THIS PROGRAM.
     std::cout << "\nProgram start." << std::endl;
 
-    int dataArray[setSize];
+    // SET SIZE NUMBER. Can be changed.
+    const int setSize = 100000000;
+
+    // Must be dynamically allocated to allow for YUGE data set sizes.
+    int *dataArray = new int[setSize];
+
     for (int i = 0; i < setSize; i++)
     {
-        dataArray[i] = (rand() % (setSize * 10)); // Raising one order of magnitude to prevent repeats.
+        dataArray[i] = (rand() % (setSize * 10)); // Raising one order of magnitude to (hopefully) prevent repeats.
     }
     
-    auto timeStart = Time::now(); // Is the same as: auto timeStart = std::chrono::high_resolution_clock::now();
+    auto timeStart = Time::now(); // Starting timer.
 
     // Calling quickSort function on dataArray[].
     quickSort(dataArray, 0, (setSize - 1));
@@ -77,12 +89,18 @@ int main(int argc, char *argv[])
     auto timeStop = Time::now();
     auto duration = Time::duration(timeStop - timeStart);
 
+    /*
+    // Remove comment to see each individual data member.
     for (int i = 0; i < setSize; i++)
     {
         std::cout << dataArray[i] << " ";
     }
+    */
+    
+    delete[] dataArray;
     
     std::cout << "\nRun Time: " << duration.count() << " nanoseconds." << std::endl;
+    std::cout << "Which is = " << (duration.count() * .000000001) << " seconds." << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
