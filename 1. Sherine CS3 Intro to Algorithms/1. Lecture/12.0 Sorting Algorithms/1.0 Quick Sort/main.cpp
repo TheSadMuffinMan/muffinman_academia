@@ -7,6 +7,13 @@ There are three main sorting algorithms in modern CS:
 
 /* GENERAL NOTES:
 Quick sort is a recursive sorting algorithm.
+Quick sort partitions in place by creating multiple different subarrays.
+    Although Quick Sort is very time efficient, it is NOT space efficient.
+    This is because Quick Sort is an in-place sorting algorithm.
+Quick sort runs with an average time complexity of (n log n) (with n being size of array). 
+*/
+
+/* QUICK SORT PROCESS:
 Quick sort works by first selecting a pivot point - usually the last data element.
     After selecting a pivot point, we split the array into two subarrays - one with all data larger than
         the pivot, and the other with all data less than the pivot.
@@ -16,15 +23,23 @@ Quick sort works by first selecting a pivot point - usually the last data elemen
     This process is then repeated for each smaller array by selecting the last element of each subarray as
         the pivot.
 
-Quick sort partitions in place by creating multiple different subarrays.
-    Although Quick Sort is very time efficient, it is NOT space efficient.
-    This is because Quick Sort is an in-place sorting algorithm.
-Quick sort runs with an average time complexity of (n log n) (with n being size of array). 
+Let v be partitioning item a[low].
+Scan i from left to right.
+    If (a[i] < v): exchange a[leftPointer] with a[i];
+        Increment both leftPointer and i;
+    If (a[i] > v): exchange a[rightPointer] with a[i];
+        Decrement rightPointer;
+    if (a[i] == v): Increment i;
+
 */
 
 /* PROBLEMS WITH QUICK SORT:
 One of Quick Sort's least advantageous properties is that IT IS NOT A STABLE SORT.
     The loop will terminate if pointers do not cross!
+If there are duplicate elements, we start to run into problems.
+    The solution is Dijkstra's 3-Way Partitioning.
+        Instead of selecting a single pivot point, we maintain a pivot "region" inside the
+            working array.
 */
 
 #include <iostream>
