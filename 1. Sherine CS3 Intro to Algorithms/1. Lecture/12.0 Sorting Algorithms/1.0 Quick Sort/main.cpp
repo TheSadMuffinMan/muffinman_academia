@@ -5,7 +5,7 @@ There are three main sorting algorithms in modern CS:
     QUICK SORT, MERGE SORT, and INSERTION SORT.
 */
 
-/*
+/* GENERAL NOTES:
 Quick sort is a recursive sorting algorithm.
 Quick sort works by first selecting a pivot point - usually the last data element.
     After selecting a pivot point, we split the array into two subarrays - one with all data larger than
@@ -15,15 +15,16 @@ Quick sort works by first selecting a pivot point - usually the last data elemen
         the two subarrays.
     This process is then repeated for each smaller array by selecting the last element of each subarray as
         the pivot.
-*/
 
-/*
-One of Quick Sort's least advantageous properties is that IT IS NOT A STABLE SORT.
-    The loop will terminate if pointers do not cross!
 Quick sort partitions in place by creating multiple different subarrays.
     Although Quick Sort is very time efficient, it is NOT space efficient.
     This is because Quick Sort is an in-place sorting algorithm.
 Quick sort runs with an average time complexity of (n log n) (with n being size of array). 
+*/
+
+/* PROBLEMS WITH QUICK SORT:
+One of Quick Sort's least advantageous properties is that IT IS NOT A STABLE SORT.
+    The loop will terminate if pointers do not cross!
 */
 
 #include <iostream>
