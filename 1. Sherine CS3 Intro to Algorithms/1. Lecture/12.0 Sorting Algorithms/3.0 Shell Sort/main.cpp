@@ -14,11 +14,11 @@ void shellSort(int array[], int n)
             int temp = array[i];
             int j;
 
-            for (j = i; j >= interval && array[j - interval] > temp; j -= interval)
+            for (j = i; (j >= interval) && (array[j - interval] > temp); j -= interval)
             {
                 array[j] = array[j - interval];
             }
-            
+
             array[j] = temp;
         }
     }
