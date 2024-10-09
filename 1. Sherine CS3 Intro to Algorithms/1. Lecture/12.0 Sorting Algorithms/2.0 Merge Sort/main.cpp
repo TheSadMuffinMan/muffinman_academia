@@ -1,7 +1,16 @@
+/* MERGE SORT GENERAL NOTES:
+Merge sort is usually the best option for sorting algorithms because it is a STABLE sort.
+    The main downside of Merge Sort is that it is NOT an in-place sort, meaning that it requires additional
+        memory to perform the sort operation.
+*/
+
 #include <stdio.h>
 #include <iostream>
 #include <random>
 #include <chrono>
+
+typedef std::chrono::steady_clock Time;// Makes is to where we don't have to type entire library every time.
+
 
 // Merge two subarrays L and M into arr
 void merge(int arr[], int p, int q, int r)
@@ -13,9 +22,14 @@ void merge(int arr[], int p, int q, int r)
     int L[n1], M[n2];
 
     for (int i = 0; i < n1; i++)
-    L[i] = arr[p + i];
+    {
+        L[i] = arr[p + i];
+    }
+
     for (int j = 0; j < n2; j++)
-    M[j] = arr[q + 1 + j];
+    {
+        M[j] = arr[q + 1 + j];
+    }
 
     // Maintain current index of sub-arrays and main array.
     int i, j, k;
@@ -74,23 +88,29 @@ void mergeSort(int arr[], int l, int r)
     }
 }
 
-// Print the array
-void printArray(int arr[], int size)
-{
-    for (int i = 0; i < size; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-}
-
 // Driver program
-int main()
+int main(int argc, char* argv[])
 {
-    int arr[] = {6, 5, 12, 10, 9, 1};
-    int size = sizeof(arr) / sizeof(arr[0]);
+    std::cout << "\nProgram start." << std::endl;
 
-    mergeSort(arr, 0, size - 1);
+    // Can be changed.
+    const int numElements = 1000;
 
-    printf("Sorted array: \n");
-    printArray(arr, size);
+    // Dyamically allocating memory to allow very large amounts of elements.
+    int* workingArray = new int[numElements];
+
+    for (int i = 0; i < numElements; i++)
+    {
+        workingArray[i] = ((rand() % numElements) * 10);
+    }
+
+    std::cout << "\nSorting..." << std::endl;
+    auto timeStart = Time::now();
+
+    mergeSort(workingArray, workingArray[0], workingArray[999]);
+    auto timeStop = Time::now();
+    auto duration = (timeStop - timeStart);
+
+    std::cout << numElements << " sorted in " << duration.count() << " nanoseconds." << std::endl;
+    std::cout << "Which is = " << (duration.count() * .000000001) << " seconds." << std::endl;
 }
