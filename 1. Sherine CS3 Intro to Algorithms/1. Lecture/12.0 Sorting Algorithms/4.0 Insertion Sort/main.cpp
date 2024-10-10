@@ -28,52 +28,6 @@ index: 0 1 2 3  4 5 6 7
 
 typedef std::chrono::steady_clock Time;
 
-void insertionSort(int[], int);
-
-int main(int argc, char *argv[])
-{
-    std::cout << "\nProgram start." << std::endl;
-
-    const int numElements = 10000;
-    int* workingArray = new int[numElements];
-
-    for (int i = 0; i < numElements; i++)
-    {
-        workingArray[i] = (rand() % (numElements * 10));
-    }
-
-    std::cout << "Sorting...";
-    auto timeStart = Time::now();
-
-    insertionSort(workingArray, numElements);
-    auto timeStop = Time::now();
-
-    std::cout << " Complete!" << std::endl;
-    auto duration = (timeStop - timeStart);
-
-    // Printing out first 10 elements.
-    std::cout << "\nFirst 10 elements..." << std::endl;
-    for (int i = 0; i < 10; i++)
-    {
-        std::cout << i << ": " << workingArray[i] << std::endl;
-    }
-
-    // Printing out last 10 elements.
-    std::cout << "\nLast 10 elements..." << std::endl;
-    for (int i = (numElements - 10); i < numElements; i++)
-    {
-        std::cout << i << ": " << workingArray[i] << std::endl;  
-    }
-    std::cout << std::endl;
-
-    std::cout << numElements << " elements sorted in " << duration.count() << " nanoseconds." << std::endl;
-    std::cout << "Which is " << (duration.count() * .000000001) << " seconds." << std::endl;
-    
-    std::cout << "\nEnd of program." << std::endl;
-    delete[] workingArray;
-    return 0;
-}
-
 void insertionSort(int array[], int length) // int array[] = int array*;
 {
     // Loop starts at 1 because the first element is already "sorted".
@@ -90,4 +44,48 @@ void insertionSort(int array[], int length) // int array[] = int array*;
 
         array[j + 1] = key;
     }
+}
+
+int main(int argc, char *argv[])
+{
+    std::cout << "\nProgram start." << std::endl;
+
+    const int numElements = 10000;
+    int* dataArray = new int[numElements];
+
+    for (int i = 0; i < numElements; i++)
+    {
+        dataArray[i] = (rand() % (numElements * 10));
+    }
+
+    std::cout << "Sorting...";
+    auto timeStart = Time::now();
+
+    insertionSort(dataArray, numElements);
+    auto timeStop = Time::now();
+
+    std::cout << " Complete!" << std::endl;
+    auto duration = (timeStop - timeStart);
+
+    // Printing out first 10 elements.
+    std::cout << "\nFirst 10 elements..." << std::endl;
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << i << ": " << dataArray[i] << std::endl;
+    }
+
+    // Printing out last 10 elements.
+    std::cout << "\nLast 10 elements..." << std::endl;
+    for (int i = (numElements - 10); i < numElements; i++)
+    {
+        std::cout << i << ": " << dataArray[i] << std::endl;  
+    }
+    std::cout << std::endl;
+
+    std::cout << numElements << " elements sorted in " << duration.count() << " nanoseconds." << std::endl;
+    std::cout << "Which is " << (duration.count() * .000000001) << " seconds." << std::endl;
+    
+    std::cout << "\nEnd of program." << std::endl;
+    delete[] dataArray;
+    return 0;
 }

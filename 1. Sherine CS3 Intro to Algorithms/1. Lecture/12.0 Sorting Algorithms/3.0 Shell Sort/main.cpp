@@ -33,17 +33,17 @@ int main(int argc, char *argv[])
     const int numElements = 1000000;
 
     // Dyamically allocating memory to allow very large amounts of elements.
-    int* workingArray = new int[numElements];
+    int* dataArray = new int[numElements];
 
     for (int i = 0; i < numElements; i++)
     {
-        workingArray[i] = (rand() % (numElements * 10));
+        dataArray[i] = (rand() % (numElements * 10));
     }
 
     std::cout << "\nSorting...";
     auto timeStart = Time::now();
 
-    shellSort(workingArray, numElements);
+    shellSort(dataArray, numElements);
     auto timeStop = Time::now();
     std::cout << " Complete!" << std::endl;
     auto duration = (timeStop - timeStart);
@@ -55,17 +55,17 @@ int main(int argc, char *argv[])
     std::cout << "\nFirst 10 elements..." << std::endl;
     for (int i = 0; i < 10; i++)
     {
-        std::cout << i << ": " << workingArray[i] << std::endl;
+        std::cout << i << ": " << dataArray[i] << std::endl;
     }
 
     // Printing out last 10 elements.
     std::cout << "\nLast 10 elements..." << std::endl;
     for (int i = (numElements - 10); i < numElements; i++)
     {
-        std::cout << i << ": " << workingArray[i] << std::endl;  
+        std::cout << i << ": " << dataArray[i] << std::endl;  
     }
 
-    delete[] workingArray;
+    delete[] dataArray;
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
