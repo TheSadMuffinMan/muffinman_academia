@@ -11,12 +11,21 @@ TIME COMPLEXITY:
     O(n^2) due to nested for loop.
 SPACE COMPLEXITY:
     O(1), IS STABLE.
+
+VISUALIZATION:
+sorted -----    i --> key = 5
+       |     \  |
+array: 2 4 7 8  5 1 9 3
+index: 0 1 2 3  4 5 6 7
+              | |-----|
+              j   unsorted
 */
+
 #include <iostream>
 #include <random>
 #include <chrono>
 
-typedef std::chrono::steady_clock Time;// Makes is to where we don't have to type entire library every time.
+typedef std::chrono::steady_clock Time;
 
 void insertionSort(int[], int);
 
@@ -24,24 +33,47 @@ int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-    // const int numElements = 100;
-    // int* workingArray = new int[numElements];
+    const int numElements = 10000;
+    int* workingArray = new int[numElements];
 
-    int testArray[] = {8, 2, 7, 4, 5, 1, 9, 3};
-    int length = (sizeof(testArray) / sizeof(testArray[0]));
-
-    insertionSort(testArray, length);
-
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < numElements; i++)
     {
-        std::cout << i << ": " << testArray[i] << std::endl;
+        workingArray[i] = (rand() % (numElements * 10));
     }
+
+    std::cout << "Sorting...";
+    auto timeStart = Time::now();
+
+    insertionSort(workingArray, numElements);
+    auto timeStop = Time::now();
+
+    std::cout << " Complete!" << std::endl;
+    auto duration = (timeStop - timeStart);
+
+    // Printing out first 10 elements.
+    std::cout << "\nFirst 10 elements..." << std::endl;
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << i << ": " << workingArray[i] << std::endl;
+    }
+
+    // Printing out last 10 elements.
+    std::cout << "\nLast 10 elements..." << std::endl;
+    for (int i = (numElements - 10); i < numElements; i++)
+    {
+        std::cout << i << ": " << workingArray[i] << std::endl;  
+    }
+    std::cout << std::endl;
+
+    std::cout << numElements << " elements sorted in " << duration.count() << " nanoseconds." << std::endl;
+    std::cout << "Which is " << (duration.count() * .000000001) << " seconds." << std::endl;
     
     std::cout << "\nEnd of program." << std::endl;
+    delete[] workingArray;
     return 0;
 }
 
-void insertionSort(int array[], int length)
+void insertionSort(int array[], int length) // int array[] = int array*;
 {
     // Loop starts at 1 because the first element is already "sorted".
     for (int i = 1; i < length; i++)
