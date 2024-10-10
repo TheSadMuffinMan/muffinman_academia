@@ -1,8 +1,16 @@
 /*
+This algorithm is known as the "3-Way QuickSort Algorithm" and the "Dutch National Flag Algorithm".
+
 This sorting algorithm is a modified Quick Sort Algorithm that combats Quick Sort's biggest flaw:
     its lack of stability.
+    This algorithm will technically run slower than regular Quick Sort, but provides stability and
+        the capability to handle multiple copies of the same key.
     This algorithm allows for multiple copies of whatever data type you are using by grouping all
         ints that equal pivot together into the same region.
+
+    TIME COMPLEXITY:
+Average: O(2* n(ln(n)) ).
+Worst case: O(1/2 * n^2).
 */
 
 #include <iostream>
@@ -28,7 +36,7 @@ void partition(int passedArray[], int left, int right, int &i, int &j)
     {
         while (passedArray[++i] < v)
         {
-            ; // ***POTENTIAL BUG***
+            ; // Tbh idk what is going on in this loop.
         }
 
         // From the right, find the first element <= v.
