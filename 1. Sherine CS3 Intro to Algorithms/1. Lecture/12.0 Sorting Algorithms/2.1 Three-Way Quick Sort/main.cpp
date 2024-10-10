@@ -10,7 +10,7 @@ This sorting algorithm is a modified Quick Sort Algorithm that combats Quick Sor
         the capability to handle multiple copies of the same key.
     This algorithm allows for multiple copies of whatever data type you are using by grouping all
         elements that equal pivot together into the same region.
-    ***IMPORTANT***: This algorithm is technically not completely stable.
+    ***IMPORTANT***: This algorithm is not completely stable.
 
     TIME COMPLEXITY:
 Average: O(2* n(ln(n)) ).
