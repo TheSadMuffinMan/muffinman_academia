@@ -11,27 +11,26 @@ Merge sort is usually the best option for sorting algorithms because it is a STA
 
 typedef std::chrono::steady_clock Time;// Makes is to where we don't have to type entire library every time.
 
-
-// Merge two subarrays L and M into arr
-void merge(int arr[], int p, int q, int r)
+// Merge two subarrays firstArray and secondArray into passedArray.
+void merge(int passedArray[], int p, int q, int r)
 {
     // Create L ← A[p..q] and M ← A[q+1..r].
-    int n1 = q - p + 1;
-    int n2 = r - q;
+    const int n1 = (q - p + 1);
+    const int n2 = (r - q);
 
-    int L[n1], M[n2];
+    int firstArray[n1], secondArray[n2];
 
     for (int i = 0; i < n1; i++)
     {
-        L[i] = arr[p + i];
+        firstArray[i] = passedArray[p + i];
     }
 
     for (int j = 0; j < n2; j++)
     {
-        M[j] = arr[q + 1 + j];
+        secondArray[j] = passedArray[q + 1 + j];
     }
 
-    // Maintain current index of sub-arrays and main array.
+    // Maintain current index of sub-arrays and passed array.
     int i, j, k;
     i = 0;
     j = 0;
@@ -43,13 +42,13 @@ void merge(int arr[], int p, int q, int r)
     */
     while (i < n1 && j < n2)
     {
-        if (L[i] <= M[j])
+        if (firstArray[i] <= secondArray[j])
         {
-            arr[k] = L[i];
+            passedArray[k] = firstArray[i];
             i++;
         } else
         {
-            arr[k] = M[j];
+            passedArray[k] = secondArray[j];
             j++;
         }
 
@@ -59,32 +58,32 @@ void merge(int arr[], int p, int q, int r)
     // When we run out of elements in either L or M, pick up the remaining elements and put in A[p..r]
     while (i < n1)
     {
-        arr[k] = L[i];
+        passedArray[k] = firstArray[i];
         i++;
         k++;
     }
 
     while (j < n2)
     {
-        arr[k] = M[j];
+        passedArray[k] = secondArray[j];
         j++;
         k++;
     }
 }
 
 // Divide the array into two subarrays, sort them and merge them.
-void mergeSort(int arr[], int l, int r)
+void mergeSort(int workingArray[], int left, int right)
 {
-    if (l < r)
+    if (left < right)
     {
-    // m is the point where the array is divided into two subarrays
-    int middle = l + (r - l) / 2;
+    // middle is the point where the array is divided into two subarrays.
+    int middle = left + ((right - left) / 2);
 
-    mergeSort(arr, l, middle);
-    mergeSort(arr, middle + 1, r);
+    mergeSort(workingArray, left, middle);
+    mergeSort(workingArray, middle + 1, right);
 
-    // Merge the sorted subarrays
-    merge(arr, l, middle, r);
+    // Merge the sorted subarrays.
+    merge(workingArray, left, middle, right);
     }
 }
 
@@ -94,23 +93,46 @@ int main(int argc, char* argv[])
     std::cout << "\nProgram start." << std::endl;
 
     // Can be changed.
-    const int numElements = 1000;
+    const int numElements = 1000000;
 
     // Dyamically allocating memory to allow very large amounts of elements.
     int* workingArray = new int[numElements];
 
     for (int i = 0; i < numElements; i++)
     {
-        workingArray[i] = ((rand() % numElements) * 10);
+        workingArray[i] = (rand() % (numElements * 10)); // ((rand() % numElements) * 10)
     }
 
-    std::cout << "\nSorting..." << std::endl;
-    auto timeStart = Time::now();
+    int left, right;
+    left = 0;
+    right = (numElements - 1);
 
-    mergeSort(workingArray, workingArray[0], workingArray[999]);
+    std::cout << "\nSorting...";
+    auto timeStart = Time::now();
+    mergeSort(workingArray, left, right);
     auto timeStop = Time::now();
+
+    std::cout << " Complete!" << std::endl;
     auto duration = (timeStop - timeStart);
 
-    std::cout << numElements << " sorted in " << duration.count() << " nanoseconds." << std::endl;
-    std::cout << "Which is = " << (duration.count() * .000000001) << " seconds." << std::endl;
+    std::cout << numElements << " elements sorted in " << duration.count() << " nanoseconds." << std::endl;
+    std::cout << "Which is " << (duration.count() * .000000001) << " seconds." << std::endl;
+
+    // Printing out first 10 elements.
+    std::cout << "\nFirst 10 elements..." << std::endl;
+    for (int i = 0; i < 10; i++)
+    {
+        std::cout << i << ": " << workingArray[i] << std::endl;
+    }
+
+    // Printing out last 10 elements.
+    std::cout << "\nLast 10 elements..." << std::endl;
+    for (int i = (numElements - 10); i < numElements; i++)
+    {
+        std::cout << i << ": " << workingArray[i] << std::endl;  
+    }
+
+    delete[] workingArray;
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
 }
