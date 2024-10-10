@@ -31,8 +31,14 @@ void timeFunction()
 void printCurrentTime()
 {
     auto currentTime = std::chrono::system_clock::now();
-    auto currentTimeIntime_t = std::chrono::system_clock::to_time_t(currentTime);
+    std::time_t currentTimeIntime_t = std::chrono::system_clock::to_time_t(currentTime);
     std::cout << "\nCurrent UNIX Epoch: " << currentTimeIntime_t << std::endl;
+
+    std::time_t now;
+    struct tm ts;
+    char charArray[80];
+
+    // const std::chrono::time_point now{std::chrono::system_clock::now()};
 }
 
 int main(int argc, char *argv[])
