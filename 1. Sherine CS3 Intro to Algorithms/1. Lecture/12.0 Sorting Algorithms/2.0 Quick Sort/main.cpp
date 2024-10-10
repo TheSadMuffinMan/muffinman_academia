@@ -43,16 +43,14 @@ Scan i from left to right.
 One of Quick Sort's least advantageous properties is that it is NOT A STABLE SORT.
     The loop will terminate if pointers do not cross!
 If there are duplicate elements, we start to run into problems.
-    The solution is Dijkstra's 3-Way Partitioning.
-        Instead of selecting a single pivot point, we maintain a pivot "region" inside the
-            working array.
+    The solution is Dijkstra's 3-Way Partitioning, shown in "2.1 Three-Way Quick Sort".
 */
 
 #include <iostream>
 #include <random>
 #include <chrono>
 
-typedef std::chrono::steady_clock Time;// Makes is to where we don't have to type entire library every time.
+typedef std::chrono::steady_clock Time;
 
 int partition(int workingArray[], int low, int high)
 {

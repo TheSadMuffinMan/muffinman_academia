@@ -1,12 +1,15 @@
 /*
-This algorithm is known as the "3-Way QuickSort Algorithm" and the "Dutch National Flag Algorithm".
+This algorithm has many different names...
+    3-Way QuickSort Algorithm.
+    Dijkstra's 3-Way Partitioning Algorithm.
+    The Dutch National Flag Algorithm.
 
 This sorting algorithm is a modified Quick Sort Algorithm that combats Quick Sort's biggest flaw:
     its lack of stability.
     This algorithm will technically run slower than regular Quick Sort, but provides stability and
         the capability to handle multiple copies of the same key.
     This algorithm allows for multiple copies of whatever data type you are using by grouping all
-        ints that equal pivot together into the same region.
+        elements that equal pivot together into the same region.
 
     TIME COMPLEXITY:
 Average: O(2* n(ln(n)) ).

@@ -1,15 +1,20 @@
 /*
-MERGE SORT is almost always one's best bet when selecting a sorting algorithm.
-    This is due to Merge Sort's STABILITY and relative speed.
+Tbh MERGE SORT ("Divide and Conquer Sort") is the best sort:
+    This is due to Merge Sort's stability and relative speed.
     The main disadvantage of Merge Sort is that it requires (relatively) more memory and it is
         NOT an in-place sort.
+
+GENERALLY SPEAKING, you should use Merge Sort when you need a sorting algorithm.
+
+    TIME COMPLEXITY:
+Average & Worst: O( n(log(n)) ).
 */
 
 #include <iostream>
 #include <random>
 #include <chrono>
 
-typedef std::chrono::steady_clock Time;// Makes is to where we don't have to type entire library every time.
+typedef std::chrono::steady_clock Time; // Makes is to where we don't have to type entire library every time.
 
 // Merge two subarrays firstArray and secondArray into passedArray.
 void merge(int passedArray[], int p, int q, int r)
@@ -18,7 +23,7 @@ void merge(int passedArray[], int p, int q, int r)
     const int n1 = (q - p + 1);
     const int n2 = (r - q);
 
-    int firstArray[n1], secondArray[n2];
+    int firstArray[n1], secondArray[n2]; // This line is why Merge Sort is NOT an in-place sort.
 
     for (int i = 0; i < n1; i++)
     {
@@ -40,7 +45,7 @@ void merge(int passedArray[], int p, int q, int r)
     Until we reach either end of either L or M, pick larger among elements L and M and place them in the
         correct position at A[p..r]
     */
-    while (i < n1 && j < n2)
+    while ((i < n1) && (j < n2))
     {
         if (firstArray[i] <= secondArray[j])
         {
