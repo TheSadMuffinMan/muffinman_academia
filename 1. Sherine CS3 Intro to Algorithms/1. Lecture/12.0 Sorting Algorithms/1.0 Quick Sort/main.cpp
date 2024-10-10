@@ -10,7 +10,13 @@ Quick sort is a recursive sorting algorithm.
 Quick sort partitions in place by creating multiple different subarrays.
     Although Quick Sort is very time efficient, it is NOT space efficient.
     This is because Quick Sort is an in-place sorting algorithm.
-Quick sort runs with an average time complexity of (n log n) (with n being size of array). 
+
+    TIME COMPLEXITY:
+Average: O(nlog(n)) (with n being size of array).
+
+    SPACE COMPLEXITY:
+Average: O(log(n)).
+Worst case: O(n) (could have deep recusive stack).
 */
 
 /* QUICK SORT PROCESS:
@@ -34,7 +40,7 @@ Scan i from left to right.
 */
 
 /* PROBLEMS WITH QUICK SORT:
-One of Quick Sort's least advantageous properties is that IT IS NOT A STABLE SORT.
+One of Quick Sort's least advantageous properties is that it is NOT A STABLE SORT.
     The loop will terminate if pointers do not cross!
 If there are duplicate elements, we start to run into problems.
     The solution is Dijkstra's 3-Way Partitioning.
