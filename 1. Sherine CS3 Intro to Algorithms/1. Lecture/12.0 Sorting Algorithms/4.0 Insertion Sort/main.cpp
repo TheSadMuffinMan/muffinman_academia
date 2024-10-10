@@ -7,12 +7,13 @@ Insertion Sort is best when...
     Data is mostly sorted.
     Small n values.
 
-TIME COMPLEXITY:
-    O(n^2) due to nested for loop.
-SPACE COMPLEXITY:
-    O(1), IS STABLE.
+    TIME COMPLEXITY:
+O(n^2) due to nested for loop.
 
-VISUALIZATION:
+    SPACE COMPLEXITY:
+O(1), IS STABLE.
+
+    VISUALIZATION:
 sorted -----    i --> key = 5
        |     \  |
 array: 2 4 7 8  5 1 9 3
