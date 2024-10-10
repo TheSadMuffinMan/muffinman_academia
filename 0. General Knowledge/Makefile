@@ -10,7 +10,7 @@ CXX = clang++
 CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
-PROGRAM = playg	round.exe
+PROGRAM = playground.exe
 
 # list all .cpp files separated by space
 CPPFILES = playground.cpp

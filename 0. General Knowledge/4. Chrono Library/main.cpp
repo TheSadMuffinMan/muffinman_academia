@@ -13,12 +13,10 @@ One millisecond == 0.001 (one-thousandth of a second) AKA ping.
 #include <iostream>
 #include <chrono>
 
-typedef std::chrono::steady_clock Time;// Makes is to where we don't have to type entire library every time.
+typedef std::chrono::steady_clock Time; // Makes is to where we don't have to type entire library every time.
 
-int main(int argc, char *argv[])
+void timeFunction()
 {
-    std::cout << "\nProgram start." << std::endl;
-
     auto timeStart = Time::now(); // Is the same as: auto timeStart = std::chrono::high_resolution_clock::now();
 
     /*
@@ -27,8 +25,21 @@ int main(int argc, char *argv[])
    
     auto timeStop = Time::now();
     auto duration = Time::duration(timeStop - timeStart);
-
     std::cout << "\nRun Time: " << duration.count() << " nanoseconds." << std::endl;
+}
+
+void printCurrentTime()
+{
+    auto currentTime = std::chrono::system_clock::now();
+    auto currentTimeIntime_t = std::chrono::system_clock::to_time_t(currentTime);
+    std::cout << "\nCurrent UNIX Epoch: " << currentTimeIntime_t << std::endl;
+}
+
+int main(int argc, char *argv[])
+{
+    std::cout << "\nProgram start." << std::endl;
+
+    printCurrentTime();
 
     std::cout << "End of program." << std::endl;
     return 0;
