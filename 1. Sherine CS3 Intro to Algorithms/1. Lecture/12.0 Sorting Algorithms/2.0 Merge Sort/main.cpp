@@ -1,10 +1,10 @@
-/* MERGE SORT GENERAL NOTES:
-Merge sort is usually the best option for sorting algorithms because it is a STABLE sort.
-    The main downside of Merge Sort is that it is NOT an in-place sort, meaning that it requires additional
-        memory to perform the sort operation.
+/*
+MERGE SORT is almost always one's best bet when selecting a sorting algorithm.
+    This is due to Merge Sort's STABILITY and relative speed.
+    The main disadvantage of Merge Sort is that it requires (relatively) more memory and it is
+        NOT an in-place sort.
 */
 
-#include <stdio.h>
 #include <iostream>
 #include <random>
 #include <chrono>
@@ -80,7 +80,7 @@ void mergeSort(int workingArray[], int left, int right)
     int middle = left + ((right - left) / 2);
 
     mergeSort(workingArray, left, middle);
-    mergeSort(workingArray, middle + 1, right);
+    mergeSort(workingArray, (middle + 1), right);
 
     // Merge the sorted subarrays.
     merge(workingArray, left, middle, right);
@@ -100,7 +100,7 @@ int main(int argc, char* argv[])
 
     for (int i = 0; i < numElements; i++)
     {
-        workingArray[i] = (rand() % (numElements * 10)); // ((rand() % numElements) * 10)
+        workingArray[i] = (rand() % (numElements * 10));
     }
 
     int left, right;
