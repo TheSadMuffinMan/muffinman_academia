@@ -22,6 +22,7 @@ terminal@user: ../../$ Shortest Path 1 from vertex 7: *result*
 terminal@user: ../../$ Shortest Path 2 from vertex 19: *result*
 terminal@user: ../../$ Shortest Path 3 from vertex 26: *result*
 
+
 */
 
 #include "diGraph.h"
@@ -35,6 +36,8 @@ int main(int argc, char *argv[])
     std::cout << "\nProgram start." << std::endl;
 
     DiGraph<int> workingGraph;
+    
+    std::cout << workingGraph.getIndivNode(0);
     
     std::cout << "\nEnd of program." << std::endl;
     return 0;

@@ -36,6 +36,16 @@ class Node
         void setVertex(int passedVertex) {_vertex = passedVertex;}
         void setEdge(int passedEdge) {_edge = passedEdge;}
         void setAdjacent(int** passedAdjacent) {_adjacent = passedAdjacent;}
+
+        // Operator overloading for ease of class use.
+        std::ostream& operator<<(std::ostream& outputStream, const T& node)
+        {
+            int vertex = node.getVertex();
+            outputStream << "(x,y): (" << vertex[0] << "," << vertex[1] << ")" << std::endl;
+            return outputStream;
+
+            // ADD MORE LATER ONCE NEEDED.
+        }
     
     private:
         int _vertex, _edge; // ***_edge[x,y] = _edge[Directed, Weight]***;

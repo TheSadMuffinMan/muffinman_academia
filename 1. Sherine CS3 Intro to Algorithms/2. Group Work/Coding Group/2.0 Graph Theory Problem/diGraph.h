@@ -18,36 +18,38 @@ class DiGraph
             std::cin >> userNumNodes;
 
             setNumNodes(userNumNodes);
+            _nodeArray = Node<T>[getNumNodes()];
 
-            Node<T>* tempNodeArray[getNumNodes()];
             for (int i = 0; i < getNumNodes(); i++)
             {
-                tempNodeArray[i] = new Node<T>;
-
+                _nodeArray[i] = new Node<T>;
                 int userVertex[1];
+
                 std::cout << "\nVertex x: ";
                 std::cin >> userVertex[0];
 
                 std::cout << "\nVertex y: ";
                 std::cin >> userVertex[1];
 
-                tempNodeArray[i]->setVertex(userVertex);
+                _nodeArray[i]->setVertex(userVertex);
             }
 
-            setNodeArray(tempNodeArray);
-            int printNum = getNodeArray().0->getVertex();
+            Node<T> displayNode = getIndivNode(0);
 
             std::cout << "\n\nNumber of Nodes: " << getNumNodes() << std::endl;
-            std::cout << "Node 0 vertex: (" << printNum[0] << "," << printNum[1] << ")" << std::endl;
-
+            std::cout << "Node 0: (";
         }
 
-        ~DiGraph() {delete[] _nodeArray;}
+        ~DiGraph()
+        {
+            delete[] _nodeArray;
+            std::cout << "Memory cleaned up!" << std::endl;
+        }
 
         // Getters
         int getNumNodes() {return _numNodes;}
         Node<T>* getNodeArray() {return _nodeArray;}
-        Node<T> returnIndivNode(int requestedNode) {return _nodeArray[requestedNode];}
+        Node<T> getIndivNode(int requestedNode) {return _nodeArray[requestedNode];}
 
         // Setters
         void setNumNodes(int passedNumNodes) {_numNodes = passedNumNodes;}
