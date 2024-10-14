@@ -28,7 +28,7 @@ class Node
         }
 
         // Getters
-        int getVertex() {return _vertex;}
+        int* getVertex() {return _vertex;}
         int getEdge() {return _edge;}
         int** getAdjacent() {return _adjacent;}
 
@@ -38,16 +38,16 @@ class Node
         void setAdjacent(int** passedAdjacent) {_adjacent = passedAdjacent;}
 
         // Operator overloading for ease of class use.
-        std::ostream& operator<<(std::ostream& outputStream, const T& node)
+        std::ostream& operator<<(std::ostream& outputStream, const T& passedNode)
         {
-            int vertex = node.getVertex();
-            outputStream << "(x,y): (" << vertex[0] << "," << vertex[1] << ")" << std::endl;
+            outputStream << "(x,y): (" << _vertex[0] << "," << _vertex[1] << ")" << std::endl;
             return outputStream;
 
             // ADD MORE LATER ONCE NEEDED.
         }
     
     private:
-        int _vertex, _edge; // ***_edge[x,y] = _edge[Directed, Weight]***;
+        int _vertex[1];
+        int _edge; // ***_edge[x,y] = _edge[Directed, Weight]***;
         int** _adjacent;
 };

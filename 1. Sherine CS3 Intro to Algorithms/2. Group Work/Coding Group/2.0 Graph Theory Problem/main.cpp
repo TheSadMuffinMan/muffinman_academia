@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     std::cout << "\nProgram start." << std::endl;
 
     DiGraph<int> workingGraph;
-    
+
     std::cout << workingGraph.getIndivNode(0);
     
     std::cout << "\nEnd of program." << std::endl;
