@@ -22,6 +22,9 @@ class Node
             {
                 tempEdge[i] = 0;
             }
+            setEdge(tempEdge);
+
+            // Initialize _adjacent.
         }
 
         // Getters
