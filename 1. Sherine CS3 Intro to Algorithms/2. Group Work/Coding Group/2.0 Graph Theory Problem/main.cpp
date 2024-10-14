@@ -33,6 +33,8 @@ terminal@user: ../../$ Shortest Path 3 from vertex 26: *result*
 int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
+
+    DiGraph<int> workingGraph;
     
     std::cout << "\nEnd of program." << std::endl;
     return 0;
