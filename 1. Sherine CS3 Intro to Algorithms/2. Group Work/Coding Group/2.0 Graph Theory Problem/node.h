@@ -49,7 +49,7 @@ class Node
         }
     
     private:
-        int _vertex[1];
+        int _vertex;
         int _edge[1]; // ***_edge[x,y] = _edge[Directed, Weight]***;
-        int** _adjacent;
+        Node<T>* _adjacent; // What other nodes are attached to node.
 };
