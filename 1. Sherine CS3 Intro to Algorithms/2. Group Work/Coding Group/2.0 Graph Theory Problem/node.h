@@ -2,6 +2,7 @@
 Unfortunately because this class is templated, we must include all implementation inside of the class itself.
 */
 #pragma once
+#include <iostream>
 
 // ***ADJACENT NOT COMPLETE*** (unsure of what it needs to do).
 template <class T>
@@ -38,10 +39,10 @@ class Node
         void setAdjacent(int** passedAdjacent) {_adjacent = passedAdjacent;}
 
         // Operator overloading for ease of class use.
-        std::ostream& operator<<(std::ostream& outputStream, const T& passedNode)
+        friend std::ostream& operator<<(std::ostream& outputStream, const T& passedNode)
         {
-            printf("(x,y): (%d,%d)", _vertex[0], _vertex[1]);
-            // outputStream << "(x,y): (" << _vertex[0] << "," << _vertex[1] << ")" << std::endl;
+            // printf("(x,y): (%d,%d)", _vertex[0], _vertex[1]);
+            outputStream << "(x,y): (" << _vertex[0] << "," << _vertex[1] << ")" << std::endl;
             return outputStream;
 
             // ADD MORE LATER ONCE NEEDED.
@@ -49,6 +50,6 @@ class Node
     
     private:
         int _vertex[1];
-        int _edge; // ***_edge[x,y] = _edge[Directed, Weight]***;
+        int _edge[1]; // ***_edge[x,y] = _edge[Directed, Weight]***;
         int** _adjacent;
 };
