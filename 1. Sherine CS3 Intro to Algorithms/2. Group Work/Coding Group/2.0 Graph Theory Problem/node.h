@@ -40,7 +40,8 @@ class Node
         // Operator overloading for ease of class use.
         std::ostream& operator<<(std::ostream& outputStream, const T& passedNode)
         {
-            outputStream << "(x,y): (" << _vertex[0] << "," << _vertex[1] << ")" << std::endl;
+            printf("(x,y): (%d,%d)", _vertex[0], _vertex[1]);
+            // outputStream << "(x,y): (" << _vertex[0] << "," << _vertex[1] << ")" << std::endl;
             return outputStream;
 
             // ADD MORE LATER ONCE NEEDED.
