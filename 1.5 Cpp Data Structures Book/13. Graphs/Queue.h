@@ -3,7 +3,7 @@
 #include "queueNode.h"
 
 /*
-Class is a dynamically allocated non-circular doubly-linked list.
+Class is a dynamically allocated doubly-linked list.
 */
 template <class ItemType>
 class Queue
@@ -16,7 +16,7 @@ class Queue
         bool isEmpty();
         void enqueue(ItemType);
         ItemType dequeue();
-        int getSize();
+        int getNumItems();
     
     private:
         int _numItems;
@@ -38,7 +38,7 @@ Queue<ItemType>::~Queue() {makeEmpty();}
 
 // Function returns the number of elements inside of queue.
 template <class ItemType>
-int Queue<ItemType>::getSize() {return _numItems;}
+int Queue<ItemType>::getNumItems() {return _numItems;}
 
 // Function is essentially a Deconstructor.
 template <class ItemType>

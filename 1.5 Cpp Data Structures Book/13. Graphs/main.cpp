@@ -19,10 +19,10 @@ int main(int argc, char *argv[])
     intGraph.addEdge(20, 9, 3);
     std::cout << "Weight between 20 & 9: " << intGraph.getWeight(20, 9) << std::endl;
 
-    std::cout << "Vertex 20 has been visited: " << std::boolalpha <<intGraph.isMarked(20);
+    std::cout << "Vertex 20 has been visited: " << std::boolalpha << intGraph.isMarked(20) << std::endl;
     std::cout << "\nVisiting Vertex 20..." << std::endl;
     intGraph.markVertex(20);
-    std::cout << "Vertex 20 has been visited: " << std::boolalpha << intGraph.isMarked(20);
+    std::cout << "Vertex 20 has been visited: " << std::boolalpha << intGraph.isMarked(20) << std::endl;
 
 
     std::cout << "\nEnd of program." << std::endl;
