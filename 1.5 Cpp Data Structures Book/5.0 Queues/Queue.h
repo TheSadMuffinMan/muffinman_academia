@@ -2,11 +2,8 @@
 #include <iostream>
 #include "queueNode.h"
 
-static const int MAX_SIZE = 1000;
-
 /*
-Class is a non-circular doubly-linked list.
-Queue has a MAX_SIZE of 1000 elements.
+Class is a dynamically allocated non-circular doubly-linked list.
 */
 template <class ItemType>
 class Queue
@@ -34,15 +31,10 @@ Queue<ItemType>::Queue()
     _numItems = 0;
     _front = nullptr;
     _rear = nullptr;
-    // _items = new QueueNode<ItemType>[MAX_SIZE];
 }
 
 template <class ItemType>
-Queue<ItemType>::~Queue()
-{
-    // delete _items;
-    makeEmpty();
-}
+Queue<ItemType>::~Queue() {makeEmpty();}
 
 // Function returns the number of elements inside of queue.
 template <class ItemType>
@@ -130,36 +122,3 @@ ItemType Queue<ItemType>::dequeue()
     delete tempNode;
     return returnData;
 }
-
-
-
-/* OLD CODE, not sure if needed.
-
-// Function removes passedNodeReference from _items and updates all other private data members.
-template <class ItemType>
-void Queue<ItemType>::dequeue(QueueNode<ItemType>& passedNodeReference)
-{
-    if (isEmpty() == true)
-    {
-        std::cerr << "\nQueue is empty, nerd.";
-        return;
-    }
-
-    int nodeIndex = -1;
-    // Searching for passedNodeReference...
-    for (int i = 0; i < MAX_SIZE; i++)
-    {
-        if (_items[i] == passedNodeReference)
-        {
-            nodeIndex = i;
-            break;
-        }
-
-        if (i >= MAX_SIZE)
-        {
-            std::cerr << "\nNode not found, aborting.";
-            return;
-        }
-    }
-}
-*/
