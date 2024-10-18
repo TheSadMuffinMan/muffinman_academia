@@ -26,43 +26,34 @@ class QueueNode
 template <class ItemType>
 QueueNode<ItemType>::QueueNode()
 {
-    // _data = NULL; // Could potentially cause issues in the future??
+    _data = new ItemType;
     _previous = nullptr;
     _next = nullptr;
 }
 
 template <class ItemType>
-ItemType QueueNode<ItemType>::getData()
+QueueNode<ItemType>::~QueueNode()
 {
-    return _data;
+    delete _data;
+    // delete _previous;
+    // delete _next;
 }
 
-template <class ItemType>
-QueueNode<ItemType>* QueueNode<ItemType>::getNext()
-{
-    return _next;
-}
 
 template <class ItemType>
-QueueNode<ItemType>* QueueNode<ItemType>::getPrevious()
-{
-    return _previous;
-}
+ItemType QueueNode<ItemType>::getData() {return _data;}
 
 template <class ItemType>
-void QueueNode<ItemType>::setData(ItemType passedData)
-{
-    _data = passedData;
-}
+QueueNode<ItemType>* QueueNode<ItemType>::getNext() {return _next;}
 
 template <class ItemType>
-void QueueNode<ItemType>::setNext(QueueNode* passedNode)
-{
-    _next = passedNode;
-}
+QueueNode<ItemType>* QueueNode<ItemType>::getPrevious() {return _previous;}
 
 template <class ItemType>
-void QueueNode<ItemType>::setPrevious(QueueNode* passedNode)
-{
-    _previous = passedNode;
-}
+void QueueNode<ItemType>::setData(ItemType passedData) {_data = passedData;}
+
+template <class ItemType>
+void QueueNode<ItemType>::setNext(QueueNode* passedNode) {_next = passedNode;}
+
+template <class ItemType>
+void QueueNode<ItemType>::setPrevious(QueueNode* passedNode) {_previous = passedNode;}

@@ -12,22 +12,22 @@ template <class ItemType>
 class Queue
 {
     public:
-        Queue();
+        Queue(); // Default size of 500.
         ~Queue();
         Queue(int);
 
-        int getSize();
         void makeEmpty();
-        void enqueue(QueueNode<ItemType>*);
+        bool isEmpty();
+        void enqueue(ItemType);
         // void dequeue(QueueNode<ItemType>&);
         QueueNode<ItemType>* dequeue();
-        bool isEmpty();
+        int getSize();
     
     private:
         int _numItems;
         QueueNode<ItemType>* _front;
         QueueNode<ItemType>* _rear;
-        // QueueNode<ItemType>* _items;
+        // QueueNode<ItemType>* _items[MAX_SIZE];
 };
 
 // Default constructor that initilizes _items to MAX_SIZE capacity.
@@ -52,18 +52,17 @@ template <class ItemType>
 Queue<ItemType>::Queue(int numItems)
 {
     _numItems = numItems;
-    // _items = new QueueNode<ItemType>[_numItems];
     _front = &_items[0]; // _front is equal to the address of the first element.
     _rear = &_items[numItems]; // _rear is equal to the address of the last element.
 
     for (int i = 0; i < (numItems - 1); i++)
     {
-        _items[i].setNext(&_items[i + 1]);
+        _items[i]->setNext(&_items[i + 1]);
     }
 
     for (int i = numItems; i > 0; i--)
     {
-        _items[i].setPrevious(&_items[i - 1]);
+        _items[i]->setPrevious(&_items[i - 1]);
     }
 }
 
@@ -75,37 +74,47 @@ int Queue<ItemType>::getSize() {return _numItems;}
 template <class ItemType>
 void Queue<ItemType>::makeEmpty()
 {
-    delete[] _items; _items = nullptr;
-    _numItems = 0;
-    _front = nullptr;
+    QueueNode<ItemType>* tempNode;
+
+    while (_front != nullptr)
+    {
+        tempNode = _front;
+        _front = _front->getNext();
+        delete tempNode;
+    }
+
     _rear = nullptr;
+    _numItems = 0;
 }
 
 // Function places an ItemType queueNode at the end of the Queue.
 // Function Parameter (*passedNode) should have (_previous && _next) = nullptr.
 template <class ItemType>
-void Queue<ItemType>::enqueue(QueueNode<ItemType>* passedNode)
+void Queue<ItemType>::enqueue(ItemType newItem)
 {
+    QueueNode* tempNode = new QueueNode;
+    tempNode->setData(newItem);
+
     if (isEmpty() == true) // If the Queue is empty...
     {
-        _front = passedNode;
-        _rear = passedNode;
+        _front = tempNode;
+        _rear = tempNode;
         _numItems++;
         return;
     }
-    else if ((_front == _rear) && (_numItems == 1)) // If there is only one QueueNode in _items...
+    else if ((_front == _rear) && (_numItems == 1)) // If there is only one QueueNode in Queue...
     {
-        passedNode->setPrevious(_front);
-        _front->setNext(passedNode);
-        _rear = passedNode;
+        newNode->setPrevious(_front);
+        _front->setNext(tempNode);
+        _rear = tempNode;
         _numItems++;
         return;
     }
     else
     {
-        passedNode->setPrevious(_rear);
-        _rear->setNext(passedNode);
-        _rear = passedNode;
+        tempNode->setPrevious(_rear);
+        _rear->setNext(tempNode);
+        _rear = tempNode;
         _numItems++;
     }
 }
