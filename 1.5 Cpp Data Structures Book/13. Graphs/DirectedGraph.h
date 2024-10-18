@@ -155,7 +155,7 @@ void DirectedGraph<VertexType>::getToVertices(VertexType vertex, Queue<VertexTyp
     }
 }
 
-// Function returns whether or not "vertex" has been marked.
+// Function returns whether or not function parameter "vertex" has been marked.
 template <class VertexType>
 bool DirectedGraph<VertexType>::isMarked(VertexType vertex)
 {
