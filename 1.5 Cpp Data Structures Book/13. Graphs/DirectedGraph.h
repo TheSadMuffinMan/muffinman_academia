@@ -8,6 +8,7 @@ const int NULL_EDGE = 0;
 /*
 This class assumes that the VertexType Class is a type for which the "=", "==", and "<<" operators
 are defined.
+Class utilizes an Adjacency Matrix (_edges).
 */
 template <class VertexType>
 class DirectedGraph
@@ -27,7 +28,7 @@ class DirectedGraph
         int getWeight(VertexType, VertexType);
         void getToVertices(VertexType, Queue<VertexType>&);
         bool isMarked(VertexType);
-        int indexIs(VertexType); // Working on.
+        int indexIs(VertexType); // Careful with spelling on this function LMAO.
     
     private:
         int _numVertices;
