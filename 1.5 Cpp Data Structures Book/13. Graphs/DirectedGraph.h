@@ -24,7 +24,7 @@ class DirectedGraph
 
         void addVertex(VertexType);
         void markVertex(VertexType);
-        void addEdge(VertexType, VertexType, int);
+        void addEdge(VertexType, VertexType, int); // NEED TO CHECK IF WEIGHT ALREADY EXISTS.
         int getWeight(VertexType, VertexType);
         void getToVertices(VertexType, Queue<VertexType>&);
         bool isMarked(VertexType);
