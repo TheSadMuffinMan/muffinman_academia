@@ -2,6 +2,7 @@
 #include <iostream>
 #include "StackNode.h"
 
+// Class utilizes a linked-list style Node data structure.
 template <class ItemType>
 class MuffinStack
 {

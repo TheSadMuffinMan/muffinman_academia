@@ -1,3 +1,5 @@
+// Program is the driver client for the MuffinStack header file.
+
 #include <iostream>
 #include "MuffinStack.h"
 
