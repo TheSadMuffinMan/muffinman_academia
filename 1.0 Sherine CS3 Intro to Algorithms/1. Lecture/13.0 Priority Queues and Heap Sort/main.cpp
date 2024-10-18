@@ -47,7 +47,9 @@ BINARY HEAP:
 Heap Sort uses a bottom up sorting method.
 Is VERY space-efficient: is an in-place, unstable, sorting algorithm.
 
-SHERINE LECTURE CODE (Java?)
+Has a GUARANTEED O(n*log(n)) run time efficiency.
+
+    SHERINE LECTURE CODE (Java implementation)
 public void sort(String[] a)
 {
     int n = a.length;
@@ -57,6 +59,31 @@ public void sort(String[] a)
         pq.insert(a[i]);
     for (int i = n-1; i >= 0; i--)
         a[i] = pq.delMax();
+}
+
+    Class Java Implementation
+public class Heap
+{
+    public static void sort(Comparable[] a)
+    {
+    int n = a.length;
+    for (int k = n/2; k >= 1; k--)
+    {
+        sink(a, k, n);
+
+        while (n > 1)
+        {
+            exch(a, 1, n);
+            sink(a, 1, --n);
+        }
+    }
+    
+    private static void sink(Comparable[] a, int k, int n)
+    { //as before }
+    private static boolean less(Comparable[] a, int i, int j)
+    { //as before }
+    private static void exch(Object[] a, int i, int j)
+    { //as before }
 }
 */
 
