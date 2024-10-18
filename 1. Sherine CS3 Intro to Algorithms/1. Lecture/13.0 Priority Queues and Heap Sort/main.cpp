@@ -43,6 +43,23 @@ BINARY HEAP:
 
 */
 
+/* HEAP SORT
+Heap Sort uses a bottom up sorting method.
+Is VERY space-efficient: is an in-place sorting algorithm.
+
+SHERINE LECTURE CODE (Java?)
+public void sort(String[] a)
+{
+    int n = a.length;
+    MaxPQ<String> pq = new MaxPQ<String>();
+    
+    for (int i = 0; i < n; i++)
+        pq.insert(a[i]);
+    for (int i = n-1; i >= 0; i--)
+        a[i] = pq.delMax();
+}
+*/
+
 template <class T>
 class PriorityQueue
 {
