@@ -17,7 +17,6 @@ class DirectedGraph
         DirectedGraph(int);
         ~DirectedGraph();
 
-        // void makeEmpty();
         void clearMarks();
         bool isEmpty();
         int getNumVertices();
@@ -46,6 +45,7 @@ DirectedGraph<VertexType>::DirectedGraph()
     _maxVertices = 50;
     _vertices = new VertexType[_maxVertices];
     _marks = new bool[_maxVertices];
+    for (int i = 0; i < _maxVertices; i++) {_marks[i] = false;}
 }
 
 // Non-Default constructor that initializes _maxVertices to userMaxVertices.
@@ -75,7 +75,7 @@ void DirectedGraph<VertexType>::clearMarks()
     }
 }
 
-// Function checks whether DiGraph is empty or not.
+// Function checks whether DirectedGraph is empty or not.
 template <class VertexType>
 bool DirectedGraph<VertexType>::isEmpty()
 {
@@ -83,9 +83,11 @@ bool DirectedGraph<VertexType>::isEmpty()
     else {return false;}
 }
 
+// Function returns number of vertices inside DirectedGraph.
 template <class VertexType>
 int DirectedGraph<VertexType>::getNumVertices() {return _numVertices;}
 
+// Function adds a vertex.
 template <class VertexType>
 void DirectedGraph<VertexType>::addVertex(VertexType passedVertex)
 {
@@ -100,6 +102,10 @@ void DirectedGraph<VertexType>::addVertex(VertexType passedVertex)
     _numVertices++;
 }
 
+// Function marks passed vertex.
+template <class VertexType>
+void DirectedGraph<VertexType>::markVertex(VertexType vertex) {_marked[vertex] = true;}
+
 // Function returns the index of the passed vertex.
 template <class VertexType>
 int DirectedGraph<VertexType>::indexIs(VertexType* vertices, VertexType vertex)
@@ -109,6 +115,7 @@ int DirectedGraph<VertexType>::indexIs(VertexType* vertices, VertexType vertex)
     return index;
 }
 
+// Function Parameters: VertexType sourceVertex, VertexType destinationVertex, int weight.
 template <class VertexType>
 void DirectedGraph<VertexType>::addEdge(VertexType sourceVertex, VertexType destinationVertex, int weight)
 {
@@ -118,6 +125,7 @@ void DirectedGraph<VertexType>::addEdge(VertexType sourceVertex, VertexType dest
     _edges[row][column] = weight; 
 }
 
+// Function Parameters: VertexType sourceVertex, VertexType destinationVertex.
 template <class VertexType>
 int DirectedGraph<VertexType>::getWeight(VertexType sourceVertex, VertexType destinationVertex)
 {
@@ -125,9 +133,9 @@ int DirectedGraph<VertexType>::getWeight(VertexType sourceVertex, VertexType des
     row = indexIs(_vertices, sourceVertex);
     column = idexIs(_vertices, destinationVertex);
     return _edges[row][column]; 
-
 }
 
+// Function Parameters: VertexType vertex, Queue<VertexType>& adjVertices.
 template <class VertexType>
 void DirectedGraph<VertexType>::getToVertices(VertexType vertex, Queue<VertexType>& adjVertices)
 {
@@ -143,3 +151,13 @@ void DirectedGraph<VertexType>::getToVertices(VertexType vertex, Queue<VertexTyp
     }
 }
 
+// Function returns whether or not "vertex" has been marked.
+template <class VertexType>
+bool DirectedGraph<VertexType>::isMarked(VertexType vertex)
+{
+    if (_marks[vertex] == true)
+    {
+        return true;
+    }
+    else {return false;}
+}
