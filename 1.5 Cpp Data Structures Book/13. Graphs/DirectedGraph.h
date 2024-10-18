@@ -27,7 +27,7 @@ class DirectedGraph
         int getWeight(VertexType, VertexType);
         void getToVertices(VertexType, Queue<VertexType>&);
         bool isMarked(VertexType);
-        int indexIs(VertexType*, VertexType)
+        int indexIs(VertexType); // Working on.
     
     private:
         int _numVertices;
@@ -79,7 +79,7 @@ void DirectedGraph<VertexType>::clearMarks()
 template <class VertexType>
 bool DirectedGraph<VertexType>::isEmpty()
 {
-    if (getNumVertices() == 0) {return true}
+    if (getNumVertices() == 0) {return true;}
     else {return false;}
 }
 
@@ -104,14 +104,14 @@ void DirectedGraph<VertexType>::addVertex(VertexType passedVertex)
 
 // Function marks passed vertex.
 template <class VertexType>
-void DirectedGraph<VertexType>::markVertex(VertexType vertex) {_marked[vertex] = true;}
+void DirectedGraph<VertexType>::markVertex(VertexType vertex) {_marks[vertex] = true;}
 
 // Function returns the index of the passed vertex.
 template <class VertexType>
-int DirectedGraph<VertexType>::indexIs(VertexType* vertices, VertexType vertex)
+int DirectedGraph<VertexType>::indexIs(VertexType vertex)
 {
     int index = 0;
-    while (!(vertex == vertices[index])) {index++;}
+    while (!(vertex == _vertices[index])) {index++;}
     return index;
 }
 
@@ -120,8 +120,8 @@ template <class VertexType>
 void DirectedGraph<VertexType>::addEdge(VertexType sourceVertex, VertexType destinationVertex, int weight)
 {
     int row, column;
-    row = indexIs(_vertices, sourceVertex);
-    column = idexIs(_vertices, destinationVertex);
+    row = indexIs(sourceVertex);
+    column = indexIs(destinationVertex);
     _edges[row][column] = weight; 
 }
 
@@ -130,8 +130,8 @@ template <class VertexType>
 int DirectedGraph<VertexType>::getWeight(VertexType sourceVertex, VertexType destinationVertex)
 {
     int row, column;
-    row = indexIs(_vertices, sourceVertex);
-    column = idexIs(_vertices, destinationVertex);
+    row = indexIs(sourceVertex);
+    column = indexIs(destinationVertex);
     return _edges[row][column]; 
 }
 
