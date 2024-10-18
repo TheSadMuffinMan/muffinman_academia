@@ -6,8 +6,7 @@
 const int NULL_EDGE = 0;
 
 /*
-This class assumes that the VertexType Class is a type for which the "=", "==", and "<<" operators
-are defined.
+Class assumes that the VertexType Class is a type for which the "=", "==", and "<<" operators are defined.
 Class utilizes an Adjacency Matrix (_edges).
 */
 template <class VertexType>
@@ -20,7 +19,6 @@ class DirectedGraph
 
         void clearMarks();
         bool isEmpty();
-        int getNumVertices();
 
         void addVertex(VertexType);
         void markVertex(VertexType);
@@ -28,28 +26,34 @@ class DirectedGraph
         int getWeight(VertexType, VertexType);
         void getToVertices(VertexType, Queue<VertexType>&);
         bool isMarked(VertexType);
-        int indexIs(VertexType); // Careful with spelling on this function LMAO.
+        int indexIs(VertexType);
     
     private:
         int _numVertices;
-        int _maxVertices; // Is initialized to 50 in default constructor.
+        int _maxVertices; // Is initialized to 500 in default constructor.
         VertexType* _vertices;
-        int _edges[50][50];
+        int _edges[500][500];
         bool* _marks;
 };
 
-// Default constructor that sets _maxVertices = 50.
+/*
+***Overloaded Constructor saves memory***
+Default constructor that sets _maxVertices = 500.
+*/
 template <class VertexType>
 DirectedGraph<VertexType>::DirectedGraph()
 {
     _numVertices = 0;
-    _maxVertices = 50;
+    _maxVertices = 500;
     _vertices = new VertexType[_maxVertices];
     _marks = new bool[_maxVertices];
     for (int i = 0; i < _maxVertices; i++) {_marks[i] = false;}
 }
 
-// Non-Default constructor that initializes _maxVertices to userMaxVertices.
+/*
+***PREFERRED CONSTRUCTOR*** - Saves memory.
+Overloaded constructor that initializes _maxVertices to userMaxVertices.
+*/
 template <class VertexType>
 DirectedGraph<VertexType>::DirectedGraph(int userMaxVertices)
 {
@@ -80,21 +84,17 @@ void DirectedGraph<VertexType>::clearMarks()
 template <class VertexType>
 bool DirectedGraph<VertexType>::isEmpty()
 {
-    if (getNumVertices() == 0) {return true;}
+    if (_numVertices == 0) {return true;}
     else {return false;}
 }
-
-// Function returns number of vertices inside DirectedGraph.
-template <class VertexType>
-int DirectedGraph<VertexType>::getNumVertices() {return _numVertices;}
 
 // Function adds a vertex.
 template <class VertexType>
 void DirectedGraph<VertexType>::addVertex(VertexType passedVertex)
 {
-    _vertices[getNumVertices()] = passedVertex;
+    _vertices[_numVertices] = passedVertex;
 
-    for (int i = 0; i < getNumVertices(); i++)
+    for (int i = 0; i < _numVertices; i++)
     {
         _edges[_numVertices][i] = NULL_EDGE;
         _edges[i][_numVertices] = NULL_EDGE;
@@ -107,7 +107,10 @@ void DirectedGraph<VertexType>::addVertex(VertexType passedVertex)
 template <class VertexType>
 void DirectedGraph<VertexType>::markVertex(VertexType vertex) {_marks[vertex] = true;}
 
-// Function returns the index of the passed vertex.
+/*
+BE CAREFUL WITH SPELLING when calling this function lol.
+This "helper" function returns the index of the passed vertex.
+*/
 template <class VertexType>
 int DirectedGraph<VertexType>::indexIs(VertexType vertex)
 {
@@ -143,7 +146,7 @@ void DirectedGraph<VertexType>::getToVertices(VertexType vertex, Queue<VertexTyp
     int fromIndex, toIndex;
 
     fromIndex = indexIs(_vertices, vertex);
-    for (toIndex = 0; toIndex < getNumVertices(); toIndex++)
+    for (toIndex = 0; toIndex < _numVertices; toIndex++)
     {
         if (_edges[fromIndex][toIndex] != NULL_EDGE)
         {
