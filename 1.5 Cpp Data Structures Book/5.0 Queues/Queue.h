@@ -14,20 +14,17 @@ class Queue
     public:
         Queue(); // Default size of 500.
         ~Queue();
-        Queue(int);
 
         void makeEmpty();
         bool isEmpty();
         void enqueue(ItemType);
-        // void dequeue(QueueNode<ItemType>&);
-        QueueNode<ItemType>* dequeue();
+        ItemType dequeue();
         int getSize();
     
     private:
         int _numItems;
         QueueNode<ItemType>* _front;
         QueueNode<ItemType>* _rear;
-        // QueueNode<ItemType>* _items[MAX_SIZE];
 };
 
 // Default constructor that initilizes _items to MAX_SIZE capacity.
@@ -45,25 +42,6 @@ Queue<ItemType>::~Queue()
 {
     // delete _items;
     makeEmpty();
-}
-
-// Overloaded constructor that initilizes Queue to numItems size.
-template <class ItemType>
-Queue<ItemType>::Queue(int numItems)
-{
-    _numItems = numItems;
-    _front = &_items[0]; // _front is equal to the address of the first element.
-    _rear = &_items[numItems]; // _rear is equal to the address of the last element.
-
-    for (int i = 0; i < (numItems - 1); i++)
-    {
-        _items[i]->setNext(&_items[i + 1]);
-    }
-
-    for (int i = numItems; i > 0; i--)
-    {
-        _items[i]->setPrevious(&_items[i - 1]);
-    }
 }
 
 // Function returns the number of elements inside of queue.
@@ -87,12 +65,13 @@ void Queue<ItemType>::makeEmpty()
     _numItems = 0;
 }
 
-// Function places an ItemType queueNode at the end of the Queue.
-// Function Parameter (*passedNode) should have (_previous && _next) = nullptr.
+/*
+Function places an ItemType queueNode at the end of the Queue.
+*/
 template <class ItemType>
 void Queue<ItemType>::enqueue(ItemType newItem)
 {
-    QueueNode* tempNode = new QueueNode;
+    QueueNode<ItemType>* tempNode = new QueueNode<ItemType>;
     tempNode->setData(newItem);
 
     if (isEmpty() == true) // If the Queue is empty...
@@ -102,9 +81,9 @@ void Queue<ItemType>::enqueue(ItemType newItem)
         _numItems++;
         return;
     }
-    else if ((_front == _rear) && (_numItems == 1)) // If there is only one QueueNode in Queue...
+    else if (_front == _rear) // If there is only one QueueNode in Queue...
     {
-        newNode->setPrevious(_front);
+        tempNode->setPrevious(_front);
         _front->setNext(tempNode);
         _rear = tempNode;
         _numItems++;
@@ -127,22 +106,29 @@ bool Queue<ItemType>::isEmpty()
     else {return false;}
 }
 
-// Function returns _rear QueueNode and removes it from the Queue.
+// Function returns _front ItemType and removes _front QueueNode from Queue.
 template <class ItemType>
-QueueNode<ItemType>* Queue<ItemType>::dequeue()
+ItemType Queue<ItemType>::dequeue()
 {
     if (isEmpty() == true)
     {
         std::cerr << "\nQueue is empty, aborting.";
-        return nullptr;
+        return 0;
     }
 
-    QueueNode<ItemType>* tempNode = _rear; // Saving _rear in memory.
-    _rear = _rear->getPrevious();
-    _rear->setNext(nullptr);
+    QueueNode<ItemType>* tempNode = _front;
+
+    ItemType returnData = _front->getData();
+
+    _front = _front->getNext();
+    if (_front == nullptr)
+    {
+        _rear = nullptr;
+    }
 
     _numItems--;
-    return tempNode;
+    delete tempNode;
+    return returnData;
 }
 
 

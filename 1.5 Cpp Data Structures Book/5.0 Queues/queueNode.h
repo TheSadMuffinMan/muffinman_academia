@@ -26,7 +26,7 @@ class QueueNode
 template <class ItemType>
 QueueNode<ItemType>::QueueNode()
 {
-    _data = new ItemType;
+    // ItemType _data;
     _previous = nullptr;
     _next = nullptr;
 }
@@ -34,7 +34,7 @@ QueueNode<ItemType>::QueueNode()
 template <class ItemType>
 QueueNode<ItemType>::~QueueNode()
 {
-    delete _data;
+    // delete _data;
     // delete _previous;
     // delete _next;
 }

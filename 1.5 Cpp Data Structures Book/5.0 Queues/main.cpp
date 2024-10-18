@@ -6,15 +6,16 @@ int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-    Queue<int> intQueue(5); // Creating an int que with 5 items.
-    QueueNode<int> intNode1;
-    intNode1.setData(1);
+    Queue<int> intQueue;
+    intQueue.enqueue(7);
+    intQueue.enqueue(35);
+    intQueue.enqueue(4765);
 
-    intQueue.enqueue(&intNode1);
-    QueueNode<int>* displayNode = intQueue.dequeue();
-    
-    std::cout << "Display Node data: " << displayNode->getData() << std::endl;
-    
+    for (int i = 0; i < 3; i++)
+    {
+        std::cout << intQueue.dequeue() << std::endl;
+    }
+
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
