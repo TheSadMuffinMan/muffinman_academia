@@ -1,38 +1,30 @@
 #include <iostream>
-#include "StackType.h"
+#include "MuffinStack.h"
 
 int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-    StackType<int> intStack;
+    MuffinStack<int> intStack;
 
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 5; i++)
     {
         intStack.push(i);
     }
-    int displayInt1 = intStack.top();
-    intStack.pop();
 
-    int displayInt2 = intStack.top();
-    intStack.pop();
+    std::cout << "First Item: " << intStack.pop() << std::endl;
+    std::cout << "DisplayInt2 : " << intStack.pop() << std::endl;
 
-    std::cout << "DisplayInt1 : " << displayInt1 << std::endl;
-    std::cout << "DisplayInt2 : " << displayInt2 << std::endl;
-
-    StackType<std::string> stringStack;
+    MuffinStack<std::string> stringStack;
     stringStack.push("Yeet");
     stringStack.push("Hell yeah brother.");
     stringStack.push("YESSIR");
 
-    std::string displayString1 = stringStack.pop();
-    std::cout << "DisplayString1: " << displayString1 << std::endl;
+    std::cout << "DisplayString1: " << stringStack.pop() << std::endl;
 
-    std::string displayString2 = stringStack.pop();
-    std::cout << "DisplayString2: " << displayString2 << std::endl;
+    std::cout << "DisplayString2: " << stringStack.pop() << std::endl;
 
-    std::string displayString3 = stringStack.pop();
-    std::cout << "DisplayString3: " << displayString3 << std::endl;
+    std::cout << "DisplayString3: " << stringStack.pop() << std::endl;
     
     std::cout << "\nEnd of program." << std::endl;
     return 0;

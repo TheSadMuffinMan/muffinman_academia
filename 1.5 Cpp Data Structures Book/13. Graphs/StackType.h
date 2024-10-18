@@ -1,12 +1,19 @@
+// CLASS IS FOUND ON PAGE 294.
+
 #pragma once
 #include <iostream>
-const int MAX_ITEMS = 1000; // Defining the max size of the stack.
+#include "queueNode.h"
+
+const int MAX_ITEMS = 500; // Defining the *default* max size of the stack.
 
 template <class ItemType>
-class StackType
+class MuffinStack
 {
     public:
-        StackType();
+        MuffinStack(int);
+        MuffinStack();
+        ~MuffinStack();
+
         bool isEmtpy() const;
         bool isFull() const;
         void push(ItemType);
@@ -14,33 +21,47 @@ class StackType
         ItemType top(); // Same as peek().
     
     private:
-        int _top;
-        ItemType _items[MAX_ITEMS];
+        int _maxStack;
+        QueueNode<ItemType>* _top;
+        ItemType* _items;
 };
 
 // Function initilizes _top to equal -1.
 template <class ItemType>
-StackType<ItemType>::StackType()
+MuffinStack<ItemType>::MuffinStack(int passedMax)
 {
+    _maxStack = passedMax;
     _top = -1;
+    _items = new ItemType[_maxStack];
+}
+
+// Function initilizes _top to equal -1.
+template <class ItemType>
+MuffinStack<ItemType>::MuffinStack()
+{
+    _maxStack = 500;
+    _top = -1;
+    _items = new ItemType[_maxStack];
 }
 
 template <class ItemType>
-bool StackType<ItemType>::isEmtpy() const
+MuffinStack<ItemType>::~MuffinStack() {delete[] _items;}
+
+template <class ItemType>
+bool MuffinStack<ItemType>::isEmtpy() const
 {
     if (_top < 0) {return true;}
     else {return false;}
 }
 
 template <class ItemType>
-bool StackType<ItemType>::isFull() const
+bool MuffinStack<ItemType>::isFull() const
 {
-    if (_top >= MAX_ITEMS) {return true;}
-    else {return false;}
+    return (_top >= _maxStack);
 }
 
 template <class ItemType>
-void StackType<ItemType>::push(ItemType userItem)
+void MuffinStack<ItemType>::push(ItemType userItem)
 {
     if (isFull())
     {
@@ -48,13 +69,13 @@ void StackType<ItemType>::push(ItemType userItem)
         return;
     }
 
-    _top++;
-    _items[_top] = userItem;
+    QueueNode<ItemType>* tempNode = new QueueNode<ItemType>;
+    tempNode->setData(userItem); 
 }
 
 // Function "pops" off _top and returns it. Function then assigns _top to the next element.
 template <class ItemType>
-ItemType StackType<ItemType>::pop()
+ItemType MuffinStack<ItemType>::pop()
 {
     if (isEmtpy())
     {
@@ -68,7 +89,7 @@ ItemType StackType<ItemType>::pop()
 }
 
 template <class ItemType>
-ItemType StackType<ItemType>::top()
+ItemType MuffinStack<ItemType>::top()
 {
     if (isEmtpy())
     {

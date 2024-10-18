@@ -6,7 +6,7 @@ class QueueNode
 {
     public:
         QueueNode();
-        ~QueueNode();
+        // ~QueueNode();
 
         ItemType getData();
         QueueNode* getNext();
@@ -22,7 +22,7 @@ class QueueNode
         QueueNode* _next;
 };
 
-// Constructor that initializes QueueNode's private members to NULL/nullptr.
+// Constructor that initializes QueueNode's private members to nullptr.
 template <class ItemType>
 QueueNode<ItemType>::QueueNode()
 {
@@ -31,14 +31,8 @@ QueueNode<ItemType>::QueueNode()
     _next = nullptr;
 }
 
-template <class ItemType>
-QueueNode<ItemType>::~QueueNode()
-{
-    // delete _data;
-    // delete _previous;
-    // delete _next;
-}
-
+// template <class ItemType>
+// QueueNode<ItemType>::~QueueNode() {}
 
 template <class ItemType>
 ItemType QueueNode<ItemType>::getData() {return _data;}
