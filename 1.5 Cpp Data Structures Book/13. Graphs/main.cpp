@@ -9,6 +9,7 @@ int main(int argc, char *argv[])
     std::cout << "Program start.\n" << std::endl;
 
     DirectedGraph<int> intGraph;
+    DirectedGraph<std::string> stringGraph;
 
     intGraph.addVertex(7);
     intGraph.addVertex(9);
@@ -23,6 +24,8 @@ int main(int argc, char *argv[])
     std::cout << "\nVisiting Vertex 20..." << std::endl;
     intGraph.markVertex(20);
     std::cout << "\nVertex 20 has been visited: " << std::boolalpha << intGraph.isMarked(20) << std::endl;
+
+    intGraph.depthFirstSearch(7, 9);
 
 
     std::cout << "\nEnd of program." << std::endl;

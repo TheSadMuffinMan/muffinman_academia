@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include "Queue.h"
+#include "StackType.h"
 
 const int NULL_EDGE = 0;
 
@@ -27,6 +28,8 @@ class DirectedGraph
         void getToVertices(VertexType, Queue<VertexType>&);
         bool isMarked(VertexType);
         int indexIs(VertexType);
+        void breadthFirstSearch(VertexType, VertexType);
+        void depthFirstSearch(VertexType, VertexType);
     
     private:
         int _numVertices;
@@ -145,7 +148,7 @@ void DirectedGraph<VertexType>::getToVertices(VertexType vertex, Queue<VertexTyp
 {
     int fromIndex, toIndex;
 
-    fromIndex = indexIs(_vertices, vertex);
+    fromIndex = indexIs(vertex);
     for (toIndex = 0; toIndex < _numVertices; toIndex++)
     {
         if (_edges[fromIndex][toIndex] != NULL_EDGE)
@@ -164,4 +167,94 @@ bool DirectedGraph<VertexType>::isMarked(VertexType vertex)
         return true;
     }
     else {return false;}
+}
+
+template <class VertexType>
+void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
+{
+    Queue<VertexType> tempQueue;
+    Queue<VertexType> vertexQ;
+
+    bool found = false;
+    VertexType vertex;
+    VertexType item;
+
+    clearMarks();
+    tempQueue.enqueue(sourceVertex);
+
+    do
+    {
+        tempQueue.dequeue(vertex);
+        if (vertex == destinationVertex)
+        {
+            std::cout << vertex << std::endl;
+            found = true;
+        }
+        else
+        {
+            if (!isMarked(vertex))
+            {
+                markVertex(vertex);
+                std::cout << vertex << std::endl;
+                getToVertices(vertex, vertexQ);
+                while (!vertexQ.isEmpty())
+                {
+                    vertexQ.dequeue(item);
+                    if (!isMarked(item))
+                    {
+                        tempQueue.enqueue(item);
+                    }
+                }
+            }
+        }
+    } while ((tempQueue.isEmpty()) && (!found));
+
+    if (!found)
+    {
+        std::cerr << "\nPath not found." << std::endl;
+    }
+}
+
+template <class VertexType>
+void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
+{
+    StackType<VertexType> stack;
+    Queue<VertexType> vertexQueue;
+
+    bool found = false;
+    VertexType vertex;
+    VertexType item;
+
+    clearMarks();
+
+    stack.push(sourceVertex);
+    do
+    {
+        vertex = stack.pop();
+        if (vertex == destinationVertex)
+        {
+            std::cout << vertex << std::endl;
+            found = true;
+        } else
+        {
+            if (isMarked(vertex))
+            {
+                markVertex(vertex);
+                std::cout << vertex << std::endl;
+
+                getToVertices(vertex, vertexQueue);
+
+                while (!vertexQueue.isEmpty())
+                {
+                    vertexQueue.dequeue(item);
+                    if (isMarked(item)) {stack.push(item);}
+                }
+            }
+        }
+    } while ((!stack.isEmtpy()) && (!found));
+
+    if (!found)
+    {
+        std::cout << "Path not found." << std::endl;
+    }
 }

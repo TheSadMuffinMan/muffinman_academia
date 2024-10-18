@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "queueNode.h"
+// #include "queueNode.h"
 
 /*
 Class is a dynamically allocated doubly-linked list.
@@ -10,115 +10,83 @@ class Queue
 {
     public:
         Queue(); // Default size of 500.
+        Queue(int);
         ~Queue();
 
         void makeEmpty();
         bool isEmpty();
+        bool isFull();
         void enqueue(ItemType);
-        ItemType dequeue();
-        int getNumItems();
+        void dequeue(ItemType&);
     
     private:
-        int _numItems;
-        QueueNode<ItemType>* _front;
-        QueueNode<ItemType>* _rear;
+        int _maxItems;
+        ItemType _front;
+        ItemType _rear;
+        ItemType* _items;
 };
 
 // Default constructor that initilizes _items to MAX_SIZE capacity.
 template <class ItemType>
 Queue<ItemType>::Queue()
 {
-    _numItems = 0;
-    _front = nullptr;
-    _rear = nullptr;
+    _maxItems = 501;
+    _front = (_maxItems - 1);
+    _rear = (_maxItems - 1);
+    _items = new ItemType[_maxItems];
+}
+
+// Overloaded constructor.
+template <class ItemType>
+Queue<ItemType>::Queue(int numItems)
+{
+    _maxItems = (numItems + 1);
+    _front = (_maxItems - 1);
+    _rear = (_maxItems - 1);
+    _items = new ItemType[_maxItems];
 }
 
 template <class ItemType>
-Queue<ItemType>::~Queue() {makeEmpty();}
+Queue<ItemType>::~Queue() {delete[] _items;}
 
-// Function returns the number of elements inside of queue.
-template <class ItemType>
-int Queue<ItemType>::getNumItems() {return _numItems;}
-
-// Function is essentially a Deconstructor.
+// Function resets Queue to an empty state.
 template <class ItemType>
 void Queue<ItemType>::makeEmpty()
 {
-    QueueNode<ItemType>* tempNode;
-
-    while (_front != nullptr)
-    {
-        tempNode = _front;
-        _front = _front->getNext();
-        delete tempNode;
-    }
-
-    _rear = nullptr;
-    _numItems = 0;
+    _front = (_maxItems - 1);
+    _rear = (_maxItems - 1);
 }
 
-/*
-Function places an ItemType queueNode at the end of the Queue.
-*/
+// Function places newItem at the rear of the Queue.
 template <class ItemType>
 void Queue<ItemType>::enqueue(ItemType newItem)
-{
-    QueueNode<ItemType>* tempNode = new QueueNode<ItemType>;
-    tempNode->setData(newItem);
+{    
+    if (isFull())
+    {
+        std::cerr << "Queue is full, aborting." << std::endl;
+        return;
+    }
 
-    if (isEmpty() == true) // If the Queue is empty...
-    {
-        _front = tempNode;
-        _rear = tempNode;
-        _numItems++;
-        return;
-    }
-    else if (_front == _rear) // If there is only one QueueNode in Queue...
-    {
-        tempNode->setPrevious(_front);
-        _front->setNext(tempNode);
-        _rear = tempNode;
-        _numItems++;
-        return;
-    }
-    else
-    {
-        tempNode->setPrevious(_rear);
-        _rear->setNext(tempNode);
-        _rear = tempNode;
-        _numItems++;
-    }
+    _rear = ((_rear + 1) % _maxItems);
+    _items[_rear] = newItem;
 }
 
 // Function returns true if the Queue is empty.
 template <class ItemType>
-bool Queue<ItemType>::isEmpty()
-{
-    if (_front == nullptr) {return true;}
-    else {return false;}
-}
+bool Queue<ItemType>::isEmpty() {return (_rear == _front);}
 
-// Function returns _front ItemType and removes _front QueueNode from Queue.
+// Function returns true if the Queue is full.
 template <class ItemType>
-ItemType Queue<ItemType>::dequeue()
+bool Queue<ItemType>::isFull() {return ((_rear + 1) % _maxItems == _front);}
+
+template <class ItemType>
+void Queue<ItemType>::dequeue(ItemType& newItem)
 {
-    if (isEmpty() == true)
+    if (isEmpty())
     {
-        std::cerr << "\nQueue is empty, aborting.";
-        return 0;
+        std::cerr << "Queue empty." << std::endl;
+        return;
     }
-
-    QueueNode<ItemType>* tempNode = _front;
-
-    ItemType returnData = _front->getData();
-
-    _front = _front->getNext();
-    if (_front == nullptr)
-    {
-        _rear = nullptr;
-    }
-
-    _numItems--;
-    delete tempNode;
-    return returnData;
+    _front = (_front + 1) % _maxItems;
+    newItem = _items[_front];    
 }
