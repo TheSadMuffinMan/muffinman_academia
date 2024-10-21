@@ -31,7 +31,7 @@ class DirectedGraph
         void markVertex(VertexType);
         void addEdge(VertexType, VertexType, int); // NEED TO CHECK IF WEIGHT ALREADY EXISTS.
         int getWeight(VertexType, VertexType);
-        void getToVertices(VertexType, Queue<VertexType>&);
+        void getToVertices(VertexType, MuffinQueue<VertexType>&);
         bool isMarked(VertexType);
         int indexIs(VertexType);
         void breadthFirstSearch(VertexType, VertexType);
@@ -150,7 +150,7 @@ int DirectedGraph<VertexType>::getWeight(VertexType sourceVertex, VertexType des
 
 // Function Parameters: VertexType vertex, Queue<VertexType>& adjVertices.
 template <class VertexType>
-void DirectedGraph<VertexType>::getToVertices(VertexType vertex, Queue<VertexType>& adjVertices)
+void DirectedGraph<VertexType>::getToVertices(VertexType vertex, MuffinQueue<VertexType>& adjVertices)
 {
     int fromIndex, toIndex;
 
@@ -178,8 +178,8 @@ bool DirectedGraph<VertexType>::isMarked(VertexType vertex)
 template <class VertexType>
 void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
 {
-    Queue<VertexType> tempQueue;
-    Queue<VertexType> vertexQ;
+    MuffinQueue<VertexType> tempQueue;
+    MuffinQueue<VertexType> vertexQueue;
 
     bool found = false;
     VertexType vertex;
@@ -190,7 +190,7 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
 
     do
     {
-        tempQueue.dequeue(vertex);
+        vertex = tempQueue.dequeue();
         if (vertex == destinationVertex)
         {
             std::cout << vertex << std::endl;
@@ -202,10 +202,10 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
             {
                 markVertex(vertex);
                 std::cout << vertex << std::endl;
-                getToVertices(vertex, vertexQ);
-                while (!vertexQ.isEmpty())
+                getToVertices(vertex, vertexQueue);
+                while (!vertexQueue.isEmpty())
                 {
-                    vertexQ.dequeue(item);
+                    vertexQueue.dequeue(item);
                     if (!isMarked(item))
                     {
                         tempQueue.enqueue(item);
@@ -225,7 +225,7 @@ template <class VertexType>
 void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
 {
     MuffinStack<VertexType> stack;
-    Queue<VertexType> vertexQueue;
+    MuffinQueue<VertexType> vertexQueue;
 
     bool found = false;
     VertexType vertex;
