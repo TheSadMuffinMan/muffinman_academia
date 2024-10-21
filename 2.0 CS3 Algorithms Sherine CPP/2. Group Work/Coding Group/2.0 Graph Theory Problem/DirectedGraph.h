@@ -23,8 +23,6 @@ class DirectedGraph
         void clearMarks();
         bool isEmpty();
 
-        void loadGraphFromFile();
-
         void addVertex(VertexType);
         void markVertex(VertexType);
         void addEdge(VertexType, VertexType, int); // NEED TO CHECK IF WEIGHT ALREADY EXISTS.
@@ -97,13 +95,14 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
     _vertices = new VertexType[tempNumVertices];
     _marks = new bool[tempNumVertices];
 
-    // while (stringMemoryLocation != std::string::npos)
-    // {
+    while (stringMemoryLocation != std::string::npos)
+    {
         // If there is only a vertex and no connections...
         // In this implementation, this only happens for Node #29.
         if (stringMemoryLocation.find(" ") == std::string::npos)
         {
             addVertex(std::stoi(stringMemoryLocation));
+            continue;
         }
 
         int firstSpaceIndex = 0;
@@ -132,7 +131,7 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
 
         addEdge(sourceVertex, destinationVertex, weight);
 
-    // }
+    }
     
 
     inputStream.close();
