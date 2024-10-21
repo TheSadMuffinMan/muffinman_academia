@@ -99,27 +99,62 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
 
     // while (stringMemoryLocation != std::string::npos)
     // {
-        int firstIndex = 0;
-        int secondIndex = 0;
+        // If there is only a vertex and no connections...
+        // In this implementation, this only happens for Node #29.
+        if (stringMemoryLocation.find(" ") == std::string::npos)
+        {
+            addVertex(std::stoi(stringMemoryLocation));
+        }
+
+        int firstSpaceIndex = 0;
+        int secondSpaceIndex = 0;
+
         int sourceVertex, destinationVertex, weight;
 
         std::getline(inputStream, stringMemoryLocation);
+        firstSpaceIndex = stringMemoryLocation.find(" ");
+        std::cout << "First Space Index: " << firstSpaceIndex << std::endl;
+
+        secondSpaceIndex = stringMemoryLocation.find(" ", (firstSpaceIndex + 1));
+        std::cout << "Second Space Index: " << secondSpaceIndex << std::endl;
+
+        std::string firstString = stringMemoryLocation.substr(0);
+        std::cout << "***DEBUG*** First String: " << firstString << ".\n";
+
+
+        // weight = std::stoi(tempString);
+        // addEdge(sourceVertex, destinationVertex, weight);
+    // }
+    
+
+    inputStream.close();
+}
+/*
+        std::getline(inputStream, stringMemoryLocation);
         secondIndex = stringMemoryLocation.find(" ");
-        sourceVertex = std::stoi(stringMemoryLocation.substr(firstIndex, secondIndex));
-        // Working to this point.
+        tempString = stringMemoryLocation.substr(firstIndex, secondIndex);
+        sourceVertex = std::stoi(tempString);
+
+        std::cout << "***DEBUG*** First Temp String: " << tempString << "." << std::endl;
 
         addVertex(sourceVertex);
 
         firstIndex = secondIndex;
         secondIndex = stringMemoryLocation.find(" ", firstIndex);
-        destinationVertex = std::stoi(stringMemoryLocation.substr(firstIndex, secondIndex));
-        std::cout << "\nDestination Vertex = " << destinationVertex << std::endl;
-    // }
-    
+        tempString = stringMemoryLocation.substr((firstIndex + 1), secondIndex);
 
-    inputStream.close();
+        std::cout << "***DEBUG*** Second Temp String: " << tempString << "." << std::endl;
 
-}
+        destinationVertex = std::stoi(tempString);
+        addVertex(destinationVertex);
+        
+        firstIndex = secondIndex;
+        std::cout << "Weight FirstIndex: " << firstIndex << std::endl;
+        
+        tempString = stringMemoryLocation.substr(firstIndex);
+        std::cout << "***DEBUG*** Third Temp String: " << tempString << "." << std::endl;
+
+*/
 
 template <class VertexType>
 DirectedGraph<VertexType>::~DirectedGraph()
