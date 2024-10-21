@@ -75,6 +75,7 @@ template <class VertexType>
 DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
 {
     int tempNumVertices = 0;
+    // Memory Location stores full string, tempString is our "working" string.
     std::string stringMemoryLocation, tempString;
 
     std::ifstream inputStream;
@@ -93,8 +94,8 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
     // Initializing private data members.
     _maxVertices = tempNumVertices;
     _numVertices = tempNumVertices;
-    _vertices = new VertexType[_maxVertices];
-    _marks = new bool[_maxVertices];
+    _vertices = new VertexType[tempNumVertices];
+    _marks = new bool[tempNumVertices];
 
     // while (stringMemoryLocation != std::string::npos)
     // {
@@ -110,7 +111,7 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
         addVertex(sourceVertex);
 
         firstIndex = secondIndex;
-        firstIndex = stringMemoryLocation.find(" ", secondIndex);
+        secondIndex = stringMemoryLocation.find(" ", firstIndex);
         destinationVertex = std::stoi(stringMemoryLocation.substr(firstIndex, secondIndex));
         std::cout << "\nDestination Vertex = " << destinationVertex << std::endl;
     // }
