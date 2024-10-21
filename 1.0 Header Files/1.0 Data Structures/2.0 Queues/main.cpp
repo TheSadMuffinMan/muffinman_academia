@@ -15,10 +15,13 @@ int main(int argc, char *argv[])
     stringQueue.enqueue("Booty");
     stringQueue.enqueue("Nipple");
 
+    std::cout << "\nDequeuing String Queue..." << std::endl;
     for (int i = 0; i < 4; i++)
     {
         std::cout << stringQueue.dequeue() << std::endl;
     }
+
+    std::cout << std::endl;
 
     Queue<int> intQueue;
     intQueue.enqueue(1);
@@ -26,6 +29,7 @@ int main(int argc, char *argv[])
     intQueue.enqueue(3);
     intQueue.enqueue(4);
 
+    std::cout << "Dequeuing Int Queue..." << std::endl;
     for (int i = 0; i < 4; i++)
     {
         std::cout << intQueue.dequeue() << std::endl;
