@@ -131,5 +131,10 @@ void Queue<ItemType>::dequeue(QueueNode<ItemType>& passedNode)
     }
 
     passedNode = _front;
-    _front = _front->getNext();    
+    _front = _front->getNext();
+    
+    if (_front == nullptr)
+    {
+        //
+    }
 }
