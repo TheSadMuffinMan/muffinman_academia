@@ -1,5 +1,5 @@
 /*
-Program is just the driver client for the Queue Class.
+Program is just the driver client for the Queue Class (MuffinQueue.h).
 */
 
 #include <iostream>
