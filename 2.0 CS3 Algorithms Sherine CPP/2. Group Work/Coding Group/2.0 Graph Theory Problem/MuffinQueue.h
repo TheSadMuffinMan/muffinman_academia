@@ -6,11 +6,11 @@
 Class is a dynamically allocated non-circular doubly-linked list.
 */
 template <class ItemType>
-class Queue
+class MuffinQueue
 {
     public:
-        Queue(); // Default size of 500.
-        ~Queue();
+        MuffinQueue(); // Default size of 500.
+        ~MuffinQueue();
 
         void makeEmpty();
         bool isEmpty();
@@ -27,7 +27,7 @@ class Queue
 
 // Default constructor that initilizes _items to MAX_SIZE capacity.
 template <class ItemType>
-Queue<ItemType>::Queue()
+MuffinQueue<ItemType>::MuffinQueue()
 {
     _numItems = 0;
     _front = nullptr;
@@ -35,15 +35,15 @@ Queue<ItemType>::Queue()
 }
 
 template <class ItemType>
-Queue<ItemType>::~Queue() {makeEmpty();}
+MuffinQueue<ItemType>::~MuffinQueue() {makeEmpty();}
 
 // Function returns the number of elements inside of queue.
 template <class ItemType>
-int Queue<ItemType>::getSize() {return _numItems;}
+int MuffinQueue<ItemType>::getSize() {return _numItems;}
 
 // Function is essentially a Deconstructor.
 template <class ItemType>
-void Queue<ItemType>::makeEmpty()
+void MuffinQueue<ItemType>::makeEmpty()
 {
     QueueNode<ItemType>* tempNode;
 
@@ -62,7 +62,7 @@ void Queue<ItemType>::makeEmpty()
 Function places an ItemType queueNode at the end of the Queue.
 */
 template <class ItemType>
-void Queue<ItemType>::enqueue(ItemType newItem)
+void MuffinQueue<ItemType>::enqueue(ItemType newItem)
 {
     QueueNode<ItemType>* tempNode = new QueueNode<ItemType>;
     tempNode->setData(newItem);
@@ -93,11 +93,11 @@ void Queue<ItemType>::enqueue(ItemType newItem)
 
 // Function returns true if the Queue is empty.
 template <class ItemType>
-bool Queue<ItemType>::isEmpty() {return (_front == nullptr);}
+bool MuffinQueue<ItemType>::isEmpty() {return (_front == nullptr);}
 
 // Function returns _front ItemType and removes _front QueueNode from Queue.
 template <class ItemType>
-ItemType Queue<ItemType>::dequeue()
+ItemType MuffinQueue<ItemType>::dequeue()
 {
     if (isEmpty() == true)
     {
@@ -122,7 +122,7 @@ ItemType Queue<ItemType>::dequeue()
 
 // Overloaded dequeue function that assigns _front's data to passed node and removes said node from Queue.
 template <class ItemType>
-void Queue<ItemType>::dequeue(QueueNode<ItemType>& passedNode)
+void MuffinQueue<ItemType>::dequeue(QueueNode<ItemType>& passedNode)
 {
     if (isEmpty() == true)
     {

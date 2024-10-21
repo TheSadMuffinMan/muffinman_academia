@@ -2,11 +2,13 @@
 #include <iostream>
 #include <chrono>
 #include "MuffinQueue.h"
+#include "MuffinStack.h"
 
 #pragma once
 
 #include <iostream>
 #include "MuffinQueue.h"
+
 
 const int NULL_EDGE = 0;
 
@@ -222,7 +224,7 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
 template <class VertexType>
 void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
 {
-    StackType<VertexType> stack;
+    MuffinStack<VertexType> stack;
     Queue<VertexType> vertexQueue;
 
     bool found = false;
