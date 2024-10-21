@@ -1,14 +1,9 @@
 #pragma once
 #include <iostream>
 #include <chrono>
+#include <fstream>
 #include "MuffinQueue.h"
 #include "MuffinStack.h"
-
-#pragma once
-
-#include <iostream>
-#include "MuffinQueue.h"
-
 
 const int NULL_EDGE = 0;
 
@@ -22,10 +17,13 @@ class DirectedGraph
     public:
         DirectedGraph();
         DirectedGraph(int);
+        DirectedGraph(std::string);
         ~DirectedGraph();
 
         void clearMarks();
         bool isEmpty();
+
+        void loadGraphFromFile();
 
         void addVertex(VertexType);
         void markVertex(VertexType);
@@ -70,6 +68,56 @@ DirectedGraph<VertexType>::DirectedGraph(int userMaxVertices)
     _maxVertices = userMaxVertices;
     _vertices = new VertexType[_maxVertices];
     _marks = new bool[_maxVertices];
+}
+
+// Function accepts a file name and builds a Directed Graph based off of it.
+template <class VertexType>
+DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
+{
+    int tempNumVertices = 0;
+    std::string stringMemoryLocation, tempString;
+
+    std::ifstream inputStream;
+    inputStream.open(fileName);
+    if (!inputStream.is_open())
+    {
+        std::cout << "File failed to open, aborting." << std::endl;
+        return;
+    }
+
+    std::getline(inputStream, stringMemoryLocation); // Getting rid of first line.
+    std::getline(inputStream, stringMemoryLocation);
+    tempString = stringMemoryLocation.substr(13);
+    tempNumVertices = std::stoi(tempString);
+
+    // Initializing private data members.
+    _maxVertices = tempNumVertices;
+    _numVertices = tempNumVertices;
+    _vertices = new VertexType[_maxVertices];
+    _marks = new bool[_maxVertices];
+
+    // while (stringMemoryLocation != std::string::npos)
+    // {
+        int firstIndex = 0;
+        int secondIndex = 0;
+        int sourceVertex, destinationVertex, weight;
+
+        std::getline(inputStream, stringMemoryLocation);
+        secondIndex = stringMemoryLocation.find(" ");
+        sourceVertex = std::stoi(stringMemoryLocation.substr(firstIndex, secondIndex));
+        // Working to this point.
+
+        addVertex(sourceVertex);
+
+        firstIndex = secondIndex;
+        firstIndex = stringMemoryLocation.find(" ", secondIndex);
+        destinationVertex = std::stoi(stringMemoryLocation.substr(firstIndex, secondIndex));
+        std::cout << "\nDestination Vertex = " << destinationVertex << std::endl;
+    // }
+    
+
+    inputStream.close();
+
 }
 
 template <class VertexType>
