@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include "queueNode.h"
+#include "QueueNode.h"
 
 /*
 Class is a dynamically allocated non-circular doubly-linked list.
@@ -127,14 +127,19 @@ void Queue<ItemType>::dequeue(QueueNode<ItemType>& passedNode)
     if (isEmpty() == true)
     {
         std::cerr << "\nQueue is empty, aborting.";
-        return 0;
+        return;
     }
 
+    QueueNode<ItemType>* tempNode = _front;
     passedNode = _front;
     _front = _front->getNext();
     
     if (_front == nullptr)
     {
-        //
+        _rear = nullptr;
+        _numItems = 0;
     }
+
+    _numItems--;
+    delete tempNode;
 }

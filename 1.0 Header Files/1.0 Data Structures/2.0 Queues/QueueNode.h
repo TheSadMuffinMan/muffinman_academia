@@ -31,7 +31,7 @@ QueueNode<ItemType>::QueueNode()
 }
 
 template <class ItemType>
-ItemType QueueNode<ItemType>::getData() {return _data;}
+ItemType QueueNode<ItemType>::getData() {return _nodeData;}
 
 template <class ItemType>
 QueueNode<ItemType>* QueueNode<ItemType>::getNext() {return _next;}
@@ -40,7 +40,7 @@ template <class ItemType>
 QueueNode<ItemType>* QueueNode<ItemType>::getPrevious() {return _previous;}
 
 template <class ItemType>
-void QueueNode<ItemType>::setData(ItemType passedData) {_data = passedData;}
+void QueueNode<ItemType>::setData(ItemType passedData) {_nodeData = passedData;}
 
 template <class ItemType>
 void QueueNode<ItemType>::setNext(QueueNode* passedNode) {_next = passedNode;}
