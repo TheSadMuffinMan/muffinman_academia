@@ -9,10 +9,10 @@ int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start.\n" << std::endl;
 
-    DirectedGraph<int> workingGraph = DirectedGraph<int>("inputFile.txt");
-    std::cout << "Completed \"constructor\"?" << std::endl;
+    DirectedGraph<int> testGraph = DirectedGraph<int>("inputFile.txt");
 
-    std::cout << "Weight between 1 & 3: " << workingGraph.getWeight(1, 3);
+    std::cout << "\nWeight between 0 & 8: " << testGraph.getWeight(0, 8) << std::endl;
+    std::cout << "Weight between 1 & 3: " << testGraph.getWeight(1, 3) << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
