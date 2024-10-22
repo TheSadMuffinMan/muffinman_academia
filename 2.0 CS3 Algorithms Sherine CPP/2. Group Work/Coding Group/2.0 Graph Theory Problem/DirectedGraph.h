@@ -67,6 +67,8 @@ DirectedGraph<VertexType>::DirectedGraph(int userMaxVertices)
     _maxVertices = userMaxVertices;
     _vertices = new VertexType[_maxVertices];
     _marks = new bool[_maxVertices];
+    for (int i = 0; i < _maxVertices; i++) {_marks[i] = false;}
+
 }
 
 // Function accepts a file name and builds a Directed Graph based off of it.
@@ -95,33 +97,49 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
     _numVertices = tempNumVertices;
     _vertices = new VertexType[tempNumVertices];
     _marks = new bool[tempNumVertices];
+    for (int i = 0; i < tempNumVertices; i++) {_marks[i] = false;}
 
     while (std::getline(inputStream, stringMemoryLocation))
     {
-        // If there is only a vertex and no connections...
-        // In this implementation, this only happens for Node #29.
-        if (stringMemoryLocation.size() == 3)
-        {
-            addVertex(std::stoi(stringMemoryLocation));
-            continue;
-        }
-
+        std::getline(inputStream, stringMemoryLocation);
         int firstSpaceIndex = 0;
         int secondSpaceIndex = 0;
         int sourceVertex, destinationVertex, weight;
 
-        std::getline(inputStream, stringMemoryLocation);
-        firstSpaceIndex = stringMemoryLocation.find(" ");
+        // If there is only a vertex and no connections...
+        // In this implementation, this only happens for Node #29.
+        if (stringMemoryLocation.find(" ") == std::string::npos)
+        {
+            sourceVertex = std::stoi(stringMemoryLocation);
+            // In the future, I would add functionality to check if vertex exists.
+
+            addVertex(sourceVertex);
+            std::cout << "\nAdding Vertex " << sourceVertex << " with no connections." << std::endl;
+            continue;
+        }
+
+        firstSpaceIndex = stringMemoryLocation.find(" ");        
         secondSpaceIndex = stringMemoryLocation.find(" ", (firstSpaceIndex + 1));
         tempString = stringMemoryLocation.substr(0, (stringMemoryLocation.size() -
             (stringMemoryLocation.size() - firstSpaceIndex)));
+
         sourceVertex = std::stoi(tempString);
-        addVertex(sourceVertex);
 
         tempString = stringMemoryLocation.substr((firstSpaceIndex + 1),
             ((secondSpaceIndex - firstSpaceIndex) - 1));
+        
         destinationVertex = std::stoi(tempString);
-        addVertex(destinationVertex);
+
+        // Conditionals assume vertices are passed in order.
+        if (vertexExists(sourceVertex) == false)
+        {
+            addVertex(sourceVertex);
+
+            if (vertexExists(destinationVertex) == false)
+            {
+                addVertex(destinationVertex);
+            }
+        }
 
         // BELOW RESULTS IN WEIGHT.
         tempString = stringMemoryLocation.substr((secondSpaceIndex + 1), (secondSpaceIndex - firstSpaceIndex));
@@ -131,7 +149,6 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
             weight << "." << std::endl;
 
         addEdge(sourceVertex, destinationVertex, weight);
-
     }
     
 

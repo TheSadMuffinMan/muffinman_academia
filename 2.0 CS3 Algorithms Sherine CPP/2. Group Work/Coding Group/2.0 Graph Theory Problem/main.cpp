@@ -9,6 +9,17 @@ int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start.\n" << std::endl;
 
+    DirectedGraph<int> workingGraph = DirectedGraph<int>("inputFile.txt");
+    std::cout << "Completed \"constructor\"?" << std::endl;
+
+    std::cout << "Weight between 1 & 3: " << workingGraph.getWeight(1, 3);
+
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
+}
+
+/* TESTING CODE
+
     DirectedGraph<int> testGraph(5);
     testGraph.addVertex(0);
     testGraph.addVertex(8);
@@ -16,11 +27,4 @@ int main(int argc, char *argv[])
 
     std::cout << "Vertex 0 exists: " << std::boolalpha << testGraph.vertexExists(0) << std::endl;
 
-    // DirectedGraph<int> workingGraph = DirectedGraph<int>("inputFile.txt");
-    // std::cout << "Completing \"constructor\"?" << std::endl;
-
-    // std::cout << "Weight between 0 & 8: " << workingGraph.getWeight(0, 8);
-
-    std::cout << "\nEnd of program." << std::endl;
-    return 0;
-}
+*/
