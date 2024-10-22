@@ -38,6 +38,7 @@ class DirectedGraph
         int indexIs(VertexType);
         void breadthFirstSearch(VertexType, VertexType);
         void depthFirstSearch(VertexType, VertexType);
+        void shortestPath(VertexType, VertexType);
     
     private:
         int _numVertices;
@@ -80,7 +81,6 @@ template <class VertexType>
 DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
 {
     int tempNumVertices = 0;
-    // Memory Location stores full string, tempString is our "working" string.
     std::string fullString, tempString, garbVariable;
 
     std::ifstream inputStream;
@@ -103,11 +103,10 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
     _marks = new bool[tempNumVertices];
     for (int i = 0; i < tempNumVertices; i++) {_marks[i] = false;}
 
-    while (std::getline(inputStream, fullString))
+    while (!inputStream.eof())
     {
-        // std::getline(inputStream, fullString);
-
-        std::cout << "***DEBUG*** fullString = [" << fullString << "]" << std::endl;
+        std::getline(inputStream, fullString);
+        // std::cout << "***DEBUG*** fullString = [" << fullString << "]" << std::endl;
 
         int firstSpaceIndex = 0;
         int secondSpaceIndex = 0;
@@ -121,7 +120,7 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
             // In the future, I would add functionality to check if vertex exists.
 
             addVertex(sourceVertex);
-            std::cout << "\nAdding Vertex " << sourceVertex << " with no connections." << std::endl;
+            std::cout << "Adding Vertex " << sourceVertex << " with no connections." << std::endl;
             continue;
         }
 
@@ -136,22 +135,21 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
         
         destinationVertex = std::stoi(tempString);
 
-        // Conditionals assume vertices are passed in order.
+        // Checking if vertices already exist.
         if (vertexExists(sourceVertex) == false)
         {
             addVertex(sourceVertex);
-
-            if (vertexExists(destinationVertex) == false)
-            {
-                addVertex(destinationVertex);
-            }
+        }
+        if (vertexExists(destinationVertex) == false)
+        {
+            addVertex(destinationVertex);
         }
 
-        // BELOW RESULTS IN WEIGHT.
+        // Determining weight.
         tempString = fullString.substr((secondSpaceIndex + 1), (secondSpaceIndex - firstSpaceIndex));
         weight = std::stoi(tempString);
 
-        std::cout << "\nAdding Edge between " << sourceVertex << " and " << destinationVertex << " with a weight of " <<
+        std::cout << "Adding Edge between " << sourceVertex << " and " << destinationVertex << " with a weight of " <<
             weight << "." << std::endl;
 
         addEdge(sourceVertex, destinationVertex, weight);
@@ -297,10 +295,11 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
             {
                 markVertex(vertex);
                 std::cout << vertex << std::endl;
+
                 getToVertices(vertex, vertexQueue);
                 while (!vertexQueue.isEmpty())
                 {
-                    vertexQueue.dequeue(item);
+                    item = vertexQueue.dequeue();
                     if (!isMarked(item))
                     {
                         tempQueue.enqueue(item);
@@ -338,7 +337,7 @@ void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, Vertex
             found = true;
         } else
         {
-            if (isMarked(vertex))
+            if (!isMarked(vertex))
             {
                 markVertex(vertex);
                 std::cout << vertex << std::endl;
@@ -347,15 +346,25 @@ void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, Vertex
 
                 while (!vertexQueue.isEmpty())
                 {
-                    vertexQueue.dequeue(item);
+                    vertexQueue.dequeue();
                     if (isMarked(item)) {stack.push(item);}
                 }
             }
         }
-    } while ((!stack.isEmtpy()) && (!found));
+    } while ((!stack.isEmpty()) && (!found));
 
     if (!found)
     {
         std::cout << "Path not found." << std::endl;
     }
 }
+
+template <class VertexType>
+void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex, VertexType destinationVertex)
+{
+    clearMarks();
+
+    int distance = 0;
+    MuffinQueue<VertexType> edgeQueue;
+}
+
