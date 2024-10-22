@@ -23,6 +23,7 @@ class DirectedGraph
         void clearMarks();
         bool isEmpty();
 
+        bool vertexExists(VertexType);
         void addVertex(VertexType);
         void markVertex(VertexType);
         void addEdge(VertexType, VertexType, int); // NEED TO CHECK IF WEIGHT ALREADY EXISTS.
@@ -95,11 +96,11 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
     _vertices = new VertexType[tempNumVertices];
     _marks = new bool[tempNumVertices];
 
-    while (stringMemoryLocation != std::string::npos)
+    while (std::getline(inputStream, stringMemoryLocation))
     {
         // If there is only a vertex and no connections...
         // In this implementation, this only happens for Node #29.
-        if (stringMemoryLocation.find(" ") == std::string::npos)
+        if (stringMemoryLocation.size() == 3)
         {
             addVertex(std::stoi(stringMemoryLocation));
             continue;
@@ -160,6 +161,13 @@ bool DirectedGraph<VertexType>::isEmpty()
 {
     if (_numVertices == 0) {return true;}
     else {return false;}
+}
+
+// "Helper" Function returns whether or not vertex already exists.
+template <class VertexType>
+bool DirectedGraph<VertexType>::vertexExists(VertexType vertex)
+{
+    return (vertex == _vertices[vertex]);
 }
 
 // Function adds a vertex.
