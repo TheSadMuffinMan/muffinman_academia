@@ -87,7 +87,7 @@ public class Heap
 }
 */
 
-template <class T>
+template <class DataType>
 class PriorityQueue
 {
     public:
@@ -96,7 +96,7 @@ class PriorityQueue
             _size = 0;
             _isEmpty = 1;
         }
-        T buildPQueue(T[]);
+        DataType buildPQueue(DataType[]);
         
     
     private:
