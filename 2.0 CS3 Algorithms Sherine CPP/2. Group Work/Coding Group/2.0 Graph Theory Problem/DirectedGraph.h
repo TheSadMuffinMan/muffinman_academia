@@ -432,12 +432,12 @@ void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex, VertexType
 
     while (true)
     {
-        MuffinQueue<VertexType> resultQueue;
-        resultQueue = bfs(sourceVertex, destinationVertex);
+        MuffinQueue<VertexType> tempQueue;
+        tempQueue = bfs(sourceVertex, destinationVertex);
 
-        for (int i = 0; i < resultQueue._numItems; i++)
+        for (int i = 0; i < tempQueue._numItems; i++)
         {
-            VertexType vertex = resultQueue.dequeue();
+            VertexType vertex = tempQueue.dequeue();
         }
 
     }
