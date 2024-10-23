@@ -268,6 +268,7 @@ bool DirectedGraph<VertexType>::isMarked(VertexType vertex)
     else {return false;}
 }
 
+// CARE WAY MORE ABOUT THIS ONE AS IT THE FUNCTION USED TO FIND SHORTEST PATH.
 template <class VertexType>
 void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
 {
@@ -308,7 +309,7 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
                 }
             }
         }
-    } while ((tempQueue.isEmpty()) && (!found));
+    } while ((!tempQueue.isEmpty()) && (!found));
 
     if (!found)
     {
@@ -316,6 +317,7 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
     }
 }
 
+// Do not use.
 template <class VertexType>
 void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
 {
