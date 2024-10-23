@@ -37,7 +37,8 @@ class DirectedGraph
         bool isMarked(VertexType);
         int indexIs(VertexType);
         void breadthFirstSearch(VertexType, VertexType);
-        void depthFirstSearch(VertexType, VertexType);
+        // void depthFirstSearch(VertexType, VertexType);
+        MuffinQueue<VertexType> bfs(VertexType, VertexType);
         void shortestPath(VertexType, VertexType);
     
     private:
@@ -268,7 +269,10 @@ bool DirectedGraph<VertexType>::isMarked(VertexType vertex)
     else {return false;}
 }
 
-// CARE WAY MORE ABOUT THIS ONE AS IT THE FUNCTION USED TO FIND SHORTEST PATH.
+/*
+Default Breadth First Search Function that prints all nodes connected to sourceVertex.
+This program only utilizes breadthFirstSearch as we do not need DFS.
+*/
 template <class VertexType>
 void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
 {
@@ -317,7 +321,63 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
     }
 }
 
-// Do not use.
+/*
+Function returns a queue of all possible nodes that can be traversed.
+*/
+template <class VertexType>
+MuffinQueue<VertexType> DirectedGraph<VertexType>::bfs(VertexType sourceVertex, VertexType destinationVertex)
+{
+    MuffinQueue<VertexType> tempQueue;
+    MuffinQueue<VertexType> vertexQueue;
+    MuffinQueue<VertexType> resultQueue;
+
+    bool found = false;
+    VertexType vertex;
+    VertexType item;
+
+    clearMarks();
+    tempQueue.enqueue(sourceVertex);
+
+    do
+    {
+        vertex = tempQueue.dequeue();
+        if (vertex == destinationVertex)
+        {
+            resultQueue.enqueue(vertex);
+            found = true;
+        }
+        else
+        {
+            // If the vertex is not marked...
+            if (!isMarked(vertex))
+            {
+                markVertex(vertex);
+                resultQueue.enqueue(vertex);
+
+                getToVertices(vertex, vertexQueue);
+                while (!vertexQueue.isEmpty())
+                {
+                    item = vertexQueue.dequeue();
+                    if (!isMarked(item))
+                    {
+                        tempQueue.enqueue(item);
+                    }
+                }
+            }
+        }
+    } while ((!tempQueue.isEmpty()) && (!found));
+
+    if (!found)
+    {
+        std::cerr << "\nPath not found." << std::endl;
+    }
+
+    return resultQueue;
+}
+
+
+/*
+// This program does not require the use of DFS.
 template <class VertexType>
 void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, VertexType destinationVertex)
 {
@@ -361,6 +421,7 @@ void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, Vertex
         std::cout << "Path not found." << std::endl;
     }
 }
+*/
 
 template <class VertexType>
 void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex, VertexType destinationVertex)
@@ -368,6 +429,7 @@ void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex, VertexType
     clearMarks();
 
     int distance = 0;
-    MuffinQueue<VertexType> edgeQueue;
+
+    
 }
 
