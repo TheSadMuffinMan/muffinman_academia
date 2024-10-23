@@ -250,7 +250,7 @@ void DirectedGraph<VertexType>::getToVertices(VertexType vertex, MuffinQueue<Ver
     fromIndex = indexIs(vertex);
     for (toIndex = 0; toIndex < _numVertices; toIndex++)
     {
-        if (_edges[fromIndex][toIndex] != NULL_EDGE)
+        if (_edges[fromIndex][toIndex] != 0)
         {
             adjVertices.enqueue(_vertices[toIndex]);
         }
@@ -291,6 +291,7 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
         }
         else
         {
+            // If the vertex is not marked...
             if (!isMarked(vertex))
             {
                 markVertex(vertex);
@@ -346,7 +347,7 @@ void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, Vertex
 
                 while (!vertexQueue.isEmpty())
                 {
-                    vertexQueue.dequeue();
+                    item = vertexQueue.dequeue();
                     if (isMarked(item)) {stack.push(item);}
                 }
             }

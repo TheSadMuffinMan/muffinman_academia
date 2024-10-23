@@ -16,12 +16,12 @@ int main(int argc, char *argv[])
     std::cout << "Weight 13 & 11 = 4?: " << std::boolalpha << (testGraph.getWeight(13, 11) == 4) << std::endl;
     std::cout << "Weight 32 & 31 = 5?: " << std::boolalpha << (testGraph.getWeight(32, 31) == 5) << std::endl;
 
-    std::cout << "\nUsing DFS, shortest path is: ";
-    testGraph.depthFirstSearch(20, 18);
+    std::cout << "\nUsing DFS, shortest path between 1 & 3: ";
+    testGraph.depthFirstSearch(1, 3);
     std::cout << std::endl;
 
-    std::cout << "\nUsing BFS, shortest path is: ";
-    testGraph.breadthFirstSearch(20, 18);
+    std::cout << "\nUsing BFS, shortest path between 1 & 3: ";
+    testGraph.breadthFirstSearch(1, 3);
     std::cout << std::endl;
 
 
