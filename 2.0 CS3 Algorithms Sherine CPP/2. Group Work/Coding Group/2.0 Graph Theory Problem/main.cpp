@@ -3,13 +3,16 @@ Program is just the driver client for the Queue Class (MuffinQueue.h).
 */
 
 #include <iostream>
-#include "digraph.h"
+#include "DirectedGraph.h"
 
 int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start.\n" << std::endl;
 
-    DiGraph testGraph("inputFile.txt");
+    DirectedGraph<int> testGraph("inputFile.txt");
+
+    std::cout << "\nShortest Path Function for 5: " << std::endl;
+    testGraph.gptShortestPath(5);
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
