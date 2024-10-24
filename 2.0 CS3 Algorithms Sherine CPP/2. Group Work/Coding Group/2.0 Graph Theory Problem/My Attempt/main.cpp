@@ -20,17 +20,20 @@ int main(int argc, char *argv[])
     // testGraph.depthFirstSearch(1, 3);
     // std::cout << std::endl;
 
-    std::cout << "\nBFS function for 1 & 3 returns: ";
-    testGraph.breadthFirstSearch(1, 3);
-    std::cout << std::endl;
+    // std::cout << "\nBFS function for 1 & 3 returns: ";
+    // testGraph.breadthFirstSearch(1, 3);
+    // std::cout << std::endl;
 
-    std::cout << "\nBFS function for 5 & 7 returns: ";
-    testGraph.breadthFirstSearch(5, 7);
-    std::cout << std::endl;
+    // std::cout << "\nBFS function for 5 & 7 returns: ";
+    // testGraph.breadthFirstSearch(5, 7);
+    // std::cout << std::endl;
 
-    std::cout << "\nBFS function for 20 & 26 returns: ";
-    testGraph.breadthFirstSearch(20, 26);
-    std::cout << std::endl;
+    // std::cout << "\nBFS function for 20 & 26 returns: ";
+    // testGraph.breadthFirstSearch(20, 26);
+    // std::cout << std::endl;
+
+    std::cout << "\nShortest Path Function for 5 & 7: " << std::endl;
+    testGraph.shortestPath(5,7);
 
 
     std::cout << "\nEnd of program." << std::endl;

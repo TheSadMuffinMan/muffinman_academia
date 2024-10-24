@@ -9,17 +9,10 @@ Program is missing first line of data, fix later.
 #include <fstream>
 #include "MuffinQueue.h"
 #include "MuffinStack.h"
+#include "ItemType.h"
 
 const int NULL_EDGE = 0;
 
-template <class VertexType>
-struct ItemType
-{
-    VertexType fromVertex;
-    VertexType toVertex;
-    int weight; // Same as distance in this implementation.
-    bool isMarked = false;
-};
 
 /*
 Class assumes that the VertexType Class is a type for which the "=", "==", and "<<" operators are defined.
@@ -439,22 +432,91 @@ void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, Vertex
 Function utilizes BFS techniques.
 Function uses the ItemType struct to keep track of weights.
 */
+/*
+template <class VertexType>
+struct ItemType
+{
+    VertexType fromVertex;
+    VertexType toVertex;
+    int distance; // Same as weight in this implementation.
+};
+*/
 template <class VertexType>
 void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex, VertexType destinationVertex)
 {
+    ItemType item;
+    int minDistance = 0;
+    MuffinQueue<VertexType> fakePQ;
+    MuffinQueue<VertexType> vertexQueue;
+
+    VertexType vertex;
     clearMarks();
 
-    MuffinQueue<VertexType> allNodes = bfs(sourceVertex, destinationVertex);
-    VertexType* weightArray[allNodes.getSize()];
+    item.fromVertex = sourceVertex;
+    item.toVertex = sourceVertex;
+    item.distance = 0;
 
-    int index = 0;
-    while (!allNodes.isEmpty())
+    fakePQ.enqueue(item);
+    std::cout << "Last Vertex Destination Weight/Distance: " << std::endl;
+    std::cout << "-------------------------" << std::endl;
+
+    do
     {
-        //
-    }
+        item = fakePQ.dequeue();
+
+        if (!isMarked(item.toVertex))
+        {
+            markVertex(item.toVertex);
+            std::cout << item.fromVertex;
+            std::cout << " ";
+            std::cout << item.toVertex;
+            std::cout << " " << item.distance << std::endl;
+
+            item.fromVertex = item.toVertex;
+            minDistance = item.distance;
+
+            getToVertices(item.fromVertex, vertexQueue);
+
+            while (!vertexQueue.isEmpty())
+            {
+                vertex = vertexQueue.dequeue();
+
+                if (!isMarked(vertex))
+                {
+                    item.toVertex = vertex;
+                    item.distance = minDistance + getWeight(item.fromVertex, vertex);
+                    fakePQ.enqueue(item);
+                }
+            }
+        }
+    } while (!fakePQ.isEmpty());
+    
+
     
 
 /*
+    MuffinQueue<VertexType> workingQueue;
+    // MuffinQueue<int> weightQueue;
+
+    getToVertices(sourceVertex, workingQueue);
+    markVertex(sourceVertex);
+
+    int index = 0;
+    while (!workingQueue.isEmpty())
+    {
+        VertexType currVertex = workingQueue.dequeue();
+
+        // If we have already visited this vertex...
+        if (isMarked(currVertex) == true) {continue;}
+        else
+        {
+            markVertex(currVertex);
+            
+        }
+    }
+
+//////////////////////////////////////////////////////////////////////////
+
     int currentWeight = 0;
     MuffinQueue<VertexType> tempQueue;
 
