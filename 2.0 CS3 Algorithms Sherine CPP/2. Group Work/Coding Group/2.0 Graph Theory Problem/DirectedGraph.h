@@ -12,6 +12,14 @@ Program is missing first line of data, fix later.
 
 const int NULL_EDGE = 0;
 
+template <class VertexType>
+struct ItemType
+{
+    VertexType fromVertex;
+    VertexType toVertex;
+    int weight; // Same as distance in this implementation.
+};
+
 /*
 Class assumes that the VertexType Class is a type for which the "=", "==", and "<<" operators are defined.
 Class utilizes an Adjacency Matrix (_edges).
@@ -427,19 +435,14 @@ template <class VertexType>
 void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex, VertexType destinationVertex)
 {
     clearMarks();
-
-    int distance = 0;
-
-    while (true)
+    
+    int currentWeight = 0;
+    MuffinQueue<VertexType> tempQueue = bfs(sourceVertex, destinationVertex);
+    while (!tempQueue.isEmpty())
     {
-        MuffinQueue<VertexType> tempQueue;
-        tempQueue = bfs(sourceVertex, destinationVertex);
+        VertexType tempVertex = tempQueue.dequeue();
 
-        for (int i = 0; i < tempQueue._numItems; i++)
-        {
-            VertexType vertex = tempQueue.dequeue();
-        }
 
-    }
+    }    
 }
 
