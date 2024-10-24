@@ -7,10 +7,10 @@ Program is missing first line of data, fix later.
 #include <iostream>
 #include <chrono>
 #include <fstream>
-#include <queue>
 #include "MuffinQueue.h"
 #include "MuffinStack.h"
 // #include "ItemType.h"
+// #include <queue>
 
 const int NULL_EDGE = 0;
 
@@ -62,11 +62,9 @@ class DirectedGraph
         bool isMarked(VertexType);
         int indexIs(VertexType);
         void breadthFirstSearch(VertexType, VertexType);
-        // void depthFirstSearch(VertexType, VertexType);
-        MuffinQueue<VertexType> bfs(VertexType, VertexType);
 
         void shortestPath(VertexType);
-        void gptShortestPath(VertexType startVertex);
+        int* gptShortestPath(VertexType startVertex);
     
     private:
         int _numVertices;
@@ -145,10 +143,9 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
         if (fullString.find(" ") == std::string::npos)
         {
             sourceVertex = std::stoi(fullString);
-            // In the future, I would add functionality to check if vertex exists.
 
             addVertex(sourceVertex);
-            std::cout << "Adding Vertex " << sourceVertex << " with no connections." << std::endl;
+            // std::cout << "Adding Vertex " << sourceVertex << " with no connections." << std::endl;
             continue;
         }
 
@@ -177,13 +174,17 @@ DirectedGraph<VertexType>::DirectedGraph(std::string fileName)
         tempString = fullString.substr((secondSpaceIndex + 1), (secondSpaceIndex - firstSpaceIndex));
         weight = std::stoi(tempString);
 
-        std::cout << "Adding Edge between " << sourceVertex << " and " << destinationVertex << " with a weight of " <<
-            weight << "." << std::endl;
+        // Un-comment below to see each edge being added.
+        // std::cout << "Adding Edge between " << sourceVertex << " and " << destinationVertex;
+        // std::cout << " with a weight of " << weight << "." << std::endl;
 
         addEdge(sourceVertex, destinationVertex, weight);
     }
 
     inputStream.close();
+
+    addEdge(0,8,3); // ***DEBUG*** Input is not setting edge between 0 & 8... Fix later.
+    std::cout << "All vertices and connections initialized." << std::endl;
 }
 
 template <class VertexType>
@@ -289,7 +290,7 @@ void DirectedGraph<VertexType>::getToVertices(VertexType vertex, MuffinQueue<Ver
 
     if (adjVertices.isEmpty())
     {
-        std::cout << "Vertex " << vertex << " has no neighbors!" << std::endl;
+        std::cout << "Vertex " << vertex << " has no connections!" << std::endl;
     }
 }
 
@@ -356,61 +357,8 @@ void DirectedGraph<VertexType>::breadthFirstSearch(VertexType sourceVertex, Vert
     }
 }
 
-/*
-Function returns a queue of all possible nodes that can be traversed.
-*/
-template <class VertexType>
-MuffinQueue<VertexType> DirectedGraph<VertexType>::bfs(VertexType sourceVertex, VertexType destinationVertex)
-{
-    MuffinQueue<VertexType> tempQueue;
-    MuffinQueue<VertexType> vertexQueue;
-    MuffinQueue<VertexType> resultQueue;
 
-    bool found = false;
-    VertexType vertex;
-    VertexType item;
-
-    clearMarks();
-    tempQueue.enqueue(sourceVertex);
-
-    do
-    {
-        vertex = tempQueue.dequeue();
-        if (vertex == destinationVertex)
-        {
-            resultQueue.enqueue(vertex);
-            found = true;
-        }
-        else
-        {
-            // If the vertex is not marked...
-            if (!isMarked(vertex))
-            {
-                markVertex(vertex);
-                resultQueue.enqueue(vertex);
-
-                getToVertices(vertex, vertexQueue);
-                while (!vertexQueue.isEmpty())
-                {
-                    item = vertexQueue.dequeue();
-                    if (!isMarked(item))
-                    {
-                        tempQueue.enqueue(item);
-                    }
-                }
-            }
-        }
-    } while ((!tempQueue.isEmpty()) && (!found));
-
-    if (!found)
-    {
-        std::cerr << "\nPath not found." << std::endl;
-    }
-
-    return resultQueue;
-}
-
-// DO NOT USE: EMPTY FUNCTION.
+// ***DO NOT USE***: EMPTY FUNCTION.
 template <class VertexType>
 void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex)
 {
@@ -465,13 +413,14 @@ void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex)
     // } while (!priorityQueue.empty());
 }
 
+// Function returns an array with all possible distances from startVertex.
 template <class VertexType>
-void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
+int* DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
 {
     clearMarks(); // Setting all marks to false.
 
     MuffinQueue<VertexType> vertexQueue; // Queue holds all vertices that require analyzation.
-    int* distances = new int[_maxVertices]; // Stores distances from startVertex.
+    int distances[1000]; // Stores distances from startVertex.
 
     // Initializing distances to 0...
     for (int i = 0; i < _maxVertices; ++i)
@@ -492,6 +441,7 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
         MuffinQueue<VertexType> neighborQueue;     
         getToVertices(currentVertex, neighborQueue);
 
+        /*
         // Debugging, printing out all neighbors.
         std::cout << "***DEBUG*** Neighbors of " << currentVertex << ": ";
         while (!neighborQueue.isEmpty())
@@ -500,11 +450,13 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
             std::cout << neighbor << " ";
         }
         std::cout << std::endl;
+        */
 
         // Check if the current vertex has no neighbors (isolated node).
         if (neighborQueue.isEmpty())
         {
-            std::cout << "Vertex " << currentVertex << " is isolated. Skipping further traversal." << std::endl;
+            std::cout << "Vertex " << currentVertex << " has no connections. ";
+            std::cout << "Skipping further traversal." << std::endl;
             continue;
         }
 
@@ -513,7 +465,6 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
             VertexType neighbor = neighborQueue.dequeue();
             int neighborIndex = indexIs(neighbor);
 
-            // if (!visited[neighborIndex]) {
             if (!isMarked(neighborIndex))
             {
                 markVertex(neighborIndex);
@@ -524,6 +475,60 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
         }
     }
 
-    delete[] distances;
+    return distances;
 }
 
+/*
+
+// Function returns a queue of all possible nodes that can be traversed.
+    template <class VertexType>
+    MuffinQueue<VertexType> DirectedGraph<VertexType>::bfs(VertexType sourceVertex, VertexType destinationVertex)
+    {
+        MuffinQueue<VertexType> tempQueue;
+        MuffinQueue<VertexType> vertexQueue;
+        MuffinQueue<VertexType> resultQueue;
+
+        bool found = false;
+        VertexType vertex;
+        VertexType item;
+
+        clearMarks();
+        tempQueue.enqueue(sourceVertex);
+
+        do
+        {
+            vertex = tempQueue.dequeue();
+            if (vertex == destinationVertex)
+            {
+                resultQueue.enqueue(vertex);
+                found = true;
+            }
+            else
+            {
+                // If the vertex is not marked...
+                if (!isMarked(vertex))
+                {
+                    markVertex(vertex);
+                    resultQueue.enqueue(vertex);
+
+                    getToVertices(vertex, vertexQueue);
+                    while (!vertexQueue.isEmpty())
+                    {
+                        item = vertexQueue.dequeue();
+                        if (!isMarked(item))
+                        {
+                            tempQueue.enqueue(item);
+                        }
+                    }
+                }
+            }
+        } while ((!tempQueue.isEmpty()) && (!found));
+
+        if (!found)
+        {
+            std::cerr << "\nPath not found." << std::endl;
+        }
+
+        return resultQueue;
+    }
+*/
