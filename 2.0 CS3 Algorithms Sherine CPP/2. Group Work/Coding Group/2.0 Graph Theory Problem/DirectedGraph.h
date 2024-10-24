@@ -18,6 +18,7 @@ struct ItemType
     VertexType fromVertex;
     VertexType toVertex;
     int weight; // Same as distance in this implementation.
+    bool isMarked = false;
 };
 
 /*
@@ -250,7 +251,10 @@ int DirectedGraph<VertexType>::getWeight(VertexType sourceVertex, VertexType des
     return _edges[row][column]; 
 }
 
-// Function Parameters: VertexType vertex, Queue<VertexType>& adjVertices.
+/*
+Function returns a queue of all vertices adjacent to passed vertex.
+Function Parameters: VertexType vertex, Queue<VertexType>& adjVertices.
+*/
 template <class VertexType>
 void DirectedGraph<VertexType>::getToVertices(VertexType vertex, MuffinQueue<VertexType>& adjVertices)
 {
@@ -431,18 +435,55 @@ void DirectedGraph<VertexType>::depthFirstSearch(VertexType sourceVertex, Vertex
 }
 */
 
+/*
+Function utilizes BFS techniques.
+Function uses the ItemType struct to keep track of weights.
+*/
 template <class VertexType>
 void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex, VertexType destinationVertex)
 {
     clearMarks();
+
     
+
+
+    
+
+/*
     int currentWeight = 0;
-    MuffinQueue<VertexType> tempQueue = bfs(sourceVertex, destinationVertex);
+    MuffinQueue<VertexType> tempQueue;
+
+    // Filling tempQueue with all adjacent vertices.
+    getToVertices(sourceVertex, tempQueue);
+
+    // Marking sourceVertex.
+    markVertex(sourceVertex);
+
     while (!tempQueue.isEmpty())
     {
         VertexType tempVertex = tempQueue.dequeue();
+    }
 
+//////////////////////////////////////////////////////////////////////
 
-    }    
+    int minWeight = 0;
+    MuffinQueue<VertexType> queue;
+    // VertexType currVertex = sourceVertex;
+    VertexType toVertex = sourceVertex;
+    int currWeight = 0;
+
+    queue.enqueue(currVertex);
+    do
+    {
+        VertexType currVertex = queue.dequeue();
+
+        if (isMarked(currVertex) != true)
+        {
+            markVertex(currVertex);
+
+        }
+    } while (!queue.isEmpty());
+
+*/ 
 }
 
