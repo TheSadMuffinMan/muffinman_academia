@@ -1,19 +1,20 @@
 #pragma once
 
 #include "MuffinHeap.h"
+#include <iostream>
 
 template <class ItemType>
 class MuffinPriorityQueue
 {
     public:
+        MuffinPriorityQueue();
         MuffinPriorityQueue(int);
         ~MuffinPriorityQueue();
 
         void makeEmpty();
         bool isEmpty();
         void enqueue(ItemType);
-        // ItemType dequeue();
-        void dequeue(ItemType&);
+        ItemType dequeue();
         void dequeue(ItemType&);
     
     private:
@@ -21,6 +22,14 @@ class MuffinPriorityQueue
         int _maxItems;
         MuffinHeap<ItemType> _items;
 };
+
+template <class ItemType>
+MuffinPriorityQueue<ItemType>::MuffinPriorityQueue()
+{
+    _length = 0;
+    _maxItems = 0;
+    _items = nullptr;
+}
 
 template <class ItemType>
 MuffinPriorityQueue<ItemType>::MuffinPriorityQueue(int maxItems)
@@ -52,11 +61,33 @@ void MuffinPriorityQueue<ItemType>::dequeue(ItemType& item)
     }
     else
     {
-        item = _items._elements[0] = _items._elements[(_length - 1)];
+        item = _items._elements[0];
+        _items._elements[0] = _items._elements[(_length - 1)];
         _length--;
         _items.reheapDown(0, (_length - 1));
     }
 }
+
+template <class ItemType>
+ItemType MuffinPriorityQueue<ItemType>::dequeue()
+{
+    ItemType returnItem;
+    if (_length == 0)
+    {
+        std::cerr << "Priority Queue is empty, aborting..." << std::endl;
+        return;
+    }
+    else
+    {
+        returnItem = _items._elements[0];
+        _items._elements[0] = _items._elements[(_length - 1)];
+        _length--;
+        _items.reheapDown(0, (_length - 1));
+
+        return returnItem;
+    }
+}
+
 
 template <class ItemType>
 void MuffinPriorityQueue<ItemType>::enqueue(ItemType newItem)
@@ -66,7 +97,7 @@ void MuffinPriorityQueue<ItemType>::enqueue(ItemType newItem)
     {
         std::cerr << "Queue is full, aborting..." << std::endl;
     }
-    
+
     _items._elements[_length - 1] = newItem;
     _items.reheapUp(0, (_length - 1));
 }

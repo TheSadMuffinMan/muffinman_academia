@@ -7,6 +7,7 @@ template <class ItemType>
 class MuffinHeap
 {
     public:
+        MuffinHeap();
         MuffinHeap(int);
         ~MuffinHeap();
 
@@ -14,16 +15,23 @@ class MuffinHeap
         void reheapDown(int, int);
         void reheapUp(int, int);
     
-    private:
         int _numElements;
         ItemType* _elements;
+    // private:
 };
+
+template <class ItemType>
+MuffinHeap<ItemType>::MuffinHeap()
+{
+    _numElements = 0;
+    _elements = new ItemType[1000];
+}
+
 
 template <class ItemType>
 MuffinHeap<ItemType>::MuffinHeap(int numElements)
 {
     _numElements = numElements;
-
     _elements = new ItemType[numElements];
 }
 

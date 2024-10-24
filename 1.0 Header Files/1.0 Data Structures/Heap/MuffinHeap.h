@@ -7,6 +7,7 @@ template <class ItemType>
 class MuffinHeap
 {
     public:
+        MuffinHeap();
         MuffinHeap(int);
         ~MuffinHeap();
 
@@ -20,10 +21,17 @@ class MuffinHeap
 };
 
 template <class ItemType>
+MuffinHeap<ItemType>::MuffinHeap()
+{
+    _numElements = 0;
+    _elements = new ItemType[1000];
+}
+
+
+template <class ItemType>
 MuffinHeap<ItemType>::MuffinHeap(int numElements)
 {
     _numElements = numElements;
-
     _elements = new ItemType[numElements];
 }
 
