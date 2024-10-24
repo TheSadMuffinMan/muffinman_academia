@@ -470,47 +470,47 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
 {
     clearMarks(); // Setting all marks to false.
 
-    MuffinQueue<VertexType> vertexQueue;
+    MuffinQueue<VertexType> vertexQueue; // Queue holds all vertices that require analyzation.
     int* distances = new int[_maxVertices]; // Stores distances from startVertex.
 
-    // Initialize distances to infinity (or a large value)
+    // Initializing distances to 0...
     for (int i = 0; i < _maxVertices; ++i)
     {
-        distances[i] = 100;
+        distances[i] = 0;
     }
     distances[indexIs(startVertex)] = 0;
 
     // Enqueue the start vertex and mark it as visitied.
     vertexQueue.enqueue(startVertex);
-
     markVertex(indexIs(startVertex));
 
     while (!vertexQueue.isEmpty())
     {
         VertexType currentVertex = vertexQueue.dequeue();
 
-        // Get all adjacent vertices.
-        MuffinQueue<VertexType> neighbors;        
-        getToVertices(currentVertex, neighbors);
+        // Getting all adjacent/neighbor vertices.
+        MuffinQueue<VertexType> neighborQueue;     
+        getToVertices(currentVertex, neighborQueue);
 
+        // Debugging, printing out all neighbors.
         std::cout << "***DEBUG*** Neighbors of " << currentVertex << ": ";
-        while (!neighbors.isEmpty())
+        while (!neighborQueue.isEmpty())
         {
-            VertexType neighbor = neighbors.dequeue();
+            VertexType neighbor = neighborQueue.dequeue();
             std::cout << neighbor << " ";
         }
         std::cout << std::endl;
 
-        // Check if the current vertex has no neighbors (isolated node)
-        if (neighbors.isEmpty())
+        // Check if the current vertex has no neighbors (isolated node).
+        if (neighborQueue.isEmpty())
         {
             std::cout << "Vertex " << currentVertex << " is isolated. Skipping further traversal." << std::endl;
             continue;
         }
 
-        while (!neighbors.isEmpty())
+        while (!neighborQueue.isEmpty())
         {
-            VertexType neighbor = neighbors.dequeue();
+            VertexType neighbor = neighborQueue.dequeue();
             int neighborIndex = indexIs(neighbor);
 
             // if (!visited[neighborIndex]) {
