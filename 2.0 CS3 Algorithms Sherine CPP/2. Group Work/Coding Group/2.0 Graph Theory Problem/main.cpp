@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 
     DirectedGraph<int> testGraph("inputFile.txt");
 
-    std::cout << "\nShortest Path Function for 5: " << std::endl;
+    std::cout << "\nCalling testGraph.gptShortestPath(5)..." << std::endl;
     testGraph.gptShortestPath(5);
 
     std::cout << "\nEnd of program." << std::endl;

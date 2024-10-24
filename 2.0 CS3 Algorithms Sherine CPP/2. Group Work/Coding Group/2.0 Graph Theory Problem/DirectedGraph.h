@@ -286,6 +286,11 @@ void DirectedGraph<VertexType>::getToVertices(VertexType vertex, MuffinQueue<Ver
             adjVertices.enqueue(_vertices[toIndex]);
         }
     }
+
+    if (adjVertices.isEmpty())
+    {
+        std::cout << "Vertex " << vertex << " has no neighbors!" << std::endl;
+    }
 }
 
 // Function returns whether or not function parameter "vertex" has been marked.
@@ -405,67 +410,68 @@ MuffinQueue<VertexType> DirectedGraph<VertexType>::bfs(VertexType sourceVertex, 
     return resultQueue;
 }
 
+// DO NOT USE: EMPTY FUNCTION.
 template <class VertexType>
 void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex)
 {
-    ItemType<VertexType> item;
-    int minDistance = 0;
-    std::priority_queue<ItemType<VertexType>> priorityQueue;
-    MuffinQueue<VertexType> vertexQueue;
+    // ItemType<VertexType> item;
+    // int minDistance = 0;
+    // std::priority_queue<ItemType<VertexType>> priorityQueue;
+    // MuffinQueue<VertexType> vertexQueue;
 
-    VertexType vertex;
-    clearMarks();
+    // VertexType vertex;
+    // clearMarks();
 
-    item.fromVertex = sourceVertex;
-    item.toVertex = sourceVertex;
-    item.distance = 0;
+    // item.fromVertex = sourceVertex;
+    // item.toVertex = sourceVertex;
+    // item.distance = 0;
 
-    // priorityQueue.enqueue(item);
-    priorityQueue.push(item);
+    // // priorityQueue.enqueue(item);
+    // priorityQueue.push(item);
     
-    std::cout << "Last Vertex Destination Weight/Distance: " << std::endl;
-    std::cout << "-------------------------" << std::endl;
+    // std::cout << "Last Vertex Destination Weight/Distance: " << std::endl;
+    // std::cout << "-------------------------" << std::endl;
 
-    do
-    {
-        item = priorityQueue.top(); // Grabbing data from top of PQ.
-        priorityQueue.pop(); // Removing first element.
+    // do
+    // {
+    //     item = priorityQueue.top(); // Grabbing data from top of PQ.
+    //     priorityQueue.pop(); // Removing first element.
 
-        if (!isMarked(item.toVertex))
-        {
-            markVertex(item.toVertex);
-            std::cout << item.fromVertex;
-            std::cout << " ";
-            std::cout << item.toVertex;
-            std::cout << " " << item.distance << std::endl;
+    //     if (!isMarked(item.toVertex))
+    //     {
+    //         markVertex(item.toVertex);
+    //         std::cout << item.fromVertex;
+    //         std::cout << " ";
+    //         std::cout << item.toVertex;
+    //         std::cout << " " << item.distance << std::endl;
 
-            item.fromVertex = item.toVertex;
-            minDistance = item.distance;
+    //         item.fromVertex = item.toVertex;
+    //         minDistance = item.distance;
 
-            getToVertices(item.fromVertex, vertexQueue);
+    //         getToVertices(item.fromVertex, vertexQueue);
 
-            while (!vertexQueue.isEmpty())
-            {
-                vertex = vertexQueue.dequeue();
+    //         while (!vertexQueue.isEmpty())
+    //         {
+    //             vertex = vertexQueue.dequeue();
 
-                if (!isMarked(vertex))
-                {
-                    item.toVertex = vertex;
-                    item.distance = minDistance + getWeight(item.fromVertex, vertex);
-                    priorityQueue.push(item);
-                }
-            }
-        }
-    } while (!priorityQueue.empty());
+    //             if (!isMarked(vertex))
+    //             {
+    //                 item.toVertex = vertex;
+    //                 item.distance = minDistance + getWeight(item.fromVertex, vertex);
+    //                 priorityQueue.push(item);
+    //             }
+    //         }
+    //     }
+    // } while (!priorityQueue.empty());
 }
 
 template <class VertexType>
 void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
 {
-    clearMarks();
+    clearMarks(); // Setting all marks to false.
+
     MuffinQueue<VertexType> vertexQueue;
-    // bool* visited = new bool[_maxVertices]();  // Initialize all as false
-    int* distances = new int[_maxVertices];    // Store distances from startVertex
+    int* distances = new int[_maxVertices]; // Stores distances from startVertex.
 
     // Initialize distances to infinity (or a large value)
     for (int i = 0; i < _maxVertices; ++i)
@@ -474,10 +480,9 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
     }
     distances[indexIs(startVertex)] = 0;
 
-    // Enqueue the start vertex and mark it visited
+    // Enqueue the start vertex and mark it as visitied.
     vertexQueue.enqueue(startVertex);
 
-    // visited[indexIs(startVertex)] = true;
     markVertex(indexIs(startVertex));
 
     while (!vertexQueue.isEmpty())
@@ -485,10 +490,26 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
         VertexType currentVertex = vertexQueue.dequeue();
 
         // Get all adjacent vertices.
-        MuffinQueue<VertexType> neighbors;
+        MuffinQueue<VertexType> neighbors;        
         getToVertices(currentVertex, neighbors);
 
-        while (!neighbors.isEmpty()) {
+        std::cout << "***DEBUG*** Neighbors of " << currentVertex << ": ";
+        while (!neighbors.isEmpty())
+        {
+            VertexType neighbor = neighbors.dequeue();
+            std::cout << neighbor << " ";
+        }
+        std::cout << std::endl;
+
+        // Check if the current vertex has no neighbors (isolated node)
+        if (neighbors.isEmpty())
+        {
+            std::cout << "Vertex " << currentVertex << " is isolated. Skipping further traversal." << std::endl;
+            continue;
+        }
+
+        while (!neighbors.isEmpty())
+        {
             VertexType neighbor = neighbors.dequeue();
             int neighborIndex = indexIs(neighbor);
 
@@ -503,8 +524,6 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
         }
     }
 
-    // Clean up dynamically allocated memory
-    delete[] visited;
     delete[] distances;
 }
 
