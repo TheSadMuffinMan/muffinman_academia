@@ -48,11 +48,12 @@ class DiGraph{
             tempGraphSize = std::stoi(tempString);
 
             this->Gsize = tempGraphSize;
+            // DECLARE ADJACENCY LIST/VECTOR?
 
             while (!inputStream.eof())
             {
                 std::getline(inputStream, fullString);
-                // std::cout << "***DEBUG*** fullString = [" << fullString << "]" << std::endl;
+                std::cout << "***DEBUG*** fullString = [" << fullString << "]" << std::endl;
 
                 int firstSpaceIndex = 0;
                 int secondSpaceIndex = 0;
@@ -64,7 +65,8 @@ class DiGraph{
                 {
                     sourceVertex = std::stoi(fullString);
 
-                    // ADD SOURCE VERTEX IN adj VECTOR.
+                    // Adding a connection with itself.
+                    adj[sourceVertex].push_back({sourceVertex, 0});
                     std::cout << "Adding Vertex " << sourceVertex << " with no connections." << std::endl;
                     continue;
                 }
@@ -87,6 +89,9 @@ class DiGraph{
                 std::cout << "Adding Edge between " << sourceVertex << " and " << destinationVertex << " with a weight of " <<
                     weight << "." << std::endl;
 
+                
+                adj[sourceVertex].push_back({sourceVertex, 0});
+                adj[destinationVertex].push_back({destinationVertex, 0});
                 addEdge(sourceVertex, destinationVertex, weight);
             }
 
@@ -94,10 +99,10 @@ class DiGraph{
 
         }
 
-        void addEdge(int vFrom, int vTo, int weight=1)
+        void addEdge(int vFrom, int vTo, int weight = 1)
         {
             // add edge vFrom-vTo (parallel edges and self-loops allowed)
-            if(vFrom<0 || vFrom>= Gsize || vTo<0 || vTo>= Gsize){
+            if((vFrom < 0) || (vFrom >= Gsize) || (vTo < 0) || (vTo >= Gsize)){
                 throw out_of_range("Vertex index out of bounds");
             }	
             adj[vFrom].push_back({vTo, weight});
