@@ -64,7 +64,7 @@ class DirectedGraph
         void breadthFirstSearch(VertexType, VertexType);
 
         void shortestPath(VertexType);
-        int* gptShortestPath(VertexType startVertex);
+        void gptShortestPath(VertexType startVertex);
     
     private:
         int _numVertices;
@@ -413,14 +413,13 @@ void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex)
     // } while (!priorityQueue.empty());
 }
 
-// Function returns an array with all possible distances from startVertex.
 template <class VertexType>
-int* DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
+void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
 {
     clearMarks(); // Setting all marks to false.
 
     MuffinQueue<VertexType> vertexQueue; // Queue holds all vertices that require analyzation.
-    int distances[1000]; // Stores distances from startVertex.
+    int* distances = new int[1000]; // Stores distances from startVertex.
 
     // Initializing distances to 0...
     for (int i = 0; i < _maxVertices; ++i)
@@ -475,7 +474,7 @@ int* DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
         }
     }
 
-    return distances;
+    delete[] distances;
 }
 
 /*

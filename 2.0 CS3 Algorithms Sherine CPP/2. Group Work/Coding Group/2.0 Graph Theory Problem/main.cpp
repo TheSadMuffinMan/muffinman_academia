@@ -12,12 +12,7 @@ int main(int argc, char *argv[])
     DirectedGraph<int> testGraph("inputFile.txt");
 
     std::cout << "\nCalling testGraph.gptShortestPath(5)..." << std::endl;
-    int* distances = testGraph.gptShortestPath(5);
-
-    for (int i = 0; i < sizeof(distances); i++)
-    {
-        std::cout << "Distance from " << i << ": " << distances[i] << std::endl;
-    }
+    testGraph.gptShortestPath(5);
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
