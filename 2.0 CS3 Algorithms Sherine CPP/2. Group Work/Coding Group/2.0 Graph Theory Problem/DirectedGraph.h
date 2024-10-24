@@ -444,9 +444,14 @@ void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex, VertexType
 {
     clearMarks();
 
-    
+    MuffinQueue<VertexType> allNodes = bfs(sourceVertex, destinationVertex);
+    VertexType* weightArray[allNodes.getSize()];
 
-
+    int index = 0;
+    while (!allNodes.isEmpty())
+    {
+        //
+    }
     
 
 /*
