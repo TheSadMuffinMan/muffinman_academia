@@ -17,7 +17,7 @@ struct Edge{
 class DiGraph{
 	private:
 		int Gsize;
-		vector<vector<Edge>> adj; //adjacency list
+		vector<vector<Edge>> adj; // The Adjacency List.
 	public:
 		DiGraph(int Gsize): Gsize(Gsize), adj(Gsize)
         {
@@ -48,7 +48,7 @@ class DiGraph{
             tempGraphSize = std::stoi(tempString);
 
             this->Gsize = tempGraphSize;
-            // DECLARE ADJACENCY LIST/VECTOR?
+            this->adj[tempGraphSize]; // Declaring adjacency list.
 
             while (!inputStream.eof())
             {
