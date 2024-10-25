@@ -14,11 +14,26 @@ int main(int argc, char *argv[])
     // std::cout << "\nCalling testGraph.gptShortestPath(5)..." << std::endl;
     // testGraph.gptShortestPath(5);
 
-    int path[10]; // Assume a maximum path length of 10.
+    int path[30]; // Assume a maximum path length of 30.
     int pathLength;
 
-    std::cout << "\nCalling testGraph.try2GPTshortestPath(21, 22, path, pathLength)..." << std::endl;
-    if (testGraph.try2GPTshortestPath(21, 22, path, pathLength))
+    std::cout << "\nCalling testGraph.shortestPath(21, 22,...):" << std::endl;
+    if (testGraph.shortestPath(21, 22, path, pathLength))
+    {
+        std::cout << "Shortest path from 21 to 22: ";
+        for (int i = 0; i < pathLength; ++i)
+        {
+            std::cout << path[i] << " --> ";
+        }
+        std::cout << std::endl;
+    }
+    else
+    {
+        std::cout << "No path found." << std::endl;
+    }
+
+    std::cout << "\nCalling testGraph.shortestPath(20, 27,...):" << std::endl;
+    if (testGraph.shortestPath(20, 27, path, pathLength))
     {
         std::cout << "Shortest path from 21 to 22: ";
         for (int i = 0; i < pathLength; ++i)
