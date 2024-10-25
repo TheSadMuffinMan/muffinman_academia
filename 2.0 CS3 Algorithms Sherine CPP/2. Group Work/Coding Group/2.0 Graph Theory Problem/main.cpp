@@ -8,6 +8,8 @@ Program is just the driver client for the Queue Class (MuffinQueue.h).
 int main(int argc, char *argv[])
 {
     int source1, source2, source3, destination1, destination2, destination3;
+    int path[50];
+    int pathWeight = 0;
     std::string fileName;
 
     std::cout << "\nProgram start.\n" << std::endl;
@@ -20,7 +22,20 @@ int main(int argc, char *argv[])
 
     std::cout << "\n\tDestination 1?: ";
     std::cin >> destination1;
-    std::cout << "\nShortest Path 1 from vertex " << source1 << ":"
+    std::cout << "Shortest Path 1 from vertex \"" << source1 << "\":" << std::endl;
+    if (workingGraph.shortestPath(source1, destination1, path, pathWeight))
+    {
+        for (int i = 0; i < (pathWeight - 1); i++)
+        {
+            std::cout << path[i] << " --> ";
+        }
+        std::cout << destination1 << std::endl;
+    }
+    else
+    {
+        std::cout << "Path not found." << std::endl;
+    }
+
 
 
     std::cout << "\nEnd of program." << std::endl;
