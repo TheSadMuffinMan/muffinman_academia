@@ -7,7 +7,27 @@ Program is just the driver client for the Queue Class (MuffinQueue.h).
 
 int main(int argc, char *argv[])
 {
+    int source1, source2, source3, destination1, destination2, destination3;
+    std::string fileName;
+
     std::cout << "\nProgram start.\n" << std::endl;
+    std::cin >> fileName;
+
+    DirectedGraph<int> workingGraph(fileName);
+
+    std::cout << "\nProvide 3 sources (seperated by a space): ";
+    std::cin >> source1 >> source2 >> source3;
+
+    std::cout << "\n\tDestination 1?: ";
+    std::cin >> destination1;
+    std::cout << "\nShortest Path 1 from vertex " << source1 << ":"
+
+
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
+}
+
+/* TESTING CODE
 
     DirectedGraph<int> testGraph("inputFile.txt");
 
@@ -32,10 +52,12 @@ int main(int argc, char *argv[])
         std::cout << "No path found." << std::endl;
     }
 
+    int path2[50];
+    int pathLength2;
     std::cout << "\nCalling testGraph.shortestPath(20, 27,...):" << std::endl;
-    if (testGraph.shortestPath(20, 27, path, pathLength))
+    if (testGraph.shortestPath(20, 27, path2, pathLength2))
     {
-        std::cout << "Shortest path from 21 to 22: ";
+        std::cout << "Shortest path from 20 to 27: ";
         for (int i = 0; i < pathLength; ++i)
         {
             std::cout << path[i] << " --> ";
@@ -46,12 +68,6 @@ int main(int argc, char *argv[])
     {
         std::cout << "No path found." << std::endl;
     }
-
-    std::cout << "\nEnd of program." << std::endl;
-    return 0;
-}
-
-/* TESTING CODE
 
     std::cout << "\nWeight 0 & 8 = 3?: " << std::boolalpha << (testGraph.getWeight(0, 8) == 3) << std::endl;
     std::cout << "Weight 1 & 13 = 7?: " << std::boolalpha << (testGraph.getWeight(1, 3) == 7) << std::endl;

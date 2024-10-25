@@ -57,7 +57,7 @@ template <class VertexType>
 DirectedGraph<VertexType>::DirectedGraph()
 {
     _numVertices = 0;
-    _maxVertices = 200;
+    _maxVertices = 500;
     _vertices = new VertexType[_maxVertices];
     _marks = new bool[_maxVertices];
     for (int i = 0; i < _maxVertices; i++) {_marks[i] = false;}
@@ -317,7 +317,7 @@ VertexType path[], int &pathLength)
             int edgeWeight = _edges[currentIndex][neighborIndex];
 
             // Checking to see if we found a shorter path...
-            if (distances[currentIndex] + edgeWeight < distances[neighborIndex])
+            if ((distances[currentIndex] + edgeWeight) < distances[neighborIndex])
             {
                 distances[neighborIndex] = distances[currentIndex] + edgeWeight;
                 predecessors[neighborIndex] = currentIndex;
@@ -334,7 +334,8 @@ VertexType path[], int &pathLength)
 
     // Reconstruct the path from start to destination using the predecessors array.
     int destinationIndex = indexIs(destinationVertex);
-    if (predecessors[destinationIndex] == -1) {
+    if (predecessors[destinationIndex] == -1)
+    {
         // No valid path found.
         pathLength = 0;
         return false;
@@ -355,7 +356,8 @@ VertexType path[], int &pathLength)
 
     // Reverse the temporary path into the output path array.
     pathLength = tempLength;
-    for (int i = 0; i < tempLength; ++i) {
+    for (int i = 0; i < tempLength; ++i)
+    {
         path[i] = tempPath[tempLength - 1 - i];
     }
 
