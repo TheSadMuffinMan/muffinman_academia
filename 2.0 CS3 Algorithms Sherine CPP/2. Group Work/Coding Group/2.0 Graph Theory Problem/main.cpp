@@ -11,8 +11,26 @@ int main(int argc, char *argv[])
 
     DirectedGraph<int> testGraph("inputFile.txt");
 
-    std::cout << "\nCalling testGraph.gptShortestPath(5)..." << std::endl;
-    testGraph.gptShortestPath(5);
+    // std::cout << "\nCalling testGraph.gptShortestPath(5)..." << std::endl;
+    // testGraph.gptShortestPath(5);
+
+    int path[10]; // Assume a maximum path length of 10.
+    int pathLength;
+
+    std::cout << "\nCalling testGraph.try2GPTshortestPath(21, 22, path, pathLength)..." << std::endl;
+    if (testGraph.try2GPTshortestPath(21, 22, path, pathLength))
+    {
+        std::cout << "Shortest path from 21 to 22: ";
+        for (int i = 0; i < pathLength; ++i)
+        {
+            std::cout << path[i] << " --> ";
+        }
+        std::cout << std::endl;
+    }
+    else
+    {
+        std::cout << "No path found." << std::endl;
+    }
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;

@@ -13,6 +13,7 @@ Program is missing first line of data, fix later.
 // #include <queue>
 
 const int NULL_EDGE = 0;
+const int INFINITY = 2100000000; // Max int size is 2,147,483,647, so setting infinity to something barely smaller.
 
 template <class VertexType>
 struct ItemType
@@ -64,7 +65,8 @@ class DirectedGraph
         void breadthFirstSearch(VertexType, VertexType);
 
         void shortestPath(VertexType);
-        void gptShortestPath(VertexType startVertex);
+        // void gptShortestPath(VertexType startVertex);
+        bool try2GPTshortestPath(VertexType, VertexType, VertexType*, int&);
     
     private:
         int _numVertices;
@@ -413,6 +415,7 @@ void DirectedGraph<VertexType>::shortestPath(VertexType sourceVertex)
     // } while (!priorityQueue.empty());
 }
 
+/*
 template <class VertexType>
 void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
 {
@@ -440,16 +443,15 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
         MuffinQueue<VertexType> neighborQueue;     
         getToVertices(currentVertex, neighborQueue);
 
-        /*
+
         // Debugging, printing out all neighbors.
-        std::cout << "***DEBUG*** Neighbors of " << currentVertex << ": ";
-        while (!neighborQueue.isEmpty())
-        {
-            VertexType neighbor = neighborQueue.dequeue();
-            std::cout << neighbor << " ";
-        }
-        std::cout << std::endl;
-        */
+        // std::cout << "***DEBUG*** Neighbors of " << currentVertex << ": ";
+        // while (!neighborQueue.isEmpty())
+        // {
+        //     VertexType neighbor = neighborQueue.dequeue();
+        //     std::cout << neighbor << " ";
+        // }
+        // std::cout << std::endl;
 
         // Check if the current vertex has no neighbors (isolated node).
         if (neighborQueue.isEmpty())
@@ -459,10 +461,17 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
             continue;
         }
 
+        // Analyzing each neighbor...
         while (!neighborQueue.isEmpty())
         {
             VertexType neighbor = neighborQueue.dequeue();
-            int neighborIndex = indexIs(neighbor);
+            int edgeWeight = getWeight(currentVertex, neighbor);
+
+            if (distances[indexIs(currentVertex)] + edgeWeight < distances[indexIs(neighbor)])
+            {
+                distances[indexIs(neighbor)] = distances[indexIs(currentVertex)] + edgeWeight;
+            }
+            // int neighborIndex = indexIs(neighbor);
 
             if (!isMarked(neighborIndex))
             {
@@ -476,6 +485,92 @@ void DirectedGraph<VertexType>::gptShortestPath(VertexType startVertex)
 
     delete[] distances;
 }
+*/
+
+template <class VertexType>
+bool DirectedGraph<VertexType>::try2GPTshortestPath(VertexType startVertex, VertexType destinationVertex, VertexType path[], int &pathLength) {
+    clearMarks(); // Reset all marks to false.
+
+    // Queue for BFS traversal.
+    MuffinQueue<VertexType> vertexQueue;
+
+    // Array to store distances from the start vertex.
+    int* distances = new int[_maxVertices];
+    // Array to store the predecessor for each vertex (for path reconstruction).
+    int* predecessors =  new int[_maxVertices];
+
+    // Initialize all distances to "infinity" and predecessors to -1 (no predecessor).
+    for (int i = 0; i < _maxVertices; ++i) {
+        distances[i] = INFINITY;
+        predecessors[i] = -1;
+    }
+
+    // Start vertex setup.
+    int startIdx = indexIs(startVertex);
+    distances[startIdx] = 0;
+    vertexQueue.enqueue(startVertex);
+    markVertex(startIdx);
+
+    // BFS/Dijkstra loop.
+    while (!vertexQueue.isEmpty()) {
+        VertexType currentVertex = vertexQueue.dequeue();
+        int currentIdx = indexIs(currentVertex);
+
+        // Get all neighbors of the current vertex.
+        MuffinQueue<VertexType> neighborQueue;
+        getToVertices(currentVertex, neighborQueue);
+
+        // Process each neighbor.
+        while (!neighborQueue.isEmpty()) {
+            VertexType neighbor = neighborQueue.dequeue();
+            int neighborIdx = indexIs(neighbor);
+            int edgeWeight = _edges[currentIdx][neighborIdx];
+
+            // Relaxation: Check if we found a shorter path.
+            if (distances[currentIdx] + edgeWeight < distances[neighborIdx]) {
+                distances[neighborIdx] = distances[currentIdx] + edgeWeight;
+                predecessors[neighborIdx] = currentIdx;
+
+                // Enqueue the neighbor if not visited.
+                if (!isMarked(neighborIdx)) {
+                    vertexQueue.enqueue(neighbor);
+                    markVertex(neighborIdx);
+                }
+            }
+        }
+    }
+
+    // Reconstruct the path from start to destination using the predecessors array.
+    int destIdx = indexIs(destinationVertex);
+    if (predecessors[destIdx] == -1) {
+        // No valid path found.
+        pathLength = 0;
+        return false;
+    }
+
+    // Use a temporary array to store the path in reverse order.
+    VertexType tempPath[_maxVertices];
+    int tempLength = 0;
+
+    // Trace back from destination to start.
+    int current = destIdx;
+    while (current != startIdx) {
+        tempPath[tempLength++] = _vertices[current]; // Store the vertex in the path.
+        current = predecessors[current]; // Move to the predecessor.
+    }
+    tempPath[tempLength++] = _vertices[startIdx]; // Add the start vertex.
+
+    // Reverse the temporary path into the output path array.
+    pathLength = tempLength;
+    for (int i = 0; i < tempLength; ++i) {
+        path[i] = tempPath[tempLength - 1 - i];
+    }
+
+    delete[] distances;
+    delete[] predecessors;
+    return true; // Path found.
+}
+
 
 /*
 
