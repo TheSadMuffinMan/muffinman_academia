@@ -17,7 +17,7 @@ const int INFINITY = 2100000000; // Max int size is 2,147,483,647, so setting in
 
 /*
 Class assumes that the VertexType Class is a type for which the "=", "==", and "<<" operators are defined.
-Class utilizes an Adjacency Matrix (_edges).
+Class utilizes an Adjacency Matrix (see _edges).
 */
 template <class VertexType>
 class DirectedGraph
@@ -211,7 +211,7 @@ void DirectedGraph<VertexType>::addVertex(VertexType passedVertex)
 
 // Function marks passed vertex.
 template <class VertexType>
-void DirectedGraph<VertexType>::markVertex(VertexType vertex) {_marks[vertex] = true;}
+void DirectedGraph<VertexType>::markVertex(VertexType vertex) {_marks[indexIs(vertex)] = true;}
 
 /*
 BE CAREFUL WITH SPELLING when calling this function lol.
