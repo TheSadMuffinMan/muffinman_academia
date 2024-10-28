@@ -1,9 +1,7 @@
-//
 //  SelfResizingArraycpp.hpp
 //  ShortestPaths
 //
 //  Created by Antoun, Sherine on 10/25/24.
-//
 
 #ifndef SELF_RESIZING_ARRAY_H
 #define SELF_RESIZING_ARRAY_H
