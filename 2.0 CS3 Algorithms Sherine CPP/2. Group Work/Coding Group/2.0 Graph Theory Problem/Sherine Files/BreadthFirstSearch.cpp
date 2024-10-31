@@ -2,8 +2,6 @@
 File created by Dr. Antoun, Sherine on 10/25/24.
 */
 
-#pragma once
-
 #include "BreadthFirstSearch.h"
 #include "Queue.h" // Include our custom queue implementation
 #include <iostream>

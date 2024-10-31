@@ -12,7 +12,7 @@ template <typename QueueType>
 class SimpleQueue
 {
     public:
-        SimpleQueue() : front(0), rear(0) {}
+        SimpleQueue() : _front(0), _rear(0) {}
 
         bool isEmpty() const;
         void enqueue(const QueueType&);
@@ -33,7 +33,7 @@ bool SimpleQueue<QueueType>::isEmpty() const
 template <class QueueType>
 void SimpleQueue<QueueType>::enqueue(const QueueType& passedValue)
 {
-    data.add(passedValue);
+    _data.add(passedValue);
     _rear++;
 }
 
@@ -42,9 +42,12 @@ QueueType SimpleQueue<QueueType>::dequeue()
 {
     if (isEmpty())
     {
-        throw std::runtime_error("Queue is empty");
+        throw std::runtime_error("Queue is empty"); // Line not working, error:
+        // ./Queue.h:45:20: error: no member named 'runtime_error' in namespace 'std'
+        // std::cerr << "Queue is empty, aborting." << std::endl;
+        // return;
     }
 
-    return data[front++];
+    return _data[_front++];
 }
 // #endif // QUEUE_H

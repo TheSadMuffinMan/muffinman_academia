@@ -2,7 +2,6 @@
 File created by Dr. Antoun, Sherine on 10/25/24.
 */
 
-#pragma once
 #include "Digraph.h"
 
 // Constructor
