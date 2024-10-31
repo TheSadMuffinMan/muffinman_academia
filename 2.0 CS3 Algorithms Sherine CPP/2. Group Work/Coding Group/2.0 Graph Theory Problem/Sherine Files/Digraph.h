@@ -1,27 +1,27 @@
-//
-//  Digraph.hpp
-//  ShortestPaths
-//
-//  Created by Antoun, Sherine on 10/25/24.
-//
+/*
+File created by Dr. Antoun, Sherine on 10/25/24.
+*/
 
-#ifndef DIGRAPH_H
-#define DIGRAPH_H
+// #ifndef DIGRAPH_H
+// #define DIGRAPH_H
+#pragma once
 
 #include "SelfResizingArray.h"
 
-class Digraph {
-private:
-    int V; // Number of vertices
-    int E; // Number of edges
-    SelfResizingArray<int>* adj; // Array of adjacency lists
+class Digraph
+{
+    public:
+        Digraph(int _numVertices);
+        ~Digraph();
 
-public:
-    Digraph(int V);
-    ~Digraph();
-    void addEdge(int v, int w);
-    const SelfResizingArray<int>& getAdj(int v) const;
-    int getVertices() const;
+        void addEdge(int v, int w);
+        const SelfResizingArray<int>& getAdj(int v) const;
+        int getVertices() const;
+
+    private:
+        int _numVertices;
+        int _numEdges;
+        SelfResizingArray<int>* _adj; // Array of adjacency lists.
 };
 
-#endif // DIGRAPH_H
+// #endif // DIGRAPH_H
