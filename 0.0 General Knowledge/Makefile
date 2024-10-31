@@ -10,10 +10,10 @@ CXX = clang++
 CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
-PROGRAM = playground.exe
+PROGRAM = outputLogging.exe
 
 # list all .cpp files separated by space
-CPPFILES = playground.cpp
+CPPFILES = loggingCode.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file
