@@ -1,40 +1,50 @@
-//
-//  Queue.h
-//  ShortestPaths
-//
-//  Created by Antoun, Sherine on 10/25/24.
-//
+/*
+File created by Dr. Antoun, Sherine on 10/25/24.
+*/
 
-#ifndef QUEUE_H
-#define QUEUE_H
+// #ifndef QUEUE_H
+// #define QUEUE_H
+#pragma once
 
 #include "SelfResizingArray.h"
 
-template <typename T>
-class SimpleQueue {
-private:
-    SelfResizingArray<T> data;
-    int front; // Index of the front element
-    int rear;  // Index of the rear element
+template <typename QueueType>
+class SimpleQueue
+{
+    public:
+        SimpleQueue() : front(0), rear(0) {}
 
-public:
-    SimpleQueue() : front(0), rear(0) {}
-
-    bool isEmpty() const {
-        return front == rear;
-    }
-
-    void enqueue(const T& value) {
-        data.add(value);
-        rear++;
-    }
-
-    T dequeue() {
-        if (isEmpty()) {
-            throw std::runtime_error("Queue is empty");
-        }
-        return data[front++];
-    }
+        bool isEmpty() const;
+        void enqueue(const QueueType&);
+        QueueType dequeue();
+        
+    private:
+        SelfResizingArray<QueueType> _data;
+        int _front; // Index of the front element.
+        int _rear;  // Index of the rear element.
 };
 
-#endif // QUEUE_H
+template <class QueueType>
+bool SimpleQueue<QueueType>::isEmpty() const
+{
+    return (_front == _rear);
+}
+
+template <class QueueType>
+void SimpleQueue<QueueType>::enqueue(const QueueType& passedValue)
+{
+    data.add(passedValue);
+    _rear++;
+}
+
+template <class QueueType>
+QueueType SimpleQueue<QueueType>::dequeue()
+{
+    if (isEmpty())
+    {
+        throw std::runtime_error("Queue is empty");
+    }
+
+    return data[front++];
+}
+// #endif // QUEUE_H
