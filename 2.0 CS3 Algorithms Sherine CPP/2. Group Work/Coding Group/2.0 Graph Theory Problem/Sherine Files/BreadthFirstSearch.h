@@ -1,16 +1,16 @@
-//
-//  BreadthFirstSearch.hpp
-//  ShortestPaths
-//
-//  Created by Antoun, Sherine on 10/25/24.
-//
-#ifndef BREADTH_FIRST_SEARCH_H
-#define BREADTH_FIRST_SEARCH_H
+/*
+File created by Dr. Antoun, Sherine on 10/25/24.
+*/
+
+// #ifndef BREADTH_FIRST_SEARCH_H
+// #define BREADTH_FIRST_SEARCH_H
+#pragma once
 
 #include "Digraph.h"
 #include "SelfResizingArray.h"
 
-class BreadthFirstSearch {
+class BreadthFirstSearch
+{
 private:
     bool* marked; // Mark visited vertices
     int* edgeTo; // Store paths
@@ -24,4 +24,4 @@ public:
     void printShortestPaths(int s) const;
 };
 
-#endif // BREADTH_FIRST_SEARCH_H
+// #endif // BREADTH_FIRST_SEARCH_H
