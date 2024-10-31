@@ -1,15 +1,25 @@
-//
-//  main.cpp
-//  ShortestPaths
-//
-//  Created by Antoun, Sherine on 10/25/24.
-//
+/*
+File created by Dr. Antoun, Sherine on 10/25/24.
+*/
 
 #include <iostream>
+#include <fstream>
+#include <chrono>
+
 #include "Digraph.h"
 #include "BreadthFirstSearch.h"
 
-int main() {
+int main(int argc, char *argv[])
+{
+    std::cout << "\nProgram start." << std::endl;
+
+
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
+}
+
+/* OLD CODE:
+
     int V = 6; // Number of vertices
     Digraph G(V);
 
@@ -25,5 +35,4 @@ int main() {
     BreadthFirstSearch bfs(G, 0);
     bfs.printShortestPaths(0);
 
-    return 0;
-}
+*/
