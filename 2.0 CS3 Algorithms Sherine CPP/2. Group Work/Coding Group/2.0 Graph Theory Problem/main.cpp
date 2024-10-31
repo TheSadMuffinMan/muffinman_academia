@@ -87,10 +87,6 @@ Digraph* buildGraphFromFile(std::string fileName)
     return graph;
 }
 
-/*
-
-*/
-
 /* OLD CODE:
 
     int V = 6; // Number of vertices
