@@ -2,14 +2,10 @@
 File created by Dr. Antoun, Sherine on 10/25/24.
 */
 
-// #ifndef SELF_RESIZING_ARRAY_CPP
-// #define SELF_RESIZING_ARRAY_CPP
 #pragma once
 
 #include<iostream>
 #include "SelfResizingArray.h"
-#undef DEBUG
-
 
 // Constructor
 template <typename DataType>
@@ -36,11 +32,6 @@ void SelfResizingArray<DataType>::resize()
     {
         newData[i] = _data[i];
     }
-
-// Not entirely sure what the next 3 lines do...
-// #ifdef DEBUG
-//     std::cout<<"\tNow capacity is: "<<capacity<<'\n';
-// #endif
 
     delete[] _data;
     _data = newData;
