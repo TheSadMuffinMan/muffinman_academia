@@ -1,28 +1,36 @@
-# Compiler and flags
+# compiler name
 CXX = clang++
-CXXFLAGS = -Wall -std=c++17
 
-# Target executable name
-TARGET = shortest_paths
+# C++ compiler flags
+# -c : just do preprocess; compile and assemble into object files
+# -g : adds debugging information to the executable file
+# -Wall : turns on most, but not  all, compiler warnings
+# -std=c++17 : uses c++17 standard
+# put all the required flags separated by space
+CXXFLAGS = -c -g -Wall -std=c++17
 
-# Source files
-SRC = main.cpp Digraph.cpp BreadthFirstSearch.cpp SelfResizingArray.cpp
+# the build target executable file; .exe is not required
+PROGRAM = main.exe
 
-# Object files (generated from source files)
-OBJ = $(SRC:.cpp=.o)
+# list all .cpp files separated by space
+CPPFILES = main.cpp BreadthFirstSearch.cpp Digraph.cpp
 
-# Rule for building the final executable
-all: $(TARGET)
+# make all rule/default rule that'll be run when we run "make"
+# first compile each file to object file
+# then make a single binary program
+all:
+	$(CXX) $(CXXFLAGS) $(CPPFILES)
+	$(CXX) -o $(PROGRAM) *.o
 
-# Rule for linking object files to create the executable
-$(TARGET): $(OBJ)
-	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJ)
-
-# Rule for compiling source files into object files
-%.o: %.cpp
-	$(CXX) $(CXXFLAGS) -c $<
-
-# Clean up generated files
+# make clean rule
+# delete object and binary files
 clean:
-	rm -f $(OBJ) $(TARGET)
-    
+	rm -f $(PROGRAM) *.o
+
+# FIXME
+# Add a rule to run the program
+run:
+	./$(PROGRAM)
+
+# make all
+# make run

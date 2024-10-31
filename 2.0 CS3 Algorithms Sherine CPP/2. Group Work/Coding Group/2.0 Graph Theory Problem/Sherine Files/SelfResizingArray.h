@@ -5,6 +5,7 @@ File created by Dr. Antoun, Sherine on 10/25/24.
 // #ifndef SELF_RESIZING_ARRAY_CPP
 // #define SELF_RESIZING_ARRAY_CPP
 #pragma once
+#include <iostream>
 
 // Conditionally define DEBUG based on NDEBUG
 #ifndef NDEBUG
@@ -36,7 +37,7 @@ class SelfResizingArray
                 bool operator!=(const Iterator& other) const;
 
             private:
-                DataType* current;
+                DataType* _current;
         };
 
         // Begin and end functions for iteration
@@ -105,25 +106,25 @@ size_t SelfResizingArray<DataType>::getSize() const
 
 // Iterator methods
 template <class DataType>
-SelfResizingArray<DataType>::Iterator::Iterator(DataType* currentPtr) : current(currentPtr) {}
+SelfResizingArray<DataType>::Iterator::Iterator(DataType* currentPtr) : _current(currentPtr) {}
 
 template <class DataType>
 DataType& SelfResizingArray<DataType>::Iterator::operator*()
 {
-    return *current;
+    return *_current;
 }
 
 template <class DataType>
 typename SelfResizingArray<DataType>::Iterator& SelfResizingArray<DataType>::Iterator::operator++()
 {
-    ++current;
+    ++_current;
     return *this;
 }
 
 template <typename DataType>
 bool SelfResizingArray<DataType>::Iterator::operator!=(const Iterator& other) const
 {
-    return current != other.current;
+    return _current != other._current;
 }
 
 // Begin and end functions for iteration

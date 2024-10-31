@@ -5,7 +5,7 @@ File created by Dr. Antoun, Sherine on 10/25/24.
 #include "Digraph.h"
 
 // Constructor
-Digraph::Digraph(int V) : _numVertices(_numVertices), _numEdges(0)
+Digraph::Digraph(int V) : _numVertices(V), _numEdges(0)
 {
     _adj = new SelfResizingArray<int>[V]; // Create an array of SelfResizingArrays
 }
