@@ -1,5 +1,7 @@
 /*
-File created by Dr. Antoun, Sherine on 10/25/24.
+Only thing of importance ofstream declaration:
+    If you do not include "std::ios::app" as an argument parameter, ofstream will delete everything
+    inside of file.
 */
 
 #include <iostream>
@@ -26,21 +28,20 @@ int main(int argc, char *argv[])
     std::cout << "\nProgram start." << std::endl;
 
     std::ofstream outputStream;
-    outputStream.open("log.txt");
+    outputStream.open("log.txt", std::ios::app);
     if (!outputStream.is_open())
     {
         std::cerr << "File not open, aborting." << std::endl;
-        return;
+        return 0;
     }
 
-    std::string fullString, runTime, currTime;
-    runTime = "100"; // Will actually be a chrono library data type.
-    currTime = "now"; // Will be current UNIX timestamp.
-    fullString = "BFS performed on ";
-    fullString = fullString + currTime + " with a run time of " + runTime;
-    std::cout << "Full string: " << fullString << std::endl;
+    auto currentTime = std::chrono::system_clock::now();
+    std::time_t currentTimeIntime_t = std::chrono::system_clock::to_time_t(currentTime);
+    int runTime = 0;
 
-    outputStream << fullString;
+    outputStream << "BFS performed on ";
+    outputStream << currentTimeIntime_t;
+    outputStream << " with a run time of " << runTime << " ns." << std::endl;
 
     outputStream.close();
     std::cout << "\nEnd of program." << std::endl;
