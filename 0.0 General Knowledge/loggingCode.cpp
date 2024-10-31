@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 
     auto currentTime = std::chrono::system_clock::now();
     std::time_t currentTimeIntime_t = std::chrono::system_clock::to_time_t(currentTime);
-    int runTime = 3;
+    int runTime = 0;
 
     outputStream << "BFS performed on ";
     outputStream << currentTimeIntime_t;
@@ -45,10 +45,3 @@ int main(int argc, char *argv[])
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
-
-/*
-    auto currentTime = std::chrono::system_clock::now();
-    std::time_t currentTimeIntime_t = std::chrono::system_clock::to_time_t(currentTime);
-    std::cout << "\nCurrent UNIX Epoch: " << currentTimeIntime_t << std::endl;
-
-*/
