@@ -1,5 +1,7 @@
 /*
-File created by Dr. Antoun, Sherine on 10/25/24.
+Only thing of importance ofstream declaration:
+    If you do not include "std::ios::app" as an argument parameter, ofstream will delete everything
+    inside of file.
 */
 
 #include <iostream>
