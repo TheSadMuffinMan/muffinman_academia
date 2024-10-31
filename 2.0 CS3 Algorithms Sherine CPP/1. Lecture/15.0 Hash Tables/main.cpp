@@ -6,6 +6,16 @@ Hashing basic plan:
 - HASH FUNCTION: Method for computing array index from key.
 - Scramble the keys uniformly to produce a table index.
 
+Linear Probing:
+- Results in less wasted space and better cache performance.
+
+Seperate Chaining:
+- Performance degardes gracefully.
+- Clustering less sensitive to poorly-designed hash function.
+*/
+
+/*
+
 */
 
 #include <iostream>
