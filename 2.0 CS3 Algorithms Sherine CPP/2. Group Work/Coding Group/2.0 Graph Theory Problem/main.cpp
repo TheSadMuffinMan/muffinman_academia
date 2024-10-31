@@ -1,96 +1,38 @@
 /*
-Program is just the driver client for the Queue Class (MuffinQueue.h).
+File created by Dr. Antoun, Sherine on 10/25/24.
 */
 
 #include <iostream>
-#include "DirectedGraph.h"
+#include <fstream>
+#include <chrono>
 
-void mainShortestPath(DirectedGraph<int>&, int*);
+#include "Digraph.h"
+#include "BreadthFirstSearch.h"
 
 int main(int argc, char *argv[])
 {
-    int sourceArray[2];
+    std::cout << "\nProgram start." << std::endl;
 
-    std::string fileName = "inputFile.txt"; // ***DEBUG WHEN COMPLETE***
-
-    std::cout << "\nProgram start.\n" << std::endl;
-    // std::cin >> fileName; // ***DEBUG WHEN COMPLETE***
-
-    DirectedGraph<int> workingGraph(fileName);
-
-    std::cout << "\nProvide 3 sources (seperated by a space): ";
-
-    for (int i = 0; i < 3; i++)
-    {
-        std::cin >> sourceArray[i];
-    }
-
-    mainShortestPath(workingGraph, sourceArray);
-    mainShortestPath(workingGraph, sourceArray);
-    mainShortestPath(workingGraph, sourceArray);
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
 
-void mainShortestPath(DirectedGraph<int>& currentGraph, int* sourceArray)
-{
-    int destination;
-    int path[50];
-    int pathWeight = 0;
+/* OLD CODE:
 
-    std::cout << "\n\tDestination 1?: ";
-    std::cin >> destination;
+    int V = 6; // Number of vertices
+    Digraph G(V);
 
-    std::cout << "Shortest Path 1 from vertex \"" << sourceArray[0] << "\":" << std::endl;
-    if (currentGraph.shortestPath(sourceArray[0], destination, path, pathWeight))
-    {
-        for (int i = 0; i < (pathWeight - 1); i++)
-        {
-            std::cout << path[i] << " --> ";
-        }
-        std::cout << destination << std::endl;
-    }
-    else
-    {
-        std::cout << "Path not found." << std::endl;
-    }
+    // Add directed edges (example graph)
+    G.addEdge(0, 1);
+    G.addEdge(0, 2);
+    G.addEdge(1, 3);
+    G.addEdge(2, 3);
+    G.addEdge(3, 4);
+    G.addEdge(4, 5);
 
-    pathWeight = 0;
-    for (int i = 0; i < 50; i++)
-    {
-        path[i] = -1;
-    }
-    std::cout << "Shortest Path 2 from vertex \"" << sourceArray[1] << "\":" << std::endl;
-    if (currentGraph.shortestPath(sourceArray[1], destination, path, pathWeight))
-    {
-        for (int i = 0; i < (pathWeight - 1); i++)
-        {
-            std::cout << path[i] << " --> ";
-        }
-        std::cout << destination << std::endl;
-    }
-    else
-    {
-        std::cout << "Path not found." << std::endl;
-    }
+    // Perform BFS starting from vertex 0
+    BreadthFirstSearch bfs(G, 0);
+    bfs.printShortestPaths(0);
 
-    pathWeight = 0;
-    for (int i = 0; i < 50; i++)
-    {
-        path[i] = -1;
-    }
-    std::cout << "Shortest Path 3 from vertex \"" << sourceArray[2] << "\":" << std::endl;
-    if (currentGraph.shortestPath(sourceArray[2], destination, path, pathWeight))
-    {
-        for (int i = 0; i < (pathWeight - 1); i++)
-        {
-            std::cout << path[i] << " --> ";
-        }
-        std::cout << destination << std::endl;
-    }
-    else
-    {
-        std::cout << "Path not found." << std::endl;
-    }
-}
+*/
