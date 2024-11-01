@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 
     // ***DEBUG*** Change function parameter to real fileName when complete.
     Digraph* currGraph = buildGraphFromFile("noWInputFile.txt");
-    BreadthFirstSearch bfs(currGraph, 0);
+    // BreadthFirstSearch bfs(currGraph, 0);
 
     delete currGraph;
     std::cout << "\nEnd of program." << std::endl;
