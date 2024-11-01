@@ -5,8 +5,10 @@ Only thing of importance ofstream declaration:
 */
 
 #include <iostream>
+#include <iomanip> // Used for put_time function.
 #include <fstream>
 #include <chrono>
+#include <ctime>
 
 typedef std::chrono::steady_clock Time; // Makes is to where we don't have to type entire library every time.
 
@@ -23,27 +25,44 @@ void timeFunction()
     std::cout << "\nRun Time: " << duration.count() << " nanoseconds." << std::endl;
 }
 
-int main(int argc, char *argv[])
+void logCode()
 {
-    std::cout << "\nProgram start." << std::endl;
-
     std::ofstream outputStream;
     outputStream.open("log.txt", std::ios::app);
     if (!outputStream.is_open())
     {
         std::cerr << "File not open, aborting." << std::endl;
-        return 0;
+        return; // Return 0; if in main function.
     }
 
     auto currentTime = std::chrono::system_clock::now();
     std::time_t currentTimeIntime_t = std::chrono::system_clock::to_time_t(currentTime);
     int runTime = 0;
 
-    outputStream << "BFS performed on ";
+    outputStream << "*ACTION* performed on ";
     outputStream << currentTimeIntime_t;
     outputStream << " with a run time of " << runTime << " ns." << std::endl;
 
     outputStream.close();
+}
+
+int main(int argc, char *argv[])
+{
+    std::cout << "\nProgram start." << std::endl;
+
+    // Getting the current time from Chrono Library.
+    auto now = std::chrono::system_clock::now();
+
+    // Casting "now" to time_t type.
+    std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
+
+    // Converting "now_time_t" to a tm struct.
+    std::tm now_tm = *std::localtime(&now_time_t);
+
+        std::cout << "Current date and time: "
+              << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S")
+              << std::endl;
+
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
