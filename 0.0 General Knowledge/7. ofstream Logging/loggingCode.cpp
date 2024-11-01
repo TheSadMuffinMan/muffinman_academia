@@ -59,9 +59,8 @@ int main(int argc, char *argv[])
     // Converting "now_time_t" to a tm struct.
     std::tm now_tm = *std::localtime(&now_time_t);
 
-        std::cout << "Current date and time: "
-              << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S")
-              << std::endl;
+    std::cout << "Current date and time: "
+        << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S") << std::endl;
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;

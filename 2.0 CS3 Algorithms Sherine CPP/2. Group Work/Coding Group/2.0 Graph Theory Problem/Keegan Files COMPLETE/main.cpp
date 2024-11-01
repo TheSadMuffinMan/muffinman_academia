@@ -82,6 +82,9 @@ int main(int argc, char* argv[]){
     // Converting "now_time_t" to a tm struct.
     std::tm now_tm = *std::localtime(&now_time_t);
 
+    logStream << "[" << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S") << "]";
+    logStream << " Graph with " << Gsize << " nodes created." << std::endl;
+    logStream.close();
 
 	int input, v1,v2,v3, destV;
 	cout<<"Enter a negative integer to close the program.\n";
@@ -105,6 +108,8 @@ int main(int argc, char* argv[]){
 		dg.dijkstraSPT(v2, destV);
 		cout<<"Shortest path 3 from "<<v3<<": ";
 		dg.dijkstraSPT(v3, destV);
+
+
 		
 		cout<<"\nDestination 2?: ";
 		cin>>destV;
