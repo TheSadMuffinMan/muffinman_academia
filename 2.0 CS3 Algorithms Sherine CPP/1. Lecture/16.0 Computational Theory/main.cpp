@@ -34,7 +34,6 @@ Use Cases:
     parenthesis   |   (ab)*a    |    a, ababababa      |     aa, abbba        |
 ===============================================================================
 
-
     Examples:
 ===========================================================================
  Regular Expression (RE)  |        Matches        |    Does not match     |
