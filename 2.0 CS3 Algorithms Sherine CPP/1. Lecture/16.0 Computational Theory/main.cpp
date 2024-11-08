@@ -48,7 +48,12 @@ Use Cases:
    .*gcg(cgg|agg)*ctg.*   |    ...gcgcggctg...    |      cggcggcggctg     |
                           |   ...gcgcggaggctg...  |       gcgcaggctg      |
 ===========================================================================
+*/
 
+/*
+- A DFA and RE represent the same thing: they are just two different ways of representing strings.
+    - A DFA is the visualization, and the RE is the text representation.
+- 
 */
 
 #include <iostream>
