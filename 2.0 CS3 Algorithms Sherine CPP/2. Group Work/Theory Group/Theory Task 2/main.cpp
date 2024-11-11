@@ -7,25 +7,25 @@ const int TABLE_SIZE = 10;
 // Hash function.
 int hashFunction(int key)
 {
-    return key % TABLE_SIZE;
+    return (key % TABLE_SIZE);
 }
 
 // Chaining Hash Table
 class HashTableChaining
 {    
     public:
-        HashTableChaining() : table(TABLE_SIZE) {}
+        HashTableChaining() : _table(TABLE_SIZE) {}
 
         void insert(int key)
         {
             int index = hashFunction(key);
-            table[index].push_back(key);
+            _table[index].push_back(key);
         }
 
         bool search(int key)
         {
             int index = hashFunction(key);
-            for (int element : table[index])
+            for (int element : _table[index])
             {
                 if (element == key) return true;
             }
@@ -34,49 +34,50 @@ class HashTableChaining
 
         void display()
         {
-            cout << "Hash Table with Chaining:" << endl;
+            std::cout << "Hash Table with Chaining:" << std::endl;
             for (int i = 0; i < TABLE_SIZE; i++)
             {
-                cout << i << ": ";
-                for (int element : table[i])
+                std::cout << i << ": ";
+                for (int element : _table[i])
                 {
-                    cout << element << " -> ";
+                    std::cout << element << " -> ";
                 }
-                cout << "NULL" << endl;
+                std::cout << "NULL" << std::endl;
             }
         }
 
     private:
-        vector<list<int>> table;
+        std::vector<std::list<int>> _table;
 };
 
 // Linear Probing Hash Table
 class HashTableLinearProbing
 {
     public:
-        HashTableLinearProbing() : table(TABLE_SIZE, -1), isOccupied(TABLE_SIZE, false) {}
+        HashTableLinearProbing() : _table(TABLE_SIZE, -1), _isOccupied(TABLE_SIZE, false) {}
 
         void insert(int key)
         {
             int index = hashFunction(key);
-            while (isOccupied[index])
+            while (_isOccupied[index])
             {
-                index = (index + 1) % TABLE_SIZE;
+                index = ((index + 1) % TABLE_SIZE);
             }
 
-            table[index] = key;
-            isOccupied[index] = true;
+            _table[index] = key;
+            _isOccupied[index] = true;
         }
 
         bool search(int key)
         {
             int index = hashFunction(key);
             int startIdx = index;
-            while (isOccupied[index])
+            while (_isOccupied[index])
             {
-                if (table[index] == key) return true;
+                if (_table[index] == key) return true;
                 index = (index + 1) % TABLE_SIZE;
-                if (index == startIdx) break; // Prevent infinite loop
+
+                if (index == startIdx) break; // Preventing an infinite loop.
             }
 
             return false;
@@ -84,19 +85,19 @@ class HashTableLinearProbing
 
         void display()
         {
-            cout << "Hash Table with Linear Probing:" << endl;
+            std::cout << "Hash Table with Linear Probing:" << std::endl;
             for (int i = 0; i < TABLE_SIZE; i++)
             {
-                if (isOccupied[i])
-                    cout << i << ": " << table[i] << endl;
+                if (_isOccupied[i])
+                    std::cout << i << ": " << _table[i] << std::endl;
                 else
-                    cout << i << ": NULL" << endl;
+                    std::cout << i << ": NULL" << std::endl;
             }
         }
 
     private:
-        vector<int> table;
-        vector<bool> isOccupied;
+        std::vector<int> _table;
+        std::vector<bool> _isOccupied;
 
 };
 
@@ -117,16 +118,16 @@ int main(int argc, char *argv[])
 
     // Display tables
     chainingTable.display();
-    cout << endl;
+    std::cout << std::endl;
     linearProbingTable.display();
 
     // Search for a key
     int keyToSearch = 12;
-    cout << "\nSearching for key " << keyToSearch << " in chaining table: ";
-    cout << (chainingTable.search(keyToSearch) ? "Found" : "Not Found") << endl;
+    std::cout << "\nSearching for key " << keyToSearch << " in chaining table: ";
+    std::cout << (chainingTable.search(keyToSearch) ? "Found" : "Not Found") << std::endl;
 
-    cout << "Searching for key " << keyToSearch << " in linear probing table: ";
-    cout << (linearProbingTable.search(keyToSearch) ? "Found" : "Not Found") << endl;
+    std::cout << "Searching for key " << keyToSearch << " in linear probing table: ";
+    std::cout << (linearProbingTable.search(keyToSearch) ? "Found" : "Not Found") << std::endl;
 
     return 0;
 }
