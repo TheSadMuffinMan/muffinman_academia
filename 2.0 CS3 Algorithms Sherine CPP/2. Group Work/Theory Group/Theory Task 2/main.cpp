@@ -1,19 +1,43 @@
-#include "hashChaining.h" // Not included yet (for confusion's sake).
+#include "hashChaining.h"
 #include "hashLinearProbe.h"
 #include <string>
 #include <fstream>
 
-void readWordChain(std::string&, HashChaining&);
+void readWordChain(std::string&, HashTableChaining&);
 
 int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
+    if ((argc != 3) || ((std::string)argv[1] == "A Scandal in Bohemia.txt"))
+    {
+        std::cerr << "[DEBUG1] Invalid input file. Program aborting." << std::endl;
+        return 0;
+    }
+
+    std::ifstream inputStream;
+    inputStream.open("A Scandal In Bohemia.txt");
+    if (!inputStream.is_open())
+    {
+        std::cerr << "[DEBUG2] File failed to open. Program aborting." << std::endl;
+        return 0;
+    }
+
+    std::string tempWord;
+    HashTableChaining chainTable;
+
+    while (inputStream >> tempWord)
+    {
+        readWordChain(tempWord, chainTable);
+    }
+
+    inputStream.close();
+
     std::cout << "\nEnd of program." << std::endl;
     return 0;
 }
 
-void readWordChain(std::string &inWord, HashChaining &table)
+void readWordChain(std::string &inWord, HashTableChaining &table)
 {
     while ((inWord.size() > 0) && (tolower(inWord.at(0)) < 'a' || tolower(inWord.at(0)) > 'z'))
     {
