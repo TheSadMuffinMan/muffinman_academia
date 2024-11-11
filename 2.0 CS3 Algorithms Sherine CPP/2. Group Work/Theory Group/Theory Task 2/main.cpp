@@ -12,17 +12,16 @@ int hashFunction(int key)
     return (key % TABLE_SIZE);
 }
 
-
 int main(int argc, char *argv[])
 {
     HashChaining chainingTable;
     HashLinearProbing linearProbingTable;
 
     int keys[] = {15, 11, 27, 8, 12, 9, 28, 31};
-    int n = sizeof(keys) / sizeof(keys[0]);
+    int keySize = sizeof(keys) / sizeof(keys[0]);
 
     // Inserting keys.
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < keySize; i++)
     {
         chainingTable.insert(keys[i]);
         linearProbingTable.insert(keys[i]);
