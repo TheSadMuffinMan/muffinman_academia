@@ -16,12 +16,12 @@ int main(int argc, char *argv[])
         linearProbingTable.insert(keys[i]);
     }
 
-    // Display tables
+    // Displaying tables.
     chainingTable.display();
     std::cout << std::endl;
     linearProbingTable.display();
 
-    // Search for a key
+    // Searching for keys.
     int keyToSearch = 12;
     std::cout << "\nSearching for key " << keyToSearch << " in chaining table: ";
     std::cout << (chainingTable.search(keyToSearch) ? "Found" : "Not Found") << std::endl;
