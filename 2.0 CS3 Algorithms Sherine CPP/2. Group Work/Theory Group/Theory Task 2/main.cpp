@@ -1,16 +1,5 @@
-#include <iostream>
-#include <list>
-#include <vector>
 #include "hashChaining.h"
 #include "hashLinearChain.h"
-
-const int TABLE_SIZE = 10;
-
-// Hash function.
-int hashFunction(int key)
-{
-    return (key % TABLE_SIZE);
-}
 
 int main(int argc, char *argv[])
 {

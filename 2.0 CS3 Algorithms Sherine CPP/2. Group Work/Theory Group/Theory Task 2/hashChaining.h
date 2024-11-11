@@ -1,14 +1,12 @@
 #pragma once
-
 #include <iostream>
 #include <vector>
 #include <list>
-#include "main.cpp"
 
 class HashChaining
 {    
     public:
-        HashChaining() : _table(TABLE_SIZE) {}
+        HashChaining() : _table(10) {}
 
         void insert(int);
         bool search(int);
@@ -16,17 +14,18 @@ class HashChaining
 
     private:
         std::vector<std::list<int>> _table;
+        int _hashFunction(int);
 };
 
 void HashChaining::insert(int key)
 {
-    int index = hashFunction(key);
+    int index = _hashFunction(key);
     _table[index].push_back(key);
 }
 
 bool HashChaining::search(int key)
 {
-    int index = hashFunction(key);
+    int index = _hashFunction(key);
     for (int element : _table[index])
     {
         if (element == key) return true;
@@ -37,7 +36,7 @@ bool HashChaining::search(int key)
 void HashChaining::display()
 {
     std::cout << "Hash Table with Chaining:" << std::endl;
-    for (int i = 0; i < TABLE_SIZE; i++)
+    for (int i = 0; i < _table.size(); i++)
     {
         std::cout << i << ": ";
         for (int element : _table[i])
@@ -46,4 +45,9 @@ void HashChaining::display()
         }
         std::cout << "NULL" << std::endl;
     }
+}
+
+int HashChaining::_hashFunction(int key)
+{
+    return (key % _table.size());
 }
