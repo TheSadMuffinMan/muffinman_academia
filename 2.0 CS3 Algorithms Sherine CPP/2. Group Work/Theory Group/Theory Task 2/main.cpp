@@ -1,5 +1,5 @@
 #include "hashChaining.h"
-#include "hashLinearChain.h"
+#include "hashLinearProbe.h"
 
 int main(int argc, char *argv[])
 {
