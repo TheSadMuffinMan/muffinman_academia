@@ -2,12 +2,9 @@
 #include <list>
 #include <vector>
 
-using namespace std;
-
-// Constants
 const int TABLE_SIZE = 10;
 
-// Hash function
+// Hash function.
 int hashFunction(int key)
 {
     return key % TABLE_SIZE;
@@ -56,10 +53,6 @@ class HashTableChaining
 // Linear Probing Hash Table
 class HashTableLinearProbing
 {
-private:
-    vector<int> table;
-    vector<bool> isOccupied;
-
     public:
         HashTableLinearProbing() : table(TABLE_SIZE, -1), isOccupied(TABLE_SIZE, false) {}
 
@@ -100,6 +93,11 @@ private:
                     cout << i << ": NULL" << endl;
             }
         }
+
+    private:
+        vector<int> table;
+        vector<bool> isOccupied;
+
 };
 
 int main(int argc, char *argv[])
