@@ -10,11 +10,11 @@ KEY VALUE PAIRS:
 
 What is a collision?
 • A collision occurs when you have multiple keys that have the same hash value. There are two ways around this:
-    - Linear Probing.
-    - Chaining.
+    - Seperate Chaining.
+    - Linear Probing/Open Addressing.
 */
 
-// THIS PROG USES SEPERATE CHAINING/LINKED LISTS.
+// THIS PROGRAM USES SEPERATE CHAINING/LINKED LISTS.
 
 #pragma once
 #include <iostream>

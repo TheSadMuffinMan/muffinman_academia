@@ -1,3 +1,8 @@
+/*
+Linear Probing (AKA "Open Addressing")
+• In this implementation, a hashed value is incremented past its hashed location until an empty spot is found.
+*/
+
 #pragma once
 #include <iostream>
 #include <vector>
