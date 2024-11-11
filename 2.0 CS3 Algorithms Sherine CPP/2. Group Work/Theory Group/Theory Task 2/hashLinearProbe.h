@@ -1,6 +1,8 @@
 /*
 Linear Probing (AKA "Open Addressing")
 • In this implementation, a hashed value is incremented past its hashed location until an empty spot is found.
+
+*****This class will be used for Works VII and XII*****
 */
 
 #pragma once

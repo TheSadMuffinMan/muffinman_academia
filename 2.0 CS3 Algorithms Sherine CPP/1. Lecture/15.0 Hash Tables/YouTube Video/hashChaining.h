@@ -12,6 +12,8 @@ What is a collision?
 • A collision occurs when you have multiple keys that have the same hash value. There are two ways around this:
     - Seperate Chaining.
     - Linear Probing/Open Addressing.
+
+*****This class is to be used for Works I through VI*****
 */
 
 // THIS PROGRAM USES SEPERATE CHAINING/LINKED LISTS.
@@ -21,7 +23,7 @@ What is a collision?
 #include <list>
 #include <cstring>
 
-class hashTableLinearProbing
+class hashTableChaining
 {
     public:
         bool isEmpty() const;
@@ -36,7 +38,7 @@ class hashTableLinearProbing
         std::list<std::pair<int, std::string>> _table[_numHashGroups];
 };
 
-bool hashTableLinearProbing::isEmpty() const
+bool hashTableChaining::isEmpty() const
 {
     int sum = 0;
     
@@ -51,14 +53,14 @@ bool hashTableLinearProbing::isEmpty() const
 }
 
 // Because we only have 10 different groups, we want to hash our function with 9.
-int hashTableLinearProbing::hashFunction(int key)
+int hashTableChaining::hashFunction(int key)
 {
     return (key % _numHashGroups);
 
     // For example, if this function is passed key = 905, the function will return 5.
 }
 
-void hashTableLinearProbing::insertItem(int key, std::string keyValue)
+void hashTableChaining::insertItem(int key, std::string keyValue)
 {
     int hashValue = hashFunction(key);
     // The above operation tells us which list the key value needs to go into.
@@ -88,7 +90,7 @@ void hashTableLinearProbing::insertItem(int key, std::string keyValue)
     return;
 }
 
-void hashTableLinearProbing::removeItem(int key)
+void hashTableChaining::removeItem(int key)
 {
     int hashValue = hashFunction(key);
     // The above operation tells us which list the key value needs to go into.
@@ -117,7 +119,7 @@ void hashTableLinearProbing::removeItem(int key)
     return;
 }
 
-void hashTableLinearProbing::printTable()
+void hashTableChaining::printTable()
 {
     for (int i = 1; i < _numHashGroups; i++)
     {

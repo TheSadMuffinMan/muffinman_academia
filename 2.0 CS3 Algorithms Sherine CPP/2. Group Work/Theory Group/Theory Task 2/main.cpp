@@ -1,33 +1,34 @@
-#include "hashChaining.h"
+#include "hashChaining.h" // Not included yet (for confusion's sake).
 #include "hashLinearProbe.h"
+#include <string>
+#include <fstream>
+
+void readWordChain(std::string&, HashChaining&);
 
 int main(int argc, char *argv[])
 {
-    HashChaining chainingTable;
-    HashLinearProbing linearProbingTable;
+    std::cout << "\nProgram start." << std::endl;
 
-    int keys[] = {15, 11, 27, 8, 12, 9, 28, 31};
-    int keySize = sizeof(keys) / sizeof(keys[0]);
+    std::cout << "\nEnd of program." << std::endl;
+    return 0;
+}
 
-    // Inserting keys.
-    for (int i = 0; i < keySize; i++)
+void readWordChain(std::string &inWord, HashChaining &table)
+{
+    while ((inWord.size() > 0) && (tolower(inWord.at(0)) < 'a' || tolower(inWord.at(0)) > 'z'))
     {
-        chainingTable.insert(keys[i]);
-        linearProbingTable.insert(keys[i]);
+        inWord.erase(0, 1); // Getting rid of punction, special chars, etc.
+    }
+    while (inWord.size() > 0 && (tolower(inWord.at(inWord.size() - 1)) < 'a' || tolower(inWord.size() - 1) > 'z'))
+    {
+        inWord.erase(inWord.size() - 1, 1);
     }
 
-    // Displaying tables.
-    chainingTable.display();
-    std::cout << std::endl;
-    linearProbingTable.display();
-
-    // Searching for keys.
-    int keyToSearch = 12;
-    std::cout << "\nSearching for key " << keyToSearch << " in chaining table: ";
-    std::cout << (chainingTable.search(keyToSearch) ? "Found" : "Not Found") << std::endl;
-
-    std::cout << "Searching for key " << keyToSearch << " in linear probing table: ";
-    std::cout << (linearProbingTable.search(keyToSearch) ? "Found" : "Not Found") << std::endl;
-
-    return 0;
+    if (inWord.size() > 0)
+    {
+        for (std::size_t i = 0; i < inWord.size(); i++)
+        {
+            inWord.at(i) = tolower(inWord.at(i));
+        }
+    }
 }

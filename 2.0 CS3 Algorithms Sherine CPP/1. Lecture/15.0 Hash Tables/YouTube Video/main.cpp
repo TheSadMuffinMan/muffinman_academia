@@ -1,4 +1,4 @@
-#include "hashTableLinearProbing.h"
+#include "hashSeperateChaining.h"
 
 int main(int argc, char *argv[])
 {
