@@ -52,7 +52,7 @@ HashTableChaining::HashTableChaining()
 
 HashTableChaining::~HashTableChaining()
 {
-    delete _table;
+    delete[] _table;
 }
 
 bool HashTableChaining::isEmpty() const
@@ -70,15 +70,10 @@ bool HashTableChaining::isEmpty() const
 }
 
 // Function returns the hash value of the passed key.
+// It is best to divide by a prime number.
 int HashTableChaining::hashFunction(int key)
-{
-    if (isEmpty())
-    {
-        std::cerr << "\n[ERROR] Table is empty!" << std::endl;
-        return -1;
-    }
-    
-    return (key % 9);
+{    
+    return (key % 103);
 }
 
 void HashTableChaining::insertItem(int key, std::string keyValue)
@@ -145,7 +140,7 @@ void HashTableChaining::removeItem(int key)
 
 void HashTableChaining::printTable()
 {
-    for (int i = 1; i < _table->size(); i++)
+    for (int i = 0; i < _table->size(); i++)
     {
         if (_table[i].size() == 0) {continue;}
 
