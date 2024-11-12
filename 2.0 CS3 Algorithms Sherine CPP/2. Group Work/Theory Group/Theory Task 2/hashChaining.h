@@ -41,7 +41,10 @@ class HashTableChaining
 
     private:
         std::vector<std::pair<int, std::string>> *_table;
-        static const int _numHashGroups = 103; // Example for size
+
+        // This is the number of "groups"/"buckets"/etc.
+        // Number should be a prime number slightly larger that total number of groups.
+        static const int _numHashGroups = 103;
 };
 
 // Default constructor.
@@ -130,6 +133,26 @@ void HashTableChaining::removeItem(int key)
     }
 
     return;
+}
+
+// Function returns the string located at the passed key.
+std::string HashTableChaining::searchTable(int key)
+{
+    int hashValue = hashFunction(key);
+    auto& cell = _table[hashValue];
+    auto bItr = cell.begin();
+
+    for (; bItr != cell.end(); bItr++)
+    {
+        if (bItr->first == key)
+        {
+            std::cout << "[INFO] Key found: " << key << ", Value: " << bItr->second << std::endl;
+            return bItr->second;
+        }
+    }
+
+    std::cout << "[WARNING] Key not found: " << key << std::endl;
+    return ""; // Return empty string if key is not found
 }
 
 void HashTableChaining::printTable()
