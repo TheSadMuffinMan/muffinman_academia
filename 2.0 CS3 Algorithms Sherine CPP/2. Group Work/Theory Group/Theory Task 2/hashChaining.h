@@ -83,8 +83,7 @@ void HashTableChaining::insertItem(int key, std::string keyValue)
     auto bItr = begin(cell);
     bool keyExists = false;
 
-    // Debug statement to show hash value and current contents
-    std::cout << "[DEBUG] Inserting key: " << key << ", value: " << keyValue << " at hash: " << hashValue << std::endl;
+    // std::cout << "[INFO] Inserting key: " << key << ", value: " << keyValue << " at hash: " << hashValue << std::endl;
 
     for (; bItr != end(cell); bItr++)
     {
@@ -101,7 +100,7 @@ void HashTableChaining::insertItem(int key, std::string keyValue)
     if (!keyExists)
     {
         cell.emplace_back(key, keyValue);
-        std::cout << "[INFO] Inserted key: " << key << ", value: " << keyValue << std::endl;
+        std::cout << "[INFO] Inserted key: " << key << ", value: \"" << keyValue << "\"" << std::endl;
     }
 
     return;
@@ -143,7 +142,7 @@ void HashTableChaining::printTable()
 
         for (; bItr != _table[i].end(); bItr++)
         {
-            std::cout << "[INFO] Key: " << bItr->first << ", Value: " << bItr->second << std::endl;
+            std::cout << "[INFO] Key: " << bItr->first << ", Value: \"" << bItr->second << "\"" << std::endl;
         }
     }
 

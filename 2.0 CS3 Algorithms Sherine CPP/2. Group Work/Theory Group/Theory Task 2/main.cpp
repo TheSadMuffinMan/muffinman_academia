@@ -14,9 +14,10 @@ int main(int argc, char *argv[])
     chainTable.insertItem(521, "word");
     chainTable.insertItem(6113, "other");
     chainTable.insertItem(1971, "chain");
+    std::cout << "\nInserting repeat element..." << std::endl;
+    chainTable.insertItem(3762, "the");
 
-    std::cout << "[DEBUG1] chain table size: " << chainTable.getTableSize() << std::endl;
-
+    std::cout << "\nPrinting table..." << std::endl;
     chainTable.printTable();
 
     std::cout << "\nEnd of program." << std::endl;
