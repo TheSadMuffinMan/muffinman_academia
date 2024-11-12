@@ -15,9 +15,11 @@ What is a collision?
     - Linear Probing/Open Addressing.
 
 *****This class is to be used for Works I through VI*****
-*/
 
-// THIS PROGRAM USES SEPERATE CHAINING/LINKED LISTS.
+VII. THE ADVENTURE OF THE BLUE CARBUNCLE - vii the adventure of the blue carbuncle
+IX. THE ADVENTURE OF THE ENGINEER'S THUMB - ix the adventure of the engineers thumb
+XII. THE ADVENTURE OF THE COPPER BEECHES - xii the adventure of the copper beeches
+*/
 
 #pragma once
 #include <iostream>
