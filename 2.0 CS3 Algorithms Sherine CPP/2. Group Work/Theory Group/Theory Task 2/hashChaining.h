@@ -27,6 +27,9 @@ What is a collision?
 class HashTableChaining
 {
     public:
+        HashTableChaining();
+        ~HashTableChaining();
+
         bool isEmpty() const;
         int hashFunction(int);
         void insertItem(int, std::string);
@@ -35,17 +38,29 @@ class HashTableChaining
         void printTable();
 
     private:
-        static const int _numHashGroups = 10;
-        std::list<std::pair<int, std::string>> _table[_numHashGroups];
-        std::vector
+        // static const int _numHashGroups = 10;
+        // std::list<std::pair<int, std::string>> _table[_numHashGroups];
+
+        std::vector<std::pair<int, std::string>> *_table;
 };
+
+// Default constructor.
+HashTableChaining::HashTableChaining()
+{
+    _table = new std::vector<std::pair<int, std::string>>[1000000];
+}
+
+HashTableChaining::~HashTableChaining()
+{
+    delete _table;
+}
 
 bool HashTableChaining::isEmpty() const
 {
     int sum = 0;
     
-    // Tallying up the total size of each group inside of _table.
-    for (int i = 0; i < _numHashGroups; i++)
+    // Tallying up the total size of each "group" inside of _table.
+    for (int i = 0; i < _table->size(); i++)
     {
         sum += _table[i].size();
     }
@@ -54,18 +69,25 @@ bool HashTableChaining::isEmpty() const
     else {return false;}
 }
 
-// Because we only have 10 different groups, we want to hash our function with 9.
+// Function returns the hash value of the passed key.
 int HashTableChaining::hashFunction(int key)
 {
-    return (key % _numHashGroups);
-
-    // For example, if this function is passed key = 905, the function will return 5.
+    if (isEmpty())
+    {
+        std::cerr << "\n[ERROR] Table is empty!" << std::endl;
+        return -1;
+    }
+    
+    return (key % 9);
 }
 
 void HashTableChaining::insertItem(int key, std::string keyValue)
 {
+    // *****BREAKING HERE*****
+    // On first iteration, we are dividing by 0.
+
+    // Determining which index/"group" the key value needs to go into.
     int hashValue = hashFunction(key);
-    // The above operation tells us which list the key value needs to go into.
 
     auto& cell = _table[hashValue];
     auto bItr = begin(cell);
@@ -94,8 +116,8 @@ void HashTableChaining::insertItem(int key, std::string keyValue)
 
 void HashTableChaining::removeItem(int key)
 {
+    // Determining which index/"group" the key value needs to go into.
     int hashValue = hashFunction(key);
-    // The above operation tells us which list the key value needs to go into.
 
     auto& cell = _table[hashValue];
     auto bItr = begin(cell);
@@ -123,7 +145,7 @@ void HashTableChaining::removeItem(int key)
 
 void HashTableChaining::printTable()
 {
-    for (int i = 1; i < _numHashGroups; i++)
+    for (int i = 1; i < _table->size(); i++)
     {
         if (_table[i].size() == 0) {continue;}
 
