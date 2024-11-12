@@ -1,3 +1,4 @@
+
 /*
 YouTube: C++ Hash Table Implementation
 https://www.youtube.com/watch?v=2_3fR-k-LzI&list=WL&index=8
@@ -36,18 +37,17 @@ class HashTableChaining
         void removeItem(int);
         std::string searchTable(int);
         void printTable();
+        int getTableSize();
 
     private:
-        // static const int _numHashGroups = 10;
-        // std::list<std::pair<int, std::string>> _table[_numHashGroups];
-
         std::vector<std::pair<int, std::string>> *_table;
+        static const int _numHashGroups = 103; // Example for size
 };
 
 // Default constructor.
 HashTableChaining::HashTableChaining()
 {
-    _table = new std::vector<std::pair<int, std::string>>[1000000];
+    _table = new std::vector<std::pair<int, std::string>>[_numHashGroups];
 }
 
 HashTableChaining::~HashTableChaining()
@@ -58,9 +58,9 @@ HashTableChaining::~HashTableChaining()
 bool HashTableChaining::isEmpty() const
 {
     int sum = 0;
-    
+
     // Tallying up the total size of each "group" inside of _table.
-    for (int i = 0; i < _table->size(); i++)
+    for (int i = 0; i < _numHashGroups; i++) // Iterate to _numHashGroups instead of _table->size()
     {
         sum += _table[i].size();
     }
@@ -73,20 +73,18 @@ bool HashTableChaining::isEmpty() const
 // It is best to divide by a prime number.
 int HashTableChaining::hashFunction(int key)
 {    
-    return (key % 103);
+    return (key % _numHashGroups); // Updated to use _numHashGroups as divisor
 }
 
 void HashTableChaining::insertItem(int key, std::string keyValue)
 {
-    // *****BREAKING HERE*****
-    // On first iteration, we are dividing by 0.
-
-    // Determining which index/"group" the key value needs to go into.
     int hashValue = hashFunction(key);
-
     auto& cell = _table[hashValue];
     auto bItr = begin(cell);
     bool keyExists = false;
+
+    // Debug statement to show hash value and current contents
+    std::cout << "[DEBUG] Inserting key: " << key << ", value: " << keyValue << " at hash: " << hashValue << std::endl;
 
     for (; bItr != end(cell); bItr++)
     {
@@ -94,7 +92,6 @@ void HashTableChaining::insertItem(int key, std::string keyValue)
         {
             keyExists = true;
             bItr->second = keyValue;
-
             std::cout << "[WARNING] " << key << " Key already exists. Value replaced." << std::endl;
             break;
         }
@@ -104,6 +101,7 @@ void HashTableChaining::insertItem(int key, std::string keyValue)
     if (!keyExists)
     {
         cell.emplace_back(key, keyValue);
+        std::cout << "[INFO] Inserted key: " << key << ", value: " << keyValue << std::endl;
     }
 
     return;
@@ -111,9 +109,7 @@ void HashTableChaining::insertItem(int key, std::string keyValue)
 
 void HashTableChaining::removeItem(int key)
 {
-    // Determining which index/"group" the key value needs to go into.
     int hashValue = hashFunction(key);
-
     auto& cell = _table[hashValue];
     auto bItr = begin(cell);
     bool keyExists = false;
@@ -124,7 +120,6 @@ void HashTableChaining::removeItem(int key)
         {
             keyExists = true;
             bItr = cell.erase(bItr);
-
             std::cout << "[INFO] " << key << " removed." << std::endl;
             break;
         }
@@ -140,7 +135,7 @@ void HashTableChaining::removeItem(int key)
 
 void HashTableChaining::printTable()
 {
-    for (int i = 0; i < _table->size(); i++)
+    for (int i = 0; i < _numHashGroups; i++) // Iterate up to _numHashGroups instead of _table->size()
     {
         if (_table[i].size() == 0) {continue;}
 
@@ -153,4 +148,15 @@ void HashTableChaining::printTable()
     }
 
     return;
+}
+
+int HashTableChaining::getTableSize()
+{
+    int totalSize = 0;
+
+    for (int i = 0; i < _numHashGroups; i++)
+    {
+        totalSize += _table[i].size(); // Summing sizes across all hash groups
+    }
+    return totalSize;
 }

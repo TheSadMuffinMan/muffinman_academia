@@ -9,15 +9,15 @@ int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-
     HashTableChaining chainTable;
     chainTable.insertItem(3762, "the");
     chainTable.insertItem(521, "word");
     chainTable.insertItem(6113, "other");
     chainTable.insertItem(1971, "chain");
 
-    chainTable.printTable();
+    std::cout << "[DEBUG1] chain table size: " << chainTable.getTableSize() << std::endl;
 
+    chainTable.printTable();
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
@@ -57,7 +57,7 @@ void readWordChain(std::string &inWord, HashTableChaining &table)
         std::cerr << "[DEBUG2] File failed to open. Program aborting." << std::endl;
         return 0;
     }
-    
+
     std::string tempWord;
 */
 

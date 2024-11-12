@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
     }
 
     hashTable.insertItem(101, "Orion");
+    hashTable.insertItem(193747, "Harper");
     hashTable.insertItem(305, "Tom");
     hashTable.insertItem(792, "Jeeper");
     hashTable.insertItem(267, "Harry");
