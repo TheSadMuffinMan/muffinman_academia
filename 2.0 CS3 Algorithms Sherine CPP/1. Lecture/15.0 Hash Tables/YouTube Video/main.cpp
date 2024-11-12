@@ -1,10 +1,10 @@
-#include "hashSeperateChaining.h"
+#include "hashChainingYT.h"
 
 int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-    hashTableLinearProbing hashTable;
+    hashTableChaining hashTable;
 
     if (hashTable.isEmpty())
     {
