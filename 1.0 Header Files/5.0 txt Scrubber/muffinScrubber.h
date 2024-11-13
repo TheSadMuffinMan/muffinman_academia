@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include <map>
 
 /*
@@ -37,14 +38,14 @@ muffinTXTscrubber::~muffinTXTscrubber()
     delete _masterData;
 }
 
+// Function assumes document name has been scrubbed.
+// NOT FINISHED.
 void muffinTXTscrubber::readData(std::string documentName)
 {
-    // Scrubbing screen.
-    
-}
+    std::ifstream inputStream;
+    inputStream.open(documentName);
 
-void readWordChain(std::string &inWord, HashTableChaining &table)
-{
+/*
     while ((inWord.size() > 0) && (tolower(inWord.at(0)) < 'a' || tolower(inWord.at(0)) > 'z'))
     {
         inWord.erase(0, 1); // Getting rid of punction, special chars, etc.
@@ -61,33 +62,12 @@ void readWordChain(std::string &inWord, HashTableChaining &table)
             inWord.at(i) = tolower(inWord.at(i));
         }
     }
+*/
 }
 
-/*
-    if ((argc != 3) || ((std::string)argv[1] == "A Scandal in Bohemia.txt"))
-    {
-        std::cerr << "[DEBUG1] Invalid input file. Program aborting." << std::endl;
-        return 0;
-    }
+void muffinTXTscrubber::addWord(std::string word)
+{
+    bool wordExists = false;
 
-    std::ifstream inputStream;
-    inputStream.open("A Scandal In Bohemia.txt");
-    if (!inputStream.is_open())
-    {
-        std::cerr << "[DEBUG2] File failed to open. Program aborting." << std::endl;
-        return 0;
-    }
-
-    std::string tempWord;
-*/
-
-/*
-    while (inputStream >> tempWord)
-    {
-        readWordChain(tempWord, chainTable);
-    }
-
-    inputStream.close();
-*/
-
-
+    //
+}
