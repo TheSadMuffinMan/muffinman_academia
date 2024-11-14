@@ -20,7 +20,7 @@ class muffinTXTscrubber
         muffinTXTscrubber();
         ~muffinTXTscrubber();
 
-        void readData(std::string);
+        void readData(std::string, std::string);
         void logData();
         void addWord(std::string);
     
@@ -38,12 +38,53 @@ muffinTXTscrubber::~muffinTXTscrubber()
     delete _masterData;
 }
 
-// Function assumes document name has been scrubbed.
-// NOT FINISHED.
-void muffinTXTscrubber::readData(std::string documentName)
+/* *****NOT FINISHED*****
+• Want an overloaded function that can read in all data (w/o stopString).
+
+Function assumes document name has been scrubbed.
+*/
+void muffinTXTscrubber::readData(std::string documentName, std::string stopString)
 {
+    int lineCounter;
+
+    // ***DEBUG***
+    documentName = "Testing.txt";
+    std::cout << "[DEBUG] readData() documentName = \"Testing.txt\"." << std::endl;
+
     std::ifstream inputStream;
     inputStream.open(documentName);
+
+    std::string workingString;
+    /*
+    While we are able to pull lines of input...
+    The reason why we can't just stream in every word is because our program needs to load different
+        data structures at different points.
+    */
+    while (!inputStream.eof())
+    {
+        std::getline(inputStream, workingString);
+        ++lineCounter;
+
+        if (workingString == stopString)
+        {
+            std::cout << "[INFO] readData halted, stopString located at line " << lineCounter << "." << std::endl;
+            return;
+        }
+
+        while (workingString.size() > 0)
+        {
+            int spaceIndex = 0;
+
+            // If there is no space found in string...
+            if (workingString.find(" ") == std::string::npos)
+            {
+                //
+            }
+
+            std::string word = workingString.substr(0,);
+
+        }
+    }
 
 /*
     while ((inWord.size() > 0) && (tolower(inWord.at(0)) < 'a' || tolower(inWord.at(0)) > 'z'))
