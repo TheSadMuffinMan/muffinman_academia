@@ -9,21 +9,7 @@ int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
 
-    HashTableChaining chainTable;
-    chainTable.insertItem(3762, "the");
-    chainTable.insertItem(521, "word");
-    chainTable.insertItem(6113, "other");
-    chainTable.insertItem(1971, "chain");
-    chainTable.insertItem(22, "Orion");
-    
-    std::cout << "\nInserting repeat element..." << std::endl;
-    chainTable.insertItem(3762, "the");
 
-    std::cout << "\nCalling printTable()..." << std::endl;
-    chainTable.printTable();
-
-    std::cout << "\nCalling searchTable(22)..." << std::endl;
-    chainTable.searchTable(22);
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
@@ -68,12 +54,21 @@ void readWordChain(std::string &inWord, HashTableChaining &table)
 */
 
 /*
-    while (inputStream >> tempWord)
-    {
-        readWordChain(tempWord, chainTable);
-    }
+    HashTableChaining chainTable;
+    chainTable.insertItem(3762, "the");
+    chainTable.insertItem(521, "word");
+    chainTable.insertItem(6113, "other");
+    chainTable.insertItem(1971, "chain");
+    chainTable.insertItem(22, "Orion");
+    
+    std::cout << "\nInserting repeat element..." << std::endl;
+    chainTable.insertItem(3762, "the");
 
-    inputStream.close();
+    std::cout << "\nCalling printTable()..." << std::endl;
+    chainTable.printTable();
+
+    std::cout << "\nCalling searchTable(22)..." << std::endl;
+    chainTable.searchTable(22);
 */
 
 

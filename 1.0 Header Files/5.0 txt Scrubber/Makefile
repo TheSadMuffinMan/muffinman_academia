@@ -10,10 +10,10 @@ CXX = clang++
 CXXFLAGS = -c -g -Wall -std=c++17
 
 # the build target executable file; .exe is not required
-PROGRAM = main.exe
+PROGRAM = testing.exe
 
 # list all .cpp files separated by space
-CPPFILES = main.cpp
+CPPFILES = scrubberPilot.cpp
 
 # make all rule/default rule that'll be run when we run "make"
 # first compile each file to object file

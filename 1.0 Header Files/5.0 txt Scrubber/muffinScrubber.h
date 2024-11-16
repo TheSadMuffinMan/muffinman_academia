@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
+#include <vector>
 
 /*
 Class stores data in a std::map.
@@ -25,12 +26,13 @@ class muffinTXTscrubber
         void addWord(std::string);
     
     private:
-        std::map<std::string,int> *_masterData;
+        std::vector<std::string> *_masterData;
+        // std::map<std::string,int> *_masterData;
 };
 
 muffinTXTscrubber::muffinTXTscrubber()
 {
-    _masterData = new std::map<std::string, int>;
+    _masterData = new std::vector<std::string>;
 }
 
 muffinTXTscrubber::~muffinTXTscrubber()
@@ -45,7 +47,7 @@ Function assumes document name has been scrubbed.
 */
 void muffinTXTscrubber::readData(std::string documentName, std::string stopString)
 {
-    int lineCounter;
+    int lineCounter = 0;
 
     // ***DEBUG***
     documentName = "Testing.txt";
@@ -67,22 +69,30 @@ void muffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 
         if (workingString == stopString)
         {
-            std::cout << "[INFO] readData halted, stopString located at line " << lineCounter << "." << std::endl;
+            std::cout << "[INFO] readData() halted, stopString located at line " << lineCounter << "." << std::endl;
             return;
         }
 
         while (workingString.size() > 0)
         {
+            std::string word = " ";
             int spaceIndex = 0;
 
             // If there is no space found in string...
             if (workingString.find(" ") == std::string::npos)
             {
-                //
+                break;
             }
 
-            std::string word = workingString.substr(0,);
+            spaceIndex = workingString.find(" ");
 
+            word = workingString.substr(0, spaceIndex);
+            // std::cout << "[INFO] word = " << word << std::endl;
+            _masterData->push_back(word);
+
+            // Deleting word from workingString.
+            workingString = workingString.substr(spaceIndex + 1);
+            // std::cout << "[INFO] Remaining string: " << workingString << std::endl;
         }
     }
 
