@@ -27,6 +27,11 @@
     - Red-Black BST combat this by keeping track of the connections and whether or not they are red or black.
 • Searching a R-B BST is the same as searching an elementary BST.
     - Most other operations are identical too.
+
+INSERTION OPERATIONS:
+• Right child red, left child black: rotate left.
+• Left child, left-left grandchild red (left red, left child red): rotate right.
+• Both children red: flip colors.
 */
 
 #include <iostream>
