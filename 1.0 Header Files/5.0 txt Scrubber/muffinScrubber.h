@@ -1,7 +1,6 @@
 #pragma once
 #include <iostream>
 #include <fstream>
-#include <map>
 #include <vector>
 
 /*
@@ -15,11 +14,11 @@ PLANNED FUNCTIONALITY:
 • Class should print out words in alphabetical order in an output file.
 • (next)
 */
-class muffinTXTscrubber
+class MuffinTXTscrubber
 {
     public:
-        muffinTXTscrubber();
-        ~muffinTXTscrubber();
+        MuffinTXTscrubber();
+        ~MuffinTXTscrubber();
 
         void readData(std::string, std::string);
         void logData();
@@ -30,12 +29,12 @@ class muffinTXTscrubber
         // std::map<std::string,int> *_masterData;
 };
 
-muffinTXTscrubber::muffinTXTscrubber()
+MuffinTXTscrubber::MuffinTXTscrubber()
 {
     _masterData = new std::vector<std::string>;
 }
 
-muffinTXTscrubber::~muffinTXTscrubber()
+MuffinTXTscrubber::~MuffinTXTscrubber()
 {
     delete _masterData;
 }
@@ -45,7 +44,7 @@ muffinTXTscrubber::~muffinTXTscrubber()
 
 Function assumes document name has been scrubbed.
 */
-void muffinTXTscrubber::readData(std::string documentName, std::string stopString)
+void MuffinTXTscrubber::readData(std::string documentName, std::string stopString)
 {
     int lineCounter = 0;
 
@@ -116,7 +115,7 @@ void muffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 */
 }
 
-void muffinTXTscrubber::addWord(std::string word)
+void MuffinTXTscrubber::addWord(std::string word)
 {
     bool wordExists = false;
 
