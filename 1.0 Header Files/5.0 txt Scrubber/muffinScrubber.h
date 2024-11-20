@@ -24,7 +24,7 @@ class MuffinTXTscrubber
         void addWord(std::string);
     
     private:
-        std::vector<std::pair<std::string, int>> _masterData;
+        std::vector<std::pair<std::string, int>> *_masterData;
         // std::map<std::string,int> *_masterData;
 };
 
@@ -119,7 +119,7 @@ void MuffinTXTscrubber::addWord(std::string word)
     bool wordExists = false;
     int iterator = 0;
 
-    while (word != _masterData.at(iterator).first)
+    while (word != _masterData->at(iterator).first)
     {
         ++iterator;
     }
