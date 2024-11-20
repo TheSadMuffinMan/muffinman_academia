@@ -6,9 +6,6 @@
 // strtok();
 
 /*
-Class stores data in a std::map.
-• The map data structure is a Red-Black BST.
-
 Pairs are as follows:
 <(std::string)Word, (int)WordCount>
 
@@ -27,13 +24,13 @@ class MuffinTXTscrubber
         void addWord(std::string);
     
     private:
-        std::vector<std::string> *_masterData;
+        std::vector<std::pair<std::string, int>> _masterData;
         // std::map<std::string,int> *_masterData;
 };
 
 MuffinTXTscrubber::MuffinTXTscrubber()
 {
-    _masterData = new std::vector<std::string>;
+    _masterData = new std::vector<std::pair<std::string, int>>;
 }
 
 MuffinTXTscrubber::~MuffinTXTscrubber()
@@ -120,6 +117,10 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 void MuffinTXTscrubber::addWord(std::string word)
 {
     bool wordExists = false;
+    int iterator = 0;
 
-    //
+    while (word != _masterData.at(iterator).first)
+    {
+        ++iterator;
+    }
 }
