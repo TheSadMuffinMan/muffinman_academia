@@ -20,6 +20,8 @@ NODE DELETION:
 • Store characters and values in nodes (not keys).
 • Each node has 3 children: smaller (left), equal (middle), larger (right).
 • Meant to combat the large memory requirements that regular Tries use.
+• TSTs are much faster than hashing (especially for search misses), and more flexible than Red-Black BSTs.
+
 • A TST Node has 5 "fields":
     - A value.
     - A character "c".
