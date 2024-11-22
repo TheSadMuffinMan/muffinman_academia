@@ -16,9 +16,16 @@ NODE DELETION:
 */
 
 /*
-    TERNARY SEARCH TRIES
+    TERNARY SEARCH TRIES (TST)
 • Store characters and values in nodes (not keys).
 • Each node has 3 children: smaller (left), equal (middle), larger (right).
+• Meant to combat the large memory requirements that regular Tries use.
+• A TST Node has 5 "fields":
+    - A value.
+    - A character "c".
+    - A reference to a left TST.
+    - A reference to a middle TST.
+    - A reference to a right TST.
 */
 
 #include <iostream>
