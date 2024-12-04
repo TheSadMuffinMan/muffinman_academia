@@ -26,6 +26,9 @@ class MuffinTXTscrubber
     
     private:
         std::vector<std::pair<std::string, int>> *_masterData;
+
+        bool _allowedPeriod(std::string);
+        std::string _scrubWord(std::string);
         // std::map<std::string,int> *_masterData;
 };
 
@@ -144,4 +147,29 @@ void MuffinTXTscrubber::addWord(std::string word)
     {
         _masterData->emplace_back(word, 1);
     }
+}
+
+// Function returns whether or not a period is allowed. Is used in sentence counter.
+bool MuffinTXTscrubber::_allowedPeriod(std::string word)
+{
+    if ((word == "dr.") || (word == "mr.") || (word == "ms.") || (word == "mrs."))
+    {
+        return true;
+    } else
+    {
+        return false;
+    }
+}
+
+/*
+Function takes in a word and scrubs it based off of assignment parameters.
+ASSIGNMENT PARAMETERS:
+• Capitolization does not matter.
+    std::toLower() everything
+• Hypens DO matter, but double hypens can be shortened to single hypens.
+• 
+*/
+std::string MuffinTXTscrubber::_scrubWord(std::string word)
+{
+    //
 }
