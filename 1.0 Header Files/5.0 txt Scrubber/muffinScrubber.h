@@ -45,8 +45,7 @@ MuffinTXTscrubber::~MuffinTXTscrubber()
 // Function is used to debug stuff throughout development process.
 void MuffinTXTscrubber::debugFunction()
 {
-    std::cout << "\n[DEBUG FUNCTION] Attempting to call logData()." << std::endl;
-    logData();
+    std::cout << "\n[DEBUG FUNCTION] Function isn't doing anything right now." << std::endl;
 }
 
 /*
