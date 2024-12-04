@@ -28,7 +28,7 @@ class MuffinTXTscrubber
         std::vector<std::pair<std::string, int>> *_masterData;
 
         bool _allowedPeriod(std::string);
-        std::string _scrubWord(std::string);
+        void _scrubWord(std::string&);
         // std::map<std::string,int> *_masterData;
 };
 
@@ -99,6 +99,7 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 
             word = workingString.substr(0, spaceIndex);
             // std::cout << "[INFO] word = " << word << std::endl;
+            _scrubWord(word);
             addWord(word);
 
             // Deleting word from workingString.
@@ -107,26 +108,6 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
         }
     }
 
-
-
-/*
-    while ((inWord.size() > 0) && (tolower(inWord.at(0)) < 'a' || tolower(inWord.at(0)) > 'z'))
-    {
-        inWord.erase(0, 1); // Getting rid of punction, special chars, etc.
-    }
-    while (inWord.size() > 0 && (tolower(inWord.at(inWord.size() - 1)) < 'a' || tolower(inWord.size() - 1) > 'z'))
-    {
-        inWord.erase(inWord.size() - 1, 1);
-    }
-
-    if (inWord.size() > 0)
-    {
-        for (std::size_t i = 0; i < inWord.size(); i++)
-        {
-            inWord.at(i) = tolower(inWord.at(i));
-        }
-    }
-*/
 }
 
 // [WORKING] Function adds a word to _masterData.
@@ -163,13 +144,53 @@ bool MuffinTXTscrubber::_allowedPeriod(std::string word)
 
 /*
 Function takes in a word and scrubs it based off of assignment parameters.
-ASSIGNMENT PARAMETERS:
+PARAMETERS:
 • Capitolization does not matter.
     std::toLower() everything
 • Hypens DO matter, but double hypens can be shortened to single hypens.
-• 
 */
-std::string MuffinTXTscrubber::_scrubWord(std::string word)
+void MuffinTXTscrubber::_scrubWord(std::string &word)
 {
-    //
+
+    // Removing leading and trailing non-alphabetic characters.
+    while (!word.empty() && !isalpha(word.front()))
+    {
+        word.erase(0, 1); // Remove the leading non-alphabetic character.
+    }
+    while (!word.empty() && !isalpha(word.back()))
+    {
+        word.pop_back(); // Remove trailing non-alphabetic character.
+    }
+
+    // Convert the word to lowercase.
+    for (int i = 0; i < word.size(); i++)
+    {
+        word.at(i) = std::tolower(word.at(i));
+    }
+
+    size_t pos = 0;
+
+    // Replace double hyphens with single hyphens.
+    while ((pos = word.find("--", pos)) != std::string::npos)
+    {
+        word.replace(pos, 2, "-");
+    }
+/*
+    while ((word.size() > 0) && (tolower(word.at(0)) < 'a' || tolower(word.at(0)) > 'z'))
+    {
+        word.erase(0, 1); // Getting rid of punction, special chars, etc.
+    }
+    while (word.size() > 0 && (tolower(word.at(word.size() - 1)) < 'a' || tolower(word.size() - 1) > 'z'))
+    {
+        word.erase(word.size() - 1, 1);
+    }
+
+    if (word.size() > 0)
+    {
+        for (std::size_t i = 0; i < word.size(); i++)
+        {
+            word.at(i) = tolower(word.at(i));
+        }
+    }
+*/
 }
