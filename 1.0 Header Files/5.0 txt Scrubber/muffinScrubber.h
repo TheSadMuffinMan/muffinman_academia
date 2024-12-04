@@ -19,7 +19,7 @@ class MuffinTXTscrubber
         MuffinTXTscrubber();
         ~MuffinTXTscrubber();
 
-        bool isEmpty();
+        void debugFunction();
         void readData(std::string, std::string);
         void logData();
         void addWord(std::string);
@@ -39,9 +39,13 @@ MuffinTXTscrubber::~MuffinTXTscrubber()
     // Vector automatically cleans up memory for you.
 }
 
-bool MuffinTXTscrubber::isEmpty()
+// Function is used to debug stuff throughout development process.
+void MuffinTXTscrubber::debugFunction()
 {
-    return (_masterData->size() == 0);
+    std::cout << "\n[DEBUG] ";
+
+    std::cout << "4th word is: ";
+    std::cout << _masterData->at(3).first;
 }
 
 /* *****NOT FINISHED*****
@@ -92,13 +96,15 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 
             word = workingString.substr(0, spaceIndex);
             // std::cout << "[INFO] word = " << word << std::endl;
-            _masterData->push_back(word);
+            addWord(word);
 
             // Deleting word from workingString.
             workingString = workingString.substr(spaceIndex + 1);
             // std::cout << "[INFO] Remaining string: " << workingString << std::endl;
         }
     }
+
+
 
 /*
     while ((inWord.size() > 0) && (tolower(inWord.at(0)) < 'a' || tolower(inWord.at(0)) > 'z'))
@@ -120,8 +126,25 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 */
 }
 
+// [WORKING] Function adds a word to _masterData.
 void MuffinTXTscrubber::addWord(std::string word)
 {
+    bool wordExists = false;
+    for (auto& pair : *_masterData)
+    {
+        if (pair.first == word)
+        {
+            pair.second++;
+            wordExists = true;
+            break;
+        }
+    }
+
+    if (!wordExists)
+    {
+        _masterData->emplace_back(word, 1);
+    }
+/*
     if (isEmpty() == true)
     {
         std::pair<std::string, int> tempPair;
@@ -148,6 +171,10 @@ void MuffinTXTscrubber::addWord(std::string word)
         tempPair.second = 1;
         _masterData->push_back(tempPair);
     }
-
-
+    else
+    {
+        // Iterate the word occurance.
+        _masterData->at(iterator).second += 1;
+    }
+*/
 }
