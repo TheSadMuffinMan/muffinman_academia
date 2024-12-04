@@ -1,5 +1,3 @@
-#pragma once
-
 #include <stdio.h>
 #include <string>
 #include <iostream>
@@ -7,12 +5,6 @@
 using namespace std;
 
 template <typename T> class Stack{
-public:
-	void push(T item);
-	bool isEmpty();
-	T pop();
-	void showStack();
-	int size(); //returns # of items in stack
 private:
 	T* s;
 	int N;
@@ -37,7 +29,9 @@ public:
 	T pop(){
 		if(isEmpty()){
 			std::cout<<"Stack underflow, cannot pop.\n";
-			return "";
+			//return std::nullopt; // this would be preferred with the <optional> lib, however, not allowed in assignment.
+			// nullopt would allow a check at pop implementation to verify stack is empty by comparing output
+			return T(); // requires isEmpty() check  at pop 
 		}
 		return s[--N];		
 	}
@@ -50,6 +44,9 @@ public:
 	}
 	int size(){
 		return N;
+	}
+	~Stack(){
+		delete[] s;
 	}
 private:
 	void resize(int newCapacity){

@@ -1,0 +1,397 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{enumitem}
+
+\begin{document}
+
+\title{Code Project 2 Design Document}
+\author{Anthony Streich, Keegan Erickson, Dawson Wright}
+\date{November 1, 2024}
+\maketitle
+
+\section{Overall Summary}
+
+This document details the code of a directed graph that utilizes a priority queue and an adjacency list in order to perform breadth-first search from a text file given to the program. Also included are headers for our queues and stacks that our program utilizes.
+
+\maketitle
+
+\section{digraph Implementation}
+The \texttt{DiGraph} class implements a directed graph using an adjacency list representation. It allows for the addition of edges, retrieval of adjacent vertices, and implementation of Dijkstra's algorithm for finding the shortest path from a source vertex to a destination vertex.
+
+Upon creation of a graph object a value for graph size is taken in as an argument for creation of the adjacency list two-dimensional vector. The vector is a reference list for all integer vertex numbers that themselves contain a list of each edge structure that contains the pointed to vertex with its weight.
+
+Addition of edges is done by a void function that takes in the source and pointed to vertices with edge weight. It also checks if the vertex is out of range for the graph. 
+
+
+\subsection{Private Members}
+\begin{itemize}
+    \item \texttt{int Gsize}: An integer representing the number of vertices in the graph.
+    \item \texttt{vector<vector<Edge>> adj}: A vector of vectors that serves as the adjacency list for storing edges. Each element contains a list of edges originating from a vertex.
+\end{itemize}
+
+\subsection{Structures}
+\begin{verbatim}
+struct Edge {
+    int vertex;
+    int weight;
+};
+\end{verbatim}
+
+\subsection{Constructor}
+\begin{verbatim}
+DiGraph(int Gsize)
+\end{verbatim}
+\begin{itemize}
+    \item \textbf{Parameters}: \texttt{Gsize}: The number of vertices in the graph.
+    \item Initializes the directed graph with the specified number of vertices and creates an empty adjacency list for each vertex.
+\end{itemize}
+
+\subsection{Public Methods}
+\begin{itemize}
+    \item \texttt{void addEdge(int vFrom, int vTo, int weight=1)}
+    \begin{itemize}
+        \item \textbf{Parameters}: 
+        \begin{itemize}
+            \item \texttt{vFrom}: The starting vertex of the edge.
+            \item \texttt{vTo}: The ending vertex of the edge.
+            \item \texttt{weight}: The weight of the edge (default is 1).
+        \end{itemize}
+        \item \textbf{Description}: Adds a directed edge from \texttt{vFrom} to \texttt{vTo} with the specified weight. Throws an \texttt{out\_of\_range} exception if vertex indices are invalid.
+    \end{itemize}
+
+    \item \texttt{vector<Edge>\& getAdj(int v)}
+    \begin{itemize}
+        \item \textbf{Parameters}: \texttt{v}: The vertex for which to retrieve adjacent edges.
+        \item \textbf{Returns}: A reference to the list of edges adjacent to vertex \texttt{v}.
+    \end{itemize}
+
+    \item \texttt{void printAdj(int v)}
+    \begin{itemize}
+        \item \textbf{Parameters}: \texttt{v}: The vertex whose adjacent vertices are to be printed.
+        \item \textbf{Description}: Prints the list of adjacent vertices and their corresponding edge weights. Handles invalid vertex indices by printing an error message.
+    \end{itemize}
+
+    \item \texttt{void dijkstraSPT(int srcV, int destV)}
+    \begin{itemize}
+        \item \textbf{Parameters}: 
+        \begin{itemize}
+            \item \texttt{srcV}: The source vertex from which to calculate the shortest paths.
+            \item \texttt{destV}: The destination vertex for which to find the shortest path.
+        \end{itemize}
+        \item \textbf{Description}: Implements Dijkstra's algorithm to find the shortest path from \texttt{srcV} to \texttt{destV}. It utilizes a priority queue to select the next vertex with the smallest distance and updates distances and parents as it progresses. The method prints the total weight of the path and displays the path taken.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Destructor}
+\begin{verbatim}
+~DiGraph()
+\end{verbatim}
+Deallocates memory associated with the directed graph and prints a termination message.
+'
+\section{Path Finding}
+Path finding has two methods available; a dijkstra's algorithm for searching graphs with weighted edges and a breadth first search (BFS) for unweighted edged graphs.
+
+The BFS class object was designed to take in graph object as implemented in the Digraph class of the digraph.h file.
+
+\subsection{Private Members}
+\begin{itemize}
+    \item \textbf{marked}: A vector of boolean values that indicates whether a vertex has been visited.
+    \item \textbf{edgeTo}: A vector of integers that stores the previous vertex for each vertex in the path, allowing the reconstruction of the path from the source to any vertex.
+    \item \textbf{distTo}: A vector of integers that stores the distance from the source vertex to each vertex.
+\end{itemize}
+
+\subsection{Constructor}
+\begin{verbatim}
+BreadthFirstPaths(int Gsize)
+\end{verbatim}
+Initializes the \texttt{marked}, \texttt{edgeTo}, and \texttt{distTo} vectors based on the size of the graph.
+
+\subsection{Public Methods}
+\begin{itemize}
+    \item \texttt{bfs(Graph g, int s, bool weighted = false)}
+    \begin{itemize}
+        \item \textbf{Parameters}:
+        \begin{itemize}
+            \item \texttt{g}: The graph to traverse.
+            \item \texttt{s}: The source vertex from which to start the search.
+            \item \texttt{weighted}: A boolean flag indicating whether the graph is weighted (default is false).
+        \end{itemize}
+        \item \textbf{Description}: Performs a breadth-first search starting from the source vertex \texttt{s}. It marks vertices, tracks the paths, and computes distances.
+    \end{itemize}
+
+    \item \texttt{distTo(int v) const}
+    \begin{itemize}
+        \item \textbf{Parameters}:
+        \item \texttt{v}: The target vertex.
+        \item \textbf{Returns}: The distance from the source vertex to \texttt{v}.
+    \end{itemize}
+
+    \item \texttt{isConnected(int v) const}
+    \begin{itemize}
+        \item \textbf{Parameters}:
+        \item \texttt{v}: The target vertex.
+        \item \textbf{Returns}: A boolean indicating whether there is a path from the source vertex to \texttt{v}.
+    \end{itemize}
+
+    \item \texttt{pathTo(int v) const}
+    \begin{itemize}
+        \item \textbf{Parameters}:
+        \item \texttt{v}: The target vertex.
+        \item \textbf{Returns}: A dynamically allocated array of integers representing the path from the source vertex to \texttt{v}, or \texttt{nullptr} if no path exists.
+        \item \textbf{Description}: If the target vertex is reachable, it reconstructs the path using the \texttt{edgeTo} array and returns it. If not, it outputs an error message and returns \texttt{nullptr}.
+    \end{itemize}
+\end{itemize}
+
+\section{Q.h}
+The \texttt{Queue} class implements a dynamic array-based queue data structure using a templated approach. This allows the queue to store elements of any data type, providing standard queue functionalities such as enqueueing, dequeueing, and inspecting the head of the queue.
+
+\subsection{Private Members}
+\begin{itemize}
+    \item \texttt{T* q}: A pointer to the dynamic array that holds the queue elements.
+    \item \texttt{int N}: An integer that tracks the current number of elements in the queue.
+    \item \texttt{int capacity}: An integer representing the total capacity of the queue.
+    \item \texttt{int head}: An integer tracking the index of the front of the queue.
+    \item \texttt{int tail}: An integer tracking the index of the last element in the queue.
+\end{itemize}
+
+\subsection{Constructor}
+\begin{verbatim}
+Queue()
+\end{verbatim}
+Initializes the queue with a default capacity of 4. It allocates memory for the internal array and sets the size tracking variables (\texttt{N}, \texttt{head}, \texttt{tail}) to their initial values.
+
+\subsection{Public Methods}
+\begin{itemize}
+    \item \texttt{void enQ(T item)}
+    \begin{itemize}
+        \item \textbf{Parameters}: \texttt{item}: The item to be added to the queue.
+        \item \textbf{Description}: Adds an item to the tail of the queue. If the queue is full, it calls the \texttt{resize} method to double the capacity.
+    \end{itemize}
+
+    \item \texttt{bool isEmpty()}
+    \begin{itemize}
+        \item \textbf{Returns}: A boolean indicating whether the queue is empty.
+    \end{itemize}
+
+    \item \texttt{void showHead()}
+    \begin{itemize}
+        \item \textbf{Description}: Displays the item at the head of the queue. If the queue is empty, it prints a message indicating so.
+    \end{itemize}
+
+    \item \texttt{int size() const}
+    \begin{itemize}
+        \item \textbf{Returns}: The number of elements currently in the queue.
+    \end{itemize}
+
+    \item \texttt{T deQ()}
+    \begin{itemize}
+        \item \textbf{Returns}: The item at the head of the queue. If the queue is empty, it prints an error message and returns an empty string.
+        \item \textbf{Description}: Removes and returns the item at the front of the queue. If the queue becomes empty after dequeuing, it resets the \texttt{head} and \texttt{tail} indices.
+    \end{itemize}
+
+    \item \texttt{void showQ()}
+    \begin{itemize}
+        \item \textbf{Description}: Displays all the contents of the queue from the head to the tail.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Private Methods}
+\begin{itemize}
+    \item \texttt{void resize(int newCapacity)}
+    \begin{itemize}
+        \item \textbf{Parameters}: \texttt{newCapacity}: The new capacity for the queue.
+        \item \textbf{Description}: Resizes the internal array to the specified new capacity. It creates a new array, copies the current items to it, and deletes the old array. It resets the \texttt{head} and \texttt{tail} indices accordingly.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Destructor}
+\begin{verbatim}
+~Queue()
+\end{verbatim}
+Deallocates the memory used by the queue. It should properly delete the allocated array.
+
+\section{stack.h}
+The \texttt{Stack} class implements a dynamic array-based stack data structure using a templated approach. This allows the stack to store elements of any data type while providing standard stack functionalities such as pushing, popping, and inspecting the stack's contents.
+
+\subsection{Private Members}
+\begin{itemize}
+    \item \texttt{T* s}: A pointer to the dynamic array that holds the stack elements.
+    \item \texttt{int N}: An integer that tracks the current number of elements in the stack.
+    \item \texttt{int capacity}: An integer representing the total capacity of the stack.
+\end{itemize}
+
+\subsection{Constructor}
+\begin{verbatim}
+Stack()
+\end{verbatim}
+Initializes the stack with a default capacity of 4. It allocates memory for the internal array and sets the size tracking variable (\texttt{N}) to its initial value.
+
+\subsection{Public Methods}
+\begin{itemize}
+    \item \texttt{void push(T item)}
+    \begin{itemize}
+        \item \textbf{Parameters}: \texttt{item}: The item to be added to the stack.
+        \item \textbf{Description}: Adds an item to the top of the stack. If the stack is full, it calls the \texttt{resize} method to double the capacity.
+    \end{itemize}
+
+    \item \texttt{bool isEmpty()}
+    \begin{itemize}
+        \item \textbf{Returns}: A boolean indicating whether the stack is empty.
+    \end{itemize}
+
+    \item \texttt{T pop()}
+    \begin{itemize}
+        \item \textbf{Returns}: The item at the top of the stack. If the stack is empty, it prints an error message and returns a default-constructed value of type \texttt{T}.
+        \item \textbf{Description}: Removes and returns the item at the top of the stack. If the stack becomes empty after popping, it updates the size tracking variable.
+    \end{itemize}
+
+    \item \texttt{void showStack()}
+    \begin{itemize}
+        \item \textbf{Description}: Displays all the contents of the stack from the top to the bottom.
+    \end{itemize}
+
+    \item \texttt{int size()}
+    \begin{itemize}
+        \item \textbf{Returns}: The number of elements currently in the stack.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Destructor}
+\begin{verbatim}
+~Stack()
+\end{verbatim}
+Deallocates the memory used by the stack. It properly deletes the allocated array.
+
+\subsection{Private Methods}
+\begin{itemize}
+    \item \texttt{void resize(int newCapacity)}
+    \begin{itemize}
+        \item \textbf{Parameters}: \texttt{newCapacity}: The new capacity for the stack.
+        \item \textbf{Description}: Resizes the internal array to the specified new capacity. It creates a new array, copies the current items to it, and deletes the old array.
+    \end{itemize}
+\end{itemize}
+
+\section{priQueue.h}
+The \texttt{PriQ} class implements a priority queue using a binary heap. This class allows for the insertion of items with associated priorities, removal of the item with the highest priority (smallest priority value), and peeking at the highest priority item without removal.
+
+\subsection{Private Members}
+\begin{itemize}
+    \item \texttt{Node<T>* heap}: A dynamic array that stores the nodes of the heap, where each node contains an item and its associated priority.
+    \item \texttt{int N}: The number of elements currently in the priority queue.
+    \item \texttt{int capacity}: The current capacity of the underlying array.
+\end{itemize}
+
+\subsection{Structs}
+\begin{verbatim}
+struct Node<T> {
+    T item;        // The actual item
+    int priority;  // The priority of the item
+
+    Node(T val = T(), int pri = 0) : item(val), priority(pri) {}
+    bool operator<(const Node& other) const {
+        return priority < other.priority;
+    }
+};
+\end{verbatim}
+
+\subsection{Private Methods}
+\begin{itemize}
+    \item \texttt{void heapUp(int index)}
+    \begin{itemize}
+        \item Restores the heap property by moving the node at the specified index upward in the heap.
+        \item Compares the node with its parent and swaps them if necessary.
+    \end{itemize}
+
+    \item \texttt{void heapDown(int index)}
+    \begin{itemize}
+        \item Restores the heap property by moving the node at the specified index downward in the heap.
+        \item Compares the node with its children and swaps it with the smallest child if necessary.
+    \end{itemize}
+
+    \item \texttt{void resize()}
+    \begin{itemize}
+        \item Resizes the underlying array to double its current capacity when it becomes full.
+        \item Copies existing nodes to the new array and updates the capacity.
+    \end{itemize}
+\end{itemize}
+
+\subsection{Public Methods}
+\begin{itemize}
+    \item \texttt{PriQ()}
+    \begin{itemize}
+        \item Constructor that initializes an empty priority queue with a default capacity of 4.
+    \end{itemize}
+
+    \item \texttt{~PriQ()}
+    \begin{itemize}
+        \item Destructor that deallocates the memory used by the heap.
+    \end{itemize}
+
+    \item \texttt{void insert(T item, int priority)}
+    \begin{itemize}
+        \item Inserts a new item with the specified priority into the priority queue.
+        \item If the current capacity is reached, it calls \texttt{resize()} to increase the capacity.
+        \item Calls \texttt{heapUp()} to restore the heap property.
+    \end{itemize}
+
+    \item \texttt{bool isEmpty() const}
+    \begin{itemize}
+        \item Returns a boolean indicating whether the priority queue is empty.
+    \end{itemize}
+
+    \item \texttt{T removeMin()}
+    \begin{itemize}
+        \item Removes and returns the item with the highest priority (smallest priority value).
+        \item Throws an exception if the queue is empty.
+        \item Replaces the root of the heap with the last element and calls \texttt{heapDown()} to restore the heap property.
+    \end{itemize}
+
+    \item \texttt{T peek() const}
+    \begin{itemize}
+        \item Returns the item with the highest priority without removing it.
+        \item Throws an exception if the queue is empty.
+    \end{itemize}
+
+    \item \texttt{int peekPri() const}
+    \begin{itemize}
+        \item Returns the priority of the highest priority item without removing it.
+        \item Throws an exception if the queue is empty.
+    \end{itemize}
+\end{itemize}
+
+\section{main.cpp}
+This document describes the implementation of a C++ program designed to read graph data from a text file, construct a directed graph, and compute the shortest paths from specified source vertices to a destination vertex using Dijkstra's algorithm. The program also logs the events and execution time.
+
+\subsection{Functionality}
+The main functionality of the program includes:
+\begin{itemize}
+    \item Reading graph data from a specified text file.
+    \item Constructing a directed graph using the \texttt{DiGraph} class.
+    \item Calculating and displaying the shortest path from multiple source vertices to a specified destination vertex.
+    \item Logging events and execution time to a file for future reference.
+\end{itemize}
+
+\subsection{Main Function}
+The \texttt{main} function orchestrates the flow of the program. Its key responsibilities include:
+\begin{itemize}
+    \item Initializing timing and logging.
+    \item Reading the filename from command-line arguments and handling file opening.
+    \item Parsing the graph data and constructing the \texttt{DiGraph} object.
+    \item Interacting with the user to request source vertices and destination vertices for shortest path calculations.
+    \item Logging execution times and results.
+\end{itemize}
+
+\subsection{Logging Functions}
+\begin{itemize}
+    \item \texttt{void logEvent(std::string passedString)}: Logs the current date and time along with the specified message to a log file.
+    \item \texttt{std::string buildString(int sourceV, int destV, std::chrono::\_V2::high\_resolution\_clock::duration duration)}: Constructs a string describing the shortest path computation, including the source and destination vertices and the duration of the computation.
+\end{itemize}
+
+\section{Project Problems Encountered}
+The main problem we encountered during the creation of this project is that we started with two different implementations for our code, one using an adjacency list and one with an adjacency matrix. This used up a lot of our time for the project because we were trying to figure out which implementation would be the best for our situation. Eventually, we decided to go with the adjacency list because the matrix implementation utilized for too much space and time for what was needed for the project and it had problems with trying to find the shortest path through breadth-first search.
+
+\end{document}
+
+

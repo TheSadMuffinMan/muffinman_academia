@@ -1,5 +1,3 @@
-#pragma once
-
 #include <stdio.h>
 #include <string>
 #include <iostream>
@@ -77,8 +75,7 @@ private:
 		//creates an array of twice the size and copies items over
 		T* copy = new T[newCapacity];
 		cout<<"resizing array.\n";
-		int size = tail-head+1; // number of items currently in queue
-		for(int i = 0; i<size; i++){
+		for(int i = 0; i<N; i++){
 			copy[i] = q[head+i];
 		}
 		delete[] q;
@@ -87,5 +84,8 @@ private:
 		//reset head and tail positions
 		head = 0;
 		tail = size-1;
+	}
+	~Queue(){
+		delete q[];
 	}
 };

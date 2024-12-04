@@ -24,6 +24,10 @@ void logEvent(std::string);
 std::string buildString(int, int, std::chrono::_V2::high_resolution_clock::duration);
 
 int main(int argc, char* argv[]){
+	auto progTimeStart = Time::now();
+    std::string printString ="Run started";
+    logEvent(printString);
+
 	if(argc<2){
 		std::cerr<<"Error: Missing filename as main function arg.\n";
 		return 1;
@@ -39,12 +43,12 @@ int main(int argc, char* argv[]){
 	int vTo, vFrom, edgeWeight, Gsize; // destination vertex, source vertex, edge weight, graph size
 
 	getline(file, line); //throw away first line of input text
-	getline(file, line);
-	cout<<line<<endl;
+	getline(file, line); // grabs the number of vertices in graph
+	//cout<<line<<endl;
 	Gsize = stoi(line); // get the graph size integer 
 	getline(file, line); // throw away 3rd line
 
-	DiGraph dg(Gsize); // create graph op
+	DiGraph dg(Gsize); // create graph object
 
 	while(!file.eof()){
 		//using getline: (Having a hard time getting this to work)
@@ -62,14 +66,11 @@ int main(int argc, char* argv[]){
 		istringstream iss(line);
 		iss>>vFrom>>vTo>>edgeWeight;
 
-		//cout<<"vFrom: "<<vFrom<<endl;
-		//cout<<"vTo: "<<vTo<<endl;
-		//cout<<"weight: "<<edgeWeight<<endl;
-		//cout<<endl;
 		dg.addEdge(vFrom, vTo, edgeWeight); // add connections in graph
 	}
 	file.close();
-    std::string printString = "Graph with " + Gsize;
+	string GsizeS = to_string(Gsize);
+    printString = "Graph with " + GsizeS;
     printString = printString + " vertices created.";
     logEvent(printString);
 
@@ -110,7 +111,8 @@ int main(int argc, char* argv[]){
 		cout<<"Shortest path 3 from "<<v3<<": ";
         timeStart = Time::now();
 		dg.dijkstraSPT(v3, destV);
-        auto duration = Time::duration(timeStop - timeStart);
+        timeStop = Time::now();
+        duration = Time::duration(timeStop - timeStart);
         printString = buildString(v3, destV, duration);
         logEvent(printString);
 
@@ -119,10 +121,10 @@ int main(int argc, char* argv[]){
 		cin>>destV;
 		if(destV<0) break;
 		
-        auto timeStart = Time::now();
+        timeStart = Time::now();
 		dg.dijkstraSPT(v1, destV);
-        auto timeStop = Time::now();
-        auto duration = Time::duration(timeStop - timeStart);
+        timeStop = Time::now();
+        duration = Time::duration(timeStop - timeStart);
         printString = buildString(v1, destV, duration);
         logEvent(printString);
 
@@ -137,7 +139,8 @@ int main(int argc, char* argv[]){
 		cout<<"Shortest path 3 from "<<v3<<": ";
         timeStart = Time::now();
 		dg.dijkstraSPT(v3, destV);
-        auto duration = Time::duration(timeStop - timeStart);
+        timeStop = Time::now();
+        duration = Time::duration(timeStop - timeStart);
         printString = buildString(v3, destV, duration);
         logEvent(printString);
 
@@ -145,10 +148,10 @@ int main(int argc, char* argv[]){
 		cin>>destV;
 		if(destV<0) break;
 		
-        auto timeStart = Time::now();
+        timeStart = Time::now();
 		dg.dijkstraSPT(v1, destV);
-        auto timeStop = Time::now();
-        auto duration = Time::duration(timeStop - timeStart);
+        timeStop = Time::now();
+        duration = Time::duration(timeStop - timeStart);
         printString = buildString(v1, destV, duration);
         logEvent(printString);
 
@@ -163,11 +166,15 @@ int main(int argc, char* argv[]){
 		cout<<"Shortest path 3 from "<<v3<<": ";
         timeStart = Time::now();
 		dg.dijkstraSPT(v3, destV);
-        auto duration = Time::duration(timeStop - timeStart);
+        timeStop = Time::now();
+        duration = Time::duration(timeStop - timeStart);
         printString = buildString(v3, destV, duration);
         logEvent(printString);
 	}
-
+	auto progTimeStop = Time::now();
+	auto duration = Time::duration(progTimeStop - progTimeStart);
+    printString ="Run ended, total run time was " + to_string(duration.count()) + " ns.";
+    logEvent(printString);
 	return 0;
 }
 
@@ -192,18 +199,22 @@ void logEvent(std::string passedString)
     std::tm now_tm = *std::localtime(&now_time_t);
 
     logStream << "[" << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S") << "]";
-    logStream << " " << passedString;
+    logStream << " " << passedString << endl;
     logStream.close();
 }
 
 // Function builds the log file string.
 std::string buildString(int sourceV, int destV, std::chrono::_V2::high_resolution_clock::duration duration)
 {
-    std::string returnString = "BFS between vertex " + sourceV;
-    std::string tempString = " and vertex " + destV;
+	string sourceVstr = to_string(sourceV);
+	string destVstr = to_string(destV);
+
+
+    std::string returnString = "BFS between vertex " + sourceVstr;
+    std::string tempString = " and vertex " + destVstr;
     returnString = returnString + tempString;
 
-    tempString = " performed in " + duration.count();
+    tempString = " performed in " + to_string(duration.count());
     returnString = returnString + tempString;
 
     tempString = " ns.";
