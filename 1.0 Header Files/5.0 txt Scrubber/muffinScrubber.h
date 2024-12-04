@@ -8,7 +8,7 @@
 
 /*
 Pairs are as follows:
-<(std::string)Word, (int)WordCount>
+<<std::string>Word, <int>WordCount>
 
 PLANNED FUNCTIONALITY:
 • Class should print out words in alphabetical order in an output file.
@@ -87,6 +87,7 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
         if (workingString == stopString)
         {
             std::cout << "[INFO] readData() halted, stopString located at line " << lineCounter << "." << std::endl;
+            inputStream.close();
             return;
         }
 
@@ -139,7 +140,7 @@ void MuffinTXTscrubber::logData()
 
     logStream << "[" << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S") << "]";
 
-    logStream << " Logging second general event." << std::endl;
+    logStream << " Logging general event." << std::endl;
     logStream.close();
 
 }
@@ -150,7 +151,7 @@ void MuffinTXTscrubber::addWord(std::string word)
     bool wordExists = false;
     for (auto& pair : *_masterData)
     {
-        if (pair.first == word)
+        if (word == pair.first)
         {
             pair.second++;
             wordExists = true;
@@ -178,7 +179,7 @@ bool MuffinTXTscrubber::_allowedPeriod(std::string word)
 
 /*
 [WORKING] Function takes in a word and scrubs it based off of assignment parameters.
-    PARAMETERS:
+    ASSIGNMENT PARAMETERS:
 • Capitolization does not matter -- std::toLower() everything.
 • Hypens DO matter, but double hypens can be shortened to single hypens.
 */
