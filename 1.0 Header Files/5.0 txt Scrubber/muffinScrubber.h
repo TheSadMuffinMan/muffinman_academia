@@ -19,6 +19,7 @@ class MuffinTXTscrubber
         MuffinTXTscrubber();
         ~MuffinTXTscrubber();
 
+        bool isEmpty();
         void readData(std::string, std::string);
         void logData();
         void addWord(std::string);
@@ -35,7 +36,12 @@ MuffinTXTscrubber::MuffinTXTscrubber()
 
 MuffinTXTscrubber::~MuffinTXTscrubber()
 {
-    delete _masterData;
+    // Vector automatically cleans up memory for you.
+}
+
+bool MuffinTXTscrubber::isEmpty()
+{
+    return (_masterData->size() == 0);
 }
 
 /* *****NOT FINISHED*****
@@ -116,11 +122,32 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 
 void MuffinTXTscrubber::addWord(std::string word)
 {
-    bool wordExists = false;
+    if (isEmpty() == true)
+    {
+        std::pair<std::string, int> tempPair;
+        tempPair.first = word;
+        tempPair.second = 1;
+
+        _masterData->push_back(tempPair);
+        return;
+    }
+
+    // bool wordExists = false;
     int iterator = 0;
 
     while (word != _masterData->at(iterator).first)
     {
         ++iterator;
     }
+
+    // If nothing is found...
+    if (iterator == _masterData->size())
+    {
+        std::pair<std::string, int> tempPair;
+        tempPair.first = word;
+        tempPair.second = 1;
+        _masterData->push_back(tempPair);
+    }
+
+
 }
