@@ -177,7 +177,6 @@ void MuffinTXTscrubber::readDataFrom(std::string documentName, std::string start
     inputStream.close();
 }
 
-
 // [WORKING] Function logs general data in log.txt.
 void MuffinTXTscrubber::logData()
 {
@@ -202,7 +201,6 @@ void MuffinTXTscrubber::logData()
 
     logStream << " Logging general event." << std::endl;
     logStream.close();
-
 }
 
 // [WORKING] Function adds a word to _masterData.
@@ -228,7 +226,7 @@ void MuffinTXTscrubber::addWord(std::string word)
 // Helper function that returns whether or not a period is allowed.
 bool MuffinTXTscrubber::_allowedPeriod(std::string word)
 {
-    if ((word == "dr.") || (word == "mr.") || (word == "ms.") || (word == "mrs."))
+    if ((word == "Dr.") || (word == "Mr.") || (word == "Ms.") || (word == "Mrs."))
     {
         return true;
     } else
