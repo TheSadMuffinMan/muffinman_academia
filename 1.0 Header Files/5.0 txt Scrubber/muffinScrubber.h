@@ -22,6 +22,7 @@ class MuffinTXTscrubber
 
         void debugFunction();
         void readData(std::string, std::string);
+        void readDataFrom(std::string, std::string);
         void logData();
         void addWord(std::string);
     
@@ -45,7 +46,11 @@ MuffinTXTscrubber::~MuffinTXTscrubber()
 // Function is used to debug stuff throughout development process.
 void MuffinTXTscrubber::debugFunction()
 {
-    std::cout << "\n[DEBUG FUNCTION] Function isn't doing anything right now." << std::endl;
+    std::cout << "\n[DEBUG FUNCTION] ";
+    std::cout << "Calling readDataFrom()..." << std::endl;
+    readDataFrom("something", "somethingElse");
+
+    std::cout << "4th word after reading data is \"" << _masterData->at(3).first << "\"." << std::endl;
 }
 
 /*
@@ -116,6 +121,65 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 
     inputStream.close();
 }
+
+// [WORKING] Function reads in data, starting at startString.
+// Function is used to load a different data set from same document.
+void MuffinTXTscrubber::readDataFrom(std::string documentName, std::string startString)
+{
+    int lineCounter = 0;
+
+    // *****DEBUG*****
+    documentName = "Testing.txt";
+    std::cout << "[DEBUG] readData() documentName = \"Testing.txt\"." << std::endl;
+    startString = "VII. THE ADVENTURE OF THE BLUE CARBUNCLE";
+
+    std::ifstream inputStream;
+    inputStream.open(documentName);
+    if (!inputStream.is_open())
+    {
+        std::cout << "[ERROR] " << documentName << " failed to open. Program aborting." << std::endl;
+        return;
+    }
+
+    std::string workingString;
+    while (!inputStream.eof())
+    {
+        std::getline(inputStream, workingString);
+        ++lineCounter;
+
+        // Traversing the document to the appropriate spot.
+        if (workingString != startString)
+        {
+            ++lineCounter;
+            continue;
+        }
+
+        while (workingString.size() > 0)
+        {
+            std::string word = " ";
+            int spaceIndex = 0;
+
+            // If there is no space found in string...
+            if (workingString.find(" ") == std::string::npos)
+            {
+                break;
+            }
+
+            spaceIndex = workingString.find(" ");
+
+            word = workingString.substr(0, spaceIndex);
+            // std::cout << "[INFO] word = " << word << std::endl;
+            _scrubWord(word);
+            addWord(word);
+
+            // Deleting word from workingString.
+            workingString = workingString.substr(spaceIndex + 1);
+        }
+    }
+
+    inputStream.close();
+}
+
 
 // [WORKING] Function logs general data in log.txt.
 void MuffinTXTscrubber::logData()

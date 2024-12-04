@@ -7,7 +7,6 @@ int main(int argc, char *argv[])
     
     MuffinTXTscrubber txtScrubber;
 
-    txtScrubber.readData("DEBUG", "VII. THE ADVENTURE OF THE BLUE CARBUNCLE");
     txtScrubber.debugFunction();
 
     std::cout << "\nEnd of program." << std::endl;
