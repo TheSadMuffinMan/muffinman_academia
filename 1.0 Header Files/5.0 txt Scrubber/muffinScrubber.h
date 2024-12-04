@@ -45,16 +45,19 @@ MuffinTXTscrubber::~MuffinTXTscrubber()
 // Function is used to debug stuff throughout development process.
 void MuffinTXTscrubber::debugFunction()
 {
-    std::cout << "\n[DEBUG] ";
+    std::cout << "\n[DEBUG FUNCTION] ";
 
     std::cout << "4th word is: ";
     std::cout << _masterData->at(3).first;
 }
 
-/* *****NOT FINISHED*****
-• Want an overloaded function that can read in all data (w/o stopString).
+/*
+Function reads data from a source std::string documentName.
+The variable std::stopString is used when we only want to stop reading in data at a certain point
+    within documentName.
+Function assumes that documentName is a valid document.
 
-Function assumes document name has been scrubbed.
+• Want an overloaded function that can read in all data (w/o stopString, is more useful general case).
 */
 void MuffinTXTscrubber::readData(std::string documentName, std::string stopString)
 {
@@ -66,6 +69,11 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 
     std::ifstream inputStream;
     inputStream.open(documentName);
+    if (!inputStream.is_open())
+    {
+        std::cout << "[ERROR] " << documentName << " failed to open. Program aborting." << std::endl;
+        return;
+    }
 
     std::string workingString;
     /*
@@ -130,7 +138,7 @@ void MuffinTXTscrubber::addWord(std::string word)
     }
 }
 
-// Function returns whether or not a period is allowed. Is used in sentence counter.
+// Helper function that returns whether or not a period is allowed.
 bool MuffinTXTscrubber::_allowedPeriod(std::string word)
 {
     if ((word == "dr.") || (word == "mr.") || (word == "ms.") || (word == "mrs."))
@@ -167,7 +175,6 @@ void MuffinTXTscrubber::_scrubWord(std::string &word)
     }
 
     size_t pos = 0;
-
     // Replacing double hyphens with single hyphens.
     while ((pos = word.find("--", pos)) != std::string::npos)
     {
