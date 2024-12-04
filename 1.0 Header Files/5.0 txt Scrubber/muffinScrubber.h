@@ -144,37 +144,4 @@ void MuffinTXTscrubber::addWord(std::string word)
     {
         _masterData->emplace_back(word, 1);
     }
-/*
-    if (isEmpty() == true)
-    {
-        std::pair<std::string, int> tempPair;
-        tempPair.first = word;
-        tempPair.second = 1;
-
-        _masterData->push_back(tempPair);
-        return;
-    }
-
-    // bool wordExists = false;
-    int iterator = 0;
-
-    while (word != _masterData->at(iterator).first)
-    {
-        ++iterator;
-    }
-
-    // If nothing is found...
-    if (iterator == _masterData->size())
-    {
-        std::pair<std::string, int> tempPair;
-        tempPair.first = word;
-        tempPair.second = 1;
-        _masterData->push_back(tempPair);
-    }
-    else
-    {
-        // Iterate the word occurance.
-        _masterData->at(iterator).second += 1;
-    }
-*/
 }
