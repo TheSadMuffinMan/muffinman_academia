@@ -58,8 +58,6 @@ Function reads data from a source std::string documentName txt document.
 The variable std::stopString is used when we only want to stop reading in data at a certain point
     within documentName.
 Function assumes that documentName is a valid document.
-
-• Want an overloaded function that can read in all data (w/o stopString, is more useful general case).
 */
 void MuffinTXTscrubber::readData(std::string documentName, std::string stopString)
 {
@@ -130,7 +128,6 @@ void MuffinTXTscrubber::readDataFrom(std::string documentName, std::string start
 
     // *****DEBUG*****
     documentName = "Testing.txt";
-    std::cout << "[DEBUG] readData() documentName = \"Testing.txt\"." << std::endl;
     startString = "VII. THE ADVENTURE OF THE BLUE CARBUNCLE";
 
     std::ifstream inputStream;
