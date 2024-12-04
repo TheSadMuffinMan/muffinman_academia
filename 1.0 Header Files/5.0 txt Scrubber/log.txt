@@ -1,0 +1,2 @@
+[2024-12-04 12:19:42] Logging general event.
+[2024-12-04 12:20:28] Logging second general event.

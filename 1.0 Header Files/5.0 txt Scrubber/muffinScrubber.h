@@ -1,9 +1,10 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <vector>
-
-// strtok();
+#include <chrono>
+#include <ctime>
 
 /*
 Pairs are as follows:
@@ -29,7 +30,6 @@ class MuffinTXTscrubber
 
         bool _allowedPeriod(std::string);
         void _scrubWord(std::string&);
-        // std::map<std::string,int> *_masterData;
 };
 
 MuffinTXTscrubber::MuffinTXTscrubber()
@@ -45,10 +45,8 @@ MuffinTXTscrubber::~MuffinTXTscrubber()
 // Function is used to debug stuff throughout development process.
 void MuffinTXTscrubber::debugFunction()
 {
-    std::cout << "\n[DEBUG FUNCTION] ";
-
-    std::cout << "4th word is: ";
-    std::cout << _masterData->at(3).first;
+    std::cout << "\n[DEBUG FUNCTION] Attempting to call logData()." << std::endl;
+    logData();
 }
 
 /*
@@ -118,6 +116,33 @@ void MuffinTXTscrubber::readData(std::string documentName, std::string stopStrin
 
 }
 
+// Function logs general data in log.txt.
+void MuffinTXTscrubber::logData()
+{
+    std::ofstream logStream;
+    logStream.open("log.txt", std::ios::app);
+    if (!logStream.is_open())
+    {
+        std::cerr << "Log stream failed to open, aborting." << std::endl;
+        return;
+    }
+
+    // Getting the current time from Chrono Library.
+    auto now = std::chrono::system_clock::now();
+
+    // Casting "now" to time_t type.
+    std::time_t now_time_t = std::chrono::system_clock::to_time_t(now);
+
+    // Converting "now_time_t" to a tm struct.
+    std::tm now_tm = *std::localtime(&now_time_t);
+
+    logStream << "[" << std::put_time(&now_tm, "%Y-%m-%d %H:%M:%S") << "]";
+
+    logStream << " Logging second general event." << std::endl;
+    logStream.close();
+
+}
+
 // [WORKING] Function adds a word to _masterData.
 void MuffinTXTscrubber::addWord(std::string word)
 {
@@ -159,13 +184,13 @@ bool MuffinTXTscrubber::_allowedPeriod(std::string word)
 void MuffinTXTscrubber::_scrubWord(std::string &word)
 {
     // Removing leading and trailing non-alphabetic characters.
-    while (!word.empty() && !isalpha(word.front()))
+    while ((!word.empty()) && (!isalpha(word.front())))
     {
         word.erase(0, 1); // Remove the leading non-alphabetic character.
     }
-    while (!word.empty() && !isalpha(word.back()))
+    while ((!word.empty()) && (!isalpha(word.back())))
     {
-        word.pop_back(); // Remove trailing non-alphabetic character.
+        word.pop_back();
     }
 
     // Converting the word to lowercase.
