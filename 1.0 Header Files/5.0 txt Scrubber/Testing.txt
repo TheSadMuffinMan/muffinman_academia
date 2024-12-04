@@ -4,6 +4,6 @@ NULL.
 No period at the end
 VII. THE ADVENTURE OF THE BLUE CARBUNCLE
 This is a sentence. This is another.
-With a hypen - does this break?
+With a hypen-does this break?
 Now a double hypen--need to fix.
 Last line.

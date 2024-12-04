@@ -50,7 +50,7 @@ void MuffinTXTscrubber::debugFunction()
     std::cout << "Calling readDataFrom()..." << std::endl;
     readDataFrom("something", "somethingElse");
 
-    std::cout << "4th word after reading data is \"" << _masterData->at(3).first << "\"." << std::endl;
+    std::cout << "7th word after reading data is \"" << _masterData->at(6).first << "\"." << std::endl;
 }
 
 /*
@@ -241,21 +241,21 @@ bool MuffinTXTscrubber::_allowedPeriod(std::string word)
 [WORKING] Function takes in a word and scrubs it based off of assignment parameters.
     ASSIGNMENT PARAMETERS:
 • Capitolization does not matter -- std::toLower() everything.
-• Hypens DO matter, but double hypens can be shortened to single hypens.
+• Hypens DO matter, but double hypens can be discarded.
 */
 void MuffinTXTscrubber::_scrubWord(std::string &word)
 {
     // Removing leading and trailing non-alphabetic characters.
-    while ((!word.empty()) && (!isalpha(word.front())))
+    while ((!word.empty()) && (!isalpha(word.front())) && (word.front() != '-'))
     {
         word.erase(0, 1); // Remove the leading non-alphabetic character.
     }
-    while ((!word.empty()) && (!isalpha(word.back())))
+    while ((!word.empty()) && (!isalpha(word.back())) && (word.back() != '-'))
     {
         word.pop_back();
     }
 
-    // Converting the word to lowercase.
+    // Converting chars to lowercase.
     for (int i = 0; i < word.size(); i++)
     {
         word.at(i) = std::tolower(word.at(i));
@@ -265,6 +265,6 @@ void MuffinTXTscrubber::_scrubWord(std::string &word)
     // Replacing double hyphens with single hyphens.
     while ((pos = word.find("--", pos)) != std::string::npos)
     {
-        word.replace(pos, 2, "-");
+        word.replace(pos, 2, " ");
     }
 }
