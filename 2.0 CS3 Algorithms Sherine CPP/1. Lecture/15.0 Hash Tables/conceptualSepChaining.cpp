@@ -2,8 +2,6 @@
 #include <vector>
 #include <string>
 
-void smallSnippet();
-
 int main(int argc, char *argv[])
 {
     std::cout << "\nProgram start." << std::endl;
@@ -53,12 +51,4 @@ int main(int argc, char *argv[])
 
     std::cout << "\nEnd of program." << std::endl;
     return 0;
-}
-
-// I wasn't sure if you wanted the long-winded response (above) or the short one (below), so I included both.
-void smallSnippet()
-{
-    int alphPos = 14;
-    int hashResult = (11 * alphPos) % 5;
-    std::cout << "Hash result: " << hashResult << std::endl;
 }
