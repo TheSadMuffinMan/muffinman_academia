@@ -1,6 +1,3 @@
-/*
-Program is meant to test small things.
-*/
 #include <iostream>
 #include <vector>
 #include <string>
@@ -25,7 +22,7 @@ int main(int argc, char *argv[])
         resultVec.push_back(tempVec);
     }
 
-    std::cout << "\n*** DELIMIT CHAR = @ ***" << std::endl;
+    std::cout << "\n*** DELIMIT CHAR = '@' ***" << std::endl;
     std::cout << "Please input each char seperated by a space : ";
     while (std::cin >> workingChar)
     {
