@@ -22,6 +22,7 @@ print(data.info())
 print(data.describe())
 
 # Visualize correlations between features.
+# numeric_data = data.select_dtypes(include=[np.number])  # Select only numeric columns
 sns.heatmap(data.corr(), annot=True, cmap = "coolwarm")
 plt.title("Feature Correlation Matrix")
 plt.show()
