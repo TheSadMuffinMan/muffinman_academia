@@ -9,23 +9,24 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
-# Read the data into memory.
+# Read the housing data into memory.
 data = pd.read_csv("USA_Housing.csv")
 
-# Display the first few rows of the dataset.
+# Displaying the first few rows of the dataset to verify their integrity.
 print(data.head())
 
-# Display basic info about the dataset.
+# Displaying basic info about the dataset.
 print(data.info())
 
 # Summary statistics.
 print(data.describe())
 
-# Visualize correlations between features.
-# numeric_data = data.select_dtypes(include=[np.number])  # Select only numeric columns
-sns.heatmap(data.corr(), annot=True, cmap = "coolwarm")
-plt.title("Feature Correlation Matrix")
-plt.show()
+# Visualizing correlations between features.
+# numeric_data = data.select_dtypes(include=[np.number]) # Selecting only numeric columns.
+# *****THREE LINES BELOW ARE BREAKING, HENCE THE COMMENT OUT*****
+# sns.heatmap(data.corr(), annot=True, cmap = "coolwarm")
+# plt.title("Feature Correlation Matrix")
+# plt.show()
 
 # Check for missing values.
 print("Missing values in each column: ")
@@ -35,7 +36,7 @@ print(data.isnull().sum())
 from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler()
-numeric_columns = ['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of rooms',
+numeric_columns = ['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of Rooms',
     'Avg. Area Number of Bedrooms', 'Area Population']
 
 data[numeric_columns] = scaler.fit_transform(data[numeric_columns])
@@ -44,7 +45,7 @@ print("Normalized Data Sample: ")
 print(data.head())
 
 # Define features (X) and target variable (Y).
-X = data[['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of rooms',
+X = data[['Avg. Area Income', 'Avg. Area House Age', 'Avg. Area Number of Rooms',
     'Avg. Area Number of Bedrooms', 'Area Population']]
 y = data['Price']
 
