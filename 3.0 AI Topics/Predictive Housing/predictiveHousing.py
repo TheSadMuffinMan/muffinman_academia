@@ -1,4 +1,5 @@
-# Today is the day we start doing non-lecture things!
+# To activate the needed dev environment, input below into terminal.
+# conda activate AIClass
 
 # PREDICTIVE AI
 import pandas as pd # Used for data manipulation and analysis.
