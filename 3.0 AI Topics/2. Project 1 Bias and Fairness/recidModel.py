@@ -11,7 +11,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error, r2_score
 
 # Read the housing data into memory.
-data = pd.read_csv("normalized_recid.csv")
+data = pd.read_csv("final_preprocessed_recid.csv")
 
 # Displaying the first few rows of the dataset to verify their integrity.
 print(data.head())
