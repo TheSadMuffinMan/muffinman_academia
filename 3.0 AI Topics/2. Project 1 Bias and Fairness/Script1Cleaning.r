@@ -38,10 +38,10 @@ recid_data$Decile_Score <- as.integer(recid_data$Decile_Score)
 recid_data$Assessment_Type <- as.character(recid_data$Assessment_Type)
 
 # Filtering out all actual recidivism data. Risk of violence data is separated into its own csv.
-recid_data <- recid_data %>% filter(Display_Text == unique(recid_data$Display_Text)[1])
+recid_data <- recid_data %>% filter(Display_Text == unique(recid_data$Display_Text)[2])
 
 # Filtering out all "Risk of Violence" data.
-violence_data <- recid_data %>% filter(Display_Text == unique(recid_data$Display_Text)[2])
+violence_data <- recid_data %>% filter(Display_Text == unique(recid_data$Display_Text)[1])
 
 # Handling missing data values by replacing them with column medians.
 recid_data <- recid_data %>%

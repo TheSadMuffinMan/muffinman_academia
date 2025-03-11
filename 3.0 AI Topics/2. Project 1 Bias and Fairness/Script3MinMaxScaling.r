@@ -14,6 +14,9 @@ normalize <- function(column) {
 numeric_columns <- c("Raw_Score", "Decile_Score")
 recid_data[numeric_columns] <- lapply(recid_data[numeric_columns], normalize)
 
+# Removing unnecessary "Assessment_Type" Column.
+recid_data <- recid_data %>% select(-Assessment_Type)
+
 # Saving the normalized dataset.
 write.csv(recid_data, "normalized_recid.csv", row.names = FALSE)
 
