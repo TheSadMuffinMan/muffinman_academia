@@ -21,35 +21,33 @@ data_encoded = pd.get_dummies(data.drop(columns=[target_column]), columns=catego
 # Saving the processed dataset.
 data_encoded.to_csv("encoded_recid.csv", index=False)
 
-# Load the preprocessed dataset
+# Loading the preprocessed dataset.
 data = pd.read_csv("encoded_recid.csv")
 
-# ✅ Ensure 'X' contains only features (NO target variable)
 X = data.copy()  # Ensure it's not mistakenly modified
 
-# Split data into training/testing sets
+# Splitting data into training/testing sets.
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-# Train the model
+# Training the model.
 rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
 rf_model.fit(X_train, y_train)
 
-# Make predictions
+# Making predictions.
 y_pred = rf_model.predict(X_test)
 
-# Evaluate the model
+# Evaluating the model.
 accuracy = accuracy_score(y_test, y_pred)
 print(f"Model Accuracy: {accuracy:.4f}")
 print(classification_report(y_test, y_pred))
 
-# Getting feature importance
 feature_importances = rf_model.feature_importances_
 
-# Sorting features by importance
+# Sorting features by importance.
 sorted_idx = np.argsort(feature_importances)[::-1]
 top_features = X.columns[sorted_idx]
 
-# Plotting feature importance
+# Plotting feature importance.
 plt.figure(figsize=(10,6))
 plt.barh(top_features[:10], feature_importances[sorted_idx][:10])
 plt.xlabel("Feature Importance Score")
