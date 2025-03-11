@@ -6,20 +6,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
-# Load the dataset
 data = pd.read_csv("final_preprocessed_recid.csv")
 
-# Store the target variable using its original name
+# Storing the target variable using its original name.
 target_column = "Recidivism_Supervision_Level"
-y = data[target_column]  # ✅ Ensure we're using the correct target
+y = data[target_column]
 
-# Identify categorical columns (EXCLUDING the target variable)
+# Identifying categorical columns.
 categorical_columns = ['Sex', 'Ethnicity', 'Legal_Status', 'Custody_Status', 'Marital_Status']
 
-# Apply One-Hot Encoding (excluding the target variable)
+# Applying One-Hot Encoding (excluding the target variable).
 data_encoded = pd.get_dummies(data.drop(columns=[target_column]), columns=categorical_columns, drop_first=True)
 
-# Save the processed dataset
+# Saving the processed dataset.
 data_encoded.to_csv("encoded_recid.csv", index=False)
 
 # Load the preprocessed dataset
