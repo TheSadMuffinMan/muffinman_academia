@@ -63,7 +63,6 @@ def predict_recidivism(user_input):
     prediction = model.predict(user_df)[0]
     return "Recidivist" if prediction == 1 else "Non-Recidivist"
 
-# print(data['Decile_Score'].describe())
 print(data['Recidivist'].value_counts())
 
 dumbVar = input("Input anything to continue.")
@@ -71,9 +70,9 @@ dumbVar = input("Input anything to continue.")
 # Example usage
 user_input = {
     'Sex': 'Male',
-    'Ethnicity': 'African-American',
+    'Ethnicity': 'Asian',
     'Legal_Status': 'Pretrial',
-    'Custody_Status': 'Jail Inmate',
+    'Custody_Status': 'Probabtion',
     'Marital_Status': 'Single'
 }
 
