@@ -15,22 +15,22 @@ if 'Raw_Score' not in data.columns:
     raise ValueError("'Raw_Score' column not found in the dataset.")
 
 # Using 'Raw_Score' as the target variable - ***** IS DIFFERENT IN OTHER MODELS ********
-# Convert it into a binary classification problem (e.g., threshold at median value)
-threshold = data['Raw_Score'].median()  # You can adjust this threshold as needed
+# Converting it into a binary classification problem to solve for categorization issues.
+threshold = data['Raw_Score'].median()
 data['Recidivism'] = (data['Raw_Score'] > threshold).astype(int)
 
-# Drop 'Raw_Score' now that we've used it to define 'Recidivism'
+# Dropping 'Raw_Score' now that we've used it as our target variable.
 data = data.drop(columns=['Raw_Score'])
 
-# Convert categorical features into one-hot encoded variables
+# Converting categorical features into one-hot encoded data columns.
 categorical_cols = data.select_dtypes(include=['object']).columns  # Selecting text-based columns
 
-# Apply Label Encoding to all categorical columns
+# Applying Label Encoding to all categorical columns.
 le = LabelEncoder()
 for col in categorical_cols:
     data[col] = le.fit_transform(data[col])
 
-# Define features and target variable
+# Defining features and target variable.
 X = data.drop(columns=['Recidivism'])  # Features
 y = data['Recidivism']  # Target variable
 
