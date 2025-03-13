@@ -49,7 +49,6 @@ print(f"Model Accuracy: {accuracy:.2f}")
 
 # Function to make predictions on user input
 def predict_recidivism(user_input):
-    """Takes a dictionary of user input and predicts recidivism."""
     user_df = pd.DataFrame([user_input])
 
     # Convert categorical features
@@ -57,6 +56,7 @@ def predict_recidivism(user_input):
         if user_df[col][0] in label_encoders[col].classes_:
             user_df[col] = label_encoders[col].transform(user_df[col])
         else:
+            print(f"Warning: {user_df[col][0]} not found in training data for column {col}. Defaulting to most common value.")
             user_df[col] = label_encoders[col].transform([label_encoders[col].classes_[0]])[0]  # Default to most common
 
     # Predict recidivism
@@ -65,14 +65,12 @@ def predict_recidivism(user_input):
 
 print(data['Recidivist'].value_counts())
 
-dumbVar = input("Input anything to continue.")
-
 # Example usage
 user_input = {
     'Sex': 'Male',
     'Ethnicity': 'Asian',
     'Legal_Status': 'Pretrial',
-    'Custody_Status': 'Probabtion',
+    'Custody_Status': 'Probation',  # Fixed typo from 'Probabtion' to 'Probation'
     'Marital_Status': 'Single'
 }
 
