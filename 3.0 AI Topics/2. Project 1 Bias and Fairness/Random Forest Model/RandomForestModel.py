@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
+# Load the dataset
 data = pd.read_csv("final_preprocessed_recid.csv")
 
 # Storing the target variable using its original name.
@@ -18,16 +19,8 @@ categorical_columns = ['Sex', 'Ethnicity', 'Legal_Status', 'Custody_Status', 'Ma
 # Applying One-Hot Encoding (excluding the target variable).
 data_encoded = pd.get_dummies(data.drop(columns=[target_column]), columns=categorical_columns, drop_first=True)
 
-# Saving the processed dataset.
-data_encoded.to_csv("encoded_recid.csv", index=False)
-
-# Loading the preprocessed dataset.
-data = pd.read_csv("encoded_recid.csv")
-
-X = data.copy()  # Ensure it's not mistakenly modified
-
 # Splitting data into training/testing sets.
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(data_encoded, y, test_size=0.2, random_state=42)
 
 # Training the model.
 rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
@@ -41,11 +34,12 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Model Accuracy: {accuracy:.4f}")
 print(classification_report(y_test, y_pred))
 
+# Feature importance
 feature_importances = rf_model.feature_importances_
 
 # Sorting features by importance.
 sorted_idx = np.argsort(feature_importances)[::-1]
-top_features = X.columns[sorted_idx]
+top_features = data_encoded.columns[sorted_idx]
 
 # Plotting feature importance.
 plt.figure(figsize=(10,6))
