@@ -7,14 +7,14 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 from sklearn.model_selection import GridSearchCV
 
-# Load dataset
+# Loading dataset.
 data = pd.read_csv("final_preprocessed_recid.csv")
 
-# Ensure 'Raw_Score' exists in the dataset
+# Ensuring 'Raw_Score' exists in the dataset.
 if 'Raw_Score' not in data.columns:
     raise ValueError("'Raw_Score' column not found in the dataset.")
 
-# Use 'Raw_Score' as the target variable
+# Using 'Raw_Score' as the target variable - ***** IS DIFFERENT IN OTHER MODELS ********
 # Convert it into a binary classification problem (e.g., threshold at median value)
 threshold = data['Raw_Score'].median()  # You can adjust this threshold as needed
 data['Recidivism'] = (data['Raw_Score'] > threshold).astype(int)
