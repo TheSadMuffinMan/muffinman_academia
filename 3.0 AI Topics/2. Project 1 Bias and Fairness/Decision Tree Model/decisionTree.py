@@ -19,7 +19,7 @@ for col in categorical_cols:
     label_encoders[col] = le  # Store encoders for later use
 
 # Converting 'Decile_Score' into binary target (1 = Recidivist, 0 = Non-Recidivist).
-threshold = 5 # This value signifies what value determines one to be a recidivist.
+threshold = 7 # This value signifies what value determines one to be a recidivist.
 data['Recidivist'] = (data['Decile_Score'] >= threshold).astype(int)
 
 # Dropping original 'Decile_Score' since we now have a binary target.
