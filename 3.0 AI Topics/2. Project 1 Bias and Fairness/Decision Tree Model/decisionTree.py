@@ -68,11 +68,11 @@ print(data['Recidivist'].value_counts())
 
 # Example usage.
 user_input = {
-    'Sex': 'Male',
+    'Sex': 'Female',
     'Ethnicity': 'Asian',
-    'Legal_Status': 'Conditional Release',
-    'Custody_Status': 'Probation',  # Fixed typo from 'Probabtion' to 'Probation'
-    'Marital_Status': 'Single'
+    'Legal_Status': 'Post Sentence',
+    'Custody_Status': 'Pretrial Defendant',
+    'Marital_Status': 'Married'
 }
 
 prediction_result = predict_recidivism(user_input)
