@@ -19,7 +19,7 @@ for col in categorical_cols:
     label_encoders[col] = le  # Store encoders for later use
 
 # Converting 'Decile_Score' into binary target (1 = Recidivist, 0 = Non-Recidivist).
-threshold = 0.5 # This value signifies what value determines one to be a recidivist.
+threshold = 5 # This value signifies what value determines one to be a recidivist.
 data['Recidivist'] = (data['Decile_Score'] >= threshold).astype(int)
 
 # Dropping original 'Decile_Score' since we now have a binary target.
@@ -53,6 +53,8 @@ def predict_recidivism(user_input):
             print(f"Warning: {user_df[col][0]} not found in training data for column {col}. Defaulting to most common value.")
             user_df[col] = label_encoders[col].transform([label_encoders[col].classes_[0]])[0]  # Default to most common
 
+    user_df = user_df[X.columns]
+
     # Predict recidivism!
     prediction = model.predict(user_df)[0]
     return "Recidivist" if prediction == 1 else "Non-Recidivist"
@@ -61,8 +63,8 @@ print(data['Recidivist'].value_counts())
 
 # Example usage.
 user_input = {
-    'Sex': 'Female',
-    'Ethnicity': 'Asian',
+    'Sex': 'Male',
+    'Ethnicity': 'Caucasian',
     'Legal_Status': 'Post Sentence',
     'Custody_Status': 'Pretrial Defendant',
     'Marital_Status': 'Married',
