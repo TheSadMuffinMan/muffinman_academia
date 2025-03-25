@@ -6,10 +6,17 @@ from sklearn.preprocessing import MinMaxScaler, LabelEncoder
 from sklearn.metrics import accuracy_score
 
 # Loading the dataset.
-data = pd.read_csv("FINAL_Preprocessed.csv")
+data = pd.read_csv("final_preprocessed_recid.csv")
 
 # Converting categorical columns using Label Encoding.
 categorical_cols = ['Sex', 'Ethnicity', 'Legal_Status', 'Custody_Status', 'Marital_Status']
+
+# Fixing catagorical data that is entered weirdly.
+data['Ethnicity'] = data['Ethnicity'].replace(
+    {
+    'African-Am': 'African-American',
+    'Oriental': 'Asian'
+})
 
 # Encoding categorical columns.
 label_encoders = {}
@@ -65,8 +72,7 @@ user_input = {
     'Ethnicity': 'Asian',
     'Legal_Status': 'Post Sentence',
     'Custody_Status': 'Pretrial Defendant',
-    'Marital_Status': 'Married',
-    'Age': 32
+    'Marital_Status': 'Married'
 }
 
 prediction_result = predict_recidivism(user_input)
