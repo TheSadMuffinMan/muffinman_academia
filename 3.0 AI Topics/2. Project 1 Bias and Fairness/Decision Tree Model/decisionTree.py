@@ -20,7 +20,7 @@ for col in categorical_cols:
     label_encoders[col] = le  # Store encoders for later use
 
 # Converting 'Decile_Score' into binary target (1 = Recidivist, 0 = Non-Recidivist).
-threshold = 7 # This value signifies what value determines one to be a recidivist.
+threshold = 5 # This value signifies what value determines one to be a recidivist.
 data['Recidivist'] = (data['Decile_Score'] >= threshold).astype(int)
 
 # Dropping original 'Decile_Score' since we now have a binary target.
@@ -45,13 +45,13 @@ recall = recall_score(y_test, y_pred)
 f1 = f1_score(y_test, y_pred)
 roc_auc = roc_auc_score(y_test, model.predict_proba(X_test)[:, 1])
 
-print(f"Accuracy     : {accuracy:.2f}")
-print(f"Precision    : {precision:.2f}")
-print(f"Recall       : {recall:.2f}")
-print(f"F1 Score     : {f1:.2f}")
-print(f"ROC-AUC Score: {roc_auc:.2f}")
-print("\nClassification Report:\n", classification_report(y_test, y_pred))
-print("Confusion Matrix:\n", confusion_matrix(y_test, y_pred))
+print(f"\tAccuracy     : {accuracy:.2f}")
+print(f"\tPrecision    : {precision:.2f}")
+print(f"\tRecall       : {recall:.2f}")
+print(f"\tF1 Score     : {f1:.2f}")
+print(f"\tROC-AUC Score: {roc_auc:.2f}")
+print("\n\tClassification Report:\n", classification_report(y_test, y_pred))
+print("\tConfusion Matrix:\n", confusion_matrix(y_test, y_pred))
 
 # Function makes predictions based on user input (below).
 def predict_recidivism(user_input):
@@ -73,7 +73,7 @@ def predict_recidivism(user_input):
 
 print(data['Recidivist'].value_counts())
 
-# Example usage.
+# Input here to predict recidivism of a fictictious individual.
 user_input = {
     'Sex': 'Male',
     'Ethnicity': 'Caucasian',
