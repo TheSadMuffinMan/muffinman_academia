@@ -6,7 +6,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report
 
-# Load the dataset
 data = pd.read_csv("FINAL_Preprocessed.csv")
 
 # Storing the target variable using its original name.
@@ -23,7 +22,7 @@ data_encoded = pd.get_dummies(data.drop(columns=[target_column]), columns=catego
 X_train, X_test, y_train, y_test = train_test_split(data_encoded, y, test_size=0.2, random_state=50)
 
 # Training the model.
-rf_model = RandomForestClassifier(n_estimators=100, random_state=42)
+rf_model = RandomForestClassifier(n_estimators=200, random_state=60)
 rf_model.fit(X_train, y_train)
 
 # Making predictions.
@@ -34,7 +33,7 @@ accuracy = accuracy_score(y_test, y_pred)
 print(f"Model Accuracy: {accuracy:.4f}")
 print(classification_report(y_test, y_pred))
 
-# Feature importance
+# Identifying important features.
 feature_importances = rf_model.feature_importances_
 
 # Sorting features by importance.
