@@ -36,7 +36,7 @@
 	\end{titlepage}
 	
 	\section{Introduction}
-	This project aims to develop and evaluate an algorithmic decision-making system for loan approval using the German Credit dataset. The main objective is to predict the likelihood of loan default, allowing financial institutions to make informed lending decisions. Logistic Regression was selected because of it's usefulness as a baseline model in machine learning pipelines. Logistic Regression also provides simplicity and effectiveness on smaller datasets [1].  Although real life loan approval models are going to be larger and more complex, this model will provide insight to the challenges one will face when implementing a similar model. In addition to assessing model performance, this project explores fairness, limitations, and ethical concerns to ensure the system aligns with responsible AI practices.
+	This project aims to develop and evaluate an algorithmic decision-making system for loan approval using the German Credit dataset through the use of the sklearn library [5]. The main objective is to predict the likelihood of loan default, allowing financial institutions to make informed lending decisions. Logistic Regression was selected because of it's usefulness as a baseline model in machine learning pipelines. Logistic Regression also provides simplicity and effectiveness on smaller datasets [1].  Although real life loan approval models are going to be larger and more complex, this model will provide insight to the challenges one will face when implementing a similar model. In addition to assessing model performance, this project explores fairness, limitations, and ethical concerns to ensure the system aligns with responsible AI practices.
 	
 	\section{Dataset Overview}
 	The dataset is from German Credit Data, a widely recognized benchmarking company in credit risk modeling. It contains 1000 data rows and 20 input columns, including demographic, financial, and employment-related attributes. Although a small data set, the aim of this project is to explore the implications and impacts of a loan approval model, and 1000 data entries will be enough accomplish our goals [2]. The target variable, \texttt{CreditRisk}, is binary: originally coded as 1 (good) and 2 (bad), it was remapped to 0 (good credit risk) and 1 (bad credit risk) for compatibility with scikit-learn conventions.
@@ -44,7 +44,7 @@
 	Categorical features include variables like \texttt{StatusCheckingAcc}, \texttt{CreditHistory}, \texttt{Savings}, and \texttt{ForeignWorker}, while numerical features include \texttt{Duration}, \texttt{CreditAmount}, and \texttt{Age}. The preprocessing pipeline handled categorical features using one-hot encoding, and numerical features were passed through without transformation.
 	
 	\section{Modeling Approach}
-	Although we typically used R-script for exploratory data analysis, this data set has already been preprocessed [1]. Because of this, we can use EDA through python and the scikit-learn library. After this, a Logistic Regression model was implemented, also using the scikit-learn pipeline. The steps included:
+	Although we typically used R-script for exploratory data analysis, this data set has already been preprocessed [1]. Because of this, we can use EDA through python and the scikit-learn library. After this, a Logistic Regression model was implemented, also using the sklearn pipeline [5]. The steps included:
 	\begin{itemize}
 		\item \textbf{Preprocessing:} Categorical columns were one-hot encoded with \texttt{handle\_unknown=\textquotesingle ignore\textquotesingle}.
 		\item \textbf{Data splitting:} standard practice splitting with 80\% training and 20\% testing, stratified by target variable.
@@ -176,6 +176,8 @@
 		\item IBM. (n.d.). \textit{AI decision-making: Where do businesses draw the line?} IBM. \url{https://www.ibm.com/think/insights/ai-decision-making-where-do-businesses-draw-the-line}
 		
 		\item IEEE Standards Association. (n.d.). \textit{IEEE Global Initiative on Ethics of Autonomous and Intelligent Systems}. \url{https://standards.ieee.org/industry-connections/activities/ieee-global-initiative/}
+		\item Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., ... \& Duchesnay, É. (2011). \textit{Scikit-learn: Machine learning in Python}. Journal of Machine Learning Research, 12, 2825--2830.
+		
 		
 	\end{enumerate}
 	

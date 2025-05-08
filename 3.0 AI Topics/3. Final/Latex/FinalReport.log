@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.29)  8 MAY 2025 15:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.29)  8 MAY 2025 15:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -455,13 +455,13 @@ Package rerunfilecheck Info: File `FinalReport.out' has not changed.
 (rerunfilecheck)             Checksum: C38EA7876750BAD1EF4A9C45AB657D47;1624.
  ) 
 Here is how much of TeX's memory you used:
- 9889 strings out of 476182
- 150929 string characters out of 5795595
+ 9891 strings out of 476182
+ 150944 string characters out of 5795595
  1931975 words of memory out of 5000000
- 31760 multiletter control sequences out of 15000+600000
+ 31761 multiletter control sequences out of 15000+600000
  564446 words of font info for 58 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,79p,850b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,893b,487s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/muffinman/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200
 .600pk> </home/muffinman/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcr
 m1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
@@ -470,10 +470,10 @@ m1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on FinalReport.pdf (7 pages, 206777 bytes).
+Output written on FinalReport.pdf (7 pages, 207665 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 122 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
+ 156 PDF objects out of 1000 (max. 8388607)
+ 123 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
  109 words of extra memory for PDF output out of 10000 (max. 10000000)
 
