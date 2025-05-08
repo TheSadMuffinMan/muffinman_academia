@@ -4,10 +4,11 @@
 \usepackage{amsmath}
 \usepackage{hyperref}
 \usepackage{titlesec}
+\usepackage{url}
 \titleformat{\section}{\large\bfseries}{\thesection.}{1em}{}
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{1em}{}
 
-\title{Evaluation of a Logistic Regression Classifier for Loan Approval Decisions}
+\title{Evaluation of a Logistic Regression Model for Loan Approval Decisions}
 \author{}
 \date{}
 
@@ -20,7 +21,7 @@
 	\includegraphics[width=0.5\textwidth]{CMU Logo}
 	\vspace{1cm}
 	
-	{\Huge \bfseries Evaluation of a Logistic Regression Classifier for Loan Approval Decisions \par}
+	{\Huge \bfseries Evaluation of a Logistic Regression Model for Loan Approval Decisions \par}
 	\vspace{1.5cm}
 	
 	{\Large Anthony Cade Streich \par}
@@ -32,18 +33,18 @@
 	\vfill
 	
 	{\large May 2025 \par}
-\end{titlepage}
+	\end{titlepage}
 	
 	\section{Introduction}
-	This project aims to develop and evaluate an algorithmic decision-making system for loan approval using the German Credit dataset. The main objective is to predict the likelihood of loan default, allowing financial institutions to make informed lending decisions. Logistic Regression was selected as the predictive model due to its simplicity, interpretability, and effectiveness on smaller, well-structured datasets. In addition to assessing model performance, the project explores fairness, limitations, and ethical concerns to ensure the system aligns with responsible AI practices.
+	This project aims to develop and evaluate an algorithmic decision-making system for loan approval using the German Credit dataset. The main objective is to predict the likelihood of loan default, allowing financial institutions to make informed lending decisions. Logistic Regression was selected because of it's usefulness as a baseline model in machine learning pipelines. Logistic Regression also provides simplicity and effectiveness on smaller datasets [1].  Although real life loan approval models are going to be larger and more complex, this model will provide insight to the challenges one will face when implementing a similar model. In addition to assessing model performance, this project explores fairness, limitations, and ethical concerns to ensure the system aligns with responsible AI practices.
 	
 	\section{Dataset Overview}
-	The dataset used is the German Credit Data, a widely recognized benchmarking company in credit risk modeling. It contains 1000 entries and 20 input features, including demographic, financial, and employment-related attributes. The target variable, \texttt{CreditRisk}, is binary: originally coded as 1 (good) and 2 (bad), it was remapped to 0 (good credit risk) and 1 (bad credit risk) for compatibility with scikit-learn conventions.
+	The dataset is from German Credit Data, a widely recognized benchmarking company in credit risk modeling. It contains 1000 data rows and 20 input columns, including demographic, financial, and employment-related attributes. Although a small data set, the aim of this project is to explore the implications and impacts of a loan approval model, and 1000 data entries will be enough accomplish our goals [2]. The target variable, \texttt{CreditRisk}, is binary: originally coded as 1 (good) and 2 (bad), it was remapped to 0 (good credit risk) and 1 (bad credit risk) for compatibility with scikit-learn conventions.
 	
 	Categorical features include variables like \texttt{StatusCheckingAcc}, \texttt{CreditHistory}, \texttt{Savings}, and \texttt{ForeignWorker}, while numerical features include \texttt{Duration}, \texttt{CreditAmount}, and \texttt{Age}. The preprocessing pipeline handled categorical features using one-hot encoding, and numerical features were passed through without transformation.
 	
 	\section{Modeling Approach}
-	Although we typically used R-script for exploratory data analysis, this data set has already been preprocessed. Because of this, we can use EDA through python and the scikit-learn library. After this, a Logistic Regression model was implemented also using a scikit-learn pipeline. The steps included:
+	Although we typically used R-script for exploratory data analysis, this data set has already been preprocessed [1]. Because of this, we can use EDA through python and the scikit-learn library. After this, a Logistic Regression model was implemented, also using the scikit-learn pipeline. The steps included:
 	\begin{itemize}
 		\item \textbf{Preprocessing:} Categorical columns were one-hot encoded with \texttt{handle\_unknown=\textquotesingle ignore\textquotesingle}.
 		\item \textbf{Data splitting:} standard practice splitting with 80\% training and 20\% testing, stratified by target variable.
@@ -53,7 +54,7 @@
 	The model outputs probabilities for each class, which are then converted into binary predictions for evaluation.
 	
 	\section{Model Performance}
-	Although this model did not yield the most promising results, these were the highest scores I was able to achieve all semester. The classification report on the test set yielded the following results:\newpage
+	Although this model did not yield the most promising results, these were the highest scores I was able to achieve all semester. The classification report on the test set yielded the following results:
 	
 	\begin{figure}[h]
 		\centering
@@ -75,7 +76,7 @@
 	
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.6\textwidth]{ROCCurve.png}
+		\includegraphics[width=0.5\textwidth]{ROCCurve.png}
 	\end{figure}
 	
 	\section{Feature Importance and Interpretation}
@@ -100,18 +101,16 @@
 		\item \texttt{Telephone = Yes}
 	\end{itemize}
 	
-	These features offer interpretability but raise fairness concerns. These features are visualized below:
-	
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.8\textwidth]{InfluentialFeatures.png}
 		\label{fig:top_features}
 	\end{figure}
 	
-	This feature importance visualization reveals a notable imbalance: there are more factors that increase the likelihood of loan denial than factors that improve approval odds. While positive indicators (like maintaining a rich savings account or having over seven years of continuous employment) do reduce the risk score, their influence is limited compared to the number and strength of negative risk-related features. This suggests that the model places greater weight on penalizing risk factors rather than rewarding "positive" attributes. As a result, individuals from less privileged backgrounds, who may lack long employment history or significant financial assets, are continuously disadvantaged, reinforcing and perpetuating wealth inequality.
+	This visualization reveals an important imbalance: there are more factors that increase the likelihood of loan denial than factors that improve approval odds. While positive indicators (like maintaining a rich savings account or having over seven years of continuous employment) do reduce the risk score, their influence is limited compared to the number and strength of negative risk-related features. This suggests that the model places greater weight on penalizing risk factors rather than rewarding "positive" attributes. As a result, individuals from less privileged backgrounds, who may lack long employment history or significant financial assets, are continuously disadvantaged, reinforcing wealth inequality [3].
 	
 	\section{Fairness Evaluation}
-	Several features in the dataset served as "proxies" for protected attributes:
+	Several features in the dataset served as proxies for "combined" attributes:
 	\begin{itemize}
 		\item \texttt{PersonalStatusSex} encoded gender and marital status.
 		\item \texttt{ForeignWorker} encoded nationality.
@@ -131,7 +130,7 @@
 	\begin{itemize}
 		\item \textbf{Discrimination:} Sensitive features may cause disparate treatment.
 		\item \textbf{Transparency:} Logistic Regression is explainable, but excessive dummy variables reduce clarity.
-		\item \textbf{Accountability:} Models must be audited regularly.
+		\item \textbf{Accountability:} Models must be audited regularly, preferably by an unbiased third party [4].
 	\end{itemize}
 	
 	\section{Conclusion and Future Directions}
@@ -143,9 +142,9 @@
 		\item Applying fairness constraints.
 	\end{itemize}
 	
-	Future work should incorporate fairness metrics and real-world testing to ensure responsible deployment. If this model were to be deployed in the real world, it would perpetuate the biases inside of the data and only further the levels of inequality seen today.
+	Future research should incorporate fairness metrics and real-world validation to support the responsible deployment of AI models. Without proper safeguards, deploying this model in a real-world setting could reinforce existing societal biases embedded in the training data, ultimately worsening inequality. According to IBM (2023), over 42\% of enterprises have already implemented AI technologies. This trend is concerning, as public awareness of AI’s negative capabilities remains limited.
 	
-	\pagebreak
+
 	\section{Discussion Questions}
 	
 	\subsection*{Model Fairness and Bias}
@@ -165,6 +164,19 @@
 	\begin{enumerate}
 		\item How might deployment of this model impact financial inclusion for marginalized communities?
 		\item If this model were deployed globally, what cultural or regulatory issues would need to be considered?
+	\end{enumerate}
+	
+	\pagebreak
+	
+	\section{Sources}
+	\begin{enumerate}
+		\item Dua, D., \& Graff, C. (n.d.). \textit{Statlog (German Credit Data) Data Set}. UCI Machine Learning Repository. \url{https://archive.ics.uci.edu/dataset/144/statlog+german+credit+data}
+		\item Feldman, M., Friedler, S. A., Moeller, J., Scheidegger, C., \& Venkatasubramanian, S. (2015, August). \textit{Certifying and removing disparate impact}. In Proceedings of the 21st ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (pp. 259--268).
+		
+		\item IBM. (n.d.). \textit{AI decision-making: Where do businesses draw the line?} IBM. \url{https://www.ibm.com/think/insights/ai-decision-making-where-do-businesses-draw-the-line}
+		
+		\item IEEE Standards Association. (n.d.). \textit{IEEE Global Initiative on Ethics of Autonomous and Intelligent Systems}. \url{https://standards.ieee.org/industry-connections/activities/ieee-global-initiative/}
+		
 	\end{enumerate}
 	
 \end{document}

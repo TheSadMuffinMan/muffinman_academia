@@ -36,6 +36,7 @@ numeric_cols = X.select_dtypes(exclude='object').columns.tolist()
 # Define a preprocessing pipeline.
 # - One-hot encode categorical columns.
 # - Leave numeric columns untouched (passthrough).
+# CHATGPT/OPENAI (5/5/25) was used for this section/function - I was struggling with one-hot encoding in Python.
 preprocessor = ColumnTransformer(
     transformers=[
         ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_cols)
