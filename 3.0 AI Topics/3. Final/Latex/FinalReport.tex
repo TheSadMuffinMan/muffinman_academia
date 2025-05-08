@@ -1,0 +1,168 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{1em}{}
+
+\title{Evaluation of a Logistic Regression Classifier for Loan Approval Decisions}
+\author{}
+\date{}
+
+\begin{document}
+	
+	\begin{titlepage}
+	\centering
+	\vspace*{2cm}
+	
+	\includegraphics[width=0.5\textwidth]{CMU Logo} % Optional: your logo or an image
+	\vspace{1cm}
+	
+	{\Huge \bfseries Evaluation of a Logistic Regression Classifier for Loan Approval Decisions \par}
+	\vspace{1.5cm}
+	
+	{\Large Anthony Cade Streich \par}
+	\vspace{0.5cm}
+	
+	CSCI 396: AI Topics \par
+	Instructor: Dr. Sherine Antoun \par
+	Colorado Mesa University \par
+	\vfill
+	
+	{\large May 2025 \par}
+\end{titlepage}
+	
+	\section{Introduction}
+	This project aims to develop and evaluate an algorithmic decision-making system for loan approval using the German Credit dataset. The main objective is to predict the likelihood of loan default, allowing financial institutions to make informed lending decisions. Logistic Regression was selected as the predictive model due to its simplicity, interpretability, and effectiveness on smaller, well-structured datasets. In addition to assessing model performance, the project explores fairness, limitations, and ethical concerns to ensure the system aligns with responsible AI practices.
+	
+	\section{Dataset Overview}
+	The dataset used is the German Credit Data, a widely recognized benchmark in credit risk modeling. It contains 1000 entries and 20 input features, including demographic, financial, and employment-related attributes. The target variable, \texttt{CreditRisk}, is binary: originally coded as 1 (good) and 2 (bad), it was remapped to 0 (good credit risk) and 1 (bad credit risk) for compatibility with scikit-learn conventions.
+	
+	Categorical features include variables like \texttt{StatusCheckingAcc}, \texttt{CreditHistory}, \texttt{Savings}, and \texttt{ForeignWorker}, while numerical features include \texttt{Duration}, \texttt{CreditAmount}, and \texttt{Age}. The preprocessing pipeline handled categorical features using one-hot encoding, and numerical features were passed through without transformation.
+	
+	\section{Modeling Approach}
+	A Logistic Regression model was implemented using a scikit-learn pipeline. The steps included:
+	\begin{itemize}
+		\item \textbf{Data splitting:} 80\% training and 20\% testing, stratified by target variable.
+		\item \textbf{Preprocessing:} Categorical columns were one-hot encoded with \texttt{handle\_unknown=\textquotesingle ignore\textquotesingle}.
+		\item \textbf{Model training:} Logistic Regression with \texttt{liblinear} solver and \texttt{max\_iter=1000}.
+	\end{itemize}
+	
+	The model outputs probabilities for each class, which are then converted into binary predictions for evaluation.
+	
+	\section{Model Performance}
+	Although this model did not yield the most promising results, these were the highest scores I was able to achieve all semester. The classification report on the test set yielded the following results:\newpage
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{AccScores.png}
+		\label{fig:acc_scores}
+	\end{figure}
+	
+	\begin{itemize}
+		\item \textbf{Accuracy:} 79\%
+		\item \textbf{Precision (Good Credit Risk):} 79\%
+		\item \textbf{Precision (Bad Credit Risk):} 76\%
+		\item \textbf{Recall (Good Credit Risk):} 93\%
+		\item \textbf{Recall (Bad Credit Risk):} 46\%
+		\item \textbf{F1-Score (Good):} 86\%
+		\item \textbf{F1-Score (Bad):} 57\%
+	\end{itemize}
+	
+	These results indicate that the model is better at identifying good credit risks than bad ones. The relatively low recall for bad credit risks suggests potential risk in misclassifying risky applicants. This is especially evident after viewing the ROC Curve Graph:
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.6\textwidth]{ROCCurve.png}
+	\end{figure}
+	
+	\section{Feature Importance and Interpretation}
+	Logistic regression coefficients were extracted and sorted. Positive coefficients indicate a higher likelihood of loan denial; negative coefficients indicate higher likelihood of approval.
+	
+	Top positive influencers (more likely to deny):
+	\begin{itemize}
+		\item \texttt{ForeignWorker=yes}
+		\item \texttt{StatusCheckingAcc=none}
+		\item \texttt{CreditHistory=critical}
+		\item \texttt{Job=unskilled}
+		\item \texttt{PersonalStatusSex=male single}
+	\end{itemize}
+	
+	Top negative influencers (more likely to approve):
+	\begin{itemize}
+		\item \texttt{Savings=rich}
+		\item \texttt{EmploymentSince=\textgreater=7 years}
+		\item \texttt{Property=real estate}
+		\item \texttt{Housing=own}
+		\item \texttt{Telephone=yes}
+	\end{itemize}
+	
+	These features offer interpretability but raise fairness concerns. These features are visualized below:
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{InfluentialFeatures.png}
+		\label{fig:top_features}
+	\end{figure}
+	
+	\section{Fairness Evaluation}
+	Several features in the dataset serve as proxies for protected attributes:
+	\begin{itemize}
+		\item \texttt{PersonalStatusSex} encodes gender and marital status.
+		\item \texttt{ForeignWorker} encodes nationality.
+		\item \texttt{Age} can indirectly disadvantage certain age groups.
+	\end{itemize}
+	
+	The high positive coefficient for \texttt{ForeignWorker=yes} raises fairness issues. Similar concerns apply to gender-encoded features. Mitigation strategies include removing sensitive features, applying fairness-aware algorithms, or post-processing outputs.
+	
+	\section{Limitations}
+	\begin{itemize}
+		\item \textbf{Linearity Assumption:} Logistic Regression assumes linearity.
+		\item \textbf{High Dimensionality:} One-hot encoding increases dimensionality, risking overfitting.
+		\item \textbf{No Interaction Terms:} Feature combinations are not modeled.
+		\item \textbf{Dataset Age:} The German dataset may be outdated or unrepresentative.
+	\end{itemize}
+	
+	\section{Ethical and Societal Implications}
+	Algorithmic loan approval offers efficiency but also risks:
+	\begin{itemize}
+		\item \textbf{Discrimination:} Sensitive features may cause disparate treatment.
+		\item \textbf{Transparency:} Logistic Regression is explainable, but excessive dummy variables reduce clarity.
+		\item \textbf{Accountability:} Models must be audited regularly.
+	\end{itemize}
+	
+	\section{Conclusion and Future Directions}
+	The model performs moderately well but presents fairness and ethical challenges. While interpretable, it relies on features that may bias results. 
+	
+	Improvements include:
+	\begin{itemize}
+		\item Excluding sensitive features.
+		\item Applying fairness constraints.
+	\end{itemize}
+	
+	Future work should incorporate fairness metrics and real-world testing to ensure responsible deployment.
+	
+	\section{Discussion Questions}
+	
+	\subsection*{Model Fairness and Bias}
+	\begin{enumerate}
+		\item Should models be allowed to use features like nationality, gender, or age—even if they improve accuracy?
+		\item How can we ensure fairness if excluding sensitive features reduces model performance?
+	\end{enumerate}
+	
+	\subsection*{Ethical and Societal Implications}
+	\begin{enumerate}
+		\item Who should be held accountable when an algorithm denies a loan unfairly—data scientists, institutions, or the model itself?
+		\item Do the benefits of automated decision-making outweigh the risks in high-stakes applications like lending?
+		\item Should applicants be entitled to a full explanation of their denial—even if the model is complex?
+	\end{enumerate}
+	
+	\subsection*{Broader Impact}
+	\begin{enumerate}
+		\item How might deployment of this model impact financial inclusion for marginalized communities?
+		\item If this model were deployed globally, what cultural or regulatory issues would need to be considered?
+	\end{enumerate}
+	
+\end{document}
