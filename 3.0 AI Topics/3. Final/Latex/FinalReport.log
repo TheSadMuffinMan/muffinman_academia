@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.29)  8 MAY 2025 13:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.29)  8 MAY 2025 13:21
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -417,20 +417,20 @@ Package pdftex.def Info: ROCCurve.png  used on input line 78.
 (pdftex.def)             Requested size: 281.85587pt x 211.39055pt.
  [2 <./AccScores.png> <./ROCCurve.png>]
 LaTeX Font Info:    Trying to load font information for OML+cmtt on input line 
-96.
-LaTeX Font Info:    No file OMLcmtt.fd. on input line 96.
+97.
+LaTeX Font Info:    No file OMLcmtt.fd. on input line 97.
 
 
 LaTeX Font Warning: Font shape `OML/cmtt/m/n' undefined
 (Font)              using `OML/cmm/m/it' instead
-(Font)              for symbol `textgreater' on input line 96.
+(Font)              for symbol `textgreater' on input line 97.
 
 <InfluentialFeatures.png, id=69, 867.24pt x 433.62pt>
 File: InfluentialFeatures.png Graphic file (type png)
 <use InfluentialFeatures.png>
-Package pdftex.def Info: InfluentialFeatures.png  used on input line 106.
+Package pdftex.def Info: InfluentialFeatures.png  used on input line 107.
 (pdftex.def)             Requested size: 375.80544pt x 187.90198pt.
-[3 <./InfluentialFeatures.png>] [4] [5] (./FinalReport.aux)
+[3 <./InfluentialFeatures.png>] [4] [5] [6] (./FinalReport.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -443,13 +443,13 @@ Package rerunfilecheck Info: File `FinalReport.out' has not changed.
 (rerunfilecheck)             Checksum: DF6A45CD2C3BAA92DBBF2A8C84E13E5E;1544.
  ) 
 Here is how much of TeX's memory you used:
- 9862 strings out of 476182
- 150676 string characters out of 5795595
+ 9863 strings out of 476182
+ 150682 string characters out of 5795595
  1930975 words of memory out of 5000000
  31748 multiletter control sequences out of 15000+600000
  561345 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,79p,767b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,788b,507s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/muffinman/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200
 .600pk> </home/muffinman/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcr
 m1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
@@ -457,10 +457,10 @@ m1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on FinalReport.pdf (6 pages, 186537 bytes).
+Output written on FinalReport.pdf (7 pages, 188108 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
- 99 compressed objects within 1 object stream
- 23 named destinations out of 1000 (max. 500000)
+ 135 PDF objects out of 1000 (max. 8388607)
+ 104 compressed objects within 2 object streams
+ 24 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

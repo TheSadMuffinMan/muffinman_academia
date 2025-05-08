@@ -83,20 +83,21 @@
 	
 	Top positive influencers (more likely to deny):
 	\begin{itemize}
-		\item \texttt{ForeignWorker=yes}
-		\item \texttt{StatusCheckingAcc=none}
-		\item \texttt{CreditHistory=critical}
-		\item \texttt{Job=unskilled}
-		\item \texttt{PersonalStatusSex=male single}
+		\item \texttt{ForeignWorker = Yes}
+		\item \texttt{StatusCheckingAcc = None}
+		\item \texttt{CreditHistory = Critical}
+		\item \texttt{Job = Unskilled}
+		\item \texttt{PersonalStatusSex = Male, Single}
 	\end{itemize}
 	
 	Top negative influencers (more likely to approve):
 	\begin{itemize}
-		\item \texttt{Savings=rich}
-		\item \texttt{EmploymentSince=\textgreater=7 years}
-		\item \texttt{Property=real estate}
-		\item \texttt{Housing=own}
-		\item \texttt{Telephone=yes}
+		\item \texttt{ExpensiveItem = Owns new car}
+		\item \texttt{Savings = Rich}
+		\item \texttt{EmploymentSince =\textgreater 7 years}
+		\item \texttt{Property = Owns Real Estate}
+		\item \texttt{Housing = Own}
+		\item \texttt{Telephone = Yes}
 	\end{itemize}
 	
 	These features offer interpretability but raise fairness concerns. These features are visualized below:
@@ -107,7 +108,7 @@
 		\label{fig:top_features}
 	\end{figure}
 	
-	This feature importance visualization reveals a notable imbalance: there are more factors that increase the likelihood of loan denial than factors that improve approval odds. While positive indicators (like maintaining a rich savings account or having over seven years of continuous employment) do reduce the risk score, their influence is limited compared to the number and strength of risk-related features. This suggests that the model places greater weight on penalizing risk factors rather than rewarding stability. As a result, individuals from less privileged backgrounds, who may lack long employment history or significant financial assets, are continuously disadvantaged, reinforcing and perpetuating wealth inequality.
+	This feature importance visualization reveals a notable imbalance: there are more factors that increase the likelihood of loan denial than factors that improve approval odds. While positive indicators (like maintaining a rich savings account or having over seven years of continuous employment) do reduce the risk score, their influence is limited compared to the number and strength of negative risk-related features. This suggests that the model places greater weight on penalizing risk factors rather than rewarding "positive" attributes. As a result, individuals from less privileged backgrounds, who may lack long employment history or significant financial assets, are continuously disadvantaged, reinforcing and perpetuating wealth inequality.
 	
 	\section{Fairness Evaluation}
 	Several features in the dataset served as "proxies" for protected attributes:
@@ -117,7 +118,7 @@
 		\item \texttt{Age} can indirectly disadvantage certain age groups.
 	\end{itemize}
 	
-	The high positive coefficient for \texttt{ForeignWorker=yes} raises fairness issues, with similar concerns applying to gender-encoded features. Mitigation strategies include removing sensitive features, applying fairness-aware algorithms, or post-processing outputs.
+	The high positive coefficient for \texttt{ForeignWorker = Yes} raises fairness issues, with similar concerns applying to gender-encoded features. Mitigation strategies include removing sensitive features, applying fairness-aware algorithms, or post-processing outputs.
 	
 	\section{Limitations}
 	\begin{itemize}
@@ -144,6 +145,7 @@
 	
 	Future work should incorporate fairness metrics and real-world testing to ensure responsible deployment. If this model were to be deployed in the real world, it would perpetuate the biases inside of the data and only further the levels of inequality seen today.
 	
+	\pagebreak
 	\section{Discussion Questions}
 	
 	\subsection*{Model Fairness and Bias}
