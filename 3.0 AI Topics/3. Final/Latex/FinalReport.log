@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.29)  8 MAY 2025 12:25
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.8.29)  8 MAY 2025 13:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -388,11 +388,11 @@ n/12 , \OT1/cmtt/m/n/12 Savings\OT1/cmr/m/n/12 ,
  []
 
 LaTeX Font Info:    Trying to load font information for TS1+cmtt on input line 
-49.
+48.
 (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmtt.fd
 File: ts1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-Overfull \hbox (34.931pt too wide) in paragraph at lines 49--50
+Overfull \hbox (34.931pt too wide) in paragraph at lines 48--49
 []\OT1/cmr/bx/n/12 Preprocessing: \OT1/cmr/m/n/12 Cat-e-gor-i-cal columns were 
 one-hot en-coded with \OT1/cmtt/m/n/12 handle[]unknown=\TS1/cmtt/m/n/12 '\OT1/c
 mtt/m/n/12 ignore\TS1/cmtt/m/n/12 '\OT1/cmr/m/n/12 . 
@@ -449,7 +449,7 @@ Here is how much of TeX's memory you used:
  31748 multiletter control sequences out of 15000+600000
  561345 words of font info for 47 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 75i,6n,79p,623b,528s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,6n,79p,767b,495s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/muffinman/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tctt1200
 .600pk> </home/muffinman/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcr
 m1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
@@ -457,7 +457,7 @@ m1200.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/s
 hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/te
 xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on FinalReport.pdf (6 pages, 185191 bytes).
+Output written on FinalReport.pdf (6 pages, 186537 bytes).
 PDF statistics:
  128 PDF objects out of 1000 (max. 8388607)
  99 compressed objects within 1 object stream

@@ -17,7 +17,7 @@
 	\centering
 	\vspace*{2cm}
 	
-	\includegraphics[width=0.5\textwidth]{CMU Logo} % Optional: your logo or an image
+	\includegraphics[width=0.5\textwidth]{CMU Logo}
 	\vspace{1cm}
 	
 	{\Huge \bfseries Evaluation of a Logistic Regression Classifier for Loan Approval Decisions \par}
@@ -38,15 +38,15 @@
 	This project aims to develop and evaluate an algorithmic decision-making system for loan approval using the German Credit dataset. The main objective is to predict the likelihood of loan default, allowing financial institutions to make informed lending decisions. Logistic Regression was selected as the predictive model due to its simplicity, interpretability, and effectiveness on smaller, well-structured datasets. In addition to assessing model performance, the project explores fairness, limitations, and ethical concerns to ensure the system aligns with responsible AI practices.
 	
 	\section{Dataset Overview}
-	The dataset used is the German Credit Data, a widely recognized benchmark in credit risk modeling. It contains 1000 entries and 20 input features, including demographic, financial, and employment-related attributes. The target variable, \texttt{CreditRisk}, is binary: originally coded as 1 (good) and 2 (bad), it was remapped to 0 (good credit risk) and 1 (bad credit risk) for compatibility with scikit-learn conventions.
+	The dataset used is the German Credit Data, a widely recognized benchmarking company in credit risk modeling. It contains 1000 entries and 20 input features, including demographic, financial, and employment-related attributes. The target variable, \texttt{CreditRisk}, is binary: originally coded as 1 (good) and 2 (bad), it was remapped to 0 (good credit risk) and 1 (bad credit risk) for compatibility with scikit-learn conventions.
 	
 	Categorical features include variables like \texttt{StatusCheckingAcc}, \texttt{CreditHistory}, \texttt{Savings}, and \texttt{ForeignWorker}, while numerical features include \texttt{Duration}, \texttt{CreditAmount}, and \texttt{Age}. The preprocessing pipeline handled categorical features using one-hot encoding, and numerical features were passed through without transformation.
 	
 	\section{Modeling Approach}
-	A Logistic Regression model was implemented using a scikit-learn pipeline. The steps included:
+	Although we typically used R-script for exploratory data analysis, this data set has already been preprocessed. Because of this, we can use EDA through python and the scikit-learn library. After this, a Logistic Regression model was implemented also using a scikit-learn pipeline. The steps included:
 	\begin{itemize}
-		\item \textbf{Data splitting:} 80\% training and 20\% testing, stratified by target variable.
 		\item \textbf{Preprocessing:} Categorical columns were one-hot encoded with \texttt{handle\_unknown=\textquotesingle ignore\textquotesingle}.
+		\item \textbf{Data splitting:} standard practice splitting with 80\% training and 20\% testing, stratified by target variable.
 		\item \textbf{Model training:} Logistic Regression with \texttt{liblinear} solver and \texttt{max\_iter=1000}.
 	\end{itemize}
 	
@@ -107,22 +107,22 @@
 		\label{fig:top_features}
 	\end{figure}
 	
+	This feature importance visualization reveals a notable imbalance: there are more factors that increase the likelihood of loan denial than factors that improve approval odds. While positive indicators (like maintaining a rich savings account or having over seven years of continuous employment) do reduce the risk score, their influence is limited compared to the number and strength of risk-related features. This suggests that the model places greater weight on penalizing risk factors rather than rewarding stability. As a result, individuals from less privileged backgrounds, who may lack long employment history or significant financial assets, are continuously disadvantaged, reinforcing and perpetuating wealth inequality.
+	
 	\section{Fairness Evaluation}
-	Several features in the dataset serve as proxies for protected attributes:
+	Several features in the dataset served as "proxies" for protected attributes:
 	\begin{itemize}
-		\item \texttt{PersonalStatusSex} encodes gender and marital status.
-		\item \texttt{ForeignWorker} encodes nationality.
+		\item \texttt{PersonalStatusSex} encoded gender and marital status.
+		\item \texttt{ForeignWorker} encoded nationality.
 		\item \texttt{Age} can indirectly disadvantage certain age groups.
 	\end{itemize}
 	
-	The high positive coefficient for \texttt{ForeignWorker=yes} raises fairness issues. Similar concerns apply to gender-encoded features. Mitigation strategies include removing sensitive features, applying fairness-aware algorithms, or post-processing outputs.
+	The high positive coefficient for \texttt{ForeignWorker=yes} raises fairness issues, with similar concerns applying to gender-encoded features. Mitigation strategies include removing sensitive features, applying fairness-aware algorithms, or post-processing outputs.
 	
 	\section{Limitations}
 	\begin{itemize}
-		\item \textbf{Linearity Assumption:} Logistic Regression assumes linearity.
-		\item \textbf{High Dimensionality:} One-hot encoding increases dimensionality, risking overfitting.
-		\item \textbf{No Interaction Terms:} Feature combinations are not modeled.
-		\item \textbf{Dataset Age:} The German dataset may be outdated or unrepresentative.
+		\item \textbf{Linearity Assumption:} Logistic Regression assumes linearity. This means that the model doesn't automatically map complex interactions or non-linear effects (like diminishing returns or thresholds).
+		\item \textbf{High Dimensionality:} One-hot encoding increases dimensionality, risking memory constraints, but this only becomes an issue with larger data sets.
 	\end{itemize}
 	
 	\section{Ethical and Societal Implications}
@@ -142,7 +142,7 @@
 		\item Applying fairness constraints.
 	\end{itemize}
 	
-	Future work should incorporate fairness metrics and real-world testing to ensure responsible deployment.
+	Future work should incorporate fairness metrics and real-world testing to ensure responsible deployment. If this model were to be deployed in the real world, it would perpetuate the biases inside of the data and only further the levels of inequality seen today.
 	
 	\section{Discussion Questions}
 	
