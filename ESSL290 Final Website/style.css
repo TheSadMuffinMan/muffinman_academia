@@ -1,0 +1,61 @@
+/* style.css */
+/* CSS stands for Cascading Style Sheets
+   It controls how HTML elements look (color, layout, spacing, etc.) */
+
+/* This applies to the entire webpage */
+body {
+    background-color: #f5f5f5; /* Light gray background for readability */
+    font-family: Arial, sans-serif; /* Sets a clean default font */
+    color: #333; /* Default text color (dark gray) */
+    margin: 40px; /* Adds space between content and browser edge */
+}
+
+/* Headings (H1 and H2) styling */
+h1 {
+    color: #800000; /* CMU maroon */
+    text-align: center; /* Centers main title */
+}
+
+h2 {
+    color: #b8860b; /* Golden accent color */
+    border-bottom: 2px solid #b8860b; /* Decorative underline */
+}
+
+/* Paragraph styling */
+p {
+    line-height: 1.6; /* Adds spacing between lines */
+    font-size: 16px; /* Adjusts text size */
+}
+
+/* Links styling */
+a {
+    color: #0066cc; /* Blue link color */
+    text-decoration: none; /* Removes underline */
+}
+a:hover {
+    text-decoration: underline; /* Adds underline on hover */
+}
+
+/* Unordered list (bullet points) styling */
+ul {
+    background-color: #fff; /* White box behind list */
+    padding: 15px;
+    border-radius: 8px; /* Rounded corners */
+    list-style-type: square; /* Square bullets */
+}
+
+/* Image styling */
+img {
+    display: block; /* Prevents image from sitting inline with text */
+    margin: 20px auto; /* Centers image horizontally */
+    width: 300px; /* Fixed width */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Footer styling */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
