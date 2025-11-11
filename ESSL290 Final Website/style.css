@@ -44,6 +44,7 @@ h3 {
 
 /* Paragraph styling. */
 p {
+    margin: 0; /* Removes the margin between links and above paragraph. */
     line-height: 1.6; /* Adds spacing between lines */
     font-size: 16px; /* Adjusts text size */
 }
@@ -79,16 +80,16 @@ ul {
 /* Positioning the CMU logo in the top-right corner. */
 img[alt="CMU Logo"] {
     /* background-color: #f5f5f5; // DOES NOT WORK, working with a fake/white-background png >:( */
-    mix-blend-mode: multiply; /* makes white background fade with page */
+    mix-blend-mode: multiply; /* Making the white background fade to match page color. */
     position: absolute; /* Requires absolute positioning. */
-    top: 20px;      /* Distance from top. */
+    top: 10px;      /* Distance from top. */
     right: 20px;    /* Distance from the right. */
     width: 200px;   /* Smaller size fits better in corner, original = 200px. */
     margin: 0;
     border-radius: 10; /* Remove rounding by setting = 0. */
 }
 
-/* Footer styling */
+/* Footer styling. */
 footer {
     margin-top: 40px;
     text-align: center;
