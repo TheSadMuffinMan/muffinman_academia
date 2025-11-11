@@ -1,55 +1,91 @@
-/* style.css */
-/* CSS stands for Cascading Style Sheets
-   It controls how HTML elements look (color, layout, spacing, etc.) */
+/*
+CSS (Cascading Style Sheet):
+    Is a logic/constrain language, reference OS/4.0 L for in-class notes.
+    Specifies the presentation or styling of a document written in a markup language (emphasis on the "M" in HTML).
+    Uses classes which behave more or less like a C++ class or custom variable.
+        Each individual class needs it's own styling, or else it will be default (and ugly).
+        You can group classes together with the comma operator.
+*/
 
-/* This applies to the entire webpage */
+/* This applies to the entire webpage, similar to seetting defaults across classes. */
 body {
-    background-color: #f5f5f5; /* Light gray background for readability */
-    font-family: Arial, sans-serif; /* Sets a clean default font */
-    color: #333; /* Default text color (dark gray) */
-    margin: 40px; /* Adds space between content and browser edge */
+    background-color: #f5f5f5; /* Setting light gray background. */
+    font-family: Arial, sans-serif; /* Setting font. */
+    color: #333; /* Default text color (dark gray). */
+    margin: 40px; /* Adds space between content and browser edge. */
 }
 
-/* Headings (H1 and H2) styling */
+/*
+Headings styling, provides the constraints for identified header(s).
+You define multiple headers with the same constraints by adding a comma:
+    h1, h2 {...}.
+*/
+/* h1 = "Free Speech & Civility Concepts for Programmers". */
 h1 {
-    color: #800000; /* CMU maroon */
-    text-align: center; /* Centers main title */
+    color: #800000; /* CMU maroon. */
+    text-align: center; /* Centering main title. */
 }
 
+/* h2 = "Why this website was built". */
 h2 {
-    color: #b8860b; /* Golden accent color */
-    border-bottom: 2px solid #b8860b; /* Decorative underline */
+    color: #b8860b; /* Golden accent color. */
+    border-bottom: 2px solid #b8860b; /* Decorative underline. */
+
+    /* We need access to z-coordinates to place the yellow line above CMU's logo, and that is done with the following: */
+    position: relative; /* Initializes z-index (actual z coordinates). */
+    z-index: 10; /* Setting the index really high so line is "above" everything else. */
 }
 
-/* Paragraph styling */
+/* h3 = "Concepts most important to programmers". */
+h3 {
+    color: #b8860b;
+    /* border-bottom: 2px solid #b8860b; // Don't want underline here */
+}
+
+/* Paragraph styling. */
 p {
     line-height: 1.6; /* Adds spacing between lines */
     font-size: 16px; /* Adjusts text size */
 }
 
-/* Links styling */
+/* Link(s) styling. */
 a {
-    color: #0066cc; /* Blue link color */
-    text-decoration: none; /* Removes underline */
+    color: #0066cc; /* Standard blue link color. */
+    text-decoration: none; /* Removes underline, will reappear when hovering over link. */
 }
 a:hover {
-    text-decoration: underline; /* Adds underline on hover */
+    text-decoration: underline; /* Adds underline when hovering on link. */
 }
 
-/* Unordered list (bullet points) styling */
+/* Unordered List (Concepts most important to programmers) styling. */
 ul {
-    background-color: #fff; /* White box behind list */
-    padding: 15px;
-    border-radius: 8px; /* Rounded corners */
-    list-style-type: square; /* Square bullets */
+    background-color: #f5f5f5; /* ***LINE IS UNNEEDED*** Left for educational purposes. */
+    padding-left: 40px; /* Orginally "padding: 12px;" */
+    border-radius: 8px; /* Rounding corners. */
+    list-style-type: square; /* Square bullet points. */
 }
 
-/* Image styling */
-img {
-    display: block; /* Prevents image from sitting inline with text */
-    margin: 20px auto; /* Centers image horizontally */
-    width: 300px; /* Fixed width */
-    border-radius: 10px; /* Rounded corners */
+/* Image styling, this section centers the image. */
+/* display: block; Prevents the image from sitting inline with text. */
+/* margin: 20px auto; Centers the image horizontally. */
+/* border-radius: 10px; Rounds the corners of the image. */
+/* img {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    border-radius: 10px;
+} */
+
+/* Positioning the CMU logo in the top-right corner. */
+img[alt="CMU Logo"] {
+    /* background-color: #f5f5f5; // DOES NOT WORK, working with a fake/white-background png >:( */
+    mix-blend-mode: multiply; /* makes white background fade with page */
+    position: absolute; /* Requires absolute positioning. */
+    top: 20px;      /* Distance from top. */
+    right: 20px;    /* Distance from the right. */
+    width: 200px;   /* Smaller size fits better in corner, original = 200px. */
+    margin: 0;
+    border-radius: 10; /* Remove rounding by setting = 0. */
 }
 
 /* Footer styling */
