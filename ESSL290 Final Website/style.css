@@ -28,6 +28,7 @@ h1 {
 
 /* h2 = "Why this website was built". */
 h2 {
+    font-size: 30px;
     color: #b8860b; /* Golden accent color. */
     border-bottom: 2px solid #b8860b; /* Decorative underline. */
 
@@ -38,6 +39,7 @@ h2 {
 
 /* h3 = "Concepts most important to programmers". */
 h3 {
+    font-size: 30px;
     color: #b8860b;
     /* border-bottom: 2px solid #b8860b; // Don't want underline here */
 }
@@ -47,6 +49,11 @@ p {
     margin: 0; /* Removes the margin between links and above paragraph. */
     line-height: 1.6; /* Adds spacing between lines */
     font-size: 16px; /* Adjusts text size */
+}
+
+/* Styling specific to p1. */
+p1 {
+    margin: 0;
 }
 
 /* Link(s) styling. */
@@ -60,10 +67,16 @@ a:hover {
 
 /* Unordered List (Concepts most important to programmers) styling. */
 ul {
+    font-size: 30px;
     background-color: #f5f5f5; /* ***LINE IS UNNEEDED*** Left for educational purposes. */
     padding-left: 40px; /* Orginally "padding: 12px;" */
     border-radius: 8px; /* Rounding corners. */
     list-style-type: square; /* Square bullet points. */
+}
+
+/* List items styling. */
+li {
+    font-weight: 700; /* Normal font-weight is 400. */
 }
 
 /* Image styling, this section centers the image. */
@@ -79,7 +92,7 @@ ul {
 
 /* Positioning the CMU logo in the top-right corner. */
 img[alt="CMU Logo"] {
-    /* background-color: #f5f5f5; // DOES NOT WORK, working with a fake/white-background png >:( */
+    /* background-color: #f5f5f5; // DOES NOT WORK, working with a fake/white background png >:( */
     mix-blend-mode: multiply; /* Making the white background fade to match page color. */
     position: absolute; /* Requires absolute positioning. */
     top: 10px;      /* Distance from top. */
