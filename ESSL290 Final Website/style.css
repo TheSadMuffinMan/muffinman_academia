@@ -62,7 +62,7 @@ a:hover {
 }
 
 /* Ordered List (Concepts most important to programmers) styling. */
-ol.decimal {
+ol {
     /* font-size: 35px; */
     background-color: #f5f5f5; /* ***LINE IS UNNEEDED*** Left for educational purposes. */
     padding-left: 40px; /* Orginally "padding: 12px;" */
