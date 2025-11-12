@@ -1,0 +1,23 @@
+/* Image styling, this section centers the image. */
+/* display: block; Prevents the image from sitting inline with text. */
+/* margin: 20px auto; Centers the image horizontally. */
+/* border-radius: 10px; Rounds the corners of the image. */
+/* img {
+    display: block;
+    margin: 20px auto;
+    width: 300px;
+    border-radius: 10px;
+} */
+
+
+/* Positioning the CMU logo in the top-right corner. */
+img[alt="CMU Logo"] {
+    /* background-color: #f5f5f5; // DOES NOT WORK, working with a fake/white background png >:( */
+    mix-blend-mode: multiply; /* Making the white background fade to match page color. */
+    position: absolute; /* Requires absolute positioning. */
+    top: 10px;      /* Distance from top. */
+    right: 20px;    /* Distance from the right. */
+    width: 200px;   /* Smaller size fits better in corner, original = 200px. */
+    margin: 0;
+    border-radius: 10; /* Remove rounding by setting = 0. */
+}

@@ -61,6 +61,17 @@ a:hover {
     text-decoration: underline; /* Adds underline when hovering on link. */
 }
 
+a[href*="index.html"] {
+  display: inline-block;
+  margin-top: 10px;
+  color: #555;
+  text-decoration: none;
+}
+a[href*="index.html"]:hover {
+  text-decoration: underline;
+}
+
+
 /* Ordered List (Concepts most important to programmers) styling. */
 ol {
     /* font-size: 35px; */
