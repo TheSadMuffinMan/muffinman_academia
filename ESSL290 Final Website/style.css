@@ -15,25 +15,36 @@ body {
     margin: 40px; /* Adds space between content and browser edge. */
 }
 
-/* SHARED top header styling, uses class idea. */
+/* SHARED top header styling, uses class idea.
+Parameters = h1, image. */
 .site-header {
     text-align: center;
     position: relative;
     margin-bottom: 20px;
 }
-
 .site-header h1 {
     font-size: 50px;
     color: #800000; /* CMU maroon */
     margin: 0;
 }
-
 .site-header img {
     position: absolute;
     top: 10px;
     right: 20px;
     width: 200px;
     mix-blend-mode: multiply;
+}
+
+/* Shared title-section class. */
+.title-section h1 {
+    font-size: 30px;
+    color: #b8860b; /* Golden accent color. */
+    text-align: left;
+    border-bottom: 2px solid #b8860b; /* Decorative underline. */
+
+    /* We need access to z-coordinates to place the yellow line above CMU's logo, and that is done with the following: */
+    position: relative; /* Initializes z-index (actual z coordinates). */
+    z-index: 10; /* Setting the index really high so line is "above" everything else. */
 }
 
 /*
@@ -101,7 +112,6 @@ ol {
     border-radius: 8px; /* Rounding corners. */
     /* list-style-type: square; Square bullet points. */
 }
-
 /* List items styling. */
 ol li {
     font-size: 25px;
@@ -110,7 +120,7 @@ ol li {
 }
 
 /* Shared site footer styling. */
-.site-footer{
+.site-footer {
     margin-top: 40px;
     text-align: center;
     font-size: 14px;

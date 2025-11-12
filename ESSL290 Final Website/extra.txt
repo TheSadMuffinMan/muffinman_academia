@@ -29,3 +29,11 @@ img[alt="CMU Logo"] {
     font-size: 14px;
     color: #555;
 } */
+
+/* SHARED title styling for any heading that should look like the main title. */
+.main-title-text {
+    font-size: 50px;
+    color: #800000; /* CMU maroon. */
+    text-align: center;
+    margin: 0;
+}
