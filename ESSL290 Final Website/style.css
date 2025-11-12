@@ -35,7 +35,7 @@ body {
     mix-blend-mode: multiply;
 }
 
-/* Shared title-section class. */
+/* Shared main title section class. */
 /* Parameter = h1. */
 .title-section h1 {
     font-size: 30px;
@@ -47,6 +47,38 @@ body {
     position: relative; /* Initializes z-index (actual z coordinates). */
     z-index: 10; /* Setting the index really high so line is "above" everything else. */
 }
+
+/* SHARED "back to main page" link styling. */
+/* Paramter = a */
+.back-link {
+    margin: 20px 0;
+    text-align: left;
+}
+.back-link a {
+    display: inline-block;
+    padding: 6px 12px;
+    color: #0066cc;
+    background-color: #f0f0f0;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.back-link a:hover {
+    background-color: #e0e0e0;
+    color: #004c99;
+    text-decoration: underline;
+}
+
+/* Shared site footer styling. */
+/* Parameter = p */
+.site-footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
 
 /* h2 = First header under the title, has underline. */
 h2 {
@@ -72,29 +104,6 @@ p {
     font-size: 16px; /* Adjusts text size. */
 }
 
-
-/* SHARED "back to main page" link styling. */
-/* Paramter = a */
-.back-link {
-    margin: 20px 0;
-    text-align: left;
-}
-.back-link a {
-    display: inline-block;
-    padding: 6px 12px;
-    color: #0066cc;
-    background-color: #f0f0f0;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-.back-link a:hover {
-    background-color: #e0e0e0;
-    color: #004c99;
-    text-decoration: underline;
-}
-
 /* Ordered List styling. */
 ol {
     /* font-size: 35px; */
@@ -108,12 +117,4 @@ ol li {
     font-size: 25px;
     font-weight: 700; /* Normal font-weight is 400. */
     margin-bottom: 5px;
-}
-
-/* Shared site footer styling. */
-.site-footer {
-    margin-top: 40px;
-    text-align: center;
-    font-size: 14px;
-    color: #555;
 }
