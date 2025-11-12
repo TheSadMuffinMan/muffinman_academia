@@ -3,7 +3,7 @@ CSS (Cascading Style Sheet):
     Is a logic/constrain language, reference OS/4.0 L for in-class notes.
     Specifies the presentation or styling of a document written in a markup language (emphasis on the "M" in HTML).
     Uses classes which behave more or less like a C++ class or custom variable.
-        Each individual class needs it's own styling, or else it will be default (and ugly).
+        Classes are best thought of as "labels", with constraints only applying to HTML with said label.
         You can group classes together with the comma operator.
 */
 
@@ -97,7 +97,7 @@ h3 {
     color: #b8860b;
 }
 
-/* General paragraph styling. */
+/* General paragraph styling for the whole page. */
 p {
     margin: 1; /* Removes the margin between above class. */
     line-height: 1.6; /* Adds spacing between lines. */
