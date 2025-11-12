@@ -66,19 +66,20 @@ a:hover {
     text-decoration: underline; /* Adds underline when hovering on link. */
 }
 
-/* Unordered List (Concepts most important to programmers) styling. */
-ol {
-    list-style-type: decimal;
-    font-size: 30px;
+/* Ordered List (Concepts most important to programmers) styling. */
+ol.decimal {
+    /* font-size: 35px; */
     background-color: #f5f5f5; /* ***LINE IS UNNEEDED*** Left for educational purposes. */
     padding-left: 40px; /* Orginally "padding: 12px;" */
     border-radius: 8px; /* Rounding corners. */
-    list-style-type: square; /* Square bullet points. */
+    /* list-style-type: square; Square bullet points. */
 }
 
 /* List items styling. */
-li {
+ol li {
+    font-size: 25px;
     font-weight: 700; /* Normal font-weight is 400. */
+    margin-bottom: 5px;
 }
 
 /* Image styling, this section centers the image. */
