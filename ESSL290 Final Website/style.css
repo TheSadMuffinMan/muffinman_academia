@@ -15,8 +15,8 @@ body {
     margin: 40px; /* Adds space between content and browser edge. */
 }
 
-/* SHARED top header styling, uses class idea.
-Parameters = h1, image. */
+/* SHARED site header styling, uses class idea. */
+/* Parameters = h1, image. */
 .site-header {
     text-align: center;
     position: relative;
@@ -36,6 +36,7 @@ Parameters = h1, image. */
 }
 
 /* Shared title-section class. */
+/* Parameter = h1. */
 .title-section h1 {
     font-size: 30px;
     color: #b8860b; /* Golden accent color. */
@@ -45,19 +46,6 @@ Parameters = h1, image. */
     /* We need access to z-coordinates to place the yellow line above CMU's logo, and that is done with the following: */
     position: relative; /* Initializes z-index (actual z coordinates). */
     z-index: 10; /* Setting the index really high so line is "above" everything else. */
-}
-
-/*
-Headings styling, provides the constraints for identified header(s).
-You define multiple headers with the same constraints by adding a comma:
-    h1, h2 {...}.
-*/
-/* h1 = "Free Speech & Civility Concepts for Programmers". 
-    (TITLE STYLING) */
-h1 {
-    font-size: 50px;
-    color: #800000; /* CMU maroon. */
-    text-align: center; /* Centering main title. */
 }
 
 /* h2 = First header under the title, has underline. */
@@ -79,30 +67,33 @@ h3 {
 
 /* General paragraph styling. */
 p {
-    margin: 1; /* Removes the margin between links and above paragraph. */
-    line-height: 1.6; /* Adds spacing between lines */
-    font-size: 16px; /* Adjusts text size */
+    margin: 1; /* Removes the margin between above class. */
+    line-height: 1.6; /* Adds spacing between lines. */
+    font-size: 16px; /* Adjusts text size. */
 }
 
-/* Link(s) styling. */
-a {
-    color: #0066cc; /* Standard blue link color. */
-    text-decoration: none; /* Removes underline, will reappear when hovering over link. */
-}
-a:hover {
-    text-decoration: underline; /* Adds underline when hovering on link. */
-}
 
-a[href*= "index.html"] {
+/* SHARED "back to main page" link styling. */
+/* Paramter = a */
+.back-link {
+    margin: 20px 0;
+    text-align: left;
+}
+.back-link a {
     display: inline-block;
-    margin-top: 10px;
-    color: #555;
+    padding: 6px 12px;
+    color: #0066cc;
+    background-color: #f0f0f0;
+    border-radius: 6px;
     text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s ease, color 0.2s ease;
 }
-a[href*= "index.html"]:hover {
+.back-link a:hover {
+    background-color: #e0e0e0;
+    color: #004c99;
     text-decoration: underline;
 }
-
 
 /* Ordered List styling. */
 ol {
