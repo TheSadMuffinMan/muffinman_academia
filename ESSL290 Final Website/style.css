@@ -22,11 +22,12 @@ You define multiple headers with the same constraints by adding a comma:
 */
 /* h1 = "Free Speech & Civility Concepts for Programmers". */
 h1 {
+    font-size: 50px;
     color: #800000; /* CMU maroon. */
     text-align: center; /* Centering main title. */
 }
 
-/* h2 = "Why this website was built". */
+/* h2 = "Why this artifact was built". */
 h2 {
     font-size: 30px;
     color: #b8860b; /* Golden accent color. */
@@ -46,7 +47,7 @@ h3 {
 
 /* Paragraph styling. */
 p {
-    margin: 0; /* Removes the margin between links and above paragraph. */
+    margin: 1; /* Removes the margin between links and above paragraph. */
     line-height: 1.6; /* Adds spacing between lines */
     font-size: 16px; /* Adjusts text size */
 }
@@ -66,7 +67,8 @@ a:hover {
 }
 
 /* Unordered List (Concepts most important to programmers) styling. */
-ul {
+ol {
+    list-style-type: decimal;
     font-size: 30px;
     background-color: #f5f5f5; /* ***LINE IS UNNEEDED*** Left for educational purposes. */
     padding-left: 40px; /* Orginally "padding: 12px;" */
