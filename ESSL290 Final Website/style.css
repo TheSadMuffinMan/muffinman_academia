@@ -50,11 +50,11 @@ body {
 
 /* SHARED "back to main page" link styling. */
 /* Paramter = a */
-.back-link {
+.url_links {
     margin: 20px 0;
     text-align: left;
 }
-.back-link a {
+.url_links a {
     display: inline-block;
     padding: 6px 12px;
     color: #0066cc;
@@ -64,7 +64,7 @@ body {
     font-weight: 600;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
-.back-link a:hover {
+.url_links a:hover {
     background-color: #e0e0e0;
     color: #004c99;
     text-decoration: underline;
