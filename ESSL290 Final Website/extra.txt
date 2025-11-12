@@ -21,3 +21,11 @@ img[alt="CMU Logo"] {
     margin: 0;
     border-radius: 10; /* Remove rounding by setting = 0. */
 }
+
+/* Footer styling. */
+/* footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+} */

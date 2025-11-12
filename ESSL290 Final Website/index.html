@@ -3,26 +3,33 @@
     - X
 -->
 
+<!--
+HTML is weird... When writing, we're only aiming to provide the raw data to the browser. It is up to the CSS to make the page
+    pretty and interactable.
+If you're planning on sharing elements across different pages, wrap said elements in a class so that the CSS file can apply it's
+    constraints across multiple HTML files.
+-->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang = "en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href = "style.css">
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1.0">
     <title>ESSL290-15B Final Project</title>
 </head>
 <body>
-    <!-- We name this project index.html so that hosting websites know which file is the default one -->
-    <!-- Type identifiers are ended with </identifier> (ends with backslash) -->
+    <!-- We name this project index.html so that hosting websites know which file is the default one. -->
+    <!-- Type identifiers are ended with </identifier> (ends with backslash). -->
     <!-- HTML does not provide many styling options, but that's where the CSS comes in and saves the day by providing a Style Sheet - hence 
         their name (Cascading Style Sheets). CSSs are logic/constraint languages, meaning that they can't do much on their own, but when
         describing/constraining other code (like HTML), it works wonders! -->
 
     <!-- Headings -->
-    <!-- This heading is wrapped in a div/class, which allows it to be used across other html files. -->
+    <!-- This heading is wrapped in a div/class, which just labels it. This makes it easy to specify in the CSS. -->
     <div class = "site-header">
         <h1>Free Speech & Civility Concepts for Programmers</h1>
-        <img src="cmu_logo.png" alt="CMU Logo"> <!-- Image -->
+        <img src = "cmu_logo.png" alt = "CMU Logo"> <!-- Image -->
         </div>
 
     <h2>Why this artifact was built</h2>
@@ -50,8 +57,11 @@
 
     <!-- Footer -->
     <!-- &copy; = copyright symbol, left in for lolsies -->
-    <footer>
-        <p>&copy; 2025 Anthony Streich, Hosted on GitHub: TheSadMuffinMan</p>
-    </footer>
+    <div class = "site-footer">
+        <footer>
+            <p>&copy; 2025 Anthony Streich, Hosted on GitHub: TheSadMuffinMan</p>
+        </footer>
+    </div>
+
 </body>
 </html>
