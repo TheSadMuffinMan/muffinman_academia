@@ -34,6 +34,20 @@ body {
     width: 200px;
     mix-blend-mode: multiply;
 }
+/* Removing link formatting from the clickable site title. */
+.site-header h1 a {
+    color: inherit; /* Inheritence! *cool guy shades* */
+    text-decoration: none;
+}
+/* Removing hover color chnage and underline. */
+.site-header h1 a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+/* Preventing the visited color from changing. */
+.site-header h1 a:visited {
+    color: inherit;
+}
 
 /* Shared main title section class. */
 /* Parameter = h1. */
