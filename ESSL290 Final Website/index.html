@@ -1,6 +1,6 @@
 <!-- HTML is weird... When writing, we're only aiming to provide the raw data to the browser. It is up to the CSS to make the page
     pretty and interactable.
-If you're planning on sharing elements across different pages, wrap said elements in a class so that the CSS file can apply it's
+If you're planning on sharing elements across different pages, wrap said elements in a class/div so that the CSS file can apply it's
     constraints across multiple HTML files.
 -->
 
@@ -20,7 +20,7 @@ If you're planning on sharing elements across different pages, wrap said element
         describing/constraining other code (like HTML), it works wonders! -->
 
     <!-- Headings -->
-    <!-- This heading is wrapped in a div/class, which just labels it. This makes it easy to specify in the CSS. -->
+    <!-- This heading is wrapped in a div/class, which just labels it. This makes it easy to specify in the CSS and use in other HTML files. -->
     <div class = "site-header">
         <h1>Free Speech & Civility Concepts for Programmers</h1>
         <img src = "cmu_logo.png" alt = "CMU Logo">
@@ -37,7 +37,7 @@ If you're planning on sharing elements across different pages, wrap said element
         languages.
     </p>
 
-    <!-- Ordered List, each li is a link to it's own file/page. -->
+    <!-- Ordered List, each li is a link to its own file/page. -->
     <h3>Concepts most important to programmers</h3>
     <ol>
         <li><a href="concepts/offensive.html">Just because you find something offensive, that does not give you the right to censor it.</a></li>
