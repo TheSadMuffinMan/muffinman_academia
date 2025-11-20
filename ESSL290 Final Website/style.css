@@ -64,11 +64,11 @@ body {
 
 /* SHARED "back to main page" link styling. */
 /* Paramter = a */
-.url_links {
+.home_link {
     margin: 20px 0;
     text-align: left;
 }
-.url_links a {
+.home_link a {
     display: inline-block;
     padding: 6px 12px;
     color: #0066cc;
@@ -78,11 +78,29 @@ body {
     font-weight: 600;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
-.url_links a:hover {
+.home_link a:hover {
     background-color: #e0e0e0;
     color: #004c99;
     text-decoration: underline;
 }
+
+.next_page_link {
+    /* display: inline-block; */
+    float: right;
+    padding: 10px 18px;
+    margin-top: 20px;
+    background-color: #800000; /* CMU maroon or your chosen color */
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.next_page_button:hover {
+    background-color: #a00000; /* slightly lighter shade on hover */
+}
+
 
 /* Shared site footer styling. */
 /* Parameter = p */
