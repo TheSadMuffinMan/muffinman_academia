@@ -43,12 +43,10 @@ void round_number(std::string& passed_string)
 
 int main(int argc, char* argv[])
 {
-    for (int i = 1; i < argc; ++i)
-    {
-        std::string num = argv[i];
-        round_number(num);
-        std::cout << num << " ";
-    }
+    std::string user_string;
+    std::cin >> user_string;
+    round_number(user_string);
+    std::cout << user_string;
 
     // std::cout << "\nEnd of program.\n";
     return 0;
