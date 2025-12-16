@@ -3,10 +3,12 @@
 2.71
 2.5
 42
+
+g++ -o main main.cpp
 */
 
 #include <iostream>
-#include <cctype>
+// #include <cctype>
 
 int main(int argc, char *argv[])
 {
@@ -21,12 +23,6 @@ int main(int argc, char *argv[])
             {
                 *curr = '\0'; // Truncate at decimal.
                 break;
-            }
-
-            if (!std::isdigit(*curr))
-            {
-                std::cerr << "Invalid character: " << *curr << '.\n';
-                return 1;
             }
 
             ++curr;

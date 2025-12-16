@@ -27,3 +27,7 @@ run:
 
 test:
 	./$(PROGRAM) test
+
+# run -- 42 61.4 **OTHER ARGUMENTS**
+# run: $(TARGET)
+# 	./$(TARGET) $(filter-out $@,$(MAKECMDGOALS))
