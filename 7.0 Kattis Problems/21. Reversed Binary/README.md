@@ -16,4 +16,4 @@ Output one line with one integer, the number we get by reversing the binary repr
 > **Input 2:** `47` ---> **Output 2:** `61`
 
 ## Development Notes
-XX
+- 1 Billion in binary: `0b111011100110101100101000000000`
