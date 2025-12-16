@@ -15,3 +15,6 @@ Print the integer closest to the given input. If the given input is exactly betw
 > **Input 3:** `2.5` ---> **Output 1:** `3`  \
 > **Input 4:** `16` ---> **Output 1:** `16`
 
+## Development Notes
+- C-Strings end at the first `\0`.
+
