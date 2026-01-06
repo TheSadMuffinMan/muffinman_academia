@@ -25,9 +25,15 @@ You can return the answer in any order.
 > Only one valid answer exists.
 
 ### Ideas
-For each number in the array, check every other number to see if they add up to the total.
+- For each number in the array, check every other number to see if they add up to the total.
+- Could also use a Hash Map to check every input num vs. every other as they are input.
 
 ## Usage
-Program uses standard C++ `int argc` and `char* argv[]` arguments.
-1. Input number of elements/numbers you wish to pass.
-2. Pass each element/number, seperated by a space.
+```bash
+g++ main.cpp
+./a.out
+
+Target: # Input your target number.
+Input any number of ints, stop input by inputting any non-int.
+# Input ints.
+```
